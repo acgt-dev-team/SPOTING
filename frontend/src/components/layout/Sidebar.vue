@@ -1,46 +1,58 @@
+<script setup>
+</script>
+
 <template>
-  <aside class="w-64 bg-[#070C1F] border-r border-[#121A33] flex flex-col">
+  <aside class="sidebar">
 
-    <div class="p-6 text-xl font-bold">
-      Spoting
-    </div>
+    <h2 class="logo">SPOTING</h2>
 
-    <nav class="flex flex-col gap-2 px-4">
+    <nav>
+      <router-link to="/dashboard">Paparan Muka</router-link>
 
-      <RouterLink to="/" class="sidebar-link">Dashboard</RouterLink>
+      <router-link to="/organisasi">Organisasi</router-link>
 
-      <RouterLink to="/users" class="sidebar-link">Pengguna</RouterLink>
+      <router-link to="/tapak">Tapak</router-link>
 
-      <RouterLink to="/organisasi" class="sidebar-link">Organisasi</RouterLink>
+      <router-link to="/profil">Profil</router-link>
 
-      <RouterLink to="/tugasan" class="sidebar-link">Tugasan</RouterLink>
+      <router-link to="/tugasan">Tugasan</router-link>
 
-      <RouterLink to="/tetapan" class="sidebar-link">Tetapan</RouterLink>
+      <router-link to="/tetapan">Tetapan</router-link>
 
+      <router-link to="/pengguna">Senarai Pengguna</router-link>
     </nav>
-
-    <div class="mt-auto p-4 text-sm opacity-70">
-      Username
-      <div class="text-red-400">Log keluar</div>
-    </div>
 
   </aside>
 </template>
 
 <style scoped>
 
-.sidebar-link{
-  padding:10px;
-  border-radius:8px;
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  padding: 20px;
 }
 
-.sidebar-link:hover{
-  background:#101935;
+.logo {
+  margin-bottom: 30px;
 }
 
-.router-link-active{
-  background:#101935;
-  color:#c084fc;
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.router-link-active {
+  color: var(--primary);
 }
 
 </style>
