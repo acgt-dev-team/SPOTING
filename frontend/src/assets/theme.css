@@ -1,0 +1,19 @@
+:root {
+
+  --bg-main: #f7f9fc;
+  --bg-card: #ffffff;
+
+  --border: #e5e7eb;
+
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+
+  --primary: #9333ea;
+  --primary-hover: #7e22ce;
+
+  --success: #22c55e;
+  --info: #3b82f6;
+  --warning: #eab308;
+  --danger: #ef4444;
+
+}
