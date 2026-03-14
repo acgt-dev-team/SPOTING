@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router"
 
+// Auth pages
+import Login from "../views/auth/Login.vue"
+import Register from "../views/auth/Register.vue"
+
+// Existing pages
 import Dashboard from "../views/dashboard/Dashboard.vue"
 import Organisasi from "../views/organisasi/Organisasi.vue"
 import Tapak from "../views/tapak/Tapak.vue"
@@ -13,10 +18,22 @@ import Wizard from "../views/wizard/Wizard.vue"
 
 const routes = [
 
-  // default route
+  // redirect root → login
   {
     path: "/",
-    redirect: "/wizard"
+    redirect: "/login"
+  },
+
+  // LOGIN PAGE
+  {
+    path: "/login",
+    component: Login
+  },
+
+  // REGISTER PAGE
+  {
+    path: "/register",
+    component: Register
   },
 
   // wizard setup page

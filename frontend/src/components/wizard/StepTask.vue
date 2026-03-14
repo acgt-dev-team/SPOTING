@@ -1,11 +1,24 @@
 <script setup>
 import { ref } from "vue"
+import { useRouter } from "vue-router"
+
+const router = useRouter()
 
 const namaTugasan = ref("")
 const jenisTugasan = ref("")
 const protocol = ref("v4")
 const ipStart = ref("")
 const ipEnd = ref("")
+
+function submitWizard(){
+
+  // mark wizard finished
+  localStorage.setItem("wizardCompleted","true")
+
+  // go to login page
+  router.push("/")
+
+}
 </script>
 
 <template>
@@ -19,7 +32,11 @@ const ipEnd = ref("")
 
 <div>
 <label>Nama tugasan</label>
-<input v-model="namaTugasan" class="input"/>
+<input 
+  v-model="namaTugasan" 
+  class="input"
+  placeholder="Masukkan nama tugasan"
+/>
 </div>
 
 <div>
@@ -66,11 +83,19 @@ const ipEnd = ref("")
 
 <div class="ip-range">
 
-<input v-model="ipStart" class="input"/>
+<input 
+  v-model="ipStart" 
+  class="input"
+  placeholder="IP mula"
+/>
 
 <span class="dash">-</span>
 
-<input v-model="ipEnd" class="input"/>
+<input 
+  v-model="ipEnd" 
+  class="input"
+  placeholder="IP akhir"
+/>
 
 </div>
 
@@ -85,7 +110,7 @@ const ipEnd = ref("")
 Kembali
 </button>
 
-<button class="next">
+<button class="next" @click="submitWizard">
 Hantar
 </button>
 
@@ -102,7 +127,6 @@ font-size:20px;
 margin-bottom:24px;
 }
 
-/* Two column layout */
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -111,7 +135,6 @@ row-gap:28px;
 margin-bottom:28px;
 }
 
-/* Label row with link */
 .label-row{
 display:flex;
 justify-content:space-between;
@@ -124,7 +147,6 @@ color:#a855f7;
 cursor:pointer;
 }
 
-/* Input style */
 .input{
 width:100%;
 padding:12px;
@@ -133,7 +155,6 @@ border:1px solid #e5e7eb;
 margin-top:8px;
 }
 
-/* Radio buttons */
 .radio-group{
 display:flex;
 gap:24px;
@@ -146,7 +167,6 @@ align-items:center;
 gap:6px;
 }
 
-/* IP range */
 .ip-range{
 display:flex;
 align-items:center;
@@ -158,7 +178,6 @@ margin-top:8px;
 color:#94a3b8;
 }
 
-/* Buttons */
 .buttons{
 display:flex;
 gap:12px;
@@ -179,6 +198,7 @@ color:white;
 padding:10px 24px;
 border:none;
 border-radius:8px;
+cursor:pointer;
 }
 
 </style>

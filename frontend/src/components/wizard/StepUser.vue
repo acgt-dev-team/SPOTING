@@ -15,6 +15,7 @@ const pelanggan = ref("")
 <input
   v-model="pelanggan"
   class="input"
+  placeholder="Masukkan nama pelanggan"
 />
 
 <button
