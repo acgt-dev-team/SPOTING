@@ -1,62 +1,95 @@
 <script setup>
+import { ref } from "vue"
 
-const emit = defineEmits(["back"])
-
+const namaTugasan = ref("")
+const jenisTugasan = ref("")
+const protocol = ref("v4")
+const ipStart = ref("")
+const ipEnd = ref("")
 </script>
 
 <template>
 
-<h2>Isi butiran tugasan</h2>
+<div>
 
-<div class="form-group">
+<h2 class="title">Isi butiran tugasan</h2>
+
+<!-- Row 1 -->
+<div class="grid">
+
+<div>
 <label>Nama tugasan</label>
-<input class="input" placeholder="Masukkan nama tugasan">
+<input v-model="namaTugasan" class="input"/>
 </div>
 
-<div class="form-group">
-<label>Jenis tugasan</label>
+<div>
 
-<select class="input">
+<div class="label-row">
+<label>Jenis tugasan</label>
+<a class="link">Tambah jenis</a>
+</div>
+
+<select v-model="jenisTugasan" class="input">
 <option>Pilih disini</option>
 </select>
 
 </div>
 
-<div class="form-group">
+</div>
+
+<!-- Row 2 -->
+<div class="grid">
+
+<div>
+
 <label>Jenis protocol</label>
 
 <div class="radio-group">
-<label><input type="radio" name="protocol"> v4</label>
-<label><input type="radio" name="protocol"> v6</label>
-</div>
+
+<label class="radio">
+<input type="radio" value="v4" v-model="protocol"/>
+<span>v4</span>
+</label>
+
+<label class="radio">
+<input type="radio" value="v6" v-model="protocol"/>
+<span>v6</span>
+</label>
 
 </div>
 
-<div class="form-group">
+</div>
+
+<div>
 
 <label>Julat alamat IP</label>
 
-<div class="range">
+<div class="ip-range">
 
-<input class="input">
+<input v-model="ipStart" class="input"/>
 
-<span>-</span>
+<span class="dash">-</span>
 
-<input class="input">
+<input v-model="ipEnd" class="input"/>
+
+</div>
 
 </div>
 
 </div>
 
-<div class="actions">
+<!-- Buttons -->
+<div class="buttons">
 
-<button class="outline" @click="emit('back')">
+<button class="back" @click="$emit('back')">
 Kembali
 </button>
 
-<button class="primary">
+<button class="next">
 Hantar
 </button>
+
+</div>
 
 </div>
 
@@ -64,46 +97,87 @@ Hantar
 
 <style scoped>
 
-.form-group{
-margin-bottom:20px;
+.title{
+font-size:20px;
+margin-bottom:24px;
 }
 
-.input{
-width:100%;
-padding:10px;
-border:1px solid #e5e7eb;
-border-radius:8px;
+/* Two column layout */
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+column-gap:40px;
+row-gap:28px;
+margin-bottom:28px;
 }
 
-.radio-group{
+/* Label row with link */
+.label-row{
 display:flex;
-gap:20px;
-}
-
-.range{
-display:flex;
-gap:10px;
+justify-content:space-between;
 align-items:center;
 }
 
-.actions{
-display:flex;
-gap:10px;
+.link{
+font-size:14px;
+color:#a855f7;
+cursor:pointer;
 }
 
-.primary{
-background:#9333ea;
-color:white;
-border:none;
-padding:10px 18px;
+/* Input style */
+.input{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:1px solid #e5e7eb;
+margin-top:8px;
+}
+
+/* Radio buttons */
+.radio-group{
+display:flex;
+gap:24px;
+margin-top:10px;
+}
+
+.radio{
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+/* IP range */
+.ip-range{
+display:flex;
+align-items:center;
+gap:16px;
+margin-top:8px;
+}
+
+.dash{
+color:#94a3b8;
+}
+
+/* Buttons */
+.buttons{
+display:flex;
+gap:12px;
+margin-top:20px;
+}
+
+.back{
+background:white;
+border:1px solid #3b82f6;
+color:#3b82f6;
+padding:10px 24px;
 border-radius:8px;
 }
 
-.outline{
-border:1px solid #3b82f6;
-background:white;
-color:#3b82f6;
-padding:10px 18px;
+.next{
+background:#a855f7;
+color:white;
+padding:10px 24px;
+border:none;
 border-radius:8px;
 }
 
