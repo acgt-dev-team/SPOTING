@@ -12,7 +12,11 @@ const tapak = ref("")
 
 <label>Nama tapak</label>
 
-<input v-model="tapak" class="input"/>
+<input 
+  v-model="tapak" 
+  class="input"
+  placeholder="Masukkan nama tapak"
+/>
 
 <div class="buttons">
 

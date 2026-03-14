@@ -13,7 +13,11 @@ const cronjob = ref("")
 <h2 class="title">Isi butiran profil</h2>
 
 <label>Nama profil</label>
-<input v-model="profil" class="input"/>
+<input 
+  v-model="profil" 
+  class="input"
+  placeholder="Masukkan nama profil"
+/>
 
 <label>Jenis penjadualan</label>
 <select v-model="jadual" class="input">
@@ -21,7 +25,11 @@ const cronjob = ref("")
 </select>
 
 <label>Cronjob</label>
-<input v-model="cronjob" class="input"/>
+<input 
+  v-model="cronjob" 
+  class="input"
+  placeholder="Masukkan cronjob"
+/>
 
 <div class="buttons">
 

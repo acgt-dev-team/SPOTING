@@ -16,7 +16,11 @@ Unit di dalam organisasi
 
 <label>Nama sub organisasi</label>
 
-<input v-model="subOrganisasi" class="input"/>
+<input 
+  v-model="subOrganisasi" 
+  class="input"
+  placeholder="Masukkan nama sub organisasi"
+/>
 
 <div class="buttons">
 

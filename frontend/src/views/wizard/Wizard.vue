@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue"
+import { useRouter } from "vue-router"
 
 import WizardLayout from "../../components/wizard/WizardLayout.vue"
 
@@ -9,6 +10,8 @@ import StepSubOrganization from "../../components/wizard/StepSubOrganization.vue
 import StepSite from "../../components/wizard/StepSite.vue"
 import StepProfile from "../../components/wizard/StepProfile.vue"
 import StepTask from "../../components/wizard/StepTask.vue"
+
+const router = useRouter()
 
 const step = ref(1)
 
@@ -22,7 +25,21 @@ const steps = [
 ]
 
 function next() {
-  if (step.value < steps.length) step.value++
+
+  // if last step → finish wizard
+  if (step.value === steps.length) {
+
+    // mark wizard as completed
+    localStorage.setItem("wizardCompleted", "true")
+
+    // redirect to login page
+    router.push("/")
+
+    return
+  }
+
+  step.value++
+
 }
 
 function back() {

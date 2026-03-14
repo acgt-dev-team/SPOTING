@@ -130,7 +130,7 @@ const steps = [
   content:"";
   position:absolute;
   left:50%;
-  transform:translateX(-50%);
+  transform:translateX(-1px); /* FIXED ALIGNMENT */
   top:-28px;
   width:2px;
   height:28px;
@@ -142,7 +142,7 @@ const steps = [
   content:"";
   position:absolute;
   left:50%;
-  transform:translateX(-50%);
+  transform:translateX(-1px); /* FIXED ALIGNMENT */
   bottom:-28px;
   width:2px;
   height:28px;
