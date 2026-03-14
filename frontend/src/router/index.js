@@ -21,7 +21,7 @@ const routes = [
   // redirect root → login
   {
     path: "/",
-    redirect: "/login"
+    redirect: "/wizard"
   },
 
   // LOGIN PAGE

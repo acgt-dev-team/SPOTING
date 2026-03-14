@@ -1,8 +1,13 @@
 <script setup>
 import { ref } from "vue"
 import { useRouter } from "vue-router"
+import { submitWizard } from "../../services/wizardService"
 
 const router = useRouter()
+
+const props = defineProps({
+  wizardData: Object
+})
 
 const namaTugasan = ref("")
 const jenisTugasan = ref("")
@@ -10,13 +15,32 @@ const protocol = ref("v4")
 const ipStart = ref("")
 const ipEnd = ref("")
 
-function submitWizard(){
+async function submitWizardData() {
 
-  // mark wizard finished
-  localStorage.setItem("wizardCompleted","true")
+  const payload = {
+    ...props.wizardData,
+    task_name: namaTugasan.value,
+    task_type: jenisTugasan.value,
+    protocol: protocol.value,
+    ip_start: ipStart.value,
+    ip_end: ipEnd.value
+  }
 
-  // go to login page
-  router.push("/")
+  try {
+
+    await submitWizard(payload)
+
+    localStorage.setItem("wizardCompleted","true")
+
+    router.push("/login")
+
+  } catch (error) {
+
+    console.error(error)
+
+    alert("Wizard setup failed")
+
+  }
 
 }
 </script>
@@ -110,7 +134,7 @@ function submitWizard(){
 Kembali
 </button>
 
-<button class="next" @click="submitWizard">
+<button class="next" @click="submitWizardData">
 Hantar
 </button>
 
