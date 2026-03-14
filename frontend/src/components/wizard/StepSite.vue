@@ -24,7 +24,7 @@ const tapak = ref("")
 Kembali
 </button>
 
-<button class="next" @click="$emit('next')">
+<button class="next" @click="$emit('next',{ tapak })">
 Seterusnya
 </button>
 
