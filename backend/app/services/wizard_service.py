@@ -6,13 +6,23 @@ from app.models.sub_organisasi import SubOrganisasi
 from app.models.tapak import Tapak
 from app.models.profil import Profil
 from app.models.tugasan import Tugasan
+from app.utils.logger import logger
+
+
+def generate_kod(name: str) -> str:
+    """Convert name into kod format"""
+    return name.lower().replace(" ", "_")
 
 
 def create_wizard_setup(db: Session, data):
 
     try:
 
-        pelanggan_kod = data.pelanggan.lower().replace(" ", "_")
+        # -------------------------
+        # Pelanggan
+        # -------------------------
+
+        pelanggan_kod = generate_kod(data.pelanggan)
 
         pelanggan = db.query(Pelanggan).filter(
             Pelanggan.kod == pelanggan_kod
@@ -26,7 +36,11 @@ def create_wizard_setup(db: Session, data):
             db.add(pelanggan)
             db.flush()
 
-        organisasi_kod = data.organisasi.lower().replace(" ", "_")
+        # -------------------------
+        # Organisasi
+        # -------------------------
+
+        organisasi_kod = generate_kod(data.organisasi)
 
         organisasi = db.query(Organisasi).filter(
             Organisasi.kod == organisasi_kod
@@ -41,7 +55,11 @@ def create_wizard_setup(db: Session, data):
             db.add(organisasi)
             db.flush()
 
-        sub_kod = data.sub_organisasi.lower().replace(" ", "_")
+        # -------------------------
+        # Sub Organisasi
+        # -------------------------
+
+        sub_kod = generate_kod(data.sub_organisasi)
 
         sub_org = db.query(SubOrganisasi).filter(
             SubOrganisasi.kod == sub_kod
@@ -56,7 +74,11 @@ def create_wizard_setup(db: Session, data):
             db.add(sub_org)
             db.flush()
 
-        tapak_kod = data.tapak.lower().replace(" ", "_")
+        # -------------------------
+        # Tapak
+        # -------------------------
+
+        tapak_kod = generate_kod(data.tapak)
 
         tapak = db.query(Tapak).filter(
             Tapak.kod == tapak_kod
@@ -71,7 +93,11 @@ def create_wizard_setup(db: Session, data):
             db.add(tapak)
             db.flush()
 
-        profil_kod = data.profil.lower().replace(" ", "_")
+        # -------------------------
+        # Profil
+        # -------------------------
+
+        profil_kod = generate_kod(data.profil)
 
         profil = db.query(Profil).filter(
             Profil.kod == profil_kod
@@ -86,6 +112,10 @@ def create_wizard_setup(db: Session, data):
             db.add(profil)
             db.flush()
 
+        # -------------------------
+        # Tugasan (Task)
+        # -------------------------
+
         tugasan = Tugasan(
             profil_id=profil.id,
             nama=data.task_name,
@@ -97,10 +127,17 @@ def create_wizard_setup(db: Session, data):
 
         db.add(tugasan)
 
+        # commit transaction
         db.commit()
 
         return {
-            "message": "Wizard setup completed"
+            "message": "Wizard setup completed",
+            "pelanggan_id": pelanggan.id,
+            "organisasi_id": organisasi.id,
+            "sub_organisasi_id": sub_org.id,
+            "tapak_id": tapak.id,
+            "profil_id": profil.id,
+            "tugasan_id": tugasan.id
         }
 
     except Exception as e:
@@ -108,3 +145,5 @@ def create_wizard_setup(db: Session, data):
         db.rollback()
 
         raise e
+
+logger.info("Wizard setup started")
