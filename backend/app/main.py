@@ -31,3 +31,7 @@ app.include_router(wizard.router)
 @app.get("/")
 def root():
     return {"message": "SPOTING backend running"}
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
