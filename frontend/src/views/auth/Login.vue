@@ -13,9 +13,16 @@ const username = ref("")
 const password = ref("")
 
 function login(){
+
   if(username.value && password.value){
+
+    // temporary login state
+    localStorage.setItem("token","loggedin")
+
     router.push("/dashboard")
+
   }
+
 }
 
 function forgotPassword(){

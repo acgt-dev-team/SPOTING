@@ -1,8 +1,7 @@
 <script setup>
+import TugasanTable from "../../components/tugasan/TugasanTable.vue"
 </script>
 
 <template>
-  <div style="padding:40px">
-    <h1>Tugasan</h1>
-  </div>
+  <TugasanTable />
 </template>

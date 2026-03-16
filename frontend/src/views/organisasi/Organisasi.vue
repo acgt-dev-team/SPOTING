@@ -1,8 +1,7 @@
 <script setup>
+import OrganisasiTable from "../../components/organisasi/OrganisasiTable.vue"
 </script>
 
 <template>
-  <div style="padding:40px">
-    <h1>Organisasi</h1>
-  </div>
+  <OrganisasiTable />
 </template>
