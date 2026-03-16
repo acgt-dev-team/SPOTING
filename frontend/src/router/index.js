@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router"
 
 // Auth pages
 import Login from "../views/auth/Login.vue"
-import Register from "../views/auth/Register.vue"
 
 // Existing pages
 import Dashboard from "../views/dashboard/Dashboard.vue"
@@ -28,12 +27,6 @@ const routes = [
   {
     path: "/login",
     component: Login
-  },
-
-  // REGISTER PAGE
-  {
-    path: "/register",
-    component: Register
   },
 
   // wizard setup page

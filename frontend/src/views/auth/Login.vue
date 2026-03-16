@@ -17,10 +17,6 @@ function login() {
 
 }
 
-function goRegister(){
-  router.push("/register")
-}
-
 </script>
 
 <template>
@@ -42,13 +38,7 @@ Log masuk
 </button>
 
 <div class="links">
-
 <span>Lupa kata laluan</span>
-
-<span class="register" @click="goRegister">
-Daftar baru
-</span>
-
 </div>
 
 </div>
@@ -65,8 +55,8 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-background:#02071c;
-color:white;
+background:#f5f6fa;
+color:#1b223f;
 }
 
 .logo{
@@ -78,21 +68,25 @@ margin-bottom:40px;
 width:320px;
 display:flex;
 flex-direction:column;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 4px 20px rgba(0,0,0,0.08);
 }
 
 label{
 font-size:14px;
 margin-bottom:6px;
-color:#d0d6ff;
+color:#333;
 }
 
 input{
-background:#1b223f;
-border:none;
+background:#f1f3f8;
+border:1px solid #dcdfe6;
 padding:12px;
 border-radius:6px;
 margin-bottom:20px;
-color:white;
+color:#333;
 }
 
 .login-btn{
@@ -109,13 +103,9 @@ cursor:pointer;
 .links{
 margin-top:15px;
 display:flex;
-justify-content:space-between;
+justify-content:flex-end;
 font-size:13px;
-color:#b9c2ff;
-}
-
-.register{
-cursor:pointer;
+color:#666;
 }
 
 </style>
