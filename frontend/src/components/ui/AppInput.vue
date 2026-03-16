@@ -1,11 +1,12 @@
 <script setup>
 defineProps({
   modelValue: String,
+  label: String,
+  placeholder: String,
   type: {
     type: String,
     default: "text"
-  },
-  label: String
+  }
 })
 
 const emit = defineEmits(["update:modelValue"])
@@ -15,12 +16,15 @@ const emit = defineEmits(["update:modelValue"])
 
 <div class="field">
 
-<label>{{ label }}</label>
+<label v-if="label" class="label">
+{{ label }}
+</label>
 
 <input
-  :type="type"
-  :value="modelValue"
-  @input="emit('update:modelValue', $event.target.value)"
+:type="type"
+:placeholder="placeholder"
+:value="modelValue"
+@input="emit('update:modelValue',$event.target.value)"
 />
 
 </div>
@@ -32,21 +36,28 @@ const emit = defineEmits(["update:modelValue"])
 .field{
 display:flex;
 flex-direction:column;
-margin-bottom:20px;
+gap:6px;
+margin-bottom:18px;
 }
 
-label{
-font-size:14px;
-margin-bottom:6px;
-color:#333;
+.label{
+font-size:12px;
+color:#6b7280;
 }
 
 input{
-background:#f1f3f8;
-border:1px solid #dcdfe6;
-padding:12px;
-border-radius:6px;
-color:#333;
+height:44px;
+padding:0 12px;
+border-radius:8px;
+border:1px solid #d1d5db;
+background:white;
+font-size:14px;
+}
+
+input:focus{
+outline:none;
+border-color:#a855f7;
+box-shadow:0 0 0 2px rgba(168,85,247,0.15);
 }
 
 </style>

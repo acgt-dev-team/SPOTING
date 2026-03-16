@@ -1,13 +1,25 @@
 <script setup>
+
 defineProps({
-  text: String
+  text: String,
+  variant: {
+    type: String,
+    default: "primary"
+  },
+  full: {
+    type: Boolean,
+    default: true
+  }
 })
+
 </script>
 
 <template>
 
-<button class="btn">
-  {{ text }}
+<button
+:class="['btn', variant, { full }]"
+>
+{{ text }}
 </button>
 
 </template>
@@ -15,15 +27,38 @@ defineProps({
 <style scoped>
 
 .btn{
-margin-top:10px;
-padding:12px;
+padding:12px 16px;
+border-radius:8px;
+font-size:14px;
+cursor:pointer;
 border:none;
-border-radius:6px;
+}
+
+.full{
+width:100%;
+}
+
+.primary{
 background:linear-gradient(90deg,#8b2cff,#d12bff);
 color:white;
-font-weight:600;
-cursor:pointer;
-width:100%;
+}
+
+.outline{
+background:white;
+border:1px solid #3b82f6;
+color:#3b82f6;
+}
+
+.secondary{
+background:#9333ea;
+color:white;
+}
+
+.link{
+background:none;
+color:#9333ea;
+text-decoration:underline;
+padding:0;
 }
 
 </style>

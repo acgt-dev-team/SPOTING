@@ -6,7 +6,6 @@ import logo from "../../assets/images/Spoting-logo.png"
 
 import AppInput from "../../components/ui/AppInput.vue"
 import AppButton from "../../components/ui/AppButton.vue"
-import AppCard from "../../components/ui/AppCard.vue"
 
 const router = useRouter()
 
@@ -14,11 +13,9 @@ const username = ref("")
 const password = ref("")
 
 function login(){
-
   if(username.value && password.value){
     router.push("/dashboard")
   }
-
 }
 
 function forgotPassword(){
@@ -33,7 +30,7 @@ function forgotPassword(){
 
 <img :src="logo" class="logo"/>
 
-<AppCard>
+<div class="card">
 
 <AppInput
 label="Nama pengguna"
@@ -48,6 +45,7 @@ v-model="password"
 
 <AppButton
 text="Log masuk"
+class="login-btn"
 @click="login"
 />
 
@@ -59,7 +57,7 @@ Lupa kata laluan
 
 </div>
 
-</AppCard>
+</div>
 
 </div>
 
@@ -73,22 +71,36 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-background:#f5f6fa;
+background:#f3f4f6;
 }
 
 .logo{
-width:180px;
+width:200px;
 margin-bottom:40px;
 }
 
+.card{
+width:360px;
+background:white;
+padding:32px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+display:flex;
+flex-direction:column;
+}
+
+.login-btn{
+margin-top:6px;
+}
+
 .links{
-margin-top:15px;
+margin-top:14px;
 display:flex;
 justify-content:flex-end;
-font-size:13px;
 }
 
 .forgot{
+font-size:12px;
 color:#6366f1;
 cursor:pointer;
 }

@@ -2,11 +2,10 @@
 import { ref } from "vue"
 import { useRouter } from "vue-router"
 
+import logo from "../../assets/images/Spoting-logo.png"
+
 import AppInput from "../../components/ui/AppInput.vue"
 import AppButton from "../../components/ui/AppButton.vue"
-import AppCard from "../../components/ui/AppCard.vue"
-
-import logo from "../../assets/images/Spoting-logo.png"
 
 const router = useRouter()
 
@@ -14,17 +13,14 @@ const email = ref("")
 const sent = ref(false)
 
 function sendReset(){
-
   if(email.value){
     sent.value = true
   }
-
 }
 
 function backToLogin(){
   router.push("/login")
 }
-
 </script>
 
 <template>
@@ -33,15 +29,16 @@ function backToLogin(){
 
 <img :src="logo" class="logo"/>
 
-<AppCard>
+<div class="card">
 
-<h2 class="title">Tetapkan Semula Kata Laluan</h2>
+<h3 class="title">
+Tetapkan Semula Kata Laluan
+</h3>
 
 <p class="desc">
 Masukkan emel anda untuk menerima pautan reset kata laluan
 </p>
 
-<!-- BEFORE EMAIL SENT -->
 <div v-if="!sent">
 
 <AppInput
@@ -51,19 +48,23 @@ v-model="email"
 
 <AppButton
 text="Hantar pautan reset"
+class="submit-btn"
 @click="sendReset"
 />
 
-<button class="back-btn" @click="backToLogin">
+<div class="links">
+<span class="back" @click="backToLogin">
 Kembali ke login
-</button>
+</span>
+</div>
 
 </div>
 
-<!-- AFTER EMAIL SENT -->
 <div v-else class="success">
 
-<p>Pautan reset telah dihantar ke emel anda.</p>
+<p class="body">
+Pautan reset telah dihantar ke emel anda.
+</p>
 
 <AppButton
 text="Kembali ke login"
@@ -72,7 +73,7 @@ text="Kembali ke login"
 
 </div>
 
-</AppCard>
+</div>
 
 </div>
 
@@ -86,17 +87,28 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-background:#f5f6fa;
+background:#f3f4f6;
 }
 
 .logo{
-width:180px;
+width:200px;
 margin-bottom:40px;
 }
 
+.card{
+width:360px; /* same as login page */
+background:white;
+padding:32px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+display:flex;
+flex-direction:column;
+}
+
 .title{
-font-size:20px;
-margin-bottom:10px;
+font-size:22px;
+font-weight:600;
+margin-bottom:8px;
 }
 
 .desc{
@@ -105,21 +117,32 @@ color:#64748b;
 margin-bottom:20px;
 }
 
-.success{
-text-align:center;
+.submit-btn{
+margin-top:6px;
 }
 
-.back-btn{
-margin-top:12px;
-background:none;
-border:none;
+.links{
+margin-top:14px;
+display:flex;
+justify-content:flex-end;
+}
+
+.back{
+font-size:12px;
 color:#6366f1;
 cursor:pointer;
+}
+
+.back:hover{
+text-decoration:underline;
+}
+
+.body{
 font-size:14px;
 }
 
-.back-btn:hover{
-text-decoration:underline;
+.success{
+text-align:center;
 }
 
 </style>
