@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router"
 
 // Auth pages
 import Login from "../views/auth/Login.vue"
+import ForgotPassword from "../views/auth/ForgotPassword.vue"
 
 // Existing pages
 import Dashboard from "../views/dashboard/Dashboard.vue"
@@ -27,6 +28,12 @@ const routes = [
   {
     path: "/login",
     component: Login
+  },
+
+  // FORGOT PASSWORD PAGE
+  {
+    path: "/forgot-password",
+    component: ForgotPassword
   },
 
   // wizard setup page

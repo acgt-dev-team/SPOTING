@@ -1,20 +1,28 @@
 <script setup>
 import { ref } from "vue"
 import { useRouter } from "vue-router"
-import logo from "../../assets/images/spoting-logo.png"
+
+import logo from "../../assets/images/Spoting-logo.png"
+
+import AppInput from "../../components/ui/AppInput.vue"
+import AppButton from "../../components/ui/AppButton.vue"
+import AppCard from "../../components/ui/AppCard.vue"
 
 const router = useRouter()
 
 const username = ref("")
 const password = ref("")
 
-function login() {
+function login(){
 
-  // TEMP login
   if(username.value && password.value){
     router.push("/dashboard")
   }
 
+}
+
+function forgotPassword(){
+  router.push("/forgot-password")
 }
 
 </script>
@@ -25,23 +33,33 @@ function login() {
 
 <img :src="logo" class="logo"/>
 
-<div class="form">
+<AppCard>
 
-<label>Nama pengguna</label>
-<input v-model="username" type="text">
+<AppInput
+label="Nama pengguna"
+v-model="username"
+/>
 
-<label>Kata laluan</label>
-<input v-model="password" type="password">
+<AppInput
+label="Kata laluan"
+type="password"
+v-model="password"
+/>
 
-<button class="login-btn" @click="login">
-Log masuk
-</button>
+<AppButton
+text="Log masuk"
+@click="login"
+/>
 
 <div class="links">
-<span>Lupa kata laluan</span>
-</div>
+
+<span class="forgot" @click="forgotPassword">
+Lupa kata laluan
+</span>
 
 </div>
+
+</AppCard>
 
 </div>
 
@@ -56,7 +74,6 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 background:#f5f6fa;
-color:#1b223f;
 }
 
 .logo{
@@ -64,48 +81,20 @@ width:180px;
 margin-bottom:40px;
 }
 
-.form{
-width:320px;
-display:flex;
-flex-direction:column;
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 4px 20px rgba(0,0,0,0.08);
-}
-
-label{
-font-size:14px;
-margin-bottom:6px;
-color:#333;
-}
-
-input{
-background:#f1f3f8;
-border:1px solid #dcdfe6;
-padding:12px;
-border-radius:6px;
-margin-bottom:20px;
-color:#333;
-}
-
-.login-btn{
-margin-top:10px;
-padding:12px;
-border:none;
-border-radius:6px;
-background:linear-gradient(90deg,#8b2cff,#d12bff);
-color:white;
-font-weight:600;
-cursor:pointer;
-}
-
 .links{
 margin-top:15px;
 display:flex;
 justify-content:flex-end;
 font-size:13px;
-color:#666;
+}
+
+.forgot{
+color:#6366f1;
+cursor:pointer;
+}
+
+.forgot:hover{
+text-decoration:underline;
 }
 
 </style>
