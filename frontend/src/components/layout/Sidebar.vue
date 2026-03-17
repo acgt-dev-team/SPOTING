@@ -1,58 +1,180 @@
 <script setup>
+import { useRouter, useRoute } from "vue-router"
+import logo from "../../assets/images/Spoting-logo.png"
+
+import {
+  LayoutDashboard,
+  Users,
+  Building2,
+  ClipboardList,
+  Settings
+} from "lucide-vue-next"
+
+const router = useRouter()
+const route = useRoute()
+
+function logout() {
+
+  // remove stored login token (future backend use)
+  localStorage.removeItem("token")
+
+  // redirect to login page
+  router.push("/login")
+
+}
 </script>
 
 <template>
-  <aside class="sidebar">
 
-    <h2 class="logo">SPOTING</h2>
+<div class="sidebar">
 
-    <nav>
-      <router-link to="/dashboard">Paparan Muka</router-link>
+  <div class="logo">
+    <img :src="logo" alt="Spoting Logo">
+  </div>
 
-      <router-link to="/organisasi">Organisasi</router-link>
+  <nav class="nav">
 
-      <router-link to="/tapak">Tapak</router-link>
+    <div
+      class="nav-item"
+      :class="{ active: route.path === '/dashboard' }"
+      @click="router.push('/dashboard')"
+    >
+      <LayoutDashboard size="18"/>
+      <span>Dashboard</span>
+    </div>
 
-      <router-link to="/profil">Profil</router-link>
+    <div
+      class="nav-item"
+      :class="{ active: route.path === '/pelanggan' }"
+      @click="router.push('/pelanggan')"
+    >
+      <Users size="18"/>
+      <span>Pelanggan</span>
+    </div>
 
-      <router-link to="/tugasan">Tugasan</router-link>
+    <div
+      class="nav-item"
+      :class="{ active: route.path === '/organisasi' }"
+      @click="router.push('/organisasi')"
+    >
+      <Building2 size="18"/>
+      <span>Organisasi</span>
+    </div>
 
-      <router-link to="/tetapan">Tetapan</router-link>
+    <div
+      class="nav-item"
+      :class="{ active: route.path === '/tugasan' }"
+      @click="router.push('/tugasan')"
+    >
+      <ClipboardList size="18"/>
+      <span>Tugasan</span>
+    </div>
 
-      <router-link to="/pengguna">Senarai Pengguna</router-link>
-    </nav>
+    <div
+      class="nav-item"
+      :class="{ active: route.path === '/tetapan' }"
+      @click="router.push('/tetapan')"
+    >
+      <Settings size="18"/>
+      <span>Tetapan</span>
+    </div>
 
-  </aside>
+  </nav>
+
+  <div class="profile">
+
+    <div class="avatar"></div>
+
+    <div>
+      <div class="username">Username</div>
+      <div class="profile-link">Lihat profil</div>
+
+      <div class="logout" @click="logout">
+        Log keluar
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
 </template>
 
 <style scoped>
 
-.sidebar {
-  width: 240px;
-  height: 100vh;
-  background: var(--bg-secondary);
-  border-right: 1px solid var(--border-color);
-  padding: 20px;
+.sidebar{
+width:240px;
+background:white;
+border-right:1px solid #e5e7eb;
+padding:20px 16px;
+display:flex;
+flex-direction:column;
+height:100vh;
+box-sizing:border-box;
 }
 
-.logo {
-  margin-bottom: 30px;
+.logo img{
+width:120px;
+margin-bottom:24px;
 }
 
-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.nav{
+display:flex;
+flex-direction:column;
+gap:4px;
 }
 
-a {
-  text-decoration: none;
-  color: var(--text-primary);
-  font-weight: 500;
+.nav-item{
+display:flex;
+align-items:center;
+gap:10px;
+padding:10px 12px;
+border-radius:8px;
+cursor:pointer;
+color:#374151;
+font-size:14px;
 }
 
-.router-link-active {
-  color: var(--primary);
+.nav-item:hover{
+background:#f3f4f6;
+}
+
+.nav-item.active{
+background:#f5f3ff;
+color:#7c3aed;
+}
+
+.profile{
+margin-top:auto;
+display:flex;
+align-items:center;
+gap:12px;
+padding-top:16px;
+border-top:1px solid #e5e7eb;
+}
+
+.avatar{
+width:36px;
+height:36px;
+border-radius:50%;
+background:#e5e7eb;
+}
+
+.username{
+font-size:14px;
+font-weight:600;
+}
+
+.profile-link{
+font-size:12px;
+color:#6b7280;
+}
+
+.logout{
+font-size:12px;
+color:#ef4444;
+cursor:pointer;
 }
 
 </style>

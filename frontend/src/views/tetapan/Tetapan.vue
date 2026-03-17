@@ -1,8 +1,7 @@
 <script setup>
+import TetapanPanel from "../../components/tetapan/TetapanPanel.vue"
 </script>
 
 <template>
-  <div style="padding:40px">
-    <h1>Tetapan</h1>
-  </div>
+  <TetapanPanel />
 </template>

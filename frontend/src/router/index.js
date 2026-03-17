@@ -2,7 +2,10 @@ import { createRouter, createWebHistory } from "vue-router"
 
 // Auth pages
 import Login from "../views/auth/Login.vue"
-import Register from "../views/auth/Register.vue"
+import ForgotPassword from "../views/auth/ForgotPassword.vue"
+
+// Layout
+import MainLayout from "../components/layout/MainLayout.vue"
 
 // Existing pages
 import Dashboard from "../views/dashboard/Dashboard.vue"
@@ -11,65 +14,68 @@ import Tapak from "../views/tapak/Tapak.vue"
 import Profil from "../views/profil/Profil.vue"
 import Tugasan from "../views/tugasan/Tugasan.vue"
 import Tetapan from "../views/tetapan/Tetapan.vue"
-import Pengguna from "../views/pelanggan/Pelanggan.vue"
+import Pelanggan from "../views/pelanggan/Pelanggan.vue"
 
 // Wizard page
 import Wizard from "../views/wizard/Wizard.vue"
 
 const routes = [
 
-  // redirect root → login
   {
     path: "/",
     redirect: "/wizard"
   },
 
-  // LOGIN PAGE
+  // AUTH
   {
     path: "/login",
     component: Login
   },
-
-  // REGISTER PAGE
   {
-    path: "/register",
-    component: Register
+    path: "/forgot-password",
+    component: ForgotPassword
   },
 
-  // wizard setup page
+  // Wizard setup
   {
     path: "/wizard",
     component: Wizard
   },
 
-  // existing pages
+  // MAIN SYSTEM (with sidebar layout)
   {
-    path: "/dashboard",
-    component: Dashboard
-  },
-  {
-    path: "/organisasi",
-    component: Organisasi
-  },
-  {
-    path: "/tapak",
-    component: Tapak
-  },
-  {
-    path: "/profil",
-    component: Profil
-  },
-  {
-    path: "/tugasan",
-    component: Tugasan
-  },
-  {
-    path: "/tetapan",
-    component: Tetapan
-  },
-  {
-    path: "/pengguna",
-    component: Pengguna
+    path: "/",
+    component: MainLayout,
+    children: [
+      {
+        path: "dashboard",
+        component: Dashboard
+      },
+      {
+        path: "pelanggan",
+        component: Pelanggan
+      },
+      {
+        path: "organisasi",
+        component: Organisasi
+      },
+      {
+        path: "tapak",
+        component: Tapak
+      },
+      {
+        path: "profil",
+        component: Profil
+      },
+      {
+        path: "tugasan",
+        component: Tugasan
+      },
+      {
+        path: "tetapan",
+        component: Tetapan
+      }
+    ]
   }
 
 ]

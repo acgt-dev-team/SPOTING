@@ -1,8 +1,7 @@
 <script setup>
+import PelangganTable from "../../components/pelanggan/PelangganTable.vue"
 </script>
 
 <template>
-  <div style="padding:40px">
-    <h1>Pelanggan Page</h1>
-  </div>
+  <PelangganTable />
 </template>
