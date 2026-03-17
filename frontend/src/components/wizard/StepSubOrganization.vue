@@ -28,7 +28,7 @@ Unit di dalam organisasi
 Kembali
 </button>
 
-<button class="next" @click="$emit('next')">
+<button class="next" @click="$emit('next',{ sub_organisasi: subOrganisasi })">
 Seterusnya
 </button>
 

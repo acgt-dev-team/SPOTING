@@ -15,6 +15,20 @@ const router = useRouter()
 
 const step = ref(1)
 
+const wizardData = ref({
+  pelanggan: "",
+  organisasi: "",
+  sub_organisasi: "",
+  tapak: "",
+  profil: "",
+  cronjob: "",
+  task_name: "",
+  task_type: "",
+  protocol: "",
+  ip_start: "",
+  ip_end: ""
+})
+
 const steps = [
   StepUser,
   StepOrganization,
@@ -24,21 +38,18 @@ const steps = [
   StepTask
 ]
 
-function next() {
+function next(data) {
 
-  // if last step → finish wizard
-  if (step.value === steps.length) {
-
-    // mark wizard as completed
-    localStorage.setItem("wizardCompleted", "true")
-
-    // redirect to login page
-    router.push("/")
-
-    return
+  if (data) {
+    wizardData.value = {
+      ...wizardData.value,
+      ...data
+    }
   }
 
-  step.value++
+  if (step.value < steps.length) {
+    step.value++
+  }
 
 }
 
@@ -51,6 +62,7 @@ function back() {
   <WizardLayout :step="step">
     <component
       :is="steps[step - 1]"
+      :wizardData="wizardData"
       @next="next"
       @back="back"
     />

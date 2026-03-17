@@ -23,7 +23,7 @@ const routes = [
 
   {
     path: "/",
-    redirect: "/login"
+    redirect: "/wizard"
   },
 
   // AUTH

@@ -20,7 +20,7 @@ const pelanggan = ref("")
 
 <button
   class="next"
-  @click="$emit('next')"
+  @click="$emit('next',{ pelanggan })"
 >
 Seterusnya
 </button>
