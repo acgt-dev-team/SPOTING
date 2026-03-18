@@ -16,7 +16,7 @@ const ipStart = ref("")
 const ipEnd = ref("")
 
 async function submitWizardData() {
-
+console.log(data)
   const payload = {
     ...props.wizardData,
     task_name: namaTugasan.value,
