@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from app.database.session import SessionLocal
-from app.models.pelanggan import Pelanggan
+from backend.app.database.session import SessionLocal
+from backend.app.models.pelanggan import Pelanggan
 
 db: Session = SessionLocal()
 

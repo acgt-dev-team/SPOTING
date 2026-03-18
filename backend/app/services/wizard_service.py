@@ -1,12 +1,12 @@
 from sqlalchemy.orm import Session
 
-from app.models.pelanggan import Pelanggan
-from app.models.organisasi import Organisasi
-from app.models.sub_organisasi import SubOrganisasi
-from app.models.tapak import Tapak
-from app.models.profil import Profil
-from app.models.tugasan import Tugasan
-from app.utils.logger import logger
+from backend.app.models.pelanggan import Pelanggan
+from backend.app.models.organisasi import Organisasi
+from backend.app.models.sub_organisasi import SubOrganisasi
+from backend.app.models.tapak import Tapak
+from backend.app.models.profil import Profil
+from backend.app.models.tugasan import Tugasan
+from backend.app.utils.logger import logger
 
 
 def generate_kod(name: str) -> str:

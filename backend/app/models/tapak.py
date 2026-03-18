@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, Boolean, TIMESTAMP, ForeignKey
 from sqlalchemy.sql import func
 
-from app.database.session import Base
+from backend.app.database.session import Base
 
 
 class Tapak(Base):
