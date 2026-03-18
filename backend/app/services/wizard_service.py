@@ -16,119 +16,121 @@ def generate_kod(name: str) -> str:
 
 def create_wizard_setup(db: Session, data):
 
+    logger.info("Wizard setup started")
+
     try:
+        # Use transaction block (IMPORTANT)
+        with db.begin():
 
-        # -------------------------
-        # Pelanggan
-        # -------------------------
+            # -------------------------
+            # Pelanggan
+            # -------------------------
+            pelanggan_kod = generate_kod(data.pelanggan)
 
-        pelanggan_kod = generate_kod(data.pelanggan)
+            pelanggan = db.query(Pelanggan).filter(
+                Pelanggan.kod == pelanggan_kod
+            ).first()
 
-        pelanggan = db.query(Pelanggan).filter(
-            Pelanggan.kod == pelanggan_kod
-        ).first()
+            if not pelanggan:
+                pelanggan = Pelanggan(
+                    kod=pelanggan_kod,
+                    nama=data.pelanggan
+                )
+                db.add(pelanggan)
+                db.flush()
 
-        if not pelanggan:
-            pelanggan = Pelanggan(
-                kod=pelanggan_kod,
-                nama=data.pelanggan
+            # -------------------------
+            # Organisasi (WITH PARENT CHECK)
+            # -------------------------
+            organisasi_kod = generate_kod(data.organisasi)
+
+            organisasi = db.query(Organisasi).filter(
+                Organisasi.kod == organisasi_kod,
+                Organisasi.pelanggan_id == pelanggan.id
+            ).first()
+
+            if not organisasi:
+                organisasi = Organisasi(
+                    pelanggan_id=pelanggan.id,
+                    kod=organisasi_kod,
+                    nama=data.organisasi
+                )
+                db.add(organisasi)
+                db.flush()
+
+            # -------------------------
+            # Sub Organisasi (WITH PARENT CHECK)
+            # -------------------------
+            sub_kod = generate_kod(data.sub_organisasi)
+
+            sub_org = db.query(SubOrganisasi).filter(
+                SubOrganisasi.kod == sub_kod,
+                SubOrganisasi.organisasi_id == organisasi.id
+            ).first()
+
+            if not sub_org:
+                sub_org = SubOrganisasi(
+                    organisasi_id=organisasi.id,
+                    kod=sub_kod,
+                    nama=data.sub_organisasi
+                )
+                db.add(sub_org)
+                db.flush()
+
+            # -------------------------
+            # Tapak (WITH PARENT CHECK)
+            # -------------------------
+            tapak_kod = generate_kod(data.tapak)
+
+            tapak = db.query(Tapak).filter(
+                Tapak.kod == tapak_kod,
+                Tapak.sub_organisasi_id == sub_org.id
+            ).first()
+
+            if not tapak:
+                tapak = Tapak(
+                    sub_organisasi_id=sub_org.id,
+                    kod=tapak_kod,
+                    nama=data.tapak
+                )
+                db.add(tapak)
+                db.flush()
+
+            # -------------------------
+            # Profil (WITH PARENT CHECK)
+            # -------------------------
+            profil_kod = generate_kod(data.profil)
+
+            profil = db.query(Profil).filter(
+                Profil.kod == profil_kod,
+                Profil.tapak_id == tapak.id
+            ).first()
+
+            if not profil:
+                profil = Profil(
+                    tapak_id=tapak.id,
+                    kod=profil_kod,
+                    nama=data.profil
+                )
+                db.add(profil)
+                db.flush()
+
+            # -------------------------
+            # Tugasan (Task)
+            # -------------------------
+            tugasan = Tugasan(
+                profil_id=profil.id,
+                nama=data.task_name,
+                jenis=data.task_type,
+                protocol=data.protocol,
+                ip_start=str(data.ip_start),
+                ip_end=str(data.ip_end)
             )
-            db.add(pelanggan)
+
+            db.add(tugasan)
             db.flush()
 
-        # -------------------------
-        # Organisasi
-        # -------------------------
-
-        organisasi_kod = generate_kod(data.organisasi)
-
-        organisasi = db.query(Organisasi).filter(
-            Organisasi.kod == organisasi_kod
-        ).first()
-
-        if not organisasi:
-            organisasi = Organisasi(
-                pelanggan_id=pelanggan.id,
-                kod=organisasi_kod,
-                nama=data.organisasi
-            )
-            db.add(organisasi)
-            db.flush()
-
-        # -------------------------
-        # Sub Organisasi
-        # -------------------------
-
-        sub_kod = generate_kod(data.sub_organisasi)
-
-        sub_org = db.query(SubOrganisasi).filter(
-            SubOrganisasi.kod == sub_kod
-        ).first()
-
-        if not sub_org:
-            sub_org = SubOrganisasi(
-                organisasi_id=organisasi.id,
-                kod=sub_kod,
-                nama=data.sub_organisasi
-            )
-            db.add(sub_org)
-            db.flush()
-
-        # -------------------------
-        # Tapak
-        # -------------------------
-
-        tapak_kod = generate_kod(data.tapak)
-
-        tapak = db.query(Tapak).filter(
-            Tapak.kod == tapak_kod
-        ).first()
-
-        if not tapak:
-            tapak = Tapak(
-                sub_organisasi_id=sub_org.id,
-                kod=tapak_kod,
-                nama=data.tapak
-            )
-            db.add(tapak)
-            db.flush()
-
-        # -------------------------
-        # Profil
-        # -------------------------
-
-        profil_kod = generate_kod(data.profil)
-
-        profil = db.query(Profil).filter(
-            Profil.kod == profil_kod
-        ).first()
-
-        if not profil:
-            profil = Profil(
-                tapak_id=tapak.id,
-                kod=profil_kod,
-                nama=data.profil
-            )
-            db.add(profil)
-            db.flush()
-
-        # -------------------------
-        # Tugasan (Task)
-        # -------------------------
-
-        tugasan = Tugasan(
-            profil_id=profil.id,
-            nama=data.task_name,
-            jenis=data.task_type,
-            protocol=data.protocol,
-            ip_start=data.ip_start,
-            ip_end=data.ip_end
-        )
-
-        db.add(tugasan)
-
-        # commit transaction
-        db.commit()
+        # No need for manual commit → handled by db.begin()
 
         return {
             "message": "Wizard setup completed",
@@ -141,9 +143,6 @@ def create_wizard_setup(db: Session, data):
         }
 
     except Exception as e:
-
+        logger.error(f"Wizard setup failed: {str(e)}")
         db.rollback()
-
         raise e
-
-logger.info("Wizard setup started")
