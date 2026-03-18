@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.database.session import engine, Base
-from app.api import wizard
+from backend.app.database.session import engine, Base
+from backend.app.api import wizard
 
 app = FastAPI(
     title="SPOTING Backend",
@@ -23,10 +23,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 # Register API routes
 app.include_router(wizard.router)
-
 
 @app.get("/")
 def root():
