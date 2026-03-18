@@ -25,14 +25,14 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # Import models
-from backend.app.database.session import Base
+from app.database.session import Base
 
-from backend.app.models import pelanggan
-from backend.app.models import organisasi
-from backend.app.models import sub_organisasi
-from backend.app.models import tapak
-from backend.app.models import profil
-from backend.app.models import tugasan
+from app.models import pelanggan
+from app.models import organisasi
+from app.models import sub_organisasi
+from app.models import tapak
+from app.models import profil
+from app.models import tugasan
 
 # Metadata
 target_metadata = Base.metadata

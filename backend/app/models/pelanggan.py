@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, Boolean, TIMESTAMP
 from sqlalchemy.sql import func
 
-from backend.app.database.session import Base
+from app.database.session import Base
 
 
 class Pelanggan(Base):
