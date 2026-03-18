@@ -3,7 +3,13 @@ import { ref } from "vue"
 import { useRouter } from "vue-router"
 import { submitWizard } from "../../services/wizardService"
 
+import AppInput from "../ui/AppInput.vue"
+import AppButton from "../ui/AppButton.vue"
+import AppSelect from "../ui/AppSelect.vue"
+
 const router = useRouter()
+
+const emit = defineEmits(["back"])
 
 const props = defineProps({
   wizardData: Object
@@ -16,7 +22,6 @@ const ipStart = ref("")
 const ipEnd = ref("")
 
 async function submitWizardData() {
-
   const payload = {
     ...props.wizardData,
     task_name: namaTugasan.value,
@@ -27,118 +32,102 @@ async function submitWizardData() {
   }
 
   try {
-
     await submitWizard(payload)
-
     localStorage.setItem("wizardCompleted","true")
-
     router.push("/login")
-
   } catch (error) {
-
     console.error(error)
-
     alert("Wizard setup failed")
-
   }
-
 }
 </script>
 
 <template>
 
-<div>
+<div class="form">
 
-<h2 class="title">Isi butiran tugasan</h2>
+  <h2 class="title">Isi butiran tugasan</h2>
 
-<!-- Row 1 -->
-<div class="grid">
+  <!-- Row 1 -->
+  <div class="grid">
 
-<div>
-<label>Nama tugasan</label>
-<input 
-  v-model="namaTugasan" 
-  class="input"
-  placeholder="Masukkan nama tugasan"
-/>
-</div>
+    <AppInput
+      label="Nama tugasan"
+      placeholder="Masukkan nama tugasan"
+      v-model="namaTugasan"
+    />
 
-<div>
+    <div>
+      <div class="label-row">
+        <span class="label">Jenis tugasan</span>
+        <span class="link">Tambah jenis</span>
+      </div>
 
-<div class="label-row">
-<label>Jenis tugasan</label>
-<a class="link">Tambah jenis</a>
-</div>
+      <AppSelect
+        :options="['Pilih disini']"
+        v-model="jenisTugasan"
+      />
+    </div>
 
-<select v-model="jenisTugasan" class="input">
-<option>Pilih disini</option>
-</select>
+  </div>
 
-</div>
+  <!-- Row 2 -->
+  <div class="grid">
 
-</div>
+    <div>
+      <label class="label">Jenis protocol</label>
 
-<!-- Row 2 -->
-<div class="grid">
+      <div class="radio-group">
+        <label class="radio">
+          <input type="radio" value="v4" v-model="protocol"/>
+          <span>v4</span>
+        </label>
 
-<div>
+        <label class="radio">
+          <input type="radio" value="v6" v-model="protocol"/>
+          <span>v6</span>
+        </label>
+      </div>
+    </div>
 
-<label>Jenis protocol</label>
+    <div>
+      <label class="label">Julat alamat IP</label>
 
-<div class="radio-group">
+      <div class="ip-range">
 
-<label class="radio">
-<input type="radio" value="v4" v-model="protocol"/>
-<span>v4</span>
-</label>
+        <AppInput
+          placeholder="IP mula"
+          v-model="ipStart"
+        />
 
-<label class="radio">
-<input type="radio" value="v6" v-model="protocol"/>
-<span>v6</span>
-</label>
+        <span class="dash">-</span>
 
-</div>
+        <AppInput
+          placeholder="IP akhir"
+          v-model="ipEnd"
+        />
 
-</div>
+      </div>
+    </div>
 
-<div>
+  </div>
 
-<label>Julat alamat IP</label>
+  <div class="buttons">
 
-<div class="ip-range">
+    <AppButton
+      text="Kembali"
+      variant="outline"
+      :full="false"
+      @click="emit('back')"
+    />
 
-<input 
-  v-model="ipStart" 
-  class="input"
-  placeholder="IP mula"
-/>
+    <AppButton
+      text="Hantar"
+      :full="false"
+      @click="submitWizardData"
+    />
 
-<span class="dash">-</span>
-
-<input 
-  v-model="ipEnd" 
-  class="input"
-  placeholder="IP akhir"
-/>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- Buttons -->
-<div class="buttons">
-
-<button class="back" @click="$emit('back')">
-Kembali
-</button>
-
-<button class="next" @click="submitWizardData">
-Hantar
-</button>
-
-</div>
+  </div>
 
 </div>
 
@@ -146,43 +135,45 @@ Hantar
 
 <style scoped>
 
+.form{
+max-width:520px;
+}
+
 .title{
-font-size:20px;
+font-size:22px;
+font-weight:600;
 margin-bottom:24px;
 }
 
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-column-gap:40px;
-row-gap:28px;
-margin-bottom:28px;
+gap:20px; /* 🔥 tighter & cleaner */
+margin-bottom:20px;
+}
+
+.label{
+font-size:13px;
+color:#374151;
 }
 
 .label-row{
 display:flex;
 justify-content:space-between;
 align-items:center;
+margin-bottom:6px;
 }
 
 .link{
-font-size:14px;
+font-size:13px;
 color:#a855f7;
 cursor:pointer;
 }
 
-.input{
-width:100%;
-padding:12px;
-border-radius:8px;
-border:1px solid #e5e7eb;
-margin-top:8px;
-}
-
 .radio-group{
 display:flex;
-gap:24px;
-margin-top:10px;
+gap:16px;
+margin-top:8px;
 }
 
 .radio{
@@ -194,8 +185,8 @@ gap:6px;
 .ip-range{
 display:flex;
 align-items:center;
-gap:16px;
-margin-top:8px;
+gap:10px;
+margin-top:6px;
 }
 
 .dash{
@@ -205,24 +196,7 @@ color:#94a3b8;
 .buttons{
 display:flex;
 gap:12px;
-margin-top:20px;
-}
-
-.back{
-background:white;
-border:1px solid #3b82f6;
-color:#3b82f6;
-padding:10px 24px;
-border-radius:8px;
-}
-
-.next{
-background:#a855f7;
-color:white;
-padding:10px 24px;
-border:none;
-border-radius:8px;
-cursor:pointer;
+margin-top:16px;
 }
 
 </style>

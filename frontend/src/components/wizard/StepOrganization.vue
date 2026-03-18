@@ -1,6 +1,11 @@
 <script setup>
 import { ref } from "vue"
 
+import AppInput from "../ui/AppInput.vue"
+import AppButton from "../ui/AppButton.vue"
+
+const emit = defineEmits(["next","back"])
+
 const organisasi = ref("")
 </script>
 
@@ -8,41 +13,40 @@ const organisasi = ref("")
 
 <div class="form">
 
-<h2 class="title">Isi butiran organisasi</h2>
+  <h2 class="title">Isi butiran organisasi</h2>
 
-<p class="desc">
-Organisasi boleh jadi Pihak Berkuasa Tempatan (PBT) atau agensi
-</p>
+  <p class="desc">
+    Organisasi boleh jadi Pihak Berkuasa Tempatan (PBT) atau agensi
+  </p>
 
-<div class="field">
-<label>Nama organisasi</label>
+  <AppInput
+    label="Nama organisasi"
+    placeholder="Masukkan nama organisasi"
+    v-model="organisasi"
+  />
 
-<input
-v-model="organisasi"
-class="input"
-placeholder="Masukkan nama organisasi"
-/>
-</div>
+  <div class="buttons">
 
-<div class="buttons">
+    <AppButton
+      text="Kembali"
+      variant="outline"
+      :full="false"
+      @click="emit('back')"
+    />
 
-<button class="back" @click="$emit('back')">
-Kembali
-</button>
+    <AppButton
+      text="Seterusnya"
+      :full="false"
+      @click="emit('next',{ organisasi })"
+    />
 
-<button class="next" @click="$emit('next',{ organisasi })">
-Seterusnya
-</button>
-
-</div>
+  </div>
 
 </div>
 
 </template>
 
 <style scoped>
-
-/* your original CSS unchanged */
 
 .form{
 max-width:520px;
@@ -57,64 +61,13 @@ margin-bottom:6px;
 .desc{
 font-size:14px;
 color:#64748b;
-margin-bottom:28px;
-}
-
-.field{
-margin-bottom:28px;
-}
-
-label{
-font-size:14px;
-font-weight:500;
-display:block;
-margin-bottom:8px;
-}
-
-.input{
-width:100%;
-height:44px;
-padding:0 14px;
-border-radius:8px;
-border:1px solid #e5e7eb;
-font-size:14px;
-transition:all 0.15s ease;
-}
-
-.input:focus{
-outline:none;
-border-color:#a855f7;
-box-shadow:0 0 0 2px rgba(168,85,247,0.15);
+margin-bottom:24px;
 }
 
 .buttons{
 display:flex;
-gap:14px;
+gap:12px;
 margin-top:10px;
-}
-
-.back{
-background:white;
-border:1px solid #3b82f6;
-color:#3b82f6;
-padding:10px 22px;
-border-radius:8px;
-font-size:14px;
-cursor:pointer;
-}
-
-.next{
-background:#a855f7;
-color:white;
-padding:10px 22px;
-border:none;
-border-radius:8px;
-font-size:14px;
-cursor:pointer;
-}
-
-.next:hover{
-background:#9333ea;
 }
 
 </style>

@@ -1,29 +1,31 @@
 <script setup>
 import { ref } from "vue"
 
+import AppInput from "../ui/AppInput.vue"
+import AppButton from "../ui/AppButton.vue"
+
+const emit = defineEmits(["next"])
+
 const pelanggan = ref("")
 </script>
 
 <template>
 
-<div>
+<div class="form">
 
-<h2 class="title">Isi butiran pengguna</h2>
+  <h2 class="title">Isi butiran pengguna</h2>
 
-<label>Nama pelanggan</label>
+  <AppInput
+    label="Nama pelanggan"
+    placeholder="Masukkan nama pelanggan"
+    v-model="pelanggan"
+  />
 
-<input
-  v-model="pelanggan"
-  class="input"
-  placeholder="Masukkan nama pelanggan"
-/>
-
-<button
-  class="next"
-  @click="$emit('next',{ pelanggan })"
->
-Seterusnya
-</button>
+  <AppButton
+    text="Seterusnya"
+    :full="false"
+    @click="emit('next',{ pelanggan })"
+  />
 
 </div>
 
@@ -31,27 +33,13 @@ Seterusnya
 
 <style scoped>
 
+.form{
+max-width:520px;
+}
+
 .title{
-font-size:20px;
-margin-bottom:24px;
-}
-
-.input{
-width:100%;
-padding:12px;
-border-radius:8px;
-border:1px solid #e5e7eb;
-margin-top:8px;
-margin-bottom:24px;
-}
-
-.next{
-background:#a855f7;
-color:white;
-padding:10px 24px;
-border:none;
-border-radius:8px;
-font-weight:500;
+font-size:22px;
+margin-bottom:20px;
 }
 
 </style>

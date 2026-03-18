@@ -1,13 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router"
 
-// Auth pages
-import Login from "../views/auth/Login.vue"
-import ForgotPassword from "../views/auth/ForgotPassword.vue"
+// Auth (single entry)
+import Auth from "../views/auth/Auth.vue"
 
 // Layout
 import MainLayout from "../components/layout/MainLayout.vue"
 
-// Existing pages
+// Pages
 import Dashboard from "../views/dashboard/Dashboard.vue"
 import Organisasi from "../views/organisasi/Organisasi.vue"
 import Tapak from "../views/tapak/Tapak.vue"
@@ -16,24 +15,21 @@ import Tugasan from "../views/tugasan/Tugasan.vue"
 import Tetapan from "../views/tetapan/Tetapan.vue"
 import Pelanggan from "../views/pelanggan/Pelanggan.vue"
 
-// Wizard page
+// Wizard
 import Wizard from "../views/wizard/Wizard.vue"
 
 const routes = [
 
+  // Default → Wizard
   {
     path: "/",
     redirect: "/wizard"
   },
 
-  // AUTH
+  // AUTH (single page controller)
   {
     path: "/login",
-    component: Login
-  },
-  {
-    path: "/forgot-password",
-    component: ForgotPassword
+    component: Auth
   },
 
   // Wizard setup
@@ -42,9 +38,9 @@ const routes = [
     component: Wizard
   },
 
-  // MAIN SYSTEM (with sidebar layout)
+  // MAIN SYSTEM (with sidebar)
   {
-    path: "/",
+    path: "/app",   // ✅ IMPORTANT CHANGE (avoid path conflict)
     component: MainLayout,
     children: [
       {

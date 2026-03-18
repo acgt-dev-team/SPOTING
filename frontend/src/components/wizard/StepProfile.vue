@@ -1,6 +1,12 @@
 <script setup>
 import { ref } from "vue"
 
+import AppInput from "../ui/AppInput.vue"
+import AppButton from "../ui/AppButton.vue"
+import AppSelect from "../ui/AppSelect.vue"
+
+const emit = defineEmits(["next","back"])
+
 const profil = ref("")
 const jadual = ref("Segera")
 const cronjob = ref("")
@@ -8,40 +14,48 @@ const cronjob = ref("")
 
 <template>
 
-<div>
+<div class="form">
 
-<h2 class="title">Isi butiran profil</h2>
+  <h2 class="title">Isi butiran profil</h2>
 
-<label>Nama profil</label>
-<input 
-  v-model="profil" 
-  class="input"
-  placeholder="Masukkan nama profil"
-/>
+  <div class="fields">
 
-<label>Jenis penjadualan</label>
-<select v-model="jadual" class="input">
-<option>Segera</option>
-</select>
+    <AppInput
+      label="Nama profil"
+      placeholder="Masukkan nama profil"
+      v-model="profil"
+    />
 
-<label>Cronjob</label>
-<input 
-  v-model="cronjob" 
-  class="input"
-  placeholder="Masukkan cronjob"
-/>
+    <AppSelect
+      label="Jenis penjadualan"
+      :options="['Segera']"
+      v-model="jadual"
+    />
 
-<div class="buttons">
+    <AppInput
+      label="Cronjob"
+      placeholder="Masukkan cronjob"
+      v-model="cronjob"
+    />
 
-<button class="back" @click="$emit('back')">
-Kembali
-</button>
+  </div>
 
-<button class="next" @click="$emit('next',{ profil, cronjob })">
-Seterusnya
-</button>
+  <div class="buttons">
 
-</div>
+    <AppButton
+      text="Kembali"
+      variant="outline"
+      :full="false"
+      @click="emit('back')"
+    />
+
+    <AppButton
+      text="Seterusnya"
+      :full="false"
+      @click="emit('next',{ profil, cronjob })"
+    />
+
+  </div>
 
 </div>
 
@@ -49,39 +63,26 @@ Seterusnya
 
 <style scoped>
 
-.title{
-font-size:20px;
-margin-bottom:8px;
+.form{
+max-width:460px; /* tighter like design */
 }
 
-.input{
-width:100%;
-padding:12px;
-border-radius:8px;
-border:1px solid #e5e7eb;
-margin-top:8px;
+.title{
+font-size:22px;
+font-weight:600;
 margin-bottom:24px;
+}
+
+.fields{
+display:flex;
+flex-direction:column;
+gap:16px; /* 🔥 tighter spacing */
 }
 
 .buttons{
 display:flex;
 gap:12px;
-}
-
-.back{
-background:white;
-border:1px solid #3b82f6;
-color:#3b82f6;
-padding:10px 24px;
-border-radius:8px;
-}
-
-.next{
-background:#a855f7;
-color:white;
-padding:10px 24px;
-border:none;
-border-radius:8px;
+margin-top:20px;
 }
 
 </style>

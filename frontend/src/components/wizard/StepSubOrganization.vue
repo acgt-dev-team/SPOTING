@@ -1,38 +1,46 @@
 <script setup>
 import { ref } from "vue"
 
+import AppInput from "../ui/AppInput.vue"
+import AppButton from "../ui/AppButton.vue"
+
+const emit = defineEmits(["next","back"])
+
 const subOrganisasi = ref("")
 </script>
 
 <template>
 
-<div>
+<div class="form">
 
-<h2 class="title">Isi butiran sub organisasi</h2>
+  <h2 class="title">Isi butiran sub organisasi</h2>
 
-<p class="desc">
-Unit di dalam organisasi
-</p>
+  <p class="desc">
+    Unit di dalam organisasi
+  </p>
 
-<label>Nama sub organisasi</label>
+  <AppInput
+    label="Nama sub organisasi"
+    placeholder="Masukkan nama sub organisasi"
+    v-model="subOrganisasi"
+  />
 
-<input 
-  v-model="subOrganisasi" 
-  class="input"
-  placeholder="Masukkan nama sub organisasi"
-/>
+  <div class="buttons">
 
-<div class="buttons">
+    <AppButton
+      text="Kembali"
+      variant="outline"
+      :full="false"
+      @click="emit('back')"
+    />
 
-<button class="back" @click="$emit('back')">
-Kembali
-</button>
+    <AppButton
+      text="Seterusnya"
+      :full="false"
+      @click="emit('next',{ sub_organisasi: subOrganisasi })"
+    />
 
-<button class="next" @click="$emit('next',{ sub_organisasi: subOrganisasi })">
-Seterusnya
-</button>
-
-</div>
+  </div>
 
 </div>
 
@@ -40,9 +48,13 @@ Seterusnya
 
 <style scoped>
 
+.form{
+max-width:520px;
+}
+
 .title{
-font-size:20px;
-margin-bottom:8px;
+font-size:22px;
+margin-bottom:6px;
 }
 
 .desc{
@@ -51,34 +63,9 @@ color:#64748b;
 margin-bottom:20px;
 }
 
-.input{
-width:100%;
-padding:12px;
-border-radius:8px;
-border:1px solid #e5e7eb;
-margin-top:8px;
-margin-bottom:24px;
-}
-
 .buttons{
 display:flex;
 gap:12px;
-}
-
-.back{
-background:white;
-border:1px solid #3b82f6;
-color:#3b82f6;
-padding:10px 24px;
-border-radius:8px;
-}
-
-.next{
-background:#a855f7;
-color:white;
-padding:10px 24px;
-border:none;
-border-radius:8px;
 }
 
 </style>

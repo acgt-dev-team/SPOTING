@@ -14,13 +14,8 @@ const router = useRouter()
 const route = useRoute()
 
 function logout() {
-
-  // remove stored login token (future backend use)
   localStorage.removeItem("token")
-
-  // redirect to login page
   router.push("/login")
-
 }
 </script>
 
@@ -36,8 +31,8 @@ function logout() {
 
     <div
       class="nav-item"
-      :class="{ active: route.path === '/dashboard' }"
-      @click="router.push('/dashboard')"
+      :class="{ active: route.path === '/app/dashboard' }"
+      @click="router.push('/app/dashboard')"
     >
       <LayoutDashboard size="18"/>
       <span>Dashboard</span>
@@ -45,8 +40,8 @@ function logout() {
 
     <div
       class="nav-item"
-      :class="{ active: route.path === '/pelanggan' }"
-      @click="router.push('/pelanggan')"
+      :class="{ active: route.path === '/app/pelanggan' }"
+      @click="router.push('/app/pelanggan')"
     >
       <Users size="18"/>
       <span>Pelanggan</span>
@@ -54,8 +49,8 @@ function logout() {
 
     <div
       class="nav-item"
-      :class="{ active: route.path === '/organisasi' }"
-      @click="router.push('/organisasi')"
+      :class="{ active: route.path === '/app/organisasi' }"
+      @click="router.push('/app/organisasi')"
     >
       <Building2 size="18"/>
       <span>Organisasi</span>
@@ -63,8 +58,8 @@ function logout() {
 
     <div
       class="nav-item"
-      :class="{ active: route.path === '/tugasan' }"
-      @click="router.push('/tugasan')"
+      :class="{ active: route.path === '/app/tugasan' }"
+      @click="router.push('/app/tugasan')"
     >
       <ClipboardList size="18"/>
       <span>Tugasan</span>
@@ -72,8 +67,8 @@ function logout() {
 
     <div
       class="nav-item"
-      :class="{ active: route.path === '/tetapan' }"
-      @click="router.push('/tetapan')"
+      :class="{ active: route.path === '/app/tetapan' }"
+      @click="router.push('/app/tetapan')"
     >
       <Settings size="18"/>
       <span>Tetapan</span>
@@ -92,7 +87,6 @@ function logout() {
       <div class="logout" @click="logout">
         Log keluar
       </div>
-
     </div>
 
   </div>
@@ -102,7 +96,6 @@ function logout() {
 </template>
 
 <style scoped>
-
 .sidebar{
 width:240px;
 background:white;
@@ -176,5 +169,4 @@ font-size:12px;
 color:#ef4444;
 cursor:pointer;
 }
-
 </style>
