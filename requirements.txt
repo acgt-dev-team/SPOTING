@@ -4,3 +4,4 @@ sqlalchemy
 pymysql
 pika
 python-dotenv
+boto3
