@@ -30,7 +30,7 @@ app.add_middleware(
 )
 
 # Register API routes
-app.include_router(wizard.router)
+app.include_router(wizard.router, prefix="/wizard")
 
 
 @app.get("/")
