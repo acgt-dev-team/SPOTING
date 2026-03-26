@@ -8,8 +8,8 @@ from app.services.wizard_service import create_wizard_setup
 # Spaces upload
 from app.utils.spaces import upload_text_file
 
+# ❗ NO prefix here (handled in main.py)
 router = APIRouter(
-    prefix="/wizard",
     tags=["Wizard"]
 )
 
@@ -26,9 +26,7 @@ def wizard_setup(
     Create full wizard hierarchy:
     Pelanggan → Organisasi → SubOrganisasi → Tapak → Profil → Tugasan
     """
-
     result = create_wizard_setup(db, data)
-
     return result
 
 
@@ -81,7 +79,6 @@ def test_upload():
     """
     Test upload to DigitalOcean Spaces
     """
-
     file_url = upload_text_file(
         filename="test.txt",
         content="Hello from SPOTING backend 🚀"
