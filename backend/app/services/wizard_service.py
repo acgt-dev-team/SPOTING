@@ -6,12 +6,13 @@ from app.models.sub_organisasi import SubOrganisasi
 from app.models.tapak import Tapak
 from app.models.profil import Profil
 from app.models.tugasan import Tugasan
+
 from app.utils.logger import logger
 
 
 def generate_kod(name: str) -> str:
     """Convert name into kod format"""
-    return name.lower().replace(" ", "_")
+    return name.strip().lower().replace(" ", "_")
 
 
 def create_wizard_setup(db: Session, data):
@@ -19,7 +20,7 @@ def create_wizard_setup(db: Session, data):
     logger.info("Wizard setup started")
 
     try:
-        # Use transaction block (IMPORTANT)
+        # 🔥 Transaction block
         with db.begin():
 
             # -------------------------
@@ -40,7 +41,7 @@ def create_wizard_setup(db: Session, data):
                 db.flush()
 
             # -------------------------
-            # Organisasi (WITH PARENT CHECK)
+            # Organisasi
             # -------------------------
             organisasi_kod = generate_kod(data.organisasi)
 
@@ -59,7 +60,7 @@ def create_wizard_setup(db: Session, data):
                 db.flush()
 
             # -------------------------
-            # Sub Organisasi (WITH PARENT CHECK)
+            # Sub Organisasi
             # -------------------------
             sub_kod = generate_kod(data.sub_organisasi)
 
@@ -78,7 +79,7 @@ def create_wizard_setup(db: Session, data):
                 db.flush()
 
             # -------------------------
-            # Tapak (WITH PARENT CHECK)
+            # Tapak
             # -------------------------
             tapak_kod = generate_kod(data.tapak)
 
@@ -97,7 +98,7 @@ def create_wizard_setup(db: Session, data):
                 db.flush()
 
             # -------------------------
-            # Profil (WITH PARENT CHECK)
+            # Profil
             # -------------------------
             profil_kod = generate_kod(data.profil)
 
@@ -119,9 +120,8 @@ def create_wizard_setup(db: Session, data):
             # Tugasan (Task)
             # -------------------------
             tugasan = Tugasan(
-                profil_id=profil.id,
                 nama=data.task_name,
-                jenis=data.task_type,
+                jenis=data.jenis,  # ✅ fixed
                 protocol=data.protocol,
                 ip_start=str(data.ip_start),
                 ip_end=str(data.ip_end)
@@ -130,7 +130,12 @@ def create_wizard_setup(db: Session, data):
             db.add(tugasan)
             db.flush()
 
-        # No need for manual commit → handled by db.begin()
+            # 🔥 IMPORTANT: MANY-TO-MANY LINK
+            profil.tugasan.append(tugasan)
+
+        # auto commit handled by db.begin()
+
+        logger.info("Wizard setup completed successfully")
 
         return {
             "message": "Wizard setup completed",
