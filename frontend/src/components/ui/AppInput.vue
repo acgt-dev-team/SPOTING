@@ -61,8 +61,8 @@ input::placeholder {
 
 input:focus {
   outline: none;
-  border-color: #a855f7;
+  border-color: #020265;
   background: white;
-  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.12);
+  box-shadow: 0 0 0 4px rgba(2, 2, 101, 0.12);
 }
 </style>

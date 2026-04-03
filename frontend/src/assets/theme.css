@@ -1,5 +1,4 @@
 :root {
-
   --bg-main: #f7f9fc;
   --bg-card: #ffffff;
 
@@ -8,12 +7,11 @@
   --text-primary: #111827;
   --text-secondary: #6b7280;
 
-  --primary: #9333ea;
-  --primary-hover: #7e22ce;
+  --primary: #020265;
+  --primary-hover: #01014d;
 
   --success: #22c55e;
-  --info: #3b82f6;
+  --info: #2563eb;
   --warning: #eab308;
   --danger: #ef4444;
-
 }

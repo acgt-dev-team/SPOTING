@@ -11,7 +11,7 @@ import Configuration from "../views/configuration/Configuration.vue"
 import SubOrganisasi from "../views/configuration/SubOrganisasi.vue"
 import Tapak from "../views/configuration/Tapak.vue"
 import ProfilList from "../views/configuration/ProfilList.vue"
-import AdminTugasan from "../views/configuration/AdminTugasan.vue"
+import AdminTugasan from "../views/configuration/Tugasan.vue"
 
 // User Pages
 import Profil from "../views/profil/Profil.vue"
@@ -51,7 +51,7 @@ const routes = [
   },
   {
     path: "/admin/configuration/sub-organisasi/:organizationId/tapak/:subOrganizationId/profil/:siteId/tugasan/:profileId",
-    component: AdminTugasan
+    component: AdminTugasan // ✅ FIXED
   },
 
   // =========================

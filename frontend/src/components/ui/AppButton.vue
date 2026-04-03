@@ -49,9 +49,9 @@ defineProps({
 }
 
 .primary {
-  background: linear-gradient(135deg, #7c3aed, #c026d3);
+  background: linear-gradient(135deg, #020265, #0b0b8f);
   color: white;
-  box-shadow: 0 14px 28px rgba(147, 51, 234, 0.25);
+  box-shadow: 0 14px 28px rgba(2, 2, 101, 0.25);
 }
 
 .outline {
@@ -61,22 +61,22 @@ defineProps({
 }
 
 .outline:hover {
-  border-color: #c4b5fd;
-  background: #faf5ff;
+  border-color: #c7d2fe;
+  background: #f4f6ff;
 }
 
 .secondary {
-  background: #f3f4f6;
-  color: #111827;
+  background: #eef1ff;
+  color: #020265;
 }
 
 .secondary:hover {
-  background: #e5e7eb;
+  background: #dde3ff;
 }
 
 .link {
   background: none;
-  color: #9333ea;
+  color: #020265;
   text-decoration: underline;
   padding: 0;
   min-height: auto;

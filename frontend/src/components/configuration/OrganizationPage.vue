@@ -64,11 +64,6 @@ function goToSubOrganisasi(org) {
         <h2>Senarai Organisasi</h2>
         <p class="section-desc">Urus organisasi utama dalam sistem Spoting.</p>
       </div>
-
-      <div class="hierarchy-right">
-        <p class="child-label">Organisasi</p>
-        <p class="child-subtext">Senarai organisasi utama dalam sistem.</p>
-      </div>
     </div>
 
     <div class="toolbar">
@@ -80,6 +75,10 @@ function goToSubOrganisasi(org) {
       <button class="primary-btn" @click="openModal">
         Tambah organisasi
       </button>
+    </div>
+
+    <div class="page-heading-block">
+      <h1 class="main-page-title">Senarai Organisasi</h1>
     </div>
 
     <div class="table-card">
@@ -156,8 +155,22 @@ function goToSubOrganisasi(org) {
 </template>
 
 <style scoped>
-.toolbar {
+.page-heading-block {
   margin-bottom: 24px;
+}
+
+.main-page-title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #1f2937;
+  margin: 0;
+  letter-spacing: -0.02em;
+  font-family: "Trebuchet MS", "Segoe UI", "Inter", sans-serif;
+}
+
+.toolbar {
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -168,8 +181,8 @@ function goToSubOrganisasi(org) {
 .search-box {
   width: 100%;
   max-width: 420px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #dbe3ff;
   border-radius: 18px;
   padding: 0 16px;
   height: 54px;
@@ -177,6 +190,11 @@ function goToSubOrganisasi(org) {
   align-items: center;
   gap: 10px;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+}
+
+.search-box:focus-within {
+  border-color: #020265;
+  box-shadow: 0 0 0 4px rgba(2, 2, 101, 0.08);
 }
 
 .search-icon {
@@ -198,11 +216,11 @@ function goToSubOrganisasi(org) {
   justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #dbe3ff;
   border-radius: 30px;
   padding: 30px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
   flex-wrap: wrap;
 }
@@ -212,16 +230,10 @@ function goToSubOrganisasi(org) {
   min-width: 280px;
 }
 
-.hierarchy-right {
-  min-width: 240px;
-  padding-top: 54px;
-  text-align: left;
-}
-
 .section-label {
   font-size: 13px;
   font-weight: 700;
-  color: #9333ea;
+  color: #020265;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 6px;
@@ -239,21 +251,9 @@ function goToSubOrganisasi(org) {
   font-size: 15px;
 }
 
-.child-label {
-  font-size: 19px;
-  font-weight: 800;
-  color: #111827;
-  margin-bottom: 6px;
-}
-
-.child-subtext {
-  color: #6b7280;
-  font-size: 14px;
-}
-
 .table-card {
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #dbe3ff;
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
@@ -269,7 +269,7 @@ table {
 }
 
 thead {
-  background: #f8fafc;
+  background: #f4f6ff;
 }
 
 th {
@@ -277,8 +277,8 @@ th {
   padding: 20px 24px;
   font-size: 13px;
   font-weight: 800;
-  color: #374151;
-  border-bottom: 1px solid #eef2f7;
+  color: #24324a;
+  border-bottom: 1px solid #e4e9f8;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -296,7 +296,7 @@ td {
 }
 
 .clickable-row:hover {
-  background: #faf5ff;
+  background: #f4f6ff;
 }
 
 .org-cell {
@@ -309,19 +309,20 @@ td {
   width: 44px;
   height: 44px;
   border-radius: 15px;
-  background: linear-gradient(135deg, #7c3aed, #c026d3);
+  background: linear-gradient(135deg, #020265, #0b0b8f);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   flex-shrink: 0;
-  box-shadow: 0 10px 24px rgba(147, 51, 234, 0.22);
+  box-shadow: 0 10px 24px rgba(2, 2, 101, 0.22);
 }
 
 .org-name {
   font-weight: 800;
   color: #111827;
+  margin: 0;
 }
 
 .org-desc {
@@ -341,12 +342,16 @@ td {
 
 .ghost-btn {
   border: none;
-  background: #f3f4f6;
-  color: #111827;
+  background: #eef1ff;
+  color: #020265;
   padding: 10px 14px;
   border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
+}
+
+.ghost-btn:hover {
+  background: #dde3ff;
 }
 
 .empty-cell {
@@ -363,7 +368,7 @@ td {
 
 .count-pill {
   background: white;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #dbe3ff;
   border-radius: 18px;
   padding: 16px 20px;
   color: #374151;
@@ -372,7 +377,7 @@ td {
 
 .count-pill strong {
   margin-left: 10px;
-  color: #111827;
+  color: #020265;
 }
 
 .primary-btn {
@@ -383,13 +388,36 @@ td {
   font-weight: 800;
   cursor: pointer;
   transition: 0.2s ease;
-  background: linear-gradient(135deg, #7c3aed, #c026d3);
+  background: linear-gradient(135deg, #020265, #0b0b8f);
   color: white;
-  box-shadow: 0 14px 28px rgba(147, 51, 234, 0.25);
+  box-shadow: 0 14px 28px rgba(2, 2, 101, 0.25);
   white-space: nowrap;
 }
 
 .primary-btn:hover {
   transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .main-page-title {
+    font-size: 25px;
+  }
+
+  .hierarchy-card {
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .hierarchy-left h2 {
+    font-size: 26px;
+  }
+
+  .toolbar {
+    align-items: stretch;
+  }
+
+  .search-box {
+    max-width: 100%;
+  }
 }
 </style>

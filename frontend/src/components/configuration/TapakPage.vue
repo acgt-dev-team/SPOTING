@@ -76,11 +76,6 @@ function goToProfil(site) {
           {{ organization.name }} · {{ subOrganization.description }}
         </p>
       </div>
-
-      <div class="hierarchy-right">
-        <p class="child-label">Senarai Tapak</p>
-        <p class="child-subtext">Pilih tapak untuk melihat senarai profil berkaitan.</p>
-      </div>
     </div>
 
     <div class="toolbar">
@@ -90,6 +85,10 @@ function goToProfil(site) {
       </div>
 
       <button class="primary-btn">Tambah tapak</button>
+    </div>
+
+    <div class="page-heading-block">
+      <h1 class="main-page-title">Senarai Tapak</h1>
     </div>
 
     <div class="table-card">
@@ -156,8 +155,22 @@ function goToProfil(site) {
 </template>
 
 <style scoped>
-.toolbar {
+.page-heading-block {
   margin-bottom: 24px;
+}
+
+.main-page-title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #1f2937;
+  margin: 0;
+  letter-spacing: -0.02em;
+  font-family: "Trebuchet MS", "Segoe UI", "Inter", sans-serif;
+}
+
+.toolbar {
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -168,8 +181,8 @@ function goToProfil(site) {
 .search-box {
   width: 100%;
   max-width: 420px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #dbe3ff;
   border-radius: 18px;
   padding: 0 16px;
   height: 54px;
@@ -177,6 +190,11 @@ function goToProfil(site) {
   align-items: center;
   gap: 10px;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+}
+
+.search-box:focus-within {
+  border-color: #020265;
+  box-shadow: 0 0 0 4px rgba(2, 2, 101, 0.08);
 }
 
 .search-icon {
@@ -195,33 +213,18 @@ function goToProfil(site) {
 
 .hierarchy-card {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #dbe3ff;
   border-radius: 30px;
   padding: 30px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
-  flex-wrap: wrap;
-}
-
-.hierarchy-left {
-  flex: 1;
-  min-width: 280px;
-}
-
-.hierarchy-right {
-  min-width: 260px;
-  padding-top: 54px;
-  text-align: left;
 }
 
 .parent-label {
   font-size: 13px;
   font-weight: 800;
-  color: #9333ea;
+  color: #020265;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 10px;
@@ -239,21 +242,9 @@ function goToProfil(site) {
   font-size: 15px;
 }
 
-.child-label {
-  font-size: 19px;
-  font-weight: 800;
-  color: #111827;
-  margin-bottom: 6px;
-}
-
-.child-subtext {
-  color: #6b7280;
-  font-size: 14px;
-}
-
 .table-card {
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #dbe3ff;
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
@@ -269,7 +260,7 @@ table {
 }
 
 thead {
-  background: #f8fafc;
+  background: #f4f6ff;
 }
 
 th {
@@ -277,8 +268,8 @@ th {
   padding: 20px 24px;
   font-size: 13px;
   font-weight: 800;
-  color: #374151;
-  border-bottom: 1px solid #eef2f7;
+  color: #24324a;
+  border-bottom: 1px solid #e4e9f8;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -296,7 +287,7 @@ td {
 }
 
 .clickable-row:hover {
-  background: #faf5ff;
+  background: #f4f6ff;
 }
 
 .org-cell {
@@ -309,14 +300,14 @@ td {
   width: 44px;
   height: 44px;
   border-radius: 15px;
-  background: linear-gradient(135deg, #7c3aed, #c026d3);
+  background: linear-gradient(135deg, #020265, #0b0b8f);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   flex-shrink: 0;
-  box-shadow: 0 10px 24px rgba(147, 51, 234, 0.22);
+  box-shadow: 0 10px 24px rgba(2, 2, 101, 0.22);
 }
 
 .org-name {
@@ -332,12 +323,16 @@ td {
 
 .ghost-btn {
   border: none;
-  background: #f3f4f6;
-  color: #111827;
+  background: #eef1ff;
+  color: #020265;
   padding: 10px 14px;
   border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
+}
+
+.ghost-btn:hover {
+  background: #dde3ff;
 }
 
 .empty-cell {
@@ -357,7 +352,7 @@ td {
 
 .count-pill {
   background: white;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #dbe3ff;
   border-radius: 18px;
   padding: 16px 20px;
   color: #374151;
@@ -366,7 +361,7 @@ td {
 
 .count-pill strong {
   margin-left: 10px;
-  color: #111827;
+  color: #020265;
 }
 
 .secondary-btn,
@@ -382,18 +377,22 @@ td {
 
 .secondary-btn {
   background: white;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #dbe3ff;
   color: #111827;
 }
 
-.primary-btn {
-  background: linear-gradient(135deg, #7c3aed, #c026d3);
-  color: white;
-  box-shadow: 0 14px 28px rgba(147, 51, 234, 0.25);
+.secondary-btn:hover {
+  background: #f4f6ff;
+  transform: translateY(-1px);
 }
 
-.primary-btn:hover,
-.secondary-btn:hover {
+.primary-btn {
+  background: linear-gradient(135deg, #020265, #0b0b8f);
+  color: white;
+  box-shadow: 0 14px 28px rgba(2, 2, 101, 0.25);
+}
+
+.primary-btn:hover {
   transform: translateY(-1px);
 }
 </style>

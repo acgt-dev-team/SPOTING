@@ -1,16 +1,102 @@
 <script setup>
+import { computed } from "vue"
+import { useRoute, useRouter } from "vue-router"
 import logo from "../../assets/images/spoting-logo.png"
 
-defineProps({
-  breadcrumbs: {
-    type: Array,
-    default: () => []
-  },
-  customerName: {
-    type: String,
-    default: "Kementerian Dalam Negeri"
+const route = useRoute()
+const router = useRouter()
+
+const customerName = computed(() => "Kementerian Dalam Negeri")
+
+const breadcrumbs = computed(() => {
+  const path = route.path
+  const organizationId = route.params.organizationId
+  const subOrganizationId = route.params.subOrganizationId
+  const siteId = route.params.siteId
+
+  const crumbs = [
+    {
+      label: customerName.value,
+      to: "/admin/configuration"
+    }
+  ]
+
+  if (path.includes("/profil")) {
+    crumbs.push({
+      label: "Senarai Organisasi",
+      to: "/admin/configuration"
+    })
+
+    crumbs.push({
+      label: "Senarai Sub Organisasi",
+      to: organizationId
+        ? `/admin/configuration/sub-organisasi/${organizationId}`
+        : null
+    })
+
+    crumbs.push({
+      label: "Senarai Tapak",
+      to:
+        organizationId && subOrganizationId
+          ? `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}`
+          : null
+    })
+
+    crumbs.push({
+      label: "Senarai Profil",
+      to: null
+    })
+  } else if (path.includes("/tapak")) {
+    crumbs.push({
+      label: "Senarai Organisasi",
+      to: "/admin/configuration"
+    })
+
+    crumbs.push({
+      label: "Senarai Sub Organisasi",
+      to: organizationId
+        ? `/admin/configuration/sub-organisasi/${organizationId}`
+        : null
+    })
+
+    crumbs.push({
+      label: "Senarai Tapak",
+      to: null
+    })
+  } else if (path.includes("/sub-organisasi")) {
+    crumbs.push({
+      label: "Senarai Organisasi",
+      to: "/admin/configuration"
+    })
+
+    crumbs.push({
+      label: "Senarai Sub Organisasi",
+      to: null
+    })
+  } else if (path.includes("/tugasan")) {
+    crumbs.push({
+      label: "Senarai Organisasi",
+      to: "/admin/configuration"
+    })
+
+    crumbs.push({
+      label: "Tugasan",
+      to: null
+    })
+  } else {
+    crumbs.push({
+      label: "Senarai Organisasi",
+      to: null
+    })
   }
+
+  return crumbs
 })
+
+function goTo(crumb, index) {
+  if (!crumb.to || index === breadcrumbs.value.length - 1) return
+  router.push(crumb.to)
+}
 </script>
 
 <template>
@@ -30,31 +116,34 @@ defineProps({
 
     <div class="config-container">
       <div class="page-top-header">
-        <div class="breadcrumbs">
-          <template v-for="(item, index) in breadcrumbs" :key="index">
-            <RouterLink
-              v-if="item.to && index !== breadcrumbs.length - 1"
-              :to="item.to"
-              class="crumb link"
-            >
-              {{ item.label }}
-            </RouterLink>
+        <div class="page-top-left">
+          <div class="breadcrumbs">
+            <template v-for="(item, index) in breadcrumbs" :key="index">
+              <button
+                v-if="item.to && index !== breadcrumbs.length - 1"
+                type="button"
+                class="crumb link"
+                @click="goTo(item, index)"
+              >
+                {{ item.label }}
+              </button>
 
-            <span
-              v-else
-              class="crumb"
-              :class="{ current: index === breadcrumbs.length - 1 }"
-            >
-              {{ item.label }}
-            </span>
+              <span
+                v-else
+                class="crumb"
+                :class="{ current: index === breadcrumbs.length - 1 }"
+              >
+                {{ item.label }}
+              </span>
 
-            <span v-if="index !== breadcrumbs.length - 1" class="divider">›</span>
-          </template>
+              <span v-if="index !== breadcrumbs.length - 1" class="divider">›</span>
+            </template>
+          </div>
         </div>
 
         <div class="customer-block">
           <p class="customer-caption">Pelanggan</p>
-          <h1 class="customer-name">{{ customerName }}</h1>
+          <h2 class="customer-name">{{ customerName }}</h2>
         </div>
       </div>
 
@@ -67,8 +156,8 @@ defineProps({
 .config-shell {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(168, 85, 247, 0.08), transparent 22%),
-    radial-gradient(circle at top right, rgba(192, 38, 211, 0.05), transparent 20%),
+    radial-gradient(circle at top left, rgba(2, 2, 101, 0.08), transparent 22%),
+    radial-gradient(circle at top right, rgba(11, 11, 143, 0.05), transparent 20%),
     #f5f7fb;
 }
 
@@ -108,7 +197,7 @@ defineProps({
 .brand-sub {
   font-size: 12px;
   font-weight: 800;
-  color: #9333ea;
+  color: #020265;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   line-height: 1;
@@ -119,8 +208,8 @@ defineProps({
   width: 52px;
   height: 52px;
   border-radius: 18px;
-  border: 1px solid #e5e7eb;
-  background: linear-gradient(180deg, #ffffff, #faf7ff);
+  border: 1px solid #dbe3ff;
+  background: linear-gradient(180deg, #ffffff, #f4f6ff);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -131,8 +220,8 @@ defineProps({
 
 .profile-btn:hover {
   transform: translateY(-1px);
-  border-color: #ddd6fe;
-  background: #faf5ff;
+  border-color: #c7d2fe;
+  background: #eef1ff;
 }
 
 .profile-icon {
@@ -148,17 +237,23 @@ defineProps({
 .page-top-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 24px;
   margin-bottom: 28px;
   flex-wrap: wrap;
+}
+
+.page-top-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .breadcrumbs {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 16px;
+  font-size: 15px;
   flex-wrap: wrap;
   min-width: 0;
 }
@@ -176,11 +271,15 @@ defineProps({
 
 .link {
   text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   transition: 0.18s ease;
 }
 
 .link:hover {
-  color: #7c3aed;
+  color: #020265;
 }
 
 .divider {
@@ -196,18 +295,19 @@ defineProps({
 .customer-caption {
   font-size: 12px;
   font-weight: 800;
-  color: #9333ea;
+  color: #020265;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   margin-bottom: 6px;
 }
 
 .customer-name {
-  font-size: 30px;
-  font-weight: 900;
+  font-size: 28px;
+  font-weight: 700;
   line-height: 1.1;
   color: #111827;
   white-space: nowrap;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
@@ -239,7 +339,6 @@ defineProps({
   }
 
   .page-top-header {
-    align-items: flex-start;
     flex-direction: column;
   }
 
@@ -249,7 +348,7 @@ defineProps({
   }
 
   .customer-name {
-    font-size: 24px;
+    font-size: 22px;
     white-space: normal;
   }
 
