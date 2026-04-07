@@ -5,14 +5,14 @@ from sqlalchemy.orm import relationship
 from app.database.session import Base
 
 
-class Organisasi(Base):
-    __tablename__ = "organisasi"
+class SubOrganisasi(Base):  # ✅ CORRECT CLASS NAME
+    __tablename__ = "sub_organisasi"
 
     id = Column(Integer, primary_key=True, index=True)
 
-    pelanggan_id = Column(
+    organisasi_id = Column(
         Integer,
-        ForeignKey("pelanggan.id", ondelete="CASCADE"),
+        ForeignKey("organisasi.id", ondelete="CASCADE"),
         nullable=False
     )
 
@@ -26,17 +26,16 @@ class Organisasi(Base):
     kemaskini_pada = Column(
         TIMESTAMP,
         server_default=func.now(),
-        onupdate=func.now()  # ✅ FIX
+        onupdate=func.now()
     )
 
-    # 🔗 RELATIONSHIPS
-    pelanggan = relationship(
-        "Pelanggan",
-        back_populates="organisasi"
+    organisasi = relationship(
+        "Organisasi",
+        back_populates="sub_organisasi"
     )
 
-    sub_organisasi = relationship(
-        "SubOrganisasi",
-        back_populates="organisasi",
-        cascade="all, delete-orphan"  # ✅ FIX
+    tapak = relationship(
+        "Tapak",
+        back_populates="sub_organisasi",
+        cascade="all, delete-orphan"
     )
