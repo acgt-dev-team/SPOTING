@@ -3,7 +3,7 @@ from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 
 from app.database.session import Base
-from app.models.x_profil_tugasan import x_profil_tugasan
+
 
 class Profil(Base):
     __tablename__ = "profil"
