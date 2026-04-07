@@ -10,7 +10,7 @@ def get_profil_by_tapak(db: Session, tapak_id: int):
         result.append({
             "id": p.id,
             "nama": p.nama,
-            "deskripsi": p.deskripsi,
+            "deskripsi": p.keterangan,  # ✅ map DB → frontend
             "kod": p.kod,
             "aktif": p.aktif
         })
@@ -18,13 +18,12 @@ def get_profil_by_tapak(db: Session, tapak_id: int):
     return result
 
 
-# 🔥 THIS FUNCTION IS MISSING (ADD THIS)
 def create_profil(db: Session, data: dict):
     new_profil = Profil(
         tapak_id=data["tapak_id"],
         kod=data["kod"],
         nama=data["nama"],
-        deskripsi=data.get("deskripsi", "")
+        keterangan=data.get("deskripsi", "")  # ✅ map frontend → DB
     )
 
     db.add(new_profil)
@@ -34,5 +33,5 @@ def create_profil(db: Session, data: dict):
     return {
         "id": new_profil.id,
         "nama": new_profil.nama,
-        "deskripsi": new_profil.deskripsi
+        "deskripsi": new_profil.keterangan
     }

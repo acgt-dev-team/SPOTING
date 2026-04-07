@@ -13,7 +13,7 @@ class Profil(Base):
 
     kod = Column(String(50), unique=True, nullable=False)
     nama = Column(String(255), nullable=False)
-    deskripsi = Column(Text)
+    keterangan = Column(Text)  # ✅ FIXED (was deskripsi)
 
     aktif = Column(Boolean, default=True)
 
@@ -23,7 +23,7 @@ class Profil(Base):
     tapak = relationship("Tapak", back_populates="profil")
 
     profil_tugasan = relationship(
-    "XProfilTugasan",
-    back_populates="profil",
-    cascade="all, delete"
-)
+        "XProfilTugasan",
+        back_populates="profil",
+        cascade="all, delete"
+    )
