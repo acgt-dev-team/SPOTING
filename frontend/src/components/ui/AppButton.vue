@@ -1,4 +1,5 @@
 <script setup>
+defineEmits(["click"])
 
 defineProps({
   text: String,
@@ -8,57 +9,78 @@ defineProps({
   },
   full: {
     type: Boolean,
-    default: true
+    default: false
   }
 })
-
 </script>
 
 <template>
-
-<button
-:class="['btn', variant, { full }]"
->
-{{ text }}
-</button>
-
+  <button
+    :class="['btn', variant, { full }]"
+    @click="$emit('click')"
+    type="button"
+  >
+    {{ text }}
+  </button>
 </template>
 
 <style scoped>
-
-.btn{
-padding:12px 16px;
-border-radius:8px;
-font-size:14px;
-cursor:pointer;
-border:none;
+.btn {
+  min-height: 52px;
+  padding: 14px 22px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  border: none;
+  transition: 0.18s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.full{
-width:100%;
+.btn:hover {
+  transform: translateY(-1px);
 }
 
-.primary{
-background:linear-gradient(90deg,#8b2cff,#d12bff);
-color:white;
+.full {
+  width: 100%;
 }
 
-.outline{
-background:white;
-border:1px solid #3b82f6;
-color:#3b82f6;
+.primary {
+  background: linear-gradient(135deg, #020265, #0b0b8f);
+  color: white;
+  box-shadow: 0 14px 28px rgba(2, 2, 101, 0.25);
 }
 
-.secondary{
-background:#9333ea;
-color:white;
+.outline {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #111827;
 }
 
-.link{
-background:none;
-color:#9333ea;
-text-decoration:underline;
-padding:0;
+.outline:hover {
+  border-color: #c7d2fe;
+  background: #f4f6ff;
 }
 
+.secondary {
+  background: #eef1ff;
+  color: #020265;
+}
+
+.secondary:hover {
+  background: #dde3ff;
+}
+
+.link {
+  background: none;
+  color: #020265;
+  text-decoration: underline;
+  padding: 0;
+  min-height: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
 </style>

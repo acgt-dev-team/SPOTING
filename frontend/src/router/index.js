@@ -1,67 +1,73 @@
 import { createRouter, createWebHistory } from "vue-router"
 
-// Auth pages
-import Login from "../views/auth/Login.vue"
-import ForgotPassword from "../views/auth/ForgotPassword.vue"
+// Auth
+import Auth from "../views/auth/Auth.vue"
 
-// Layout
+// User Layout (USER SIDE ONLY)
 import MainLayout from "../components/layout/MainLayout.vue"
 
-// Existing pages
-import Dashboard from "../views/dashboard/Dashboard.vue"
-import Organisasi from "../views/organisasi/Organisasi.vue"
-import Tapak from "../views/tapak/Tapak.vue"
+// Admin Configuration Views
+import Configuration from "../views/configuration/Configuration.vue"
+import SubOrganisasi from "../views/configuration/SubOrganisasi.vue"
+import Tapak from "../views/configuration/Tapak.vue"
+import ProfilList from "../views/configuration/ProfilList.vue"
+import AdminTugasan from "../views/configuration/Tugasan.vue"
+
+// User Pages
 import Profil from "../views/profil/Profil.vue"
 import Tugasan from "../views/tugasan/Tugasan.vue"
 import Tetapan from "../views/tetapan/Tetapan.vue"
 import Pelanggan from "../views/pelanggan/Pelanggan.vue"
 
-// Wizard page
-import Wizard from "../views/wizard/Wizard.vue"
-
 const routes = [
-
   {
     path: "/",
-    redirect: "/wizard"
+    redirect: "/admin/configuration"
   },
 
-  // AUTH
   {
     path: "/login",
-    component: Login
-  },
-  {
-    path: "/forgot-password",
-    component: ForgotPassword
+    component: Auth
   },
 
-  // Wizard setup
+  // =========================
+  // ADMIN CONFIGURATION FLOW
+  // =========================
   {
-    path: "/wizard",
-    component: Wizard
+    path: "/admin/configuration",
+    component: Configuration
+  },
+  {
+    path: "/admin/configuration/sub-organisasi/:organizationId",
+    component: SubOrganisasi
+  },
+  {
+    path: "/admin/configuration/sub-organisasi/:organizationId/tapak/:subOrganizationId",
+    component: Tapak
+  },
+  {
+    path: "/admin/configuration/sub-organisasi/:organizationId/tapak/:subOrganizationId/profil/:siteId",
+    component: ProfilList
+  },
+  {
+    path: "/admin/configuration/sub-organisasi/:organizationId/tapak/:subOrganizationId/profil/:siteId/tugasan/:profileId",
+    component: AdminTugasan // ✅ FIXED
   },
 
-  // MAIN SYSTEM (with sidebar layout)
+  // =========================
+  // USER SIDE ONLY
+  // =========================
   {
-    path: "/",
+    path: "/app",
     component: MainLayout,
     children: [
       {
-        path: "dashboard",
-        component: Dashboard
+        path: "",
+        redirect: "/app/profil"
       },
       {
         path: "pelanggan",
         component: Pelanggan
-      },
-      {
-        path: "organisasi",
-        component: Organisasi
-      },
-      {
-        path: "tapak",
-        component: Tapak
       },
       {
         path: "profil",
@@ -77,7 +83,6 @@ const routes = [
       }
     ]
   }
-
 ]
 
 const router = createRouter({

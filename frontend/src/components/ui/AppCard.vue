@@ -2,23 +2,21 @@
 </script>
 
 <template>
-
-<div class="card">
-  <slot />
-</div>
-
+  <div class="card">
+    <slot />
+  </div>
 </template>
 
 <style scoped>
-
-.card{
-width:320px;
-display:flex;
-flex-direction:column;
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 4px 20px rgba(0,0,0,0.08);
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.98);
+  padding: 28px;
+  border-radius: 28px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
+  box-sizing: border-box;
 }
-
 </style>
