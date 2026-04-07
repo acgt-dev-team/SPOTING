@@ -15,7 +15,7 @@ def get_tugasan_by_profil(db: Session, profil_id: int):
         response.append({
             "id": item.tugasan.id,
             "nama": item.tugasan.nama,
-            "keterangan": item.tugasan.protocol,  # adjust if needed
+            "keterangan": item.tugasan.nama,
             "status": item.status,
             "jadualkan_pada": item.jadualkan_pada,
             "selesai_pada": item.selesai_pada
