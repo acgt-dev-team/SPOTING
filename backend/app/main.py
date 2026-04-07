@@ -54,3 +54,7 @@ def health():
     return {
         "status": "ok"
     }
+
+import logging
+
+logging.basicConfig(level=logging.DEBUG)

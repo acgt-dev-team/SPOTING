@@ -13,11 +13,9 @@ router = APIRouter(prefix="/tapak", tags=["Tapak"])
 @router.get("/sub/{sub_id}")
 def get_by_sub(sub_id: int, db: Session = Depends(get_db)):
     try:
-        data = get_tapak_by_sub(db, sub_id)
-        print("DATA:", data)
-        return data
+        return get_tapak_by_sub(db, sub_id)
     except Exception as e:
-        print("ERROR:", e)
+        print("🔥 ERROR:", str(e))
         raise e
 
 
