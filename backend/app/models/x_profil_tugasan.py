@@ -1,9 +1,19 @@
-from sqlalchemy import Table, Column, Integer, ForeignKey
+from sqlalchemy import Column, Integer, ForeignKey, TIMESTAMP
+from sqlalchemy.sql import func
+from sqlalchemy.orm import relationship
+
 from app.database.session import Base
 
-x_profil_tugasan = Table(
-    "x_profil_tugasan",
-    Base.metadata,
-    Column("profil_id", Integer, ForeignKey("profil.id", ondelete="CASCADE"), primary_key=True),
-    Column("tugasan_id", Integer, ForeignKey("tugasan.id", ondelete="CASCADE"), primary_key=True),
-)
+class XProfilTugasan(Base):
+    __tablename__ = "x_profil_tugasan"
+
+    profil_id = Column(Integer, ForeignKey("profil.id", ondelete="CASCADE"), primary_key=True)
+    tugasan_id = Column(Integer, ForeignKey("tugasan.id", ondelete="CASCADE"), primary_key=True)
+
+    status = Column(Integer, default=-1)  # -1, 0, 1
+    jadualkan_pada = Column(TIMESTAMP, nullable=True)
+    selesai_pada = Column(TIMESTAMP, nullable=True)
+
+    # relationships
+    profil = relationship("Profil", back_populates="profil_tugasan")
+    tugasan = relationship("Tugasan", back_populates="profil_tugasan")

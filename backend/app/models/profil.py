@@ -22,8 +22,8 @@ class Profil(Base):
 
     tapak = relationship("Tapak", back_populates="profil")
 
-    tugasan = relationship(
-        "Tugasan",
-        secondary=x_profil_tugasan,
-        back_populates="profil"
-    )
+    profil_tugasan = relationship(
+    "XProfilTugasan",
+    back_populates="profil",
+    cascade="all, delete"
+)
