@@ -1,6 +1,8 @@
 <script setup>
-import { computed, ref, watch } from "vue"
+import { computed, ref, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
+import api from "../../../src/services/api"
+
 import AppInput from "../ui/AppInput.vue"
 import AppButton from "../ui/AppButton.vue"
 import AppCard from "../ui/AppCard.vue"
@@ -19,41 +21,22 @@ const selectedSite = ref(null)
 const nama = ref("")
 const keterangan = ref("")
 
-const organization = ref({
-  id: organizationId,
-  name: "Jabatan Imigresen"
-})
+// ❌ REMOVE static data
+const sites = ref([])
 
-const subOrganization = ref({
-  id: subOrganizationId,
-  name: "Sub Organisasi A",
-  description: "Bahagian operasi utama"
-})
-
-const sites = ref([
-  {
-    id: 1,
-    name: "Tapak Putrajaya",
-    description: "Zon pentadbiran utama",
-    taskCount: 84
-  },
-  {
-    id: 2,
-    name: "Tapak KLIA",
-    description: "Lokasi operasi lapangan",
-    taskCount: 112
-  },
-  {
-    id: 3,
-    name: "Tapak Johor Bahru",
-    description: "Cawangan selatan",
-    taskCount: 67
+// ✅ LOAD DATA FROM BACKEND
+async function loadTapak() {
+  try {
+    const res = await api.get(`/tapak/sub/${subOrganizationId}`)
+    sites.value = res.data
+  } catch (err) {
+    console.error("Failed to load tapak:", err)
   }
-])
+}
 
 const filteredSites = computed(() => {
   return sites.value.filter((item) =>
-    item.name.toLowerCase().includes(search.value.toLowerCase())
+    item.nama.toLowerCase().includes(search.value.toLowerCase())
   )
 })
 
@@ -65,10 +48,11 @@ const breadcrumbs = [
   { label: "Tapak" }
 ]
 
+// preload modal
 watch(showModal, (value) => {
   if (value) {
-    nama.value = selectedSite.value?.name || ""
-    keterangan.value = selectedSite.value?.description || ""
+    nama.value = selectedSite.value?.nama || ""
+    keterangan.value = selectedSite.value?.keterangan || ""
   }
 })
 
@@ -92,33 +76,36 @@ function closeModal() {
   selectedSite.value = null
 }
 
-function saveSite() {
+// ✅ SAVE TO BACKEND
+async function saveSite() {
   if (!nama.value.trim()) return
 
-  const payload = {
-    id: selectedSite.value?.id ?? Date.now(),
-    name: nama.value,
-    description: keterangan.value,
-    taskCount: selectedSite.value?.taskCount ?? 0
+  try {
+    await api.post("/tapak", {
+      sub_organisasi_id: subOrganizationId,
+      kod: "TPK-" + Date.now(),
+      nama: nama.value,
+      keterangan: keterangan.value
+    })
+
+    await loadTapak()
+    closeModal()
+
+  } catch (err) {
+    console.error("Failed to save tapak:", err)
   }
-
-  const existingIndex = sites.value.findIndex((item) => item.id === payload.id)
-
-  if (existingIndex !== -1) {
-    sites.value[existingIndex] = {
-      ...sites.value[existingIndex],
-      ...payload
-    }
-  } else {
-    sites.value.unshift(payload)
-  }
-
-  closeModal()
 }
+
+// ✅ AUTO LOAD
+onMounted(() => {
+  loadTapak()
+})
 </script>
 
 <template>
   <ConfigurationLayout :breadcrumbs="breadcrumbs">
+    
+    <!-- Header -->
     <div class="hierarchy-card">
       <div class="hierarchy-left">
         <p class="parent-label">Sub Organisasi</p>
@@ -129,19 +116,24 @@ function saveSite() {
       </div>
     </div>
 
+    <!-- Toolbar -->
     <div class="toolbar">
       <div class="search-box">
         <span class="search-icon">⌕</span>
         <input v-model="search" type="text" placeholder="Carian tapak..." />
       </div>
 
-      <button class="primary-btn" @click="openAddModal">Tambah tapak</button>
+      <button class="primary-btn" @click="openAddModal">
+        Tambah tapak
+      </button>
     </div>
 
+    <!-- Title -->
     <div class="page-heading-block">
       <h1 class="main-page-title">Senarai Tapak</h1>
     </div>
 
+    <!-- Table -->
     <div class="table-card">
       <div class="table-scroll">
         <table>
@@ -155,10 +147,14 @@ function saveSite() {
           </thead>
 
           <tbody>
+            <!-- Empty -->
             <tr v-if="filteredSites.length === 0">
-              <td colspan="4" class="empty-cell">Tiada tapak dijumpai.</td>
+              <td colspan="4" class="empty-cell">
+                Tiada tapak dijumpai.
+              </td>
             </tr>
 
+            <!-- Rows -->
             <tr
               v-for="(site, index) in filteredSites"
               :key="site.id"
@@ -170,19 +166,23 @@ function saveSite() {
               <td>
                 <div class="org-cell">
                   <div class="org-avatar small">
-                    {{ site.name.charAt(0).toUpperCase() }}
+                    {{ site.nama.charAt(0).toUpperCase() }}
                   </div>
                   <div>
-                    <p class="org-name">{{ site.name }}</p>
-                    <p class="org-desc">{{ site.description }}</p>
+                    <p class="org-name">{{ site.nama }}</p>
+                    <p class="org-desc">{{ site.keterangan }}</p>
                   </div>
                 </div>
               </td>
 
-              <td>{{ site.taskCount }}</td>
+              <!-- Temporary -->
+              <td>0</td>
 
               <td>
-                <button class="ghost-btn" @click.stop="goToProfil(site)">
+                <button
+                  class="ghost-btn"
+                  @click.stop="goToProfil(site)"
+                >
                   Buka →
                 </button>
               </td>
@@ -192,12 +192,17 @@ function saveSite() {
       </div>
     </div>
 
+    <!-- Footer -->
     <div class="footer-bar">
-      <button class="secondary-btn" @click="goBack">← Kembali</button>
+      <button class="secondary-btn" @click="goBack">
+        ← Kembali
+      </button>
 
       <div class="count-pill">
         Bilangan Tapak:
-        <strong>{{ filteredSites.length.toString().padStart(2, "0") }}</strong>
+        <strong>
+          {{ filteredSites.length.toString().padStart(2, "0") }}
+        </strong>
       </div>
     </div>
 
@@ -205,10 +210,15 @@ function saveSite() {
     <transition name="fade">
       <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
         <AppCard class="modal-card">
+          
           <div class="modal-header">
             <div>
-              <p class="eyebrow">{{ isEditMode ? "KEMASKINI DATA" : "TAMBAH DATA" }}</p>
-              <h2>{{ isEditMode ? "Edit Tapak" : "Tambah Tapak" }}</h2>
+              <p class="eyebrow">
+                {{ isEditMode ? "KEMASKINI DATA" : "TAMBAH DATA" }}
+              </p>
+              <h2>
+                {{ isEditMode ? "Edit Tapak" : "Tambah Tapak" }}
+              </h2>
             </div>
 
             <button class="close-btn" @click="closeModal">✕</button>
@@ -232,16 +242,22 @@ function saveSite() {
           </div>
 
           <div class="modal-actions">
-            <AppButton text="Batal" variant="outline" @click="closeModal" />
+            <AppButton
+              text="Batal"
+              variant="outline"
+              @click="closeModal"
+            />
             <AppButton
               :text="isEditMode ? 'Simpan Perubahan' : 'Simpan'"
               variant="primary"
               @click="saveSite"
             />
           </div>
+
         </AppCard>
       </div>
     </transition>
+
   </ConfigurationLayout>
 </template>
 
