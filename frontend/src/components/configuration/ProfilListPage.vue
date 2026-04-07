@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
-import api from "@/services/api"
+import api from "../../../src/services/api"
 
 import AppInput from "../ui/AppInput.vue"
 import AppButton from "../ui/AppButton.vue"
