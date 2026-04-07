@@ -1,6 +1,9 @@
 <script setup>
-import { computed, ref } from "vue"
+import { computed, ref, watch } from "vue"
 import { useRoute, useRouter } from "vue-router"
+import AppInput from "../ui/AppInput.vue"
+import AppButton from "../ui/AppButton.vue"
+import AppCard from "../ui/AppCard.vue"
 import ConfigurationLayout from "./ConfigurationLayout.vue"
 
 const route = useRoute()
@@ -12,6 +15,11 @@ const siteId = route.params.siteId
 const profileId = route.params.profileId
 
 const search = ref("")
+const showModal = ref(false)
+
+const nama = ref("")
+const keterangan = ref("")
+const status = ref("Aktif")
 
 const profile = ref({
   id: profileId,
@@ -31,21 +39,42 @@ const filteredTasks = computed(() => {
   )
 })
 
-const breadcrumbs = [
-  { label: "Organisasi", to: "/admin/configuration" },
-  { label: "Sub Organisasi", to: `/admin/configuration/sub-organisasi/${organizationId}` },
-  { label: "Tapak", to: `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}` },
-  { label: "Profil", to: `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}/profil/${siteId}` },
-  { label: "Tugasan" }
-]
+watch(showModal, (value) => {
+  if (value) {
+    nama.value = ""
+    keterangan.value = ""
+    status.value = "Aktif"
+  }
+})
 
 function goBack() {
   router.push(`/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}/profil/${siteId}`)
 }
+
+function openAddModal() {
+  showModal.value = true
+}
+
+function closeModal() {
+  showModal.value = false
+}
+
+function saveTask() {
+  if (!nama.value.trim()) return
+
+  tasks.value.unshift({
+    id: Date.now(),
+    name: nama.value,
+    description: keterangan.value,
+    status: status.value
+  })
+
+  closeModal()
+}
 </script>
 
 <template>
-  <ConfigurationLayout :breadcrumbs="breadcrumbs">
+  <ConfigurationLayout>
     <div class="hierarchy-card">
       <div class="hierarchy-left">
         <p class="parent-label">Profil</p>
@@ -60,11 +89,11 @@ function goBack() {
         <input v-model="search" type="text" placeholder="Carian tugasan..." />
       </div>
 
-      <button class="primary-btn">Tambah tugasan</button>
+      <button class="primary-btn" @click="openAddModal">Tambah tugasan</button>
     </div>
 
     <div class="page-heading-block">
-  <h1 class="main-page-title">Senarai Tugasan</h1>
+      <h1 class="main-page-title">Senarai Tugasan</h1>
     </div>
 
     <div class="table-card">
@@ -75,12 +104,13 @@ function goBack() {
               <th style="width: 80px">Bil</th>
               <th>Nama Tugasan</th>
               <th style="width: 180px">Status</th>
+              <th style="width: 140px">Tindakan</th>
             </tr>
           </thead>
 
           <tbody>
             <tr v-if="filteredTasks.length === 0">
-              <td colspan="3" class="empty-cell">Tiada tugasan dijumpai.</td>
+              <td colspan="4" class="empty-cell">Tiada tugasan dijumpai.</td>
             </tr>
 
             <tr v-for="(task, index) in filteredTasks" :key="task.id" class="clickable-row">
@@ -98,6 +128,12 @@ function goBack() {
                   {{ task.status }}
                 </span>
               </td>
+
+              <td>
+                <button class="ghost-btn">
+                  Buka →
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -112,6 +148,52 @@ function goBack() {
         <strong>{{ filteredTasks.length.toString().padStart(2, "0") }}</strong>
       </div>
     </div>
+
+    <!-- Modal -->
+    <transition name="fade">
+      <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
+        <AppCard class="modal-card">
+          <div class="modal-header">
+            <div>
+              <p class="eyebrow">TAMBAH DATA</p>
+              <h2>Tambah Tugasan</h2>
+            </div>
+
+            <button class="close-btn" @click="closeModal">✕</button>
+          </div>
+
+          <div class="form-area">
+            <AppInput
+              v-model="nama"
+              label="Nama Tugasan"
+              placeholder="Masukkan nama tugasan"
+            />
+
+            <div class="textarea-field">
+              <label class="textarea-label">Keterangan</label>
+              <textarea
+                v-model="keterangan"
+                rows="5"
+                placeholder="Masukkan penerangan ringkas"
+              />
+            </div>
+
+            <div class="select-field">
+              <label class="textarea-label">Status</label>
+              <select v-model="status">
+                <option value="Aktif">Aktif</option>
+                <option value="Draf">Draf</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <AppButton text="Batal" variant="outline" @click="closeModal" />
+            <AppButton text="Simpan" variant="primary" @click="saveTask" />
+          </div>
+        </AppCard>
+      </div>
+    </transition>
   </ConfigurationLayout>
 </template>
 
@@ -273,6 +355,21 @@ td {
   color: #020265;
 }
 
+.ghost-btn {
+  border: none;
+  background: #eef1ff;
+  color: #020265;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.ghost-btn:hover {
+  background: #dde3ff;
+}
+
 .primary-btn,
 .secondary-btn {
   border: none;
@@ -323,5 +420,137 @@ td {
 .count-pill strong {
   margin-left: 10px;
   color: #020265;
+}
+
+/* Modal */
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.18s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 24px;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 720px;
+  padding: 28px !important;
+  animation: popIn 0.18s ease;
+  box-sizing: border-box;
+}
+
+@keyframes popIn {
+  from {
+    transform: translateY(8px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  color: #020265;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.modal-header h2 {
+  font-size: 26px;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1.15;
+}
+
+.close-btn {
+  border: none;
+  background: #f3f4f6;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #374151;
+  flex-shrink: 0;
+}
+
+.form-area {
+  width: 100%;
+}
+
+.textarea-field,
+.select-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.textarea-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+}
+
+textarea,
+select {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 18px;
+  padding: 16px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s ease;
+  color: #111827;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+textarea:focus,
+select:focus {
+  border-color: #020265;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(2, 2, 101, 0.08);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 28px;
+  flex-wrap: wrap;
 }
 </style>
