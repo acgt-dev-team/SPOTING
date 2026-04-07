@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.database.session import engine, Base
 from app.api import tugasan, profil, tapak
+from app.models import Tapak, Profil, Tugasan, XProfilTugasan
 
 app = FastAPI(
 title="SPOTING Backend",
