@@ -1,6 +1,8 @@
 <script setup>
-import { computed, ref, watch } from "vue"
+import { computed, ref, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
+import api from "@/services/api"
+
 import AppInput from "../ui/AppInput.vue"
 import AppButton from "../ui/AppButton.vue"
 import AppCard from "../ui/AppCard.vue"
@@ -17,9 +19,13 @@ const profileId = route.params.profileId
 const search = ref("")
 const showModal = ref(false)
 
-const nama = ref("")
-const keterangan = ref("")
-const status = ref("Aktif")
+// ❌ REMOVE nama/keterangan/status (no longer needed)
+// const nama = ref("")
+// const keterangan = ref("")
+// const status = ref("Aktif")
+
+// ✅ NEW: dropdown selection
+const selectedTugasanId = ref(null)
 
 const profile = ref({
   id: profileId,
@@ -27,29 +33,68 @@ const profile = ref({
   description: "Tetapan operasi tapak"
 })
 
-const tasks = ref([
-  { id: 1, name: "Pengesahan akses", description: "Semakan akses pengguna", status: "Aktif" },
-  { id: 2, name: "Audit tapak", description: "Pemeriksaan berkala", status: "Aktif" },
-  { id: 3, name: "Semakan konfigurasi", description: "Validasi tetapan semasa", status: "Draf" }
-])
+// ✅ FROM API
+const tasks = ref([])
+const allTugasan = ref([])
 
+// 🔍 Filter
 const filteredTasks = computed(() => {
   return tasks.value.filter((item) =>
-    item.name.toLowerCase().includes(search.value.toLowerCase())
+    item.nama.toLowerCase().includes(search.value.toLowerCase())
   )
 })
 
+// 🧠 Status mapping
+function getStatusLabel(status) {
+  if (status === -1) return "Sedang berjalan"
+  if (status === 0) return "Sudah dijual"
+  if (status === 1) return "Selesai"
+  return "Unknown"
+}
+
+// 🔥 Load assigned tasks
+async function loadTasks() {
+  try {
+    const res = await api.get(`/tugasan/profil/${profileId}`)
+    tasks.value = res.data
+  } catch (err) {
+    console.error("Error loading tasks:", err)
+  }
+}
+
+// 🔥 Load all available tugasan (for dropdown)
+async function loadAllTugasan() {
+  try {
+    const res = await api.get("/tugasan")
+    allTugasan.value = res.data
+  } catch (err) {
+    console.error("Error loading all tugasan:", err)
+  }
+}
+
+// 🚀 Assign tugasan
+async function assignTask() {
+  if (!selectedTugasanId.value) return
+
+  try {
+    await api.post(`/tugasan/profil/${profileId}`, {
+      tugasan_id: selectedTugasanId.value,
+      status: -1
+    })
+
+    await loadTasks()
+    closeModal()
+  } catch (err) {
+    console.error("Error assigning task:", err)
+  }
+}
+
+// Modal handling
 watch(showModal, (value) => {
   if (value) {
-    nama.value = ""
-    keterangan.value = ""
-    status.value = "Aktif"
+    selectedTugasanId.value = null
   }
 })
-
-function goBack() {
-  router.push(`/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}/profil/${siteId}`)
-}
 
 function openAddModal() {
   showModal.value = true
@@ -59,18 +104,16 @@ function closeModal() {
   showModal.value = false
 }
 
-function saveTask() {
-  if (!nama.value.trim()) return
-
-  tasks.value.unshift({
-    id: Date.now(),
-    name: nama.value,
-    description: keterangan.value,
-    status: status.value
-  })
-
-  closeModal()
+// Navigation
+function goBack() {
+  router.push(`/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}/profil/${siteId}`)
 }
+
+// 🚀 Load data on mount
+onMounted(() => {
+  loadTasks()
+  loadAllTugasan()
+})
 </script>
 
 <template>
@@ -83,19 +126,24 @@ function saveTask() {
       </div>
     </div>
 
+    <!-- Toolbar -->
     <div class="toolbar">
       <div class="search-box">
         <span class="search-icon">⌕</span>
         <input v-model="search" type="text" placeholder="Carian tugasan..." />
       </div>
 
-      <button class="primary-btn" @click="openAddModal">Tambah tugasan</button>
+      <button class="primary-btn" @click="openAddModal">
+        Assign Tugasan
+      </button>
     </div>
 
+    <!-- Title -->
     <div class="page-heading-block">
       <h1 class="main-page-title">Senarai Tugasan</h1>
     </div>
 
+    <!-- Table -->
     <div class="table-card">
       <div class="table-scroll">
         <table>
@@ -110,22 +158,34 @@ function saveTask() {
 
           <tbody>
             <tr v-if="filteredTasks.length === 0">
-              <td colspan="4" class="empty-cell">Tiada tugasan dijumpai.</td>
+              <td colspan="4" class="empty-cell">
+                Tiada tugasan dijumpai.
+              </td>
             </tr>
 
-            <tr v-for="(task, index) in filteredTasks" :key="task.id" class="clickable-row">
+            <tr
+              v-for="(task, index) in filteredTasks"
+              :key="task.id"
+              class="clickable-row"
+            >
               <td>{{ index + 1 }}</td>
 
               <td>
                 <div>
-                  <p class="org-name">{{ task.name }}</p>
-                  <p class="org-desc">{{ task.description }}</p>
+                  <p class="org-name">{{ task.nama }}</p>
+                  <p class="org-desc">{{ task.keterangan }}</p>
                 </div>
               </td>
 
               <td>
-                <span class="status-pill" :class="{ draft: task.status === 'Draf' }">
-                  {{ task.status }}
+                <span
+                  class="status-pill"
+                  :class="{
+                    draft: task.status === -1,
+                    success: task.status === 1
+                  }"
+                >
+                  {{ getStatusLabel(task.status) }}
                 </span>
               </td>
 
@@ -140,56 +200,65 @@ function saveTask() {
       </div>
     </div>
 
+    <!-- Footer -->
     <div class="footer-bar">
-      <button class="secondary-btn" @click="goBack">← Kembali</button>
+      <button class="secondary-btn" @click="goBack">
+        ← Kembali
+      </button>
 
       <div class="count-pill">
         Bilangan Tugasan:
-        <strong>{{ filteredTasks.length.toString().padStart(2, "0") }}</strong>
+        <strong>
+          {{ filteredTasks.length.toString().padStart(2, "0") }}
+        </strong>
       </div>
     </div>
 
     <!-- Modal -->
     <transition name="fade">
-      <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
+      <div
+        v-if="showModal"
+        class="modal-overlay"
+        @click.self="closeModal"
+      >
         <AppCard class="modal-card">
           <div class="modal-header">
             <div>
               <p class="eyebrow">TAMBAH DATA</p>
-              <h2>Tambah Tugasan</h2>
+              <h2>Assign Tugasan</h2>
             </div>
 
             <button class="close-btn" @click="closeModal">✕</button>
           </div>
 
           <div class="form-area">
-            <AppInput
-              v-model="nama"
-              label="Nama Tugasan"
-              placeholder="Masukkan nama tugasan"
-            />
-
-            <div class="textarea-field">
-              <label class="textarea-label">Keterangan</label>
-              <textarea
-                v-model="keterangan"
-                rows="5"
-                placeholder="Masukkan penerangan ringkas"
-              />
-            </div>
-
+            <!-- 🔥 Dropdown instead of inputs -->
             <div class="select-field">
-              <label class="textarea-label">Status</label>
-              <select v-model="status">
-                <option value="Aktif">Aktif</option>
-                <option value="Draf">Draf</option>
+              <label class="textarea-label">Pilih Tugasan</label>
+              <select v-model="selectedTugasanId">
+                <option disabled value="">-- Pilih Tugasan --</option>
+                <option
+                  v-for="t in allTugasan"
+                  :key="t.id"
+                  :value="t.id"
+                >
+                  {{ t.nama }}
+                </option>
               </select>
             </div>
           </div>
 
           <div class="modal-actions">
-            <AppButton text="Batal" variant="outline" @click="closeModal" />
-            <AppButton text="Simpan" variant="primary" @click="saveTask" />
+            <AppButton
+              text="Batal"
+              variant="outline"
+              @click="closeModal"
+            />
+            <AppButton
+              text="Simpan"
+              variant="primary"
+              @click="assignTask"
+            />
           </div>
         </AppCard>
       </div>
