@@ -3,7 +3,9 @@ from app.models.tapak import Tapak
 
 
 def get_tapak_by_sub(db: Session, sub_id: int):
-    tapaks = db.query(Tapak).filter(Tapak.sub_organisasi_id == sub_id).all()
+    tapaks = db.query(Tapak).filter(
+        Tapak.sub_organisasi_id == sub_id
+    ).all()
 
     result = []
     for t in tapaks:

@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
-import api from "../../../src/services/api"
+import api from "../../services/api" // ✅ FIXED PATH
 
 import AppInput from "../ui/AppInput.vue"
 import AppButton from "../ui/AppButton.vue"
@@ -11,8 +11,21 @@ import ConfigurationLayout from "./ConfigurationLayout.vue"
 const route = useRoute()
 const router = useRouter()
 
+// ✅ SAFE PARAMS
 const organizationId = route.params.organizationId
 const subOrganizationId = route.params.subOrganizationId
+
+// ✅ PREVENT CRASH (IMPORTANT)
+const organization = ref({
+  id: organizationId,
+  name: "Organisasi"
+})
+
+const subOrganization = ref({
+  id: subOrganizationId,
+  name: "Sub Organisasi",
+  description: ""
+})
 
 const search = ref("")
 const showModal = ref(false)
@@ -21,22 +34,22 @@ const selectedSite = ref(null)
 const nama = ref("")
 const keterangan = ref("")
 
-// ❌ REMOVE static data
 const sites = ref([])
 
-// ✅ LOAD DATA FROM BACKEND
+// ✅ LOAD DATA
 async function loadTapak() {
   try {
     const res = await api.get(`/tapak/sub/${subOrganizationId}`)
-    sites.value = res.data
+    sites.value = res.data || []
   } catch (err) {
     console.error("Failed to load tapak:", err)
   }
 }
 
+// ✅ SAFE FILTER (prevents crash)
 const filteredSites = computed(() => {
   return sites.value.filter((item) =>
-    item.nama.toLowerCase().includes(search.value.toLowerCase())
+    item?.nama?.toLowerCase().includes(search.value.toLowerCase())
   )
 })
 
@@ -56,6 +69,7 @@ watch(showModal, (value) => {
   }
 })
 
+// navigation
 function goBack() {
   router.push(`/admin/configuration/sub-organisasi/${organizationId}`)
 }
@@ -66,6 +80,7 @@ function goToProfil(site) {
   )
 }
 
+// modal
 function openAddModal() {
   selectedSite.value = null
   showModal.value = true
@@ -76,7 +91,7 @@ function closeModal() {
   selectedSite.value = null
 }
 
-// ✅ SAVE TO BACKEND
+// ✅ SAVE
 async function saveSite() {
   if (!nama.value.trim()) return
 
@@ -96,7 +111,7 @@ async function saveSite() {
   }
 }
 
-// ✅ AUTO LOAD
+// load on start
 onMounted(() => {
   loadTapak()
 })
@@ -109,9 +124,9 @@ onMounted(() => {
     <div class="hierarchy-card">
       <div class="hierarchy-left">
         <p class="parent-label">Sub Organisasi</p>
-        <h2>{{ subOrganization.name }}</h2>
+        <h2>{{ subOrganization?.name }}</h2>
         <p class="parent-desc">
-          {{ organization.name }} · {{ subOrganization.description }}
+          {{ organization?.name }} · {{ subOrganization?.description }}
         </p>
       </div>
     </div>
