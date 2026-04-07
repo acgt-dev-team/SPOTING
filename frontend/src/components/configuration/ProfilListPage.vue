@@ -1,6 +1,8 @@
 <script setup>
-import { computed, ref, watch } from "vue"
+import { computed, ref, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
+import api from "@/services/api"
+
 import AppInput from "../ui/AppInput.vue"
 import AppButton from "../ui/AppButton.vue"
 import AppCard from "../ui/AppCard.vue"
@@ -21,22 +23,21 @@ const keterangan = ref("")
 
 const site = ref({
   id: siteId,
-  name: "Tapak Putrajaya",
-  description: "Zon pentadbiran utama"
+  name: "Tapak",
+  description: "Maklumat tapak"
 })
 
-const profiles = ref([
-  { id: 1, name: "Profil Operasi", description: "Tetapan operasi tapak", taskCount: 34 },
-  { id: 2, name: "Profil Pentadbiran", description: "Konfigurasi pentadbiran", taskCount: 21 },
-  { id: 3, name: "Profil Keselamatan", description: "Polisi keselamatan", taskCount: 18 }
-])
+// ✅ FROM API
+const profiles = ref([])
 
+// 🔍 Filter
 const filteredProfiles = computed(() => {
   return profiles.value.filter((item) =>
-    item.name.toLowerCase().includes(search.value.toLowerCase())
+    item.nama.toLowerCase().includes(search.value.toLowerCase())
   )
 })
 
+// Breadcrumbs
 const breadcrumbs = [
   { label: "Organisasi", to: "/admin/configuration" },
   { label: "Sub Organisasi", to: `/admin/configuration/sub-organisasi/${organizationId}` },
@@ -44,6 +45,36 @@ const breadcrumbs = [
   { label: "Profil" }
 ]
 
+// 🔥 Load profiles
+async function loadProfiles() {
+  try {
+    const res = await api.get(`/profil/tapak/${siteId}`)
+    profiles.value = res.data
+  } catch (err) {
+    console.error("Error loading profiles:", err)
+  }
+}
+
+// 🔥 Create profile
+async function saveProfile() {
+  if (!nama.value.trim()) return
+
+  try {
+    await api.post("/profil", {
+      tapak_id: siteId,
+      kod: "AUTO-" + Date.now(),
+      nama: nama.value,
+      deskripsi: keterangan.value
+    })
+
+    await loadProfiles()
+    closeModal()
+  } catch (err) {
+    console.error("Error creating profile:", err)
+  }
+}
+
+// Modal
 watch(showModal, (value) => {
   if (value) {
     nama.value = ""
@@ -51,6 +82,15 @@ watch(showModal, (value) => {
   }
 })
 
+function openAddModal() {
+  showModal.value = true
+}
+
+function closeModal() {
+  showModal.value = false
+}
+
+// Navigation
 function goBack() {
   router.push(`/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}`)
 }
@@ -61,30 +101,15 @@ function goToTugasan(profile) {
   )
 }
 
-function openAddModal() {
-  showModal.value = true
-}
-
-function closeModal() {
-  showModal.value = false
-}
-
-function saveProfile() {
-  if (!nama.value.trim()) return
-
-  profiles.value.unshift({
-    id: Date.now(),
-    name: nama.value,
-    description: keterangan.value,
-    taskCount: 0
-  })
-
-  closeModal()
-}
+// 🚀 Load on mount
+onMounted(() => {
+  loadProfiles()
+})
 </script>
 
 <template>
   <ConfigurationLayout :breadcrumbs="breadcrumbs">
+    <!-- Header -->
     <div class="hierarchy-card">
       <div class="hierarchy-left">
         <p class="parent-label">Tapak</p>
@@ -93,19 +118,24 @@ function saveProfile() {
       </div>
     </div>
 
+    <!-- Toolbar -->
     <div class="toolbar">
       <div class="search-box">
         <span class="search-icon">⌕</span>
         <input v-model="search" type="text" placeholder="Carian profil..." />
       </div>
 
-      <button class="primary-btn" @click="openAddModal">Tambah profil</button>
+      <button class="primary-btn" @click="openAddModal">
+        Tambah Profil
+      </button>
     </div>
 
+    <!-- Title -->
     <div class="page-heading-block">
       <h1 class="main-page-title">Senarai Profil</h1>
     </div>
 
+    <!-- Table -->
     <div class="table-card">
       <div class="table-scroll">
         <table>
@@ -119,10 +149,14 @@ function saveProfile() {
           </thead>
 
           <tbody>
+            <!-- Empty -->
             <tr v-if="filteredProfiles.length === 0">
-              <td colspan="4" class="empty-cell">Tiada profil dijumpai.</td>
+              <td colspan="4" class="empty-cell">
+                Tiada profil dijumpai.
+              </td>
             </tr>
 
+            <!-- Rows -->
             <tr
               v-for="(profile, index) in filteredProfiles"
               :key="profile.id"
@@ -133,18 +167,24 @@ function saveProfile() {
 
               <td>
                 <div class="org-cell">
-                  <div class="org-avatar">{{ profile.name.charAt(0).toUpperCase() }}</div>
+                  <div class="org-avatar">
+                    {{ profile.nama?.charAt(0).toUpperCase() }}
+                  </div>
                   <div>
-                    <p class="org-name">{{ profile.name }}</p>
-                    <p class="org-desc">{{ profile.description }}</p>
+                    <p class="org-name">{{ profile.nama }}</p>
+                    <p class="org-desc">{{ profile.deskripsi }}</p>
                   </div>
                 </div>
               </td>
 
-              <td>{{ profile.taskCount }}</td>
+              <!-- 🔥 TEMP (no backend count yet) -->
+              <td>0</td>
 
               <td>
-                <button class="ghost-btn" @click.stop="goToTugasan(profile)">
+                <button
+                  class="ghost-btn"
+                  @click.stop="goToTugasan(profile)"
+                >
                   Buka →
                 </button>
               </td>
@@ -154,18 +194,27 @@ function saveProfile() {
       </div>
     </div>
 
+    <!-- Footer -->
     <div class="footer-bar">
-      <button class="secondary-btn" @click="goBack">← Kembali</button>
+      <button class="secondary-btn" @click="goBack">
+        ← Kembali
+      </button>
 
       <div class="count-pill">
         Bilangan Profil:
-        <strong>{{ filteredProfiles.length.toString().padStart(2, "0") }}</strong>
+        <strong>
+          {{ filteredProfiles.length.toString().padStart(2, "0") }}
+        </strong>
       </div>
     </div>
 
     <!-- Modal -->
     <transition name="fade">
-      <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
+      <div
+        v-if="showModal"
+        class="modal-overlay"
+        @click.self="closeModal"
+      >
         <AppCard class="modal-card">
           <div class="modal-header">
             <div>
@@ -173,7 +222,9 @@ function saveProfile() {
               <h2>Tambah Profil</h2>
             </div>
 
-            <button class="close-btn" @click="closeModal">✕</button>
+            <button class="close-btn" @click="closeModal">
+              ✕
+            </button>
           </div>
 
           <div class="form-area">
@@ -194,8 +245,16 @@ function saveProfile() {
           </div>
 
           <div class="modal-actions">
-            <AppButton text="Batal" variant="outline" @click="closeModal" />
-            <AppButton text="Simpan" variant="primary" @click="saveProfile" />
+            <AppButton
+              text="Batal"
+              variant="outline"
+              @click="closeModal"
+            />
+            <AppButton
+              text="Simpan"
+              variant="primary"
+              @click="saveProfile"
+            />
           </div>
         </AppCard>
       </div>

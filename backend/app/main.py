@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.database.session import engine, Base
-from app.api import tugasan
+from app.api import tugasan, profil
 
 app = FastAPI(
 title="SPOTING Backend",
@@ -34,6 +34,7 @@ allow_headers=["*"],
 # ✅ Register routers
 
 app.include_router(tugasan.router)
+app.include_router(profil.router)
 
 # ✅ Root endpoint
 
