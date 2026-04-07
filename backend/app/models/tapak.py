@@ -1,39 +1,26 @@
-from sqlalchemy.orm import Session
-from app.models.tapak import Tapak
+from sqlalchemy import Column, Integer, String, Text, Boolean, TIMESTAMP, ForeignKey
+from sqlalchemy.sql import func
+from sqlalchemy.orm import relationship
+
+from app.database.session import Base
 
 
-def get_tapak_by_sub(db: Session, sub_id: int):
-    tapaks = db.query(Tapak).filter(
-        Tapak.sub_organisasi_id == sub_id
-    ).all()
+class Tapak(Base):
+    __tablename__ = "tapak"
 
-    result = []
-    for t in tapaks:
-        result.append({
-            "id": t.id,
-            "nama": t.nama,
-            "keterangan": t.deskripsi,  # ✅ map here
-            "kod": t.kod,
-            "aktif": t.aktif
-        })
+    id = Column(Integer, primary_key=True, index=True)
+    sub_organisasi_id = Column(Integer, ForeignKey("sub_organisasi.id", ondelete="CASCADE"), nullable=False)
 
-    return result
+    kod = Column(String(50), unique=True, nullable=False)
+    nama = Column(String(255), nullable=False)
 
+    alamat = Column(Text)
+    deskripsi = Column(Text)
 
-def create_tapak(db: Session, data: dict):
-    new_tapak = Tapak(
-        sub_organisasi_id=data["sub_organisasi_id"],
-        kod=data["kod"],
-        nama=data["nama"],
-        deskripsi=data.get("keterangan", "")  # ✅ map here
-    )
+    aktif = Column(Boolean, default=True)
 
-    db.add(new_tapak)
-    db.commit()
-    db.refresh(new_tapak)
+    cipta_pada = Column(TIMESTAMP, server_default=func.now())
+    kemaskini_pada = Column(TIMESTAMP, server_default=func.now())
 
-    return {
-        "id": new_tapak.id,
-        "nama": new_tapak.nama,
-        "keterangan": new_tapak.deskripsi
-    }
+    sub_organisasi = relationship("SubOrganisasi", back_populates="tapak")
+    profil = relationship("Profil", back_populates="tapak", cascade="all, delete")
