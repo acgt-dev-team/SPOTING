@@ -9,6 +9,12 @@ app = FastAPI(
     version="1.0"
 )
 
+# ✅ Create tables on startup (IMPORTANT)
+@app.on_event("startup")
+def on_startup():
+    Base.metadata.create_all(bind=engine)
+
+
 # Allow frontend to access backend
 origins = [
     "http://localhost:5173",
@@ -23,14 +29,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 # Register API routes
-app.include_router(wizard.router)
+app.include_router(wizard.router, prefix="/wizard")
 
 
 @app.get("/")
 def root():
     return {"message": "SPOTING backend running"}
+
 
 @app.get("/health")
 def health():

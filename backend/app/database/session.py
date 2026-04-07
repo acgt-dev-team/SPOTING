@@ -1,33 +1,31 @@
+from dotenv import load_dotenv
 import os
-import time
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
+# Load environment variables
+load_dotenv()
+
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Always create engine first (important for Alembic)
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL is not set in environment variables")
+
+# Create engine
 engine = create_engine(DATABASE_URL)
 
-# Optional: retry connection when running app container
-for i in range(10):
-    try:
-        connection = engine.connect()
-        connection.close()
-        print("Database connected successfully")
-        break
-    except Exception:
-        print("Database not ready, retrying...")
-        time.sleep(3)
-
+# Create session
 SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
     bind=engine
 )
 
+# Base model
 Base = declarative_base()
 
-# FastAPI dependency
+# Dependency for FastAPI
 def get_db():
     db = SessionLocal()
     try:
