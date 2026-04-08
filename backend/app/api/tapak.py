@@ -1,28 +1,47 @@
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
-from app.database.session import get_db
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-from app.services.tapak_service import (
-    get_tapak_by_sub,
-    create_tapak
+from app.database.session import engine, Base
+
+# ✅ LOAD ALL MODELS ONCE
+import app.models
+
+from app.api import tugasan, profil, tapak
+
+app = FastAPI(
+    title="SPOTING Backend",
+    version="1.0.0"
 )
 
-router = APIRouter(prefix="/tapak", tags=["Tapak"])
+
+@app.on_event("startup")
+def on_startup():
+    Base.metadata.create_all(bind=engine)
 
 
-@router.get("/sub/{sub_id}")
-def get_by_sub(sub_id: int, db: Session = Depends(get_db)):
-    try:
-        return get_tapak_by_sub(db, sub_id)
-    except Exception as e:
-        print("🔥 API ERROR:", str(e))
-        raise e
+# ✅ TEMP CORS FIX
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
-@router.post("/")
-def create(data: dict, db: Session = Depends(get_db)):
-    try:
-        return create_tapak(db, data)
-    except Exception as e:
-        print("🔥 API CREATE ERROR:", str(e))
-        raise e
+app.include_router(tugasan.router)
+app.include_router(profil.router)
+app.include_router(tapak.router)
+
+
+@app.get("/")
+def root():
+    return {
+        "message": "SPOTING backend running",
+        "version": "1.0.0"
+    }
+
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
