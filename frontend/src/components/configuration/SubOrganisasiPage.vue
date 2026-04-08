@@ -1,6 +1,8 @@
 <script setup>
-import { computed, ref, watch } from "vue"
+import { computed, ref, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
+import api from "../../../src/services/api"
+
 import AppInput from "../ui/AppInput.vue"
 import AppButton from "../ui/AppButton.vue"
 import AppCard from "../ui/AppCard.vue"
@@ -9,111 +11,118 @@ import ConfigurationLayout from "./ConfigurationLayout.vue"
 const route = useRoute()
 const router = useRouter()
 
-const organizationId = route.params.organizationId
+// ✅ PARAM
+const organisasiId = route.params.organizationId
+
+// ✅ SAFE OBJECT
+const organisasi = ref({
+  id: organisasiId,
+  name: "Organisasi",
+  description: ""
+})
+
 const search = ref("")
 const showModal = ref(false)
-const selectedSubOrganisasi = ref(null)
+const selectedSub = ref(null)
 
 const nama = ref("")
 const keterangan = ref("")
 
-const organization = ref({
-  id: organizationId,
-  name: "Jabatan Imigresen",
-  description: "Pengurusan organisasi utama"
-})
+const subs = ref([])
 
-const subOrganizations = ref([
-  {
-    id: 1,
-    name: "Sub Organisasi A",
-    description: "Bahagian operasi utama",
-    siteCount: 320,
-    taskCount: 412
-  },
-  {
-    id: 2,
-    name: "Sub Organisasi B",
-    description: "Bahagian pentadbiran",
-    siteCount: 180,
-    taskCount: 255
+// ✅ LOAD DATA
+async function loadSubOrganisasi() {
+  try {
+    const res = await api.get(`/sub-organisasi/organisasi/${organisasiId}`)
+    subs.value = res.data || []
+  } catch (err) {
+    console.error("Failed to load sub organisasi:", err)
   }
-])
+}
 
-const filteredSubOrganizations = computed(() => {
-  return subOrganizations.value.filter((item) =>
-    item.name.toLowerCase().includes(search.value.toLowerCase())
+// ✅ FILTER SAFE
+const filteredSubs = computed(() => {
+  return subs.value.filter((item) =>
+    item?.nama?.toLowerCase().includes(search.value.toLowerCase())
   )
 })
 
-const isEditMode = computed(() => !!selectedSubOrganisasi.value)
+const isEditMode = computed(() => !!selectedSub.value)
 
 const breadcrumbs = [
   { label: "Organisasi", to: "/admin/configuration" },
   { label: "Sub Organisasi" }
 ]
 
+// preload modal
 watch(showModal, (value) => {
   if (value) {
-    nama.value = selectedSubOrganisasi.value?.name || ""
-    keterangan.value = selectedSubOrganisasi.value?.description || ""
+    nama.value = selectedSub.value?.nama || ""
+    keterangan.value = selectedSub.value?.keterangan || ""
   }
 })
 
+// navigation
 function goBack() {
   router.push("/admin/configuration")
 }
 
-function goToTapak(item) {
-  router.push(`/admin/configuration/sub-organisasi/${organizationId}/tapak/${item.id}`)
+function goToTapak(sub) {
+  router.push(`/admin/configuration/sub-organisasi/${organisasiId}/tapak/${sub.id}`)
 }
 
+// modal
 function openAddModal() {
-  selectedSubOrganisasi.value = null
+  selectedSub.value = null
   showModal.value = true
 }
 
 function closeModal() {
   showModal.value = false
-  selectedSubOrganisasi.value = null
+  selectedSub.value = null
 }
 
-function saveSubOrganisasi() {
+// ✅ SAVE
+async function saveSub() {
   if (!nama.value.trim()) return
 
-  const payload = {
-    id: selectedSubOrganisasi.value?.id ?? Date.now(),
-    name: nama.value,
-    description: keterangan.value,
-    siteCount: selectedSubOrganisasi.value?.siteCount ?? 0,
-    taskCount: selectedSubOrganisasi.value?.taskCount ?? 0
+  try {
+    await api.post("/sub-organisasi", {
+      organisasi_id: organisasiId,
+      kod: "SUB-" + Date.now(),
+      nama: nama.value,
+      keterangan: keterangan.value
+    })
+
+    await loadSubOrganisasi()
+    closeModal()
+
+  } catch (err) {
+    console.error("Failed to save sub organisasi:", err)
   }
-
-  const existingIndex = subOrganizations.value.findIndex((item) => item.id === payload.id)
-
-  if (existingIndex !== -1) {
-    subOrganizations.value[existingIndex] = {
-      ...subOrganizations.value[existingIndex],
-      ...payload
-    }
-  } else {
-    subOrganizations.value.unshift(payload)
-  }
-
-  closeModal()
 }
+
+// load on mount
+onMounted(() => {
+  loadSubOrganisasi()
+})
 </script>
 
 <template>
   <ConfigurationLayout :breadcrumbs="breadcrumbs">
+
+    <!-- Header -->
     <div class="hierarchy-card">
       <div class="hierarchy-left">
-        <p class="parent-label">Organisasi Induk</p>
-        <h2>{{ organization.name }}</h2>
-        <p class="parent-desc">{{ organization.description }}</p>
+        <p class="parent-label">Organisasi</p>
+        <h2>{{ organisasi?.name }}</h2>
+        <p class="parent-desc">
+          {{ organisasi?.description }}
+        </p>
       </div>
     </div>
 
+    <!-- Toolbar -->
     <div class="toolbar">
       <div class="search-box">
         <span class="search-icon">⌕</span>
@@ -125,10 +134,12 @@ function saveSubOrganisasi() {
       </button>
     </div>
 
+    <!-- Title -->
     <div class="page-heading-block">
       <h1 class="main-page-title">Senarai Sub Organisasi</h1>
     </div>
 
+    <!-- Table -->
     <div class="table-card">
       <div class="table-scroll">
         <table>
@@ -137,43 +148,47 @@ function saveSubOrganisasi() {
               <th style="width: 80px">Bil</th>
               <th>Nama Sub Organisasi</th>
               <th style="width: 180px">Tapak</th>
-              <th style="width: 180px">Tugasan</th>
-              <th style="width: 120px">Tindakan</th>
+              <th style="width: 140px">Tindakan</th>
             </tr>
           </thead>
 
           <tbody>
-            <tr v-if="filteredSubOrganizations.length === 0">
-              <td colspan="5" class="empty-cell">
+            <!-- Empty -->
+            <tr v-if="filteredSubs.length === 0">
+              <td colspan="4" class="empty-cell">
                 Tiada sub organisasi dijumpai.
               </td>
             </tr>
 
+            <!-- Rows -->
             <tr
-              v-for="(item, index) in filteredSubOrganizations"
-              :key="item.id"
+              v-for="(sub, index) in filteredSubs"
+              :key="sub.id"
               class="clickable-row"
-              @click="goToTapak(item)"
+              @click="goToTapak(sub)"
             >
               <td>{{ index + 1 }}</td>
 
               <td>
                 <div class="org-cell">
                   <div class="org-avatar small">
-                    {{ item.name.charAt(0).toUpperCase() }}
+                    {{ sub.nama?.charAt(0).toUpperCase() }}
                   </div>
                   <div>
-                    <p class="org-name">{{ item.name }}</p>
-                    <p class="org-desc">{{ item.description }}</p>
+                    <p class="org-name">{{ sub.nama }}</p>
+                    <p class="org-desc">{{ sub.keterangan }}</p>
                   </div>
                 </div>
               </td>
 
-              <td>{{ item.siteCount }}</td>
-              <td>{{ item.taskCount }}</td>
+              <!-- Temporary count -->
+              <td>0</td>
 
               <td>
-                <button class="ghost-btn" @click.stop="goToTapak(item)">
+                <button
+                  class="ghost-btn"
+                  @click.stop="goToTapak(sub)"
+                >
                   Buka →
                 </button>
               </td>
@@ -183,12 +198,17 @@ function saveSubOrganisasi() {
       </div>
     </div>
 
+    <!-- Footer -->
     <div class="footer-bar">
-      <button class="secondary-btn" @click="goBack">← Kembali</button>
+      <button class="secondary-btn" @click="goBack">
+        ← Kembali
+      </button>
 
       <div class="count-pill">
         Bilangan Sub Organisasi:
-        <strong>{{ filteredSubOrganizations.length.toString().padStart(2, "0") }}</strong>
+        <strong>
+          {{ filteredSubs.length.toString().padStart(2, "0") }}
+        </strong>
       </div>
     </div>
 
@@ -196,10 +216,15 @@ function saveSubOrganisasi() {
     <transition name="fade">
       <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
         <AppCard class="modal-card">
+
           <div class="modal-header">
             <div>
-              <p class="eyebrow">{{ isEditMode ? "KEMASKINI DATA" : "TAMBAH DATA" }}</p>
-              <h2>{{ isEditMode ? "Edit Sub Organisasi" : "Tambah Sub Organisasi" }}</h2>
+              <p class="eyebrow">
+                {{ isEditMode ? "KEMASKINI DATA" : "TAMBAH DATA" }}
+              </p>
+              <h2>
+                {{ isEditMode ? "Edit Sub Organisasi" : "Tambah Sub Organisasi" }}
+              </h2>
             </div>
 
             <button class="close-btn" @click="closeModal">✕</button>
@@ -227,12 +252,14 @@ function saveSubOrganisasi() {
             <AppButton
               :text="isEditMode ? 'Simpan Perubahan' : 'Simpan'"
               variant="primary"
-              @click="saveSubOrganisasi"
+              @click="saveSub"
             />
           </div>
+
         </AppCard>
       </div>
     </transition>
+
   </ConfigurationLayout>
 </template>
 
