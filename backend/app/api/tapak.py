@@ -15,10 +15,14 @@ def get_by_sub(sub_id: int, db: Session = Depends(get_db)):
     try:
         return get_tapak_by_sub(db, sub_id)
     except Exception as e:
-        print("🔥 ERROR:", str(e))
+        print("🔥 API ERROR:", str(e))
         raise e
 
 
 @router.post("/")
 def create(data: dict, db: Session = Depends(get_db)):
-    return create_tapak(db, data)
+    try:
+        return create_tapak(db, data)
+    except Exception as e:
+        print("🔥 API CREATE ERROR:", str(e))
+        raise e
