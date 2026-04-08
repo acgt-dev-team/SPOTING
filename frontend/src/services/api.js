@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-  baseURL: "https://seahorse-app-6x2kt.ondigitalocean.app"
+  baseURL: import.meta.env.VITE_API_BASE_URL
 })
 
 export default api
