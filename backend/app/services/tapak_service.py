@@ -12,15 +12,16 @@ def get_tapak_by_sub(db: Session, sub_id: int):
 
         print("👉 RAW RESULT:", tapaks)
 
-        result = []
-        for t in tapaks:
-            result.append({
+        result = [
+            {
                 "id": t.id,
                 "nama": t.nama,
-                "keterangan": t.deskripsi,
+                "keterangan": t.keterangan,  # ✅ FIXED
                 "kod": t.kod,
                 "aktif": t.aktif
-            })
+            }
+            for t in tapaks
+        ]
 
         print("👉 FINAL RESULT:", result)
 
@@ -32,19 +33,24 @@ def get_tapak_by_sub(db: Session, sub_id: int):
 
 
 def create_tapak(db: Session, data: dict):
-    new_tapak = Tapak(
-        sub_organisasi_id=data["sub_organisasi_id"],
-        kod=data["kod"],
-        nama=data["nama"],
-        deskripsi=data.get("keterangan", "")
-    )
+    try:
+        new_tapak = Tapak(
+            sub_organisasi_id=data["sub_organisasi_id"],
+            kod=data["kod"],
+            nama=data["nama"],
+            keterangan=data.get("keterangan", "")  # ✅ FIXED
+        )
 
-    db.add(new_tapak)
-    db.commit()
-    db.refresh(new_tapak)
+        db.add(new_tapak)
+        db.commit()
+        db.refresh(new_tapak)
 
-    return {
-        "id": new_tapak.id,
-        "nama": new_tapak.nama,
-        "keterangan": new_tapak.deskripsi
-    }
+        return {
+            "id": new_tapak.id,
+            "nama": new_tapak.nama,
+            "keterangan": new_tapak.keterangan
+        }
+
+    except Exception as e:
+        print("🔥 CREATE ERROR:", str(e))
+        raise e

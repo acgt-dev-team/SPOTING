@@ -21,7 +21,8 @@ def on_startup():
 origins = [
 "http://localhost:5173",
 "http://127.0.0.1:5173",
-"https://seahorse-app-6x2kt.ondigitalocean.app"
+"https://seahorse-app-6x2kt.ondigitalocean.app",
+"*"
 ]
 
 app.add_middleware(
