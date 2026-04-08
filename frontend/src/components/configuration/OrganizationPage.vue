@@ -1,6 +1,8 @@
 <script setup>
-import { computed, ref, watch } from "vue"
+import { computed, ref, watch, onMounted } from "vue"
 import { useRouter } from "vue-router"
+import api from "../../../src/services/api"
+
 import AppInput from "../ui/AppInput.vue"
 import AppButton from "../ui/AppButton.vue"
 import AppCard from "../ui/AppCard.vue"
@@ -13,33 +15,28 @@ const showModal = ref(false)
 const nama = ref("")
 const keterangan = ref("")
 
-const organizations = ref([
-  {
-    id: 1,
-    name: "Jabatan Imigresen",
-    description: "Pengurusan organisasi utama",
-    subCount: 200,
-    siteCount: 828,
-    taskCount: 1233,
-    totalTaskCount: 9000
-  },
-  {
-    id: 2,
-    name: "Jabatan Pendaftaran Negara",
-    description: "Pengurusan data organisasi",
-    subCount: 154,
-    siteCount: 612,
-    taskCount: 884,
-    totalTaskCount: 6200
-  }
-])
+const organizations = ref([])
 
+// ✅ LOAD DATA
+async function loadOrganisasi() {
+  try {
+    // ⚠️ You need this endpoint in backend
+    const res = await api.get("/organisasi/pelanggan/1")
+
+    organizations.value = res.data || []
+  } catch (err) {
+    console.error("Failed to load organisasi:", err)
+  }
+}
+
+// ✅ FILTER SAFE
 const filteredOrganizations = computed(() => {
   return organizations.value.filter((org) =>
-    org.name.toLowerCase().includes(search.value.toLowerCase())
+    org?.nama?.toLowerCase().includes(search.value.toLowerCase())
   )
 })
 
+// modal preload
 watch(showModal, (value) => {
   if (value) {
     nama.value = ""
@@ -55,37 +52,51 @@ function closeModal() {
   showModal.value = false
 }
 
-function addOrganization() {
+// ✅ SAVE (API)
+async function addOrganization() {
   if (!nama.value.trim()) return
 
-  organizations.value.unshift({
-    id: Date.now(),
-    name: nama.value,
-    description: keterangan.value,
-    subCount: 0,
-    siteCount: 0,
-    taskCount: 0,
-    totalTaskCount: 0
-  })
+  try {
+    await api.post("/organisasi", {
+      pelanggan_id: 1, // ⚠️ adjust later if dynamic
+      kod: "ORG-" + Date.now(),
+      nama: nama.value,
+      keterangan: keterangan.value
+    })
 
-  closeModal()
+    await loadOrganisasi()
+    closeModal()
+
+  } catch (err) {
+    console.error("Failed to save organisasi:", err)
+  }
 }
 
+// navigation
 function goToSubOrganisasi(org) {
   router.push(`/admin/configuration/sub-organisasi/${org.id}`)
 }
+
+// load on start
+onMounted(() => {
+  loadOrganisasi()
+})
 </script>
 
 <template>
   <div>
+    <!-- Header -->
     <div class="hierarchy-card">
       <div class="hierarchy-left">
         <p class="section-label">Konfigurasi</p>
         <h2>Kementerian Dalam Negeri</h2>
-        <p class="section-desc">Urus organisasi utama dalam sistem Spoting.</p>
+        <p class="section-desc">
+          Urus organisasi utama dalam sistem Spoting.
+        </p>
       </div>
     </div>
 
+    <!-- Toolbar -->
     <div class="toolbar">
       <div class="search-box">
         <span class="search-icon">⌕</span>
@@ -97,10 +108,12 @@ function goToSubOrganisasi(org) {
       </button>
     </div>
 
+    <!-- Title -->
     <div class="page-heading-block">
       <h1 class="main-page-title">Senarai Organisasi</h1>
     </div>
 
+    <!-- Table -->
     <div class="table-card">
       <div class="table-scroll">
         <table>
@@ -116,10 +129,14 @@ function goToSubOrganisasi(org) {
           </thead>
 
           <tbody>
+            <!-- Empty -->
             <tr v-if="filteredOrganizations.length === 0">
-              <td colspan="6" class="empty-cell">Tiada organisasi dijumpai.</td>
+              <td colspan="6" class="empty-cell">
+                Tiada organisasi dijumpai.
+              </td>
             </tr>
 
+            <!-- Rows -->
             <tr
               v-for="(org, index) in filteredOrganizations"
               :key="org.id"
@@ -131,25 +148,29 @@ function goToSubOrganisasi(org) {
               <td>
                 <div class="org-cell">
                   <div class="org-avatar">
-                    {{ org.name.charAt(0).toUpperCase() }}
+                    {{ org.nama?.charAt(0).toUpperCase() }}
                   </div>
                   <div>
-                    <p class="org-name">{{ org.name }}</p>
-                    <p class="org-desc">{{ org.description }}</p>
+                    <p class="org-name">{{ org.nama }}</p>
+                    <p class="org-desc">{{ org.keterangan }}</p>
                   </div>
                 </div>
               </td>
 
-              <td>{{ org.subCount }}</td>
-              <td>{{ org.siteCount }}</td>
+              <!-- TEMP values -->
+              <td>0</td>
+              <td>0</td>
 
               <td>
-                <span class="success">{{ org.taskCount.toLocaleString() }}</span>
-                <span class="muted"> / {{ org.totalTaskCount.toLocaleString() }}</span>
+                <span class="success">0</span>
+                <span class="muted"> / 0</span>
               </td>
 
               <td>
-                <button class="ghost-btn" @click.stop="goToSubOrganisasi(org)">
+                <button
+                  class="ghost-btn"
+                  @click.stop="goToSubOrganisasi(org)"
+                >
                   Buka →
                 </button>
               </td>
@@ -159,10 +180,13 @@ function goToSubOrganisasi(org) {
       </div>
     </div>
 
+    <!-- Footer -->
     <div class="footer-bar">
       <div class="count-pill">
         Bilangan Organisasi:
-        <strong>{{ filteredOrganizations.length.toString().padStart(2, "0") }}</strong>
+        <strong>
+          {{ filteredOrganizations.length.toString().padStart(2, "0") }}
+        </strong>
       </div>
     </div>
 
@@ -170,6 +194,7 @@ function goToSubOrganisasi(org) {
     <transition name="fade">
       <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
         <AppCard class="modal-card">
+
           <div class="modal-header">
             <div>
               <p class="eyebrow">TAMBAH DATA</p>
@@ -200,9 +225,11 @@ function goToSubOrganisasi(org) {
             <AppButton text="Batal" variant="outline" @click="closeModal" />
             <AppButton text="Simpan" variant="primary" @click="addOrganization" />
           </div>
+
         </AppCard>
       </div>
     </transition>
+
   </div>
 </template>
 
