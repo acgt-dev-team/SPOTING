@@ -13,7 +13,7 @@ from app.models.sub_organisasi import SubOrganisasi
 from app.models.pelanggan import Pelanggan
 
 # ✅ Routers ONLY from API
-from app.api import tugasan, profil, tapak
+from app.api import tugasan, profil, tapak, sub_organisasi, organisasi
 
 app = FastAPI(
     title="SPOTING Backend",
@@ -39,6 +39,8 @@ app.add_middleware(
 app.include_router(tugasan.router)
 app.include_router(profil.router)
 app.include_router(tapak.router)
+app.include_router(sub_organisasi.router)
+app.include_router(organisasi.router)
 
 @app.get("/")
 def root():
