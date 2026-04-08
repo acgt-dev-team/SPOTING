@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue"
 
-import logo from "../../assets/images/Spoting-logo.png"
+import logo from "../../assets/images/spoting-logo.png"
 
 import AppInput from "../ui/AppInput.vue"
 import AppButton from "../ui/AppButton.vue"

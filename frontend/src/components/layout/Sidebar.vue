@@ -1,6 +1,6 @@
 <script setup>
 import { useRouter, useRoute } from "vue-router"
-import logo from "../../assets/images/Spoting-logo.png"
+import logo from "../../assets/images/spoting-logo.png"
 
 import {
   LayoutDashboard,
