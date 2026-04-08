@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Integer, String, Text, Boolean, TIMESTAMP, ForeignKey
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
-
 from app.database.session import Base
 
 
@@ -19,24 +18,19 @@ class Tapak(Base):
     kod = Column(String(50), unique=True, nullable=False)
     nama = Column(String(255), nullable=False)
 
-    alamat = Column(Text)
-
-    # ✅ FIXED (MATCH DB)
     keterangan = Column(Text)
 
     aktif = Column(Boolean, default=True)
 
     cipta_pada = Column(TIMESTAMP, server_default=func.now())
-    kemaskini_pada = Column(
-        TIMESTAMP,
-        server_default=func.now(),
-        onupdate=func.now()
-    )
+    kemaskini_pada = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
+    alamat_baris_1 = Column(String(128))
+    alamat_baris_2 = Column(String(128))
+    bandar = Column(String(64))
+    negeri = Column(String(64))
+    negara = Column(String(64))
 
-    sub_organisasi = relationship(
-        "SubOrganisasi",
-        back_populates="tapak"
-    )
+    sub_organisasi = relationship("SubOrganisasi", back_populates="tapak")
 
     profil = relationship(
         "Profil",

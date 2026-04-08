@@ -3,20 +3,22 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.database.session import engine, Base
 
-# ✅ SAFE model imports (no aggregation)
+# ✅ Load models (for ORM registration)
 from app.models.tapak import Tapak
 from app.models.profil import Profil
 from app.models.tugasan import Tugasan
 from app.models.x_profil_tugasan import XProfilTugasan
+from app.models.organisasi import Organisasi
+from app.models.sub_organisasi import SubOrganisasi
+from app.models.pelanggan import Pelanggan
 
-# ✅ routers
+# ✅ Routers ONLY from API
 from app.api import tugasan, profil, tapak
 
 app = FastAPI(
     title="SPOTING Backend",
     version="1.0.0"
 )
-
 
 origins = [
     "http://localhost:5173",
@@ -33,7 +35,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ✅ register routers
+# ✅ ONLY API routers
 app.include_router(tugasan.router)
 app.include_router(profil.router)
 app.include_router(tapak.router)
