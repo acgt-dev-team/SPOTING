@@ -1,28 +1,46 @@
 import { createRouter, createWebHistory } from "vue-router"
+import { setupGuards } from "../router/gaurds"
 
-// Auth
-import Auth from "../views/auth/Auth.vue"
+// =========================
+// AUTH
+// =========================
+import Auth from "../features/auth/Auth.vue"
 
-// User Layout (USER SIDE ONLY)
-import MainLayout from "../components/layout/MainLayout.vue"
+// =========================
+// LAYOUTS
+// =========================
+import MainLayout from "../layout/MainLayout.vue"
+import ConfigurationLayout from "../features/configuration/ConfigurationLayout.vue"
 
-// Admin Configuration Views
-import Configuration from "../views/configuration/Configuration.vue"
-import SubOrganisasi from "../views/configuration/SubOrganisasi.vue"
-import Tapak from "../views/configuration/Tapak.vue"
-import ProfilList from "../views/configuration/ProfilList.vue"
-import AdminTugasan from "../views/configuration/Tugasan.vue"
+// =========================
+// ADMIN
+// =========================
+import Configuration from "../features/configuration/ConfigurationPage.vue"
+import SubOrganisasi from "../features/configuration/SubOrganisasiPage.vue"
+import Tapak from "../features/configuration/TapakPage.vue"
+import ProfilList from "../features/configuration/ProfilListPage.vue"
+import AdminTugasan from "../features/configuration/TugasanPage.vue"
 
-// User Pages
-import Profil from "../views/profil/Profil.vue"
-import Tugasan from "../views/tugasan/Tugasan.vue"
-import Tetapan from "../views/tetapan/Tetapan.vue"
-import Pelanggan from "../views/pelanggan/Pelanggan.vue"
+// =========================
+// USER
+// =========================
+import Profil from "../features/profil/Profil.vue"
+import Tugasan from "../features/tugasan/Tugasan.vue"
+import Tetapan from "../features/tetapan/Tetapan.vue"
+import Pelanggan from "../features/pelanggan/Pelanggan.vue"
 
+// =========================
+// DASHBOARD
+// =========================
+import Dashboard from "../features/dashboard/Dashboard.vue"
+
+// =========================
+// ROUTES
+// =========================
 const routes = [
   {
     path: "/",
-    redirect: "/admin/configuration"
+    redirect: "/login"
   },
 
   {
@@ -31,39 +49,51 @@ const routes = [
   },
 
   // =========================
-  // ADMIN CONFIGURATION FLOW
+  // ADMIN (WITH LAYOUT)
   // =========================
   {
-    path: "/admin/configuration",
-    component: Configuration
-  },
-  {
-    path: "/admin/configuration/sub-organisasi/:organizationId",
-    component: SubOrganisasi
-  },
-  {
-    path: "/admin/configuration/sub-organisasi/:organizationId/tapak/:subOrganizationId",
-    component: Tapak
-  },
-  {
-    path: "/admin/configuration/sub-organisasi/:organizationId/tapak/:subOrganizationId/profil/:siteId",
-    component: ProfilList
-  },
-  {
-    path: "/admin/configuration/sub-organisasi/:organizationId/tapak/:subOrganizationId/profil/:siteId/tugasan/:profileId",
-    component: AdminTugasan // ✅ FIXED
+    path: "/admin",
+    component: ConfigurationLayout,
+    meta: { requiresAuth: true, role: "admin" },
+    children: [
+      {
+        path: "configuration",
+        component: Configuration
+      },
+      {
+        path: "configuration/sub-organisasi/:organizationId",
+        component: SubOrganisasi
+      },
+      {
+        path: "configuration/sub-organisasi/:organizationId/tapak/:subOrganizationId",
+        component: Tapak
+      },
+      {
+        path: "configuration/sub-organisasi/:organizationId/tapak/:subOrganizationId/profil/:siteId",
+        component: ProfilList
+      },
+      {
+        path: "configuration/sub-organisasi/:organizationId/tapak/:subOrganizationId/profil/:siteId/tugasan/:profileId",
+        component: AdminTugasan
+      }
+    ]
   },
 
   // =========================
-  // USER SIDE ONLY
+  // USER APP
   // =========================
   {
     path: "/app",
     component: MainLayout,
+    meta: { requiresAuth: true, role: "user" },
     children: [
       {
         path: "",
-        redirect: "/app/profil"
+        redirect: "profil"
+      },
+      {
+        path: "dashboard",
+        component: Dashboard
       },
       {
         path: "pelanggan",
@@ -85,9 +115,15 @@ const routes = [
   }
 ]
 
+// =========================
+// ROUTER INIT
+// =========================
 const router = createRouter({
   history: createWebHistory(),
   routes
 })
+
+// ✅ Apply guards
+setupGuards(router)
 
 export default router

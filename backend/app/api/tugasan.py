@@ -2,6 +2,8 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.database.session import get_db
 
+from app.schemas.tugasan_schema import TugasanCreate, TugasanResponse
+
 from app.services.tugasan_service import (
     get_tugasan_by_profil,
     assign_tugasan_to_profil,
@@ -21,11 +23,6 @@ def get_by_profil(profil_id: int, db: Session = Depends(get_db)):
     return get_tugasan_by_profil(db, profil_id)
 
 
-@router.post("/profil/{profil_id}")
-def assign(profil_id: int, payload: dict, db: Session = Depends(get_db)):
-    return assign_tugasan_to_profil(
-        db,
-        profil_id,
-        payload["tugasan_id"],
-        payload.get("status", -1)
-    )
+@router.post("/", response_model=TugasanResponse)
+def create(data: TugasanCreate, db: Session = Depends(get_db)):
+    return create_tugasan(db, data.dict())

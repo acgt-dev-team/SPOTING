@@ -1,16 +1,16 @@
 from pydantic import BaseModel
 
 
-class OrganisasiCreate(BaseModel):
-    pelanggan_id: int
+class TapakCreate(BaseModel):
+    sub_organisasi_id: int
     kod: str
     nama: str
     keterangan: str | None = None
 
 
-class OrganisasiResponse(BaseModel):
+class TapakResponse(BaseModel):
     id: int
-    pelanggan_id: int
+    sub_organisasi_id: int
     kod: str
     nama: str
     keterangan: str | None
