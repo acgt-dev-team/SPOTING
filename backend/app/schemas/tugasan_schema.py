@@ -1,19 +1,19 @@
 from pydantic import BaseModel
 
 
-class OrganisasiCreate(BaseModel):
-    pelanggan_id: int
-    kod: str
+class TugasanCreate(BaseModel):
     nama: str
+    kod: str
     keterangan: str | None = None
+    jenis_id: int
 
 
-class OrganisasiResponse(BaseModel):
+class TugasanResponse(BaseModel):
     id: int
-    pelanggan_id: int
-    kod: str
     nama: str
+    kod: str
     keterangan: str | None
+    jenis_id: int
     aktif: bool
 
     class Config:

@@ -1,7 +1,10 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.database.session import get_db
-
+from app.schemas.sub_organisasi_schema import (
+    SubOrganisasiCreate,
+    SubOrganisasiResponse
+)
 from app.services.sub_organisasi_service import (
     get_sub_by_organisasi,
     create_sub_organisasi
@@ -19,10 +22,6 @@ def get_by_organisasi(organisasi_id: int, db: Session = Depends(get_db)):
         raise e
 
 
-@router.post("/")
-def create(data: dict, db: Session = Depends(get_db)):
-    try:
-        return create_sub_organisasi(db, data)
-    except Exception as e:
-        print("🔥 CREATE ERROR:", str(e))
-        raise e
+@router.post("/", response_model=SubOrganisasiResponse)
+def create(data: SubOrganisasiCreate, db: Session = Depends(get_db)):
+    return create_sub_organisasi(db, data.dict())
