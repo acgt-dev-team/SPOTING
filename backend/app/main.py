@@ -17,9 +17,6 @@ app = FastAPI(
     version="1.0.0"
 )
 
-@app.on_event("startup")
-def on_startup():
-    Base.metadata.create_all(bind=engine)
 
 origins = [
     "http://localhost:5173",
