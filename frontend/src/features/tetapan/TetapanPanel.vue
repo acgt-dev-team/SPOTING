@@ -1,90 +1,156 @@
 <script setup>
+const taskTypes = [
+  { no: 1, nama: "Windows client" },
+  { no: 2, nama: "Mac client" },
+  { no: 3, nama: "Linux client" },
+  { no: 4, nama: "Peranti rangkaian" }
+]
 </script>
 
 <template>
+  <div class="page">
+    <div class="page-header">
+      <div>
+        <p class="eyebrow">KONFIGURASI</p>
+        <h1 class="title">Tetapan</h1>
+        <p class="subtitle">Urus tetapan asas sistem dan pilihan pengguna.</p>
+      </div>
+    </div>
 
-<div>
+    <div class="panel">
+      <div class="menu">
+        <div>Profil</div>
+        <div>Ubah kata laluan</div>
+        <div>Ubah organisasi</div>
+        <div class="active">Jenis tugasan</div>
+      </div>
 
-<h1 class="title">Tetapan</h1>
+      <div class="content">
+        <div class="content-top">
+          <h2>Jenis Tugasan</h2>
+          <button class="primary-btn">+ Tambah Jenis</button>
+        </div>
 
-<div class="panel">
+        <div class="table">
+          <div class="row header">
+            <div>No</div>
+            <div>Nama</div>
+          </div>
 
-<div class="menu">
-<div>Profil</div>
-<div>Ubah kata laluan</div>
-<div>Ubah organisasi</div>
-<div class="active">Jenis tugasan</div>
-</div>
-
-<div class="content">
-
-<div class="row header">
-<div>No</div>
-<div>Nama</div>
-</div>
-
-<div class="row">
-<div>1</div>
-<div>Windows client</div>
-</div>
-
-<div class="row">
-<div>2</div>
-<div>Mac client</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+          <div v-for="item in taskTypes" :key="item.no" class="row">
+            <div>{{ item.no }}</div>
+            <div>{{ item.nama }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-
-.title{
-font-size:26px;
-margin-bottom:20px;
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.panel{
-display:flex;
-background:white;
-border-radius:12px;
-padding:30px;
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  color: #2563eb;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
 }
 
-.menu{
-width:200px;
-border-right:1px solid #eee;
-padding-right:20px;
+.title {
+  font-size: 30px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 6px;
 }
 
-.menu div{
-margin-bottom:14px;
-cursor:pointer;
+.subtitle {
+  font-size: 15px;
+  color: #6b7280;
 }
 
-.active{
-color:#7c3aed;
-font-weight:600;
+.panel {
+  display: flex;
+  background: white;
+  border-radius: 22px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
 }
 
-.content{
-flex:1;
-padding-left:30px;
+.menu {
+  width: 240px;
+  border-right: 1px solid #eef2f7;
+  padding: 28px 20px;
+  background: #f8fafc;
 }
 
-.row{
-display:grid;
-grid-template-columns:80px 1fr;
-padding:12px 0;
-border-bottom:1px solid #eee;
+.menu div {
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #374151;
+  font-weight: 500;
 }
 
-.header{
-font-weight:600;
+.menu div:hover {
+  background: #eef2ff;
 }
 
+.active {
+  background: #eef4ff;
+  color: #1d4ed8 !important;
+  font-weight: 700 !important;
+}
+
+.content {
+  flex: 1;
+  padding: 28px;
+}
+
+.content-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.content-top h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.primary-btn {
+  background: #1d4ed8;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.table {
+  border: 1px solid #eef2f7;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  padding: 16px 18px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.header {
+  font-weight: 700;
+  background: #f8fafc;
+}
 </style>
