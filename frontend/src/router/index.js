@@ -10,7 +10,7 @@ import Auth from "../features/auth/Auth.vue"
 // LAYOUTS
 // =========================
 import MainLayout from "../layout/MainLayout.vue"
-import ConfigurationLayout from "../features/configuration/ConfigurationLayout.vue"
+import AdminLayout from "../layout/AdminLayout.vue"
 
 // =========================
 // ADMIN
@@ -53,7 +53,7 @@ const routes = [
   // =========================
   {
     path: "/admin",
-    component: ConfigurationLayout,
+    component: AdminLayout,
     meta: { requiresAuth: true, role: "admin" },
     children: [
       {

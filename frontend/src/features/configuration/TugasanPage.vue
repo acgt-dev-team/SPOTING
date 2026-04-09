@@ -6,7 +6,7 @@ import api from "../../../src/services/api.js"
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
-import ConfigurationLayout from "./ConfigurationLayout.vue"
+import AdminLayout from "../../layout/AdminLayout.vue"
 
 const route = useRoute()
 const router = useRouter()
@@ -117,7 +117,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <ConfigurationLayout>
+  <AdminLayout :breadcrumbs="breadcrumbs">
     <div class="hierarchy-card">
       <div class="hierarchy-left">
         <p class="parent-label">Profil</p>
@@ -263,7 +263,7 @@ onMounted(() => {
         </AppCard>
       </div>
     </transition>
-  </ConfigurationLayout>
+  </AdminLayout>
 </template>
 
 <style scoped>

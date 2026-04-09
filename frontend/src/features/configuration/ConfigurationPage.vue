@@ -1,12 +1,12 @@
 <script setup>
-import ConfigurationLayout from "./ConfigurationLayout.vue"
+import AdminLayout from "../../layout/AdminLayout.vue";
 import OrganizationPage from "./OrganizationPage.vue"
 
 const breadcrumbs = [{ label: "Organisasi" }]
 </script>
 
 <template>
-  <ConfigurationLayout :breadcrumbs="breadcrumbs">
+  <AdminLayout :breadcrumbs="breadcrumbs">
     <OrganizationPage />
-  </ConfigurationLayout>
+  </AdminLayout>
 </template>
