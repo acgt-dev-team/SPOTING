@@ -1,8 +1,7 @@
 <script setup>
+import ProfilPanel from "./ProfilPanel.vue"
 </script>
 
 <template>
-  <div style="padding:40px">
-    <h1>Profil</h1>
-  </div>
+  <ProfilPanel />
 </template>
