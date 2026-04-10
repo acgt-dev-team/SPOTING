@@ -6,7 +6,6 @@ import api from "../../../src/services/api.js"
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
-import AdminLayout from "../../layout/AdminLayout.vue"
 
 const route = useRoute()
 const router = useRouter()
@@ -89,6 +88,17 @@ async function assignTask() {
   }
 }
 
+async function removeTask(tugasanId) {
+  if (!confirm("Buang tugasan ini?")) return
+
+  try {
+    await api.delete(`/tugasan/profil/${profileId}/${tugasanId}`)
+    await loadTasks()
+  } catch (err) {
+    console.error("Error removing task:", err)
+  }
+}
+
 // Modal handling
 watch(showModal, (value) => {
   if (value) {
@@ -117,7 +127,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <AdminLayout :breadcrumbs="breadcrumbs">
     <div class="hierarchy-card">
       <div class="hierarchy-left">
         <p class="parent-label">Profil</p>
@@ -190,9 +199,12 @@ onMounted(() => {
               </td>
 
               <td>
-                <button class="ghost-btn">
-                  Buka →
-                </button>
+                <button
+  class="ghost-btn"
+  @click.stop="removeTask(task.id)"
+>
+  🗑
+</button>
               </td>
             </tr>
           </tbody>
@@ -263,7 +275,6 @@ onMounted(() => {
         </AppCard>
       </div>
     </transition>
-  </AdminLayout>
 </template>
 
 <style scoped>

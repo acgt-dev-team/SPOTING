@@ -5,7 +5,7 @@ class ProfilCreate(BaseModel):
     tapak_id: int
     kod: str
     nama: str
-    deskripsi: str | None = None
+    keterangan: str | None = None
 
 
 class ProfilResponse(BaseModel):
@@ -13,7 +13,7 @@ class ProfilResponse(BaseModel):
     tapak_id: int
     kod: str
     nama: str
-    deskripsi: str | None
+    keterangan: str | None
     aktif: bool
 
     class Config:

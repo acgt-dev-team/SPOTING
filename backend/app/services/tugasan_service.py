@@ -3,6 +3,9 @@ from app.models.tugasan import Tugasan
 from app.models.x_profil_tugasan import XProfilTugasan
 
 
+# =========================
+# GET ASSIGNED
+# =========================
 def get_tugasan_by_profil(db: Session, profil_id: int):
     results = (
         db.query(XProfilTugasan)
@@ -14,8 +17,8 @@ def get_tugasan_by_profil(db: Session, profil_id: int):
     for item in results:
         response.append({
             "id": item.tugasan.id,
-            "nama": item.tugasan.nama,
-            "keterangan": item.tugasan.nama,
+            "nama": getattr(item.tugasan, "nama", ""),
+            "keterangan": getattr(item.tugasan, "keterangan", ""),  # ✅ SAFE
             "status": item.status,
             "jadualkan_pada": item.jadualkan_pada,
             "selesai_pada": item.selesai_pada
@@ -24,6 +27,9 @@ def get_tugasan_by_profil(db: Session, profil_id: int):
     return response
 
 
+# =========================
+# ASSIGN
+# =========================
 def assign_tugasan_to_profil(db: Session, profil_id: int, tugasan_id: int, status: int = -1):
     existing = db.query(XProfilTugasan).filter_by(
         profil_id=profil_id,
@@ -45,5 +51,37 @@ def assign_tugasan_to_profil(db: Session, profil_id: int, tugasan_id: int, statu
     return {"message": "Assigned successfully"}
 
 
+# =========================
+# REMOVE
+# =========================
+def remove_tugasan_from_profil(db: Session, profil_id: int, tugasan_id: int):
+    item = db.query(XProfilTugasan).filter_by(
+        profil_id=profil_id,
+        tugasan_id=tugasan_id
+    ).first()
+
+    if not item:
+        return {"message": "Not found"}
+
+    db.delete(item)
+    db.commit()
+
+    return {"message": "Removed successfully"}
+
+
+# =========================
+# GET ALL (FOR DROPDOWN)
+# =========================
 def get_all_tugasan(db: Session):
-    return db.query(Tugasan).all()
+    tugasan_list = db.query(Tugasan).all()
+
+    return [
+        {
+            "id": t.id,
+            "nama": getattr(t, "nama", ""),
+            "kod": getattr(t, "kod", ""),
+            "keterangan": getattr(t, "keterangan", "")
+        }
+        for t in tugasan_list
+    ]
+

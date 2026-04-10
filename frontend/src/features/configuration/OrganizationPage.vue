@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch, onMounted } from "vue"
+import { ref, computed, onMounted } from "vue"
 import { useRouter } from "vue-router"
 import api from "../../services/api"
 
@@ -11,40 +11,40 @@ const router = useRouter()
 
 const search = ref("")
 const showModal = ref(false)
-
+const editingId = ref(null)
 const nama = ref("")
 const keterangan = ref("")
 
 const organizations = ref([])
 
-// ✅ LOAD DATA
+// =========================
+// LOAD DATA
+// =========================
 async function loadOrganisasi() {
   try {
-    // ⚠️ You need this endpoint in backend
     const res = await api.get("/organisasi/pelanggan/1")
-
     organizations.value = res.data || []
   } catch (err) {
     console.error("Failed to load organisasi:", err)
   }
 }
 
-// ✅ FILTER SAFE
+// =========================
+// FILTER
+// =========================
 const filteredOrganizations = computed(() => {
   return organizations.value.filter((org) =>
-    org?.nama?.toLowerCase().includes(search.value.toLowerCase())
+    org.nama?.toLowerCase().includes(search.value.toLowerCase())
   )
 })
 
-// modal preload
-watch(showModal, (value) => {
-  if (value) {
-    nama.value = ""
-    keterangan.value = ""
-  }
-})
-
+// =========================
+// MODAL
+// =========================
 function openModal() {
+  editingId.value = null
+  nama.value = ""
+  keterangan.value = ""
   showModal.value = true
 }
 
@@ -52,35 +52,72 @@ function closeModal() {
   showModal.value = false
 }
 
-// ✅ SAVE (API)
-async function addOrganization() {
-  if (!nama.value.trim()) {
-  alert("Nama organisasi wajib diisi")
-  return
+function editOrganization(org) {
+  nama.value = org.nama
+  keterangan.value = org.keterangan
+  editingId.value = org.id
+  showModal.value = true
 }
 
+// =========================
+// ADD ORGANIZATION
+// =========================
+async function saveOrganization() {
+  if (!nama.value.trim()) {
+    alert("Nama organisasi wajib diisi")
+    return
+  }
+
   try {
-    await api.post("/organisasi", {
-      pelanggan_id: 1, // ⚠️ adjust later if dynamic
-      kod: "ORG-" + Date.now(),
-      nama: nama.value,
-      keterangan: keterangan.value
-    })
+    if (editingId.value) {
+      // UPDATE
+      await api.put(`/organisasi/${editingId.value}`, {
+        pelanggan_id: 1,
+        kod: "ORG-" + Date.now(),
+        nama: nama.value,
+        keterangan: keterangan.value
+      })
+    } else {
+      // CREATE
+      await api.post("/organisasi", {
+        pelanggan_id: 1,
+        kod: "ORG-" + Date.now(),
+        nama: nama.value,
+        keterangan: keterangan.value
+      })
+    }
 
     await loadOrganisasi()
     closeModal()
 
   } catch (err) {
-    console.error("Failed to save organisasi:", err)
+    console.error("Save failed:", err)
   }
 }
 
-// navigation
+//delete organization
+
+async function deleteOrganization(id) {
+  if (!confirm("Padam organisasi ini?")) return
+
+  try {
+    await api.delete(`/organisasi/${id}`)
+    await loadOrganisasi()
+  } catch (err) {
+    console.error("Delete failed:", err)
+  }
+}
+
+// =========================
+// NAVIGATION
+// =========================
 function goToSubOrganisasi(org) {
   router.push(`/admin/configuration/sub-organisasi/${org.id}`)
 }
 
-// load on start
+// =========================
+// INIT
+// =========================
 onMounted(() => {
   loadOrganisasi()
 })
@@ -169,14 +206,18 @@ onMounted(() => {
                 <span class="muted"> / 0</span>
               </td>
 
-              <td>
-                <button
-                  class="ghost-btn"
-                  @click.stop="goToSubOrganisasi(org)"
-                >
-                  Buka →
-                </button>
-              </td>
+              
+                <td>
+  <div style="display:flex; gap:8px;">
+    <button class="ghost-btn" @click.stop="editOrganization(org)">
+      ✏️
+    </button>
+
+    <button class="ghost-btn" @click.stop="deleteOrganization(org.id)">
+      🗑
+    </button>
+  </div>
+</td>
             </tr>
           </tbody>
         </table>
@@ -226,7 +267,10 @@ onMounted(() => {
 
           <div class="modal-actions">
             <AppButton text="Batal" variant="outline" @click="closeModal" />
-            <AppButton text="Simpan" variant="primary" @click="addOrganization" />
+            <AppButton
+  :text="editingId ? 'Kemaskini' : 'Simpan'"
+  @click="saveOrganization"
+/>
           </div>
 
         </AppCard>

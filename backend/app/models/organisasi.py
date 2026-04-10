@@ -20,4 +20,8 @@ class Organisasi(Base):
     kemaskini_pada = Column(TIMESTAMP, server_default=func.now())
 
     pelanggan = relationship("Pelanggan", back_populates="organisasi")
-    sub_organisasi = relationship("SubOrganisasi", back_populates="organisasi")
+    sub_organisasi = relationship(
+    "SubOrganisasi",
+    back_populates="organisasi",
+    cascade="all, delete"  # ✅ THIS FIXES DELETE
+)

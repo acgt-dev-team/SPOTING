@@ -153,7 +153,7 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <slot />
+      <router-view />
     </div>
   </div>
 </template>
