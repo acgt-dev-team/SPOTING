@@ -13,7 +13,7 @@ class Profil(Base):
 
     kod = Column(String(50), unique=True, nullable=False)
     nama = Column(String(255), nullable=False)
-    keterangan = Column(Text)  # ✅ FIXED (was deskripsi)
+    keterangan = Column(Text)  
 
     aktif = Column(Boolean, default=True)
 

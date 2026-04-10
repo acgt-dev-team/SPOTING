@@ -15,7 +15,7 @@ import AdminLayout from "../layout/AdminLayout.vue"
 // =========================
 // ADMIN
 // =========================
-import Configuration from "../features/configuration/ConfigurationPage.vue"
+import OrganizationPage from "../features/configuration/OrganizationPage.vue"
 import SubOrganisasi from "../features/configuration/SubOrganisasiPage.vue"
 import Tapak from "../features/configuration/TapakPage.vue"
 import ProfilList from "../features/configuration/ProfilListPage.vue"
@@ -58,7 +58,7 @@ const routes = [
     children: [
       {
         path: "configuration",
-        component: Configuration
+        component: OrganizationPage
       },
       {
         path: "configuration/sub-organisasi/:organizationId",
