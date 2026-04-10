@@ -1,8 +1,7 @@
 <script setup>
+import TapakTable from "./TapakTable.vue"
 </script>
 
 <template>
-  <div style="padding:40px">
-    <h1>Tapak</h1>
-  </div>
+  <TapakTable />
 </template>
