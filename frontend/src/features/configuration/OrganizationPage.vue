@@ -14,6 +14,7 @@ const showModal = ref(false)
 const editingId = ref(null)
 const nama = ref("")
 const keterangan = ref("")
+const kod = ref("")
 
 const organizations = ref([])
 
@@ -45,6 +46,7 @@ function openModal() {
   editingId.value = null
   nama.value = ""
   keterangan.value = ""
+  kod.value = ""
   showModal.value = true
 }
 
@@ -55,6 +57,7 @@ function closeModal() {
 function editOrganization(org) {
   nama.value = org.nama
   keterangan.value = org.keterangan
+  kod.value = org.kod
   editingId.value = org.id
   showModal.value = true
 }
@@ -71,17 +74,17 @@ async function saveOrganization() {
   try {
     if (editingId.value) {
       // UPDATE
-      await api.put(`/organisasi/${editingId.value}`, {
+      await api.put(`/organisasi/${editingId.value}/`, {
         pelanggan_id: 1,
-        kod: "ORG-" + Date.now(),
+        kod: kod.value || "ORG-" + Date.now(),
         nama: nama.value,
         keterangan: keterangan.value
       })
     } else {
       // CREATE
-      await api.post("/organisasi", {
+      await api.post("/organisasi/", {
         pelanggan_id: 1,
-        kod: "ORG-" + Date.now(),
+        kod: kod.value || "ORG-" + Date.now(),
         nama: nama.value,
         keterangan: keterangan.value
       })
@@ -91,7 +94,7 @@ async function saveOrganization() {
     closeModal()
 
   } catch (err) {
-    console.error("Save failed:", err)
+    console.error("Save failed:", err.response?.data || err) 
   }
 }
 
@@ -249,6 +252,11 @@ onMounted(() => {
           </div>
 
           <div class="form-area">
+          <AppInput
+  v-model="kod"
+  label="Kod Organisasi"
+  placeholder="Masukkan kod"
+/>
             <AppInput
               v-model="nama"
               label="Nama Organisasi"
