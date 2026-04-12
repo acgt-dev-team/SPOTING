@@ -6,11 +6,10 @@ import api from "../../services/api" // ✅ FIXED PATH
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
-import AdminLayout from "../../layout/AdminLayout.vue"
 
 const route = useRoute()
 const router = useRouter()
-
+const editingId = ref(null)
 // ✅ SAFE PARAMS
 const organizationId = route.params.organizationId
 const subOrganizationId = route.params.subOrganizationId
@@ -43,6 +42,33 @@ async function loadTapak() {
     sites.value = res.data || []
   } catch (err) {
     console.error("Failed to load tapak:", err)
+  }
+}
+
+async function loadSubOrganisasiDetail() {
+  try {
+    const res = await api.get(`/sub-organisasi/${subOrganizationId}`)
+
+    subOrganization.value = {
+      id: res.data.id,
+      name: res.data.nama,
+      description: res.data.keterangan
+    }
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+async function loadOrganisasiDetail() {
+  try {
+    const res = await api.get(`/organisasi/${organizationId}`)
+
+    organization.value = {
+      id: res.data.id,
+      name: res.data.nama
+    }
+  } catch (err) {
+    console.error(err)
   }
 }
 
@@ -80,6 +106,13 @@ function goToProfil(site) {
   )
 }
 
+//edit
+function editSite(site) {
+  selectedSite.value = site
+  editingId.value = site.id
+  showModal.value = true
+}
+
 // modal
 function openAddModal() {
   selectedSite.value = null
@@ -96,12 +129,21 @@ async function saveSite() {
   if (!nama.value.trim()) return
 
   try {
-    await api.post("/tapak", {
-      sub_organisasi_id: subOrganizationId,
-      kod: "TPK-" + Date.now(),
-      nama: nama.value,
-      keterangan: keterangan.value
-    })
+    if (editingId.value) {
+      await api.put(`/tapak/${editingId.value}`, {
+        sub_organisasi_id: subOrganizationId,
+        kod: "TPK-" + Date.now(),
+        nama: nama.value,
+        keterangan: keterangan.value
+      })
+    } else {
+      await api.post("/tapak", {
+        sub_organisasi_id: subOrganizationId,
+        kod: "TPK-" + Date.now(),
+        nama: nama.value,
+        keterangan: keterangan.value
+      })
+    }
 
     await loadTapak()
     closeModal()
@@ -111,14 +153,27 @@ async function saveSite() {
   }
 }
 
+//delete
+async function deleteSite(id) {
+  if (!confirm("Padam tapak ini?")) return
+
+  try {
+    await api.delete(`/tapak/${id}`)
+    await loadTapak()
+  } catch (err) {
+    console.error("Delete failed:", err)
+  }
+}
+
 // load on start
 onMounted(() => {
+  loadOrganisasiDetail()
+  loadSubOrganisasiDetail()
   loadTapak()
 })
 </script>
 
 <template>
-  <AdminLayout :breadcrumbs="breadcrumbs">
     
     <!-- Header -->
     <div class="hierarchy-card">
@@ -193,14 +248,18 @@ onMounted(() => {
               <!-- Temporary -->
               <td>0</td>
 
-              <td>
-                <button
-                  class="ghost-btn"
-                  @click.stop="goToProfil(site)"
-                >
-                  Buka →
-                </button>
-              </td>
+              
+                <td>
+  <div style="display:flex; gap:8px;">
+    <button class="ghost-btn" @click.stop="editSite(site)">
+      ✏️
+    </button>
+
+    <button class="ghost-btn" @click.stop="deleteSite(site.id)">
+      🗑
+    </button>
+  </div>
+</td>
             </tr>
           </tbody>
         </table>
@@ -273,7 +332,6 @@ onMounted(() => {
       </div>
     </transition>
 
-  </AdminLayout>
 </template>
 
 <style scoped>

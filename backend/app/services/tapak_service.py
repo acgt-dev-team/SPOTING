@@ -2,55 +2,87 @@ from sqlalchemy.orm import Session
 from app.models.tapak import Tapak
 
 
+# =========================
+# GET
+# =========================
 def get_tapak_by_sub(db: Session, sub_id: int):
-    try:
-        print("👉 FETCHING tapak for sub_id:", sub_id)
+    sites = db.query(Tapak).filter(
+        Tapak.sub_organisasi_id == sub_id
+    ).all()
 
-        tapaks = db.query(Tapak).filter(
-            Tapak.sub_organisasi_id == sub_id
-        ).all()
-
-        print("👉 RAW RESULT:", tapaks)
-
-        result = [
-            {
-                "id": t.id,
-                "nama": t.nama,
-                "keterangan": t.keterangan,  # ✅ FIXED
-                "kod": t.kod,
-                "aktif": t.aktif
-            }
-            for t in tapaks
-        ]
-
-        print("👉 FINAL RESULT:", result)
-
-        return result
-
-    except Exception as e:
-        print("🔥 SERVICE ERROR:", str(e))
-        raise e
-
-
-def create_tapak(db: Session, data: dict):
-    try:
-        new_tapak = Tapak(
-            sub_organisasi_id=data["sub_organisasi_id"],
-            kod=data["kod"],
-            nama=data["nama"],
-            keterangan=data.get("keterangan", "")  # ✅ FIXED
-        )
-
-        db.add(new_tapak)
-        db.commit()
-        db.refresh(new_tapak)
-
-        return {
-            "id": new_tapak.id,
-            "nama": new_tapak.nama,
-            "keterangan": new_tapak.keterangan
+    return [
+        {
+            "id": s.id,
+            "sub_organisasi_id": s.sub_organisasi_id,
+            "kod": s.kod,
+            "nama": s.nama,
+            "keterangan": s.keterangan,
+            "aktif": bool(s.aktif) if s.aktif is not None else False
         }
+        for s in sites
+    ]
 
-    except Exception as e:
-        print("🔥 CREATE ERROR:", str(e))
-        raise e
+
+# =========================
+# CREATE
+# =========================
+def create_tapak(db: Session, data: dict):
+    new_site = Tapak(
+        sub_organisasi_id=data["sub_organisasi_id"],
+        kod=data["kod"],
+        nama=data["nama"],
+        keterangan=data.get("keterangan", "")
+    )
+
+    db.add(new_site)
+    db.commit()
+    db.refresh(new_site)
+
+    return {
+        "id": new_site.id,
+        "sub_organisasi_id": new_site.sub_organisasi_id,
+        "kod": new_site.kod,
+        "nama": new_site.nama,
+        "keterangan": new_site.keterangan,
+        "aktif": bool(new_site.aktif) if new_site.aktif is not None else False
+    }
+
+
+# =========================
+# UPDATE
+# =========================
+def update_tapak(db: Session, id: int, data: dict):
+    site = db.query(Tapak).filter(Tapak.id == id).first()
+
+    if not site:
+        return None
+
+    site.nama = data["nama"]
+    site.kod = data["kod"]
+    site.keterangan = data.get("keterangan", "")
+
+    db.commit()
+    db.refresh(site)
+
+    return {
+        "id": site.id,
+        "sub_organisasi_id": site.sub_organisasi_id,
+        "kod": site.kod,
+        "nama": site.nama,
+        "keterangan": site.keterangan,
+        "aktif": bool(site.aktif) if site.aktif is not None else False
+    }
+
+
+# =========================
+# DELETE
+# =========================
+def delete_tapak(db: Session, id: int):
+    site = db.query(Tapak).filter(Tapak.id == id).first()
+
+    if not site:
+        return False
+
+    db.delete(site)
+    db.commit()
+    return True

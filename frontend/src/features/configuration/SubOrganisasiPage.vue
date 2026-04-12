@@ -6,7 +6,7 @@ import api from "../../../src/services/api"
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
-import AdminLayout from "../../layout/AdminLayout.vue"
+
 
 const route = useRoute()
 const router = useRouter()
@@ -17,13 +17,14 @@ const organisasiId = route.params.organizationId
 // ✅ SAFE OBJECT
 const organisasi = ref({
   id: organisasiId,
-  name: "Organisasi",
+  name: "",
   description: ""
 })
 
 const search = ref("")
 const showModal = ref(false)
 const selectedSub = ref(null)
+const editingId = ref(null)
 
 const nama = ref("")
 const keterangan = ref("")
@@ -37,6 +38,20 @@ async function loadSubOrganisasi() {
     subs.value = res.data || []
   } catch (err) {
     console.error("Failed to load sub organisasi:", err)
+  }
+}
+
+async function loadOrganisasiDetail() {
+  try {
+    const res = await api.get(`/organisasi/${organisasiId}`)
+
+    organisasi.value = {
+      id: res.data.id,
+      name: res.data.nama,
+      description: res.data.keterangan
+    }
+  } catch (err) {
+    console.error("Failed to load organisasi:", err)
   }
 }
 
@@ -74,6 +89,13 @@ function goToTapak(sub) {
 // modal
 function openAddModal() {
   selectedSub.value = null
+  editingId.value = null
+  showModal.value = true
+}
+
+function editSub(sub) {
+  selectedSub.value = sub
+  editingId.value = sub.id
   showModal.value = true
 }
 
@@ -87,12 +109,23 @@ async function saveSub() {
   if (!nama.value.trim()) return
 
   try {
-    await api.post("/sub-organisasi", {
-      organisasi_id: organisasiId,
-      kod: "SUB-" + Date.now(),
-      nama: nama.value,
-      keterangan: keterangan.value
-    })
+    if (editingId.value) {
+      // UPDATE
+      await api.put(`/sub-organisasi/${editingId.value}`, {
+        organisasi_id: organisasiId,
+        kod: "SUB-" + Date.now(),
+        nama: nama.value,
+        keterangan: keterangan.value
+      })
+    } else {
+      // CREATE
+      await api.post("/sub-organisasi", {
+        organisasi_id: organisasiId,
+        kod: "SUB-" + Date.now(),
+        nama: nama.value,
+        keterangan: keterangan.value
+      })
+    }
 
     await loadSubOrganisasi()
     closeModal()
@@ -102,14 +135,25 @@ async function saveSub() {
   }
 }
 
+async function deleteSub(id) {
+  if (!confirm("Padam sub organisasi ini?")) return
+
+  try {
+    await api.delete(`/sub-organisasi/${id}`)
+    await loadSubOrganisasi()
+  } catch (err) {
+    console.error("Delete failed:", err)
+  }
+}
+
 // load on mount
 onMounted(() => {
+  loadOrganisasiDetail()
   loadSubOrganisasi()
 })
 </script>
 
 <template>
-  <AdminLayout :breadcrumbs="breadcrumbs">
 
     <!-- Header -->
     <div class="hierarchy-card">
@@ -185,13 +229,16 @@ onMounted(() => {
               <td>0</td>
 
               <td>
-                <button
-                  class="ghost-btn"
-                  @click.stop="goToTapak(sub)"
-                >
-                  Buka →
-                </button>
-              </td>
+  <div style="display:flex; gap:8px;">
+    <button class="ghost-btn" @click.stop="editSub(sub)">
+      ✏️
+    </button>
+
+    <button class="ghost-btn" @click.stop="deleteSub(sub.id)">
+      🗑
+    </button>
+  </div>
+</td>
             </tr>
           </tbody>
         </table>
@@ -259,8 +306,6 @@ onMounted(() => {
         </AppCard>
       </div>
     </transition>
-
-  </AdminLayout>
 </template>
 
 <style scoped>

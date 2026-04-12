@@ -9,7 +9,10 @@ class SubOrganisasi(Base):
 
     id = Column(Integer, primary_key=True)
 
-    organisasi_id = Column(Integer, ForeignKey("organisasi.id"))
+    organisasi_id = Column(
+        Integer,
+        ForeignKey("organisasi.id", ondelete="CASCADE")  # ✅ IMPORTANT
+    )
 
     kod = Column(String(50))
     nama = Column(String(255))
@@ -19,5 +22,13 @@ class SubOrganisasi(Base):
     cipta_pada = Column(TIMESTAMP, server_default=func.now())
     kemaskini_pada = Column(TIMESTAMP, server_default=func.now())
 
-    organisasi = relationship("Organisasi", back_populates="sub_organisasi")
-    tapak = relationship("Tapak", back_populates="sub_organisasi")
+    organisasi = relationship(
+        "Organisasi",
+        back_populates="sub_organisasi"
+    )
+
+    tapak = relationship(
+        "Tapak",
+        back_populates="sub_organisasi",
+        cascade="all, delete"  # optional but good
+    )

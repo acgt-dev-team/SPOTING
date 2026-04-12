@@ -6,7 +6,6 @@ import api from "../../../src/services/api"
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
-import AdminLayout from "../../layout/AdminLayout.vue"
 
 const route = useRoute()
 const router = useRouter()
@@ -17,6 +16,8 @@ const siteId = route.params.siteId
 
 const search = ref("")
 const showModal = ref(false)
+const editingId = ref(null)
+const selectedProfile = ref(null)
 
 const nama = ref("")
 const keterangan = ref("")
@@ -60,25 +61,60 @@ async function saveProfile() {
   if (!nama.value.trim()) return
 
   try {
-    await api.post("/profil", {
-      tapak_id: siteId,
-      kod: "AUTO-" + Date.now(),
-      nama: nama.value,
-      deskripsi: keterangan.value
-    })
+    if (editingId.value) {
+      await api.put(`/profil/${editingId.value}`, {
+        tapak_id: siteId,
+        kod: "AUTO-" + Date.now(),
+        nama: nama.value,
+        keterangan: keterangan.value
+      })
+    } else {
+      await api.post("/profil", {
+        tapak_id: siteId,
+        kod: "AUTO-" + Date.now(),
+        nama: nama.value,
+        keterangan: keterangan.value
+      })
+    }
 
     await loadProfiles()
     closeModal()
+
   } catch (err) {
-    console.error("Error creating profile:", err)
+    console.error("Error saving profile:", err)
+  }
+}
+//delete
+async function deleteProfile(id) {
+  if (!confirm("Padam profil ini?")) return
+
+  try {
+    await api.delete(`/profil/${id}`)
+    await loadProfiles()
+  } catch (err) {
+    console.error("Delete failed:", err)
+  }
+}
+
+async function loadTapakDetail() {
+  try {
+    const res = await api.get(`/tapak/${siteId}`)
+
+    site.value = {
+      id: res.data.id,
+      name: res.data.nama,
+      description: res.data.keterangan
+    }
+  } catch (err) {
+    console.error(err)
   }
 }
 
 // Modal
 watch(showModal, (value) => {
   if (value) {
-    nama.value = ""
-    keterangan.value = ""
+    nama.value = selectedProfile.value?.nama || ""
+    keterangan.value = selectedProfile.value?.keterangan || ""
   }
 })
 
@@ -100,15 +136,21 @@ function goToTugasan(profile) {
     `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}/profil/${siteId}/tugasan/${profile.id}`
   )
 }
+function editProfile(profile) {
+  selectedProfile.value = profile
+  editingId.value = profile.id
+  showModal.value = true
+}
 
 // 🚀 Load on mount
 onMounted(() => {
+  loadTapakDetail()
   loadProfiles()
 })
+
 </script>
 
 <template>
-  <AdminLayout :breadcrumbs="breadcrumbs">
     <!-- Header -->
     <div class="hierarchy-card">
       <div class="hierarchy-left">
@@ -172,7 +214,7 @@ onMounted(() => {
                   </div>
                   <div>
                     <p class="org-name">{{ profile.nama }}</p>
-                    <p class="org-desc">{{ profile.deskripsi }}</p>
+                    <p class="org-desc">{{ profile.keterangan }}</p>
                   </div>
                 </div>
               </td>
@@ -181,13 +223,16 @@ onMounted(() => {
               <td>0</td>
 
               <td>
-                <button
-                  class="ghost-btn"
-                  @click.stop="goToTugasan(profile)"
-                >
-                  Buka →
-                </button>
-              </td>
+  <div style="display:flex; gap:8px;">
+    <button class="ghost-btn" @click.stop="editProfile(profile)">
+      ✏️
+    </button>
+
+    <button class="ghost-btn" @click.stop="deleteProfile(profile.id)">
+      🗑
+    </button>
+  </div>
+</td>
             </tr>
           </tbody>
         </table>
@@ -259,7 +304,6 @@ onMounted(() => {
         </AppCard>
       </div>
     </transition>
-  </AdminLayout>
 </template>
 
 <style scoped>
