@@ -95,7 +95,7 @@ async function saveOrganization() {
     closeModal()
 
   } catch (err) {
-    console.error("Save failed:", err)
+    console.error("Save failed:", err.response?.data || err) 
   }
 }
 
@@ -269,6 +269,11 @@ onMounted(() => {
           </div>
 
           <div class="form-area">
+          <AppInput
+  v-model="kod"
+  label="Kod Organisasi"
+  placeholder="Masukkan kod"
+/>
             <AppInput
               v-model="nama"
               label="Nama Organisasi"
