@@ -16,13 +16,15 @@ def get_tugasan_by_profil(db: Session, profil_id: int):
     response = []
     for item in results:
         response.append({
-            "id": item.tugasan.id,
-            "nama": getattr(item.tugasan, "nama", ""),
-            "keterangan": getattr(item.tugasan, "keterangan", ""),  # ✅ SAFE
-            "status": item.status,
-            "jadualkan_pada": item.jadualkan_pada,
-            "selesai_pada": item.selesai_pada
-        })
+    "id": item.tugasan.id,
+    "nama": item.tugasan.nama,
+    "kod": item.tugasan.kod,
+    "keterangan": item.tugasan.keterangan,
+    "protocol": item.tugasan.protocol,
+    "ip_start": item.tugasan.ip_start,
+    "ip_end": item.tugasan.ip_end,
+    "status": item.status
+})
 
     return response
 
@@ -73,15 +75,19 @@ def remove_tugasan_from_profil(db: Session, profil_id: int, tugasan_id: int):
 # GET ALL (FOR DROPDOWN)
 # =========================
 def get_all_tugasan(db: Session):
-    tugasan_list = db.query(Tugasan).all()
+    tugasan = db.query(Tugasan).all()
 
     return [
         {
             "id": t.id,
-            "nama": getattr(t, "nama", ""),
-            "kod": getattr(t, "kod", ""),
-            "keterangan": getattr(t, "keterangan", "")
+            "nama": t.nama,
+            "kod": t.kod,
+            "keterangan": t.keterangan,
+            "protocol": t.protocol,
+            "ip_start": t.ip_start, 
+            "ip_end": t.ip_end,
+            "aktif": bool(t.aktif) if t.aktif is not None else False,
+            "jenis_id": t.jenis_id
         }
-        for t in tugasan_list
+        for t in tugasan
     ]
-
