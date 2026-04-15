@@ -154,7 +154,6 @@ onMounted(() => {
     <!-- Header -->
     <div class="hierarchy-card">
       <div class="hierarchy-left">
-        <p class="parent-label">Tapak</p>
         <h2>{{ site.name }}</h2>
         <p class="parent-desc">{{ site.description }}</p>
       </div>

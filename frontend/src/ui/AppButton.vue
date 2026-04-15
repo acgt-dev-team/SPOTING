@@ -16,7 +16,7 @@ defineProps({
 
 <template>
   <button
-    :class="['btn', variant, { full }]"
+    :class="['btn', ...variant.split(' '), { full }]"
     @click="$emit('click')"
     type="button"
   >
@@ -48,12 +48,14 @@ defineProps({
   width: 100%;
 }
 
+/* PRIMARY */
 .primary {
   background: linear-gradient(135deg, #020265, #0b0b8f);
   color: white;
   box-shadow: 0 14px 28px rgba(2, 2, 101, 0.25);
 }
 
+/* OUTLINE */
 .outline {
   background: white;
   border: 1px solid #d1d5db;
@@ -65,6 +67,7 @@ defineProps({
   background: #f4f6ff;
 }
 
+/* SECONDARY */
 .secondary {
   background: #eef1ff;
   color: #020265;
@@ -74,6 +77,7 @@ defineProps({
   background: #dde3ff;
 }
 
+/* LINK */
 .link {
   background: none;
   color: #020265;
@@ -82,5 +86,31 @@ defineProps({
   min-height: auto;
   border-radius: 0;
   box-shadow: none;
+}
+
+/* =========================
+   🔥 NEW: DANGER (RED)
+========================= */
+
+/* solid danger */
+.danger {
+  background: #dc2626;
+  color: white;
+}
+
+.danger:hover {
+  background: #b91c1c;
+}
+
+/* outline + danger */
+.outline.danger {
+  background: white;
+  border: 1px solid #dc2626;
+  color: #dc2626;
+}
+
+.outline.danger:hover {
+  background: #fee2e2;
+  border-color: #dc2626;
 }
 </style>

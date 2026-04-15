@@ -114,6 +114,20 @@ async function deleteOrganization(id) {
 }
 
 // =========================
+// HANDLE DELETE (WITH CONFIRM)
+// =========================
+function handleDelete() {
+  if (!editingId.value) return
+
+  const confirmDelete = confirm("Padam organisasi ini?")
+
+  if (!confirmDelete) return
+
+  deleteOrganization(editingId.value)
+  closeModal()
+}
+
+// =========================
 // NAVIGATION
 // =========================
 function goToSubOrganisasi(org) {
@@ -130,7 +144,6 @@ onMounted(() => {
     <!-- Header -->
     <div class="hierarchy-card">
       <div class="hierarchy-left">
-        <p class="section-label">Konfigurasi</p>
         <h2>Kementerian Dalam Negeri</h2>
         <p class="section-desc">
           Urus organisasi utama dalam sistem Spoting.
@@ -198,7 +211,6 @@ onMounted(() => {
                 </div>
               </td>
 
-              <!-- PEGAWAI COLUMN -->
               <td>
                 <div class="pegawai-cell">
                   <p class="pegawai-name">
@@ -218,14 +230,11 @@ onMounted(() => {
                 <span class="muted"> / 0</span>
               </td>
 
+              <!-- ONLY EDIT BUTTON -->
               <td>
                 <div style="display:flex; gap:8px;">
                   <button class="ghost-btn" @click.stop="editOrganization(org)">
                     ✏️
-                  </button>
-
-                  <button class="ghost-btn" @click.stop="deleteOrganization(org.id)">
-                    🗑
                   </button>
                 </div>
               </td>
@@ -260,36 +269,46 @@ onMounted(() => {
           </div>
 
           <div class="form-area">
-          <AppInput
-            v-model="nama"
-            label="Nama Organisasi"
-            placeholder="Masukkan nama organisasi"
-          />
+            <AppInput
+              v-model="nama"
+              label="Nama Organisasi"
+              placeholder="Masukkan nama organisasi"
+            />
 
-          <AppInput
-            v-model="pegawai_tadbir"
-            label="Pegawai Tadbir"
-            placeholder="Masukkan nama pegawai tadbir"
-          />
+            <AppInput
+              v-model="pegawai_tadbir"
+              label="Pegawai Tadbir"
+              placeholder="Masukkan nama pegawai tadbir"
+            />
 
-          <AppInput
-            v-model="jawatan"
-            label="Jawatan"
-            placeholder="Masukkan jawatan"
-          />
+            <AppInput
+              v-model="jawatan"
+              label="Jawatan"
+              placeholder="Masukkan jawatan"
+            />
 
             <div class="textarea-field">
               <label class="textarea-label">Keterangan</label>
               <textarea
-              v-model="keterangan"
-              rows="5"
-              placeholder="Masukkan penerangan ringkas"
-            ></textarea>
+                v-model="keterangan"
+                rows="5"
+                placeholder="Masukkan penerangan ringkas"
+              ></textarea>
             </div>
           </div>
 
+          <!-- UPDATED ACTIONS -->
           <div class="modal-actions">
+
+            <AppButton
+              v-if="editingId"
+              text="Padam"
+              variant="outline danger"
+              @click="handleDelete"
+            />
+
             <AppButton text="Batal" variant="outline" @click="closeModal" />
+
             <AppButton
               :text="editingId ? 'Kemaskini' : 'Simpan'"
               @click="saveOrganization"
@@ -715,6 +734,15 @@ textarea:focus {
 
   .search-box {
     max-width: 100%;
+  }
+
+.danger-btn {
+  color: #dc2626 !important;
+  border-color: #dc2626 !important;
+  }
+
+.danger-btn:hover {
+  background: #fee2e2 !important;
   }
 }
 </style>
