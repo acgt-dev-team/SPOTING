@@ -178,7 +178,6 @@ onMounted(() => {
     <!-- Header -->
     <div class="hierarchy-card">
       <div class="hierarchy-left">
-        <p class="parent-label">Sub Organisasi</p>
         <h2>{{ subOrganization?.name }}</h2>
         <p class="parent-desc">
           {{ organization?.name }} · {{ subOrganization?.description }}

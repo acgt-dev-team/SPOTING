@@ -139,7 +139,6 @@ onMounted(() => {
 <template>
     <div class="hierarchy-card">
       <div class="hierarchy-left">
-        <p class="parent-label">Profil</p>
         <h2>{{ profile.name }}</h2>
         <p class="parent-desc">{{ profile.description }}</p>
       </div>

@@ -1,4 +1,8 @@
+/* IMPORT FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap');
+
 :root {
+  /* COLORS (UNCHANGED) */
   --bg-main: #f7f9fc;
   --bg-card: #ffffff;
 
@@ -14,4 +18,32 @@
   --info: #2563eb;
   --warning: #eab308;
   --danger: #ef4444;
+
+  /* 🔥 TYPOGRAPHY (ADDED ONLY) */
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'DM Mono', monospace;
+}
+
+/* BASE */
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  background: var(--bg-main);
+}
+
+/* HEADINGS */
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+
+/* TEXT ELEMENTS */
+p, span, td, th, input, textarea, button {
+  font-family: var(--font-body);
 }

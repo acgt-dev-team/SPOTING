@@ -74,7 +74,7 @@ const menus = [
 
     <div class="profile-card">
       <div class="profile-top">
-        <div class="avatar">W</div>
+        <div class="avatar">T</div>
         <div>
           <div class="username">Test User</div>
           <div class="role">Pengguna Sistem</div>
