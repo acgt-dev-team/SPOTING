@@ -6,6 +6,7 @@ import api from "../../../src/services/api.js"
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
+import AssignTugasanModal from "./components/AssignTugasanModal.vue"
 
 const route = useRoute()
 const router = useRouter()
@@ -17,6 +18,7 @@ const profileId = route.params.profileId
 
 const search = ref("")
 const showModal = ref(false)
+const showAssignModal = ref(false)
 
 // ❌ REMOVE nama/keterangan/status (no longer needed)
 // const nama = ref("")
@@ -100,6 +102,14 @@ async function removeTask(tugasanId) {
 }
 
 // Modal handling
+async function handleAssigned() {
+  showAssignModal.value = false
+  await loadTasks()
+}
+
+
+
+
 watch(showModal, (value) => {
   if (value) {
     selectedTugasanId.value = null
@@ -142,9 +152,9 @@ onMounted(() => {
         <input v-model="search" type="text" placeholder="Carian tugasan..." />
       </div>
 
-      <button class="primary-btn" @click="openAddModal">
-        Assign Tugasan
-      </button>
+      <button class="primary-btn" @click="showAssignModal = true">
+  Assign Tugasan
+</button>
     </div>
 
     <!-- Title -->
@@ -156,59 +166,84 @@ onMounted(() => {
     <div class="table-card">
       <div class="table-scroll">
         <table>
-          <thead>
-            <tr>
-              <th style="width: 80px">Bil</th>
-              <th>Nama Tugasan</th>
-              <th style="width: 180px">Status</th>
-              <th style="width: 140px">Tindakan</th>
-            </tr>
-          </thead>
+  <thead>
+    <tr>
+      <th style="width: 80px">Bil</th>
+      <th>Nama / Kod</th>
+      <th style="width: 120px">Protokol</th>
+      <th style="width: 200px">IP Range</th>
+      <th style="width: 140px">Status</th>
+      <th style="width: 140px"></th>
+    </tr>
+  </thead>
 
-          <tbody>
-            <tr v-if="filteredTasks.length === 0">
-              <td colspan="4" class="empty-cell">
-                Tiada tugasan dijumpai.
-              </td>
-            </tr>
+  <tbody>
+    <!-- Empty -->
+    <tr v-if="filteredTasks.length === 0">
+      <td colspan="6" class="empty-cell">
+        Tiada tugasan dijumpai.
+      </td>
+    </tr>
 
-            <tr
-              v-for="(task, index) in filteredTasks"
-              :key="task.id"
-              class="clickable-row"
-            >
-              <td>{{ index + 1 }}</td>
+    <!-- Rows -->
+    <tr
+      v-for="(task, index) in filteredTasks"
+      :key="task.id"
+      class="clickable-row"
+    >
+      <!-- Bil -->
+      <td>{{ index + 1 }}</td>
 
-              <td>
-                <div>
-                  <p class="org-name">{{ task.nama }}</p>
-                  <p class="org-desc">{{ task.keterangan }}</p>
-                </div>
-              </td>
+      <!-- Nama + Kod -->
+      <td>
+        <div class="task-info">
+          <p class="task-name">{{ task.nama }}</p>
+          <p class="task-code">{{ task.kod }}</p>
+        </div>
+      </td>
 
-              <td>
-                <span
-                  class="status-pill"
-                  :class="{
-                    draft: task.status === -1,
-                    success: task.status === 1
-                  }"
-                >
-                  {{ getStatusLabel(task.status) }}
-                </span>
-              </td>
+      <!-- Protocol -->
+      <td>
+        <span
+          class="protocol-badge"
+          :class="'protocol-' + (task.protocol || 'default').toLowerCase()"
+        >
+          {{ task.protocol || '-' }}
+        </span>
+      </td>
 
-              <td>
-                <button
-  class="ghost-btn"
-  @click.stop="removeTask(task.id)"
->
-  🗑
-</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- IP Range -->
+      <td>
+        <div class="ip-range">
+          <span>{{ task.ip_start || '-' }}</span>
+          <span class="ip-sep">→</span>
+          <span>{{ task.ip_end || '-' }}</span>
+        </div>
+      </td>
+
+      <!-- Status -->
+      <td>
+        <span
+          class="status-pill"
+          :class="{
+            running: task.status === -1,
+            pending: task.status === 0,
+            success: task.status === 1
+          }"
+        >
+          {{ getStatusLabel(task.status) }}
+        </span>
+      </td>
+
+      <!-- Actions -->
+      <td>
+        <button class="ghost-btn">
+          Buka →
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
       </div>
     </div>
 
@@ -227,54 +262,11 @@ onMounted(() => {
     </div>
 
     <!-- Modal -->
-    <transition name="fade">
-      <div
-        v-if="showModal"
-        class="modal-overlay"
-        @click.self="closeModal"
-      >
-        <AppCard class="modal-card">
-          <div class="modal-header">
-            <div>
-              <p class="eyebrow">TAMBAH DATA</p>
-              <h2>Assign Tugasan</h2>
-            </div>
-
-            <button class="close-btn" @click="closeModal">✕</button>
-          </div>
-
-          <div class="form-area">
-            <!-- 🔥 Dropdown instead of inputs -->
-            <div class="select-field">
-              <label class="textarea-label">Pilih Tugasan</label>
-              <select v-model="selectedTugasanId">
-                <option disabled value="">-- Pilih Tugasan --</option>
-                <option
-                  v-for="t in allTugasan"
-                  :key="t.id"
-                  :value="t.id"
-                >
-                  {{ t.nama }}
-                </option>
-              </select>
-            </div>
-          </div>
-
-          <div class="modal-actions">
-            <AppButton
-              text="Batal"
-              variant="outline"
-              @click="closeModal"
-            />
-            <AppButton
-              text="Simpan"
-              variant="primary"
-              @click="assignTask"
-            />
-          </div>
-        </AppCard>
-      </div>
-    </transition>
+    <AssignTugasanModal
+  v-if="showAssignModal"
+  @close="showAssignModal = false"
+  @assigned="handleAssigned"
+/>
 </template>
 
 <style scoped>
@@ -370,23 +362,6 @@ onMounted(() => {
 .org-desc {
   color: #6b7280;
   font-size: 14px;
-}
-
-.table-card {
-  background: rgba(255, 255, 255, 0.98);
-  border: 1px solid #dbe3ff;
-  border-radius: 30px;
-  overflow: hidden;
-  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
-}
-
-.table-scroll {
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
 }
 
 thead {
@@ -633,4 +608,103 @@ select:focus {
   margin-top: 28px;
   flex-wrap: wrap;
 }
+
+.task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.task-name {
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.task-code {
+  font-size: 12px;
+  color: #6b7280;
+  font-family: monospace;
+}
+
+/* Protocol badge */
+.protocol-badge {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid;
+}
+
+.protocol-tcp {
+  background: rgba(59,130,246,0.1);
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.protocol-udp {
+  background: rgba(139,92,246,0.1);
+  color: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+.protocol-http {
+  background: rgba(34,197,94,0.1);
+  color: #22c55e;
+  border-color: #22c55e;
+}
+
+.protocol-ssh {
+  background: rgba(239,68,68,0.1);
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+.protocol-default {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* IP */
+.ip-range {
+  display: flex;
+  gap: 6px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #374151;
+}
+
+.ip-sep {
+  color: #9ca3af;
+}
+
+/* Status */
+.status-pill.running {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.status-pill.pending {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.status-pill.success {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.table-card {
+  width: 100%;
+}
+
+.table-scroll {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
 </style>
