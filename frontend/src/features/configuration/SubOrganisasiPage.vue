@@ -28,6 +28,7 @@ const editingId = ref(null)
 
 const nama = ref("")
 const keterangan = ref("")
+const kod = ref("")
 
 const subs = ref([])
 
@@ -72,8 +73,9 @@ const breadcrumbs = [
 // preload modal
 watch(showModal, (value) => {
   if (value) {
-    nama.value = selectedSub.value?.nama || ""
-    keterangan.value = selectedSub.value?.keterangan || ""
+nama.value = selectedSub.value?.nama || ""
+keterangan.value = selectedSub.value?.keterangan || ""
+kod.value = selectedSub.value?.kod || ""
   }
 })
 
@@ -90,6 +92,9 @@ function goToTapak(sub) {
 function openAddModal() {
   selectedSub.value = null
   editingId.value = null
+  nama.value = ""
+  keterangan.value = ""
+  kod.value = ""
   showModal.value = true
 }
 
@@ -111,17 +116,17 @@ async function saveSub() {
   try {
     if (editingId.value) {
       // UPDATE
-      await api.put(`/sub-organisasi/${editingId.value}`, {
+      await api.put(`/sub-organisasi/${editingId.value}/`, {
         organisasi_id: organisasiId,
-        kod: "SUB-" + Date.now(),
+        kod: kod.value || "SUB-" + Date.now(),
         nama: nama.value,
         keterangan: keterangan.value
       })
     } else {
       // CREATE
-      await api.post("/sub-organisasi", {
+      await api.post("/sub-organisasi/", {
         organisasi_id: organisasiId,
-        kod: "SUB-" + Date.now(),
+        kod: kod.value || "SUB-" + Date.now(),
         nama: nama.value,
         keterangan: keterangan.value
       })
@@ -131,7 +136,7 @@ async function saveSub() {
     closeModal()
 
   } catch (err) {
-    console.error("Failed to save sub organisasi:", err)
+    console.error("Failed to save sub organisasi:", err.response?.data || err)
   }
 }
 
@@ -277,6 +282,11 @@ onMounted(() => {
           </div>
 
           <div class="form-area">
+            <AppInput
+  v-model="kod"
+  label="Kod Sub Organisasi"
+  placeholder="Masukkan kod"
+/>
             <AppInput
               v-model="nama"
               label="Nama Sub Organisasi"
