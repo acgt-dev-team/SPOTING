@@ -12,8 +12,11 @@ const router = useRouter()
 const search = ref("")
 const showModal = ref(false)
 const editingId = ref(null)
+
 const nama = ref("")
 const keterangan = ref("")
+const pegawai_tadbir = ref("")
+const jawatan = ref("")
 
 const organizations = ref([])
 
@@ -45,6 +48,8 @@ function openModal() {
   editingId.value = null
   nama.value = ""
   keterangan.value = ""
+  pegawai_tadbir.value = ""
+  jawatan.value = ""
   showModal.value = true
 }
 
@@ -55,12 +60,14 @@ function closeModal() {
 function editOrganization(org) {
   nama.value = org.nama
   keterangan.value = org.keterangan
+  pegawai_tadbir.value = org.pegawai_tadbir || ""
+  jawatan.value = org.jawatan || ""
   editingId.value = org.id
   showModal.value = true
 }
 
 // =========================
-// ADD ORGANIZATION
+// ADD / UPDATE
 // =========================
 async function saveOrganization() {
   if (!nama.value.trim()) {
@@ -69,22 +76,19 @@ async function saveOrganization() {
   }
 
   try {
+    const payload = {
+      pelanggan_id: 1,
+      kod: "ORG-" + Date.now(),
+      nama: nama.value,
+      keterangan: keterangan.value,
+      pegawai_tadbir: pegawai_tadbir.value,
+      jawatan: jawatan.value
+    }
+
     if (editingId.value) {
-      // UPDATE
-      await api.put(`/organisasi/${editingId.value}`, {
-        pelanggan_id: 1,
-        kod: "ORG-" + Date.now(),
-        nama: nama.value,
-        keterangan: keterangan.value
-      })
+      await api.put(`/organisasi/${editingId.value}`, payload)
     } else {
-      // CREATE
-      await api.post("/organisasi", {
-        pelanggan_id: 1,
-        kod: "ORG-" + Date.now(),
-        nama: nama.value,
-        keterangan: keterangan.value
-      })
+      await api.post("/organisasi", payload)
     }
 
     await loadOrganisasi()
@@ -95,8 +99,9 @@ async function saveOrganization() {
   }
 }
 
-//delete organization
-
+// =========================
+// DELETE
+// =========================
 async function deleteOrganization(id) {
   if (!confirm("Padam organisasi ini?")) return
 
@@ -115,9 +120,6 @@ function goToSubOrganisasi(org) {
   router.push(`/admin/configuration/sub-organisasi/${org.id}`)
 }
 
-// =========================
-// INIT
-// =========================
 onMounted(() => {
   loadOrganisasi()
 })
@@ -161,6 +163,7 @@ onMounted(() => {
             <tr>
               <th style="width: 80px">Bil</th>
               <th>Nama Organisasi</th>
+              <th style="width: 220px">Pegawai</th>
               <th style="width: 180px">Sub Organisasi</th>
               <th style="width: 140px">Tapak</th>
               <th style="width: 180px">Tugasan</th>
@@ -169,14 +172,12 @@ onMounted(() => {
           </thead>
 
           <tbody>
-            <!-- Empty -->
             <tr v-if="filteredOrganizations.length === 0">
-              <td colspan="6" class="empty-cell">
+              <td colspan="7" class="empty-cell">
                 Tiada organisasi dijumpai.
               </td>
             </tr>
 
-            <!-- Rows -->
             <tr
               v-for="(org, index) in filteredOrganizations"
               :key="org.id"
@@ -197,7 +198,18 @@ onMounted(() => {
                 </div>
               </td>
 
-              <!-- TEMP values -->
+              <!-- PEGAWAI COLUMN -->
+              <td>
+                <div class="pegawai-cell">
+                  <p class="pegawai-name">
+                    {{ org.pegawai_tadbir || "-" }}
+                  </p>
+                  <p class="pegawai-jawatan">
+                    {{ org.jawatan || "-" }}
+                  </p>
+                </div>
+              </td>
+
               <td>0</td>
               <td>0</td>
 
@@ -206,18 +218,17 @@ onMounted(() => {
                 <span class="muted"> / 0</span>
               </td>
 
-              
-                <td>
-  <div style="display:flex; gap:8px;">
-    <button class="ghost-btn" @click.stop="editOrganization(org)">
-      ✏️
-    </button>
+              <td>
+                <div style="display:flex; gap:8px;">
+                  <button class="ghost-btn" @click.stop="editOrganization(org)">
+                    ✏️
+                  </button>
 
-    <button class="ghost-btn" @click.stop="deleteOrganization(org.id)">
-      🗑
-    </button>
-  </div>
-</td>
+                  <button class="ghost-btn" @click.stop="deleteOrganization(org.id)">
+                    🗑
+                  </button>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -242,35 +253,47 @@ onMounted(() => {
           <div class="modal-header">
             <div>
               <p class="eyebrow">TAMBAH DATA</p>
-              <h2>Tambah Organisasi</h2>
+              <h2>{{ editingId ? "Kemaskini Organisasi" : "Tambah Organisasi" }}</h2>
             </div>
 
             <button class="close-btn" @click="closeModal">✕</button>
           </div>
 
           <div class="form-area">
-            <AppInput
-              v-model="nama"
-              label="Nama Organisasi"
-              placeholder="Masukkan nama organisasi"
-            />
+          <AppInput
+            v-model="nama"
+            label="Nama Organisasi"
+            placeholder="Masukkan nama organisasi"
+          />
+
+          <AppInput
+            v-model="pegawai_tadbir"
+            label="Pegawai Tadbir"
+            placeholder="Masukkan nama pegawai tadbir"
+          />
+
+          <AppInput
+            v-model="jawatan"
+            label="Jawatan"
+            placeholder="Masukkan jawatan"
+          />
 
             <div class="textarea-field">
               <label class="textarea-label">Keterangan</label>
               <textarea
-                v-model="keterangan"
-                rows="5"
-                placeholder="Masukkan penerangan ringkas"
-              />
+              v-model="keterangan"
+              rows="5"
+              placeholder="Masukkan penerangan ringkas"
+            ></textarea>
             </div>
           </div>
 
           <div class="modal-actions">
             <AppButton text="Batal" variant="outline" @click="closeModal" />
             <AppButton
-  :text="editingId ? 'Kemaskini' : 'Simpan'"
-  @click="saveOrganization"
-/>
+              :text="editingId ? 'Kemaskini' : 'Simpan'"
+              @click="saveOrganization"
+            />
           </div>
 
         </AppCard>
@@ -457,6 +480,24 @@ td {
   margin-top: 2px;
 }
 
+/* ✅ FIXED (was wrongly inside media query) */
+.pegawai-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.pegawai-name {
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.pegawai-jawatan {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
 .success {
   color: #16a34a;
   font-weight: 800;
@@ -577,7 +618,7 @@ td {
 .eyebrow {
   font-size: 12px;
   font-weight: 800;
-  color: #9333ea;
+  color: #020265;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -636,8 +677,12 @@ textarea {
   font-family: inherit;
 }
 
+textarea::placeholder {
+  color: #9ca3af;
+}
+
 textarea:focus {
-  border-color: #9333ea;
+  border-color: #020265;
   background: #ffffff;
   box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.08);
 }

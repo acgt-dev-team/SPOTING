@@ -1,13 +1,15 @@
 <script setup>
-import { computed, ref, onMounted, onBeforeUnmount } from "vue"
+import { computed, ref } from "vue"
 import { useRoute, useRouter } from "vue-router"
 import logo from "../assets/images/spoting-logo.png"
 
 const route = useRoute()
 const router = useRouter()
 
-const showDropdown = ref(false)
-const dropdownRef = ref(null)
+const user = ref({
+  username: "Admin User",
+  role: "Pentadbir"
+})
 
 const customerName = computed(() => "Kementerian Dalam Negeri")
 
@@ -74,160 +76,193 @@ function goTo(crumb, index) {
   router.push(crumb.to)
 }
 
-function toggleDropdown() {
-  showDropdown.value = !showDropdown.value
-}
-
 function logout() {
   localStorage.removeItem("token")
   localStorage.removeItem("role")
   router.push("/login")
 }
-
-function handleClickOutside(event) {
-  if (dropdownRef.value && !dropdownRef.value.contains(event.target)) {
-    showDropdown.value = false
-  }
-}
-
-onMounted(() => {
-  document.addEventListener("click", handleClickOutside)
-})
-
-onBeforeUnmount(() => {
-  document.removeEventListener("click", handleClickOutside)
-})
 </script>
 
 <template>
-  <div class="admin-shell">
-    <!-- 🔹 NAVBAR -->
-    <header class="admin-navbar">
-      <div class="brand-wrap">
-        <img :src="logo" alt="Spoting" class="brand-logo" />
-        <p class="brand-sub">ADMIN PANEL</p>
+  <div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- 🔥 LOGO + TITLE (TOP LEFT) -->
+      <div class="sidebar-top">
+        <div class="brand">
+          <img :src="logo" class="logo" />
+          <span class="brand-text">Paparan Pentadbir</span>
+        </div>
       </div>
 
-      <!-- 🔥 PROFILE + DROPDOWN -->
-      <div class="profile-wrapper" ref="dropdownRef">
-        <button class="profile-btn" @click="toggleDropdown">
-          👤
+      <!-- EMPTY SPACE (no menu as requested) -->
+      <div></div>
+
+      <!-- USER -->
+      <div class="profile-card">
+        <div class="profile-top">
+          <div class="avatar">
+            {{ user.username.charAt(0) }}
+          </div>
+          <div>
+            <div class="username">{{ user.username }}</div>
+            <div class="role">{{ user.role }}</div>
+          </div>
+        </div>
+
+        <button class="logout-btn" @click="logout">
+          Log keluar
         </button>
-
-        <div v-if="showDropdown" class="dropdown-menu">
-          <button class="dropdown-item" @click="logout">
-            🚪 Logout
-          </button>
-        </div>
-      </div>
-    </header>
-
-    <!-- 🔹 CONTENT -->
-    <div class="admin-container">
-      <div class="page-top-header">
-        <div class="breadcrumbs">
-          <template v-for="(item, index) in breadcrumbs" :key="index">
-            <button
-              v-if="item.to && index !== breadcrumbs.length - 1"
-              class="crumb link"
-              @click="goTo(item, index)"
-            >
-              {{ item.label }}
-            </button>
-
-            <span
-              v-else
-              class="crumb"
-              :class="{ current: index === breadcrumbs.length - 1 }"
-            >
-              {{ item.label }}
-            </span>
-
-            <span v-if="index !== breadcrumbs.length - 1">›</span>
-          </template>
-        </div>
-
-        <div class="customer-block">
-          <p class="customer-caption">Pelanggan</p>
-          <h2 class="customer-name">{{ customerName }}</h2>
-        </div>
       </div>
 
-      <router-view />
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-area">
+
+      <div class="admin-container">
+
+        <!-- HEADER -->
+        <div class="page-top-header">
+
+          <!-- Breadcrumb -->
+          <div class="breadcrumbs">
+            <template v-for="(item, index) in breadcrumbs" :key="index">
+              <button
+                v-if="item.to && index !== breadcrumbs.length - 1"
+                class="crumb link"
+                @click="goTo(item, index)"
+              >
+                {{ item.label }}
+              </button>
+
+              <span
+                v-else
+                class="crumb"
+                :class="{ current: index === breadcrumbs.length - 1 }"
+              >
+                {{ item.label }}
+              </span>
+
+              <span v-if="index !== breadcrumbs.length - 1">›</span>
+            </template>
+          </div>
+
+          <!-- TOP RIGHT -->
+          <div class="customer-block">
+            <h2 class="customer-name">{{ customerName }}</h2>
+          </div>
+        </div>
+
+        <router-view />
+
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.admin-shell {
+.admin-layout {
+  display: flex;
   min-height: 100vh;
   background: #f5f7fb;
 }
 
-.admin-navbar {
-  height: 80px;
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 24px 18px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 32px;
-  background: white;
-  border-bottom: 1px solid #eee;
 }
 
-.brand-wrap {
+/* TOP BRAND */
+.brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.brand-logo {
-  height: 40px;
+.logo {
+  width: 110px;
 }
 
-.brand-sub {
-  font-weight: bold;
+.brand-text {
+  font-weight: 700;
   color: #020265;
+  font-size: 16px;
 }
 
-.profile-wrapper {
-  position: relative;
+/* USER */
+.profile-card {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 16px;
 }
 
-.profile-btn {
-  width: 45px;
-  height: 45px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-  background: white;
-  cursor: pointer;
+.profile-top {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
-.dropdown-menu {
-  position: absolute;
-  right: 0;
-  top: 55px;
-  background: white;
-  border: 1px solid #eee;
-  border-radius: 10px;
-  padding: 8px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #1d4ed8;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
 }
 
-.dropdown-item {
-  background: none;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
+.username {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.role {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.logout-btn {
   width: 100%;
-  text-align: left;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 10px;
+  color: #dc2626;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.dropdown-item:hover {
-  background: #f3f4f6;
+.logout-btn:hover {
+  background: #fef2f2;
 }
 
+/* MAIN */
+.main-area {
+  flex: 1;
+}
+
+/* CONTENT */
 .admin-container {
   padding: 24px 32px;
+}
+
+/* HEADER */
+.page-top-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .breadcrumbs {
@@ -245,8 +280,13 @@ onBeforeUnmount(() => {
   border: none;
 }
 
+/* RIGHT TITLE */
 .customer-block {
   margin-left: auto;
-  text-align: right;
+}
+
+.customer-name {
+  font-size: 22px;
+  font-weight: 800;
 }
 </style>
