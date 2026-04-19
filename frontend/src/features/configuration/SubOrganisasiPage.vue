@@ -29,6 +29,8 @@ const editingId = ref(null)
 const nama = ref("")
 const keterangan = ref("")
 const kod = ref("")
+const pegawai_tadbir = ref("")
+const jawatan = ref("")
 
 const subs = ref([])
 
@@ -76,6 +78,8 @@ watch(showModal, (value) => {
 nama.value = selectedSub.value?.nama || ""
 keterangan.value = selectedSub.value?.keterangan || ""
 kod.value = selectedSub.value?.kod || ""
+pegawai_tadbir.value = selectedSub.value?.pegawai_tadbir || ""
+jawatan.value = selectedSub.value?.jawatan || ""
   }
 })
 
@@ -96,6 +100,8 @@ function openAddModal() {
   keterangan.value = ""
   kod.value = ""
   showModal.value = true
+  pegawai_tadbir.value = ""
+  jawatan.value = ""
 }
 
 function editSub(sub) {
@@ -109,28 +115,42 @@ function closeModal() {
   selectedSub.value = null
 }
 
+function handleDelete() {
+  if (!editingId.value) return
+
+  const confirmDelete = confirm("Padam sub organisasi ini?")
+  if (!confirmDelete) return
+
+  deleteSub(editingId.value)
+  closeModal()
+}
+
 // ✅ SAVE
 async function saveSub() {
   if (!nama.value.trim()) return
 
   try {
     if (editingId.value) {
-      // UPDATE
-      await api.put(`/sub-organisasi/${editingId.value}/`, {
-        organisasi_id: organisasiId,
-        kod: kod.value || "SUB-" + Date.now(),
-        nama: nama.value,
-        keterangan: keterangan.value
-      })
-    } else {
-      // CREATE
-      await api.post("/sub-organisasi/", {
-        organisasi_id: organisasiId,
-        kod: kod.value || "SUB-" + Date.now(),
-        nama: nama.value,
-        keterangan: keterangan.value
-      })
-    }
+  // UPDATE
+  await api.put(`/sub-organisasi/${editingId.value}`, {
+    organisasi_id: organisasiId,
+    kod: kod.value || "SUB-" + Date.now(),
+    nama: nama.value,
+    keterangan: keterangan.value,
+    pegawai_tadbir: pegawai_tadbir.value,
+    jawatan: jawatan.value
+  })
+} else {
+  // CREATE
+  await api.post("/sub-organisasi/", {
+    organisasi_id: organisasiId,
+    kod: kod.value || "SUB-" + Date.now(),
+    nama: nama.value,
+    keterangan: keterangan.value,
+    pegawai_tadbir: pegawai_tadbir.value,
+    jawatan: jawatan.value
+  })
+}
 
     await loadSubOrganisasi()
     closeModal()
@@ -195,6 +215,7 @@ onMounted(() => {
             <tr>
               <th style="width: 80px">Bil</th>
               <th>Nama Sub Organisasi</th>
+              <th style="width: 220px">PEGWAI</th>
               <th style="width: 180px">Tapak</th>
               <th style="width: 140px">Tindakan</th>
             </tr>
@@ -203,7 +224,7 @@ onMounted(() => {
           <tbody>
             <!-- Empty -->
             <tr v-if="filteredSubs.length === 0">
-              <td colspan="4" class="empty-cell">
+              <td colspan="5" class="empty-cell">
                 Tiada sub organisasi dijumpai.
               </td>
             </tr>
@@ -213,7 +234,7 @@ onMounted(() => {
               v-for="(sub, index) in filteredSubs"
               :key="sub.id"
               class="clickable-row"
-              @click="goToTapak(sub)"
+              @click="goToTapak(sub)" style="cursor:pointer;"
             >
               <td>{{ index + 1 }}</td>
 
@@ -228,22 +249,28 @@ onMounted(() => {
                   </div>
                 </div>
               </td>
-
-              <!-- Temporary count -->
-              <td>0</td>
-
+              
               <td>
-  <div style="display:flex; gap:8px;">
-    <button class="ghost-btn" @click.stop="editSub(sub)">
-      ✏️
-    </button>
-
-    <button class="ghost-btn" @click.stop="deleteSub(sub.id)">
-      🗑
-    </button>
+  <div class="pegawai-cell">
+    <p class="pegawai-name">
+      {{ sub.pegawai_tadbir || "-" }}
+    </p>
+    <p class="pegawai-jawatan">
+      {{ sub.jawatan || "-" }}
+    </p>
   </div>
 </td>
-            </tr>
+                <!-- Temporary count -->
+                <td>0</td>
+
+              <td>
+        <div style="display:flex; gap:8px;">
+        <button class="ghost-btn" @click.stop="editSub(sub)">
+          ✏️
+        </button>
+          </div>
+              </td>
+        </tr>
           </tbody>
         </table>
       </div>
@@ -282,15 +309,28 @@ onMounted(() => {
           </div>
 
           <div class="form-area">
-            <AppInput
-  v-model="kod"
-  label="Kod Sub Organisasi"
-  placeholder="Masukkan kod"
-/>
+            
             <AppInput
               v-model="nama"
               label="Nama Sub Organisasi"
               placeholder="Masukkan nama sub organisasi"
+            />
+            <AppInput
+              v-model="kod"
+              label="Kod Sub Organisasi"
+              placeholder="Masukkan kod"
+            />
+
+            <AppInput
+              v-model="pegawai_tadbir"
+              label="Pegawai Tadbir"
+              placeholder="Masukkan nama pegawai tadbir"
+            />
+
+            <AppInput
+              v-model="jawatan"
+              label="Jawatan"
+              placeholder="Masukkan jawatan"
             />
 
             <div class="textarea-field">
@@ -304,6 +344,12 @@ onMounted(() => {
           </div>
 
           <div class="modal-actions">
+            <AppButton
+  v-if="editingId"
+  text="Padam"
+  variant="outline danger"
+  @click="handleDelete"
+/>
             <AppButton text="Batal" variant="outline" @click="closeModal" />
             <AppButton
               :text="isEditMode ? 'Simpan Perubahan' : 'Simpan'"

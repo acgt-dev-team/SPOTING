@@ -17,6 +17,8 @@ class SubOrganisasi(Base):
     kod = Column(String(50))
     nama = Column(String(255))
     keterangan = Column(Text)
+    pegawai_tadbir = Column(String(64))
+    jawatan = Column(String(64))
     aktif = Column(Boolean, default=True)
 
     cipta_pada = Column(TIMESTAMP, server_default=func.now())
