@@ -34,7 +34,7 @@ const profiles = ref([])
 // 🔍 Filter
 const filteredProfiles = computed(() => {
   return profiles.value.filter((item) =>
-    item.nama.toLowerCase().includes(search.value.toLowerCase())
+  item?.nama?.toLowerCase().includes(search.value.toLowerCase())
   )
 })
 
@@ -119,6 +119,10 @@ watch(showModal, (value) => {
 })
 
 function openAddModal() {
+  selectedProfile.value = null
+  editingId.value = null
+  nama.value = ""
+  keterangan.value = ""
   showModal.value = true
 }
 
@@ -140,6 +144,15 @@ function editProfile(profile) {
   selectedProfile.value = profile
   editingId.value = profile.id
   showModal.value = true
+}
+
+function handleDelete() {
+  if (!editingId.value) return
+
+  if (!confirm("Padam profil ini?")) return
+
+  deleteProfile(editingId.value)
+  closeModal()
 }
 
 // 🚀 Load on mount
@@ -226,10 +239,6 @@ onMounted(() => {
     <button class="ghost-btn" @click.stop="editProfile(profile)">
       ✏️
     </button>
-
-    <button class="ghost-btn" @click.stop="deleteProfile(profile.id)">
-      🗑
-    </button>
   </div>
 </td>
             </tr>
@@ -262,8 +271,12 @@ onMounted(() => {
         <AppCard class="modal-card">
           <div class="modal-header">
             <div>
-              <p class="eyebrow">TAMBAH DATA</p>
-              <h2>Tambah Profil</h2>
+              <p class="eyebrow">
+  {{ editingId ? "KEMASKINI DATA" : "TAMBAH DATA" }}
+</p>
+              <h2>
+  {{ editingId ? "Kemaskini Profil" : "Tambah Profil" }}
+</h2>
             </div>
 
             <button class="close-btn" @click="closeModal">
@@ -289,6 +302,12 @@ onMounted(() => {
           </div>
 
           <div class="modal-actions">
+            <AppButton
+  v-if="editingId"
+  text="Padam"
+  variant="outline danger"
+  @click="handleDelete"
+/>
             <AppButton
               text="Batal"
               variant="outline"
