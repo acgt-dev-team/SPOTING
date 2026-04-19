@@ -5,235 +5,250 @@ import { Icon } from '@iconify/vue'
 import AddTugasanModal from './AddTugasanModal.vue'
 import api from '../../../services/api'
 
+// emit
+const emit = defineEmits(['close', 'assigned'])
 
-const emit = defineEmits(['close', 'assigned']);
+// route
 const route = useRoute()
 const profileId = route.params.profileId
 
-
-
+// state
 const tugasanList = ref([])
+const showAdd = ref(false)
+const search = ref('')
+const selectedIds = ref([])
+const originalIds = ref([])
 
+// 🔥 LOAD ALL TUGASAN
 async function loadTugasan() {
   try {
-    const res = await api.get('/tugasan')
+    const res = await api.get('/tugasan/')
     tugasanList.value = res.data
   } catch (err) {
     console.error('Failed to load tugasan:', err)
   }
 }
 
-onMounted(() => {
-  loadTugasan()
+// 🔥 LOAD ASSIGNED (IMPORTANT)
+async function loadAssigned() {
+  try {
+    const res = await api.get(`/tugasan/profil/${profileId}`)
+
+    selectedIds.value = res.data.map(t => t.id)
+    originalIds.value = [...selectedIds.value]
+
+  } catch (err) {
+    console.error('Failed to load assigned:', err)
+  }
+}
+
+
+
+// 🔍 FILTER
+const filtered = computed(() => {
+  const q = search.value.trim().toLowerCase()
+  if (!q) return tugasanList.value
+
+  return tugasanList.value.filter(t =>
+    t.nama?.toLowerCase().includes(q) ||
+    t.kod?.toLowerCase().includes(q) ||
+    t.protocol?.toLowerCase().includes(q)
+  )
 })
 
-const selected = ref(new Set());
-const showAdd = ref(false);
-const search = ref('');
-
-const filtered = computed(() => {
-  const q = search.value.trim().toLowerCase();
-  if (!q) return tugasanList.value;
-  return tugasanList.value.filter(t =>
-    t.nama.toLowerCase().includes(q) ||
-    t.kod.toLowerCase().includes(q) ||
-    (t.protocol && t.protocol.toLowerCase().includes(q))
-  );
-});
-
-function toggleItem(id) {
-  if (selected.value.has(id)) {
-    selected.value.delete(id);
-  } else {
-    selected.value.add(id);
-  }
+// 🔥 AFTER ADD NEW
+function onSaved() {
+  loadTugasan()
+  showAdd.value = false
 }
 
-function toggleAll() {
-  const ids = filtered.value.map(t => t.id);
-  const allSelected = ids.every(id => selected.value.has(id));
-  if (allSelected) {
-    ids.forEach(id => selected.value.delete(id));
-  } else {
-    ids.forEach(id => selected.value.add(id));
-  }
-}
-
-const allChecked = computed(() => {
-  const ids = filtered.value.map(t => t.id);
-  return ids.length > 0 && ids.every(id => selected.value.has(id));
-});
-
-const someChecked = computed(() => {
-  const ids = filtered.value.map(t => t.id);
-  return ids.some(id => selected.value.has(id)) && !allChecked.value;
-});
-
-function onSaved(newTugasan) {
-  const id = tugasanList.value.length + 1;
-  tugasanList.value.push({ id, ...newTugasan });
-  showAdd.value = false;
-}
-
-async function handleAssign() {
+async function handleSubmit() {
   try {
-    const ids = [...selected.value]
+    const toAdd = selectedIds.value.filter(id => !originalIds.value.includes(id))
+    const toRemove = originalIds.value.filter(id => !selectedIds.value.includes(id))
 
-    for (const tugasanId of ids) {
+    // ADD
+    for (const id of toAdd) {
       await api.post(`/tugasan/profil/${profileId}`, {
-        tugasan_id: tugasanId,
+        tugasan_id: id,
         status: -1
       })
     }
 
+    // REMOVE
+    for (const id of toRemove) {
+      await api.delete(`/tugasan/profil/${profileId}/${id}`)
+    }
+
     emit('assigned')
+    emit('close')
+
   } catch (err) {
-    console.error('Assign failed:', err)
+    console.error('Update failed:', err)
   }
 }
 
+// ✅ SELECT ALL / NONE
+const allChecked = computed(() => {
+  const ids = filtered.value.map(t => t.id)
+  return ids.length > 0 && ids.every(id => selectedIds.value.includes(id))
+})
+
+const someChecked = computed(() => {
+  const ids = filtered.value.map(t => t.id)
+  return ids.some(id => selectedIds.value.includes(id)) && !allChecked.value
+})
+
+function toggleAll() {
+  const ids = filtered.value.map(t => t.id)
+
+  if (allChecked.value) {
+    // remove all visible
+    selectedIds.value = selectedIds.value.filter(id => !ids.includes(id))
+  } else {
+    // add all visible (avoid duplicates)
+    selectedIds.value = [...new Set([...selectedIds.value, ...ids])]
+  }
+}
+
+
+// 🎨 PROTOCOL COLOR
 function protocolColor(p) {
   const map = {
-    TCP: '#3b82f6', UDP: '#8b5cf6', HTTP: '#22c55e',
-    HTTPS: '#10b981', ICMP: '#f59e0b', SSH: '#ef4444',
-    FTP: '#ec4899', SMTP: '#06b6d4',
-  };
-  return map[p] || '#64748b';
+    TCP: '#3b82f6',
+    UDP: '#8b5cf6',
+    HTTP: '#22c55e',
+    HTTPS: '#10b981',
+    ICMP: '#f59e0b',
+    SSH: '#ef4444'
+  }
+  return map[p] || '#64748b'
 }
+
+onMounted(() => {
+  loadTugasan()
+  loadAssigned()
+})
 </script>
 
 <template>
   <div class="overlay" @click.self="$emit('close')">
     <div class="modal-wrapper">
-      <!-- Main modal -->
-      <div class="modal">
-        <div class="modal__header">
-          <div class="modal__header-left">
-            <div class="modal__icon-wrap">
-              <Icon icon="mdi:clipboard-list-outline" class="modal__icon" />
-            </div>
-            <div>
-              <h2 class="modal__title">Assign Tugasan</h2>
-              <p class="modal__subtitle">Pilih tugasan untuk ditetapkan</p>
-            </div>
-          </div>
-          <button class="modal__close" @click="$emit('close')" aria-label="Tutup">
-            <Icon icon="mdi:close" />
-          </button>
+
+```
+  <!-- MAIN MODAL -->
+  <div class="modal">
+
+    <!-- HEADER -->
+    <div class="modal__header">
+      <div class="modal__header-left">
+        <div class="modal__icon-wrap">
+          <Icon icon="mdi:clipboard-list-outline" />
         </div>
-
-        <!-- Add new tugasan row -->
-        <div class="modal__actions-bar">
-          <button class="btn-add" @click="showAdd = true">
-            <Icon icon="mdi:plus" />
-            Tambah Tugasan Baru
-          </button>
-          <div class="search-wrap">
-            <Icon icon="mdi:magnify" class="search-icon" />
-            <input
-              v-model="search"
-              type="text"
-              class="search-input"
-              placeholder="Cari tugasan..."
-            />
-          </div>
-        </div>
-
-        <!-- Selection count -->
-        <div class="modal__selection-bar" v-if="selected.size > 0">
-          <Icon icon="mdi:check-circle" class="sel-icon" />
-          <span>{{ selected.size }} tugasan dipilih</span>
-          <button class="sel-clear" @click="selected.clear()">
-            <Icon icon="mdi:close-circle" /> Kosongkan
-          </button>
-        </div>
-
-        <!-- Tugasan list -->
-        <div class="modal__body">
-          <!-- Header row -->
-          <div class="list-header">
-            <label class="list-header__check">
-              <input
-                type="checkbox"
-                :checked="allChecked"
-                :indeterminate="someChecked"
-                @change="toggleAll"
-              />
-            </label>
-            <span class="list-header__nama">Nama / Kod</span>
-            <span class="list-header__protocol">Protokol</span>
-            <span class="list-header__ip">IP Range</span>
-            <span class="list-header__status">Status</span>
-          </div>
-
-          <div class="tugasan-list">
-            <label
-              v-for="t in filtered"
-              :key="t.id"
-              class="tugasan-item"
-              :class="{ 'tugasan-item--selected': selected.has(t.id) }"
-            >
-              <input
-                type="checkbox"
-                :checked="selected.has(t.id)"
-                @change="toggleItem(t.id)"
-                class="tugasan-item__check"
-              />
-              <div class="tugasan-item__info">
-                <span class="tugasan-item__nama">{{ t.nama }}</span>
-                <span class="tugasan-item__kod">{{ t.kod }}</span>
-              </div>
-              <div class="tugasan-item__protocol">
-                <span
-                  class="badge"
-                  :style="{ background: protocolColor(t.protocol) + '22', color: protocolColor(t.protocol), borderColor: protocolColor(t.protocol) + '55' }"
-                >
-                  {{ t.protocol || '—' }}
-                </span>
-              </div>
-              <div class="tugasan-item__ip">
-                <span>{{ t.ip_start }}</span>
-                <span class="ip-sep">→</span>
-                <span>{{ t.ip_end }}</span>
-              </div>
-              <div class="tugasan-item__status">
-                <span class="status-dot" :class="t.aktif ? 'status-dot--on' : 'status-dot--off'"></span>
-                <span>{{ t.aktif ? 'Aktif' : 'Tidak' }}</span>
-              </div>
-            </label>
-
-            <div v-if="filtered.length === 0" class="empty-state">
-              <Icon icon="mdi:database-search" class="empty-icon" />
-              <p>Tiada tugasan ditemui</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal__footer">
-          <button class="btn btn--ghost" @click="$emit('close')">
-            Batal
-          </button>
-          <button
-            class="btn btn--primary"
-            :disabled="selected.size === 0"
-            @click="handleAssign"
-          >
-            Tetapkan 
-          </button>
+        <div>
+          <h2>Assign Tugasan</h2>
+          <p>Pilih tugasan untuk ditetapkan</p>
         </div>
       </div>
 
-      <!-- Side panel: Add new tugasan -->
-      <Transition name="slide">
-        <AddTugasanModal
-          v-if="showAdd"
-          @close="showAdd = false"
-          @saved="onSaved"
-        />
-      </Transition>
+      <button @click="$emit('close')">✕</button>
     </div>
+
+    <!-- ACTION BAR -->
+    <div class="modal__actions-bar">
+      <button @click="showAdd = true">
+        + Tambah Tugasan Baru
+      </button>
+
+      <input
+        v-model="search"
+        placeholder="Cari tugasan..."
+      />
+    </div>
+
+    <!-- LIST -->
+    <div class="modal__body">
+
+      <!-- HEADER -->
+      <div class="list-header">
+        <input
+  type="checkbox"
+  :checked="allChecked"
+  :indeterminate.prop="someChecked"
+  @change="toggleAll"
+/>
+        <span>Nama / Kod</span>
+        <span>Protokol</span>
+        <span>IP Range</span>
+        <span>Status</span>
+      </div>
+
+      <!-- ITEMS -->
+      <div class="tugasan-list">
+
+        <label
+          v-for="t in filtered"
+          :key="t.id"
+          class="tugasan-item"
+        >
+       <input
+  type="checkbox"
+  :value="t.id"
+  v-model="selectedIds"
+/>
+
+          <div>
+            <div>{{ t.nama }}</div>
+            <small>{{ t.kod }}</small>
+          </div>
+
+          <div>
+            <span :style="{ color: protocolColor(t.protocol) }">
+              {{ t.protocol || '-' }}
+            </span>
+          </div>
+
+          <div>
+            {{ t.ip_start }} → {{ t.ip_end }}
+          </div>
+
+          <div>
+            {{ t.aktif ? 'Aktif' : 'Tidak' }}
+          </div>
+        </label>
+
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="modal__footer">
+      <button class="btn btn--ghost" @click="$emit('close')">Batal</button>
+
+      <button class="btn btn--primary"
+        :disabled="selectedIds.length === 0"
+        @click="handleSubmit"
+      >
+        Tetapkan
+      </button>
+    </div>
+
+  </div>
+
+  <!-- SIDE MODAL -->
+  <Transition name="slide">
+    <AddTugasanModal
+      v-if="showAdd"
+      @close="showAdd = false"
+      @saved="onSaved"
+    />
+  </Transition>
+
+</div>
+```
+
   </div>
 </template>
+
 
 <style scoped>
 .overlay {
@@ -624,19 +639,15 @@ function protocolColor(p) {
 }
 
 .btn--primary {
+  position: relative;
   background: #3e4fd1;
-  color: var(--text-secondary);
+  color: #ffffff;
   border: 1px solid var(--border-subtle);
 }
 
 .btn--primary:hover {
-  background: var(--border-subtle);
+  background: #2a40b0;
   color: var(--text-primary);
-}
-
-.btn--primary:disabled {
-  opacity: 0.95;
-  cursor: not-allowed;
 }
 
 /* Side panel transition */

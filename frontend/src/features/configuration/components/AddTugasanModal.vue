@@ -1,9 +1,10 @@
 <script setup>
-import { reactive, ref } from 'vue';
+import { reactive, ref, onMounted } from 'vue';
 import { Icon } from '@iconify/vue';
 import api from '../../../services/api'
 
 const emit = defineEmits(['close', 'saved']);
+const jenisList = ref([]);
 
 const form = reactive({
   nama: '',
@@ -21,12 +22,10 @@ const saving = ref(false);
 const protocols = ['TCP', 'UDP', 'HTTP', 'HTTPS', 'ICMP', 'SSH', 'FTP', 'SMTP'];
 
 async function handleSave() {
-  if (!form.nama || !form.jenis_id) return;
-
-  saving.value = true;
+  if (!form.nama || !form.jenis_id) return
 
   try {
-    const res = await api.post('/tugasan', {
+    await api.post("/tugasan/", {
       nama: form.nama,
       kod: form.kod || "AUTO-" + Date.now(),
       keterangan: form.keterangan,
@@ -37,14 +36,26 @@ async function handleSave() {
       aktif: form.aktif
     })
 
-    emit('saved', res.data)
+    emit('saved')
+    emit('close')
 
   } catch (err) {
-    console.error('Failed to create tugasan:', err)
-  } finally {
-    saving.value = false
+    console.error("Failed to create tugasan:", err)
   }
 }
+
+async function fetchJenis() {
+  try {
+    const res = await api.get("/jenis_tugasan/");
+    jenisList.value = res.data;
+  } catch (err) {
+    console.error("Failed to fetch jenis:", err);
+  }
+}
+
+onMounted(() => {
+  fetchJenis();
+});
 
 function handleCancel() {
   emit('close');
@@ -76,13 +87,16 @@ function handleCancel() {
 
       <div class="field">
         <label class="field__label">Jenis ID <span class="field__req">*</span></label>
-        <input
-          v-model="form.jenis_id"
-          type="number"
-          class="field__input"
-          placeholder="ID jenis tugasan"
-          min="1"
-        />
+        <select v-model="form.jenis_id" class="field__input field__select">
+  <option value="">-- Pilih Jenis --</option>
+  <option
+    v-for="j in jenisList"
+    :key="j.id"
+    :value="j.id"
+  >
+    {{ j.nama }}
+  </option>
+</select>
       </div>
 
       <div class="field">

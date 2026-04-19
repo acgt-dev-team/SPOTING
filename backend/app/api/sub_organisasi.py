@@ -2,9 +2,6 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database.session import get_db
 
-from fastapi import HTTPException
-from app.models.sub_organisasi import SubOrganisasi
-
 from app.schemas.sub_organisasi_schema import (
     SubOrganisasiCreate,
     SubOrganisasiResponse
@@ -23,11 +20,33 @@ router = APIRouter(prefix="/sub-organisasi", tags=["Sub Organisasi"])
 
 
 # =========================
-# GET
+# GET (BY ORGANISASI)
 # =========================
 @router.get("/organisasi/{organisasi_id}", response_model=list[SubOrganisasiResponse])
 def get_by_organisasi(organisasi_id: int, db: Session = Depends(get_db)):
     return get_sub_by_organisasi(db, organisasi_id)
+
+
+# =========================
+# GET (BY ID)
+# =========================
+@router.get("/{id}", response_model=SubOrganisasiResponse)
+def get_by_id(id: int, db: Session = Depends(get_db)):
+    sub = db.query(SubOrganisasi).filter(SubOrganisasi.id == id).first()
+
+    if not sub:
+        raise HTTPException(status_code=404, detail="SubOrganisasi not found")
+
+    return {
+        "id": sub.id,
+        "organisasi_id": sub.organisasi_id,
+        "kod": sub.kod,
+        "nama": sub.nama,
+        "keterangan": sub.keterangan,
+        "pegawai_tadbir": sub.pegawai_tadbir,   # ✅ FIXED
+        "jawatan": sub.jawatan,                 # ✅ FIXED
+        "aktif": bool(sub.aktif) if sub.aktif is not None else False
+    }
 
 
 # =========================
@@ -62,19 +81,3 @@ def delete(id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="SubOrganisasi not found")
 
     return {"message": "Deleted"}
-
-@router.get("/{id}", response_model=SubOrganisasiResponse)
-def get_by_id(id: int, db: Session = Depends(get_db)):
-    sub = db.query(SubOrganisasi).filter(SubOrganisasi.id == id).first()
-
-    if not sub:
-        raise HTTPException(status_code=404, detail="SubOrganisasi not found")
-
-    return {
-        "id": sub.id,
-        "organisasi_id": sub.organisasi_id,
-        "kod": sub.kod,
-        "nama": sub.nama,
-        "keterangan": sub.keterangan,
-        "aktif": bool(sub.aktif) if sub.aktif is not None else False
-    }

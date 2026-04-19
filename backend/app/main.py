@@ -14,7 +14,7 @@ from app.models.pelanggan import Pelanggan
 from app.models.user import User
 
 # ✅ Routers ONLY from API
-from app.api import tugasan, profil, tapak, sub_organisasi, organisasi
+from app.api import tugasan, profil, tapak, sub_organisasi, organisasi, jenis_tugasan
 from app.api import auth
 
 app = FastAPI(
@@ -43,7 +43,9 @@ app.include_router(profil.router)
 app.include_router(tapak.router)
 app.include_router(sub_organisasi.router)
 app.include_router(organisasi.router)
+app.include_router(jenis_tugasan.router)
 app.include_router(auth.router)
+
 
 @app.get("/")
 def root():
