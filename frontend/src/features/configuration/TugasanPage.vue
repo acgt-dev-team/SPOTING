@@ -3,9 +3,6 @@ import { computed, ref, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
 import api from "../../../src/services/api.js"
 
-import AppInput from "../../ui/AppInput.vue"
-import AppButton from "../../ui/AppButton.vue"
-import AppCard from "../../ui/AppCard.vue"
 import AssignTugasanModal from "./components/AssignTugasanModal.vue"
 
 const route = useRoute()
@@ -18,12 +15,8 @@ const profileId = route.params.profileId
 
 const search = ref("")
 const showModal = ref(false)
-const showAssignModal = ref(false)
 
-// ❌ REMOVE nama/keterangan/status (no longer needed)
-// const nama = ref("")
-// const keterangan = ref("")
-// const status = ref("Aktif")
+
 
 // ✅ NEW: dropdown selection
 const selectedTugasanId = ref(null)
@@ -66,7 +59,7 @@ async function loadTasks() {
 // 🔥 Load all available tugasan (for dropdown)
 async function loadAllTugasan() {
   try {
-    const res = await api.get("/tugasan")
+    const res = await api.get("/tugasan/")
     allTugasan.value = res.data
   } catch (err) {
     console.error("Error loading all tugasan:", err)
@@ -102,9 +95,42 @@ async function removeTask(tugasanId) {
 }
 
 // Modal handling
-async function handleAssigned() {
-  showAssignModal.value = false
-  await loadTasks()
+function handleAssigned() {
+  loadTasks()      // 🔥 reload table after assign/unassign
+  showModal.value = false
+}
+
+
+async function handleAssign() {
+  try {
+    // 🔥 current assigned from DB
+    const res = await api.get(`/tugasan/profil/${profileId}`)
+    const assignedIds = res.data.map(t => t.id)
+
+    const selectedIds = [...selected.value]
+
+    // ➕ ADD (newly checked)
+    for (const id of selectedIds) {
+      if (!assignedIds.includes(id)) {
+        await api.post(`/tugasan/profil/${profileId}`, {
+          tugasan_id: id,
+          status: -1
+        })
+      }
+    }
+
+    // ❌ REMOVE (unchecked)
+    for (const id of assignedIds) {
+      if (!selectedIds.includes(id)) {
+        await api.delete(`/tugasan/profil/${profileId}/${id}`)
+      }
+    }
+
+    emit('assigned')
+
+  } catch (err) {
+    console.error('Sync failed:', err)
+  }
 }
 
 
@@ -151,7 +177,7 @@ onMounted(() => {
         <input v-model="search" type="text" placeholder="Carian tugasan..." />
       </div>
 
-      <button class="primary-btn" @click="showAssignModal = true">
+      <button class="primary-btn" @click="showModal = true">
   Assign Tugasan
 </button>
     </div>
@@ -172,7 +198,6 @@ onMounted(() => {
       <th style="width: 120px">Protokol</th>
       <th style="width: 200px">IP Range</th>
       <th style="width: 140px">Status</th>
-      <th style="width: 140px"></th>
     </tr>
   </thead>
 
@@ -235,11 +260,6 @@ onMounted(() => {
       </td>
 
       <!-- Actions -->
-      <td>
-        <button class="ghost-btn">
-          Buka →
-        </button>
-      </td>
     </tr>
   </tbody>
 </table>
@@ -262,8 +282,8 @@ onMounted(() => {
 
     <!-- Modal -->
     <AssignTugasanModal
-  v-if="showAssignModal"
-  @close="showAssignModal = false"
+  v-if="showModal"
+  @close="showModal = false"
   @assigned="handleAssigned"
 />
 </template>
