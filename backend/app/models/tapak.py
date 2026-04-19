@@ -29,6 +29,8 @@ class Tapak(Base):
     bandar = Column(String(64))
     negeri = Column(String(64))
     negara = Column(String(64))
+    pegawai_tadbir = Column(String(64))
+    jawatan = Column(String(64))
 
     sub_organisasi = relationship("SubOrganisasi", back_populates="tapak")
 

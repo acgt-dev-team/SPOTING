@@ -215,7 +215,7 @@ onMounted(() => {
             <tr>
               <th style="width: 80px">Bil</th>
               <th>Nama Sub Organisasi</th>
-              <th style="width: 220px">PEGWAI</th>
+              <th style="width: 220px">PEGAWAI</th>
               <th style="width: 180px">Tapak</th>
               <th style="width: 140px">Tindakan</th>
             </tr>

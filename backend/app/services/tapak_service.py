@@ -1,3 +1,4 @@
+from pika import data
 from sqlalchemy.orm import Session
 from app.models.tapak import Tapak
 
@@ -17,6 +18,8 @@ def get_tapak_by_sub(db: Session, sub_id: int):
             "kod": s.kod,
             "nama": s.nama,
             "keterangan": s.keterangan,
+            "pegawai_tadbir": s.pegawai_tadbir,
+            "jawatan": s.jawatan,
             "aktif": bool(s.aktif) if s.aktif is not None else False
         }
         for s in sites
@@ -31,7 +34,10 @@ def create_tapak(db: Session, data: dict):
         sub_organisasi_id=data["sub_organisasi_id"],
         kod=data["kod"],
         nama=data["nama"],
+        pegawai_tadbir=data.get("pegawai_tadbir"),
+        jawatan=data.get("jawatan"),
         keterangan=data.get("keterangan", "")
+        
     )
 
     db.add(new_site)
@@ -44,6 +50,8 @@ def create_tapak(db: Session, data: dict):
         "kod": new_site.kod,
         "nama": new_site.nama,
         "keterangan": new_site.keterangan,
+        "pegawai_tadbir": new_site.pegawai_tadbir,
+        "jawatan": new_site.jawatan,
         "aktif": bool(new_site.aktif) if new_site.aktif is not None else False
     }
 
@@ -60,6 +68,8 @@ def update_tapak(db: Session, id: int, data: dict):
     site.nama = data["nama"]
     site.kod = data["kod"]
     site.keterangan = data.get("keterangan", "")
+    site.pegawai_tadbir = data.get("pegawai_tadbir")
+    site.jawatan = data.get("jawatan")
 
     db.commit()
     db.refresh(site)
@@ -70,6 +80,8 @@ def update_tapak(db: Session, id: int, data: dict):
         "kod": site.kod,
         "nama": site.nama,
         "keterangan": site.keterangan,
+        "pegawai_tadbir": site.pegawai_tadbir,
+        "jawatan": site.jawatan,
         "aktif": bool(site.aktif) if site.aktif is not None else False
     }
 
