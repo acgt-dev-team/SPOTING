@@ -8,6 +8,10 @@ from datetime import datetime
 
 app = FastAPI()
 
+@app.get('/test')
+def testing():
+    return { 'message': 'API successfully instantiate' }
+
 @app.post('/imbasan', tags=['Tugasan'])
 async def imbasan(request: Request):
     body = await request.json()
