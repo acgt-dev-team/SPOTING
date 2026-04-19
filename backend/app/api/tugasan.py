@@ -9,6 +9,7 @@ from app.services.tugasan_service import (
     assign_tugasan_to_profil,
     remove_tugasan_from_profil,
     get_all_tugasan,
+    create_tugasan,
 )
 
 router = APIRouter(prefix="/tugasan", tags=["Tugasan"])
@@ -39,7 +40,10 @@ def assign(profil_id: int, data: dict, db: Session = Depends(get_db)):
 
 # ✅ REMOVE
 @router.delete("/profil/{profil_id}/{tugasan_id}")
-def remove(profil_id: int, tugasan_id: int, db: Session = Depends(get_db)):
+def remove_tugasan(profil_id: int, tugasan_id: int, db: Session = Depends(get_db)):
     return remove_tugasan_from_profil(db, profil_id, tugasan_id)
 
 
+@router.post("/", response_model=TugasanResponse)
+def create(data: TugasanCreate, db: Session = Depends(get_db)):
+    return create_tugasan(db, data.dict())

@@ -17,6 +17,8 @@ def get_organisasi_by_pelanggan(db: Session, pelanggan_id: int):
             "nama": o.nama,
             "keterangan": o.keterangan,
             "kod": o.kod,
+            "pegawai_tadbir": o.pegawai_tadbir,
+            "jawatan": o.jawatan,
             "aktif": bool(o.aktif) if o.aktif is not None else False
         }
         for o in organisasis
@@ -28,11 +30,13 @@ def get_organisasi_by_pelanggan(db: Session, pelanggan_id: int):
 # =========================
 def create_organisasi(db: Session, data: dict):
     new_org = Organisasi(
-        pelanggan_id=data["pelanggan_id"],
-        kod=data["kod"],
-        nama=data["nama"],
-        keterangan=data.get("keterangan", "")
-    )
+    pelanggan_id=data["pelanggan_id"],
+    kod=data["kod"],
+    nama=data["nama"],
+    keterangan=data.get("keterangan", ""),
+    pegawai_tadbir=data.get("pegawai_tadbir"),
+    jawatan=data.get("jawatan")
+)
 
     db.add(new_org)
     db.commit()
@@ -60,17 +64,21 @@ def update_organisasi(db: Session, id: int, data: dict):
     org.nama = data["nama"]
     org.kod = data["kod"]
     org.keterangan = data.get("keterangan", "")
+    org.pegawai_tadbir = data.get("pegawai_tadbir")
+    org.jawatan = data.get("jawatan")
 
     db.commit()
     db.refresh(org)
 
     return {
-        "id": org.id,
-        "pelanggan_id": org.pelanggan_id,
-        "kod": org.kod,
-        "nama": org.nama,
-        "keterangan": org.keterangan,
-        "aktif": bool(org.aktif) if org.aktif is not None else False
+    "id": org.id,
+    "pelanggan_id": org.pelanggan_id,
+    "kod": org.kod,
+    "nama": org.nama,
+    "keterangan": org.keterangan,
+    "pegawai_tadbir": org.pegawai_tadbir,
+    "jawatan": org.jawatan,
+    "aktif": bool(org.aktif) if org.aktif is not None else False
     }
 
 

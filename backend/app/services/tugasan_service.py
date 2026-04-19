@@ -52,6 +52,33 @@ def assign_tugasan_to_profil(db: Session, profil_id: int, tugasan_id: int, statu
 
     return {"message": "Assigned successfully"}
 
+def create_tugasan(db: Session, data: dict):
+    new_tugasan = Tugasan(
+        nama=data["nama"],
+        kod=data["kod"],
+        keterangan=data.get("keterangan"),
+        jenis_id=data["jenis_id"],
+        protocol=data.get("protocol"),
+        ip_start=data.get("ip_start"),
+        ip_end=data.get("ip_end"),
+        aktif=data.get("aktif", True)
+    )
+
+    db.add(new_tugasan)
+    db.commit()
+    db.refresh(new_tugasan)
+
+    return {
+    "id": new_tugasan.id,
+    "nama": new_tugasan.nama,
+    "kod": new_tugasan.kod,
+    "keterangan": new_tugasan.keterangan,
+    "jenis_id": new_tugasan.jenis_id,
+    "protocol": new_tugasan.protocol,
+    "ip_start": new_tugasan.ip_start,
+    "ip_end": new_tugasan.ip_end,
+    "aktif": new_tugasan.aktif
+    }
 
 # =========================
 # REMOVE
@@ -62,13 +89,11 @@ def remove_tugasan_from_profil(db: Session, profil_id: int, tugasan_id: int):
         tugasan_id=tugasan_id
     ).first()
 
-    if not item:
-        return {"message": "Not found"}
+    if item:
+        db.delete(item)
+        db.commit()
 
-    db.delete(item)
-    db.commit()
-
-    return {"message": "Removed successfully"}
+    return {"message": "Removed"}
 
 
 # =========================
