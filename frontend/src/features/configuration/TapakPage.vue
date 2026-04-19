@@ -32,6 +32,8 @@ const selectedSite = ref(null)
 
 const nama = ref("")
 const keterangan = ref("")
+const pegawai_tadbir = ref("")
+const jawatan = ref("")
 
 const sites = ref([])
 
@@ -92,6 +94,8 @@ watch(showModal, (value) => {
   if (value) {
     nama.value = selectedSite.value?.nama || ""
     keterangan.value = selectedSite.value?.keterangan || ""
+    pegawai_tadbir.value = selectedSite.value?.pegawai_tadbir || ""
+    jawatan.value = selectedSite.value?.jawatan || ""
   }
 })
 
@@ -134,6 +138,8 @@ async function saveSite() {
         sub_organisasi_id: subOrganizationId,
         kod: "TPK-" + Date.now(),
         nama: nama.value,
+        pegawai_tadbir: pegawai_tadbir.value,
+        jawatan: jawatan.value,
         keterangan: keterangan.value
       })
     } else {
@@ -141,6 +147,8 @@ async function saveSite() {
         sub_organisasi_id: subOrganizationId,
         kod: "TPK-" + Date.now(),
         nama: nama.value,
+        pegawai_tadbir: pegawai_tadbir.value,
+        jawatan: jawatan.value,
         keterangan: keterangan.value
       })
     }
@@ -151,6 +159,15 @@ async function saveSite() {
   } catch (err) {
     console.error("Failed to save tapak:", err)
   }
+}
+
+function handleDelete() {
+  if (!editingId.value) return
+
+  if (!confirm("Padam tapak ini?")) return
+
+  deleteSite(editingId.value)
+  closeModal()
 }
 
 //delete
@@ -210,6 +227,7 @@ onMounted(() => {
             <tr>
               <th style="width: 80px">Bil</th>
               <th>Nama Tapak</th>
+              <th style="width: 220px">Pegawai</th>
               <th style="width: 180px">Jumlah Tugasan</th>
               <th style="width: 140px">Tindakan</th>
             </tr>
@@ -218,7 +236,7 @@ onMounted(() => {
           <tbody>
             <!-- Empty -->
             <tr v-if="filteredSites.length === 0">
-              <td colspan="4" class="empty-cell">
+              <td colspan="5" class="empty-cell">
                 Tiada tapak dijumpai.
               </td>
             </tr>
@@ -244,6 +262,13 @@ onMounted(() => {
                 </div>
               </td>
 
+              <td>
+  <div class="pegawai-cell">
+    <p class="pegawai-name">{{ site.pegawai_tadbir || "-" }}</p>
+    <p class="pegawai-jawatan">{{ site.jawatan || "-" }}</p>
+  </div>
+</td>
+
               <!-- Temporary -->
               <td>0</td>
 
@@ -252,10 +277,6 @@ onMounted(() => {
   <div style="display:flex; gap:8px;">
     <button class="ghost-btn" @click.stop="editSite(site)">
       ✏️
-    </button>
-
-    <button class="ghost-btn" @click.stop="deleteSite(site.id)">
-      🗑
     </button>
   </div>
 </td>
@@ -303,6 +324,17 @@ onMounted(() => {
               label="Nama Tapak"
               placeholder="Masukkan nama tapak"
             />
+            <AppInput
+  v-model="pegawai_tadbir"
+  label="Pegawai Tadbir"
+  placeholder="Masukkan pegawai"
+/>
+
+<AppInput
+  v-model="jawatan"
+  label="Jawatan"
+  placeholder="Masukkan jawatan"
+/>
 
             <div class="textarea-field">
               <label class="textarea-label">Keterangan</label>
@@ -315,6 +347,13 @@ onMounted(() => {
           </div>
 
           <div class="modal-actions">
+
+            <AppButton
+  v-if="editingId"
+  text="Padam"
+  variant="outline danger"
+  @click="handleDelete"
+/>
             <AppButton
               text="Batal"
               variant="outline"
