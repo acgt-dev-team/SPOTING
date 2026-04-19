@@ -7,6 +7,10 @@ credentials = pika.PlainCredentials(username='admin', password='strongpassword')
 
 app = FastAPI()
 
+@app.get('/test')
+def test():
+    return { 'message': 'Succeed' }
+
 @app.post('/mula-imbasan')
 async def mula_imbasan(request: Request):
     body = await request.json()
