@@ -480,6 +480,7 @@ td {
   text-align: center;
   padding: 52px 20px;
   color: #6b7280;
+  background: #ffffff;
 }
 
 .count-pill {
@@ -714,16 +715,26 @@ select:focus {
 }
 
 .table-card {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #dbe3ff;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
   width: 100%;
 }
 
 .table-scroll {
+  overflow-x: auto;
   width: 100%;
 }
 
 table {
   width: 100%;
-  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+tbody tr {
+  background: #ffffff;
 }
 
 </style>
