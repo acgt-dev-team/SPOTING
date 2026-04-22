@@ -987,6 +987,13 @@ textarea:focus {
   cursor: not-allowed;
 }
 
+.danger-word {
+  text-align: center;
+  color: #dc2626;
+  font-size: 20px;
+  font-weight: 800;
+}
+
 .toast-success {
   position: fixed;
   right: 24px;

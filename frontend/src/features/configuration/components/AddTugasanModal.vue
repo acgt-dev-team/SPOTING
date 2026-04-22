@@ -1,11 +1,20 @@
 <script setup>
-import { reactive, ref, onMounted } from "vue"
+import { reactive, ref, onMounted, computed, watch } from "vue"
 import api from "../../../services/api"
 
 const emit = defineEmits(["close", "saved"])
 
+const props = defineProps({
+  task: {
+    type: Object,
+    default: null
+  }
+})
+
 const jenisList = ref([])
 const saving = ref(false)
+
+const isEditMode = computed(() => !!props.task)
 
 const protocols = [
   "TCP",
@@ -29,6 +38,40 @@ const form = reactive({
   jenis_id: ""
 })
 
+function resetForm() {
+  form.nama = ""
+  form.protocol = ""
+  form.ip_start = ""
+  form.ip_end = ""
+  form.kod = ""
+  form.keterangan = ""
+  form.aktif = true
+  form.jenis_id = ""
+}
+
+function fillForm(task) {
+  form.nama = task.nama || ""
+  form.protocol = task.protocol || ""
+  form.ip_start = task.ip_start || ""
+  form.ip_end = task.ip_end || ""
+  form.kod = task.kod || ""
+  form.keterangan = task.keterangan || ""
+  form.aktif = task.aktif ?? true
+  form.jenis_id = task.jenis_id ? String(task.jenis_id) : ""
+}
+
+watch(
+  () => props.task,
+  (val) => {
+    if (val) {
+      fillForm(val)
+    } else {
+      resetForm()
+    }
+  },
+  { immediate: true }
+)
+
 async function fetchJenis() {
   try {
     const res = await api.get("/jenis_tugasan/")
@@ -44,7 +87,7 @@ async function handleSave() {
   try {
     saving.value = true
 
-    await api.post("/tugasan/", {
+    const payload = {
       nama: form.nama,
       kod: form.kod || "AUTO-" + Date.now(),
       keterangan: form.keterangan,
@@ -53,13 +96,19 @@ async function handleSave() {
       ip_start: form.ip_start,
       ip_end: form.ip_end,
       aktif: form.aktif
-    })
+    }
+
+    if (isEditMode.value) {
+      await api.put(`/tugasan/${props.task.id}`, payload)
+    } else {
+      await api.post("/tugasan/", payload)
+    }
 
     emit("saved")
     emit("close")
 
   } catch (err) {
-    console.error("Failed to create tugasan:", err)
+    console.error("Failed to save tugasan:", err)
   } finally {
     saving.value = false
   }
@@ -77,10 +126,20 @@ onMounted(() => {
     <div class="panel-header">
 
       <div>
-        <p class="eyebrow">TAMBAH DATA</p>
-        <h2>Tambah Tugasan</h2>
+        <p class="eyebrow">
+          {{ isEditMode ? "KEMASKINI DATA" : "TAMBAH DATA" }}
+        </p>
+
+        <h2>
+          {{ isEditMode ? "Edit Tugasan" : "Tambah Tugasan" }}
+        </h2>
+
         <p class="subtext">
-          Cipta tugasan baharu untuk digunakan dalam sistem.
+          {{
+            isEditMode
+              ? "Kemaskini maklumat tugasan sedia ada."
+              : "Cipta tugasan baharu untuk digunakan dalam sistem."
+          }}
         </p>
       </div>
 
@@ -100,6 +159,7 @@ onMounted(() => {
 
         <div class="field">
           <label>Nama Tugasan *</label>
+
           <input
             v-model="form.nama"
             type="text"
@@ -125,6 +185,7 @@ onMounted(() => {
 
         <div class="field">
           <label>Kod Tugasan</label>
+
           <input
             v-model="form.kod"
             type="text"
@@ -159,6 +220,7 @@ onMounted(() => {
 
           <div class="field">
             <label>IP Mula</label>
+
             <input
               v-model="form.ip_start"
               type="text"
@@ -168,6 +230,7 @@ onMounted(() => {
 
           <div class="field">
             <label>IP Akhir</label>
+
             <input
               v-model="form.ip_end"
               type="text"
@@ -205,6 +268,7 @@ onMounted(() => {
 
           <div>
             <p class="toggle-title">Status Tugasan</p>
+
             <p class="toggle-desc">
               Tandakan sama ada tugasan aktif atau tidak.
             </p>
@@ -244,7 +308,13 @@ onMounted(() => {
         :disabled="!form.nama || !form.jenis_id || saving"
         @click="handleSave"
       >
-        {{ saving ? "Menyimpan..." : "Simpan Tugasan" }}
+        {{
+          saving
+            ? "Menyimpan..."
+            : isEditMode
+              ? "Simpan Perubahan"
+              : "Simpan Tugasan"
+        }}
       </button>
 
     </div>
@@ -287,12 +357,15 @@ onMounted(() => {
   font-size: 28px;
   font-weight: 900;
   color: #111827;
+  line-height: 1.15;
 }
 
 .subtext {
   margin-top: 8px;
   font-size: 14px;
   color: #6b7280;
+  line-height: 1.5;
+  max-width: 320px;
 }
 
 .close-btn {
@@ -370,6 +443,7 @@ textarea:focus {
 
 textarea {
   resize: vertical;
+  min-height: 130px;
 }
 
 .grid-2 {
@@ -388,7 +462,7 @@ textarea {
 .toggle-title {
   margin: 0;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
   color: #111827;
 }
 
@@ -453,6 +527,7 @@ textarea {
   border-top: 1px solid #eef2ff;
   display: flex;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .outline-btn,
@@ -463,6 +538,7 @@ textarea {
   font-weight: 800;
   font-size: 14px;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .outline-btn {
@@ -471,10 +547,18 @@ textarea {
   color: #374151;
 }
 
+.outline-btn:hover {
+  background: #f8fafc;
+}
+
 .save-btn {
   border: none;
   background: linear-gradient(135deg, #020265, #0b0b8f);
   color: white;
+}
+
+.save-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
 }
 
 .save-btn:disabled {
@@ -495,6 +579,19 @@ textarea {
 
   .panel-footer {
     flex-direction: column;
+  }
+
+  .outline-btn,
+  .save-btn {
+    width: 100%;
+  }
+
+  .panel-header {
+    padding: 22px;
+  }
+
+  .panel-body {
+    padding: 18px;
   }
 }
 </style>

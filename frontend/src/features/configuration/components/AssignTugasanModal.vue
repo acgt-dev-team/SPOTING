@@ -11,9 +11,12 @@ const profileId = route.params.profileId
 
 const tugasanList = ref([])
 const showAdd = ref(false)
+const editingTask = ref(null)
+
 const search = ref("")
 const selectedIds = ref([])
 const originalIds = ref([])
+
 const saving = ref(false)
 const loading = ref(false)
 
@@ -71,9 +74,24 @@ function toggleAll() {
   }
 }
 
-function onSaved() {
-  loadTugasan()
+function openAdd() {
+  editingTask.value = null
+  showAdd.value = true
+}
+
+function openEdit(task) {
   showAdd.value = false
+  editingTask.value = task
+}
+
+function closeSideModal() {
+  showAdd.value = false
+  editingTask.value = null
+}
+
+function onSaved() {
+  closeSideModal()
+  loadTugasan()
 }
 
 async function handleSubmit() {
@@ -144,6 +162,7 @@ onMounted(() => {
           <div>
             <p class="eyebrow">PENGURUSAN TUGASAN</p>
             <h2>Tetapkan Tugasan</h2>
+
             <p class="subtext">
               Pilih tugasan yang ingin diberikan kepada profil ini.
             </p>
@@ -168,7 +187,7 @@ onMounted(() => {
             />
           </div>
 
-          <button class="primary-btn" @click="showAdd = true">
+          <button class="primary-btn" @click="openAdd">
             + Tambah Tugasan
           </button>
 
@@ -176,6 +195,7 @@ onMounted(() => {
 
         <!-- COUNT BAR -->
         <div class="selection-bar">
+
           <span>
             {{ selectedIds.length }} dipilih
           </span>
@@ -187,6 +207,7 @@ onMounted(() => {
           >
             Kosongkan
           </button>
+
         </div>
 
         <!-- TABLE -->
@@ -207,6 +228,7 @@ onMounted(() => {
             <div>Protokol</div>
             <div>IP Range</div>
             <div>Status</div>
+            <div>Tindakan</div>
 
           </div>
 
@@ -267,6 +289,15 @@ onMounted(() => {
                 </span>
               </div>
 
+              <div>
+                <button
+                  class="ghost-btn edit-btn"
+                  @click.stop="openEdit(t)"
+                >
+                  ✏️
+                </button>
+              </div>
+
             </label>
 
           </div>
@@ -298,8 +329,9 @@ onMounted(() => {
       <!-- SIDE MODAL -->
       <Transition name="slide">
         <AddTugasanModal
-          v-if="showAdd"
-          @close="showAdd = false"
+          v-if="showAdd || editingTask"
+          :task="editingTask"
+          @close="closeSideModal"
           @saved="onSaved"
         />
       </Transition>
@@ -344,6 +376,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   min-height: 760px;
+  max-height: 90vh;
   overflow: hidden;
 }
 
@@ -463,7 +496,7 @@ onMounted(() => {
 .table-head,
 .row-item {
   display: grid;
-  grid-template-columns: 60px 1.3fr 140px 1fr 130px;
+  grid-template-columns: 60px 1.45fr 120px 1fr 120px 90px;
   gap: 14px;
   align-items: center;
 }
@@ -478,8 +511,9 @@ onMounted(() => {
 }
 
 .table-body {
-  overflow-y: auto;
   flex: 1;
+  overflow-y: auto;
+  min-height: 0;
 }
 
 .row-item {
@@ -543,6 +577,7 @@ onMounted(() => {
   display: flex;
   justify-content: flex-end;
   gap: 14px;
+  flex-shrink: 0;
 }
 
 .slide-enter-active,
@@ -581,6 +616,13 @@ onMounted(() => {
   .outline-btn,
   .primary-btn {
     width: 100%;
+  }
+
+  .edit-btn {
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   }
 }
 </style>
