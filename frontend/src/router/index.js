@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router"
-import { setupGuards } from "../router/gaurds"
+import { setupGuards } from "../router/guards"
 
 // =========================
 // AUTH
