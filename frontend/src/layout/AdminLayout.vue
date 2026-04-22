@@ -210,20 +210,25 @@ function logout() {
 
 <style scoped>
 .admin-layout {
-  display: flex;
   min-height: 100vh;
   background: #f5f7fb;
 }
 
 /* SIDEBAR */
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 260px;
+  height: 100vh;
   background: #ffffff;
   border-right: 1px solid #e5e7eb;
   padding: 24px 18px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-y: auto;
+  z-index: 1000;
 }
 
 .brand {
@@ -286,6 +291,7 @@ function logout() {
   color: #dc2626;
   font-weight: 600;
   cursor: pointer;
+  background: white;
 }
 
 .logout-btn:hover {
@@ -294,7 +300,9 @@ function logout() {
 
 /* MAIN */
 .main-area {
-  flex: 1;
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  min-height: 100vh;
 }
 
 .admin-container {
@@ -341,7 +349,6 @@ function logout() {
   color: #9ca3af;
 }
 
-/* RIGHT */
 .customer-block {
   margin-left: auto;
 }
