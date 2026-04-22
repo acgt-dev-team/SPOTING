@@ -373,6 +373,12 @@ onMounted(() => {
             </button>
 
             <AppButton
+  v-if="editingId"
+  text="Padam"
+  variant="outline danger"
+  @click="handleDelete"
+/>
+            <AppButton
               text="Batal"
               variant="outline"
               @click="closeModal"
