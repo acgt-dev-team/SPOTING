@@ -14,14 +14,12 @@ import os
 app = FastAPI()
 agent_url = os.getenv('AGENT_URL')
 
-SessionDep = Annotated[Session, Depends(get_session)]
-
 @app.get('/test')
 def testing():
     return { 'message': 'API successfully instantiate' }
 
 @app.post('/imbasan', tags=['Tugasan'])
-async def imbasan(request: Request, session: SessionDep):
+async def imbasan(request: Request, session: Annotated[Session, Depends(get_session)]):
     body = await request.json()
     profil_tugasan_id = body['profil_tugasan_id']
     penjadualan = body.get('penjadualan')
