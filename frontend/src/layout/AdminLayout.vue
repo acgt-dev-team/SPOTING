@@ -287,6 +287,6 @@ function logout() {
 
 .customer-name {
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 500;
 }
 </style>
