@@ -17,6 +17,7 @@ const breadcrumbs = computed(() => {
   const path = route.path
   const organizationId = route.params.organizationId
   const subOrganizationId = route.params.subOrganizationId
+  const siteId = route.params.siteId
 
   const crumbs = [
     {
@@ -25,15 +26,17 @@ const breadcrumbs = computed(() => {
     }
   ]
 
-  if (path.includes("/profil")) {
+  if (path.includes("/tugasan")) {
     crumbs.push(
       { label: "Senarai Organisasi", to: "/admin/configuration" },
+
       {
         label: "Senarai Sub Organisasi",
         to: organizationId
           ? `/admin/configuration/sub-organisasi/${organizationId}`
           : null
       },
+
       {
         label: "Senarai Tapak",
         to:
@@ -41,31 +44,65 @@ const breadcrumbs = computed(() => {
             ? `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}`
             : null
       },
-      { label: "Senarai Profil", to: null }
+
+      {
+        label: "Senarai Profil",
+        to:
+          organizationId && subOrganizationId && siteId
+            ? `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}/profil/${siteId}`
+            : null
+      },
+
+      { label: "Senarai Tugasan", to: null }
     )
-  } else if (path.includes("/tapak")) {
+
+  } else if (path.includes("/profil")) {
     crumbs.push(
       { label: "Senarai Organisasi", to: "/admin/configuration" },
+
       {
         label: "Senarai Sub Organisasi",
         to: organizationId
           ? `/admin/configuration/sub-organisasi/${organizationId}`
           : null
       },
+
+      {
+        label: "Senarai Tapak",
+        to:
+          organizationId && subOrganizationId
+            ? `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}`
+            : null
+      },
+
+      { label: "Senarai Profil", to: null }
+    )
+
+  } else if (path.includes("/tapak")) {
+    crumbs.push(
+      { label: "Senarai Organisasi", to: "/admin/configuration" },
+
+      {
+        label: "Senarai Sub Organisasi",
+        to: organizationId
+          ? `/admin/configuration/sub-organisasi/${organizationId}`
+          : null
+      },
+
       { label: "Senarai Tapak", to: null }
     )
+
   } else if (path.includes("/sub-organisasi")) {
     crumbs.push(
       { label: "Senarai Organisasi", to: "/admin/configuration" },
       { label: "Senarai Sub Organisasi", to: null }
     )
-  } else if (path.includes("/tugasan")) {
-    crumbs.push(
-      { label: "Senarai Organisasi", to: "/admin/configuration" },
-      { label: "Tugasan", to: null }
-    )
+
   } else {
-    crumbs.push({ label: "Senarai Organisasi", to: null })
+    crumbs.push({
+      label: "Senarai Organisasi",
+      to: null
+    })
   }
 
   return crumbs
@@ -89,7 +126,6 @@ function logout() {
     <!-- SIDEBAR -->
     <aside class="sidebar">
 
-      <!-- 🔥 LOGO + TITLE (TOP LEFT) -->
       <div class="sidebar-top">
         <div class="brand">
           <img :src="logo" class="logo" />
@@ -97,15 +133,14 @@ function logout() {
         </div>
       </div>
 
-      <!-- EMPTY SPACE (no menu as requested) -->
       <div></div>
 
-      <!-- USER -->
       <div class="profile-card">
         <div class="profile-top">
           <div class="avatar">
             {{ user.username.charAt(0) }}
           </div>
+
           <div>
             <div class="username">{{ user.username }}</div>
             <div class="role">{{ user.role }}</div>
@@ -119,7 +154,7 @@ function logout() {
 
     </aside>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
     <div class="main-area">
 
       <div class="admin-container">
@@ -127,9 +162,11 @@ function logout() {
         <!-- HEADER -->
         <div class="page-top-header">
 
-          <!-- Breadcrumb -->
           <div class="breadcrumbs">
-            <template v-for="(item, index) in breadcrumbs" :key="index">
+            <template
+              v-for="(item, index) in breadcrumbs"
+              :key="index"
+            >
               <button
                 v-if="item.to && index !== breadcrumbs.length - 1"
                 class="crumb link"
@@ -146,20 +183,28 @@ function logout() {
                 {{ item.label }}
               </span>
 
-              <span v-if="index !== breadcrumbs.length - 1">›</span>
+              <span
+                v-if="index !== breadcrumbs.length - 1"
+                class="divider"
+              >
+                ›
+              </span>
             </template>
           </div>
 
-          <!-- TOP RIGHT -->
           <div class="customer-block">
-            <h2 class="customer-name">{{ customerName }}</h2>
+            <h2 class="customer-name">
+              {{ customerName }}
+            </h2>
           </div>
+
         </div>
 
         <router-view />
 
       </div>
     </div>
+
   </div>
 </template>
 
@@ -181,7 +226,6 @@ function logout() {
   justify-content: space-between;
 }
 
-/* TOP BRAND */
 .brand {
   display: flex;
   align-items: center;
@@ -253,7 +297,6 @@ function logout() {
   flex: 1;
 }
 
-/* CONTENT */
 .admin-container {
   padding: 24px 32px;
 }
@@ -262,25 +305,43 @@ function logout() {
 .page-top-header {
   display: flex;
   align-items: center;
+  gap: 20px;
   margin-bottom: 20px;
 }
 
 .breadcrumbs {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
 .crumb {
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.crumb.current {
+  color: #020265;
 }
 
 .link {
   cursor: pointer;
   background: none;
   border: none;
+  padding: 0;
 }
 
-/* RIGHT TITLE */
+.link:hover {
+  color: #020265;
+}
+
+.divider {
+  color: #9ca3af;
+}
+
+/* RIGHT */
 .customer-block {
   margin-left: auto;
 }
@@ -288,5 +349,6 @@ function logout() {
 .customer-name {
   font-size: 22px;
   font-weight: 500;
+  color: #111827;
 }
 </style>
