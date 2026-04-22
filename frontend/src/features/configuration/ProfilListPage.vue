@@ -373,12 +373,6 @@ onMounted(() => {
             </button>
 
             <AppButton
-  v-if="editingId"
-  text="Padam"
-  variant="outline danger"
-  @click="handleDelete"
-/>
-            <AppButton
               text="Batal"
               variant="outline"
               @click="closeModal"
@@ -485,12 +479,11 @@ span {
 
 .main-page-title {
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1.15;
   color: #1f2937;
   margin: 0;
   letter-spacing: -0.02em;
-  font-family: "Proxima Nova", proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .toolbar {
@@ -555,9 +548,9 @@ span {
 
 .hierarchy-left h2 {
   font-size: 32px;
-  font-weight: 700;
+  font-weight: 900;
   color: #111827;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .parent-desc {
@@ -590,10 +583,11 @@ th {
   text-align: left;
   padding: 20px 24px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   color: #24324a;
   border-bottom: 1px solid #e4e9f8;
   text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 td {
@@ -627,12 +621,12 @@ td {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 800;
   box-shadow: 0 10px 24px rgba(2, 2, 101, 0.22);
 }
 
 .org-name {
-  font-weight: 700;
+  font-weight: 800;
   color: #111827;
   margin: 0;
 }
@@ -649,7 +643,7 @@ td {
   border: none;
   border-radius: 16px;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   transition: 0.2s ease;
 }
@@ -674,6 +668,7 @@ td {
 
 .secondary-btn:hover {
   background: #f4f6ff;
+  transform: translateY(-1px);
 }
 
 .ghost-btn {
@@ -704,6 +699,7 @@ td {
 .count-pill strong {
   margin-left: 10px;
   color: #020265;
+  font-weight: 900;
 }
 
 .fade-enter-active,
@@ -744,7 +740,7 @@ td {
 
 .eyebrow {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   color: #020265;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -753,8 +749,9 @@ td {
 
 .modal-header h2 {
   font-size: 26px;
-  font-weight: 700;
+  font-weight: 900;
   color: #111827;
+  margin: 0;
 }
 
 .close-btn {
@@ -780,7 +777,7 @@ td {
 
 .textarea-label {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   color: #374151;
 }
 
@@ -817,7 +814,7 @@ textarea:focus {
   color: #dc2626;
   padding: 12px 18px;
   border-radius: 14px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
 }
 
@@ -846,7 +843,7 @@ textarea:focus {
 .delete-modal h3 {
   text-align: center;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 900;
   color: #111827;
   margin-bottom: 8px;
 }
@@ -860,7 +857,7 @@ textarea:focus {
 .confirm-box label {
   display: block;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   color: #374151;
   margin-bottom: 10px;
 }
@@ -870,7 +867,7 @@ textarea:focus {
   border: 1px solid #e5e7eb;
   padding: 14px;
   border-radius: 14px;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 12px;
 }
 
@@ -878,7 +875,7 @@ textarea:focus {
   text-align: center;
   color: #dc2626;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .delete-input {
@@ -901,7 +898,7 @@ textarea:focus {
 .danger-btn {
   padding: 12px 18px;
   border-radius: 14px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
 }
 
@@ -926,7 +923,7 @@ textarea:focus {
   padding: 14px 18px;
   border-radius: 16px;
   box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
-  font-weight: 700;
+  font-weight: 800;
   z-index: 2000;
 }
 
@@ -944,13 +941,17 @@ textarea:focus {
   }
 
   .modal-actions,
-  .delete-actions {
+  .delete-actions,
+  .footer-bar {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .danger-btn,
   .cancel-delete-btn,
-  .delete-trigger-btn {
+  .delete-trigger-btn,
+  .primary-btn,
+  .secondary-btn {
     width: 100%;
   }
 }
