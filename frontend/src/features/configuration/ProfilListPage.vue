@@ -464,6 +464,19 @@ onMounted(() => {
   margin-bottom: 24px;
 }
 
+div,
+table,
+th,
+td,
+input,
+textarea,
+button,
+label,
+p,
+span {
+  font-family: "Proxima Nova", proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 .main-page-title {
   font-size: 30px;
   font-weight: 700;
@@ -471,7 +484,7 @@ onMounted(() => {
   color: #1f2937;
   margin: 0;
   letter-spacing: -0.02em;
-  font-family: "Trebuchet MS", "Segoe UI", "Inter", sans-serif;
+  font-family: "Proxima Nova", proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .toolbar {
@@ -536,7 +549,7 @@ onMounted(() => {
 
 .hierarchy-left h2 {
   font-size: 32px;
-  font-weight: 900;
+  font-weight: 700;
   color: #111827;
   margin-bottom: 8px;
 }
@@ -571,7 +584,7 @@ th {
   text-align: left;
   padding: 20px 24px;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 700;
   color: #24324a;
   border-bottom: 1px solid #e4e9f8;
   text-transform: uppercase;
@@ -608,12 +621,12 @@ td {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
+  font-weight: 700;
   box-shadow: 0 10px 24px rgba(2, 2, 101, 0.22);
 }
 
 .org-name {
-  font-weight: 800;
+  font-weight: 700;
   color: #111827;
   margin: 0;
 }
@@ -630,7 +643,7 @@ td {
   border: none;
   border-radius: 16px;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
   cursor: pointer;
   transition: 0.2s ease;
 }
@@ -687,7 +700,6 @@ td {
   color: #020265;
 }
 
-/* Modal */
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.18s ease;
@@ -726,7 +738,7 @@ td {
 
 .eyebrow {
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
   color: #020265;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -735,7 +747,7 @@ td {
 
 .modal-header h2 {
   font-size: 26px;
-  font-weight: 900;
+  font-weight: 700;
   color: #111827;
 }
 
@@ -777,7 +789,6 @@ textarea {
   color: #111827;
   resize: vertical;
   box-sizing: border-box;
-  font-family: inherit;
 }
 
 textarea:focus {
@@ -794,23 +805,16 @@ textarea:focus {
   flex-wrap: wrap;
 }
 
-/* Delete trigger */
 .delete-trigger-btn {
   border: none;
   background: #fef2f2;
   color: #dc2626;
   padding: 12px 18px;
   border-radius: 14px;
-  font-weight: 800;
+  font-weight: 700;
   cursor: pointer;
-  transition: 0.18s ease;
 }
 
-.delete-trigger-btn:hover {
-  background: #fee2e2;
-}
-
-/* Delete modal */
 .delete-modal {
   width: 100%;
   max-width: 480px;
@@ -827,7 +831,6 @@ textarea:focus {
   margin: 0 auto 18px;
   border-radius: 999px;
   background: #fef2f2;
-  color: #dc2626;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -837,7 +840,7 @@ textarea:focus {
 .delete-modal h3 {
   text-align: center;
   font-size: 24px;
-  font-weight: 900;
+  font-weight: 700;
   color: #111827;
   margin-bottom: 8px;
 }
@@ -861,7 +864,7 @@ textarea:focus {
   border: 1px solid #e5e7eb;
   padding: 14px;
   border-radius: 14px;
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: 12px;
 }
 
@@ -869,8 +872,7 @@ textarea:focus {
   text-align: center;
   color: #dc2626;
   font-size: 20px;
-  font-weight: 900;
-  letter-spacing: 0.04em;
+  font-weight: 700;
 }
 
 .delete-input {
@@ -882,11 +884,6 @@ textarea:focus {
   box-sizing: border-box;
 }
 
-.delete-input:focus {
-  outline: none;
-  border-color: #020265;
-}
-
 .delete-actions {
   display: flex;
   justify-content: flex-end;
@@ -894,33 +891,23 @@ textarea:focus {
   margin-top: 24px;
 }
 
-.cancel-delete-btn {
-  border: 1px solid #e5e7eb;
-  background: white;
-  color: #374151;
+.cancel-delete-btn,
+.danger-btn {
   padding: 12px 18px;
   border-radius: 14px;
   font-weight: 700;
   cursor: pointer;
 }
 
-.cancel-delete-btn:hover {
-  background: #f9fafb;
+.cancel-delete-btn {
+  border: 1px solid #e5e7eb;
+  background: white;
 }
 
 .danger-btn {
   border: none;
   background: linear-gradient(135deg, #dc2626, #b91c1c);
   color: white;
-  padding: 12px 18px;
-  border-radius: 14px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.danger-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
 }
 
 .toast-success {
@@ -933,7 +920,7 @@ textarea:focus {
   padding: 14px 18px;
   border-radius: 16px;
   box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
-  font-weight: 800;
+  font-weight: 700;
   z-index: 2000;
 }
 

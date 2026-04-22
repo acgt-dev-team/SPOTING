@@ -178,7 +178,7 @@ onMounted(() => {
       </div>
 
       <button class="primary-btn" @click="showModal = true">
-  Assign Tugasan
+  Tetapkan Tugasan
 </button>
     </div>
 
@@ -300,7 +300,7 @@ onMounted(() => {
   color: #1f2937;
   margin: 0;
   letter-spacing: -0.02em;
-  font-family: "Trebuchet MS", "Segoe UI", "Inter", sans-serif;
+  font-family: "Proxima Nova", proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .toolbar,
