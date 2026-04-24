@@ -1,27 +1,51 @@
 from sqlalchemy.orm import Session
+from sqlalchemy import func
+
 from app.models.organisasi import Organisasi
+from app.models.sub_organisasi import SubOrganisasi
+from app.models.tapak import Tapak
 
 
 # =========================
 # GET
 # =========================
 def get_organisasi_by_pelanggan(db: Session, pelanggan_id: int):
-    organisasis = db.query(Organisasi).filter(
-        Organisasi.pelanggan_id == pelanggan_id
-    ).all()
+    organisasis = (
+        db.query(
+            Organisasi,
+            func.count(func.distinct(SubOrganisasi.id)).label("sub_count"),
+            func.count(func.distinct(Tapak.id)).label("tapak_count")
+        )
+        .outerjoin(
+            SubOrganisasi,
+            SubOrganisasi.organisasi_id == Organisasi.id
+        )
+        .outerjoin(
+            Tapak,
+            Tapak.sub_organisasi_id == SubOrganisasi.id
+        )
+        .filter(
+            Organisasi.pelanggan_id == pelanggan_id
+        )
+        .group_by(Organisasi.id)
+        .all()
+    )
+    print(organisasis)
 
     return [
         {
-            "id": o.id,
-            "pelanggan_id": o.pelanggan_id,
-            "nama": o.nama,
-            "keterangan": o.keterangan,
-            "kod": o.kod,
-            "pegawai_tadbir": o.pegawai_tadbir,
-            "jawatan": o.jawatan,
-            "aktif": bool(o.aktif) if o.aktif is not None else False
+            "id": org.id,
+            "pelanggan_id": org.pelanggan_id,
+            "nama": org.nama,
+            "keterangan": org.keterangan,
+            "kod": org.kod,
+            "pegawai_tadbir": org.pegawai_tadbir,
+            "jawatan": org.jawatan,
+            "aktif": bool(org.aktif) if org.aktif is not None else False,
+            "sub_count": sub_count,
+            "tapak_count": tapak_count
         }
-        for o in organisasis
+        for org, sub_count, tapak_count in organisasis
     ]
 
 

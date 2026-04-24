@@ -26,6 +26,7 @@ class OrganisasiResponse(BaseModel):
     pegawai_tadbir: Optional[str] = None   # ✅ ADD
     jawatan: Optional[str] = None          # ✅ ADD
     aktif: bool
-
+    sub_count: int = 0
+    tapak_count: int = 0
     class Config:
         from_attributes = True
