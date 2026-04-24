@@ -42,9 +42,19 @@ async function loadOrganisasi() {
 // FILTER
 // =========================
 const filteredOrganizations = computed(() => {
-  return organizations.value.filter((org) =>
-    org.nama?.toLowerCase().includes(search.value.toLowerCase())
-  )
+  return organizations.value
+    .filter((org) =>
+      org.nama?.toLowerCase().includes(search.value.toLowerCase())
+    )
+    .sort((a, b) => {
+      const kodA = (a.kod || "").toLowerCase()
+      const kodB = (b.kod || "").toLowerCase()
+
+      return kodA.localeCompare(kodB, undefined, {
+        numeric: true,
+        sensitivity: "base"
+      })
+    })
 })
 
 const selectedOrganization = computed(() => {
@@ -195,7 +205,7 @@ onMounted(() => {
         <table>
           <thead>
             <tr>
-              <th style="width:80px">Bil</th>
+              <th style="width:80px">Kod</th>
               <th>Nama Organisasi</th>
               <th style="width:220px">Pegawai</th>
               <th style="width:180px">Sub Organisasi</th>
@@ -218,7 +228,7 @@ onMounted(() => {
               class="clickable-row"
               @click="goToSubOrganisasi(org)"
             >
-              <td>{{ index + 1 }}</td>
+              <td>{{ org.kod }}</td>
 
               <td>
                 <div class="org-cell">
@@ -234,24 +244,24 @@ onMounted(() => {
               </td>
 
               <td>
-                <div class="pegawai-cell">
-                  <p class="pegawai-name">
-                    {{ org.pegawai_tadbir || "-" }}
-                  </p>
-                  <p class="pegawai-jawatan">
-                    {{ org.jawatan || "-" }}
-                  </p>
-                </div>
-              </td>
+  <div class="pegawai-cell">
+    <p class="pegawai-name">
+      {{ org.pegawai_tadbir || "-" }}
+    </p>
+    <p class="pegawai-jawatan">
+      {{ org.jawatan || "-" }}
+    </p>
+  </div>
+</td>
 
-              <td>0</td>
-              <td>0</td>
+<td>{{ org.sub_count }}</td>
+<td>{{ org.tapak_count }}</td>
 
-              <td>
-                <span :class="org.aktif ? 'success' : 'danger'">
-                  {{ org.aktif ? "Aktif" : "Tidak Aktif" }}
-                </span>
-              </td>
+<td>
+  <span :class="org.aktif ? 'success' : 'danger'">
+    {{ org.aktif ? "Aktif" : "Tidak Aktif" }}
+  </span>
+</td>
 
               <td>
                 <div style="display:flex; gap:8px;">
@@ -294,6 +304,12 @@ onMounted(() => {
           </div>
 
           <div class="form-area">
+
+            <AppInput
+    v-model="kod"
+    label="Kod Organisasi"
+    placeholder="Masukkan kod organisasi"
+  />
 
             <AppInput
               v-model="nama"
