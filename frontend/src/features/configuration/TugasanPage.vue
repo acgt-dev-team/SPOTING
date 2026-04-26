@@ -40,9 +40,10 @@ const filteredTasks = computed(() => {
 
 // 🧠 Status mapping
 function getStatusLabel(status) {
-  if (status === -1) return "Sedang berjalan"
-  if (status === 0) return "Sudah dijual"
-  if (status === 1) return "Selesai"
+  if (status === 1) return "Pending"
+  if (status === 2) return "Sedang Berjalan"
+  if (status === 3) return "Selesai"
+  if (status === 4) return "Failed"
   return "Unknown"
 }
 
@@ -72,9 +73,8 @@ async function assignTask() {
 
   try {
     await api.post(`/tugasan/profil/${profileId}`, {
-      tugasan_id: selectedTugasanId.value,
-      status: -1
-    })
+  tugasan_id: selectedTugasanId.value
+})
 
     await loadTasks()
     closeModal()
@@ -113,9 +113,8 @@ async function handleAssign() {
     for (const id of selectedIds) {
       if (!assignedIds.includes(id)) {
         await api.post(`/tugasan/profil/${profileId}`, {
-          tugasan_id: id,
-          status: -1
-        })
+  tugasan_id: selectedTugasanId.value
+})
       }
     }
 
@@ -153,6 +152,21 @@ function closeModal() {
 // Navigation
 function goBack() {
   router.push(`/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}/profil/${siteId}`)
+}
+
+//scan func
+async function runScan(task) {
+  try {
+    await api.post("/tugasan/execute-scan", {
+      profil_tugasan_id: task.profil_tugasan_id,
+      penjadualan: false
+    })
+
+    alert("Scan started successfully")
+  } catch (err) {
+    console.error(err)
+    alert("Failed to start scan")
+  }
 }
 
 // 🚀 Load data on mount
@@ -198,6 +212,7 @@ onMounted(() => {
       <th style="width: 120px">Protokol</th>
       <th style="width: 200px">IP Range</th>
       <th style="width: 140px">Status</th>
+      <th style="width:140px">Tindakan</th>
     </tr>
   </thead>
 
@@ -260,6 +275,14 @@ onMounted(() => {
       </td>
 
       <!-- Actions -->
+      <td>
+  <button
+    class="primary-btn small"
+    @click.stop="runScan(task)"
+  >
+    Run Scan
+  </button>
+</td>
     </tr>
   </tbody>
 </table>

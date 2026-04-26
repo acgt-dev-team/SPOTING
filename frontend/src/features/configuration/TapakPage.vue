@@ -85,9 +85,19 @@ async function loadOrganisasiDetail() {
 // FILTER
 // =========================
 const filteredSites = computed(() => {
-  return sites.value.filter((item) =>
-    item?.nama?.toLowerCase().includes(search.value.toLowerCase())
-  )
+  return sites.value
+    .filter((site) =>
+      site.nama?.toLowerCase().includes(search.value.toLowerCase())
+    )
+    .sort((a, b) => {
+      const kodA = (a.kod || "").toLowerCase()
+      const kodB = (b.kod || "").toLowerCase()
+
+      return kodA.localeCompare(kodB, undefined, {
+        numeric: true,
+        sensitivity: "base"
+      })
+    })
 })
 
 const isEditMode = computed(() => !!selectedSite.value)
@@ -170,7 +180,6 @@ async function saveSite() {
   try {
     const payload = {
       sub_organisasi_id: subOrganizationId,
-      kod: "TPK-" + Date.now(),
       nama: nama.value,
       pegawai_tadbir: pegawai_tadbir.value,
       jawatan: jawatan.value,
@@ -271,7 +280,7 @@ onMounted(() => {
         <table>
           <thead>
             <tr>
-              <th style="width:80px">Bil</th>
+              <th style="width:100px">Kod</th>
               <th>Nama Tapak</th>
               <th style="width:220px">Pegawai</th>
               <th style="width:180px">Jumlah Tugasan</th>
@@ -293,7 +302,7 @@ onMounted(() => {
               class="clickable-row"
               @click="goToProfil(site)"
             >
-              <td>{{ index + 1 }}</td>
+              <td>{{ site.kod }}</td>
 
               <td>
                 <div class="org-cell">
@@ -320,7 +329,7 @@ onMounted(() => {
                 </div>
               </td>
 
-              <td>0</td>
+              <td>{{ site.tugasan_count }}</td>
 
               <td>
                 <div style="display:flex; gap:8px;">

@@ -39,9 +39,19 @@ const deleteConfirmText = ref("")
 // FILTER
 // =========================
 const filteredProfiles = computed(() => {
-  return profiles.value.filter((item) =>
-    item.nama?.toLowerCase().includes(search.value.toLowerCase())
-  )
+  return profiles.value
+    .filter((profile) =>
+      profile.nama?.toLowerCase().includes(search.value.toLowerCase())
+    )
+    .sort((a, b) => {
+      const kodA = (a.kod || "").toLowerCase()
+      const kodB = (b.kod || "").toLowerCase()
+
+      return kodA.localeCompare(kodB, undefined, {
+        numeric: true,
+        sensitivity: "base"
+      })
+    })
 })
 
 const selectedProfil = computed(() => {
@@ -102,11 +112,10 @@ async function saveProfile() {
 
   try {
     const payload = {
-      tapak_id: siteId,
-      kod: "AUTO-" + Date.now(),
-      nama: nama.value,
-      keterangan: keterangan.value
-    }
+  tapak_id: siteId,
+  nama: nama.value,
+  keterangan: keterangan.value
+}
 
     if (editingId.value) {
       await api.put(`/profil/${editingId.value}`, payload)
@@ -246,7 +255,7 @@ onMounted(() => {
         <table>
           <thead>
             <tr>
-              <th style="width:80px">Bil</th>
+              <th style="width:100px">Kod</th>
               <th>Nama Profil</th>
               <th style="width:180px">Jumlah Tugasan</th>
               <th style="width:140px">Tindakan</th>
@@ -267,7 +276,7 @@ onMounted(() => {
               class="clickable-row"
               @click="goToTugasan(profile)"
             >
-              <td>{{ index + 1 }}</td>
+              <td>{{ profile.kod }}</td>
 
               <td>
                 <div class="org-cell">
@@ -282,7 +291,7 @@ onMounted(() => {
                 </div>
               </td>
 
-              <td>0</td>
+              <td>{{ profile.tugasan_count }}</td>
 
               <td>
                 <div style="display:flex; gap:8px;">

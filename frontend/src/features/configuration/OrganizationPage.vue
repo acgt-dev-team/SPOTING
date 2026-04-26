@@ -7,6 +7,7 @@ import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
 
+
 const router = useRouter()
 
 const search = ref("")
@@ -15,7 +16,7 @@ const editingId = ref(null)
 
 const nama = ref("")
 const keterangan = ref("")
-const kod = ref("")
+
 const pegawai_tadbir = ref("")
 const jawatan = ref("")
 
@@ -76,7 +77,6 @@ function openModal() {
   keterangan.value = ""
   pegawai_tadbir.value = ""
   jawatan.value = ""
-  kod.value = ""
   showModal.value = true
 }
 
@@ -89,7 +89,6 @@ function editOrganization(org) {
   keterangan.value = org.keterangan
   pegawai_tadbir.value = org.pegawai_tadbir || ""
   jawatan.value = org.jawatan || ""
-  kod.value = org.kod || ""
   editingId.value = org.id
   showModal.value = true
 }
@@ -106,7 +105,6 @@ async function saveOrganization() {
   try {
     const payload = {
       pelanggan_id: 1,
-      kod: kod.value || "ORG-" + Date.now(),
       nama: nama.value,
       keterangan: keterangan.value,
       pegawai_tadbir: pegawai_tadbir.value,
@@ -257,11 +255,7 @@ onMounted(() => {
 <td>{{ org.sub_count }}</td>
 <td>{{ org.tapak_count }}</td>
 
-<td>
-  <span :class="org.aktif ? 'success' : 'danger'">
-    {{ org.aktif ? "Aktif" : "Tidak Aktif" }}
-  </span>
-</td>
+<td>{{ org.tugasan_count }}</td>
 
               <td>
                 <div style="display:flex; gap:8px;">
@@ -305,11 +299,7 @@ onMounted(() => {
 
           <div class="form-area">
 
-            <AppInput
-    v-model="kod"
-    label="Kod Organisasi"
-    placeholder="Masukkan kod organisasi"
-  />
+          
 
             <AppInput
               v-model="nama"
