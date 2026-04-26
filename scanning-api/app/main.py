@@ -34,7 +34,6 @@ async def imbasan(request: Request, session: SessionDep):
             'ip': [tugasan.ip_start, tugasan.ip_end]
         }
 
-        # Call agent to start scanning
         try:
             response = requests.post(f'{agent_url}/mula-imbasan', json=agent_data)
             res_data = response.json()
