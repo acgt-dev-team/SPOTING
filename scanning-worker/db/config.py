@@ -1,7 +1,7 @@
 from sqlmodel import create_engine
 import os
 from dotenv import load_dotenv
-from .model import tugasan
+from .model import tugasan, status
 
 load_dotenv()
 
