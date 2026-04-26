@@ -8,4 +8,4 @@ class ProfilTugasan(SQLModel, table=True):
     jadualkan_pada: datetime | None
     selesai_pada: datetime | None
     tugasan_id: int = Field(foreign_key='tugasan.id')
-    status: int
+    status_id: int = Field(foreign_key='status.id')

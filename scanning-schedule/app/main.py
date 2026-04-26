@@ -31,7 +31,7 @@ with Session(engine) as session:
             response = requests.post(f'{agent_url}/mula-imbasan', json=agent_data)
             res_data = response.json()
             if res_data['message'] == 'Imbasan bermula':
-                item.status = 2
+                item.status_id = 3
                 session.add(item)
                 session.commit()
 
