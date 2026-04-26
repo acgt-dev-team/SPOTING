@@ -27,7 +27,6 @@ async def imbasan(request: Request, session: SessionDep):
     stmt = select(Tugasan).where(Tugasan.id == profil_tugasan.tugasan_id)
     tugasan = session.exec(stmt).one()
 
-    # Execute now, instantly
     if not penjadualan:
         agent_data = {
             'profil_tugasan_id': profil_tugasan_id,
