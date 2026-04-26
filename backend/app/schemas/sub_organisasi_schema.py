@@ -4,7 +4,6 @@ from typing import Optional
 
 class SubOrganisasiCreate(BaseModel):
     organisasi_id: int
-    kod: str
     nama: str
     keterangan: Optional[str] = None
     pegawai_tadbir: Optional[str] = None   # ✅ ADD
@@ -20,6 +19,7 @@ class SubOrganisasiResponse(BaseModel):
     pegawai_tadbir: Optional[str] = None   # ✅ ADD
     jawatan: Optional[str] = None          # ✅ ADD
     aktif: bool
+    tapak_count: int = 0
 
     class Config:
         from_attributes = True

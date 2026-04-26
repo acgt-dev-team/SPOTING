@@ -1,10 +1,12 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import func
+import re
 
 from app.models.organisasi import Organisasi
 from app.models.sub_organisasi import SubOrganisasi
 from app.models.tapak import Tapak
-
+from app.models.profil import Profil
+from app.models.x_profil_tugasan import XProfilTugasan
 
 # =========================
 # GET
@@ -14,7 +16,8 @@ def get_organisasi_by_pelanggan(db: Session, pelanggan_id: int):
         db.query(
             Organisasi,
             func.count(func.distinct(SubOrganisasi.id)).label("sub_count"),
-            func.count(func.distinct(Tapak.id)).label("tapak_count")
+            func.count(func.distinct(Tapak.id)).label("tapak_count"),
+            func.count(func.distinct(XProfilTugasan.tugasan_id)).label("tugasan_count")
         )
         .outerjoin(
             SubOrganisasi,
@@ -23,6 +26,14 @@ def get_organisasi_by_pelanggan(db: Session, pelanggan_id: int):
         .outerjoin(
             Tapak,
             Tapak.sub_organisasi_id == SubOrganisasi.id
+        )
+        .outerjoin(
+            Profil,
+            Profil.tapak_id == Tapak.id
+        )
+        .outerjoin(
+            XProfilTugasan,
+            XProfilTugasan.profil_id == Profil.id
         )
         .filter(
             Organisasi.pelanggan_id == pelanggan_id
@@ -43,23 +54,44 @@ def get_organisasi_by_pelanggan(db: Session, pelanggan_id: int):
             "jawatan": org.jawatan,
             "aktif": bool(org.aktif) if org.aktif is not None else False,
             "sub_count": sub_count,
-            "tapak_count": tapak_count
+            "tapak_count": tapak_count,
+            "tugasan_count": tugasan_count,
         }
-        for org, sub_count, tapak_count in organisasis
+        for org, sub_count, tapak_count, tugasan_count in organisasis
     ]
 
 
 # =========================
 # CREATE
 # =========================
+def generate_next_org_kod(db: Session):
+    latest_org = (
+        db.query(Organisasi)
+        .filter(Organisasi.kod.like("ORG%"))
+        .order_by(Organisasi.id.desc())
+        .first()
+    )
+
+    if not latest_org:
+        return "ORG001"
+
+    match = re.search(r"ORG(\d+)", latest_org.kod)
+
+    if not match:
+        return "ORG001"
+
+    next_number = int(match.group(1)) + 1
+
+    return f"ORG{next_number:03d}"
+
 def create_organisasi(db: Session, data: dict):
     new_org = Organisasi(
-    pelanggan_id=data["pelanggan_id"],
-    kod=data["kod"],
-    nama=data["nama"],
-    keterangan=data.get("keterangan", ""),
-    pegawai_tadbir=data.get("pegawai_tadbir"),
-    jawatan=data.get("jawatan")
+        pelanggan_id=data["pelanggan_id"],
+        kod=generate_next_org_kod(db),
+        nama=data["nama"],
+        keterangan=data.get("keterangan", ""),
+        pegawai_tadbir=data.get("pegawai_tadbir"),
+        jawatan=data.get("jawatan")
 )
 
     db.add(new_org)
@@ -86,7 +118,6 @@ def update_organisasi(db: Session, id: int, data: dict):
         return None
 
     org.nama = data["nama"]
-    org.kod = data["kod"]
     org.keterangan = data.get("keterangan", "")
     org.pegawai_tadbir = data.get("pegawai_tadbir")
     org.jawatan = data.get("jawatan")
@@ -95,14 +126,14 @@ def update_organisasi(db: Session, id: int, data: dict):
     db.refresh(org)
 
     return {
-    "id": org.id,
-    "pelanggan_id": org.pelanggan_id,
-    "kod": org.kod,
-    "nama": org.nama,
-    "keterangan": org.keterangan,
-    "pegawai_tadbir": org.pegawai_tadbir,
-    "jawatan": org.jawatan,
-    "aktif": bool(org.aktif) if org.aktif is not None else False
+        "id": org.id,
+        "pelanggan_id": org.pelanggan_id,
+        "kod": org.kod,   # ← add this
+        "nama": org.nama,
+        "keterangan": org.keterangan,
+        "pegawai_tadbir": org.pegawai_tadbir,
+        "jawatan": org.jawatan,
+        "aktif": bool(org.aktif) if org.aktif is not None else False
     }
 
 

@@ -31,11 +31,12 @@ const editingId = ref(null)
 
 const nama = ref("")
 const keterangan = ref("")
-const kod = ref("")
 const pegawai_tadbir = ref("")
 const jawatan = ref("")
 
 const subs = ref([])
+
+const isEditMode = computed(() => !!editingId.value)
 
 /* DELETE UX */
 const showDeleteModal = ref(false)
@@ -72,12 +73,20 @@ async function loadOrganisasiDetail() {
 // COMPUTED
 // =========================
 const filteredSubs = computed(() => {
-  return subs.value.filter((item) =>
-    item?.nama?.toLowerCase().includes(search.value.toLowerCase())
-  )
-})
+  return subs.value
+    .filter((sub) =>
+      sub.nama?.toLowerCase().includes(search.value.toLowerCase())
+    )
+    .sort((a, b) => {
+      const kodA = (a.kod || "").toLowerCase()
+      const kodB = (b.kod || "").toLowerCase()
 
-const isEditMode = computed(() => !!selectedSub.value)
+      return kodA.localeCompare(kodB, undefined, {
+        numeric: true,
+        sensitivity: "base"
+      })
+    })
+})
 
 const selectedSubRecord = computed(() => {
   return subs.value.find(
@@ -96,7 +105,6 @@ watch(showModal, (value) => {
   if (value) {
     nama.value = selectedSub.value?.nama || ""
     keterangan.value = selectedSub.value?.keterangan || ""
-    kod.value = selectedSub.value?.kod || ""
     pegawai_tadbir.value = selectedSub.value?.pegawai_tadbir || ""
     jawatan.value = selectedSub.value?.jawatan || ""
   }
@@ -122,7 +130,6 @@ function openAddModal() {
 
   nama.value = ""
   keterangan.value = ""
-  kod.value = ""
   pegawai_tadbir.value = ""
   jawatan.value = ""
 
@@ -149,7 +156,6 @@ async function saveSub() {
   try {
     const payload = {
       organisasi_id: organisasiId,
-      kod: kod.value || "SUB-" + Date.now(),
       nama: nama.value,
       keterangan: keterangan.value,
       pegawai_tadbir: pegawai_tadbir.value,
@@ -253,7 +259,7 @@ onMounted(() => {
       <table>
         <thead>
           <tr>
-            <th style="width:80px">Bil</th>
+            <th style="width:80px">Kod</th>
             <th>Nama Sub Organisasi</th>
             <th style="width:220px">Pegawai</th>
             <th style="width:180px">Tapak</th>
@@ -275,7 +281,7 @@ onMounted(() => {
             class="clickable-row"
             @click="goToTapak(sub)"
           >
-            <td>{{ index + 1 }}</td>
+            <td>{{ sub.kod }}</td>
 
             <td>
               <div class="org-cell">
@@ -303,7 +309,7 @@ onMounted(() => {
               </div>
             </td>
 
-            <td>0</td>
+            <td>{{ sub.tapak_count }}</td>
 
             <td>
               <div style="display:flex; gap:8px;">
@@ -376,11 +382,6 @@ onMounted(() => {
             placeholder="Masukkan nama sub organisasi"
           />
 
-          <AppInput
-            v-model="kod"
-            label="Kod Sub Organisasi"
-            placeholder="Masukkan kod"
-          />
 
           <AppInput
             v-model="pegawai_tadbir"

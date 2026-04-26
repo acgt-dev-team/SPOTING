@@ -12,6 +12,7 @@ from app.models.organisasi import Organisasi
 from app.models.sub_organisasi import SubOrganisasi
 from app.models.pelanggan import Pelanggan
 from app.models.user import User
+from app.models.status import Status
 
 # ✅ Routers ONLY from API
 from app.api import tugasan, profil, tapak, sub_organisasi, organisasi, jenis_tugasan
