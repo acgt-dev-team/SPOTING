@@ -41,6 +41,7 @@ def callback(ch, method, properties, body):
 
     obj = session.get(ProfilTugasan, profil_tugasan_id)
     obj.selesai_pada = datetime.now(timezone.utc)
+    obj.status_id = 3
     session.add(obj)
     session.commit()
 

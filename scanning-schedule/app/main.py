@@ -11,7 +11,7 @@ agent_url = os.getenv('AGENT_URL')
 with Session(engine) as session:
     now = datetime.now()
     stmt = select(ProfilTugasan).where(
-        ProfilTugasan.status == -1,
+        ProfilTugasan.status == 1,
         ProfilTugasan.jadualkan_pada <= now
     )
     list_tugasan = session.exec(stmt).all()
@@ -31,7 +31,7 @@ with Session(engine) as session:
             response = requests.post(f'{agent_url}/mula-imbasan', json=agent_data)
             res_data = response.json()
             if res_data['message'] == 'Imbasan bermula':
-                item.status_id = 3
+                item.status_id = 2
                 session.add(item)
                 session.commit()
 

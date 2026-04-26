@@ -39,7 +39,7 @@ async def imbasan(request: Request, session: SessionDep):
             response = requests.post(f'{agent_url}/mula-imbasan', json=agent_data)
             res_data = response.json()
             if res_data['message'] == 'Imbasan bermula':
-                profil_tugasan.status_id = 3
+                profil_tugasan.status_id = 2
                 session.add(profil_tugasan)
                 session.commit()
 
