@@ -1,658 +1,628 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-import { Icon } from '@iconify/vue'
-import AddTugasanModal from './AddTugasanModal.vue'
-import api from '../../../services/api'
+import { ref, computed, onMounted } from "vue"
+import { useRoute } from "vue-router"
+import AddTugasanModal from "./AddTugasanModal.vue"
+import api from "../../../services/api"
 
+const emit = defineEmits(["close", "assigned"])
 
-const emit = defineEmits(['close', 'assigned']);
 const route = useRoute()
 const profileId = route.params.profileId
 
-
-
 const tugasanList = ref([])
+const showAdd = ref(false)
+const editingTask = ref(null)
+
+const search = ref("")
+const selectedIds = ref([])
+const originalIds = ref([])
+
+const saving = ref(false)
+const loading = ref(false)
 
 async function loadTugasan() {
   try {
-    const res = await api.get('/tugasan')
-    tugasanList.value = res.data
+    loading.value = true
+    const res = await api.get("/tugasan/")
+    tugasanList.value = res.data || []
   } catch (err) {
-    console.error('Failed to load tugasan:', err)
+    console.error("Failed to load tugasan:", err)
+  } finally {
+    loading.value = false
   }
 }
 
-onMounted(() => {
-  loadTugasan()
-})
-
-const selected = ref(new Set());
-const showAdd = ref(false);
-const search = ref('');
+async function loadAssigned() {
+  try {
+    const res = await api.get(`/tugasan/profil/${profileId}`)
+    selectedIds.value = res.data.map(t => t.id)
+    originalIds.value = [...selectedIds.value]
+  } catch (err) {
+    console.error("Failed to load assigned:", err)
+  }
+}
 
 const filtered = computed(() => {
-  const q = search.value.trim().toLowerCase();
-  if (!q) return tugasanList.value;
+  const q = search.value.trim().toLowerCase()
+
+  if (!q) return tugasanList.value
+
   return tugasanList.value.filter(t =>
-    t.nama.toLowerCase().includes(q) ||
-    t.kod.toLowerCase().includes(q) ||
-    (t.protocol && t.protocol.toLowerCase().includes(q))
-  );
-});
-
-function toggleItem(id) {
-  if (selected.value.has(id)) {
-    selected.value.delete(id);
-  } else {
-    selected.value.add(id);
-  }
-}
-
-function toggleAll() {
-  const ids = filtered.value.map(t => t.id);
-  const allSelected = ids.every(id => selected.value.has(id));
-  if (allSelected) {
-    ids.forEach(id => selected.value.delete(id));
-  } else {
-    ids.forEach(id => selected.value.add(id));
-  }
-}
+    t.nama?.toLowerCase().includes(q) ||
+    t.kod?.toLowerCase().includes(q) ||
+    t.protocol?.toLowerCase().includes(q)
+  )
+})
 
 const allChecked = computed(() => {
-  const ids = filtered.value.map(t => t.id);
-  return ids.length > 0 && ids.every(id => selected.value.has(id));
-});
+  const ids = filtered.value.map(t => t.id)
+  return ids.length > 0 && ids.every(id => selectedIds.value.includes(id))
+})
 
 const someChecked = computed(() => {
-  const ids = filtered.value.map(t => t.id);
-  return ids.some(id => selected.value.has(id)) && !allChecked.value;
-});
+  const ids = filtered.value.map(t => t.id)
+  return ids.some(id => selectedIds.value.includes(id)) && !allChecked.value
+})
 
-function onSaved(newTugasan) {
-  const id = tugasanList.value.length + 1;
-  tugasanList.value.push({ id, ...newTugasan });
-  showAdd.value = false;
+function toggleAll() {
+  const ids = filtered.value.map(t => t.id)
+
+  if (allChecked.value) {
+    selectedIds.value = selectedIds.value.filter(id => !ids.includes(id))
+  } else {
+    selectedIds.value = [...new Set([...selectedIds.value, ...ids])]
+  }
 }
 
-async function handleAssign() {
-  try {
-    const ids = [...selected.value]
+function openAdd() {
+  editingTask.value = null
+  showAdd.value = true
+}
 
-    for (const tugasanId of ids) {
+function openEdit(task) {
+  showAdd.value = false
+  editingTask.value = task
+}
+
+function closeSideModal() {
+  showAdd.value = false
+  editingTask.value = null
+}
+
+function onSaved() {
+  closeSideModal()
+  loadTugasan()
+}
+
+async function handleSubmit() {
+  try {
+    saving.value = true
+
+    const toAdd = selectedIds.value.filter(
+      id => !originalIds.value.includes(id)
+    )
+
+    const toRemove = originalIds.value.filter(
+      id => !selectedIds.value.includes(id)
+    )
+
+    for (const id of toAdd) {
       await api.post(`/tugasan/profil/${profileId}`, {
-        tugasan_id: tugasanId,
+        tugasan_id: id,
         status: -1
       })
     }
 
-    emit('assigned')
+    for (const id of toRemove) {
+      await api.delete(`/tugasan/profil/${profileId}/${id}`)
+    }
+
+    emit("assigned")
+    emit("close")
+
   } catch (err) {
-    console.error('Assign failed:', err)
+    console.error("Update failed:", err)
+  } finally {
+    saving.value = false
   }
 }
 
 function protocolColor(p) {
   const map = {
-    TCP: '#3b82f6', UDP: '#8b5cf6', HTTP: '#22c55e',
-    HTTPS: '#10b981', ICMP: '#f59e0b', SSH: '#ef4444',
-    FTP: '#ec4899', SMTP: '#06b6d4',
-  };
-  return map[p] || '#64748b';
+    TCP: "#2563eb",
+    UDP: "#7c3aed",
+    HTTP: "#16a34a",
+    HTTPS: "#059669",
+    ICMP: "#d97706",
+    SSH: "#dc2626",
+    FTP: "#0891b2",
+    SMTP: "#be185d"
+  }
+
+  return map[p] || "#64748b"
 }
+
+onMounted(() => {
+  loadTugasan()
+  loadAssigned()
+})
 </script>
 
 <template>
-  <div class="overlay" @click.self="$emit('close')">
-    <div class="modal-wrapper">
-      <!-- Main modal -->
-      <div class="modal">
-        <div class="modal__header">
-          <div class="modal__header-left">
-            <div class="modal__icon-wrap">
-              <Icon icon="mdi:clipboard-list-outline" class="modal__icon" />
-            </div>
-            <div>
-              <h2 class="modal__title">Assign Tugasan</h2>
-              <p class="modal__subtitle">Pilih tugasan untuk ditetapkan</p>
-            </div>
+  <div class="modal-overlay" @click.self="$emit('close')">
+
+    <div class="modal-shell">
+
+      <!-- MAIN MODAL -->
+      <div class="modal-card">
+
+        <!-- HEADER -->
+        <div class="modal-header">
+
+          <div>
+            <p class="eyebrow">PENGURUSAN TUGASAN</p>
+            <h2>Tetapkan Tugasan</h2>
+
+            <p class="subtext">
+              Pilih tugasan yang ingin diberikan kepada profil ini.
+            </p>
           </div>
-          <button class="modal__close" @click="$emit('close')" aria-label="Tutup">
-            <Icon icon="mdi:close" />
+
+          <button class="close-btn" @click="$emit('close')">
+            ✕
           </button>
+
         </div>
 
-        <!-- Add new tugasan row -->
-        <div class="modal__actions-bar">
-          <button class="btn-add" @click="showAdd = true">
-            <Icon icon="mdi:plus" />
-            Tambah Tugasan Baru
-          </button>
-          <div class="search-wrap">
-            <Icon icon="mdi:magnify" class="search-icon" />
+        <!-- TOOLBAR -->
+        <div class="toolbar">
+
+          <div class="search-box">
+            <span class="search-icon">⌕</span>
+
             <input
               v-model="search"
               type="text"
-              class="search-input"
-              placeholder="Cari tugasan..."
+              placeholder="Carian tugasan..."
             />
           </div>
-        </div>
 
-        <!-- Selection count -->
-        <div class="modal__selection-bar" v-if="selected.size > 0">
-          <Icon icon="mdi:check-circle" class="sel-icon" />
-          <span>{{ selected.size }} tugasan dipilih</span>
-          <button class="sel-clear" @click="selected.clear()">
-            <Icon icon="mdi:close-circle" /> Kosongkan
+          <button class="primary-btn" @click="openAdd">
+            + Tambah Tugasan
           </button>
+
         </div>
 
-        <!-- Tugasan list -->
-        <div class="modal__body">
-          <!-- Header row -->
-          <div class="list-header">
-            <label class="list-header__check">
+        <!-- COUNT BAR -->
+        <div class="selection-bar">
+
+          <span>
+            {{ selectedIds.length }} dipilih
+          </span>
+
+          <button
+            v-if="selectedIds.length"
+            class="clear-btn"
+            @click="selectedIds = []"
+          >
+            Kosongkan
+          </button>
+
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-wrap">
+
+          <div class="table-head">
+
+            <div>
               <input
                 type="checkbox"
                 :checked="allChecked"
-                :indeterminate="someChecked"
+                :indeterminate.prop="someChecked"
                 @change="toggleAll"
               />
-            </label>
-            <span class="list-header__nama">Nama / Kod</span>
-            <span class="list-header__protocol">Protokol</span>
-            <span class="list-header__ip">IP Range</span>
-            <span class="list-header__status">Status</span>
+            </div>
+
+            <div>Nama Tugasan</div>
+            <div>Protokol</div>
+            <div>IP Range</div>
+            <div>Status</div>
+            <div>Tindakan</div>
+
           </div>
 
-          <div class="tugasan-list">
+          <div class="table-body">
+
+            <div v-if="loading" class="empty-state">
+              Memuatkan tugasan...
+            </div>
+
+            <div
+              v-else-if="filtered.length === 0"
+              class="empty-state"
+            >
+              Tiada tugasan dijumpai.
+            </div>
+
             <label
               v-for="t in filtered"
               :key="t.id"
-              class="tugasan-item"
-              :class="{ 'tugasan-item--selected': selected.has(t.id) }"
+              class="row-item"
+              :class="{ active: selectedIds.includes(t.id) }"
             >
-              <input
-                type="checkbox"
-                :checked="selected.has(t.id)"
-                @change="toggleItem(t.id)"
-                class="tugasan-item__check"
-              />
-              <div class="tugasan-item__info">
-                <span class="tugasan-item__nama">{{ t.nama }}</span>
-                <span class="tugasan-item__kod">{{ t.kod }}</span>
+
+              <div>
+                <input
+                  type="checkbox"
+                  :value="t.id"
+                  v-model="selectedIds"
+                />
               </div>
-              <div class="tugasan-item__protocol">
+
+              <div class="task-info">
+                <p class="task-name">{{ t.nama }}</p>
+                <p class="task-code">{{ t.kod || "-" }}</p>
+              </div>
+
+              <div>
                 <span
-                  class="badge"
-                  :style="{ background: protocolColor(t.protocol) + '22', color: protocolColor(t.protocol), borderColor: protocolColor(t.protocol) + '55' }"
+                  class="protocol-pill"
+                  :style="{
+                    color: protocolColor(t.protocol),
+                    borderColor: protocolColor(t.protocol) + '30'
+                  }"
                 >
-                  {{ t.protocol || '—' }}
+                  {{ t.protocol || "-" }}
                 </span>
               </div>
-              <div class="tugasan-item__ip">
-                <span>{{ t.ip_start }}</span>
-                <span class="ip-sep">→</span>
-                <span>{{ t.ip_end }}</span>
+
+              <div class="ip-range">
+                {{ t.ip_start || "-" }}
+                <span>→</span>
+                {{ t.ip_end || "-" }}
               </div>
-              <div class="tugasan-item__status">
-                <span class="status-dot" :class="t.aktif ? 'status-dot--on' : 'status-dot--off'"></span>
-                <span>{{ t.aktif ? 'Aktif' : 'Tidak' }}</span>
+
+              <div>
+                <span :class="t.aktif ? 'success' : 'danger'">
+                  {{ t.aktif ? "Aktif" : "Tidak Aktif" }}
+                </span>
               </div>
+
+              <div>
+                <button
+                  class="ghost-btn edit-btn"
+                  @click.stop="openEdit(t)"
+                >
+                  ✏️
+                </button>
+              </div>
+
             </label>
 
-            <div v-if="filtered.length === 0" class="empty-state">
-              <Icon icon="mdi:database-search" class="empty-icon" />
-              <p>Tiada tugasan ditemui</p>
-            </div>
           </div>
+
         </div>
 
-        <div class="modal__footer">
-          <button class="btn btn--ghost" @click="$emit('close')">
+        <!-- FOOTER -->
+        <div class="modal-footer">
+
+          <button
+            class="outline-btn"
+            @click="$emit('close')"
+          >
             Batal
           </button>
+
           <button
-            class="btn btn--primary"
-            :disabled="selected.size === 0"
-            @click="handleAssign"
+            class="save-btn"
+            :disabled="saving"
+            @click="handleSubmit"
           >
-            Tetapkan 
+            {{ saving ? "Menyimpan..." : "Tetapkan Tugasan" }}
           </button>
+
         </div>
+
       </div>
 
-      <!-- Side panel: Add new tugasan -->
+      <!-- SIDE MODAL -->
       <Transition name="slide">
         <AddTugasanModal
-          v-if="showAdd"
-          @close="showAdd = false"
+          v-if="showAdd || editingTask"
+          :task="editingTask"
+          @close="closeSideModal"
           @saved="onSaved"
         />
       </Transition>
+
     </div>
+
   </div>
 </template>
 
 <style scoped>
-.overlay {
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.18s ease;
+}
+
+.modal-overlay {
   position: fixed;
   inset: 0;
-  background: var(--bg-overlay);
-  backdrop-filter: blur(4px);
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(8px);
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 100;
+  align-items: center;
+  z-index: 999;
   padding: 24px;
-  animation: fadeIn 0.18s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.modal-wrapper {
-  display: flex;
-  height: min(680px, 90vh);
-  max-width: 960px;
+.modal-shell {
   width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow:
-    0 0 0 1px var(--border-subtle),
-    0 24px 60px rgba(0,0,0,0.6);
-  animation: popIn 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: 1200px;
+  display: flex;
+  gap: 18px;
+  align-items: stretch;
 }
 
-@keyframes popIn {
-  from { transform: scale(0.94); opacity: 0; }
-  to   { transform: scale(1);    opacity: 1; }
-}
-
-.modal {
+.modal-card {
+  flex: 1;
   background: #ffffff;
+  border-radius: 30px;
+  border: 1px solid #dbe3ff;
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.14);
   display: flex;
   flex-direction: column;
-  flex: 1;
-  min-width: 0;
+  min-height: 760px;
+  max-height: 90vh;
+  overflow: hidden;
 }
 
-/* Header */
-.modal__header {
+.modal-header {
+  padding: 28px 30px 22px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--border-subtle);
-  flex-shrink: 0;
+  gap: 18px;
+  border-bottom: 1px solid #eef2ff;
 }
 
-.modal__header-left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.modal__icon-wrap {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: var(--accent-glow);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(59, 130, 246, 0.35);
-}
-
-.modal__icon {
-  font-size: 20px;
-  color: var(--accent);
-}
-
-.modal__title {
-  margin: 0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.modal__subtitle {
-  margin: 2px 0 0;
+.eyebrow {
   font-size: 12px;
-  color: var(--text-muted);
+  font-weight: 800;
+  color: #020265;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
 }
 
-.modal__close {
-  background: none;
+.modal-header h2 {
+  font-size: 30px;
+  font-weight: 900;
+  color: #111827;
+  margin: 0;
+}
+
+.subtext {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.close-btn {
   border: none;
-  color: var(--text-muted);
+  background: #f3f4f6;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
   cursor: pointer;
-  padding: 6px;
-  border-radius: 8px;
   font-size: 18px;
+}
+
+.toolbar {
+  padding: 20px 30px;
   display: flex;
-  transition: color 0.15s, background 0.15s;
+  gap: 14px;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.modal__close:hover {
-  color: var(--text-primary);
-  background: var(--bg-elevated);
-}
-
-/* Actions bar */
-.modal__actions-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 24px;
-  border-bottom: 1px solid var(--border-subtle);
-  flex-shrink: 0;
-}
-
-.btn-add {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  background: var(--accent-glow);
-  border: 1px solid rgba(59, 130, 246, 0.4);
-  border-radius: 8px;
-  color: #93c5fd;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.btn-add:hover {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: rgba(59, 130, 246, 0.6);
-}
-
-.search-wrap {
-  position: relative;
+.search-box {
   flex: 1;
+  min-width: 260px;
+  height: 54px;
+  border: 1px solid #dbe3ff;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
 }
 
 .search-icon {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
-  font-size: 16px;
+  color: #6b7280;
 }
 
-.search-input {
-  width: 100%;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  padding: 8px 12px 8px 34px;
-  outline: none;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-
-.search-input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
-}
-
-.search-input::placeholder { color: var(--text-muted); }
-
-/* Selection bar */
-.modal__selection-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 24px;
-  background: rgba(59, 130, 246, 0.08);
-  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-  font-size: 12px;
-  color: #93c5fd;
-  font-weight: 500;
-  flex-shrink: 0;
-}
-
-.sel-icon { font-size: 14px; }
-
-.sel-clear {
-  margin-left: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: none;
+.primary-btn,
+.save-btn {
   border: none;
-  color: var(--text-muted);
-  font-size: 11px;
+  background: linear-gradient(135deg, #020265, #0b0b8f);
+  color: white;
+  padding: 14px 22px;
+  border-radius: 16px;
+  font-weight: 800;
   cursor: pointer;
-  padding: 2px 6px;
-  border-radius: 4px;
-  transition: color 0.15s;
 }
 
-.sel-clear:hover { color: var(--danger); }
+.outline-btn {
+  border: 1px solid #dbe3ff;
+  background: white;
+  color: #374151;
+  padding: 14px 22px;
+  border-radius: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
 
-/* List */
-.modal__body {
+.selection-bar {
+  padding: 0 30px 16px;
+  display: flex;
+  justify-content: space-between;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.clear-btn {
+  border: none;
+  background: transparent;
+  color: #020265;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.table-wrap {
   flex: 1;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
-.list-header {
+.table-head,
+.row-item {
   display: grid;
-  grid-template-columns: 36px 1fr 90px 180px 80px;
+  grid-template-columns: 60px 1.45fr 120px 1fr 120px 90px;
+  gap: 14px;
   align-items: center;
-  padding: 8px 24px;
-  background: var(--bg-elevated);
-  border-bottom: 1px solid var(--border-subtle);
-  flex-shrink: 0;
 }
 
-.list-header > span {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--text-muted);
+.table-head {
+  padding: 16px 30px;
+  background: #f4f6ff;
+  font-size: 12px;
+  font-weight: 800;
+  color: #374151;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
 }
 
-.list-header__check {
-  display: flex;
-  align-items: center;
-}
-
-.tugasan-list {
+.table-body {
   flex: 1;
   overflow-y: auto;
+  min-height: 0;
 }
 
-.tugasan-item {
-  display: grid;
-  grid-template-columns: 36px 1fr 90px 180px 80px;
-  align-items: center;
-  padding: 12px 24px;
-  border-bottom: 1px solid var(--border-subtle);
-  cursor: pointer;
-  transition: background 0.12s;
-  gap: 0;
-}
-
-.tugasan-item:last-child { border-bottom: none; }
-
-.tugasan-item:hover {
-  background: var(--bg-elevated);
-}
-
-.tugasan-item--selected {
-  background: rgba(59, 130, 246, 0.07);
-}
-
-.tugasan-item--selected:hover {
-  background: rgba(59, 130, 246, 0.12);
-}
-
-.tugasan-item__check {
-  accent-color: var(--accent);
-  width: 16px;
-  height: 16px;
+.row-item {
+  padding: 18px 30px;
+  border-bottom: 1px solid #f1f5f9;
   cursor: pointer;
 }
 
-.tugasan-item__info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
+.row-item:hover {
+  background: #f8faff;
 }
 
-.tugasan-item__nama {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.row-item.active {
+  background: #eef2ff;
 }
 
-.tugasan-item__kod {
-  font-size: 11px;
-  color: var(--text-muted);
-  font-family: 'Courier New', monospace;
+.task-name {
+  margin: 0;
+  font-weight: 800;
+  color: #111827;
 }
 
-.badge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  border: 1px solid;
-  letter-spacing: 0.04em;
-}
-
-.tugasan-item__ip {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  color: var(--text-secondary);
-  font-family: 'Courier New', monospace;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.ip-sep { color: var(--text-muted); }
-
-.tugasan-item__status {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.task-code {
+  margin-top: 4px;
   font-size: 12px;
-  color: var(--text-secondary);
+  color: #6b7280;
 }
 
-.status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
+.protocol-pill {
+  padding: 8px 10px;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ip-range {
+  font-size: 13px;
+  color: #374151;
+}
+
+.success {
+  color: #16a34a;
+  font-weight: 800;
+}
+
+.danger {
+  color: #dc2626;
+  font-weight: 800;
+}
+
+.empty-state {
+  padding: 60px 20px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.modal-footer {
+  padding: 22px 30px;
+  border-top: 1px solid #eef2ff;
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
   flex-shrink: 0;
 }
 
-.status-dot--on  { background: var(--success); box-shadow: 0 0 6px var(--success); }
-.status-dot--off { background: var(--text-muted); }
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.2s ease;
+}
 
-/* Empty */
-.empty-state {
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
+@media (max-width: 1100px) {
+  .modal-shell {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-head,
+  .row-item {
+    grid-template-columns: 50px 1fr;
+  }
+
+  .table-head div:nth-child(n+3),
+  .row-item div:nth-child(n+3) {
+    display: none;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+  }
+
+  .save-btn,
+  .outline-btn,
+  .primary-btn {
+    width: 100%;
+  }
+
+  .edit-btn {
+  min-width: 44px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 48px 24px;
-  color: var(--text-muted);
-  gap: 12px;
-}
-
-.empty-icon { font-size: 36px; }
-.empty-state p { margin: 0; font-size: 14px; }
-
-/* Footer */
-.modal__footer {
-  display: flex;
-  gap: 10px;
-  padding: 16px 24px;
-  border-top: 1px solid var(--border-subtle);
-  flex-shrink: 0;
-  background: #ffffff;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-  transition: background 0.15s, opacity 0.15s;
-}
-
-.btn--ghost {
-  background: #ffffff;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-subtle);
-}
-
-.btn--ghost:hover {
-  background: var(--border-subtle);
-  color: var(--text-primary);
-}
-
-.btn--primary {
-  background: #3e4fd1;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-subtle);
-}
-
-.btn--primary:hover {
-  background: var(--border-subtle);
-  color: var(--text-primary);
-}
-
-.btn--primary:disabled {
-  opacity: 0.95;
-  cursor: not-allowed;
-}
-
-/* Side panel transition */
-.slide-enter-active { animation: slideIn 0.22s ease; }
-.slide-leave-active { animation: slideIn 0.18s ease reverse; }
-
-@keyframes slideIn {
-  from { transform: translateX(20px); opacity: 0; }
-  to   { transform: translateX(0);    opacity: 1; }
-}
-
-/* Checkbox indeterminate support */
-input[type="checkbox"] {
-  accent-color: var(--accent);
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
+  }
 }
 </style>

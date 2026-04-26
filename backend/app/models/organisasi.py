@@ -15,6 +15,8 @@ class Organisasi(Base):
     nama = Column(String(255))
     keterangan = Column(Text)
     aktif = Column(Boolean, default=True)
+    pegawai_tadbir = Column(String(255))   # ✅ MUST EXIST
+    jawatan = Column(String(255))          # ✅ MUST EXIST
 
     cipta_pada = Column(TIMESTAMP, server_default=func.now())
     kemaskini_pada = Column(TIMESTAMP, server_default=func.now())

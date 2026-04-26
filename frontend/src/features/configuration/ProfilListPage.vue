@@ -28,71 +28,65 @@ const site = ref({
   description: "Maklumat tapak"
 })
 
-// ✅ FROM API
 const profiles = ref([])
 
-// 🔍 Filter
+/* DELETE UX */
+const showDeleteModal = ref(false)
+const showToast = ref(false)
+const deleteConfirmText = ref("")
+
+// =========================
+// FILTER
+// =========================
 const filteredProfiles = computed(() => {
-  return profiles.value.filter((item) =>
-    item.nama.toLowerCase().includes(search.value.toLowerCase())
+  return profiles.value
+    .filter((profile) =>
+      profile.nama?.toLowerCase().includes(search.value.toLowerCase())
+    )
+    .sort((a, b) => {
+      const kodA = (a.kod || "").toLowerCase()
+      const kodB = (b.kod || "").toLowerCase()
+
+      return kodA.localeCompare(kodB, undefined, {
+        numeric: true,
+        sensitivity: "base"
+      })
+    })
+})
+
+const selectedProfil = computed(() => {
+  return profiles.value.find(
+    (item) => Number(item.id) === Number(editingId.value)
   )
+})
+
+const canDelete = computed(() => {
+  return deleteConfirmText.value.trim().toLowerCase() === "padam"
 })
 
 // Breadcrumbs
 const breadcrumbs = [
   { label: "Organisasi", to: "/admin/configuration" },
-  { label: "Sub Organisasi", to: `/admin/configuration/sub-organisasi/${organizationId}` },
-  { label: "Tapak", to: `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}` },
+  {
+    label: "Sub Organisasi",
+    to: `/admin/configuration/sub-organisasi/${organizationId}`
+  },
+  {
+    label: "Tapak",
+    to: `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}`
+  },
   { label: "Profil" }
 ]
 
-// 🔥 Load profiles
+// =========================
+// LOAD
+// =========================
 async function loadProfiles() {
   try {
     const res = await api.get(`/profil/tapak/${siteId}`)
-    profiles.value = res.data
+    profiles.value = res.data || []
   } catch (err) {
     console.error("Error loading profiles:", err)
-  }
-}
-
-// 🔥 Create profile
-async function saveProfile() {
-  if (!nama.value.trim()) return
-
-  try {
-    if (editingId.value) {
-      await api.put(`/profil/${editingId.value}`, {
-        tapak_id: siteId,
-        kod: "AUTO-" + Date.now(),
-        nama: nama.value,
-        keterangan: keterangan.value
-      })
-    } else {
-      await api.post("/profil", {
-        tapak_id: siteId,
-        kod: "AUTO-" + Date.now(),
-        nama: nama.value,
-        keterangan: keterangan.value
-      })
-    }
-
-    await loadProfiles()
-    closeModal()
-
-  } catch (err) {
-    console.error("Error saving profile:", err)
-  }
-}
-//delete
-async function deleteProfile(id) {
-  if (!confirm("Padam profil ini?")) return
-
-  try {
-    await api.delete(`/profil/${id}`)
-    await loadProfiles()
-  } catch (err) {
-    console.error("Delete failed:", err)
   }
 }
 
@@ -110,7 +104,70 @@ async function loadTapakDetail() {
   }
 }
 
-// Modal
+// =========================
+// SAVE
+// =========================
+async function saveProfile() {
+  if (!nama.value.trim()) return
+
+  try {
+    const payload = {
+  tapak_id: siteId,
+  nama: nama.value,
+  keterangan: keterangan.value
+}
+
+    if (editingId.value) {
+      await api.put(`/profil/${editingId.value}`, payload)
+    } else {
+      await api.post("/profil", payload)
+    }
+
+    await loadProfiles()
+    closeModal()
+
+  } catch (err) {
+    console.error("Error saving profile:", err)
+  }
+}
+
+// =========================
+// DELETE
+// =========================
+function handleDelete() {
+  deleteConfirmText.value = ""
+  showDeleteModal.value = true
+}
+
+function closeDeleteModal() {
+  showDeleteModal.value = false
+}
+
+async function confirmDelete() {
+  if (!editingId.value) return
+
+  try {
+    await api.delete(`/profil/${editingId.value}`)
+
+    await loadProfiles()
+
+    showDeleteModal.value = false
+    closeModal()
+
+    showToast.value = true
+
+    setTimeout(() => {
+      showToast.value = false
+    }, 1600)
+
+  } catch (err) {
+    console.error("Delete failed:", err)
+  }
+}
+
+// =========================
+// MODAL WATCH
+// =========================
 watch(showModal, (value) => {
   if (value) {
     nama.value = selectedProfile.value?.nama || ""
@@ -118,17 +175,35 @@ watch(showModal, (value) => {
   }
 })
 
+// =========================
+// MODAL
+// =========================
 function openAddModal() {
+  editingId.value = null
+  selectedProfile.value = null
+  nama.value = ""
+  keterangan.value = ""
   showModal.value = true
 }
 
 function closeModal() {
   showModal.value = false
+  selectedProfile.value = null
 }
 
-// Navigation
+function editProfile(profile) {
+  selectedProfile.value = profile
+  editingId.value = profile.id
+  showModal.value = true
+}
+
+// =========================
+// NAVIGATION
+// =========================
 function goBack() {
-  router.push(`/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}`)
+  router.push(
+    `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}`
+  )
 }
 
 function goToTugasan(profile) {
@@ -136,21 +211,19 @@ function goToTugasan(profile) {
     `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}/profil/${siteId}/tugasan/${profile.id}`
   )
 }
-function editProfile(profile) {
-  selectedProfile.value = profile
-  editingId.value = profile.id
-  showModal.value = true
-}
 
-// 🚀 Load on mount
+// =========================
+// INIT
+// =========================
 onMounted(() => {
   loadTapakDetail()
   loadProfiles()
 })
-
 </script>
 
 <template>
+  <div>
+
     <!-- Header -->
     <div class="hierarchy-card">
       <div class="hierarchy-left">
@@ -182,35 +255,35 @@ onMounted(() => {
         <table>
           <thead>
             <tr>
-              <th style="width: 80px">Bil</th>
+              <th style="width:100px">Kod</th>
               <th>Nama Profil</th>
-              <th style="width: 180px">Jumlah Tugasan</th>
-              <th style="width: 140px"></th>
+              <th style="width:180px">Jumlah Tugasan</th>
+              <th style="width:140px">Tindakan</th>
             </tr>
           </thead>
 
           <tbody>
-            <!-- Empty -->
+
             <tr v-if="filteredProfiles.length === 0">
               <td colspan="4" class="empty-cell">
                 Tiada profil dijumpai.
               </td>
             </tr>
 
-            <!-- Rows -->
             <tr
-              v-for="(profile, index) in filteredProfiles"
+              v-for="(profile,index) in filteredProfiles"
               :key="profile.id"
               class="clickable-row"
               @click="goToTugasan(profile)"
             >
-              <td>{{ index + 1 }}</td>
+              <td>{{ profile.kod }}</td>
 
               <td>
                 <div class="org-cell">
                   <div class="org-avatar">
                     {{ profile.nama?.charAt(0).toUpperCase() }}
                   </div>
+
                   <div>
                     <p class="org-name">{{ profile.nama }}</p>
                     <p class="org-desc">{{ profile.keterangan }}</p>
@@ -218,20 +291,19 @@ onMounted(() => {
                 </div>
               </td>
 
-              <!-- 🔥 TEMP (no backend count yet) -->
-              <td>0</td>
+              <td>{{ profile.tugasan_count }}</td>
 
               <td>
-  <div style="display:flex; gap:8px;">
-    <button class="ghost-btn" @click.stop="editProfile(profile)">
-      ✏️
-    </button>
+                <div style="display:flex; gap:8px;">
+                  <button
+                    class="ghost-btn"
+                    @click.stop="editProfile(profile)"
+                  >
+                    ✏️
+                  </button>
+                </div>
+              </td>
 
-    <button class="ghost-btn" @click.stop="deleteProfile(profile.id)">
-      🗑
-    </button>
-  </div>
-</td>
             </tr>
           </tbody>
         </table>
@@ -240,6 +312,7 @@ onMounted(() => {
 
     <!-- Footer -->
     <div class="footer-bar">
+
       <button class="secondary-btn" @click="goBack">
         ← Kembali
       </button>
@@ -247,12 +320,13 @@ onMounted(() => {
       <div class="count-pill">
         Bilangan Profil:
         <strong>
-          {{ filteredProfiles.length.toString().padStart(2, "0") }}
+          {{ filteredProfiles.length.toString().padStart(2,"0") }}
         </strong>
       </div>
+
     </div>
 
-    <!-- Modal -->
+    <!-- MAIN MODAL -->
     <transition name="fade">
       <div
         v-if="showModal"
@@ -260,10 +334,16 @@ onMounted(() => {
         @click.self="closeModal"
       >
         <AppCard class="modal-card">
+
           <div class="modal-header">
             <div>
-              <p class="eyebrow">TAMBAH DATA</p>
-              <h2>Tambah Profil</h2>
+              <p class="eyebrow">
+                {{ editingId ? "KEMASKINI DATA" : "TAMBAH DATA" }}
+              </p>
+
+              <h2>
+                {{ editingId ? "Edit Profil" : "Tambah Profil" }}
+              </h2>
             </div>
 
             <button class="close-btn" @click="closeModal">
@@ -272,6 +352,7 @@ onMounted(() => {
           </div>
 
           <div class="form-area">
+
             <AppInput
               v-model="nama"
               label="Nama Profil"
@@ -280,29 +361,111 @@ onMounted(() => {
 
             <div class="textarea-field">
               <label class="textarea-label">Keterangan</label>
+
               <textarea
                 v-model="keterangan"
                 rows="5"
                 placeholder="Masukkan penerangan ringkas"
-              />
+              ></textarea>
             </div>
+
           </div>
 
           <div class="modal-actions">
+
+            <button
+              v-if="editingId"
+              class="delete-trigger-btn"
+              @click="handleDelete"
+            >
+              Padam
+            </button>
+
             <AppButton
               text="Batal"
               variant="outline"
               @click="closeModal"
             />
+
             <AppButton
-              text="Simpan"
-              variant="primary"
+              :text="editingId ? 'Simpan Perubahan' : 'Simpan'"
               @click="saveProfile"
             />
+
           </div>
+
         </AppCard>
       </div>
     </transition>
+
+    <!-- DELETE MODAL -->
+    <transition name="fade">
+      <div v-if="showDeleteModal" class="modal-overlay">
+
+        <div class="delete-modal">
+
+          <div class="delete-icon">🗑️</div>
+
+          <h3>
+            Padam {{ selectedProfil?.nama }}?
+          </h3>
+
+          <p class="delete-desc">
+            Tindakan ini tidak boleh dibatalkan.
+          </p>
+
+          <div class="confirm-box">
+
+            <label>
+              Taip <strong>Padam</strong> untuk sahkan:
+            </label>
+
+            <div class="org-delete-name danger-word">
+              Padam
+            </div>
+
+            <input
+              v-model="deleteConfirmText"
+              class="delete-input"
+              type="text"
+              placeholder="Taip Padam"
+            />
+
+          </div>
+
+          <div class="delete-actions">
+
+            <button
+              class="cancel-delete-btn"
+              @click="closeDeleteModal"
+            >
+              Batal
+            </button>
+
+            <button
+              type="button"
+              class="danger-btn"
+              :disabled="!canDelete"
+              @click="confirmDelete"
+            >
+              Padam Sekarang
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </transition>
+
+    <!-- TOAST -->
+    <transition name="fade">
+      <div v-if="showToast" class="toast-success">
+        ✅ Profil berjaya dipadam
+      </div>
+    </transition>
+
+  </div>
 </template>
 
 <style scoped>
@@ -310,14 +473,30 @@ onMounted(() => {
   margin-bottom: 24px;
 }
 
+div,
+table,
+th,
+td,
+input,
+textarea,
+button,
+label,
+p,
+span {
+  font-family: "Proxima Nova", proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 .main-page-title {
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1.15;
   color: #1f2937;
   margin: 0;
   letter-spacing: -0.02em;
-  font-family: "Trebuchet MS", "Segoe UI", "Inter", sans-serif;
+}
+
+.toolbar {
+  margin-bottom: 20px;
 }
 
 .toolbar,
@@ -328,9 +507,7 @@ onMounted(() => {
   gap: 16px;
   flex-wrap: wrap;
 }
-.toolbar {
-  margin-bottom: 20px;
-}
+
 .footer-bar {
   margin-top: 24px;
 }
@@ -378,24 +555,14 @@ onMounted(() => {
   box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
 }
 
-.parent-label {
-  font-size: 13px;
-  font-weight: 800;
-  color: #020265;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 10px;
-}
-
 .hierarchy-left h2 {
   font-size: 32px;
   font-weight: 900;
   color: #111827;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
-.parent-desc,
-.org-desc {
+.parent-desc {
   color: #6b7280;
   font-size: 14px;
 }
@@ -429,6 +596,7 @@ th {
   color: #24324a;
   border-bottom: 1px solid #e4e9f8;
   text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 td {
@@ -469,6 +637,13 @@ td {
 .org-name {
   font-weight: 800;
   color: #111827;
+  margin: 0;
+}
+
+.org-desc {
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 2px;
 }
 
 .primary-btn,
@@ -479,6 +654,7 @@ td {
   font-size: 14px;
   font-weight: 800;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .primary-btn {
@@ -532,9 +708,9 @@ td {
 .count-pill strong {
   margin-left: 10px;
   color: #020265;
+  font-weight: 900;
 }
 
-/* Modal */
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.18s ease;
@@ -561,24 +737,11 @@ td {
   width: 100%;
   max-width: 720px;
   padding: 28px !important;
-  animation: popIn 0.18s ease;
   box-sizing: border-box;
-}
-
-@keyframes popIn {
-  from {
-    transform: translateY(8px) scale(0.98);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
 }
 
 .modal-header {
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 28px;
@@ -597,7 +760,7 @@ td {
   font-size: 26px;
   font-weight: 900;
   color: #111827;
-  line-height: 1.15;
+  margin: 0;
 }
 
 .close-btn {
@@ -608,8 +771,6 @@ td {
   border-radius: 999px;
   cursor: pointer;
   font-size: 18px;
-  color: #374151;
-  flex-shrink: 0;
 }
 
 .form-area {
@@ -621,12 +782,11 @@ td {
   flex-direction: column;
   gap: 10px;
   margin-bottom: 20px;
-  width: 100%;
 }
 
 .textarea-label {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   color: #374151;
 }
 
@@ -638,18 +798,15 @@ textarea {
   border-radius: 18px;
   padding: 16px;
   font-size: 15px;
-  outline: none;
-  transition: 0.2s ease;
   color: #111827;
   resize: vertical;
   box-sizing: border-box;
-  font-family: inherit;
 }
 
 textarea:focus {
+  outline: none;
   border-color: #020265;
-  background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(2, 2, 101, 0.08);
+  background: #fff;
 }
 
 .modal-actions {
@@ -658,5 +815,153 @@ textarea:focus {
   gap: 14px;
   margin-top: 28px;
   flex-wrap: wrap;
+}
+
+.delete-trigger-btn {
+  border: none;
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.delete-modal {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 26px;
+  border: 1px solid #e5e7eb;
+  padding: 30px;
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
+}
+
+.delete-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 18px;
+  border-radius: 999px;
+  background: #fef2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+}
+
+.delete-modal h3 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.delete-desc {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.confirm-box label {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.org-delete-name {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.danger-word {
+  text-align: center;
+  color: #dc2626;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.delete-input {
+  width: 100%;
+  border: 1px solid #dbe3ff;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.delete-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.cancel-delete-btn,
+.danger-btn {
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.cancel-delete-btn {
+  border: 1px solid #e5e7eb;
+  background: white;
+}
+
+.danger-btn {
+  border: none;
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  color: white;
+}
+
+.toast-success {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #dcfce7;
+  padding: 14px 18px;
+  border-radius: 16px;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+  font-weight: 800;
+  z-index: 2000;
+}
+
+@media (max-width: 768px) {
+  .main-page-title {
+    font-size: 25px;
+  }
+
+  .toolbar {
+    align-items: stretch;
+  }
+
+  .search-box {
+    max-width: 100%;
+  }
+
+  .modal-actions,
+  .delete-actions,
+  .footer-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .danger-btn,
+  .cancel-delete-btn,
+  .delete-trigger-btn,
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+  }
 }
 </style>

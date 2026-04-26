@@ -1,11 +1,13 @@
 from pydantic import BaseModel
+from typing import Optional
 
 
 class SubOrganisasiCreate(BaseModel):
     organisasi_id: int
-    kod: str
     nama: str
-    keterangan: str | None = None
+    keterangan: Optional[str] = None
+    pegawai_tadbir: Optional[str] = None   # ✅ ADD
+    jawatan: Optional[str] = None          # ✅ ADD
 
 
 class SubOrganisasiResponse(BaseModel):
@@ -13,8 +15,11 @@ class SubOrganisasiResponse(BaseModel):
     organisasi_id: int
     kod: str
     nama: str
-    keterangan: str | None
+    keterangan: Optional[str]
+    pegawai_tadbir: Optional[str] = None   # ✅ ADD
+    jawatan: Optional[str] = None          # ✅ ADD
     aktif: bool
+    tapak_count: int = 0
 
     class Config:
         from_attributes = True

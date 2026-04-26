@@ -3,9 +3,6 @@ import { computed, ref, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
 import api from "../../../src/services/api.js"
 
-import AppInput from "../../ui/AppInput.vue"
-import AppButton from "../../ui/AppButton.vue"
-import AppCard from "../../ui/AppCard.vue"
 import AssignTugasanModal from "./components/AssignTugasanModal.vue"
 
 const route = useRoute()
@@ -18,12 +15,8 @@ const profileId = route.params.profileId
 
 const search = ref("")
 const showModal = ref(false)
-const showAssignModal = ref(false)
 
-// ❌ REMOVE nama/keterangan/status (no longer needed)
-// const nama = ref("")
-// const keterangan = ref("")
-// const status = ref("Aktif")
+
 
 // ✅ NEW: dropdown selection
 const selectedTugasanId = ref(null)
@@ -47,9 +40,10 @@ const filteredTasks = computed(() => {
 
 // 🧠 Status mapping
 function getStatusLabel(status) {
-  if (status === -1) return "Sedang berjalan"
-  if (status === 0) return "Sudah dijual"
-  if (status === 1) return "Selesai"
+  if (status === 1) return "Pending"
+  if (status === 2) return "Sedang Berjalan"
+  if (status === 3) return "Selesai"
+  if (status === 4) return "Failed"
   return "Unknown"
 }
 
@@ -66,7 +60,7 @@ async function loadTasks() {
 // 🔥 Load all available tugasan (for dropdown)
 async function loadAllTugasan() {
   try {
-    const res = await api.get("/tugasan")
+    const res = await api.get("/tugasan/")
     allTugasan.value = res.data
   } catch (err) {
     console.error("Error loading all tugasan:", err)
@@ -79,9 +73,8 @@ async function assignTask() {
 
   try {
     await api.post(`/tugasan/profil/${profileId}`, {
-      tugasan_id: selectedTugasanId.value,
-      status: -1
-    })
+  tugasan_id: selectedTugasanId.value
+})
 
     await loadTasks()
     closeModal()
@@ -102,9 +95,41 @@ async function removeTask(tugasanId) {
 }
 
 // Modal handling
-async function handleAssigned() {
-  showAssignModal.value = false
-  await loadTasks()
+function handleAssigned() {
+  loadTasks()      // 🔥 reload table after assign/unassign
+  showModal.value = false
+}
+
+
+async function handleAssign() {
+  try {
+    // 🔥 current assigned from DB
+    const res = await api.get(`/tugasan/profil/${profileId}`)
+    const assignedIds = res.data.map(t => t.id)
+
+    const selectedIds = [...selected.value]
+
+    // ➕ ADD (newly checked)
+    for (const id of selectedIds) {
+      if (!assignedIds.includes(id)) {
+        await api.post(`/tugasan/profil/${profileId}`, {
+  tugasan_id: selectedTugasanId.value
+})
+      }
+    }
+
+    // ❌ REMOVE (unchecked)
+    for (const id of assignedIds) {
+      if (!selectedIds.includes(id)) {
+        await api.delete(`/tugasan/profil/${profileId}/${id}`)
+      }
+    }
+
+    emit('assigned')
+
+  } catch (err) {
+    console.error('Sync failed:', err)
+  }
 }
 
 
@@ -129,6 +154,21 @@ function goBack() {
   router.push(`/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}/profil/${siteId}`)
 }
 
+//scan func
+async function runScan(task) {
+  try {
+    await api.post("/tugasan/execute-scan", {
+      profil_tugasan_id: task.profil_tugasan_id,
+      penjadualan: false
+    })
+
+    alert("Scan started successfully")
+  } catch (err) {
+    console.error(err)
+    alert("Failed to start scan")
+  }
+}
+
 // 🚀 Load data on mount
 onMounted(() => {
   loadTasks()
@@ -151,8 +191,8 @@ onMounted(() => {
         <input v-model="search" type="text" placeholder="Carian tugasan..." />
       </div>
 
-      <button class="primary-btn" @click="showAssignModal = true">
-  Assign Tugasan
+      <button class="primary-btn" @click="showModal = true">
+  Tetapkan Tugasan
 </button>
     </div>
 
@@ -172,7 +212,7 @@ onMounted(() => {
       <th style="width: 120px">Protokol</th>
       <th style="width: 200px">IP Range</th>
       <th style="width: 140px">Status</th>
-      <th style="width: 140px"></th>
+      <th style="width:140px">Tindakan</th>
     </tr>
   </thead>
 
@@ -236,10 +276,13 @@ onMounted(() => {
 
       <!-- Actions -->
       <td>
-        <button class="ghost-btn">
-          Buka →
-        </button>
-      </td>
+  <button
+    class="primary-btn small"
+    @click.stop="runScan(task)"
+  >
+    Run Scan
+  </button>
+</td>
     </tr>
   </tbody>
 </table>
@@ -262,8 +305,8 @@ onMounted(() => {
 
     <!-- Modal -->
     <AssignTugasanModal
-  v-if="showAssignModal"
-  @close="showAssignModal = false"
+  v-if="showModal"
+  @close="showModal = false"
   @assigned="handleAssigned"
 />
 </template>
@@ -280,7 +323,7 @@ onMounted(() => {
   color: #1f2937;
   margin: 0;
   letter-spacing: -0.02em;
-  font-family: "Trebuchet MS", "Segoe UI", "Inter", sans-serif;
+  font-family: "Proxima Nova", proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .toolbar,
@@ -460,6 +503,7 @@ td {
   text-align: center;
   padding: 52px 20px;
   color: #6b7280;
+  background: #ffffff;
 }
 
 .count-pill {
@@ -694,16 +738,26 @@ select:focus {
 }
 
 .table-card {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #dbe3ff;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
   width: 100%;
 }
 
 .table-scroll {
+  overflow-x: auto;
   width: 100%;
 }
 
 table {
   width: 100%;
-  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+tbody tr {
+  background: #ffffff;
 }
 
 </style>

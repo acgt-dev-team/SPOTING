@@ -65,7 +65,12 @@ def get_one(id: int, db: Session = Depends(get_db)):
         return {"message": "Not found"}
 
     return {
-        "id": tapak.id,
-        "nama": tapak.nama,
-        "keterangan": tapak.keterangan
-    }
+    "id": tapak.id,
+    "sub_organisasi_id": tapak.sub_organisasi_id,
+    "kod": tapak.kod,
+    "nama": tapak.nama,
+    "keterangan": tapak.keterangan,
+    "pegawai_tadbir": tapak.pegawai_tadbir,
+    "jawatan": tapak.jawatan,
+    "aktif": bool(tapak.aktif) if tapak.aktif is not None else False
+}

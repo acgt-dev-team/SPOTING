@@ -1,28 +1,68 @@
 from sqlalchemy.orm import Session
 from app.models.profil import Profil
-
+import re
+from sqlalchemy import func
+from app.models.x_profil_tugasan import XProfilTugasan
 
 def get_profil_by_tapak(db: Session, tapak_id: int):
-    profils = db.query(Profil).filter(Profil.tapak_id == tapak_id).all()
+    profils = (
+        db.query(
+            Profil,
+            func.count(
+                func.distinct(XProfilTugasan.tugasan_id)
+            ).label("tugasan_count")
+        )
+        .outerjoin(
+            XProfilTugasan,
+            XProfilTugasan.profil_id == Profil.id
+        )
+        .filter(
+            Profil.tapak_id == tapak_id
+        )
+        .group_by(Profil.id)
+        .all()
+    )
 
-    result = []
-    for p in profils:
-        result.append({
-            "id": p.id,
-            "tapak_id": p.tapak_id,   # ✅ ADD THIS
-            "nama": p.nama,
-            "keterangan": p.keterangan,
-            "kod": p.kod,
-            "aktif": bool(p.aktif) if p.aktif is not None else False
-        })
+    return [
+        {
+            "id": profil.id,
+            "tapak_id": profil.tapak_id,
+            "nama": profil.nama,
+            "keterangan": profil.keterangan,
+            "kod": profil.kod,
+            "aktif": bool(profil.aktif) if profil.aktif is not None else False,
+            "tugasan_count": tugasan_count
+        }
+        for profil, tugasan_count in profils
+    ]
 
-    return result
 
+#create
+
+def generate_next_profil_kod(db: Session):
+    latest_profile = (
+        db.query(Profil)
+        .filter(Profil.kod.like("PRF%"))
+        .order_by(Profil.id.desc())
+        .first()
+    )
+
+    if not latest_profile:
+        return "PRF001"
+
+    match = re.search(r"PRF(\d+)", latest_profile.kod)
+
+    if not match:
+        return "PRF001"
+
+    next_number = int(match.group(1)) + 1
+
+    return f"PRF{next_number:03d}"
 
 def create_profil(db: Session, data: dict):
     new_profil = Profil(
         tapak_id=data["tapak_id"],
-        kod=data["kod"],
+        kod=generate_next_profil_kod(db),
         nama=data["nama"],
         keterangan=data.get("keterangan", "")  # ✅ map frontend → DB
     )
@@ -50,7 +90,6 @@ def update_profil(db: Session, id: int, data: dict):
         return None
 
     profil.nama = data["nama"]
-    profil.kod = data["kod"]
     profil.keterangan = data.get("keterangan", "")
 
     db.commit()
