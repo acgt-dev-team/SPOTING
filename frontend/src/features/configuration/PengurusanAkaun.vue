@@ -1,0 +1,814 @@
+<script setup>
+import { ref, computed } from "vue"
+
+import AppInput from "../../ui/AppInput.vue"
+import AppButton from "../../ui/AppButton.vue"
+import AppCard from "../../ui/AppCard.vue"
+
+const search = ref("")
+const showModal = ref(false)
+const showDeleteModal = ref(false)
+
+const editingId = ref(null)
+const deleteId = ref(null)
+const deleteConfirmText = ref("")
+
+const nama = ref("")
+const username = ref("")
+const password = ref("")
+const role = ref("user")
+
+const accounts = ref([
+  {
+    id: 1,
+    nama: "Admin Utama",
+    username: "admin",
+    password: "********",
+    role: "admin",
+    created_at: "2026-04-24 09:30",
+    aktif: true
+  },
+  {
+    id: 2,
+    nama: "Test User",
+    username: "user01",
+    password: "********",
+    role: "user",
+    created_at: "2026-04-24 10:15",
+    aktif: true
+  }
+])
+
+const filteredAccounts = computed(() => {
+  return accounts.value.filter((item) =>
+    item.nama.toLowerCase().includes(search.value.toLowerCase()) ||
+    item.username.toLowerCase().includes(search.value.toLowerCase()) ||
+    item.role.toLowerCase().includes(search.value.toLowerCase())
+  )
+})
+
+const selectedAccount = computed(() =>
+  accounts.value.find((item) => item.id === deleteId.value)
+)
+
+const canDelete = computed(() =>
+  deleteConfirmText.value.trim().toLowerCase() === "padam"
+)
+
+function resetForm() {
+  nama.value = ""
+  username.value = ""
+  password.value = ""
+  role.value = "user"
+}
+
+function openModal() {
+  editingId.value = null
+  resetForm()
+  showModal.value = true
+}
+
+function closeModal() {
+  showModal.value = false
+}
+
+function editAccount(item) {
+  editingId.value = item.id
+  nama.value = item.nama
+  username.value = item.username
+  password.value = item.password
+  role.value = item.role
+  showModal.value = true
+}
+
+function saveAccount() {
+  if (!nama.value.trim() || !username.value.trim()) return
+
+  if (editingId.value) {
+    const row = accounts.value.find(
+      (item) => item.id === editingId.value
+    )
+
+    row.nama = nama.value
+    row.username = username.value
+    row.password = password.value
+    row.role = role.value
+
+  } else {
+    accounts.value.unshift({
+      id: Date.now(),
+      nama: nama.value,
+      username: username.value,
+      password: password.value || "********",
+      role: role.value,
+      created_at: new Date().toLocaleString(),
+      aktif: true
+    })
+  }
+
+  closeModal()
+}
+
+function askDelete(item) {
+  deleteId.value = item.id
+  deleteConfirmText.value = ""
+  showDeleteModal.value = true
+}
+
+function closeDeleteModal() {
+  showDeleteModal.value = false
+}
+
+function confirmDelete() {
+  accounts.value = accounts.value.filter(
+    (item) => item.id !== deleteId.value
+  )
+
+  showDeleteModal.value = false
+  showModal.value = false
+}
+</script>
+
+<template>
+  <div>
+
+    <div class="hierarchy-card">
+      <div class="hierarchy-left">
+        <h2>Pengurusan Pengguna</h2>
+        <p class="section-desc">
+          Sistem memaparkan senarai akaun yang telah didaftarkan bagi
+          membolehkan pentadbir membuat semakan dan pengurusan akaun.
+        </p>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-box">
+        <span class="search-icon">⌕</span>
+        <input
+          v-model="search"
+          type="text"
+          placeholder="Carian akaun..."
+        />
+      </div>
+
+      <button class="primary-btn" @click="openModal">
+        Tambah Akaun
+      </button>
+    </div>
+
+    <div class="page-heading-block">
+      <h1 class="main-page-title">Senarai Akaun</h1>
+    </div>
+
+    <div class="table-card">
+      <div class="table-scroll">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th style="width:80px">BIL</th>
+              <th style="width:220px">NAMA</th>
+              <th style="width:160px">USERNAME</th>
+              <th style="width:150px">PASSWORD</th>
+              <th style="width:120px">PERANAN</th>
+              <th style="width:180px">CREATED AT</th>
+              <th style="width:120px">TINDAKAN</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr v-if="filteredAccounts.length === 0">
+              <td colspan="8" class="empty-cell">
+                Tiada akaun dijumpai.
+              </td>
+            </tr>
+
+            <tr
+              v-for="(item,index) in filteredAccounts"
+              :key="item.id"
+            >
+              <td>{{ index + 1 }}</td>
+
+              <td>
+                <div class="org-cell">
+                  <div class="org-avatar">
+                    {{ item.nama.charAt(0).toUpperCase() }}
+                  </div>
+
+                  <div>
+                    <p class="org-name">{{ item.nama }}</p>
+                    <p class="org-desc">
+                      {{ item.aktif ? "Aktif" : "Tidak Aktif" }}
+                    </p>
+                  </div>
+                </div>
+              </td>
+
+              <td>{{ item.username }}</td>
+              <td>{{ item.password }}</td>
+              <td>{{ item.role }}</td>
+              <td>{{ item.created_at }}</td>
+
+              <td>
+                <button
+                  class="ghost-btn"
+                  @click="editAccount(item)"
+                >
+                  ✏️
+                </button>
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <div class="count-pill">
+        Bilangan Akaun:
+        <strong>
+          {{ filteredAccounts.length.toString().padStart(2,"0") }}
+        </strong>
+      </div>
+    </div>
+
+    <!-- MAIN MODAL -->
+    <transition name="fade">
+      <div
+        v-if="showModal"
+        class="modal-overlay"
+        @click.self="closeModal"
+      >
+
+        <AppCard class="modal-card">
+
+          <div class="modal-header">
+            <div>
+              <p class="eyebrow">AKAUN SISTEM</p>
+              <h2>
+                {{ editingId
+                  ? "Kemaskini Akaun"
+                  : "Tambah Akaun"
+                }}
+              </h2>
+            </div>
+
+            <button
+              class="close-btn"
+              @click="closeModal"
+            >
+              ✕
+            </button>
+          </div>
+
+          <div class="form-area">
+
+            <AppInput
+              v-model="nama"
+              label="Nama"
+              placeholder="Masukkan nama"
+            />
+
+            <AppInput
+              v-model="username"
+              label="Nama Pengguna"
+              placeholder="Masukkan username"
+            />
+
+            <AppInput
+              v-model="password"
+              label="Kata Laluan"
+              placeholder="Masukkan password"
+            />
+
+            <div class="field">
+              <label>Peranan</label>
+
+              <select v-model="role">
+                <option value="admin">Pentadbir</option>
+                <option value="user">Pengguna</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="modal-actions">
+
+            <button
+              v-if="editingId"
+              class="delete-trigger-btn"
+              @click="askDelete({
+                id: editingId
+              })"
+            >
+              Padam
+            </button>
+
+            <AppButton
+              text="Batal"
+              variant="outline"
+              @click="closeModal"
+            />
+
+            <AppButton
+              :text="editingId ? 'Kemaskini' : 'Simpan'"
+              @click="saveAccount"
+            />
+
+          </div>
+
+        </AppCard>
+
+      </div>
+    </transition>
+
+    <!-- DELETE MODAL -->
+    <transition name="fade">
+      <div
+        v-if="showDeleteModal"
+        class="modal-overlay"
+      >
+
+        <div class="delete-modal">
+
+          <div class="delete-icon">🗑️</div>
+
+          <h3>
+            Padam {{ selectedAccount?.nama }}?
+          </h3>
+
+          <p class="delete-desc">
+            Tindakan ini tidak boleh dibatalkan.
+          </p>
+
+          <div class="confirm-box">
+
+            <label>
+              Taip <strong>Padam</strong> untuk sahkan:
+            </label>
+
+            <div class="danger-word">
+              Padam
+            </div>
+
+            <input
+              v-model="deleteConfirmText"
+              class="delete-input"
+              placeholder="Taip Padam"
+            />
+
+          </div>
+
+          <div class="delete-actions">
+
+            <button
+              class="cancel-delete-btn"
+              @click="closeDeleteModal"
+            >
+              Batal
+            </button>
+
+            <button
+              class="danger-btn"
+              :disabled="!canDelete"
+              @click="confirmDelete"
+            >
+              Padam Sekarang
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </transition>
+
+  </div>
+</template>
+
+<style scoped>
+.page-heading-block {
+  margin-bottom: 24px;
+}
+
+.main-page-title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #1f2937;
+  margin: 0;
+  letter-spacing: -0.02em;
+  font-family: "Proxima Nova", proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.toolbar {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #dbe3ff;
+  border-radius: 18px;
+  padding: 0 16px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+}
+
+.search-box:focus-within {
+  border-color: #020265;
+  box-shadow: 0 0 0 4px rgba(2, 2, 101, 0.08);
+}
+
+.search-icon {
+  color: #6b7280;
+  font-size: 18px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 14px;
+  color: #111827;
+}
+
+.hierarchy-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #dbe3ff;
+  border-radius: 30px;
+  padding: 30px;
+  margin-bottom: 28px;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
+  flex-wrap: wrap;
+}
+
+.hierarchy-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.hierarchy-left h2 {
+  font-size: 32px;
+  font-weight: 900;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  color: #6b7280;
+  font-size: 15px;
+}
+
+.table-card {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #dbe3ff;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #f4f6ff;
+}
+
+th {
+  text-align: left;
+  padding: 20px 24px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #24324a;
+  border-bottom: 1px solid #e4e9f8;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+td {
+  padding: 18px 24px;
+  font-size: 15px;
+  color: #111827;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.org-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.org-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #020265, #0b0b8f);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 10px 24px rgba(2, 2, 101, 0.22);
+}
+
+.org-name {
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+}
+
+.org-desc {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.success {
+  color: #16a34a;
+  font-weight: 800;
+}
+
+.danger {
+  color: #dc2626;
+  font-weight: 800;
+}
+
+.ghost-btn {
+  border: none;
+  background: #eef1ff;
+  color: #020265;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ghost-btn:hover {
+  background: #dde3ff;
+}
+
+.empty-cell {
+  text-align: center;
+  padding: 52px 20px;
+  color: #6b7280;
+}
+
+.footer-bar {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.count-pill {
+  background: white;
+  border: 1px solid #dbe3ff;
+  border-radius: 18px;
+  padding: 16px 20px;
+  color: #374151;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.count-pill strong {
+  margin-left: 10px;
+  color: #020265;
+}
+
+.primary-btn {
+  border: none;
+  padding: 14px 22px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+  background: linear-gradient(135deg, #020265, #0b0b8f);
+  color: white;
+  box-shadow: 0 14px 28px rgba(2, 2, 101, 0.25);
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.18s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 24px;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 760px;
+  padding: 28px !important;
+  box-sizing: border-box;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  color: #020265;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.modal-header h2 {
+  font-size: 26px;
+  font-weight: 900;
+  color: #111827;
+}
+
+.close-btn {
+  border: none;
+  background: #f3f4f6;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.form-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.field select {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #fff;
+  font-size: 15px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.delete-trigger-btn {
+  border: none;
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.delete-modal {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 26px;
+  border: 1px solid #e5e7eb;
+  padding: 30px;
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
+}
+
+.delete-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 18px;
+  border-radius: 999px;
+  background: #fef2f2;
+  color: #dc2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+}
+
+.delete-modal h3 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: #111827;
+}
+
+.delete-desc {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.confirm-box label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.danger-word {
+  text-align: center;
+  color: #dc2626;
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.delete-input {
+  width: 100%;
+  border: 1px solid #dbe3ff;
+  border-radius: 14px;
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+.delete-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.cancel-delete-btn {
+  border: 1px solid #e5e7eb;
+  background: white;
+  padding: 12px 18px;
+  border-radius: 14px;
+}
+
+.danger-btn {
+  border: none;
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 14px;
+}
+
+.danger-btn:disabled {
+  opacity: .45;
+}
+</style>
