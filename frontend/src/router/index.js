@@ -20,6 +20,7 @@ import SubOrganisasi from "../features/configuration/SubOrganisasiPage.vue"
 import Tapak from "../features/configuration/TapakPage.vue"
 import ProfilList from "../features/configuration/ProfilListPage.vue"
 import AdminTugasan from "../features/configuration/TugasanPage.vue"
+import PengurusanAkaun from "../features/configuration/PengurusanAkaun.vue"
 
 // =========================
 // USER
@@ -59,6 +60,10 @@ const routes = [
       {
         path: "configuration",
         component: OrganizationPage
+      },
+      {
+        path: "accounts",
+        component: PengurusanAkaun
       },
       {
         path: "configuration/sub-organisasi/:organizationId",

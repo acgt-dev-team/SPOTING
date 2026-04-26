@@ -3,6 +3,12 @@ import { computed, ref } from "vue"
 import { useRoute, useRouter } from "vue-router"
 import logo from "../assets/images/spoting-logo.png"
 
+import {
+  Settings,
+  UserPlus,
+  LogOut
+} from "lucide-vue-next"
+
 const route = useRoute()
 const router = useRouter()
 
@@ -12,6 +18,21 @@ const user = ref({
 })
 
 const customerName = computed(() => "Kementerian Dalam Negeri")
+
+const menuItems = computed(() => [
+  {
+    label: "Konfigurasi",
+    icon: Settings,
+    path: "/admin/configuration",
+    active: route.path.startsWith("/admin/configuration")
+  },
+  {
+    label: "Pengurusan Pengguna",
+    icon: UserPlus,
+    path: "/admin/accounts",
+    active: route.path.startsWith("/admin/accounts")
+  }
+])
 
 const breadcrumbs = computed(() => {
   const path = route.path
@@ -26,7 +47,13 @@ const breadcrumbs = computed(() => {
     }
   ]
 
-  if (path.includes("/tugasan")) {
+  if (path.includes("/accounts")) {
+    crumbs.push({
+      label: "Pengurusan Pengguna",
+      to: null
+    })
+
+  } else if (path.includes("/tugasan")) {
     crumbs.push(
       { label: "Senarai Organisasi", to: "/admin/configuration" },
 
@@ -108,6 +135,10 @@ const breadcrumbs = computed(() => {
   return crumbs
 })
 
+function goMenu(path) {
+  router.push(path)
+}
+
 function goTo(crumb, index) {
   if (!crumb.to || index === breadcrumbs.value.length - 1) return
   router.push(crumb.to)
@@ -127,15 +158,31 @@ function logout() {
     <aside class="sidebar">
 
       <div class="sidebar-top">
+
         <div class="brand">
           <img :src="logo" class="logo" />
           <span class="brand-text">Paparan Pentadbir</span>
         </div>
+
+        <!-- MENU -->
+        <div class="menu-list">
+          <button
+            v-for="item in menuItems"
+            :key="item.path"
+            class="menu-btn"
+            :class="{ active: item.active }"
+            @click="goMenu(item.path)"
+          >
+            <component :is="item.icon" size="18" />
+            <span>{{ item.label }}</span>
+          </button>
+        </div>
+
       </div>
 
-      <div></div>
-
+      <!-- PROFILE -->
       <div class="profile-card">
+
         <div class="profile-top">
           <div class="avatar">
             {{ user.username.charAt(0) }}
@@ -148,8 +195,10 @@ function logout() {
         </div>
 
         <button class="logout-btn" @click="logout">
-          Log keluar
+          <LogOut size="16" />
+          <span>Log keluar</span>
         </button>
+
       </div>
 
     </aside>
@@ -203,6 +252,7 @@ function logout() {
         <router-view />
 
       </div>
+
     </div>
 
   </div>
@@ -214,7 +264,6 @@ function logout() {
   background: #f5f7fb;
 }
 
-/* SIDEBAR */
 .sidebar {
   position: fixed;
   top: 0;
@@ -228,7 +277,13 @@ function logout() {
   flex-direction: column;
   justify-content: space-between;
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 50;
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .brand {
@@ -247,7 +302,39 @@ function logout() {
   font-size: 16px;
 }
 
-/* USER */
+/* MENU */
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-btn {
+  width: 100%;
+  border: none;
+  background: #f8fafc;
+  color: #111827;
+  padding: 12px 14px;
+  border-radius: 12px;
+  text-align: left;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-btn:hover {
+  background: #eef2ff;
+}
+
+.menu-btn.active {
+  background: #020265;
+  color: white;
+}
+
+/* PROFILE */
 .profile-card {
   background: #f8fafc;
   border: 1px solid #e5e7eb;
@@ -292,6 +379,10 @@ function logout() {
   font-weight: 600;
   cursor: pointer;
   background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .logout-btn:hover {
