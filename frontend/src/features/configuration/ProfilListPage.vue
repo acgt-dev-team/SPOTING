@@ -120,7 +120,7 @@ async function saveProfile() {
     if (editingId.value) {
       await api.put(`/profil/${editingId.value}`, payload)
     } else {
-      await api.post("/profil", payload)
+      await api.post("/profil/", payload)
     }
 
     await loadProfiles()

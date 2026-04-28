@@ -114,7 +114,7 @@ async function saveOrganization() {
     if (editingId.value) {
       await api.put(`/organisasi/${editingId.value}`, payload)
     } else {
-      await api.post("/organisasi", payload)
+      await api.post("/organisasi/", payload)
     }
 
     await loadOrganisasi()
