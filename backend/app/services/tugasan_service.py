@@ -2,6 +2,8 @@ from sqlalchemy.orm import Session
 from app.models.tugasan import Tugasan
 from app.models.x_profil_tugasan import XProfilTugasan
 import requests
+from sqlalchemy import text
+from fastapi import HTTPException
 
 # =========================
 # GET ASSIGNED
@@ -31,7 +33,7 @@ def get_tugasan_by_profil(db: Session, profil_id: int):
 
 
 # =========================
-# ASSIGN
+# ASSIGN/CREATE/UPDATE
 # =========================
 def assign_tugasan_to_profil(db: Session, profil_id: int, tugasan_id: int):
     existing = db.query(XProfilTugasan).filter_by(
@@ -88,6 +90,33 @@ def create_tugasan(db: Session, data: dict):
     "aktif": new_tugasan.aktif
     }
 
+def update_tugasan(db: Session, tugasan_id: int, data: dict):
+    tugasan = db.query(Tugasan).filter(
+        Tugasan.id == tugasan_id
+    ).first()
+
+    if not tugasan:
+        raise HTTPException(
+            status_code=404,
+            detail="Tugasan not found"
+        )
+
+    tugasan.nama = data["nama"]
+    tugasan.kod = data["kod"]
+    tugasan.keterangan = data.get("keterangan")
+    tugasan.jenis_id = data["jenis_id"]
+    tugasan.protocol = data.get("protocol")
+    tugasan.ip_start = data.get("ip_start")
+    tugasan.ip_end = data.get("ip_end")
+    tugasan.aktif = data.get("aktif", True)
+
+    db.commit()
+    db.refresh(tugasan)
+
+    return {
+        "message": "Tugasan updated successfully",
+        "id": tugasan.id
+    }
 # =========================
 # REMOVE
 # =========================
@@ -97,11 +126,33 @@ def remove_tugasan_from_profil(db: Session, profil_id: int, tugasan_id: int):
         tugasan_id=tugasan_id
     ).first()
 
-    if item:
-        db.delete(item)
-        db.commit()
+    if not item:
+        raise HTTPException(
+            status_code=404,
+            detail="Task assignment not found"
+        )
 
-    return {"message": "Removed"}
+    # Check whether scan history exists
+    existing_scan = db.execute(
+        text("""
+            SELECT id
+            FROM hasil_imbasan
+            WHERE x_profil_tugasan_id = :id
+            LIMIT 1
+        """),
+        {"id": item.id}
+    ).fetchone()
+
+    if existing_scan:
+        raise HTTPException(
+            status_code=400,
+            detail="This task cannot be removed because scan history already exists."
+        )
+
+    db.delete(item)
+    db.commit()
+
+    return {"message": "Task removed successfully"}
 
 
 # =========================

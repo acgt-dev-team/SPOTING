@@ -13,6 +13,7 @@ from app.models.sub_organisasi import SubOrganisasi
 from app.models.pelanggan import Pelanggan
 from app.models.user import User
 from app.models.status import Status
+from app.api import hasil_imbasan
 
 # ✅ Routers ONLY from API
 from app.api import tugasan, profil, tapak, sub_organisasi, organisasi, jenis_tugasan
@@ -46,7 +47,7 @@ app.include_router(sub_organisasi.router)
 app.include_router(organisasi.router)
 app.include_router(jenis_tugasan.router)
 app.include_router(auth.router)
-
+app.include_router(hasil_imbasan.router)
 
 @app.get("/")
 def root():
