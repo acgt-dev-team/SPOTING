@@ -17,6 +17,13 @@ class Profil(Base):
 
     aktif = Column(Boolean, default=True)
 
+    execution_type = Column(String(20), default="IMMEDIATE")
+    cron_expression = Column(String(100), nullable=True)
+    is_scheduled = Column(Boolean, default=False)
+
+    report_template = Column(String(100), default="DEFAULT")
+    report_format = Column(String(20), default="EXCEL")
+
     cipta_pada = Column(TIMESTAMP, server_default=func.now())
     kemaskini_pada = Column(TIMESTAMP, server_default=func.now())
 

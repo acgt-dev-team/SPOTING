@@ -21,6 +21,9 @@ const selectedProfile = ref(null)
 
 const nama = ref("")
 const keterangan = ref("")
+const executionType = ref("IMMEDIATE")
+const cronExpression = ref("")
+const isScheduled = ref(false)
 
 const site = ref({
   id: siteId,
@@ -114,7 +117,16 @@ async function saveProfile() {
     const payload = {
   tapak_id: siteId,
   nama: nama.value,
-  keterangan: keterangan.value
+  keterangan: keterangan.value,
+
+  execution_type: executionType.value,
+  cron_expression:
+    executionType.value === "SCHEDULED"
+      ? cronExpression.value
+      : null,
+
+  is_scheduled:
+    executionType.value === "SCHEDULED"
 }
 
     if (editingId.value) {
@@ -168,12 +180,14 @@ async function confirmDelete() {
 // =========================
 // MODAL WATCH
 // =========================
-watch(showModal, (value) => {
-  if (value) {
-    nama.value = selectedProfile.value?.nama || ""
-    keterangan.value = selectedProfile.value?.keterangan || ""
-  }
-})
+executionType.value =
+  selectedProfile.value?.execution_type || "IMMEDIATE"
+
+cronExpression.value =
+  selectedProfile.value?.cron_expression || ""
+
+isScheduled.value =
+  selectedProfile.value?.is_scheduled || false 
 
 // =========================
 // MODAL
@@ -184,6 +198,9 @@ function openAddModal() {
   nama.value = ""
   keterangan.value = ""
   showModal.value = true
+  executionType.value = "IMMEDIATE"
+  cronExpression.value = ""
+  isScheduled.value = false
 }
 
 function closeModal() {
@@ -195,6 +212,9 @@ function editProfile(profile) {
   selectedProfile.value = profile
   editingId.value = profile.id
   showModal.value = true
+  executionType.value = profile.execution_type
+  cronExpression.value = profile.cron_expression
+  isScheduled.value = profile.is_scheduled
 }
 
 // =========================
@@ -212,6 +232,19 @@ function goToTugasan(profile) {
   )
 }
 
+async function generateReport(profile) {
+  try {
+    const res = await api.post(`/report/profil/${profile.id}`)
+
+    alert(res.data.message)
+
+    console.log(res.data)
+
+  } catch (err) {
+    console.error("Report generation failed:", err)
+    alert("Failed to generate report")
+  }
+}
 // =========================
 // INIT
 // =========================
@@ -258,14 +291,15 @@ onMounted(() => {
               <th style="width:100px">Kod</th>
               <th>Nama Profil</th>
               <th style="width:180px">Jumlah Tugasan</th>
-              <th style="width:140px">Tindakan</th>
+              <th style="width:180px">Status</th>
+              <th style="width:220px">Tindakan</th>
             </tr>
           </thead>
 
           <tbody>
 
             <tr v-if="filteredProfiles.length === 0">
-              <td colspan="4" class="empty-cell">
+              <td colspan="5" class="empty-cell">
                 Tiada profil dijumpai.
               </td>
             </tr>
@@ -294,6 +328,12 @@ onMounted(() => {
               <td>{{ profile.tugasan_count }}</td>
 
               <td>
+                <span class="status-badge" :class="`status-${profile.execution_status.toLowerCase().replace(' ', '-')}`">
+                  {{ profile.execution_status }}
+                </span>
+              </td>
+
+              <td>
                 <div style="display:flex; gap:8px;">
                   <button
                     class="ghost-btn"
@@ -301,6 +341,13 @@ onMounted(() => {
                   >
                     ✏️
                   </button>
+                  <!-- Generate Report -->
+    <button
+      class="ghost-btn"
+      @click.stop="generateReport(profile)"
+    >
+      📄
+    </button>
                 </div>
               </td>
 
@@ -368,6 +415,32 @@ onMounted(() => {
                 placeholder="Masukkan penerangan ringkas"
               ></textarea>
             </div>
+
+            <div class="field">
+  <label>Execution Type</label>
+
+  <select v-model="executionType">
+    <option value="IMMEDIATE">
+      Immediate
+    </option>
+
+    <option value="SCHEDULED">
+      Scheduled
+    </option>
+  </select>
+</div>
+
+<div
+  v-if="executionType === 'SCHEDULED'"
+  class="field"
+>
+  <label>Cron Expression</label>
+
+  <input
+    v-model="cronExpression"
+    placeholder="0 2 * * *"
+  />
+</div>
 
           </div>
 
