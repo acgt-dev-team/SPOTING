@@ -40,10 +40,9 @@ const filteredTasks = computed(() => {
 
 // 🧠 Status mapping
 function getStatusLabel(status) {
-  if (status === 1) return "Pending"
-  if (status === 2) return "Sedang Berjalan"
-  if (status === 3) return "Selesai"
-  if (status === 4) return "Failed"
+  if (status === 1) return "Belum Bermula"
+  if (status === 2) return "Dalam Proses"
+  if (status === 3) return "Telah Selesai"
   return "Unknown"
 }
 
@@ -265,9 +264,9 @@ onMounted(() => {
         <span
           class="status-pill"
           :class="{
-            running: task.status === -1,
-            pending: task.status === 0,
-            success: task.status === 1
+            running: task.status === 1,
+            pending: task.status === 2,
+            success: task.status === 3
           }"
         >
           {{ getStatusLabel(task.status) }}

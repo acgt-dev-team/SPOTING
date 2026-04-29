@@ -62,8 +62,9 @@ def update(
     )
 
 @router.post("/execute-scan")
-def run_scan(data: dict):
+def run_scan(data: dict, db: Session = Depends(get_db)):
     return execute_scan(
+        db=db,
         profil_tugasan_id=data["profil_tugasan_id"],
         penjadualan=data.get("penjadualan", False)
     )
