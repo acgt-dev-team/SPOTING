@@ -10,6 +10,11 @@ const search = ref("")
 const showModal = ref(false)
 const showDeleteModal = ref(false)
 
+// ✅ TOGGLE MODAL
+const showToggleModal = ref(false)
+const toggleConfirmText = ref("")
+const toggleTarget = ref(null)
+
 const editingId = ref(null)
 const deleteId = ref(null)
 const deleteConfirmText = ref("")
@@ -57,6 +62,18 @@ const canDelete = computed(() =>
   deleteConfirmText.value.trim().toLowerCase() === "padam"
 )
 
+// ✅ Toggle keyword logic
+const toggleKeyword = computed(() =>
+  toggleTarget.value?.aktif ? "Nyahaktif" : "Aktifkan"
+)
+
+const toggleKeywordLower = computed(() =>
+  toggleKeyword.value.toLowerCase()
+)
+
+const canToggle = computed(() =>
+  toggleConfirmText.value.trim().toLowerCase() === toggleKeywordLower.value
+)
 function resetForm() {
   nama.value = ""
   username.value = ""
@@ -134,6 +151,33 @@ function confirmDelete() {
   showDeleteModal.value = false
   showModal.value = false
 }
+
+// ✅ HANDLE TOGGLE (core logic you wanted)
+function handleToggle() {
+  // Tambah mode → direct
+  if (!editingId.value) {
+    aktif.value = !aktif.value
+    return
+  }
+
+  // Edit mode → confirm modal
+  toggleTarget.value = {
+    id: editingId.value,
+    aktif: aktif.value
+  }
+
+  toggleConfirmText.value = ""
+  showToggleModal.value = true
+}
+
+function closeToggleModal() {
+  showToggleModal.value = false
+}
+
+function confirmToggle() {
+  aktif.value = !toggleTarget.value.aktif
+  showToggleModal.value = false
+}
 </script>
 
 <template>
@@ -172,7 +216,6 @@ function confirmDelete() {
       <div class="table-scroll">
 
         <table>
-
           <thead>
             <tr>
               <th style="width:80px">BIL</th>
@@ -234,7 +277,6 @@ function confirmDelete() {
             </tr>
 
           </tbody>
-
         </table>
 
       </div>
@@ -307,13 +349,17 @@ function confirmDelete() {
               ]"
             />
 
-            <!-- ✅ ADDED AKTIF TOGGLE -->
+            <!-- ✅ TOGGLE (UPDATED) -->
             <div class="field">
               <label>Status Akaun</label>
 
               <div class="switch-wrapper">
                 <label class="switch">
-                  <input type="checkbox" v-model="aktif" />
+                  <input
+                    type="checkbox"
+                    :checked="aktif"
+                    @click.prevent="handleToggle"
+                  />
                   <span class="slider"></span>
                 </label>
 
@@ -330,9 +376,7 @@ function confirmDelete() {
             <button
               v-if="editingId"
               class="delete-trigger-btn"
-              @click="askDelete({
-                id: editingId
-              })"
+              @click="askDelete({ id: editingId })"
             >
               Padam
             </button>
@@ -407,6 +451,72 @@ function confirmDelete() {
               @click="confirmDelete"
             >
               Padam Sekarang
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </transition>
+
+    <!-- ✅ TOGGLE CONFIRM MODAL -->
+    <transition name="fade">
+      <div
+        v-if="showToggleModal"
+        class="modal-overlay"
+      >
+
+        <div class="delete-modal">
+
+          <div class="delete-icon">⚠️</div>
+
+          <h3>
+            {{ toggleTarget?.aktif
+              ? "Nyahaktif akaun ini?"
+              : "Aktifkan akaun ini?"
+            }}
+          </h3>
+
+          <p class="delete-desc">
+            Taip <strong>{{ toggleKeyword }}</strong> untuk sahkan.
+          </p>
+
+          <div class="confirm-box">
+
+            <label>
+              Sahkan tindakan:
+            </label>
+
+            <div class="org-delete-name">
+              <span class="danger-word">
+                {{ toggleKeyword }}
+              </span>
+            </div>
+
+            <input
+              v-model="toggleConfirmText"
+              class="delete-input"
+              :placeholder="toggleKeyword"
+            />
+
+          </div>
+
+          <div class="delete-actions">
+
+            <button
+              class="cancel-delete-btn"
+              @click="closeToggleModal"
+            >
+              Batal
+            </button>
+
+            <button
+              class="danger-btn"
+              :disabled="!canToggle"
+              @click="confirmToggle"
+            >
+              Sahkan
             </button>
 
           </div>

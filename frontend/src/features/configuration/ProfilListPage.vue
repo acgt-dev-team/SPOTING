@@ -455,8 +455,8 @@ onMounted(() => {
                 v-model="executionType"
                 label="Execution Type"
                 :options="[
-                  { label: 'Immediate', value: 'IMMEDIATE' },
-                  { label: 'Scheduled', value: 'SCHEDULED' }
+                  { label: 'Imbas Sekarang', value: 'IMMEDIATE' },
+                  { label: 'Jadualkan', value: 'SCHEDULED' }
                 ]"
               />
             </div>
