@@ -9,7 +9,6 @@ import Auth from "../features/auth/Auth.vue"
 // =========================
 // LAYOUTS
 // =========================
-import MainLayout from "../layout/MainLayout.vue"
 import AdminLayout from "../layout/AdminLayout.vue"
 
 // =========================
@@ -21,19 +20,7 @@ import Tapak from "../features/configuration/TapakPage.vue"
 import ProfilList from "../features/configuration/ProfilListPage.vue"
 import AdminTugasan from "../features/configuration/TugasanPage.vue"
 import PengurusanAkaun from "../features/configuration/PengurusanAkaun.vue"
-
-// =========================
-// USER
-// =========================
-import Profil from "../features/profil/Profil.vue"
-import Tugasan from "../features/tugasan/Tugasan.vue"
-import Tetapan from "../features/tetapan/Tetapan.vue"
-import Pelanggan from "../features/pelanggan/Pelanggan.vue"
-
-// =========================
-// DASHBOARD
-// =========================
-import Dashboard from "../features/dashboard/Dashboard.vue"
+import DashboardContent from "../features/configuration/DashboardContent.vue"
 
 // =========================
 // ROUTES
@@ -56,7 +43,12 @@ const routes = [
     path: "/admin",
     component: AdminLayout,
     meta: { requiresAuth: true, role: "admin" },
+    redirect: "/admin/dashboard", // ✅ default page
     children: [
+      {
+        path: "dashboard",
+        component: DashboardContent // ✅ now using your new file
+      },
       {
         path: "configuration",
         component: OrganizationPage
@@ -83,41 +75,6 @@ const routes = [
       }
     ]
   },
-
-  // =========================
-  // USER APP
-  // =========================
-  {
-    path: "/app",
-    component: MainLayout,
-    meta: { requiresAuth: true, role: "user" },
-    children: [
-      {
-        path: "",
-        redirect: "profil"
-      },
-      {
-        path: "dashboard",
-        component: Dashboard
-      },
-      {
-        path: "pelanggan",
-        component: Pelanggan
-      },
-      {
-        path: "profil",
-        component: Profil
-      },
-      {
-        path: "tugasan",
-        component: Tugasan
-      },
-      {
-        path: "tetapan",
-        component: Tetapan
-      }
-    ]
-  }
 ]
 
 // =========================

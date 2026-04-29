@@ -473,26 +473,14 @@ onMounted(() => {
   margin-bottom: 24px;
 }
 
-div,
-table,
-th,
-td,
-input,
-textarea,
-button,
-label,
-p,
-span {
-  font-family: "Proxima Nova", proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
 .main-page-title {
   font-size: 30px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.15;
   color: #1f2937;
   margin: 0;
   letter-spacing: -0.02em;
+  font-family: "Proxima Nova", proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .toolbar {
@@ -896,6 +884,11 @@ textarea:focus {
   box-sizing: border-box;
 }
 
+.delete-input:focus {
+  outline: none;
+  border-color: #020265;
+}
+
 .delete-actions {
   display: flex;
   justify-content: flex-end;
@@ -903,23 +896,33 @@ textarea:focus {
   margin-top: 24px;
 }
 
-.cancel-delete-btn,
-.danger-btn {
-  padding: 12px 18px;
-  border-radius: 14px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
 .cancel-delete-btn {
   border: 1px solid #e5e7eb;
   background: white;
+  color: #374151;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cancel-delete-btn:hover {
+  background: #f9fafb;
 }
 
 .danger-btn {
   border: none;
   background: linear-gradient(135deg, #dc2626, #b91c1c);
   color: white;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.danger-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .toast-success {

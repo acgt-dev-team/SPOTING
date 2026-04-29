@@ -40,10 +40,10 @@ const filteredTasks = computed(() => {
 
 // 🧠 Status mapping
 function getStatusLabel(status) {
-  if (status === 1) return "Pending"
-  if (status === 2) return "Sedang Berjalan"
-  if (status === 3) return "Selesai"
-  if (status === 4) return "Failed"
+  if (status === 1) return "Belum Bermula"
+  if (status === 2) return "Dalam Proses"
+  if (status === 3) return "Telah Selesai"
+  if (status === 4) return "Gagal"
   return "Unknown"
 }
 
@@ -207,12 +207,12 @@ onMounted(() => {
         <table>
   <thead>
     <tr>
-      <th style="width: 80px">Bil</th>
-      <th>Nama / Kod</th>
-      <th style="width: 120px">Protokol</th>
-      <th style="width: 200px">IP Range</th>
-      <th style="width: 140px">Status</th>
-      <th style="width:140px">Tindakan</th>
+      <th style="width: 50px">Bil</th>
+      <th style="width: 35%">Nama / Kod</th>
+      <th style="width: 90px">Protokol</th>
+      <th style="width: 180px">IP Range</th>
+      <th style="width: 160px">Status</th>
+      <th style="width: 180px">Tindakan</th>
     </tr>
   </thead>
 
@@ -280,7 +280,7 @@ onMounted(() => {
     class="primary-btn small"
     @click.stop="runScan(task)"
   >
-    Run Scan
+    Imbas Sekarang
   </button>
 </td>
     </tr>
@@ -425,6 +425,20 @@ td {
   font-size: 15px;
   border-bottom: 1px solid #f1f5f9;
   color: #111827;
+}
+
+/* Center header text */
+th:nth-child(3),
+th:nth-child(5),
+th:nth-child(6) {
+  text-align: center;
+}
+
+/* Center column content */
+td:nth-child(3),
+td:nth-child(5),
+td:nth-child(6) {
+  text-align: center;
 }
 
 .clickable-row:hover {
