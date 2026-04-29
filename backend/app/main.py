@@ -13,6 +13,9 @@ from app.models.sub_organisasi import SubOrganisasi
 from app.models.pelanggan import Pelanggan
 from app.models.user import User
 from app.models.status import Status
+from app.api import hasil_imbasan
+from app.scheduler.profile_scheduler import scheduler, load_profile_jobs
+from app.api import report
 
 # ✅ Routers ONLY from API
 from app.api import tugasan, profil, tapak, sub_organisasi, organisasi, jenis_tugasan
@@ -46,7 +49,8 @@ app.include_router(sub_organisasi.router)
 app.include_router(organisasi.router)
 app.include_router(jenis_tugasan.router)
 app.include_router(auth.router)
-
+app.include_router(hasil_imbasan.router)
+app.include_router(report.router)
 
 @app.get("/")
 def root():
@@ -61,3 +65,13 @@ def health():
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
+
+
+@app.on_event("startup")
+def start_scheduler():
+    load_profile_jobs()
+
+    if not scheduler.running:
+        scheduler.start()
+
+    print("Scheduler started successfully")

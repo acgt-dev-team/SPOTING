@@ -72,7 +72,7 @@ async function assignTask() {
   if (!selectedTugasanId.value) return
 
   try {
-    await api.post(`/tugasan/profil/${profileId}`, {
+    await api.post(`/tugasan/profil/${profileId}/`, {
   tugasan_id: selectedTugasanId.value
 })
 
@@ -104,7 +104,7 @@ function handleAssigned() {
 async function handleAssign() {
   try {
     // 🔥 current assigned from DB
-    const res = await api.get(`/tugasan/profil/${profileId}`)
+    const res = await api.get(`/tugasan/profil/${profileId}/`)
     const assignedIds = res.data.map(t => t.id)
 
     const selectedIds = [...selected.value]
@@ -112,7 +112,7 @@ async function handleAssign() {
     // ➕ ADD (newly checked)
     for (const id of selectedIds) {
       if (!assignedIds.includes(id)) {
-        await api.post(`/tugasan/profil/${profileId}`, {
+        await api.post(`/tugasan/profil/${profileId}/`, {
   tugasan_id: selectedTugasanId.value
 })
       }
@@ -265,9 +265,9 @@ onMounted(() => {
         <span
           class="status-pill"
           :class="{
-            running: task.status === -1,
-            pending: task.status === 0,
-            success: task.status === 1
+            running: task.status === 1,
+            pending: task.status === 2,
+            success: task.status === 3
           }"
         >
           {{ getStatusLabel(task.status) }}

@@ -189,7 +189,7 @@ async function saveSite() {
     if (editingId.value) {
       await api.put(`/tapak/${editingId.value}`, payload)
     } else {
-      await api.post("/tapak", payload)
+      await api.post("/tapak/", payload)
     }
 
     await loadTapak()

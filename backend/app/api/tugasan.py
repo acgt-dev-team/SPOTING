@@ -10,7 +10,8 @@ from app.services.tugasan_service import (
     remove_tugasan_from_profil,
     get_all_tugasan,
     create_tugasan,
-    execute_scan   # ADD THIS
+    update_tugasan,
+    execute_scan
 )
 
 router = APIRouter(prefix="/tugasan", tags=["Tugasan"])
@@ -48,9 +49,22 @@ def remove_tugasan(profil_id: int, tugasan_id: int, db: Session = Depends(get_db
 def create(data: TugasanCreate, db: Session = Depends(get_db)):
     return create_tugasan(db, data.dict())
 
+@router.put("/{tugasan_id}")
+def update(
+    tugasan_id: int,
+    data: TugasanCreate,
+    db: Session = Depends(get_db)
+):
+    return update_tugasan(
+        db,
+        tugasan_id=tugasan_id,
+        data=data.dict()
+    )
+
 @router.post("/execute-scan")
-def run_scan(data: dict):
+def run_scan(data: dict, db: Session = Depends(get_db)):
     return execute_scan(
+        db=db,
         profil_tugasan_id=data["profil_tugasan_id"],
         penjadualan=data.get("penjadualan", False)
     )
