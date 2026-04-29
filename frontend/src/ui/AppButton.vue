@@ -89,7 +89,7 @@ defineProps({
 }
 
 /* =========================
-   🔥 NEW: DANGER (RED)
+    DANGER BUTTON (RED)
 ========================= */
 
 /* solid danger */

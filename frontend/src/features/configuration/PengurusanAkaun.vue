@@ -17,12 +17,13 @@ const nama = ref("")
 const username = ref("")
 const password = ref("")
 const role = ref("user")
+const aktif = ref(true)
 
 const accounts = ref([
   {
     id: 1,
-    nama: "Admin Utama",
-    username: "admin",
+    nama: "Hussein bin Hassan",
+    username: "hussein1",
     password: "********",
     role: "admin",
     created_at: "2026-04-24 09:30",
@@ -30,8 +31,8 @@ const accounts = ref([
   },
   {
     id: 2,
-    nama: "Test User",
-    username: "user01",
+    nama: "Ahmed bin Ali",
+    username: "ahmed",
     password: "********",
     role: "user",
     created_at: "2026-04-24 10:15",
@@ -60,6 +61,7 @@ function resetForm() {
   username.value = ""
   password.value = ""
   role.value = "user"
+  aktif.value = true
 }
 
 function openModal() {
@@ -78,6 +80,7 @@ function editAccount(item) {
   username.value = item.username
   password.value = item.password
   role.value = item.role
+  aktif.value = item.aktif ?? true
   showModal.value = true
 }
 
@@ -89,10 +92,13 @@ function saveAccount() {
       (item) => item.id === editingId.value
     )
 
+    if (!row) return
+
     row.nama = nama.value
     row.username = username.value
     row.password = password.value
     row.role = role.value
+    row.aktif = aktif.value
 
   } else {
     accounts.value.unshift({
@@ -102,7 +108,7 @@ function saveAccount() {
       password: password.value || "********",
       role: role.value,
       created_at: new Date().toLocaleString(),
-      aktif: true
+      aktif: aktif.value
     })
   }
 
@@ -170,10 +176,10 @@ function confirmDelete() {
             <tr>
               <th style="width:80px">BIL</th>
               <th style="width:220px">NAMA</th>
-              <th style="width:160px">USERNAME</th>
-              <th style="width:150px">PASSWORD</th>
+              <th style="width:160px">NAMA PENGGUNA</th>
+              <th style="width:150px">KATA LALUAN</th>
               <th style="width:120px">PERANAN</th>
-              <th style="width:180px">CREATED AT</th>
+              <th style="width:180px">DICIPTA PADA</th>
               <th style="width:120px">TINDAKAN</th>
             </tr>
           </thead>
@@ -209,7 +215,9 @@ function confirmDelete() {
 
               <td>{{ item.username }}</td>
               <td>{{ item.password }}</td>
-              <td>{{ item.role }}</td>
+              <td>
+                {{ item.role === "admin" ? "Pentadbir" : "Pengguna" }}
+              </td>
               <td>{{ item.created_at }}</td>
 
               <td>
@@ -297,6 +305,22 @@ function confirmDelete() {
               </select>
             </div>
 
+            <!-- ✅ ADDED AKTIF TOGGLE -->
+            <div class="field">
+              <label>Status Akaun</label>
+
+              <div class="switch-wrapper">
+                <label class="switch">
+                  <input type="checkbox" v-model="aktif" />
+                  <span class="slider"></span>
+                </label>
+
+                <span class="status-text">
+                  {{ aktif ? "Aktif" : "Tidak Aktif" }}
+                </span>
+              </div>
+            </div>
+
           </div>
 
           <div class="modal-actions">
@@ -354,8 +378,8 @@ function confirmDelete() {
               Taip <strong>Padam</strong> untuk sahkan:
             </label>
 
-            <div class="danger-word">
-              Padam
+            <div class="org-delete-name">
+              <span class="danger-word">Padam</span>
             </div>
 
             <input
@@ -727,6 +751,8 @@ td {
   cursor: pointer;
 }
 
+/* DELETE MODAL */
+
 .delete-modal {
   width: 100%;
   max-width: 480px;
@@ -755,6 +781,7 @@ td {
   font-size: 24px;
   font-weight: 900;
   color: #111827;
+  margin-bottom: 8px;
 }
 
 .delete-desc {
@@ -767,15 +794,25 @@ td {
   display: block;
   font-size: 14px;
   font-weight: 700;
+  color: #374151;
   margin-bottom: 10px;
 }
 
-.danger-word {
+.org-delete-name {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: 800;
+  margin-bottom: 12px;
   text-align: center;
+}
+
+.danger-word {
   color: #dc2626;
   font-size: 20px;
   font-weight: 900;
-  margin-bottom: 12px;
+  letter-spacing: 0.04em;
 }
 
 .delete-input {
@@ -783,7 +820,13 @@ td {
   border: 1px solid #dbe3ff;
   border-radius: 14px;
   padding: 14px;
+  font-size: 14px;
   box-sizing: border-box;
+}
+
+.delete-input:focus {
+  outline: none;
+  border-color: #020265;
 }
 
 .delete-actions {
@@ -796,8 +839,15 @@ td {
 .cancel-delete-btn {
   border: 1px solid #e5e7eb;
   background: white;
+  color: #374151;
   padding: 12px 18px;
   border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cancel-delete-btn:hover {
+  background: #f9fafb;
 }
 
 .danger-btn {
@@ -806,9 +856,66 @@ td {
   color: white;
   padding: 12px 18px;
   border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .danger-btn:disabled {
-  opacity: .45;
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ✅ ADDED TOGGLE SWITCH */
+
+.switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #d1d5db;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.25s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.switch input:checked + .slider {
+  background: #22c55e;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+.status-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
 }
 </style>

@@ -4,6 +4,7 @@ import { useRoute, useRouter } from "vue-router"
 import logo from "../assets/images/spoting-logo.png"
 
 import {
+  LayoutDashboard,
   Settings,
   UserPlus,
   LogOut
@@ -20,6 +21,12 @@ const user = ref({
 const customerName = computed(() => "Kementerian Dalam Negeri")
 
 const menuItems = computed(() => [
+  {
+    label: "Papan Pemuka",
+    icon: LayoutDashboard,
+    path: "/admin/dashboard",
+    active: route.path.startsWith("/admin/dashboard")
+  },
   {
     label: "Konfigurasi",
     icon: Settings,
@@ -47,7 +54,13 @@ const breadcrumbs = computed(() => {
     }
   ]
 
-  if (path.includes("/accounts")) {
+  if (path.includes("/dashboard")) {
+    crumbs.push({
+      label: "Papan Pemuka",
+      to: null
+    })
+
+  } else if (path.includes("/accounts")) {
     crumbs.push({
       label: "Pengurusan Pengguna",
       to: null
