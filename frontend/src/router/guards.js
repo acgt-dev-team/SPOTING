@@ -3,29 +3,31 @@ export function setupGuards(router) {
     const token = localStorage.getItem("token")
     const role = localStorage.getItem("role")
 
-    // 🔐 If route requires auth
-    if (to.meta.requiresAuth) {
-      if (!token) {
-        return next("/login")
+    // Protected routes
+    if (to.meta.requiresAuth && !token) {
+      return next("/login")
+    }
+
+    // Prevent logged in users from going back to login
+    if (to.path === "/login" && token) {
+      if (
+        role === "admin" ||
+        role === "super admin"
+      ) {
+        return next("/admin/configuration")
       }
 
-      // 🚫 Role mismatch
-      if (to.meta.role && to.meta.role !== role) {
-        if (role === "admin") {
-          return next("/admin/configuration")
-        } else {
-          return next("/app/profil")
-        }
+      if (role === "user") {
+        return next("/admin/dashboard")
       }
     }
 
-    // 🚫 Prevent logged-in user going back to login
-    if (to.path === "/login" && token) {
-      if (role === "admin") {
-        return next("/admin/configuration")
-      } else {
-        return next("/app/profil")
-      }
+    // user cannot access account management
+    if (
+      role === "user" &&
+      to.path.startsWith("/admin/accounts")
+    ) {
+      return next("/admin/dashboard")
     }
 
     next()

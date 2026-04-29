@@ -1,5 +1,6 @@
 <script setup>
-import { ref, computed } from "vue"
+import { ref, computed, onMounted } from "vue"
+import api from "../../services/api"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
@@ -19,27 +20,9 @@ const username = ref("")
 const password = ref("")
 const role = ref("user")
 const aktif = ref(true)
+const currentRole = localStorage.getItem("role")
 
-const accounts = ref([
-  {
-    id: 1,
-    nama: "Hussein bin Hassan",
-    username: "hussein1",
-    password: "********",
-    role: "admin",
-    created_at: "2026-04-24 09:30",
-    aktif: true
-  },
-  {
-    id: 2,
-    nama: "Ahmed bin Ali",
-    username: "ahmed",
-    password: "********",
-    role: "user",
-    created_at: "2026-04-24 10:15",
-    aktif: true
-  }
-])
+const accounts = ref([])
 
 const filteredAccounts = computed(() => {
   return accounts.value.filter((item) =>
@@ -85,54 +68,74 @@ function editAccount(item) {
   showModal.value = true
 }
 
-function saveAccount() {
-  if (!nama.value.trim() || !username.value.trim()) return
-
-  if (editingId.value) {
-    const row = accounts.value.find(
-      (item) => item.id === editingId.value
-    )
-
-    if (!row) return
-
-    row.nama = nama.value
-    row.username = username.value
-    row.password = password.value
-    row.role = role.value
-    row.aktif = aktif.value
-
-  } else {
-    accounts.value.unshift({
-      id: Date.now(),
-      nama: nama.value,
-      username: username.value,
-      password: password.value || "********",
-      role: role.value,
-      created_at: new Date().toLocaleString(),
-      aktif: aktif.value
-    })
+async function fetchAccounts() {
+  try {
+    const res = await api.get("/auth/users")
+    accounts.value = res.data
+  } catch (err) {
+    console.error(err)
   }
-
-  closeModal()
 }
 
-function askDelete(item) {
+onMounted(() => {
+  fetchAccounts()
+})
+
+async function saveAccount() {
+  try {
+    if (editingId.value) {
+      await api.put(
+        `/auth/users/${editingId.value}`,
+        {
+          nama: nama.value,
+          username: username.value,
+          password: password.value,
+          role: role.value,
+          aktif: aktif.value
+        }
+      )
+    } else {
+      await api.post("/auth/users", {
+        nama: nama.value,
+        username: username.value,
+        password: password.value,
+        role: role.value,
+        aktif: aktif.value
+      })
+    }
+
+    await fetchAccounts()
+    closeModal()
+
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+async function askDelete(item) {
   deleteId.value = item.id
   deleteConfirmText.value = ""
   showDeleteModal.value = true
 }
 
-function closeDeleteModal() {
+async function closeDeleteModal() {
   showDeleteModal.value = false
 }
 
-function confirmDelete() {
-  accounts.value = accounts.value.filter(
-    (item) => item.id !== deleteId.value
-  )
+async function confirmDelete() {
+  try {
+    await api.delete(
+      `/auth/users/${deleteId.value}`
+    )
 
-  showDeleteModal.value = false
-  showModal.value = false
+    await fetchAccounts()
+
+    showDeleteModal.value = false
+    showModal.value = false
+
+  } catch (err) {
+    console.error(err)
+  }
 }
 </script>
 
@@ -218,9 +221,15 @@ function confirmDelete() {
               <td>{{ item.username }}</td>
               <td>{{ item.password }}</td>
               <td>
-                {{ item.role === "admin" ? "Pentadbir" : "Pengguna" }}
-              </td>
-              <td>{{ item.created_at }}</td>
+  {{
+    item.role === "super admin"
+      ? "Super Admin"
+      : item.role === "admin"
+      ? "Pentadbir"
+      : "Pengguna"
+  }}
+</td>
+              <td>{{ new Date(item.created_at).toLocaleString() }}</td>
 
               <td>
                 <button
@@ -301,10 +310,16 @@ function confirmDelete() {
             <AppSelect
               v-model="role"
               label="Peranan"
-              :options="[
-                { label: 'Pentadbir', value: 'admin' },
-                { label: 'Pengguna', value: 'user' }
-              ]"
+              :options="
+  currentRole === 'super admin'
+    ? [
+        { label: 'Pentadbir', value: 'admin' },
+        { label: 'Pengguna', value: 'user' }
+      ]
+    : [
+        { label: 'Pengguna', value: 'user' }
+      ]
+"
             />
 
             <!-- ✅ ADDED AKTIF TOGGLE -->

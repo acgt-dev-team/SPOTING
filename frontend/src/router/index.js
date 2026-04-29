@@ -42,7 +42,10 @@ const routes = [
   {
     path: "/admin",
     component: AdminLayout,
-    meta: { requiresAuth: true, role: "admin" },
+    meta: {
+  requiresAuth: true,
+  roles: ["admin", "super admin"]
+},
     redirect: "/admin/dashboard", // ✅ default page
     children: [
       {

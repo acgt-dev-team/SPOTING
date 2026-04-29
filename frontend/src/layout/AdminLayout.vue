@@ -13,33 +13,50 @@ import {
 const route = useRoute()
 const router = useRouter()
 
+const currentRole = localStorage.getItem("role")
+
 const user = ref({
-  username: "Admin User",
-  role: "Pentadbir"
+  username: localStorage.getItem("username") || "User",
+  role: localStorage.getItem("role") || "user"
 })
 
 const ministryName = computed(() => "Kementerian Dalam Negeri")
 
-const menuItems = computed(() => [
-  {
-    label: "Papan Pemuka",
-    icon: LayoutDashboard,
-    path: "/admin/dashboard",
-    active: route.path.startsWith("/admin/dashboard")
-  },
-  {
-    label: "Konfigurasi",
-    icon: Settings,
-    path: "/admin/configuration",
-    active: route.path.startsWith("/admin/configuration")
-  },
-  {
-    label: "Pengurusan Pengguna",
-    icon: UserPlus,
-    path: "/admin/accounts",
-    active: route.path.startsWith("/admin/accounts")
+const menuItems = computed(() => {
+  // user only sees configuration
+  if (currentRole === "user") {
+    return [
+      {
+        label: "Konfigurasi",
+        icon: Settings,
+        path: "/admin/configuration",
+        active: route.path.startsWith("/admin/configuration")
+      }
+    ]
   }
-])
+
+  // admin + super admin
+  return [
+    {
+      label: "Papan Pemuka",
+      icon: LayoutDashboard,
+      path: "/admin/dashboard",
+      active: route.path.startsWith("/admin/dashboard")
+    },
+    {
+      label: "Konfigurasi",
+      icon: Settings,
+      path: "/admin/configuration",
+      active: route.path.startsWith("/admin/configuration")
+    },
+    {
+      label: "Pengurusan Pengguna",
+      icon: UserPlus,
+      path: "/admin/accounts",
+      active: route.path.startsWith("/admin/accounts")
+    }
+  ]
+})
 
 const breadcrumbs = computed(() => {
   const path = route.path
