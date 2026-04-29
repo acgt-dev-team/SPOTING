@@ -42,12 +42,16 @@ async function login(e){
 
     localStorage.setItem("token", token)
     localStorage.setItem("role", role)
+    localStorage.setItem("username", username.value)
 
-    if(role === "admin"){
-      router.push("/admin/configuration")
-    } else {
-      router.push("/app/profil")
-    }
+    if (
+  role === "admin" ||
+  role === "super admin"
+) {
+  router.push("/admin/configuration")
+} else if (role === "user") {
+  router.push("/admin/dashboard")
+}
 
   } catch (err) {
     console.error("Login error:", err)
