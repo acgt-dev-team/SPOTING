@@ -516,6 +516,12 @@ onMounted(() => {
   min-height: 0;
 }
 
+.table-head div:nth-child(5) {
+  display: flex;
+  justify-content: center;
+  transform: translateX(-55px);
+}
+
 .row-item {
   padding: 18px 30px;
   border-bottom: 1px solid #f1f5f9;

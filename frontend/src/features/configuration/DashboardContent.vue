@@ -1,6 +1,7 @@
 <script setup>
-import { computed, ref } from "vue"
+import { computed, ref, onMounted } from "vue"
 import { useRouter } from "vue-router"
+import axios from "axios"
 
 const router = useRouter()
 
@@ -16,7 +17,27 @@ const ranges = [
 ]
 
 // =======================
-// DATA
+// DASHBOARD STATS (API)
+// =======================
+const stats = ref({
+  organisasi: 0,
+  sub_organisasi: 0,
+  tapak: 0,
+  profil: 0,
+  tugasan: 0
+})
+
+onMounted(async () => {
+  try {
+    const res = await axios.get("/api/dashboard")
+    stats.value = res.data
+  } catch (err) {
+    console.error("Dashboard API error:", err)
+  }
+})
+
+// =======================
+// DATA (existing table)
 // =======================
 const organizations = ref([
   { bil: 1, nama: "KDN", done: 1233, total: 9000 },
@@ -27,8 +48,6 @@ const organizations = ref([
 // =======================
 // COMPUTED
 // =======================
-const totalOrganizations = computed(() => organizations.value.length)
-
 const totalTasks = computed(() =>
   organizations.value.reduce((sum, o) => sum + o.total, 0)
 )
@@ -93,31 +112,37 @@ function goAccounts() {
 
       <div class="stat-card">
         <div class="number blue">
-          {{ totalOrganizations }}
+          {{ stats.organisasi }}
         </div>
-        <div class="label">Jumlah organisasi</div>
+        <div class="label">Organisasi</div>
       </div>
 
       <div class="stat-card">
         <div class="number blue">
-          {{ formatNumber(120) }}
+          {{ stats.sub_organisasi }}
         </div>
-        <div class="label">Jumlah profil</div>
+        <div class="label">Sub Organisasi</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="number blue">
+          {{ stats.tapak }}
+        </div>
+        <div class="label">Tapak</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="number blue">
+          {{ stats.profil }}
+        </div>
+        <div class="label">Profil</div>
       </div>
 
       <div class="stat-card">
         <div class="number green">
-          {{ formatNumber(completedTasks) }}
-          <span>/ {{ formatNumber(totalTasks) }}</span>
+          {{ stats.tugasan }}
         </div>
-        <div class="label">Jumlah tugasan</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="number green">
-          {{ formatNumber(completedTasks) }}
-        </div>
-        <div class="label">Jumlah peranti selesai</div>
+        <div class="label">Tugasan</div>
       </div>
 
     </div>
@@ -228,7 +253,7 @@ function goAccounts() {
 /* STATS */
 .stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 16px;
 }
 
@@ -247,15 +272,8 @@ function goAccounts() {
 
 /* NUMBER */
 .number {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-.number span {
-  font-size: 14px;
-  margin-left: 6px;
-  color: #6b7280;
 }
 
 .blue {

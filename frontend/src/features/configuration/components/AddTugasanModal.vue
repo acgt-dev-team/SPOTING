@@ -2,6 +2,8 @@
 import { reactive, ref, onMounted, computed, watch } from "vue"
 import api from "../../../services/api"
 
+import AppSelect from "../../../ui/AppSelect.vue"
+
 const emit = defineEmits(["close", "saved"])
 
 const props = defineProps({
@@ -167,21 +169,14 @@ onMounted(() => {
           />
         </div>
 
-        <div class="field">
-          <label>Jenis Tugasan *</label>
-
-          <select v-model="form.jenis_id">
-            <option value="">-- Pilih Jenis --</option>
-
-            <option
-              v-for="j in jenisList"
-              :key="j.id"
-              :value="j.id"
-            >
-              {{ j.nama }}
-            </option>
-          </select>
-        </div>
+        <AppSelect
+          v-model="form.jenis_id"
+          label="Jenis Tugasan"
+          :options="jenisList.map(j => ({
+            label: j.nama,
+            value: String(j.id)
+          }))"
+        />
 
         <div class="field">
           <label>Kod Tugasan</label>
@@ -200,21 +195,14 @@ onMounted(() => {
 
         <h3>Maklumat Network</h3>
 
-        <div class="field">
-          <label>Protokol</label>
-
-          <select v-model="form.protocol">
-            <option value="">-- Pilih Protokol --</option>
-
-            <option
-              v-for="p in protocols"
-              :key="p"
-              :value="p"
-            >
-              {{ p }}
-            </option>
-          </select>
-        </div>
+        <AppSelect
+          v-model="form.protocol"
+          label="Protokol"
+          :options="protocols.map(p => ({
+            label: p,
+            value: p
+          }))"
+        />
 
         <div class="grid-2">
 
@@ -420,7 +408,6 @@ onMounted(() => {
 }
 
 input,
-select,
 textarea {
   width: 100%;
   border: 1px solid #dbe3ff;

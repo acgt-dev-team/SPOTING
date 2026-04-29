@@ -3,6 +3,8 @@ import { computed, ref, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
 import api from "../../../src/services/api.js"
 
+import StatusPill from "../../ui/StatusPill.vue"
+import AppPagination from "../../ui/AppPagination.vue"
 import AssignTugasanModal from "./components/AssignTugasanModal.vue"
 
 const route = useRoute()
@@ -13,12 +15,17 @@ const subOrganizationId = route.params.subOrganizationId
 const siteId = route.params.siteId
 const profileId = route.params.profileId
 
+// =========================
+// PAGINATION
+// =========================
+const currentPage = ref(1)
+const pageSize = 10
+
+// =========================
+// STATE
+// =========================
 const search = ref("")
 const showModal = ref(false)
-
-
-
-// ✅ NEW: dropdown selection
 const selectedTugasanId = ref(null)
 
 const profile = ref({
@@ -27,37 +34,45 @@ const profile = ref({
   description: "Tetapan operasi tapak"
 })
 
-// ✅ FROM API
+// =========================
+// DATA
+// =========================
 const tasks = ref([])
 const allTugasan = ref([])
 
-// 🔍 Filter
+// =========================
+// FILTER
+// =========================
 const filteredTasks = computed(() => {
   return tasks.value.filter((item) =>
-    item.nama.toLowerCase().includes(search.value.toLowerCase())
+    item.nama?.toLowerCase().includes(search.value.toLowerCase())
   )
 })
 
-// 🧠 Status mapping
-function getStatusLabel(status) {
-  if (status === 1) return "Belum Bermula"
-  if (status === 2) return "Dalam Proses"
-  if (status === 3) return "Telah Selesai"
-  if (status === 4) return "Gagal"
-  return "Unknown"
-}
+// =========================
+// PAGINATION LOGIC
+// =========================
+const paginatedTasks = computed(() => {
+  const start = (currentPage.value - 1) * pageSize
+  return filteredTasks.value.slice(start, start + pageSize)
+})
 
-// 🔥 Load assigned tasks
+const totalPages = computed(() => {
+  return Math.ceil(filteredTasks.value.length / pageSize)
+})
+
+// =========================
+// API CALLS
+// =========================
 async function loadTasks() {
   try {
     const res = await api.get(`/tugasan/profil/${profileId}`)
-    tasks.value = res.data
+    tasks.value = res.data || []
   } catch (err) {
     console.error("Error loading tasks:", err)
   }
 }
 
-// 🔥 Load all available tugasan (for dropdown)
 async function loadAllTugasan() {
   try {
     const res = await api.get("/tugasan/")
@@ -67,14 +82,16 @@ async function loadAllTugasan() {
   }
 }
 
-// 🚀 Assign tugasan
+// =========================
+// ASSIGN
+// =========================
 async function assignTask() {
   if (!selectedTugasanId.value) return
 
   try {
     await api.post(`/tugasan/profil/${profileId}/`, {
-  tugasan_id: selectedTugasanId.value
-})
+      tugasan_id: selectedTugasanId.value
+    })
 
     await loadTasks()
     closeModal()
@@ -94,46 +111,13 @@ async function removeTask(tugasanId) {
   }
 }
 
-// Modal handling
+// =========================
+// MODAL
+// =========================
 function handleAssigned() {
-  loadTasks()      // 🔥 reload table after assign/unassign
+  loadTasks()
   showModal.value = false
 }
-
-
-async function handleAssign() {
-  try {
-    // 🔥 current assigned from DB
-    const res = await api.get(`/tugasan/profil/${profileId}/`)
-    const assignedIds = res.data.map(t => t.id)
-
-    const selectedIds = [...selected.value]
-
-    // ➕ ADD (newly checked)
-    for (const id of selectedIds) {
-      if (!assignedIds.includes(id)) {
-        await api.post(`/tugasan/profil/${profileId}/`, {
-  tugasan_id: selectedTugasanId.value
-})
-      }
-    }
-
-    // ❌ REMOVE (unchecked)
-    for (const id of assignedIds) {
-      if (!selectedIds.includes(id)) {
-        await api.delete(`/tugasan/profil/${profileId}/${id}`)
-      }
-    }
-
-    emit('assigned')
-
-  } catch (err) {
-    console.error('Sync failed:', err)
-  }
-}
-
-
-
 
 watch(showModal, (value) => {
   if (value) {
@@ -149,12 +133,18 @@ function closeModal() {
   showModal.value = false
 }
 
-// Navigation
+// =========================
+// NAVIGATION
+// =========================
 function goBack() {
-  router.push(`/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}/profil/${siteId}`)
+  router.push(
+    `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}/profil/${siteId}`
+  )
 }
 
-//scan func
+// =========================
+// SCAN
+// =========================
 async function runScan(task) {
   try {
     await api.post("/tugasan/execute-scan", {
@@ -169,7 +159,22 @@ async function runScan(task) {
   }
 }
 
-// 🚀 Load data on mount
+// =========================
+// WATCHERS
+// =========================
+watch(search, () => {
+  currentPage.value = 1
+})
+
+watch(filteredTasks, () => {
+  if (currentPage.value > totalPages.value) {
+    currentPage.value = totalPages.value || 1
+  }
+})
+
+// =========================
+// INIT
+// =========================
 onMounted(() => {
   loadTasks()
   loadAllTugasan()
@@ -177,6 +182,9 @@ onMounted(() => {
 </script>
 
 <template>
+  <div>
+
+    <!-- Header -->
     <div class="hierarchy-card">
       <div class="hierarchy-left">
         <h2>{{ profile.name }}</h2>
@@ -192,8 +200,8 @@ onMounted(() => {
       </div>
 
       <button class="primary-btn" @click="showModal = true">
-  Tetapkan Tugasan
-</button>
+        Tetapkan Tugasan
+      </button>
     </div>
 
     <!-- Title -->
@@ -205,89 +213,91 @@ onMounted(() => {
     <div class="table-card">
       <div class="table-scroll">
         <table>
-  <thead>
-    <tr>
-      <th style="width: 50px">Bil</th>
-      <th style="width: 35%">Nama / Kod</th>
-      <th style="width: 90px">Protokol</th>
-      <th style="width: 180px">IP Range</th>
-      <th style="width: 160px">Status</th>
-      <th style="width: 180px">Tindakan</th>
-    </tr>
-  </thead>
+          <thead>
+            <tr>
+              <th style="width: 50px">Bil</th>
+              <th style="width: 35%">Nama / Kod</th>
+              <th style="width: 90px">Protokol</th>
+              <th style="width: 180px">IP Range</th>
+              <th style="width: 160px">Status</th>
+              <th style="width: 180px">Tindakan</th>
+            </tr>
+          </thead>
 
-  <tbody>
-    <!-- Empty -->
-    <tr v-if="filteredTasks.length === 0">
-      <td colspan="6" class="empty-cell">
-        Tiada tugasan dijumpai.
-      </td>
-    </tr>
+          <tbody>
 
-    <!-- Rows -->
-    <tr
-      v-for="(task, index) in filteredTasks"
-      :key="task.id"
-      class="clickable-row"
-    >
-      <!-- Bil -->
-      <td>{{ index + 1 }}</td>
+            <!-- ✅ FIXED EMPTY STATE -->
+            <tr v-if="paginatedTasks.length === 0">
+              <td colspan="6" class="empty-cell">
+                Tiada tugasan dijumpai.
+              </td>
+            </tr>
 
-      <!-- Nama + Kod -->
-      <td>
-        <div class="task-info">
-          <p class="task-name">{{ task.nama }}</p>
-          <p class="task-code">{{ task.kod }}</p>
-        </div>
-      </td>
+            <!-- ✅ PAGINATED LOOP -->
+            <tr
+              v-for="(task, index) in paginatedTasks"
+              :key="task.id"
+              class="clickable-row"
+            >
+              <!-- Bil -->
+              <td>
+                {{ (currentPage - 1) * pageSize + index + 1 }}
+              </td>
 
-      <!-- Protocol -->
-      <td>
-        <span
-          class="protocol-badge"
-          :class="'protocol-' + (task.protocol || 'default').toLowerCase()"
-        >
-          {{ task.protocol || '-' }}
-        </span>
-      </td>
+              <!-- Nama -->
+              <td>
+                <div class="task-info">
+                  <p class="task-name">{{ task.nama }}</p>
+                  <p class="task-code">{{ task.kod }}</p>
+                </div>
+              </td>
 
-      <!-- IP Range -->
-      <td>
-        <div class="ip-range">
-          <span>{{ task.ip_start || '-' }}</span>
-          <span class="ip-sep">→</span>
-          <span>{{ task.ip_end || '-' }}</span>
-        </div>
-      </td>
+              <!-- Protocol -->
+              <td>
+                <span
+                  class="protocol-badge"
+                  :class="'protocol-' + (task.protocol || 'default').toLowerCase()"
+                >
+                  {{ task.protocol || '-' }}
+                </span>
+              </td>
 
-      <!-- Status -->
-      <td>
-        <span
-          class="status-pill"
-          :class="{
-            running: task.status === 1,
-            pending: task.status === 2,
-            success: task.status === 3
-          }"
-        >
-          {{ getStatusLabel(task.status) }}
-        </span>
-      </td>
+              <!-- IP -->
+              <td>
+                <div class="ip-range">
+                  <span>{{ task.ip_start || '-' }}</span>
+                  <span class="ip-sep">→</span>
+                  <span>{{ task.ip_end || '-' }}</span>
+                </div>
+              </td>
 
-      <!-- Actions -->
-      <td>
-  <button
-    class="primary-btn small"
-    @click.stop="runScan(task)"
-  >
-    Imbas Sekarang
-  </button>
-</td>
-    </tr>
-  </tbody>
-</table>
+              <!-- ✅ Status -->
+              <td>
+                <StatusPill :status="task.status" />
+              </td>
+
+              <!-- Actions -->
+              <td>
+                <button
+                  class="primary-btn small"
+                  @click.stop="runScan(task)"
+                >
+                  Imbas Sekarang
+                </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
       </div>
     </div>
+
+    <!-- ✅ PAGINATION -->
+    <AppPagination
+      :currentPage="currentPage"
+      :totalPages="totalPages"
+      @update:page="currentPage = $event"
+    />
 
     <!-- Footer -->
     <div class="footer-bar">
@@ -305,10 +315,12 @@ onMounted(() => {
 
     <!-- Modal -->
     <AssignTugasanModal
-  v-if="showModal"
-  @close="showModal = false"
-  @assigned="handleAssigned"
-/>
+      v-if="showModal"
+      @close="showModal = false"
+      @assigned="handleAssigned"
+    />
+
+  </div>
 </template>
 
 <style scoped>
@@ -448,22 +460,6 @@ td:nth-child(6) {
 .org-name {
   font-weight: 800;
   color: #111827;
-}
-
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: #dcfce7;
-  color: #166534;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.status-pill.draft {
-  background: #eef1ff;
-  color: #020265;
 }
 
 .ghost-btn {
@@ -733,22 +729,6 @@ select:focus {
 
 .ip-sep {
   color: #9ca3af;
-}
-
-/* Status */
-.status-pill.running {
-  background: #fef3c7;
-  color: #d97706;
-}
-
-.status-pill.pending {
-  background: #e5e7eb;
-  color: #6b7280;
-}
-
-.status-pill.success {
-  background: #dcfce7;
-  color: #16a34a;
 }
 
 .table-card {
