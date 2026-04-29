@@ -6,6 +6,9 @@ import api from "../../../src/services/api"
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
+import AppSelect from "../../ui/AppSelect.vue"
+import StatusPill from "../../ui/StatusPill.vue"
+import AppPagination from "../../ui/AppPagination.vue"
 
 const route = useRoute()
 const router = useRouter()
@@ -39,6 +42,12 @@ const showToast = ref(false)
 const deleteConfirmText = ref("")
 
 // =========================
+// ✅ PAGINATION (ADDED)
+// =========================
+const currentPage = ref(1)
+const pageSize = 10
+
+// =========================
 // FILTER
 // =========================
 const filteredProfiles = computed(() => {
@@ -55,6 +64,31 @@ const filteredProfiles = computed(() => {
         sensitivity: "base"
       })
     })
+})
+
+// =========================
+// ✅ PAGINATION LOGIC (ADDED)
+// =========================
+const paginatedProfiles = computed(() => {
+  const start = (currentPage.value - 1) * pageSize
+  return filteredProfiles.value.slice(start, start + pageSize)
+})
+
+const totalPages = computed(() => {
+  return Math.ceil(filteredProfiles.value.length / pageSize)
+})
+
+// =========================
+// WATCHERS (ADDED)
+// =========================
+watch(search, () => {
+  currentPage.value = 1
+})
+
+watch(filteredProfiles, () => {
+  if (currentPage.value > totalPages.value) {
+    currentPage.value = totalPages.value || 1
+  }
 })
 
 const selectedProfil = computed(() => {
@@ -115,19 +149,17 @@ async function saveProfile() {
 
   try {
     const payload = {
-  tapak_id: siteId,
-  nama: nama.value,
-  keterangan: keterangan.value,
-
-  execution_type: executionType.value,
-  cron_expression:
-    executionType.value === "SCHEDULED"
-      ? cronExpression.value
-      : null,
-
-  is_scheduled:
-    executionType.value === "SCHEDULED"
-}
+      tapak_id: siteId,
+      nama: nama.value,
+      keterangan: keterangan.value,
+      execution_type: executionType.value,
+      cron_expression:
+        executionType.value === "SCHEDULED"
+          ? cronExpression.value
+          : null,
+      is_scheduled:
+        executionType.value === "SCHEDULED"
+    }
 
     if (editingId.value) {
       await api.put(`/profil/${editingId.value}`, payload)
@@ -178,18 +210,6 @@ async function confirmDelete() {
 }
 
 // =========================
-// MODAL WATCH
-// =========================
-executionType.value =
-  selectedProfile.value?.execution_type || "IMMEDIATE"
-
-cronExpression.value =
-  selectedProfile.value?.cron_expression || ""
-
-isScheduled.value =
-  selectedProfile.value?.is_scheduled || false 
-
-// =========================
 // MODAL
 // =========================
 function openAddModal() {
@@ -212,9 +232,13 @@ function editProfile(profile) {
   selectedProfile.value = profile
   editingId.value = profile.id
   showModal.value = true
-  executionType.value = profile.execution_type
-  cronExpression.value = profile.cron_expression
-  isScheduled.value = profile.is_scheduled
+
+  nama.value = profile.nama || ""
+  keterangan.value = profile.keterangan || ""
+
+  executionType.value = profile.execution_type || "IMMEDIATE"
+  cronExpression.value = profile.cron_expression || ""
+  isScheduled.value = profile.is_scheduled || false
 }
 
 // =========================
@@ -245,6 +269,7 @@ async function generateReport(profile) {
     alert("Failed to generate report")
   }
 }
+
 // =========================
 // INIT
 // =========================
@@ -290,7 +315,9 @@ onMounted(() => {
             <tr>
               <th style="width:100px">Kod</th>
               <th>Nama Profil</th>
-              <th style="width:180px">Jumlah Tugasan</th>
+              <th style="width:180px; white-space: nowrap;">
+                Jumlah Tugasan
+              </th>
               <th style="width:180px">Status</th>
               <th style="width:220px">Tindakan</th>
             </tr>
@@ -298,14 +325,16 @@ onMounted(() => {
 
           <tbody>
 
-            <tr v-if="filteredProfiles.length === 0">
+            <!-- ✅ FIXED -->
+            <tr v-if="paginatedProfiles.length === 0">
               <td colspan="5" class="empty-cell">
                 Tiada profil dijumpai.
               </td>
             </tr>
 
+            <!-- ✅ PAGINATION LOOP -->
             <tr
-              v-for="(profile,index) in filteredProfiles"
+              v-for="(profile,index) in paginatedProfiles"
               :key="profile.id"
               class="clickable-row"
               @click="goToTugasan(profile)"
@@ -328,9 +357,7 @@ onMounted(() => {
               <td>{{ profile.tugasan_count }}</td>
 
               <td>
-                <span class="status-badge" :class="`status-${profile.execution_status.toLowerCase().replace(' ', '-')}`">
-                  {{ profile.execution_status }}
-                </span>
+                <StatusPill :status="profile.execution_status" />
               </td>
 
               <td>
@@ -341,13 +368,13 @@ onMounted(() => {
                   >
                     ✏️
                   </button>
-                  <!-- Generate Report -->
-    <button
-      class="ghost-btn"
-      @click.stop="generateReport(profile)"
-    >
-      📄
-    </button>
+
+                  <button
+                    class="ghost-btn"
+                    @click.stop="generateReport(profile)"
+                  >
+                    📄
+                  </button>
                 </div>
               </td>
 
@@ -356,6 +383,13 @@ onMounted(() => {
         </table>
       </div>
     </div>
+
+    <!-- ✅ PAGINATION -->
+    <AppPagination
+      :currentPage="currentPage"
+      :totalPages="totalPages"
+      @update:page="currentPage = $event"
+    />
 
     <!-- Footer -->
     <div class="footer-bar">
@@ -416,31 +450,23 @@ onMounted(() => {
               ></textarea>
             </div>
 
-            <div class="field">
-  <label>Execution Type</label>
+            <div class="select-wrapper">
+              <AppSelect
+                v-model="executionType"
+                label="Execution Type"
+                :options="[
+                  { label: 'Immediate', value: 'IMMEDIATE' },
+                  { label: 'Scheduled', value: 'SCHEDULED' }
+                ]"
+              />
+            </div>
 
-  <select v-model="executionType">
-    <option value="IMMEDIATE">
-      Immediate
-    </option>
-
-    <option value="SCHEDULED">
-      Scheduled
-    </option>
-  </select>
-</div>
-
-<div
-  v-if="executionType === 'SCHEDULED'"
-  class="field"
->
-  <label>Cron Expression</label>
-
-  <input
-    v-model="cronExpression"
-    placeholder="0 2 * * *"
-  />
-</div>
+            <AppInput
+              v-if="executionType === 'SCHEDULED'"
+              v-model="cronExpression"
+              label="Cron Expression"
+              placeholder="0 2 * * *"
+            />
 
           </div>
 
@@ -665,6 +691,11 @@ td {
   font-size: 15px;
   border-bottom: 1px solid #f1f5f9;
   color: #111827;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  text-align: center;
 }
 
 .clickable-row {
@@ -1040,4 +1071,25 @@ textarea:focus {
     width: 100%;
   }
 }
+
+/* Field wrapper */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Label */
+.field-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+}
+
+/* Select wrapper (for styling + arrow control) */
+.select-wrapper {
+  position: relative;
+}
+
 </style>

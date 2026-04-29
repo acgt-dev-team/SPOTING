@@ -18,7 +18,7 @@ const user = ref({
   role: "Pentadbir"
 })
 
-const customerName = computed(() => "Kementerian Dalam Negeri")
+const ministryName = computed(() => "Kementerian Dalam Negeri")
 
 const menuItems = computed(() => [
   {
@@ -49,7 +49,7 @@ const breadcrumbs = computed(() => {
 
   const crumbs = [
     {
-      label: customerName.value,
+      label: ministryName.value,
       to: "/admin/configuration"
     }
   ]
@@ -256,7 +256,7 @@ function logout() {
 
           <div class="customer-block">
             <h2 class="customer-name">
-              {{ customerName }}
+              {{ ministryName }}
             </h2>
           </div>
 

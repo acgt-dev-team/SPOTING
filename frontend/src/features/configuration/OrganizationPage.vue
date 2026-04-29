@@ -1,12 +1,12 @@
 <script setup>
-import { ref, computed, onMounted } from "vue"
+import { ref, computed, onMounted, watch } from "vue"
 import { useRouter } from "vue-router"
 import api from "../../services/api"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
-
+import AppPagination from "../../ui/AppPagination.vue"
 
 const router = useRouter()
 
@@ -27,6 +27,10 @@ const showDeleteModal = ref(false)
 const showToast = ref(false)
 const deleteConfirmText = ref("")
 
+// ✅ PAGINATION (ADDED)
+const currentPage = ref(1)
+const pageSize = 10
+
 // =========================
 // LOAD DATA
 // =========================
@@ -40,7 +44,7 @@ async function loadOrganisasi() {
 }
 
 // =========================
-// FILTER
+// FILTER (UNCHANGED)
 // =========================
 const filteredOrganizations = computed(() => {
   return organizations.value
@@ -58,6 +62,29 @@ const filteredOrganizations = computed(() => {
     })
 })
 
+// ✅ PAGINATION SLICE (ADDED)
+const paginatedOrganizations = computed(() => {
+  const start = (currentPage.value - 1) * pageSize
+  return filteredOrganizations.value.slice(start, start + pageSize)
+})
+
+// ✅ TOTAL PAGES (ADDED)
+const totalPages = computed(() => {
+  return Math.ceil(filteredOrganizations.value.length / pageSize)
+})
+
+// ✅ RESET PAGE WHEN SEARCH (ADDED)
+watch(search, () => {
+  currentPage.value = 1
+})
+
+// ✅ PREVENT EMPTY PAGE (ADDED)
+watch(filteredOrganizations, () => {
+  if (currentPage.value > totalPages.value) {
+    currentPage.value = totalPages.value || 1
+  }
+})
+
 const selectedOrganization = computed(() => {
   return organizations.value.find(
     (item) => Number(item.id) === Number(editingId.value)
@@ -69,7 +96,7 @@ const canDelete = computed(() => {
 })
 
 // =========================
-// MODAL
+// MODAL (UNCHANGED)
 // =========================
 function openModal() {
   editingId.value = null
@@ -94,7 +121,7 @@ function editOrganization(org) {
 }
 
 // =========================
-// ADD / UPDATE
+// ADD / UPDATE (UNCHANGED)
 // =========================
 async function saveOrganization() {
   if (!nama.value.trim()) {
@@ -126,7 +153,7 @@ async function saveOrganization() {
 }
 
 // =========================
-// DELETE
+// DELETE (UNCHANGED)
 // =========================
 function handleDelete() {
   deleteConfirmText.value = ""
@@ -160,7 +187,7 @@ async function confirmDelete() {
 }
 
 // =========================
-// NAVIGATION
+// NAVIGATION (UNCHANGED)
 // =========================
 function goToSubOrganisasi(org) {
   router.push(`/admin/configuration/sub-organisasi/${org.id}`)
@@ -214,14 +241,17 @@ onMounted(() => {
           </thead>
 
           <tbody>
-            <tr v-if="filteredOrganizations.length === 0">
+
+            <!-- ✅ FIXED -->
+            <tr v-if="paginatedOrganizations.length === 0">
               <td colspan="7" class="empty-cell">
                 Tiada organisasi dijumpai.
               </td>
             </tr>
 
+            <!-- ✅ PAGINATION LOOP -->
             <tr
-              v-for="(org,index) in filteredOrganizations"
+              v-for="(org,index) in paginatedOrganizations"
               :key="org.id"
               class="clickable-row"
               @click="goToSubOrganisasi(org)"
@@ -242,20 +272,19 @@ onMounted(() => {
               </td>
 
               <td>
-  <div class="pegawai-cell">
-    <p class="pegawai-name">
-      {{ org.pegawai_tadbir || "-" }}
-    </p>
-    <p class="pegawai-jawatan">
-      {{ org.jawatan || "-" }}
-    </p>
-  </div>
-</td>
+                <div class="pegawai-cell">
+                  <p class="pegawai-name">
+                    {{ org.pegawai_tadbir || "-" }}
+                  </p>
+                  <p class="pegawai-jawatan">
+                    {{ org.jawatan || "-" }}
+                  </p>
+                </div>
+              </td>
 
-<td>{{ org.sub_count }}</td>
-<td>{{ org.tapak_count }}</td>
-
-<td>{{ org.tugasan_count }}</td>
+              <td>{{ org.sub_count }}</td>
+              <td>{{ org.tapak_count }}</td>
+              <td>{{ org.tugasan_count }}</td>
 
               <td>
                 <div style="display:flex; gap:8px;">
@@ -270,6 +299,13 @@ onMounted(() => {
         </table>
       </div>
     </div>
+
+    <!-- ✅ PAGINATION ADDED -->
+    <AppPagination
+      :currentPage="currentPage"
+      :totalPages="totalPages"
+      @update:page="currentPage = $event"
+    />
 
     <div class="footer-bar">
       <div class="count-pill">
@@ -298,8 +334,6 @@ onMounted(() => {
           </div>
 
           <div class="form-area">
-
-          
 
             <AppInput
               v-model="nama"

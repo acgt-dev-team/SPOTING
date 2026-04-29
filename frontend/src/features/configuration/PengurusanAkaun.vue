@@ -4,6 +4,7 @@ import { ref, computed } from "vue"
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
+import AppSelect from "../../ui/AppSelect.vue"
 
 const search = ref("")
 const showModal = ref(false)
@@ -195,6 +196,7 @@ function confirmDelete() {
             <tr
               v-for="(item,index) in filteredAccounts"
               :key="item.id"
+              class="clickable-row"
             >
               <td>{{ index + 1 }}</td>
 
@@ -296,14 +298,14 @@ function confirmDelete() {
               placeholder="Masukkan password"
             />
 
-            <div class="field">
-              <label>Peranan</label>
-
-              <select v-model="role">
-                <option value="admin">Pentadbir</option>
-                <option value="user">Pengguna</option>
-              </select>
-            </div>
+            <AppSelect
+              v-model="role"
+              label="Peranan"
+              :options="[
+                { label: 'Pentadbir', value: 'admin' },
+                { label: 'Pengguna', value: 'user' }
+              ]"
+            />
 
             <!-- ✅ ADDED AKTIF TOGGLE -->
             <div class="field">
@@ -723,16 +725,6 @@ td {
   color: #374151;
 }
 
-.field select {
-  width: 100%;
-  height: 52px;
-  padding: 0 16px;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  background: #fff;
-  font-size: 15px;
-}
-
 .modal-actions {
   display: flex;
   justify-content: flex-end;
@@ -918,4 +910,13 @@ td {
   font-weight: 700;
   color: #374151;
 }
+
+.clickable-row {
+  transition: 0.18s ease;
+}
+
+.clickable-row:hover {
+  background: #f4f6ff;
+}
+
 </style>

@@ -6,18 +6,13 @@ import api from "../../../src/services/api"
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
+import AppPagination from "../../ui/AppPagination.vue"
 
 const route = useRoute()
 const router = useRouter()
 
-// =========================
-// PARAM
-// =========================
 const organisasiId = route.params.organizationId
 
-// =========================
-// STATE
-// =========================
 const organisasi = ref({
   id: organisasiId,
   name: "",
@@ -43,9 +38,10 @@ const showDeleteModal = ref(false)
 const showToast = ref(false)
 const deleteConfirmText = ref("")
 
-// =========================
-// LOAD DATA
-// =========================
+// ✅ PAGINATION (added)
+const currentPage = ref(1)
+const pageSize = 10
+
 async function loadSubOrganisasi() {
   try {
     const res = await api.get(`/sub-organisasi/organisasi/${organisasiId}`)
@@ -58,7 +54,6 @@ async function loadSubOrganisasi() {
 async function loadOrganisasiDetail() {
   try {
     const res = await api.get(`/organisasi/${organisasiId}`)
-
     organisasi.value = {
       id: res.data.id,
       name: res.data.nama,
@@ -70,7 +65,7 @@ async function loadOrganisasiDetail() {
 }
 
 // =========================
-// COMPUTED
+// FILTER (UNCHANGED)
 // =========================
 const filteredSubs = computed(() => {
   return subs.value
@@ -88,6 +83,29 @@ const filteredSubs = computed(() => {
     })
 })
 
+// ✅ PAGINATION SLICE
+const paginatedSubs = computed(() => {
+  const start = (currentPage.value - 1) * pageSize
+  return filteredSubs.value.slice(start, start + pageSize)
+})
+
+// ✅ TOTAL PAGES
+const totalPages = computed(() => {
+  return Math.ceil(filteredSubs.value.length / pageSize)
+})
+
+// ✅ RESET PAGE
+watch(search, () => {
+  currentPage.value = 1
+})
+
+// ✅ PREVENT EMPTY PAGE
+watch(filteredSubs, () => {
+  if (currentPage.value > totalPages.value) {
+    currentPage.value = totalPages.value || 1
+  }
+})
+
 const selectedSubRecord = computed(() => {
   return subs.value.find(
     (item) => Number(item.id) === Number(editingId.value)
@@ -98,9 +116,6 @@ const canDelete = computed(() => {
   return deleteConfirmText.value.trim().toLowerCase() === "padam"
 })
 
-// =========================
-// WATCH
-// =========================
 watch(showModal, (value) => {
   if (value) {
     nama.value = selectedSub.value?.nama || ""
@@ -110,9 +125,6 @@ watch(showModal, (value) => {
   }
 })
 
-// =========================
-// NAVIGATION
-// =========================
 function goBack() {
   router.push("/admin/configuration")
 }
@@ -121,9 +133,6 @@ function goToTapak(sub) {
   router.push(`/admin/configuration/sub-organisasi/${organisasiId}/tapak/${sub.id}`)
 }
 
-// =========================
-// MODAL
-// =========================
 function openAddModal() {
   selectedSub.value = null
   editingId.value = null
@@ -147,9 +156,6 @@ function closeModal() {
   selectedSub.value = null
 }
 
-// =========================
-// SAVE
-// =========================
 async function saveSub() {
   if (!nama.value.trim()) return
 
@@ -176,9 +182,6 @@ async function saveSub() {
   }
 }
 
-// =========================
-// DELETE
-// =========================
 function handleDelete() {
   deleteConfirmText.value = ""
   showDeleteModal.value = true
@@ -193,7 +196,6 @@ async function confirmDelete() {
 
   try {
     await api.delete(`/sub-organisasi/${editingId.value}`)
-
     await loadSubOrganisasi()
 
     showDeleteModal.value = false
@@ -210,9 +212,6 @@ async function confirmDelete() {
   }
 }
 
-// =========================
-// MOUNT
-// =========================
 onMounted(() => {
   loadOrganisasiDetail()
   loadSubOrganisasi()
@@ -269,14 +268,16 @@ onMounted(() => {
 
         <tbody>
 
-          <tr v-if="filteredSubs.length === 0">
+          <!-- ✅ FIXED EMPTY -->
+          <tr v-if="paginatedSubs.length === 0">
             <td colspan="5" class="empty-cell">
               Tiada sub organisasi dijumpai.
             </td>
           </tr>
 
+          <!-- ✅ PAGINATION LOOP -->
           <tr
-            v-for="(sub,index) in filteredSubs"
+            v-for="(sub,index) in paginatedSubs"
             :key="sub.id"
             class="clickable-row"
             @click="goToTapak(sub)"
@@ -330,6 +331,13 @@ onMounted(() => {
     </div>
   </div>
 
+  <!-- ✅ PAGINATION ADDED -->
+  <AppPagination
+    :currentPage="currentPage"
+    :totalPages="totalPages"
+    @update:page="currentPage = $event"
+  />
+
   <!-- Footer -->
   <div class="footer-bar">
 
@@ -381,7 +389,6 @@ onMounted(() => {
             label="Nama Sub Organisasi"
             placeholder="Masukkan nama sub organisasi"
           />
-
 
           <AppInput
             v-model="pegawai_tadbir"
