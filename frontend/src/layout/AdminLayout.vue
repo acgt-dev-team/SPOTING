@@ -23,15 +23,9 @@ const user = ref({
 const ministryName = computed(() => "Kementerian Dalam Negeri")
 
 const menuItems = computed(() => {
-  // user role
+  // user only sees configuration
   if (currentRole === "user") {
     return [
-      {
-        label: "Papan Pemuka",
-        icon: LayoutDashboard,
-        path: "/admin/dashboard",
-        active: route.path.startsWith("/admin/dashboard")
-      },
       {
         label: "Konfigurasi",
         icon: Settings,
@@ -502,6 +496,7 @@ function logout() {
   color: #020265;
 }
 
+/* Divider spacing fix */
 .divider {
   color: #9ca3af;
   margin: 0 6px;
@@ -517,7 +512,7 @@ function logout() {
 
 .customer-name {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500;
   color: #111827;
 }
 </style>
