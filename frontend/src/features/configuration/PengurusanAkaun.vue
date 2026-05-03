@@ -28,9 +28,13 @@ const aktif = ref(true)
 const currentRole = localStorage.getItem("role")
 
 const accounts = ref([])
+const errors = ref({})
 
 const filteredAccounts = computed(() => {
-  return accounts.value.filter((item) =>
+  return accounts.value
+  .slice()
+  .sort((a, b) => a.id - b.id) // ascending (stable)
+  .filter((item) =>
     item.nama.toLowerCase().includes(search.value.toLowerCase()) ||
     item.username.toLowerCase().includes(search.value.toLowerCase()) ||
     item.role.toLowerCase().includes(search.value.toLowerCase())
@@ -75,6 +79,26 @@ function closeModal() {
   showModal.value = false
 }
 
+function validateForm() {
+  const e = {}
+
+  if (!nama.value.trim()) {
+    e.nama = "Nama diperlukan"
+  }
+
+  if (!username.value.trim()) {
+    e.username = "Nama pengguna diperlukan"
+  }
+
+  if (!password.value.trim()) {
+    e.password = "Kata laluan diperlukan"
+  }
+
+  errors.value = e
+
+  return Object.keys(e).length === 0
+}
+
 function editAccount(item) {
   editingId.value = item.id
   nama.value = item.nama
@@ -99,6 +123,16 @@ onMounted(() => {
 })
 
 async function saveAccount() {
+  // ✅ VALIDATION
+  if (
+    !nama.value.trim() ||
+    !username.value.trim() ||
+    !password.value.trim()
+  ) {
+    alert("Sila lengkapkan semua maklumat sebelum simpan.")
+    return
+  }
+
   try {
     if (editingId.value) {
       await api.put(
@@ -121,7 +155,22 @@ async function saveAccount() {
       })
     }
 
-    await fetchAccounts()
+    if (editingId.value) {
+      const index = accounts.value.findIndex(a => a.id === editingId.value)
+      if (index !== -1) {
+        accounts.value[index] = {
+          ...accounts.value[index],
+          nama: nama.value,
+          username: username.value,
+          password: password.value,
+          role: role.value,
+          aktif: aktif.value
+        }
+      }
+    } else {
+      await fetchAccounts() // only refetch on create
+    }
+
     closeModal()
 
   } catch (err) {
@@ -156,14 +205,17 @@ async function confirmDelete() {
 }
 
 // ✅ HANDLE TOGGLE (core logic you wanted)
-function handleToggle() {
-  // Tambah mode → direct
+function handleToggle(event, isEdit = false) {
   if (!editingId.value) {
     aktif.value = !aktif.value
     return
   }
 
-  // Edit mode → confirm modal
+  // ❗ stop checkbox from changing ONLY in edit mode
+  if (isEdit && event) {
+    event.preventDefault()
+  }
+
   toggleTarget.value = {
     id: editingId.value,
     aktif: aktif.value
@@ -373,7 +425,7 @@ function confirmToggle() {
                   <input
                     type="checkbox"
                     :checked="aktif"
-                    @click.prevent="handleToggle"
+                    @click="editingId ? handleToggle($event, true) : handleToggle()"
                   />
                   <span class="slider"></span>
                 </label>
