@@ -23,9 +23,15 @@ const user = ref({
 const ministryName = computed(() => "Kementerian Dalam Negeri")
 
 const menuItems = computed(() => {
-  // user only sees configuration
+  // user role
   if (currentRole === "user") {
     return [
+      {
+        label: "Papan Pemuka",
+        icon: LayoutDashboard,
+        path: "/admin/dashboard",
+        active: route.path.startsWith("/admin/dashboard")
+      },
       {
         label: "Konfigurasi",
         icon: Settings,

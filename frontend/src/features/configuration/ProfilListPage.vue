@@ -25,8 +25,18 @@ const selectedProfile = ref(null)
 const nama = ref("")
 const keterangan = ref("")
 const executionType = ref("IMMEDIATE")
-const cronExpression = ref("")
-const isScheduled = ref(false)
+const selectedDate = ref("")
+const selectedTime = ref("")
+
+const timeSlots = ref([])
+
+for (let h = 0; h < 24; h++) {
+  for (let m of ["00", "30"]) {
+    const hour = String(h).padStart(2, "0")
+    timeSlots.value.push(`${hour}:${m}`)
+  }
+}
+
 
 const site = ref({
   id: siteId,
@@ -148,17 +158,24 @@ async function saveProfile() {
   if (!nama.value.trim()) return
 
   try {
+    let scheduledAt = null
+
+    if (executionType.value === "SCHEDULED") {
+      if (!selectedDate.value || !selectedTime.value) {
+        alert("Sila pilih tarikh dan masa")
+        return
+      }
+
+      scheduledAt = `${selectedDate.value}T${selectedTime.value}:00`
+    }
+
     const payload = {
       tapak_id: siteId,
       nama: nama.value,
       keterangan: keterangan.value,
       execution_type: executionType.value,
-      cron_expression:
-        executionType.value === "SCHEDULED"
-          ? cronExpression.value
-          : null,
-      is_scheduled:
-        executionType.value === "SCHEDULED"
+      scheduled_at: scheduledAt,
+      is_scheduled: executionType.value === "SCHEDULED"
     }
 
     if (editingId.value) {
@@ -217,10 +234,12 @@ function openAddModal() {
   selectedProfile.value = null
   nama.value = ""
   keterangan.value = ""
-  showModal.value = true
+
   executionType.value = "IMMEDIATE"
-  cronExpression.value = ""
-  isScheduled.value = false
+  selectedDate.value = ""
+  selectedTime.value = ""
+
+  showModal.value = true
 }
 
 function closeModal() {
@@ -237,8 +256,37 @@ function editProfile(profile) {
   keterangan.value = profile.keterangan || ""
 
   executionType.value = profile.execution_type || "IMMEDIATE"
-  cronExpression.value = profile.cron_expression || ""
-  isScheduled.value = profile.is_scheduled || false
+
+  if (profile.scheduled_at) {
+    const dt = new Date(profile.scheduled_at)
+
+    selectedDate.value = dt.toISOString().split("T")[0]
+    selectedTime.value = dt.toTimeString().slice(0, 5)
+  } else {
+    selectedDate.value = ""
+    selectedTime.value = ""
+  }
+}
+
+
+function formatDateTime(datetime) {
+  if (!datetime) return "-"
+
+  const dt = new Date(datetime)
+
+  const date = dt.toLocaleDateString("ms-MY", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  })
+
+  const time = dt.toLocaleTimeString("ms-MY", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  })
+
+  return `${date} ${time}`
 }
 
 // =========================
@@ -269,6 +317,8 @@ async function generateReport(profile) {
     alert("Failed to generate report")
   }
 }
+
+
 
 // =========================
 // INIT
@@ -319,6 +369,7 @@ onMounted(() => {
                 Jumlah Tugasan
               </th>
               <th style="width:180px">Status</th>
+              <th style="width:200px">Masa Dijadualkan</th>
               <th style="width:220px">Tindakan</th>
             </tr>
           </thead>
@@ -327,7 +378,7 @@ onMounted(() => {
 
             <!-- ✅ FIXED -->
             <tr v-if="paginatedProfiles.length === 0">
-              <td colspan="5" class="empty-cell">
+              <td colspan="6" class="empty-cell">
                 Tiada profil dijumpai.
               </td>
             </tr>
@@ -359,6 +410,12 @@ onMounted(() => {
               <td>
                 <StatusPill :status="profile.execution_status" />
               </td>
+              <td>
+  <span v-if="profile.execution_type === 'SCHEDULED' && profile.scheduled_at">
+    {{ formatDateTime(profile.scheduled_at) }}
+  </span>
+  <span v-else>-</span>
+</td>
 
               <td>
                 <div style="display:flex; gap:8px;">
@@ -450,23 +507,42 @@ onMounted(() => {
               ></textarea>
             </div>
 
-            <div class="select-wrapper">
-              <AppSelect
-                v-model="executionType"
-                label="Execution Type"
-                :options="[
-                  { label: 'Imbas Sekarang', value: 'IMMEDIATE' },
-                  { label: 'Jadualkan', value: 'SCHEDULED' }
-                ]"
-              />
-            </div>
+              <div class="execution-type">
+  <label>Jenis Pelaksanaan</label>
 
-            <AppInput
-              v-if="executionType === 'SCHEDULED'"
-              v-model="cronExpression"
-              label="Cron Expression"
-              placeholder="0 2 * * *"
-            />
+  <div class="radio-group">
+    <label>
+      <input
+        type="radio"
+        value="IMMEDIATE"
+        v-model="executionType"
+      />
+      Imbas Sekarang
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        value="SCHEDULED"
+        v-model="executionType"
+      />
+      Jadualkan
+    </label>
+  </div>
+</div>
+<div v-if="executionType === 'SCHEDULED'" class="schedule-box">
+
+  <label>Pilih Tarikh</label>
+  <input type="date" v-model="selectedDate" />
+
+  <label>Pilih Masa</label>
+  <select v-model="selectedTime">
+    <option v-for="time in timeSlots" :key="time" :value="time">
+      {{ time }}
+    </option>
+  </select>
+
+</div>
 
           </div>
 

@@ -4,6 +4,9 @@ import re
 from sqlalchemy import func
 from app.models.x_profil_tugasan import XProfilTugasan
 
+# =========================
+# GET
+# =========================
 def get_profil_by_tapak(db: Session, tapak_id: int):
     profils = (
         db.query(
@@ -27,23 +30,6 @@ def get_profil_by_tapak(db: Session, tapak_id: int):
 
     for profil, tugasan_count in profils:
 
-        # get all task statuses under this profile
-        tasks = db.query(XProfilTugasan).filter(
-            XProfilTugasan.profil_id == profil.id
-        ).all()
-
-        statuses = [task.status_id for task in tasks]
-
-        # determine profile execution status
-        if 2 in statuses:
-            execution_status = "Dalam Proses"
-
-        elif len(statuses) > 0 and all(status == 3 for status in statuses):
-            execution_status = "Telah Selesai"
-
-        else:
-            execution_status = "Belum Bermula"
-
         response.append({
             "id": profil.id,
             "tapak_id": profil.tapak_id,
@@ -52,17 +38,18 @@ def get_profil_by_tapak(db: Session, tapak_id: int):
             "kod": profil.kod,
             "aktif": bool(profil.aktif) if profil.aktif is not None else False,
             "execution_type": profil.execution_type,
-            "cron_expression": profil.cron_expression,
+            "scheduled_at": profil.scheduled_at,
             "is_scheduled": profil.is_scheduled,
             "tugasan_count": tugasan_count,
-            "execution_status": execution_status
+            "execution_status": profil.execution_status   # ✅ source of truth
         })
 
     return response
 
 
-#create
-
+# =========================
+# GENERATE KOD
+# =========================
 def generate_next_profil_kod(db: Session):
     latest_profile = (
         db.query(Profil)
@@ -83,15 +70,29 @@ def generate_next_profil_kod(db: Session):
 
     return f"PRF{next_number:03d}"
 
+
+# =========================
+# CREATE
+# =========================
 def create_profil(db: Session, data: dict):
+
+    execution_type = data.get("execution_type", "IMMEDIATE")
+
+    # ✅ status logic
+    if execution_type == "IMMEDIATE":
+        status = "in process"
+    else:
+        status = "telah dijadualkan"
+
     new_profil = Profil(
         tapak_id=data["tapak_id"],
         kod=generate_next_profil_kod(db),
         nama=data["nama"],
         keterangan=data.get("keterangan", ""),
-        execution_type=data.get("execution_type", "IMMEDIATE"),
-        cron_expression=data.get("cron_expression"),
-        is_scheduled=data.get("is_scheduled", False),
+        execution_type=execution_type,
+        scheduled_at=data.get("scheduled_at"),
+        is_scheduled=(execution_type == "SCHEDULED"),
+        execution_status=status,
         report_template=data.get("report_template", "DEFAULT"),
         report_format=data.get("report_format", "EXCEL")
     )
@@ -100,19 +101,26 @@ def create_profil(db: Session, data: dict):
     db.commit()
     db.refresh(new_profil)
 
+    # ✅ IMMEDIATE execution trigger
+    if execution_type == "IMMEDIATE":
+        from app.scheduler.profile_scheduler import run_single_profile
+        run_single_profile(new_profil.id)
+
     return {
-    "id": new_profil.id,
-    "tapak_id": new_profil.tapak_id,
-    "kod": new_profil.kod,
-    "nama": new_profil.nama,
-    "keterangan": new_profil.keterangan,
-    "aktif": bool(new_profil.aktif) if new_profil.aktif is not None else False,
-    "execution_type": new_profil.execution_type,
-    "cron_expression": new_profil.cron_expression,
-    "is_scheduled": new_profil.is_scheduled,
-    "report_template": new_profil.report_template,
-    "report_format": new_profil.report_format
-}
+        "id": new_profil.id,
+        "tapak_id": new_profil.tapak_id,
+        "kod": new_profil.kod,
+        "nama": new_profil.nama,
+        "keterangan": new_profil.keterangan,
+        "aktif": bool(new_profil.aktif) if new_profil.aktif is not None else False,
+        "execution_type": new_profil.execution_type,
+        "scheduled_at": new_profil.scheduled_at,
+        "is_scheduled": new_profil.is_scheduled,
+        "execution_status": new_profil.execution_status,
+        "report_template": new_profil.report_template,
+        "report_format": new_profil.report_format
+    }
+
 
 # =========================
 # UPDATE
@@ -126,11 +134,17 @@ def update_profil(db: Session, id: int, data: dict):
     profil.nama = data["nama"]
     profil.keterangan = data.get("keterangan", "")
     profil.execution_type = data.get("execution_type", "IMMEDIATE")
-    profil.cron_expression = data.get("cron_expression")
-    profil.is_scheduled = data.get("is_scheduled", False)
+    profil.scheduled_at = data.get("scheduled_at")
+    profil.is_scheduled = (profil.execution_type == "SCHEDULED")
+
+    # ✅ update status
+    if profil.execution_type == "IMMEDIATE":
+        profil.execution_status = "in process"
+    else:
+        profil.execution_status = "telah dijadualkan"
+
     profil.report_template = data.get("report_template", "DEFAULT")
     profil.report_format = data.get("report_format", "EXCEL")
-
 
     db.commit()
     db.refresh(profil)
@@ -143,8 +157,9 @@ def update_profil(db: Session, id: int, data: dict):
         "keterangan": profil.keterangan,
         "aktif": bool(profil.aktif) if profil.aktif is not None else False,
         "execution_type": profil.execution_type,
-        "cron_expression": profil.cron_expression,
+        "scheduled_at": profil.scheduled_at,
         "is_scheduled": profil.is_scheduled,
+        "execution_status": profil.execution_status,
         "report_template": profil.report_template,
         "report_format": profil.report_format
     }
