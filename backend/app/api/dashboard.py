@@ -1,48 +1,29 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from sqlalchemy import func
-
 from app.database.session import get_db
-from app.models.organisasi import Organisasi
-from app.models.sub_organisasi import SubOrganisasi
-from app.models.tapak import Tapak
-from app.models.profil import Profil
-from app.models.tugasan import Tugasan
 
-router = APIRouter(
-    prefix="/api",
-    tags=["Dashboard"]
+from app.services.dashboard_service import (
+    get_dashboard_stats,
+    get_organization_performance
 )
 
+router = APIRouter(prefix="/dashboard", tags=["Dashboard"])
 
-@router.get("/dashboard")
-def get_dashboard_stats(
-    db: Session = Depends(get_db)
-):
-    total_organisasi = db.query(
-        func.count(Organisasi.id)
-    ).scalar()
 
-    total_sub_organisasi = db.query(
-        func.count(SubOrganisasi.id)
-    ).scalar()
+# =========================
+# BASIC STATS (for cards)
+# =========================
+@router.get("/")
+def dashboard(db: Session = Depends(get_db)):
+    return get_dashboard_stats(db)
 
-    total_tapak = db.query(
-        func.count(Tapak.id)
-    ).scalar()
 
-    total_profil = db.query(
-        func.count(Profil.id)
-    ).scalar()
-
-    total_tugasan = db.query(
-        func.count(Tugasan.id)
-    ).scalar()
-
+# =========================
+# FULL DASHBOARD (stats + table)
+# =========================
+@router.get("/full")
+def dashboard_full(db: Session = Depends(get_db)):
     return {
-        "organisasi": total_organisasi,
-        "sub_organisasi": total_sub_organisasi,
-        "tapak": total_tapak,
-        "profil": total_profil,
-        "tugasan": total_tugasan
+        "stats": get_dashboard_stats(db),
+        "organizations": get_organization_performance(db)
     }

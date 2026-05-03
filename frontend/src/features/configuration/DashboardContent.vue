@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, onMounted } from "vue"
 import { useRouter } from "vue-router"
-import axios from "axios"
+import api from "../../services/api"
 
 const router = useRouter()
 
@@ -29,8 +29,14 @@ const stats = ref({
 
 onMounted(async () => {
   try {
-    const res = await axios.get("/api/dashboard")
-    stats.value = res.data
+    // ✅ stats (already working)
+    const statsRes = await api.get("/dashboard")
+    stats.value = statsRes.data
+
+    // ✅ ADD THIS (for table)
+    const orgRes = await api.get("/dashboard/full")
+    organizations.value = orgRes.data.organizations || []
+
   } catch (err) {
     console.error("Dashboard API error:", err)
   }
@@ -39,11 +45,7 @@ onMounted(async () => {
 // =======================
 // DATA (existing table)
 // =======================
-const organizations = ref([
-  { bil: 1, nama: "KDN", done: 1233, total: 9000 },
-  { bil: 2, nama: "KKM", done: 850, total: 4200 },
-  { bil: 3, nama: "KPM", done: 2145, total: 6400 }
-])
+const organizations = ref([])
 
 // =======================
 // COMPUTED
