@@ -1,8 +1,9 @@
 <script setup>
-import { computed, ref, onMounted } from "vue"
+import { computed, ref, onMounted, watch } from "vue"
 import { useRouter } from "vue-router"
 import api from "../../services/api"
 import AppButton from "../../ui/AppButton.vue"
+import AppPagination from "../../ui/AppPagination.vue"
 
 const router = useRouter()
 
@@ -46,6 +47,18 @@ onMounted(async () => {
   }
 })
 
+const currentPage = ref(1)
+const itemsPerPage = 10
+
+const totalPages = computed(() =>
+  Math.ceil(sortedOrganizations.value.length / itemsPerPage)
+)
+
+const paginatedOrganizations = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage
+  return sortedOrganizations.value.slice(start, start + itemsPerPage)
+})
+
 // =======================
 // COMPUTED
 // =======================
@@ -73,6 +86,16 @@ const topOrg = computed(() => {
   return [...organizations.value].sort(
     (a, b) => getPercent(b.done, b.total) - getPercent(a.done, a.total)
   )[0]
+})
+
+const sortedOrganizations = computed(() => {
+  return [...organizations.value].sort(
+    (a, b) => getPercent(b.done, b.total) - getPercent(a.done, a.total)
+  )
+})
+
+watch(organizations, () => {
+  currentPage.value = 1
 })
 
 // =======================
@@ -167,11 +190,11 @@ function goAccounts() {
           </div>
 
           <div
-            v-for="org in organizations"
+            v-for="(org, index) in paginatedOrganizations"
             :key="org.bil"
             class="row hover"
           >
-            <div>{{ org.bil }}</div>
+            <div>{{ (currentPage - 1) * itemsPerPage + index + 1 }}</div>
             <div>{{ org.nama }}</div>
 
             <div>
@@ -191,6 +214,16 @@ function goAccounts() {
         <div v-else class="empty">
           Tiada data organisasi
         </div>
+
+      <!-- ✅ pagination inside the same panel -->
+      <div class="pagination-wrapper" v-if="totalPages > 1">
+        <AppPagination
+          :currentPage="currentPage"
+          :totalPages="totalPages"
+          @update:currentPage="(page) => currentPage = page"
+        />
+      </div>
+
       </div>
 
       <!-- SIDE -->
@@ -298,6 +331,7 @@ function goAccounts() {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
+  align-items: start;
 }
 
 .panel {
@@ -305,6 +339,8 @@ function goAccounts() {
   padding: 20px;
   border-radius: 16px;
   border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
 }
 
 .panel-header {

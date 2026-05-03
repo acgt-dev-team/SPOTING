@@ -11,6 +11,7 @@
   "dependencies": {
     "@iconify/vue": "^5.0.0",
     "axios": "^1.13.6",
+    "flatpickr": "^4.6.13",
     "lucide-vue-next": "^0.468.0",
     "pinia": "^2.3.1",
     "vue": "^3.5.30",
