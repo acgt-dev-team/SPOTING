@@ -18,8 +18,9 @@ class Profil(Base):
     aktif = Column(Boolean, default=True)
 
     execution_type = Column(String(20), default="IMMEDIATE")
-    cron_expression = Column(String(100), nullable=True)
+    scheduled_at = Column(TIMESTAMP, nullable=True)
     is_scheduled = Column(Boolean, default=False)
+    execution_status = Column(String(50), default="belum")
 
     report_template = Column(String(100), default="DEFAULT")
     report_format = Column(String(20), default="EXCEL")

@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, onMounted } from "vue"
 import { useRouter } from "vue-router"
-import axios from "axios"
+import api from "../../services/api"
 import AppButton from "../../ui/AppButton.vue"
 
 const router = useRouter()
@@ -33,22 +33,23 @@ const organizations = ref([])
 
 onMounted(async () => {
   try {
-    const res = await axios.get("/api/dashboard")
-    stats.value = res.data
+    // ✅ stats (already working)
+    const statsRes = await api.get("/dashboard")
+    stats.value = statsRes.data
 
-    // ✅ fetch organisasi prestasi from backend
-    const orgRes = await axios.get("/api/organisasi/prestasi")
-    organizations.value = orgRes.data.map((o, index) => ({
-      bil: index + 1,
-      nama: o.nama,
-      done: o.done,
-      total: o.total
-    }))
+    // ✅ ADD THIS (for table)
+    const orgRes = await api.get("/dashboard/full")
+    organizations.value = orgRes.data.organizations || []
 
   } catch (err) {
     console.error("Dashboard API error:", err)
   }
 })
+
+// =======================
+// DATA (existing table)
+// =======================
+const organizations = ref([])
 
 // =======================
 // COMPUTED

@@ -278,7 +278,6 @@ function confirmToggle() {
               <th style="width:160px">NAMA PENGGUNA</th>
               <th style="width:150px">KATA LALUAN</th>
               <th style="width:120px">PERANAN</th>
-              <th style="width:180px">DICIPTA PADA</th>
               <th style="width:120px">TINDAKAN</th>
             </tr>
           </thead>
@@ -286,7 +285,7 @@ function confirmToggle() {
           <tbody>
 
             <tr v-if="filteredAccounts.length === 0">
-              <td colspan="8" class="empty-cell">
+              <td colspan="7" class="empty-cell">
                 Tiada akaun dijumpai.
               </td>
             </tr>
@@ -324,7 +323,6 @@ function confirmToggle() {
       : "Pengguna"
   }}
 </td>
-              <td>{{ new Date(item.created_at).toLocaleString() }}</td>
 
               <td>
                 <button
