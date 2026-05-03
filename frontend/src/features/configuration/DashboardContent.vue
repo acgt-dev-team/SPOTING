@@ -47,11 +47,6 @@ onMounted(async () => {
 })
 
 // =======================
-// DATA (existing table)
-// =======================
-const organizations = ref([])
-
-// =======================
 // COMPUTED
 // =======================
 const totalTasks = computed(() =>
