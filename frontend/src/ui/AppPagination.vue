@@ -4,7 +4,14 @@ const props = defineProps({
   totalPages: Number
 })
 
-const emit = defineEmits(["update:page"])
+const emit = defineEmits(["update:currentPage", "update:page"])
+
+const changePage = (page) => {
+  if (page < 1 || page > props.totalPages) return
+
+  emit("update:currentPage", page)
+  emit("update:page", page)
+}
 </script>
 
 <template>
@@ -13,7 +20,7 @@ const emit = defineEmits(["update:page"])
     <button
       class="page-btn"
       :disabled="currentPage === 1"
-      @click="emit('update:page', currentPage - 1)"
+      @click="changePage(currentPage - 1)"
     >
       ←
     </button>
@@ -25,7 +32,7 @@ const emit = defineEmits(["update:page"])
     <button
       class="page-btn"
       :disabled="currentPage === totalPages"
-      @click="emit('update:page', currentPage + 1)"
+      @click="changePage(currentPage + 1)"
     >
       →
     </button>
@@ -65,19 +72,19 @@ const emit = defineEmits(["update:page"])
   cursor: default;
 }
 
-/* 🔥 kill focus ring */
+/* kill focus ring */
 .page-btn:focus {
   outline: none;
   box-shadow: none;
 }
 
-/* 🔥 kill active (click) ring */
+/* kill active (click) ring */
 .page-btn:active {
   outline: none;
   box-shadow: none;
 }
 
-/* 🔥 double safety for disabled */
+/* double safety for disabled */
 .page-btn:disabled:focus,
 .page-btn:disabled:active {
   outline: none;

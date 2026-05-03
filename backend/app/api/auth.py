@@ -16,7 +16,7 @@ def login(data: LoginRequest, db: Session = Depends(get_db)):
         raise HTTPException(status_code=401, detail="Invalid username or password")
 
     return {
-        "access_token": "dummy-token",  # 🔥 next phase: JWT
+        "access_token": "dummy-token",  # next phase: JWT
         "role": user.role,
         "pelanggan_id": user.pelanggan_id
     }

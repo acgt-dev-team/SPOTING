@@ -639,19 +639,23 @@ select:focus {
 .task-info {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .task-name {
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 14px;
   color: #111827;
   margin: 0;
 }
 
 .task-code {
   font-size: 12px;
-  color: #6b7280;
-  font-family: monospace;
+  color: #94a3b8; /* 🔥 softer than current */
+  font-weight: 500;
+  font-family: inherit;
+  margin-top: 2px;
+  letter-spacing: 0.02em;
 }
 
 /* Protocol badge */
@@ -692,13 +696,13 @@ select:focus {
   color: #6b7280;
 }
 
-/* IP */
 .ip-range {
   display: flex;
   gap: 6px;
-  font-family: monospace;
   font-size: 13px;
   color: #374151;
+  font-weight: 500;
+  font-family: inherit;
 }
 
 .ip-sep {

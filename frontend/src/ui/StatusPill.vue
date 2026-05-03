@@ -8,26 +8,40 @@ const props = defineProps({
   }
 })
 
+/* =========================
+LABEL (DISPLAY TEXT - MALAY)
+========================= */
 const label = computed(() => {
-  if (props.status === 1 || props.status === "1") return "Belum Bermula"
-  if (props.status === 2 || props.status === "2") return "Dalam Proses"
-  if (props.status === 3 || props.status === "3") return "Telah Selesai"
-  if (props.status === 4 || props.status === "4") return "Gagal"
+  const s = String(props.status).toLowerCase()
 
-  // ✅ Handle string input (Profil page)
-  if (typeof props.status === "string") return props.status
+  // Numeric mapping
+  if (s === "1") return "Belum Bermula"
+  if (s === "2") return "Dalam Proses"
+  if (s === "3") return "Telah Selesai"
+  if (s === "4") return "Gagal"
 
-  return "Unknown"
+  // String mapping (Profil page)
+  if (s.includes("proses")) return "Dalam Proses"
+  if (s.includes("dijadualkan")) return "Telah Dijadualkan"
+  if (s.includes("selesai")) return "Telah Selesai"
+  if (s.includes("gagal")) return "Gagal"
+  if (s.includes("belum")) return "Belum Bermula"
+
+  return "Tidak Diketahui"
 })
 
+/* =========================
+COLOR CLASS
+========================= */
 const pillClass = computed(() => {
   const s = String(props.status).toLowerCase()
 
   if (s === "1" || s.includes("belum")) return "running"
   if (s === "2" || s.includes("proses")) return "pending"
+  if (s.includes("dijadualkan")) return "scheduled"
   if (s === "3" || s.includes("selesai")) return "success"
   if (s === "4" || s.includes("gagal")) return "failed"
-
+  
   return "default"
 })
 </script>
@@ -43,12 +57,12 @@ const pillClass = computed(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 800;
-  min-width: 120px;
   letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 /* Belum Bermula */
@@ -61,6 +75,12 @@ const pillClass = computed(() => {
 .pending {
   background: #fef3c7;
   color: #d97706;
+}
+
+/* Telah Dijadualkan */
+.scheduled {
+  background: #e0e7ff;
+  color: #4338ca;
 }
 
 /* Telah Selesai */

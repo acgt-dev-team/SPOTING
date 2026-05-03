@@ -1,11 +1,12 @@
 <script setup>
-import { ref, computed, onMounted } from "vue"
+import { ref, computed, onMounted, watch } from "vue"
 import api from "../../services/api"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
 import AppSelect from "../../ui/AppSelect.vue"
+import AppPagination from "../../ui/AppPagination.vue"
 
 const search = ref("")
 const showModal = ref(false)
@@ -30,6 +31,13 @@ const currentRole = localStorage.getItem("role")
 const accounts = ref([])
 const errors = ref({})
 
+const currentPage = ref(1)
+const pageSize = 10
+
+const totalPages = computed(() => {
+  return Math.ceil(filteredAccounts.value.length / pageSize)
+})
+
 const filteredAccounts = computed(() => {
   return accounts.value
   .slice()
@@ -39,6 +47,15 @@ const filteredAccounts = computed(() => {
     item.username.toLowerCase().includes(search.value.toLowerCase()) ||
     item.role.toLowerCase().includes(search.value.toLowerCase())
   )
+})
+
+watch(search, () => {
+  currentPage.value = 1
+})
+
+const paginatedAccounts = computed(() => {
+  const start = (currentPage.value - 1) * pageSize
+  return filteredAccounts.value.slice(start, start + pageSize)
 })
 
 const selectedAccount = computed(() =>
@@ -291,11 +308,11 @@ function confirmToggle() {
             </tr>
 
             <tr
-              v-for="(item,index) in filteredAccounts"
+              v-for="(item,index) in paginatedAccounts"
               :key="item.id"
               class="clickable-row"
             >
-              <td>{{ index + 1 }}</td>
+              <td>{{ (currentPage - 1) * pageSize + index + 1 }}</td>
 
               <td>
                 <div class="org-cell">
@@ -340,6 +357,12 @@ function confirmToggle() {
 
       </div>
     </div>
+
+    <AppPagination
+      :currentPage="currentPage"
+      :totalPages="totalPages"
+      @update:page="currentPage = $event"
+    />
 
     <div class="footer-bar">
       <div class="count-pill">
