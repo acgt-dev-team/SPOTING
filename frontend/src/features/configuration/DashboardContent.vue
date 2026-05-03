@@ -1,7 +1,8 @@
 <script setup>
 import { computed, ref, onMounted } from "vue"
 import { useRouter } from "vue-router"
-import api from "../../services/api"
+import axios from "axios"
+import AppButton from "../../ui/AppButton.vue"
 
 const router = useRouter()
 
@@ -27,25 +28,27 @@ const stats = ref({
   tugasan: 0
 })
 
+// ✅ REAL ORGANISASI DATA
+const organizations = ref([])
+
 onMounted(async () => {
   try {
-    // ✅ stats (already working)
-    const statsRes = await api.get("/dashboard")
-    stats.value = statsRes.data
+    const res = await axios.get("/api/dashboard")
+    stats.value = res.data
 
-    // ✅ ADD THIS (for table)
-    const orgRes = await api.get("/dashboard/full")
-    organizations.value = orgRes.data.organizations || []
+    // ✅ fetch organisasi prestasi from backend
+    const orgRes = await axios.get("/api/organisasi/prestasi")
+    organizations.value = orgRes.data.map((o, index) => ({
+      bil: index + 1,
+      nama: o.nama,
+      done: o.done,
+      total: o.total
+    }))
 
   } catch (err) {
     console.error("Dashboard API error:", err)
   }
 })
-
-// =======================
-// DATA (existing table)
-// =======================
-const organizations = ref([])
 
 // =======================
 // COMPUTED
@@ -67,9 +70,10 @@ const formatNumber = (num) => {
 }
 
 const getPercent = (done, total) =>
-  Math.round((done / total) * 100)
+  total ? Math.round((done / total) * 100) : 0
 
 const topOrg = computed(() => {
+  if (!organizations.value.length) return null
   return [...organizations.value].sort(
     (a, b) => getPercent(b.done, b.total) - getPercent(a.done, a.total)
   )[0]
@@ -156,7 +160,7 @@ function goAccounts() {
       <div class="panel">
         <div class="panel-header">
           <h2>Prestasi Organisasi</h2>
-          <button class="btn" @click="goConfig">Lihat semua</button>
+          <AppButton text="Lihat semua" variant="outline" @click="goConfig" />
         </div>
 
         <div v-if="organizations.length" class="table">
@@ -201,21 +205,16 @@ function goAccounts() {
           <p>Organisasi terbaik:</p>
 
           <div class="insight-row">
-            <strong>{{ topOrg?.nama }}</strong>
+            <strong>{{ topOrg?.nama || "-" }}</strong>
             <span class="percent">
-              {{ getPercent(topOrg?.done, topOrg?.total) }}%
+              {{ topOrg ? getPercent(topOrg.done, topOrg.total) + "%" : "-" }}
             </span>
           </div>
         </div>
 
         <div class="actions">
-          <button class="btn primary" @click="goConfig">
-            Konfigurasi
-          </button>
-
-          <button class="btn" @click="goAccounts">
-            Pengguna
-          </button>
+          <AppButton text="Konfigurasi" @click="goConfig" />
+          <AppButton text="Pengguna" variant="outline" @click="goAccounts" />
         </div>
       </div>
 
@@ -239,17 +238,24 @@ function goAccounts() {
 
 /* FILTER */
 .filters button {
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: none;
-  background: #f1f5f9;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
   cursor: pointer;
   font-weight: 600;
+  color: #6b7280;
+  transition: 0.2s ease;
+}
+
+.filters button:hover {
+  background: #f8fafc;
 }
 
 .filters .active {
-  background: #020265;
-  color: white;
+  background: #eef2ff;
+  color: #020265;
+  border: 1px solid #c7d2fe;
 }
 
 /* STATS */
@@ -272,7 +278,6 @@ function goAccounts() {
   transform: translateY(-2px);
 }
 
-/* NUMBER */
 .number {
   font-size: 32px;
   font-weight: 800;
@@ -338,43 +343,33 @@ function goAccounts() {
 
 /* INSIGHT */
 .insight {
-  margin: 16px 0;
+  margin: 12px 0;
 }
 
 .insight-row {
   display: flex;
   justify-content: space-between;
-  margin-top: 6px;
+  align-items: center;
+  margin-top: 4px;
 }
 
 .percent {
   color: #16a34a;
   font-weight: 700;
+  font-size: 14px;
 }
 
-/* BUTTONS */
+/* ACTIONS (buttons area) */
 .actions {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+  margin-top: 12px;
 }
 
-.btn {
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-  cursor: pointer;
-  background: white;
-  font-weight: 600;
-}
-
-.btn:hover {
-  background: #f8fafc;
-}
-
-.btn.primary {
-  background: #020265;
-  color: white;
-  border: none;
+/* Removed heavy shadow from AppButton ONLY here */
+.actions :deep(button) {
+  box-shadow: none !important;
+  transform: none !important;
 }
 </style>
