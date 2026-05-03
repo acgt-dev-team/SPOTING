@@ -142,22 +142,7 @@ function goBack() {
   )
 }
 
-// =========================
-// SCAN
-// =========================
-async function runScan(task) {
-  try {
-    await api.post("/tugasan/execute-scan", {
-      profil_tugasan_id: task.profil_tugasan_id,
-      penjadualan: false
-    })
 
-    alert("Scan started successfully")
-  } catch (err) {
-    console.error(err)
-    alert("Failed to start scan")
-  }
-}
 
 // =========================
 // WATCHERS
@@ -217,10 +202,9 @@ onMounted(() => {
             <tr>
               <th style="width: 50px">Bil</th>
               <th style="width: 35%">Nama / Kod</th>
-              <th style="width: 90px">Protokol</th>
+              <th style="width: 100px">Protokol</th>
               <th style="width: 180px">IP Range</th>
               <th style="width: 160px">Status</th>
-              <th style="width: 180px">Tindakan</th>
             </tr>
           </thead>
 
@@ -228,7 +212,7 @@ onMounted(() => {
 
             <!-- ✅ FIXED EMPTY STATE -->
             <tr v-if="paginatedTasks.length === 0">
-              <td colspan="6" class="empty-cell">
+              <td colspan="5" class="empty-cell">
                 Tiada tugasan dijumpai.
               </td>
             </tr>
@@ -274,16 +258,6 @@ onMounted(() => {
               <!-- ✅ Status -->
               <td>
                 <StatusPill :status="task.status" />
-              </td>
-
-              <!-- Actions -->
-              <td>
-                <button
-                  class="primary-btn small"
-                  @click.stop="runScan(task)"
-                >
-                  Imbas Sekarang
-                </button>
               </td>
             </tr>
 

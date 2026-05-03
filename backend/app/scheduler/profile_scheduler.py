@@ -1,7 +1,6 @@
 from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.triggers.cron import CronTrigger
-
 from sqlalchemy.orm import Session
+from datetime import datetime
 
 from app.database.session import SessionLocal
 from app.models.profil import Profil
@@ -9,9 +8,6 @@ from app.models.x_profil_tugasan import XProfilTugasan
 from app.services.tugasan_service import execute_scan
 
 
-# ==========================================
-# Scheduler instance
-# ==========================================
 scheduler = BackgroundScheduler()
 
 
@@ -32,92 +28,74 @@ def run_single_profile(profile_id: int):
 
         print(f"\nRunning profile: {profile.nama}")
 
+        # ✅ set status to in process
+        profile.execution_status = "in process"
+        db.commit()
+
         tasks = db.query(XProfilTugasan).filter(
             XProfilTugasan.profil_id == profile.id
         ).all()
 
-        print(f"Tasks found: {len(tasks)}")
-
         if not tasks:
-            print("No tasks assigned to this profile")
+            print("No tasks found")
+            profile.execution_status = "gagal"
+            db.commit()
             return
 
         for task in tasks:
-            print(f"Executing task ID: {task.id}")
-
             try:
-                result = execute_scan(
-                    db=db,  # FIXED HERE
+                execute_scan(
+                    db=db,
                     profil_tugasan_id=task.id,
                     penjadualan=True
                 )
-
-                print(f"Scan result: {result}")
-
             except Exception as e:
-                print(
-                    f"Failed executing task {task.id}: {str(e)}"
-                )
+                print(f"Task failed: {str(e)}")
+
+        # ✅ success
+        profile.execution_status = "execution completed"
+        db.commit()
 
     except Exception as e:
         print(f"Scheduler error: {str(e)}")
+
+        if profile:
+            profile.execution_status = "gagal"
+            db.commit()
 
     finally:
         db.close()
 
 
 # ==========================================
-# Load all scheduled profiles from DB
+# Load scheduled jobs
 # ==========================================
 def load_profile_jobs():
     db: Session = SessionLocal()
 
     try:
         profiles = db.query(Profil).filter(
-            Profil.is_scheduled == True
+            Profil.execution_type == "SCHEDULED",
+            Profil.scheduled_at != None,
+            Profil.execution_status == "telah dijadualkan"
         ).all()
 
         print(f"Found {len(profiles)} scheduled profiles")
 
         for profile in profiles:
-
-            if not profile.cron_expression:
-                print(
-                    f"Profile {profile.id} has no cron expression"
-                )
-                continue
-
-            parts = profile.cron_expression.split()
-
-            if len(parts) != 5:
-                print(
-                    f"Invalid cron expression for profile {profile.id}: {profile.cron_expression}"
-                )
-                continue
-
-            minute, hour, day, month, day_of_week = parts
-
             scheduler.add_job(
                 run_single_profile,
-                trigger=CronTrigger(
-                    minute=minute,
-                    hour=hour,
-                    day=day,
-                    month=month,
-                    day_of_week=day_of_week
-                ),
+                'date',
+                run_date=profile.scheduled_at,
                 args=[profile.id],
                 id=f"profile_{profile.id}",
                 replace_existing=True
             )
 
-            print(
-                f"Scheduled profile {profile.nama} "
-                f"with cron: {profile.cron_expression}"
-            )
+            print(f"Scheduled profile {profile.nama} at {profile.scheduled_at}")
 
     except Exception as e:
-        print(f"Failed loading scheduler jobs: {str(e)}")
+        print(f"Scheduler load error: {str(e)}")
 
     finally:
         db.close()

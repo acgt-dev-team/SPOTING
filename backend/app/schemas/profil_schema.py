@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from datetime import datetime
 
 
 class ProfilCreate(BaseModel):
@@ -7,10 +8,12 @@ class ProfilCreate(BaseModel):
     keterangan: str | None = None
 
     execution_type: str = "IMMEDIATE"
-    cron_expression: str | None = None
+    scheduled_at: datetime | None = None   # ✅ FIXED
     is_scheduled: bool = False
+
     report_template: str | None = "DEFAULT"
     report_format: str | None = "EXCEL"
+
 
 class ProfilResponse(BaseModel):
     id: int
@@ -21,9 +24,10 @@ class ProfilResponse(BaseModel):
     aktif: bool
 
     execution_type: str
-    cron_expression: str | None
+    scheduled_at: datetime | None = None   # ✅ FIXED
     is_scheduled: bool
     execution_status: str | None = None
+
     report_template: str | None = "DEFAULT"
     report_format: str | None = "EXCEL"
 

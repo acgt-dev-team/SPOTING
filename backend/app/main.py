@@ -16,6 +16,7 @@ from app.models.status import Status
 from app.api import hasil_imbasan
 from app.scheduler.profile_scheduler import scheduler, load_profile_jobs
 from app.api import report
+from app.api import dashboard
 
 # ✅ Routers ONLY from API
 from app.api import tugasan, profil, tapak, sub_organisasi, organisasi, jenis_tugasan
@@ -51,6 +52,8 @@ app.include_router(jenis_tugasan.router)
 app.include_router(auth.router)
 app.include_router(hasil_imbasan.router)
 app.include_router(report.router)
+app.include_router(dashboard.router)
+
 
 @app.get("/")
 def root():
