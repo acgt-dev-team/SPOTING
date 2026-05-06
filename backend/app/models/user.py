@@ -11,6 +11,7 @@ class User(Base):
     password = Column(String, nullable=False)
     role = Column(String, default="user")
     aktif = Column(Boolean, default=True)
+    force_password_change = Column(Boolean, default=True)
 
     pelanggan_id = Column(
         Integer,

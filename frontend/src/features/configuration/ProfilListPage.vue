@@ -23,6 +23,8 @@ const search = ref("")
 const showModal = ref(false)
 const editingId = ref(null)
 const selectedProfile = ref(null)
+const showTemplateModal = ref(false)
+const selectedTemplateProfile = ref(null)
 
 const nama = ref("")
 const keterangan = ref("")
@@ -362,13 +364,57 @@ function goToTugasan(profile) {
   )
 }
 
-async function generateReport(profile) {
+function generateReport(profile) {
+  selectedTemplateProfile.value = profile
+  showTemplateModal.value = true
+}
+
+async function downloadReport(template) {
+
   try {
-    const res = await api.post(`/report/profil/${profile.id}`)
-    alert(res.data.message)
+
+    const profile =
+      selectedTemplateProfile.value
+
+    const response = await api.post(
+      `/report/profil/${profile.id}`,
+      {
+        template
+      },
+      {
+        responseType: "blob"
+      }
+    )
+
+    const blob = new Blob([response.data], {
+      type:
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    })
+
+    const url =
+      window.URL.createObjectURL(blob)
+
+    const link =
+      document.createElement("a")
+
+    link.href = url
+
+    link.download =
+      `${profile.nama}.xlsx`
+
+    document.body.appendChild(link)
+
+    link.click()
+
+    link.remove()
+
+    window.URL.revokeObjectURL(url)
+
+    showTemplateModal.value = false
+
   } catch (err) {
-    console.error("Report generation failed:", err)
-    alert("Failed to generate report")
+    console.error(err)
+    alert("Gagal memuat turun laporan")
   }
 }
 
@@ -730,6 +776,60 @@ onBeforeUnmount(() => {
 
       </div>
     </transition>
+
+
+    <!-- TEMPLATE MODAL -->
+<transition name="fade">
+  <div
+    v-if="showTemplateModal"
+    class="modal-overlay"
+  >
+
+    <div class="delete-modal">
+
+      <h3>Pilih Template</h3>
+
+      <p class="delete-desc">
+        Sila pilih template laporan.
+      </p>
+
+      <div
+        style="
+          display:flex;
+          flex-direction:column;
+          gap:12px;
+          margin-top:20px;
+        "
+      >
+
+        <button
+          class="primary-btn"
+          @click="downloadReport('Template A')"
+        >
+          Template A
+        </button>
+
+        <button
+          class="primary-btn"
+          @click="downloadReport('Template B')"
+        >
+          Template B
+        </button>
+
+        <button
+          class="cancel-delete-btn"
+          @click="showTemplateModal = false"
+        >
+          Batal
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</transition>
+
 
     <!-- TOAST -->
     <transition name="fade">

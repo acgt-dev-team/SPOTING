@@ -25,15 +25,21 @@ const ministryName = computed(() => "Kementerian Dalam Negeri")
 const menuItems = computed(() => {
   // user only sees configuration
   if (currentRole === "user") {
-    return [
-      {
-        label: "Konfigurasi",
-        icon: Settings,
-        path: "/admin/configuration",
-        active: route.path.startsWith("/admin/configuration")
-      }
-    ]
-  }
+  return [
+    {
+      label: "Papan Pemuka",
+      icon: LayoutDashboard,
+      path: "/admin/dashboard",
+      active: route.path.startsWith("/admin/dashboard")
+    },
+    {
+      label: "Konfigurasi",
+      icon: Settings,
+      path: "/admin/configuration",
+      active: route.path.startsWith("/admin/configuration")
+    }
+  ]
+}
 
   // admin + super admin
   return [

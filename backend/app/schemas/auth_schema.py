@@ -9,7 +9,7 @@ class LoginRequest(BaseModel):
 class CreateUserRequest(BaseModel):
     nama: str
     username: str
-    password: str
     role: str
     pelanggan_id: Optional[int] = None
     aktif: Optional[bool] = True
+    force_password_change: Optional[bool] = True
