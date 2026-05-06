@@ -35,6 +35,8 @@ async function login(e){
 
     const token = res.data.access_token
     const role = res.data.role || "user"
+    const forcePasswordChange =
+      res.data.force_password_change
 
     if(!token){
       throw new Error("Token tidak diterima")
@@ -43,8 +45,13 @@ async function login(e){
     localStorage.setItem("token", token)
     localStorage.setItem("role", role)
     localStorage.setItem("username", username.value)
+    localStorage.setItem("forcePasswordChange", forcePasswordChange.toString())
+    if (forcePasswordChange) {
+  router.push("/change-password")
+  return
+}
 
-    if (
+if (
   role === "admin" ||
   role === "super admin"
 ) {

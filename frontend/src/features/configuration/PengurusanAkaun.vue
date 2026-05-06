@@ -23,7 +23,6 @@ const deleteConfirmText = ref("")
 
 const nama = ref("")
 const username = ref("")
-const password = ref("")
 const role = ref("user")
 const aktif = ref(true)
 const currentRole = localStorage.getItem("role")
@@ -81,7 +80,6 @@ const canToggle = computed(() =>
 function resetForm() {
   nama.value = ""
   username.value = ""
-  password.value = ""
   role.value = "user"
   aktif.value = true
 }
@@ -107,10 +105,6 @@ function validateForm() {
     e.username = "Nama pengguna diperlukan"
   }
 
-  if (!password.value.trim()) {
-    e.password = "Kata laluan diperlukan"
-  }
-
   errors.value = e
 
   return Object.keys(e).length === 0
@@ -120,7 +114,6 @@ function editAccount(item) {
   editingId.value = item.id
   nama.value = item.nama
   username.value = item.username
-  password.value = item.password
   role.value = item.role
   aktif.value = item.aktif ?? true
   showModal.value = true
@@ -140,53 +133,45 @@ onMounted(() => {
 })
 
 async function saveAccount() {
+
   // ✅ VALIDATION
   if (
     !nama.value.trim() ||
-    !username.value.trim() ||
-    !password.value.trim()
+    !username.value.trim()
   ) {
     alert("Sila lengkapkan semua maklumat sebelum simpan.")
     return
   }
 
   try {
+
     if (editingId.value) {
+
       await api.put(
         `/auth/users/${editingId.value}`,
         {
           nama: nama.value,
           username: username.value,
-          password: password.value,
           role: role.value,
           aktif: aktif.value
         }
       )
+
     } else {
-      await api.post("/auth/users", {
+
+      const res = await api.post("/auth/users", {
         nama: nama.value,
         username: username.value,
-        password: password.value,
         role: role.value,
         aktif: aktif.value
       })
+
+      alert(
+        `Akaun berjaya dibuat.\n\nPassword sementara:\n${res.data.generated_password}`
+      )
     }
 
-    if (editingId.value) {
-      const index = accounts.value.findIndex(a => a.id === editingId.value)
-      if (index !== -1) {
-        accounts.value[index] = {
-          ...accounts.value[index],
-          nama: nama.value,
-          username: username.value,
-          password: password.value,
-          role: role.value,
-          aktif: aktif.value
-        }
-      }
-    } else {
-      await fetchAccounts() // only refetch on create
-    }
+    await fetchAccounts()
 
     closeModal()
 
@@ -414,12 +399,6 @@ function confirmToggle() {
               v-model="username"
               label="Nama Pengguna"
               placeholder="Masukkan username"
-            />
-
-            <AppInput
-              v-model="password"
-              label="Kata Laluan"
-              placeholder="Masukkan password"
             />
 
             <AppSelect

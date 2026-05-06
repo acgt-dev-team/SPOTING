@@ -43,7 +43,8 @@ def generate_report(db: Session, profil_id: int):
 
     # DEFAULT → EXCEL
     if profile.report_format == "EXCEL":
-        filename = f"report_profile_{profil_id}.xlsx"
+        safe_name = profile.nama.replace(" ", "_")
+        filename = f"{safe_name}.xlsx"
 
         df = pd.DataFrame(report_data)
         df.to_excel(filename, index=False)
