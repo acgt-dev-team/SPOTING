@@ -51,10 +51,10 @@ const routes = [
   requiresAuth: true,
   roles: ["admin", "super admin"]
 },
-    redirect: "/admin/dashboard", // ✅ default page
+    redirect: "/admin/dashboard/", // ✅ default page
     children: [
       {
-        path: "dashboard",
+        path: "dashboard/",
         component: DashboardContent // ✅ now using your new file
       },
       {
