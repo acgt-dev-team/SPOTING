@@ -1,15 +1,20 @@
 <script setup>
 import { ref } from "vue"
 import { useRouter } from "vue-router"
-import api from "../../services//api"
+import api from "../../services/api"
+
+import AppInput from "../../ui/AppInput.vue"
+import AppButton from "../../ui/AppButton.vue"
 
 const router = useRouter()
 
 const password = ref("")
 const confirmPassword = ref("")
 const error = ref("")
+const loading = ref(false)
 
-async function submit() {
+async function submit(e) {
+  if (e) e.preventDefault()
 
   error.value = ""
 
@@ -23,6 +28,8 @@ async function submit() {
     return
   }
 
+  loading.value = true
+
   try {
 
     const username =
@@ -34,10 +41,11 @@ async function submit() {
     })
 
     localStorage.removeItem(
-  "forcePasswordChange"
-)
+      "forcePasswordChange"
+    )
 
-    const role = localStorage.getItem("role")
+    const role =
+      localStorage.getItem("role")
 
     if (
       role === "admin" ||
@@ -50,7 +58,10 @@ async function submit() {
 
   } catch (err) {
     console.error(err)
-    error.value = "Gagal tukar password"
+    error.value =
+      "Gagal tukar password"
+  } finally {
+    loading.value = false
   }
 }
 </script>
@@ -58,72 +69,111 @@ async function submit() {
 <template>
   <div class="page">
 
-    <div class="card">
+    <div class="change-wrapper">
 
-      <h2>Tukar Kata Laluan</h2>
+      <div class="card">
 
-      <p class="desc">
-        Anda perlu menukar kata laluan sementara.
-      </p>
+        <h2 class="title">
+          Tukar Kata Laluan
+        </h2>
 
-      <input
-        v-model="password"
-        type="password"
-        placeholder="Password baru"
-      />
+        <p class="desc">
+          Anda perlu menukar kata laluan sementara.
+        </p>
 
-      <input
-        v-model="confirmPassword"
-        type="password"
-        placeholder="Sahkan password"
-      />
+        <form @submit.prevent="submit">
 
-      <p v-if="error" class="error">
-        {{ error }}
-      </p>
+          <AppInput
+            label="Password Baru"
+            type="password"
+            v-model="password"
+          />
 
-      <button @click="submit">
-        Simpan Password
-      </button>
+          <AppInput
+            label="Sahkan Password"
+            type="password"
+            v-model="confirmPassword"
+          />
+
+          <p
+            v-if="error"
+            class="error"
+          >
+            {{ error }}
+          </p>
+
+          <AppButton
+            text="Simpan Password"
+            type="button"
+            class="submit-btn"
+            @click="submit"
+          />
+
+        </form>
+
+      </div>
 
     </div>
+
   </div>
 </template>
 
 <style scoped>
-.page{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#f3f4f6;
+/* PAGE BACKGROUND */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(
+      135deg,
+      #eef2ff,
+      #f8fafc
+    );
 }
 
-.card{
-  width:350px;
-  background:white;
-  padding:30px;
-  border-radius:12px;
+/* CENTER WRAPPER */
+.change-wrapper {
+  width: 100%;
+  max-width: 400px;
 }
 
-input{
-  width:100%;
-  margin-top:12px;
-  padding:10px;
+/* CARD */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
 }
 
-button{
-  width:100%;
-  margin-top:16px;
-  padding:12px;
+/* TITLE */
+.title {
+  text-align: center;
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 
-.error{
-  color:red;
-  margin-top:10px;
+/* DESCRIPTION */
+.desc {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 24px;
+  line-height: 1.5;
 }
 
-.desc{
-  margin-bottom:10px;
+/* BUTTON */
+.submit-btn {
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* ERROR */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 6px;
 }
 </style>
