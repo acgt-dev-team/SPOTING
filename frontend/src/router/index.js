@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router"
+import { createRouter, createWebHashHistory } from "vue-router"
 import { setupGuards } from "../router/guards"
 
 // =========================
@@ -51,10 +51,10 @@ const routes = [
   requiresAuth: true,
   roles: ["admin", "super admin"]
 },
-    redirect: "/admin/dashboard", // ✅ default page
+    redirect: "/admin/dashboard/", // ✅ default page
     children: [
       {
-        path: "dashboard",
+        path: "dashboard/",
         component: DashboardContent // ✅ now using your new file
       },
       {
@@ -89,7 +89,7 @@ const routes = [
 // ROUTER INIT
 // =========================
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 

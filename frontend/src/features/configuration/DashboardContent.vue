@@ -35,7 +35,7 @@ const organizations = ref([])
 onMounted(async () => {
   try {
     // ✅ stats (already working)
-    const statsRes = await api.get("/dashboard")
+    const statsRes = await api.get("/dashboard/")
     stats.value = statsRes.data
 
     // ✅ ADD THIS (for table)
