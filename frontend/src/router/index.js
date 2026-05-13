@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router"
+import { createRouter, createWebHashHistory } from "vue-router"
 import { setupGuards } from "../router/guards"
 
 // =========================
@@ -89,7 +89,7 @@ const routes = [
 // ROUTER INIT
 // =========================
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 
