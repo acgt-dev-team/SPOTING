@@ -67,12 +67,12 @@ def create_user(
     new_user = User(
         nama=data.nama,
         username=data.username,
-        password=generate_password(),
+        password=generated_password,
         role=data.role,
         aktif=data.aktif,
-        pelanggan_id=data.pelanggan_id
+        pelanggan_id=data.pelanggan_id,
+        force_password_change=True
     )
-
     db.add(new_user)
     db.commit()
     db.refresh(new_user)

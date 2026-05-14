@@ -12,6 +12,10 @@ const search = ref("")
 const showModal = ref(false)
 const showDeleteModal = ref(false)
 
+const showPasswordModal = ref(false)
+const generatedPassword = ref("")
+const generatedUsername = ref("")
+
 // ✅ TOGGLE MODAL
 const showToggleModal = ref(false)
 const toggleConfirmText = ref("")
@@ -166,9 +170,9 @@ async function saveAccount() {
         aktif: aktif.value
       })
 
-      alert(
-        `Akaun berjaya dibuat.\n\nPassword sementara:\n${res.data.generated_password}`
-      )
+      generatedPassword.value = res.data.generated_password
+      generatedUsername.value = username.value
+      showPasswordModal.value = true
     }
 
     await fetchAccounts()
@@ -278,7 +282,6 @@ function confirmToggle() {
               <th style="width:80px">BIL</th>
               <th style="width:220px">NAMA</th>
               <th style="width:160px">NAMA PENGGUNA</th>
-              <th style="width:150px">KATA LALUAN</th>
               <th style="width:120px">PERANAN</th>
               <th style="width:120px">TINDAKAN</th>
             </tr>
@@ -315,7 +318,6 @@ function confirmToggle() {
               </td>
 
               <td>{{ item.username }}</td>
-              <td>{{ item.password }}</td>
               <td>
   {{
     item.role === "super admin"
@@ -594,6 +596,56 @@ function confirmToggle() {
     </transition>
 
   </div>
+
+  <!-- PASSWORD SUCCESS MODAL -->
+<transition name="fade">
+  <div
+    v-if="showPasswordModal"
+    class="modal-overlay"
+  >
+    <div class="delete-modal">
+
+      <div class="delete-icon">🔐</div>
+
+      <h3>Akaun Berjaya Dicipta</h3>
+
+      <p class="delete-desc">
+        Kata laluan sementara hanya dipaparkan sekali.
+        Sila simpan dan kongsi kepada pengguna.
+      </p>
+
+      <div class="confirm-box">
+
+        <label>Nama Pengguna</label>
+
+        <div class="org-delete-name">
+          {{ generatedUsername }}
+        </div>
+
+        <label style="margin-top:12px">
+          Kata Laluan Sementara
+        </label>
+
+        <div class="org-delete-name">
+          <strong>{{ generatedPassword }}</strong>
+        </div>
+
+      </div>
+
+      <div class="delete-actions">
+
+        <button
+          class="cancel-delete-btn"
+          @click="showPasswordModal = false"
+        >
+          Tutup
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</transition>
 </template>
 
 <style scoped>
