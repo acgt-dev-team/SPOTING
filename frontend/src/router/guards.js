@@ -32,7 +32,7 @@ export function setupGuards(router) {
       }
 
       if (role === "user") {
-        return next("/admin/dashboard")
+        return next("/admin/dashboard/")
       }
     }
 
@@ -41,7 +41,7 @@ export function setupGuards(router) {
       role === "user" &&
       to.path.startsWith("/admin/accounts")
     ) {
-      return next("/admin/dashboard")
+      return next("/admin/dashboard/")
     }
 
     next()
