@@ -13,8 +13,8 @@ class EjenHasil(BaseModel):
     hasil_imbasan: dict = PyField(examples=['JSON string'])
 
 class EjenHasilResponse(BaseModel):
-    status: int
-    message: str
+    status: int = PyField(examples=[200])
+    message: str = PyField(examples=['Succeed'])
 
 class Ejen(SQLModel, table=True):
     id: int = Field(primary_key=True)
