@@ -35,22 +35,22 @@ async def agent_init(body: EjenInitBody, session: SessionDep):
         'platform_url': platform_url
     }
 
-@router.get(
-    path='/penjadualan',
-    tags=['Ejen'],
-    response_model=ProfilTugasanEjenResponse,
-    summary='Ejen check samada ada scheduled job'
-)
-async def agent_penjadualan(host_ip: str, session: SessionDep):
-    # Looking for x_profil
-    ejen = session.exec(select(Ejen).where(Ejen.ip_address == host_ip)).one()
+# @router.get(
+#     path='/penjadualan',
+#     tags=['Ejen'],
+#     response_model=ProfilTugasanEjenResponse,
+#     summary='Ejen check samada ada scheduled job'
+# )
+# async def agent_penjadualan(host_ip: str, session: SessionDep):
+#     # Looking for x_profil
+#     ejen = session.exec(select(Ejen).where(Ejen.ip_address == host_ip)).one()
 
-    profil_tugasan = session.exec(select(ProfilTugasan).where(
-        ProfilTugasan.tugasan_id == ejen.tugasan_id,
-        ProfilTugasan.jadualkan_pada != None
-    )).first()
+#     profil_tugasan = session.exec(select(ProfilTugasan).where(
+#         ProfilTugasan.tugasan_id == ejen.tugasan_id,
+#         ProfilTugasan.jadualkan_pada != None
+#     )).first()
 
-    return profil_tugasan
+#     return profil_tugasan
 
 @router.post('/hasil', tags=['Ejen'], response_model=EjenHasilResponse)
 async def hasil_imbasan(body: EjenHasil, session: SessionDep):
