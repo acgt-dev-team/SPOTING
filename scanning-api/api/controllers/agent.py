@@ -17,16 +17,15 @@ platform_url = os.getenv('PLATFORM_URL')
 )
 async def agent_init(body: EjenInitBody, session: SessionDep):
     host_ip = body.host_ip
-    stmt = select(Tugasan).where(
-        Tugasan.ip_start <= host_ip,
-        Tugasan.ip_end >= host_ip
-    )
-    tugasan = session.exec(stmt).one()
+    # stmt = select(Tugasan).where(
+    #     Tugasan.ip_start <= host_ip,
+    #     Tugasan.ip_end >= host_ip
+    # )
+    # tugasan = session.exec(stmt).one()
 
     # Register agent in DB
     ejen = Ejen(
-        ip_address=host_ip,
-        tugasan_id=tugasan.id
+        ip_address=host_ip
     )
     session.add(ejen)
     session.commit()
