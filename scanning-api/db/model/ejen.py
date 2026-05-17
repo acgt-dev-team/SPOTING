@@ -3,7 +3,7 @@ from sqlalchemy.dialects.postgresql import INET, JSON
 from pydantic import BaseModel, Field as PyField
 
 class EjenInit(BaseModel):
-    platform_url: str = PyField(examples=['http://ec2-56-68-97-215.ap-southeast-5.compute.amazonaws.com/'])
+    platform_url: str = PyField(examples=['http://ec2-56-68-97-215.ap-southeast-5.compute.amazonaws.com'])
 
 class EjenInitBody(BaseModel):
     host_ip: str = PyField(examples=['127.0.0.1'])
