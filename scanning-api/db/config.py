@@ -1,4 +1,6 @@
 from sqlmodel import create_engine, Session
+from fastapi import Depends
+from typing import Annotated
 import os
 from dotenv import load_dotenv
 from .model import tugasan, status
@@ -11,10 +13,12 @@ db_username = os.getenv('DB_USERNAME')
 db_password = os.getenv('DB_PASSWORD')
 db_name = os.getenv('DB_NAME')
 
-url = f'postgresql+psycopg2://{db_username}:{db_password}@{db_host}:{db_port}/{db_name}?sslmode=require'
+url = f'postgresql+psycopg2://{db_username}:{db_password}@{db_host}:{db_port}/{db_name}?sslmode=prefer'
 
 engine = create_engine(url)
 
 def get_session():
     with Session(engine) as session:
         yield session
+
+SessionDep = Annotated[Session, Depends(get_session)]

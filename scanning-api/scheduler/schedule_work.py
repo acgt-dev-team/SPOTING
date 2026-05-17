@@ -2,6 +2,7 @@ from sqlmodel import Session, select
 from db.config import engine
 from db.model.profil_tugasan import ProfilTugasan
 from db.model.tugasan import Tugasan
+from db.model.ejen import Ejen
 from datetime import datetime
 import requests
 import os
@@ -26,14 +27,19 @@ with Session(engine) as session:
             'ip': [tugasan.ip_start, tugasan.ip_end]
         }
 
-        # Call agent to start scanning
-        try:
-            response = requests.post(f'{agent_url}/mula-imbasan', json=agent_data)
-            res_data = response.json()
-            if res_data['message'] == 'Imbasan bermula':
-                item.status_id = 2
-                session.add(item)
-                session.commit()
+        ejen_list = session.exec(select(Ejen).where(Ejen.tugasan_id == item.id)).all()
 
-        except Exception as e:
-            print('error =', e)
+        for ejen in ejen_list:
+            url = f'{ejen.ip_address}/imbas'
+
+            try:
+                response = requests.get(url)
+                res_data = response.json()
+
+                # if res_data['message'] == 'Imbasan bermula':
+                #     item.status_id = 2
+                #     session.add(item)
+                #     session.commit()
+
+            except Exception as e:
+                print('error =', e)
