@@ -2,14 +2,19 @@ from fastapi import APIRouter, Request, HTTPException
 from sqlmodel import select
 from db.model.tugasan import Tugasan
 from db.model.ejen import Ejen, EjenInit, EjenInitBody, EjenHasil, EjenHasilResponse
-from db.model.profil_tugasan import ProfilTugasan
+from db.model.profil_tugasan import ProfilTugasan, ProfilTugasanEjenResponse
 from db.config import SessionDep
 import os
 
 router = APIRouter(prefix='/ejen')
 platform_url = os.getenv('PLATFORM_URL')
 
-@router.post('/init', tags=['Ejen'], response_model=EjenInit)
+@router.post(
+    path='/init',
+    tags=['Ejen'],
+    response_model=EjenInit,
+    summary='Ejen register'
+)
 async def agent_init(body: EjenInitBody, session: SessionDep):
     host_ip = body.host_ip
     stmt = select(Tugasan).where(
@@ -30,7 +35,12 @@ async def agent_init(body: EjenInitBody, session: SessionDep):
         'platform_url': platform_url
     }
 
-@router.get('/penjadualan', tags=['Ejen'], response_model=ProfilTugasan)
+@router.get(
+    path='/penjadualan',
+    tags=['Ejen'],
+    response_model=ProfilTugasanEjenResponse,
+    summary='Ejen check samada ada scheduled job'
+)
 async def agent_penjadualan(host_ip: str, session: SessionDep):
     # Looking for x_profil
     ejen = session.exec(select(Ejen).where(Ejen.ip_address == host_ip)).one()
