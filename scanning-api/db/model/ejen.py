@@ -10,7 +10,7 @@ class EjenInitBody(BaseModel):
 
 class EjenHasil(BaseModel):
     host_ip: str = PyField(examples=['127.0.0.1'])
-    hasil_imbasan: dict = PyField(examples=['JSON string'])
+    hasil_imbasan: dict = PyField(examples=[{}])
 
 class EjenHasilResponse(BaseModel):
     status: int = PyField(examples=[200])
