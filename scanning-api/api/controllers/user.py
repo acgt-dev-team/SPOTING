@@ -39,7 +39,9 @@ async def imbasan(request: Request, session: SessionDep):
         ip_address = e.ip_address
 
         # IMPORTANT
-        url = f'http://{ip_address}:9001/imbas'
+        AGENT_PORT = os.getenv("AGENT_PORT", "9001")
+
+        url = f'http://{ip_address}:{AGENT_PORT}/imbas'
 
         try:
 
