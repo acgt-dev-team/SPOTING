@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from app.models.tugasan import Tugasan
 from app.models.x_profil_tugasan import XProfilTugasan
+from app.models.profil import Profil
 
 import requests
 import json
@@ -67,6 +68,18 @@ def assign_tugasan_to_profil(
     db.add(new_item)
     db.commit()
     db.refresh(new_item)
+
+    # ==========================================
+    # AUTO RUN IMMEDIATE PROFILE
+    # ==========================================
+    from app.scheduler.profile_scheduler import run_single_profile
+
+    profile = db.query(Profil).filter(
+        Profil.id == profil_id
+    ).first()
+
+    if profile and profile.execution_type == "IMMEDIATE":
+        run_single_profile(profil_id)
 
     return {
         "message": "Assigned successfully",
@@ -163,14 +176,15 @@ def remove_tugasan_from_profil(
 
     # prevent deletion if scan history exists
     existing_scan = db.execute(
-        text("""
-            SELECT id
-            FROM hasil_imbasan
-            WHERE x_profil_tugasan_id = :id
-            LIMIT 1
-        """),
-        {"id": item.id}
-    ).fetchone()
+    text("""
+        SELECT id
+        FROM ejen
+        WHERE tugasan_id = :id
+        AND hasil_imbasan IS NOT NULL
+        LIMIT 1
+    """),
+    {"id": tugasan_id}
+).fetchone()
 
     if existing_scan:
         raise HTTPException(
@@ -216,7 +230,7 @@ def execute_scan(
     profil_tugasan_id: int,
     penjadualan: bool = False
 ):
-    url = "https://seahorse-app-6x2kt.ondigitalocean.app/scanning-api/imbasan"
+    url = "http://127.0.0.1:9000/pengguna/imbas"
 
     task = db.query(XProfilTugasan).filter(
         XProfilTugasan.id == profil_tugasan_id
@@ -253,6 +267,13 @@ def execute_scan(
 
         scan_result = response.json()
 
+        protocol = task.tugasan.protocol
+
+        print("Protocol:", protocol)
+        print("Raw scan result:", scan_result)
+
+        # parser logic here later
+
         if scan_result is None:
             scan_result = {
                 "message": "Scan executed successfully",
@@ -261,27 +282,7 @@ def execute_scan(
 
         print("Raw scan result:", scan_result)
 
-        # -------------------------------
-        # save result to hasil_imbasan
-        # -------------------------------
-        db.execute(
-            text("""
-                INSERT INTO hasil_imbasan (
-                    x_profil_tugasan_id,
-                    data_imbasan
-                )
-                VALUES (
-                    :task_id,
-                    :scan_data
-                )
-            """),
-            {
-                "task_id": profil_tugasan_id,
-                "scan_data": json.dumps(scan_result)
-            }
-        )
-
-        db.commit()
+        print("Scan completed successfully")
 
         # -------------------------------
         # set COMPLETED

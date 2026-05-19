@@ -25,7 +25,8 @@ async def agent_init(body: EjenInitBody, session: SessionDep):
 
     # Register agent in DB
     ejen = Ejen(
-        ip_address=host_ip
+        ip_address=host_ip,
+        tugasan_id=body.tugasan_id
     )
     session.add(ejen)
     session.commit()

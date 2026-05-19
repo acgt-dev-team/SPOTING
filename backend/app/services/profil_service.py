@@ -101,10 +101,7 @@ def create_profil(db: Session, data: dict):
     db.commit()
     db.refresh(new_profil)
 
-    # ✅ IMMEDIATE execution trigger
-    if execution_type == "IMMEDIATE":
-        from app.scheduler.profile_scheduler import run_single_profile
-        run_single_profile(new_profil.id)
+
 
     return {
         "id": new_profil.id,
