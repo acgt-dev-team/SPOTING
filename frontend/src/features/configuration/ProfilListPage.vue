@@ -23,8 +23,6 @@ const search = ref("")
 const showModal = ref(false)
 const editingId = ref(null)
 const selectedProfile = ref(null)
-const showTemplateModal = ref(false)
-const selectedTemplateProfile = ref(null)
 
 const nama = ref("")
 const keterangan = ref("")
@@ -364,32 +362,25 @@ function goToTugasan(profile) {
   )
 }
 
-function generateReport(profile) {
-  selectedTemplateProfile.value = profile
-  showTemplateModal.value = true
-}
-
-async function downloadReport(template) {
+async function generateReport(profile) {
 
   try {
 
-    const profile =
-      selectedTemplateProfile.value
-
     const response = await api.post(
       `/report/profil/${profile.id}`,
-      {
-        template
-      },
+      {},
       {
         responseType: "blob"
       }
     )
 
-    const blob = new Blob([response.data], {
-      type:
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    })
+    const blob = new Blob(
+      [response.data],
+      {
+        type:
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      }
+    )
 
     const url =
       window.URL.createObjectURL(blob)
@@ -410,13 +401,14 @@ async function downloadReport(template) {
 
     window.URL.revokeObjectURL(url)
 
-    showTemplateModal.value = false
-
   } catch (err) {
+
     console.error(err)
+
     alert("Gagal memuat turun laporan")
   }
 }
+
 
 // =========================
 // INIT
@@ -776,59 +768,6 @@ onBeforeUnmount(() => {
 
       </div>
     </transition>
-
-
-    <!-- TEMPLATE MODAL -->
-<transition name="fade">
-  <div
-    v-if="showTemplateModal"
-    class="modal-overlay"
-  >
-
-    <div class="delete-modal">
-
-      <h3>Pilih Template</h3>
-
-      <p class="delete-desc">
-        Sila pilih template laporan.
-      </p>
-
-      <div
-        style="
-          display:flex;
-          flex-direction:column;
-          gap:12px;
-          margin-top:20px;
-        "
-      >
-
-        <button
-          class="primary-btn"
-          @click="downloadReport('Template A')"
-        >
-          Template A
-        </button>
-
-        <button
-          class="primary-btn"
-          @click="downloadReport('Template B')"
-        >
-          Template B
-        </button>
-
-        <button
-          class="cancel-delete-btn"
-          @click="showTemplateModal = false"
-        >
-          Batal
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-</transition>
 
 
     <!-- TOAST -->
