@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Request, HTTPException
 from sqlmodel import select
 from db.model.tugasan import Tugasan
+from db.model.hasil_imbasan import HasilImbasan
 from db.model.ejen import Ejen, EjenInit, EjenInitBody, EjenHasil, EjenHasilResponse
 from db.model.profil_tugasan import ProfilTugasan, ProfilTugasanEjenResponse
 from db.config import SessionDep
@@ -17,16 +18,12 @@ platform_url = os.getenv('PLATFORM_URL')
 )
 async def agent_init(body: EjenInitBody, session: SessionDep):
     host_ip = body.host_ip
-    # stmt = select(Tugasan).where(
-    #     Tugasan.ip_start <= host_ip,
-    #     Tugasan.ip_end >= host_ip
-    # )
-    # tugasan = session.exec(stmt).one()
+    tapak_id = body.tapak_id
 
     # Register agent in DB
     ejen = Ejen(
         ip_address=host_ip,
-        tugasan_id=body.tugasan_id
+        tapak_id=tapak_id
     )
     session.add(ejen)
     session.commit()
@@ -60,8 +57,13 @@ async def hasil_imbasan(body: EjenHasil, session: SessionDep):
     try:
         stmt = select(Ejen).where(Ejen.ip_address == host_ip)
         ejen = session.exec(stmt).one()
-        ejen.hasil_imbasan = hasil_imbasan
-        session.add(ejen)
+
+        hasil = HasilImbasan(
+            profil_tugasan_id=1,
+            ejen_id=ejen.id,
+            hasil=hasil_imbasan
+        )
+        session.add(hasil)
         session.commit()
 
         return {
