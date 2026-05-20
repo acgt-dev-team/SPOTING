@@ -7,7 +7,7 @@ class EjenInit(BaseModel):
 
 class EjenInitBody(BaseModel):
     host_ip: str = PyField(examples=['127.0.0.1'])
-    tugasan_id: int = PyField(examples=[5])
+    tapak_id: int = PyField(examples=[1])
 
 class EjenHasil(BaseModel):
     host_ip: str = PyField(examples=['127.0.0.1'])
@@ -20,4 +20,4 @@ class EjenHasilResponse(BaseModel):
 class Ejen(SQLModel, table=True):
     id: int = Field(primary_key=True)
     ip_address: str = Field(sa_column=Column(INET, unique=True))
-    tugasan_id: int = Field(foreign_key='tugasan.id')
+    tapak_id: int = Field(foreign_key='tapak.id')
