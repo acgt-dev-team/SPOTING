@@ -264,9 +264,8 @@ onMounted(() => {
 
           <button
             type="button"
-            class="toggle-btn"
-            :class="{ active: form.aktif }"
-            @click="form.aktif = !form.aktif"
+            class="toggle-btn active"
+            disabled
           >
             <span></span>
           </button>
@@ -580,5 +579,18 @@ textarea {
   .panel-body {
     padding: 18px;
   }
+}
+
+.toggle-btn:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.toggle-btn:disabled:hover {
+  background: #dc2626;
+}
+
+.toggle-btn:disabled:hover span {
+  background: white;
 }
 </style>
