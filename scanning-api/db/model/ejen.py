@@ -19,5 +19,16 @@ class EjenHasilResponse(BaseModel):
 
 class Ejen(SQLModel, table=True):
     id: int = Field(primary_key=True)
-    ip_address: str = Field(sa_column=Column(INET, unique=True))
-    tapak_id: int = Field(foreign_key='tapak.id')
+
+    ip_address: str = Field(
+        sa_column=Column(INET, unique=True)
+    )
+
+    tapak_id: int = Field(
+        foreign_key='tapak.id'
+    )
+
+    tugasan_id: int | None = Field(
+        default=None,
+        foreign_key='tugasan.id'
+    )
