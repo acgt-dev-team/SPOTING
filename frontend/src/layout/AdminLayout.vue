@@ -197,7 +197,6 @@ function logout() {
 
         <div class="brand">
           <img :src="logo" class="logo" />
-          <span class="brand-text">Paparan Pentadbir</span>
         </div>
 
         <div class="logo-divider"></div>
@@ -340,7 +339,7 @@ function logout() {
 }
 
 .logo {
-  width: 110px;
+  width: 160px;
 }
 
 .brand-text {

@@ -371,7 +371,7 @@ onMounted(() => {
 
     <!-- MAIN MODAL -->
     <transition name="fade">
-      <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
+      <div v-if="showModal" class="modal-overlay">
 
         <AppCard class="modal-card">
 
