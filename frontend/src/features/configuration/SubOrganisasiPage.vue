@@ -359,7 +359,6 @@ onMounted(() => {
     <div
       v-if="showModal"
       class="modal-overlay"
-      @click.self="closeModal"
     >
 
       <AppCard class="modal-card">

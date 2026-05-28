@@ -137,16 +137,18 @@ watch(executionType, async (val) => {
 ========================= */
 function initFlatpickr() {
   if (dateInput.value) {
+
     if (fpInstance) {
       fpInstance.destroy()
     }
 
-        flatpickr(dateInput.value, {
+    fpInstance = flatpickr(dateInput.value, {
       dateFormat: "Y-m-d",
-      minDate: "today",
+      defaultDate: selectedDate.value || null,
+
       onChange: (dates) => {
         selectedDate.value = dates[0]
-          ? dates[0].toISOString().split("T")[0]
+          ? flatpickr.formatDate(dates[0], "Y-m-d")
           : ""
       }
     })
@@ -306,8 +308,9 @@ function editProfile(profile) {
   if (profile.scheduled_at) {
     const dt = new Date(profile.scheduled_at)
 
-    selectedDate.value = dt.toISOString().split("T")[0]
+    selectedDate.value = flatpickr.formatDate(dt, "Y-m-d")
     selectedTime.value = dt.toTimeString().slice(0, 5)
+
   } else {
     selectedDate.value = ""
     selectedTime.value = ""
@@ -561,7 +564,6 @@ onBeforeUnmount(() => {
       <div
         v-if="showModal"
         class="modal-overlay"
-        @click.self="closeModal"
       >
         <AppCard class="modal-card">
 

@@ -9,7 +9,7 @@ const emit = defineEmits(["close"])
 
 <template>
   <transition name="fade">
-    <div v-if="show" class="modal-overlay" @click.self="$emit('close')">
+    <div v-if="show" class="modal-overlay">
 
       <div class="modal-card">
 
