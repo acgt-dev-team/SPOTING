@@ -4,6 +4,7 @@ import { useRoute, useRouter } from "vue-router"
 import logo from "../assets/images/spoting-logo.png"
 
 import {
+  LayoutDashboard,
   Settings,
   UserPlus,
   LogOut
@@ -12,27 +13,56 @@ import {
 const route = useRoute()
 const router = useRouter()
 
+const currentRole = localStorage.getItem("role")
+
 const user = ref({
-  username: "Admin User",
-  role: "Pentadbir"
+  username: localStorage.getItem("username") || "User",
+  role: localStorage.getItem("role") || "user"
 })
 
-const customerName = computed(() => "Kementerian Dalam Negeri")
+const ministryName = computed(() => "Kementerian Dalam Negeri")
 
-const menuItems = computed(() => [
-  {
-    label: "Konfigurasi",
-    icon: Settings,
-    path: "/admin/configuration",
-    active: route.path.startsWith("/admin/configuration")
-  },
-  {
-    label: "Pengurusan Pengguna",
-    icon: UserPlus,
-    path: "/admin/accounts",
-    active: route.path.startsWith("/admin/accounts")
-  }
-])
+const menuItems = computed(() => {
+  // user only sees configuration
+  if (currentRole === "user") {
+  return [
+    {
+      label: "Papan Pemuka",
+      icon: LayoutDashboard,
+      path: "/admin/dashboard",
+      active: route.path.startsWith("/admin/dashboard")
+    },
+    {
+      label: "Konfigurasi",
+      icon: Settings,
+      path: "/admin/configuration",
+      active: route.path.startsWith("/admin/configuration")
+    }
+  ]
+}
+
+  // admin + super admin
+  return [
+    {
+      label: "Papan Pemuka",
+      icon: LayoutDashboard,
+      path: "/admin/dashboard",
+      active: route.path.startsWith("/admin/dashboard")
+    },
+    {
+      label: "Konfigurasi",
+      icon: Settings,
+      path: "/admin/configuration",
+      active: route.path.startsWith("/admin/configuration")
+    },
+    {
+      label: "Pengurusan Pengguna",
+      icon: UserPlus,
+      path: "/admin/accounts",
+      active: route.path.startsWith("/admin/accounts")
+    }
+  ]
+})
 
 const breadcrumbs = computed(() => {
   const path = route.path
@@ -42,12 +72,18 @@ const breadcrumbs = computed(() => {
 
   const crumbs = [
     {
-      label: customerName.value,
+      label: ministryName.value,
       to: "/admin/configuration"
     }
   ]
 
-  if (path.includes("/accounts")) {
+  if (path.includes("/dashboard")) {
+    crumbs.push({
+      label: "Papan Pemuka",
+      to: null
+    })
+
+  } else if (path.includes("/accounts")) {
     crumbs.push({
       label: "Pengurusan Pengguna",
       to: null
@@ -161,8 +197,9 @@ function logout() {
 
         <div class="brand">
           <img :src="logo" class="logo" />
-          <span class="brand-text">Paparan Pentadbir</span>
         </div>
+
+        <div class="logo-divider"></div>
 
         <!-- MENU -->
         <div class="menu-list">
@@ -243,7 +280,7 @@ function logout() {
 
           <div class="customer-block">
             <h2 class="customer-name">
-              {{ customerName }}
+              {{ ministryName }}
             </h2>
           </div>
 
@@ -264,15 +301,16 @@ function logout() {
   background: #f5f7fb;
 }
 
+/* SIDEBAR */
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 260px;
+  width: 240px; /* slightly reduced */
   height: 100vh;
   background: #ffffff;
   border-right: 1px solid #e5e7eb;
-  padding: 24px 18px;
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -283,74 +321,96 @@ function logout() {
 .sidebar-top {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
+/* BRAND */
 .brand {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding-bottom: 6px;
+}
+
+.logo-divider {
+  width: 100%;
+  height: 1px;
+  background: #e5e7eb;
 }
 
 .logo {
-  width: 110px;
+  width: 160px;
 }
 
 .brand-text {
   font-weight: 700;
   color: #020265;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 /* MENU */
 .menu-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .menu-btn {
   width: 100%;
   border: none;
-  background: #f8fafc;
-  color: #111827;
-  padding: 12px 14px;
-  border-radius: 12px;
+  background: transparent;
+  color: #374151;
+  padding: 10px 12px;
+  border-radius: 10px;
   text-align: left;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.15s ease;
   display: flex;
   align-items: center;
   gap: 10px;
+  position: relative;
 }
 
+/* Hover (light only) */
 .menu-btn:hover {
-  background: #eef2ff;
-}
-
-.menu-btn.active {
-  background: #020265;
-  color: white;
-}
-
-/* PROFILE */
-.profile-card {
   background: #f8fafc;
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  padding: 16px;
+}
+
+/* ACTIVE (clean style, no heavy block) */
+.menu-btn.active {
+  background: #eef2ff;
+  color: #020265;
+}
+
+/* LEFT INDICATOR */
+.menu-btn.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  background: #020265;
+  border-radius: 3px;
+}
+
+/* PROFILE (less "cardy") */
+.profile-card {
+  background: transparent;
+  border: none;
+  padding: 8px 4px;
 }
 
 .profile-top {
   display: flex;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .avatar {
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: #1d4ed8;
   color: white;
@@ -358,23 +418,25 @@ function logout() {
   align-items: center;
   justify-content: center;
   font-weight: 700;
+  font-size: 14px;
 }
 
 .username {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
 }
 
 .role {
-  font-size: 12px;
+  font-size: 11px;
   color: #6b7280;
 }
 
+/* LOGOUT */
 .logout-btn {
   width: 100%;
   border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 10px;
+  border-radius: 10px;
+  padding: 8px;
   color: #dc2626;
   font-weight: 600;
   cursor: pointer;
@@ -382,7 +444,8 @@ function logout() {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
+  transition: 0.15s ease;
 }
 
 .logout-btn:hover {
@@ -391,38 +454,40 @@ function logout() {
 
 /* MAIN */
 .main-area {
-  margin-left: 260px;
-  width: calc(100% - 260px);
+  margin-left: 240px;
+  width: calc(100% - 240px);
   min-height: 100vh;
 }
 
 .admin-container {
-  padding: 24px 32px;
+  padding: 24px;
 }
 
 /* HEADER */
 .page-top-header {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   margin-bottom: 20px;
 }
 
+/* BREADCRUMBS */
 .breadcrumbs {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .crumb {
-  font-size: 14px;
-  font-weight: 700;
-  color: #111827;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
 }
 
 .crumb.current {
   color: #020265;
+  font-weight: 700;
 }
 
 .link {
@@ -436,16 +501,22 @@ function logout() {
   color: #020265;
 }
 
+/* Divider spacing fix */
 .divider {
   color: #9ca3af;
+  margin: 0 6px;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
 }
 
+/* TITLE */
 .customer-block {
   margin-left: auto;
 }
 
 .customer-name {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
   color: #111827;
 }

@@ -6,6 +6,7 @@ import api from "../../services/api"
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
+import AppPagination from "../../ui/AppPagination.vue"
 
 const route = useRoute()
 const router = useRouter()
@@ -42,9 +43,10 @@ const showDeleteModal = ref(false)
 const showToast = ref(false)
 const deleteConfirmText = ref("")
 
-// =========================
-// LOAD DATA
-// =========================
+// ✅ PAGINATION
+const currentPage = ref(1)
+const pageSize = 10
+
 async function loadTapak() {
   try {
     const res = await api.get(`/tapak/sub/${subOrganizationId}`)
@@ -82,7 +84,7 @@ async function loadOrganisasiDetail() {
 }
 
 // =========================
-// FILTER
+// FILTER (UNCHANGED)
 // =========================
 const filteredSites = computed(() => {
   return sites.value
@@ -100,6 +102,29 @@ const filteredSites = computed(() => {
     })
 })
 
+// ✅ PAGINATION SLICE
+const paginatedSites = computed(() => {
+  const start = (currentPage.value - 1) * pageSize
+  return filteredSites.value.slice(start, start + pageSize)
+})
+
+// ✅ TOTAL PAGES
+const totalPages = computed(() => {
+  return Math.ceil(filteredSites.value.length / pageSize)
+})
+
+// ✅ RESET PAGE
+watch(search, () => {
+  currentPage.value = 1
+})
+
+// ✅ PREVENT EMPTY PAGE
+watch(filteredSites, () => {
+  if (currentPage.value > totalPages.value) {
+    currentPage.value = totalPages.value || 1
+  }
+})
+
 const isEditMode = computed(() => !!selectedSite.value)
 
 const selectedTapak = computed(() => {
@@ -112,16 +137,6 @@ const canDelete = computed(() => {
   return deleteConfirmText.value.trim().toLowerCase() === "padam"
 })
 
-const breadcrumbs = [
-  { label: "Organisasi", to: "/admin/configuration" },
-  {
-    label: "Sub Organisasi",
-    to: `/admin/configuration/sub-organisasi/${organizationId}`
-  },
-  { label: "Tapak" }
-]
-
-// preload modal
 watch(showModal, (value) => {
   if (value) {
     nama.value = selectedSite.value?.nama || ""
@@ -131,9 +146,6 @@ watch(showModal, (value) => {
   }
 })
 
-// =========================
-// NAVIGATION
-// =========================
 function goBack() {
   router.push(`/admin/configuration/sub-organisasi/${organizationId}`)
 }
@@ -144,18 +156,12 @@ function goToProfil(site) {
   )
 }
 
-// =========================
-// EDIT
-// =========================
 function editSite(site) {
   selectedSite.value = site
   editingId.value = site.id
   showModal.value = true
 }
 
-// =========================
-// MODAL
-// =========================
 function openAddModal() {
   selectedSite.value = null
   editingId.value = null
@@ -171,9 +177,6 @@ function closeModal() {
   selectedSite.value = null
 }
 
-// =========================
-// SAVE
-// =========================
 async function saveSite() {
   if (!nama.value.trim()) return
 
@@ -189,7 +192,7 @@ async function saveSite() {
     if (editingId.value) {
       await api.put(`/tapak/${editingId.value}`, payload)
     } else {
-      await api.post("/tapak", payload)
+      await api.post("/tapak/", payload)
     }
 
     await loadTapak()
@@ -200,9 +203,6 @@ async function saveSite() {
   }
 }
 
-// =========================
-// DELETE
-// =========================
 function handleDelete() {
   deleteConfirmText.value = ""
   showDeleteModal.value = true
@@ -234,9 +234,6 @@ async function confirmDelete() {
   }
 }
 
-// =========================
-// LOAD
-// =========================
 onMounted(() => {
   loadOrganisasiDetail()
   loadSubOrganisasiDetail()
@@ -283,21 +280,23 @@ onMounted(() => {
               <th style="width:100px">Kod</th>
               <th>Nama Tapak</th>
               <th style="width:220px">Pegawai</th>
-              <th style="width:180px">Jumlah Tugasan</th>
+              <th style="width:150px; white-space: nowrap;">
+                Jumlah Tugasan
+              </th>
               <th style="width:140px">Tindakan</th>
             </tr>
           </thead>
 
           <tbody>
 
-            <tr v-if="filteredSites.length === 0">
+            <tr v-if="paginatedSites.length === 0">
               <td colspan="5" class="empty-cell">
                 Tiada tapak dijumpai.
               </td>
             </tr>
 
             <tr
-              v-for="(site,index) in filteredSites"
+              v-for="(site,index) in paginatedSites"
               :key="site.id"
               class="clickable-row"
               @click="goToProfil(site)"
@@ -348,6 +347,12 @@ onMounted(() => {
       </div>
     </div>
 
+    <AppPagination
+      :currentPage="currentPage"
+      :totalPages="totalPages"
+      @update:page="currentPage = $event"
+    />
+
     <!-- Footer -->
     <div class="footer-bar">
 
@@ -366,7 +371,7 @@ onMounted(() => {
 
     <!-- MAIN MODAL -->
     <transition name="fade">
-      <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
+      <div v-if="showModal" class="modal-overlay">
 
         <AppCard class="modal-card">
 
@@ -634,6 +639,10 @@ td {
   font-size: 15px;
   color: #111827;
   border-bottom: 1px solid #f1f5f9;
+}
+
+td:nth-child(4) {
+  text-align: center;
 }
 
 .clickable-row {

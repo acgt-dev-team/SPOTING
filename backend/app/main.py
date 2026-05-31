@@ -14,6 +14,10 @@ from app.models.pelanggan import Pelanggan
 from app.models.user import User
 from app.models.status import Status
 
+from app.scheduler.profile_scheduler import scheduler, load_profile_jobs
+from app.api import report
+from app.api import dashboard
+
 # ✅ Routers ONLY from API
 from app.api import tugasan, profil, tapak, sub_organisasi, organisasi, jenis_tugasan
 from app.api import auth
@@ -26,8 +30,7 @@ app = FastAPI(
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://seahorse-app-6x2kt.ondigitalocean.app",
-    "*"
+    "http://agct-frontend.s3-website.ap-southeast-5.amazonaws.com",
 ]
 
 app.add_middleware(
@@ -46,6 +49,8 @@ app.include_router(sub_organisasi.router)
 app.include_router(organisasi.router)
 app.include_router(jenis_tugasan.router)
 app.include_router(auth.router)
+app.include_router(report.router)
+app.include_router(dashboard.router)
 
 
 @app.get("/")
@@ -61,3 +66,13 @@ def health():
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
+
+
+@app.on_event("startup")
+def start_scheduler():
+    load_profile_jobs()
+
+    if not scheduler.running:
+        scheduler.start()
+
+    print("Scheduler started successfully")

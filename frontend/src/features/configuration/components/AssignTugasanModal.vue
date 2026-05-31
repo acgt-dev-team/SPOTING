@@ -149,7 +149,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="modal-overlay" @click.self="$emit('close')">
+  <div class="modal-overlay">
 
     <div class="modal-shell">
 
@@ -514,6 +514,12 @@ onMounted(() => {
   flex: 1;
   overflow-y: auto;
   min-height: 0;
+}
+
+.table-head div:nth-child(5) {
+  display: flex;
+  justify-content: center;
+  transform: translateX(-55px);
 }
 
 .row-item {

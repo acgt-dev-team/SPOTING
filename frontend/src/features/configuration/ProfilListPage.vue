@@ -1,11 +1,16 @@
 <script setup>
-import { computed, ref, watch, onMounted } from "vue"
+import { computed, ref, watch, onMounted, onBeforeUnmount, nextTick } from "vue"
 import { useRoute, useRouter } from "vue-router"
 import api from "../../../src/services/api"
+import flatpickr from "flatpickr"
+import "flatpickr/dist/flatpickr.css"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
+import AppSelect from "../../ui/AppSelect.vue"
+import StatusPill from "../../ui/StatusPill.vue"
+import AppPagination from "../../ui/AppPagination.vue"
 
 const route = useRoute()
 const router = useRouter()
@@ -21,7 +26,30 @@ const selectedProfile = ref(null)
 
 const nama = ref("")
 const keterangan = ref("")
+const executionType = ref("IMMEDIATE")
+const selectedDate = ref("")
+const selectedTime = ref("")
+const showTimeDropdown = ref(false)
 
+// FLATPICKR REF
+const dateInput = ref(null)
+let fpInstance = null
+
+// =========================
+// TIME SLOTS
+// =========================
+const timeSlots = ref([])
+
+for (let h = 0; h < 24; h++) {
+  for (let m of ["00", "30"]) {
+    const hour = String(h).padStart(2, "0")
+    timeSlots.value.push(`${hour}:${m}`)
+  }
+}
+
+// =========================
+// SITE + DATA
+// =========================
 const site = ref({
   id: siteId,
   name: "Tapak",
@@ -34,6 +62,12 @@ const profiles = ref([])
 const showDeleteModal = ref(false)
 const showToast = ref(false)
 const deleteConfirmText = ref("")
+
+// =========================
+// PAGINATION
+// =========================
+const currentPage = ref(1)
+const pageSize = 10
 
 // =========================
 // FILTER
@@ -54,6 +88,81 @@ const filteredProfiles = computed(() => {
     })
 })
 
+// =========================
+// PAGINATION LOGIC
+// =========================
+const paginatedProfiles = computed(() => {
+  const start = (currentPage.value - 1) * pageSize
+  return filteredProfiles.value.slice(start, start + pageSize)
+})
+
+const totalPages = computed(() => {
+  return Math.ceil(filteredProfiles.value.length / pageSize)
+})
+
+// =========================
+// WATCHERS
+// =========================
+watch(search, () => {
+  currentPage.value = 1
+})
+
+watch(filteredProfiles, () => {
+  if (currentPage.value > totalPages.value) {
+    currentPage.value = totalPages.value || 1
+  }
+})
+
+// INIT FLATPICKR WHEN MODAL OPENS (UNCHANGED except 1 line)
+watch(showModal, async (val) => {
+  if (val) {
+    await nextTick()
+
+    initFlatpickr() // ✅ replaced inline with helper
+  }
+})
+
+/* =========================
+ ADDED: WATCH executionType
+========================= */
+watch(executionType, async (val) => {
+  if (val === "SCHEDULED") {
+    await nextTick()
+    initFlatpickr()
+  }
+})
+
+/* =========================
+ ADDED: HELPER FUNCTION
+========================= */
+function initFlatpickr() {
+  if (dateInput.value) {
+
+    if (fpInstance) {
+      fpInstance.destroy()
+    }
+
+    fpInstance = flatpickr(dateInput.value, {
+      dateFormat: "Y-m-d",
+      defaultDate: selectedDate.value || null,
+
+      onChange: (dates) => {
+        selectedDate.value = dates[0]
+          ? flatpickr.formatDate(dates[0], "Y-m-d")
+          : ""
+      }
+    })
+  }
+}
+
+function selectTime(time) {
+  selectedTime.value = time
+  showTimeDropdown.value = false
+}
+
+// =========================
+// DELETE
+// =========================
 const selectedProfil = computed(() => {
   return profiles.value.find(
     (item) => Number(item.id) === Number(editingId.value)
@@ -63,20 +172,6 @@ const selectedProfil = computed(() => {
 const canDelete = computed(() => {
   return deleteConfirmText.value.trim().toLowerCase() === "padam"
 })
-
-// Breadcrumbs
-const breadcrumbs = [
-  { label: "Organisasi", to: "/admin/configuration" },
-  {
-    label: "Sub Organisasi",
-    to: `/admin/configuration/sub-organisasi/${organizationId}`
-  },
-  {
-    label: "Tapak",
-    to: `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}`
-  },
-  { label: "Profil" }
-]
 
 // =========================
 // LOAD
@@ -111,16 +206,30 @@ async function saveProfile() {
   if (!nama.value.trim()) return
 
   try {
+    let scheduledAt = null
+
+    if (executionType.value === "SCHEDULED") {
+      if (!selectedDate.value || !selectedTime.value) {
+        alert("Sila pilih tarikh dan masa")
+        return
+      }
+
+      scheduledAt = `${selectedDate.value}T${selectedTime.value}:00`
+    }
+
     const payload = {
-  tapak_id: siteId,
-  nama: nama.value,
-  keterangan: keterangan.value
-}
+      tapak_id: siteId,
+      nama: nama.value,
+      keterangan: keterangan.value,
+      execution_type: executionType.value,
+      scheduled_at: scheduledAt,
+      is_scheduled: executionType.value === "SCHEDULED"
+    }
 
     if (editingId.value) {
       await api.put(`/profil/${editingId.value}`, payload)
     } else {
-      await api.post("/profil", payload)
+      await api.post("/profil/", payload)
     }
 
     await loadProfiles()
@@ -166,16 +275,6 @@ async function confirmDelete() {
 }
 
 // =========================
-// MODAL WATCH
-// =========================
-watch(showModal, (value) => {
-  if (value) {
-    nama.value = selectedProfile.value?.nama || ""
-    keterangan.value = selectedProfile.value?.keterangan || ""
-  }
-})
-
-// =========================
 // MODAL
 // =========================
 function openAddModal() {
@@ -183,6 +282,11 @@ function openAddModal() {
   selectedProfile.value = null
   nama.value = ""
   keterangan.value = ""
+
+  executionType.value = "IMMEDIATE"
+  selectedDate.value = ""
+  selectedTime.value = ""
+
   showModal.value = true
 }
 
@@ -195,10 +299,59 @@ function editProfile(profile) {
   selectedProfile.value = profile
   editingId.value = profile.id
   showModal.value = true
+
+  nama.value = profile.nama || ""
+  keterangan.value = profile.keterangan || ""
+
+  executionType.value = profile.execution_type || "IMMEDIATE"
+
+  if (profile.scheduled_at) {
+    const dt = new Date(profile.scheduled_at)
+
+    selectedDate.value = flatpickr.formatDate(dt, "Y-m-d")
+    selectedTime.value = dt.toTimeString().slice(0, 5)
+
+  } else {
+    selectedDate.value = ""
+    selectedTime.value = ""
+  }
+}
+
+function openDropdown() {
+  showTimeDropdown.value = true
+}
+
+function handleClickOutside(e) {
+  if (!e.target.closest(".custom-select")) {
+    showTimeDropdown.value = false
+  }
 }
 
 // =========================
-// NAVIGATION
+// UTIL
+// =========================
+function formatDateTime(datetime) {
+  if (!datetime) return "-"
+
+  const dt = new Date(datetime)
+
+  const date = dt.toLocaleDateString("ms-MY", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  })
+
+  const time = dt.toLocaleTimeString("ms-MY", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  })
+
+  return `${date} ${time}`
+}
+
+// =========================
+// NAV
 // =========================
 function goBack() {
   router.push(
@@ -212,13 +365,67 @@ function goToTugasan(profile) {
   )
 }
 
+async function generateReport(profile) {
+
+  try {
+
+    const response = await api.post(
+      `/report/profil/${profile.id}`,
+      {},
+      {
+        responseType: "blob"
+      }
+    )
+
+    const blob = new Blob(
+      [response.data],
+      {
+        type:
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      }
+    )
+
+    const url =
+      window.URL.createObjectURL(blob)
+
+    const link =
+      document.createElement("a")
+
+    link.href = url
+
+    link.download =
+      `${profile.nama}.xlsx`
+
+    document.body.appendChild(link)
+
+    link.click()
+
+    link.remove()
+
+    window.URL.revokeObjectURL(url)
+
+  } catch (err) {
+
+    console.error(err)
+
+    alert("Gagal memuat turun laporan")
+  }
+}
+
+
 // =========================
 // INIT
 // =========================
 onMounted(() => {
   loadTapakDetail()
   loadProfiles()
+  document.addEventListener("click", handleClickOutside)
 })
+
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleClickOutside)
+})
+
 </script>
 
 <template>
@@ -257,21 +464,23 @@ onMounted(() => {
             <tr>
               <th style="width:100px">Kod</th>
               <th>Nama Profil</th>
-              <th style="width:180px">Jumlah Tugasan</th>
-              <th style="width:140px">Tindakan</th>
+              <th style="width:140px; white-space: nowrap;">Jumlah Tugasan</th>
+              <th style="width:140px">Status</th>
+              <th style="width:180px; white-space: nowrap;">Masa Dijadualkan</th>
+              <th style="width:200px">Tindakan</th>
             </tr>
           </thead>
 
           <tbody>
 
-            <tr v-if="filteredProfiles.length === 0">
-              <td colspan="4" class="empty-cell">
+            <tr v-if="paginatedProfiles.length === 0">
+              <td colspan="6" class="empty-cell">
                 Tiada profil dijumpai.
               </td>
             </tr>
 
             <tr
-              v-for="(profile,index) in filteredProfiles"
+              v-for="(profile,index) in paginatedProfiles"
               :key="profile.id"
               class="clickable-row"
               @click="goToTugasan(profile)"
@@ -294,12 +503,30 @@ onMounted(() => {
               <td>{{ profile.tugasan_count }}</td>
 
               <td>
+                <StatusPill :status="profile.execution_status" />
+              </td>
+
+              <td>
+                <span v-if="profile.execution_type === 'SCHEDULED' && profile.scheduled_at">
+                  {{ formatDateTime(profile.scheduled_at) }}
+                </span>
+                <span v-else>-</span>
+              </td>
+
+              <td>
                 <div style="display:flex; gap:8px;">
                   <button
                     class="ghost-btn"
                     @click.stop="editProfile(profile)"
                   >
                     ✏️
+                  </button>
+
+                  <button
+                    class="ghost-btn"
+                    @click.stop="generateReport(profile)"
+                  >
+                    📄
                   </button>
                 </div>
               </td>
@@ -309,6 +536,12 @@ onMounted(() => {
         </table>
       </div>
     </div>
+
+    <AppPagination
+      :currentPage="currentPage"
+      :totalPages="totalPages"
+      @update:page="currentPage = $event"
+    />
 
     <!-- Footer -->
     <div class="footer-bar">
@@ -331,7 +564,6 @@ onMounted(() => {
       <div
         v-if="showModal"
         class="modal-overlay"
-        @click.self="closeModal"
       >
         <AppCard class="modal-card">
 
@@ -369,6 +601,87 @@ onMounted(() => {
               ></textarea>
             </div>
 
+            <div class="execution-type">
+              <label class="field-label">Jenis Pelaksanaan</label>
+
+              <!-- NEW GRID WRAPPER -->
+              <div class="execution-grid">
+
+                <!-- LEFT: IMMEDIATE -->
+                <label class="radio-option" :class="{ active: executionType === 'IMMEDIATE' }">
+                  <input
+                    type="radio"
+                    value="IMMEDIATE"
+                    v-model="executionType"
+                  />
+                  <span class="radio-label">
+                    Imbas Segera
+                    <small>Jalankan serta-merta</small>
+                  </span>
+                </label>
+
+                <!-- RIGHT: SCHEDULED + FIELDS -->
+                <div>
+                  <label class="radio-option" :class="{ active: executionType === 'SCHEDULED' }">
+                    <input
+                      type="radio"
+                      value="SCHEDULED"
+                      v-model="executionType"
+                    />
+                    <span class="radio-label">
+                      Jadualkan
+                      <small>Tetapkan masa pelaksanaan</small>
+                    </span>
+                  </label>
+
+                  <!-- MOVED HERE -->
+                  <div v-show="executionType === 'SCHEDULED'" class="schedule-box">
+
+                    <!-- DATE -->
+                    <div class="schedule-field tarikh-field">
+                      <label class="field-label">Tarikh</label>
+
+                      <div class="input-wrapper">
+                        <input
+                          ref="dateInput"
+                          type="text"
+                          placeholder="Pilih tarikh"
+                          class="spoting-input"
+                          readonly
+                        />
+                      </div>
+                    </div>
+
+                    <!-- TIME -->
+                    <div class="schedule-field masa-field">
+                      <label class="field-label">Masa</label>
+
+                      <div 
+                        class="custom-select" 
+                        :class="{ active: showTimeDropdown }" 
+                        @click.stop="openDropdown"
+                      >
+                        <span :class="{ placeholder: !selectedTime }">
+                          {{ selectedTime || "Pilih masa" }}
+                        </span>
+
+                        <div v-if="showTimeDropdown" class="dropdown">
+                          <div
+                            v-for="time in timeSlots"
+                            :key="time"
+                            class="dropdown-item"
+                            @click.stop="selectTime(time)"
+                          >
+                            {{ time }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="modal-actions">
@@ -458,6 +771,7 @@ onMounted(() => {
       </div>
     </transition>
 
+
     <!-- TOAST -->
     <transition name="fade">
       <div v-if="showToast" class="toast-success">
@@ -473,26 +787,14 @@ onMounted(() => {
   margin-bottom: 24px;
 }
 
-div,
-table,
-th,
-td,
-input,
-textarea,
-button,
-label,
-p,
-span {
-  font-family: "Proxima Nova", proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
 .main-page-title {
   font-size: 30px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.15;
   color: #1f2937;
   margin: 0;
   letter-spacing: -0.02em;
+  font-family: "Proxima Nova", proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .toolbar {
@@ -604,6 +906,16 @@ td {
   font-size: 15px;
   border-bottom: 1px solid #f1f5f9;
   color: #111827;
+}
+
+td:nth-child(3) {
+  text-align: center;
+}
+
+th:nth-child(3),
+th:nth-child(4),
+th:nth-child(5) {
+  text-align: left;
 }
 
 .clickable-row {
@@ -896,6 +1208,11 @@ textarea:focus {
   box-sizing: border-box;
 }
 
+.delete-input:focus {
+  outline: none;
+  border-color: #020265;
+}
+
 .delete-actions {
   display: flex;
   justify-content: flex-end;
@@ -903,23 +1220,33 @@ textarea:focus {
   margin-top: 24px;
 }
 
-.cancel-delete-btn,
-.danger-btn {
-  padding: 12px 18px;
-  border-radius: 14px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
 .cancel-delete-btn {
   border: 1px solid #e5e7eb;
   background: white;
+  color: #374151;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cancel-delete-btn:hover {
+  background: #f9fafb;
 }
 
 .danger-btn {
   border: none;
   background: linear-gradient(135deg, #dc2626, #b91c1c);
   color: white;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.danger-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .toast-success {
@@ -964,4 +1291,247 @@ textarea:focus {
     width: 100%;
   }
 }
+
+/* Field wrapper */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Label */
+.field-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+}
+
+/* Select wrapper (for styling + arrow control) */
+.select-wrapper {
+  position: relative;
+}
+
+/* RADIO GROUP (SPOTING STYLE) */
+.radio-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.radio-option {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 12px;
+  cursor: pointer;
+  background: #ffffff;
+  transition: 0.18s ease;
+}
+
+/* Hide default radio */
+.radio-option input {
+  margin-top: 3px;
+  accent-color: #020265;
+}
+
+/* Hover */
+.radio-option:hover {
+  background: #f8fafc;
+}
+
+/* Active */
+.radio-option.active {
+  border-color: #020265;
+  background: #eef2ff;
+}
+
+/* Text */
+.radio-label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  color: #111827;
+}
+
+.radio-label small {
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* SCHEDULE BOX */
+.schedule-box {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.execution-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+/* stack Tarikh + Masa under Jadualkan */
+.schedule-box {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* FIELD */
+.schedule-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* INPUT WRAPPER */
+.input-wrapper {
+  position: relative;
+}
+
+/* DATE + SELECT */
+.input-wrapper input,
+.input-wrapper select {
+  width: 100%;
+  height: 44px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0 12px;
+  font-size: 14px;
+  color: #111827;
+  background: #ffffff;
+  transition: 0.18s ease;
+  cursor: pointer;
+}
+
+/* HOVER */
+.input-wrapper input:hover,
+.input-wrapper select:hover {
+  border-color: #c7d2fe;
+}
+
+/* FOCUS */
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+  outline: none;
+  border-color: #020265;
+  box-shadow: 0 0 0 3px rgba(2, 2, 101, 0.08);
+}
+
+/* CUSTOM SELECT ARROW */
+.input-wrapper select {
+  appearance: none;
+  padding-right: 34px;
+}
+
+/* Arrow icon */
+.input-wrapper::after {
+  content: "▾";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #6b7280;
+  pointer-events: none;
+}
+
+/* DATE ICON CLEANUP (optional subtle fix) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* =========================
+CUSTOM TIME DROPDOWN (FIX)
+========================= */
+.custom-select {
+  position: relative;
+  width: 100%;
+  height: 44px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  padding: 0 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #ffffff;
+  cursor: pointer;
+
+  font-size: 14px;
+  color: #111827;
+
+  transition: 0.18s ease;
+}
+
+.custom-select::after {
+  content: "▾";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #6b7280;
+  pointer-events: none;
+}
+
+.custom-select:hover {
+  border-color: #c7d2fe;
+}
+
+.custom-select.active {
+  border-color: #020265;
+  box-shadow: 0 0 0 3px rgba(2, 2, 101, 0.08);
+}
+
+.custom-select span.placeholder {
+  color: #9ca3af;
+}
+
+.custom-select span {
+  color: #111827;
+}
+
+.dropdown {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  right: 0;
+
+  max-height: 140px;
+  overflow-y: auto;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+
+  z-index: 999;
+}
+
+/* Items */
+.dropdown-item {
+  padding: 10px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: #eef2ff;
+}
+
 </style>

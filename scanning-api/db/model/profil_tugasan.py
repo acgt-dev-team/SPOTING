@@ -1,5 +1,6 @@
 from sqlmodel import SQLModel, Field
 from datetime import datetime
+from pydantic import BaseModel
 
 class ProfilTugasan(SQLModel, table=True):
     __tablename__ = 'x_profil_tugasan'
@@ -9,3 +10,6 @@ class ProfilTugasan(SQLModel, table=True):
     selesai_pada: datetime | None
     tugasan_id: int = Field(foreign_key='tugasan.id')
     status_id: int = Field(foreign_key='status.id')
+
+class ProfilTugasanEjenResponse(BaseModel):
+    jadualkan_pada: datetime | None

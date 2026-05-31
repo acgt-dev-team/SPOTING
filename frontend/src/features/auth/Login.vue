@@ -15,7 +15,9 @@ const password = ref("")
 const error = ref("")
 const loading = ref(false)
 
-async function login(){
+async function login(e){
+  if (e) e.preventDefault()
+
   error.value = ""
 
   if(!username.value || !password.value){
@@ -27,36 +29,49 @@ async function login(){
 
   try {
     const res = await api.post("/auth/login", {
-  username: username.value,
-  password: password.value
-})
+      username: username.value,
+      password: password.value
+    })
 
-    // 🔐 Extract safely
     const token = res.data.access_token
     const role = res.data.role || "user"
+    const forcePasswordChange =
+      res.data.force_password_change
 
     if(!token){
       throw new Error("Token tidak diterima")
     }
 
-    // ✅ Save
     localStorage.setItem("token", token)
     localStorage.setItem("role", role)
+    localStorage.setItem("username", username.value)
+    localStorage.setItem("forcePasswordChange", forcePasswordChange.toString())
+    if (forcePasswordChange) {
+  router.push("/change-password")
+  return
+}
 
-    // ✅ Redirect
-    if(role === "admin"){
-      router.push("/admin/configuration")
-    } else {
-      router.push("/app/profil")
-    }
+if (
+  role === "admin" ||
+  role === "super admin"
+) {
+  router.push("/admin/configuration")
+} else if (role === "user") {
+  router.push("/admin/dashboard")
+}
 
   } catch (err) {
     console.error("Login error:", err)
 
-    error.value =
-      err.response?.data?.detail ||
-      err.response?.data?.message ||
-      "Login gagal"
+    if (
+      err.response?.status === 401 ||
+      err.response?.status === 400
+    ) {
+      error.value = "Nama pengguna atau kata laluan tidak sah"
+    } else {
+      error.value = "Login gagal"
+    }
+
   } finally {
     loading.value = false
   }
@@ -74,24 +89,29 @@ async function login(){
 
         <h2 class="title">Log masuk</h2>
 
-        <AppInput
-          label="Nama pengguna"
-          v-model="username"
-        />
+        <form @submit.prevent="login">
 
-        <AppInput
-          label="Kata laluan"
-          type="password"
-          v-model="password"
-        />
+          <AppInput
+            label="Nama pengguna"
+            v-model="username"
+          />
 
-        <p v-if="error" class="error">{{ error }}</p>
+          <AppInput
+            label="Kata laluan"
+            type="password"
+            v-model="password"
+          />
 
-        <AppButton
-          text="Log masuk"
-          class="login-btn"
-          @click="login"
-        />
+          <p v-if="error" class="error">{{ error }}</p>
+
+          <AppButton
+            text="Log masuk"
+            type="button"
+            class="login-btn"
+            @click="login"
+          />
+
+        </form>
 
         <div class="links">
           <span class="forgot">

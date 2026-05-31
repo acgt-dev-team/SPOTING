@@ -36,12 +36,12 @@ func printUsage() {
 
 func main() {
 	// Check if running interactively (double-clicked)
-	isInteractive := len(os.Args) < 2
+	if len(os.Args) < 2 {
 
-	if isInteractive {
-		runInteractiveMode()
-		return
-	}
+	startServer()
+
+	return
+}
 
 	command := os.Args[1]
 	args := os.Args[2:]

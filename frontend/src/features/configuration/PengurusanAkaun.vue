@@ -1,13 +1,25 @@
 <script setup>
-import { ref, computed } from "vue"
+import { ref, computed, onMounted, watch } from "vue"
+import api from "../../services/api"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
+import AppSelect from "../../ui/AppSelect.vue"
+import AppPagination from "../../ui/AppPagination.vue"
 
 const search = ref("")
 const showModal = ref(false)
 const showDeleteModal = ref(false)
+
+const showPasswordModal = ref(false)
+const generatedPassword = ref("")
+const generatedUsername = ref("")
+
+// ✅ TOGGLE MODAL
+const showToggleModal = ref(false)
+const toggleConfirmText = ref("")
+const toggleTarget = ref(null)
 
 const editingId = ref(null)
 const deleteId = ref(null)
@@ -15,36 +27,38 @@ const deleteConfirmText = ref("")
 
 const nama = ref("")
 const username = ref("")
-const password = ref("")
 const role = ref("user")
+const aktif = ref(true)
+const currentRole = localStorage.getItem("role")
 
-const accounts = ref([
-  {
-    id: 1,
-    nama: "Admin Utama",
-    username: "admin",
-    password: "********",
-    role: "admin",
-    created_at: "2026-04-24 09:30",
-    aktif: true
-  },
-  {
-    id: 2,
-    nama: "Test User",
-    username: "user01",
-    password: "********",
-    role: "user",
-    created_at: "2026-04-24 10:15",
-    aktif: true
-  }
-])
+const accounts = ref([])
+const errors = ref({})
+
+const currentPage = ref(1)
+const pageSize = 10
+
+const totalPages = computed(() => {
+  return Math.ceil(filteredAccounts.value.length / pageSize)
+})
 
 const filteredAccounts = computed(() => {
-  return accounts.value.filter((item) =>
+  return accounts.value
+  .slice()
+  .sort((a, b) => a.id - b.id) // ascending (stable)
+  .filter((item) =>
     item.nama.toLowerCase().includes(search.value.toLowerCase()) ||
     item.username.toLowerCase().includes(search.value.toLowerCase()) ||
     item.role.toLowerCase().includes(search.value.toLowerCase())
   )
+})
+
+watch(search, () => {
+  currentPage.value = 1
+})
+
+const paginatedAccounts = computed(() => {
+  const start = (currentPage.value - 1) * pageSize
+  return filteredAccounts.value.slice(start, start + pageSize)
 })
 
 const selectedAccount = computed(() =>
@@ -55,11 +69,23 @@ const canDelete = computed(() =>
   deleteConfirmText.value.trim().toLowerCase() === "padam"
 )
 
+// ✅ Toggle keyword logic
+const toggleKeyword = computed(() =>
+  toggleTarget.value?.aktif ? "Nyahaktif" : "Aktifkan"
+)
+
+const toggleKeywordLower = computed(() =>
+  toggleKeyword.value.toLowerCase()
+)
+
+const canToggle = computed(() =>
+  toggleConfirmText.value.trim().toLowerCase() === toggleKeywordLower.value
+)
 function resetForm() {
   nama.value = ""
   username.value = ""
-  password.value = ""
   role.value = "user"
+  aktif.value = true
 }
 
 function openModal() {
@@ -72,60 +98,146 @@ function closeModal() {
   showModal.value = false
 }
 
+function validateForm() {
+  const e = {}
+
+  if (!nama.value.trim()) {
+    e.nama = "Nama diperlukan"
+  }
+
+  if (!username.value.trim()) {
+    e.username = "Nama pengguna diperlukan"
+  }
+
+  errors.value = e
+
+  return Object.keys(e).length === 0
+}
+
 function editAccount(item) {
   editingId.value = item.id
   nama.value = item.nama
   username.value = item.username
-  password.value = item.password
   role.value = item.role
+  aktif.value = item.aktif ?? true
   showModal.value = true
 }
 
-function saveAccount() {
-  if (!nama.value.trim() || !username.value.trim()) return
-
-  if (editingId.value) {
-    const row = accounts.value.find(
-      (item) => item.id === editingId.value
-    )
-
-    row.nama = nama.value
-    row.username = username.value
-    row.password = password.value
-    row.role = role.value
-
-  } else {
-    accounts.value.unshift({
-      id: Date.now(),
-      nama: nama.value,
-      username: username.value,
-      password: password.value || "********",
-      role: role.value,
-      created_at: new Date().toLocaleString(),
-      aktif: true
-    })
+async function fetchAccounts() {
+  try {
+    const res = await api.get("/auth/users")
+    accounts.value = res.data
+  } catch (err) {
+    console.error(err)
   }
-
-  closeModal()
 }
 
-function askDelete(item) {
+onMounted(() => {
+  fetchAccounts()
+})
+
+async function saveAccount() {
+
+  // ✅ VALIDATION
+  if (
+    !nama.value.trim() ||
+    !username.value.trim()
+  ) {
+    alert("Sila lengkapkan semua maklumat sebelum simpan.")
+    return
+  }
+
+  try {
+
+    if (editingId.value) {
+
+      await api.put(
+        `/auth/users/${editingId.value}`,
+        {
+          nama: nama.value,
+          username: username.value,
+          role: role.value,
+          aktif: aktif.value
+        }
+      )
+
+    } else {
+
+      const res = await api.post("/auth/users", {
+        nama: nama.value,
+        username: username.value,
+        role: role.value,
+        aktif: aktif.value
+      })
+
+      generatedPassword.value = res.data.generated_password
+      generatedUsername.value = username.value
+      showPasswordModal.value = true
+    }
+
+    await fetchAccounts()
+
+    closeModal()
+
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+async function askDelete(item) {
   deleteId.value = item.id
   deleteConfirmText.value = ""
   showDeleteModal.value = true
 }
 
-function closeDeleteModal() {
+async function closeDeleteModal() {
   showDeleteModal.value = false
 }
 
-function confirmDelete() {
-  accounts.value = accounts.value.filter(
-    (item) => item.id !== deleteId.value
-  )
+async function confirmDelete() {
+  try {
+    await api.delete(
+      `/auth/users/${deleteId.value}`
+    )
 
-  showDeleteModal.value = false
-  showModal.value = false
+    await fetchAccounts()
+
+    showDeleteModal.value = false
+    showModal.value = false
+
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+// ✅ HANDLE TOGGLE (core logic you wanted)
+function handleToggle(event, isEdit = false) {
+  if (!editingId.value) {
+    aktif.value = !aktif.value
+    return
+  }
+
+  // ❗ stop checkbox from changing ONLY in edit mode
+  if (isEdit && event) {
+    event.preventDefault()
+  }
+
+  toggleTarget.value = {
+    id: editingId.value,
+    aktif: aktif.value
+  }
+
+  toggleConfirmText.value = ""
+  showToggleModal.value = true
+}
+
+function closeToggleModal() {
+  showToggleModal.value = false
+}
+
+function confirmToggle() {
+  aktif.value = !toggleTarget.value.aktif
+  showToggleModal.value = false
 }
 </script>
 
@@ -165,15 +277,12 @@ function confirmDelete() {
       <div class="table-scroll">
 
         <table>
-
           <thead>
             <tr>
               <th style="width:80px">BIL</th>
               <th style="width:220px">NAMA</th>
-              <th style="width:160px">USERNAME</th>
-              <th style="width:150px">PASSWORD</th>
+              <th style="width:160px">NAMA PENGGUNA</th>
               <th style="width:120px">PERANAN</th>
-              <th style="width:180px">CREATED AT</th>
               <th style="width:120px">TINDAKAN</th>
             </tr>
           </thead>
@@ -181,16 +290,17 @@ function confirmDelete() {
           <tbody>
 
             <tr v-if="filteredAccounts.length === 0">
-              <td colspan="8" class="empty-cell">
+              <td colspan="7" class="empty-cell">
                 Tiada akaun dijumpai.
               </td>
             </tr>
 
             <tr
-              v-for="(item,index) in filteredAccounts"
+              v-for="(item,index) in paginatedAccounts"
               :key="item.id"
+              class="clickable-row"
             >
-              <td>{{ index + 1 }}</td>
+              <td>{{ (currentPage - 1) * pageSize + index + 1 }}</td>
 
               <td>
                 <div class="org-cell">
@@ -208,9 +318,15 @@ function confirmDelete() {
               </td>
 
               <td>{{ item.username }}</td>
-              <td>{{ item.password }}</td>
-              <td>{{ item.role }}</td>
-              <td>{{ item.created_at }}</td>
+              <td>
+  {{
+    item.role === "super admin"
+      ? "Super Admin"
+      : item.role === "admin"
+      ? "Pentadbir"
+      : "Pengguna"
+  }}
+</td>
 
               <td>
                 <button
@@ -224,11 +340,16 @@ function confirmDelete() {
             </tr>
 
           </tbody>
-
         </table>
 
       </div>
     </div>
+
+    <AppPagination
+      :currentPage="currentPage"
+      :totalPages="totalPages"
+      @update:page="currentPage = $event"
+    />
 
     <div class="footer-bar">
       <div class="count-pill">
@@ -244,7 +365,6 @@ function confirmDelete() {
       <div
         v-if="showModal"
         class="modal-overlay"
-        @click.self="closeModal"
       >
 
         <AppCard class="modal-card">
@@ -282,19 +402,39 @@ function confirmDelete() {
               placeholder="Masukkan username"
             />
 
-            <AppInput
-              v-model="password"
-              label="Kata Laluan"
-              placeholder="Masukkan password"
+            <AppSelect
+              v-model="role"
+              label="Peranan"
+              :options="
+  currentRole === 'super admin'
+    ? [
+        { label: 'Pentadbir', value: 'admin' },
+        { label: 'Pengguna', value: 'user' }
+      ]
+    : [
+        { label: 'Pengguna', value: 'user' }
+      ]
+"
             />
 
+            <!-- ✅ TOGGLE (UPDATED) -->
             <div class="field">
-              <label>Peranan</label>
+              <label>Status Akaun</label>
 
-              <select v-model="role">
-                <option value="admin">Pentadbir</option>
-                <option value="user">Pengguna</option>
-              </select>
+              <div class="switch-wrapper">
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    :checked="aktif"
+                    @click="editingId ? handleToggle($event, true) : handleToggle()"
+                  />
+                  <span class="slider"></span>
+                </label>
+
+                <span class="status-text">
+                  {{ aktif ? "Aktif" : "Tidak Aktif" }}
+                </span>
+              </div>
             </div>
 
           </div>
@@ -304,9 +444,7 @@ function confirmDelete() {
             <button
               v-if="editingId"
               class="delete-trigger-btn"
-              @click="askDelete({
-                id: editingId
-              })"
+              @click="askDelete({ id: editingId })"
             >
               Padam
             </button>
@@ -354,8 +492,8 @@ function confirmDelete() {
               Taip <strong>Padam</strong> untuk sahkan:
             </label>
 
-            <div class="danger-word">
-              Padam
+            <div class="org-delete-name">
+              <span class="danger-word">Padam</span>
             </div>
 
             <input
@@ -390,7 +528,123 @@ function confirmDelete() {
       </div>
     </transition>
 
+    <!-- ✅ TOGGLE CONFIRM MODAL -->
+    <transition name="fade">
+      <div
+        v-if="showToggleModal"
+        class="modal-overlay"
+      >
+
+        <div class="delete-modal">
+
+          <div class="delete-icon">⚠️</div>
+
+          <h3>
+            {{ toggleTarget?.aktif
+              ? "Nyahaktif akaun ini?"
+              : "Aktifkan akaun ini?"
+            }}
+          </h3>
+
+          <p class="delete-desc">
+            Taip <strong>{{ toggleKeyword }}</strong> untuk sahkan.
+          </p>
+
+          <div class="confirm-box">
+
+            <label>
+              Sahkan tindakan:
+            </label>
+
+            <div class="org-delete-name">
+              <span class="danger-word">
+                {{ toggleKeyword }}
+              </span>
+            </div>
+
+            <input
+              v-model="toggleConfirmText"
+              class="delete-input"
+              :placeholder="toggleKeyword"
+            />
+
+          </div>
+
+          <div class="delete-actions">
+
+            <button
+              class="cancel-delete-btn"
+              @click="closeToggleModal"
+            >
+              Batal
+            </button>
+
+            <button
+              class="danger-btn"
+              :disabled="!canToggle"
+              @click="confirmToggle"
+            >
+              Sahkan
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </transition>
+
   </div>
+
+  <!-- PASSWORD SUCCESS MODAL -->
+<transition name="fade">
+  <div
+    v-if="showPasswordModal"
+    class="modal-overlay"
+  >
+    <div class="delete-modal">
+
+      <div class="delete-icon">🔐</div>
+
+      <h3>Akaun Berjaya Dicipta</h3>
+
+      <p class="delete-desc">
+        Kata laluan sementara hanya dipaparkan sekali.
+        Sila simpan dan kongsi kepada pengguna.
+      </p>
+
+      <div class="confirm-box">
+
+        <label>Nama Pengguna</label>
+
+        <div class="org-delete-name">
+          {{ generatedUsername }}
+        </div>
+
+        <label style="margin-top:12px">
+          Kata Laluan Sementara
+        </label>
+
+        <div class="org-delete-name">
+          <strong>{{ generatedPassword }}</strong>
+        </div>
+
+      </div>
+
+      <div class="delete-actions">
+
+        <button
+          class="cancel-delete-btn"
+          @click="showPasswordModal = false"
+        >
+          Tutup
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</transition>
 </template>
 
 <style scoped>
@@ -699,16 +953,6 @@ td {
   color: #374151;
 }
 
-.field select {
-  width: 100%;
-  height: 52px;
-  padding: 0 16px;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  background: #fff;
-  font-size: 15px;
-}
-
 .modal-actions {
   display: flex;
   justify-content: flex-end;
@@ -726,6 +970,8 @@ td {
   font-weight: 800;
   cursor: pointer;
 }
+
+/* DELETE MODAL */
 
 .delete-modal {
   width: 100%;
@@ -755,6 +1001,7 @@ td {
   font-size: 24px;
   font-weight: 900;
   color: #111827;
+  margin-bottom: 8px;
 }
 
 .delete-desc {
@@ -767,15 +1014,25 @@ td {
   display: block;
   font-size: 14px;
   font-weight: 700;
+  color: #374151;
   margin-bottom: 10px;
 }
 
-.danger-word {
+.org-delete-name {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: 800;
+  margin-bottom: 12px;
   text-align: center;
+}
+
+.danger-word {
   color: #dc2626;
   font-size: 20px;
   font-weight: 900;
-  margin-bottom: 12px;
+  letter-spacing: 0.04em;
 }
 
 .delete-input {
@@ -783,7 +1040,13 @@ td {
   border: 1px solid #dbe3ff;
   border-radius: 14px;
   padding: 14px;
+  font-size: 14px;
   box-sizing: border-box;
+}
+
+.delete-input:focus {
+  outline: none;
+  border-color: #020265;
 }
 
 .delete-actions {
@@ -796,8 +1059,15 @@ td {
 .cancel-delete-btn {
   border: 1px solid #e5e7eb;
   background: white;
+  color: #374151;
   padding: 12px 18px;
   border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cancel-delete-btn:hover {
+  background: #f9fafb;
 }
 
 .danger-btn {
@@ -806,9 +1076,75 @@ td {
   color: white;
   padding: 12px 18px;
   border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .danger-btn:disabled {
-  opacity: .45;
+  opacity: 0.45;
+  cursor: not-allowed;
 }
+
+/* ✅ ADDED TOGGLE SWITCH */
+
+.switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #d1d5db;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.25s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.switch input:checked + .slider {
+  background: #22c55e;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+.status-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.clickable-row {
+  transition: 0.18s ease;
+}
+
+.clickable-row:hover {
+  background: #f4f6ff;
+}
+
 </style>

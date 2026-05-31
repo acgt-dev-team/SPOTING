@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from api.controllers import agent, user
+from api.controllers import agent
+from api.controllers import user
 
 app = FastAPI()
 

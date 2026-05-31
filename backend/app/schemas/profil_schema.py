@@ -1,10 +1,18 @@
 from pydantic import BaseModel
+from datetime import datetime
 
 
 class ProfilCreate(BaseModel):
     tapak_id: int
     nama: str
     keterangan: str | None = None
+
+    execution_type: str = "IMMEDIATE"
+    scheduled_at: datetime | None = None   # ✅ FIXED
+    is_scheduled: bool = False
+
+    report_template: str | None = "DEFAULT"
+    report_format: str | None = "EXCEL"
 
 
 class ProfilResponse(BaseModel):
@@ -14,6 +22,15 @@ class ProfilResponse(BaseModel):
     nama: str
     keterangan: str | None
     aktif: bool
+
+    execution_type: str
+    scheduled_at: datetime | None = None   # ✅ FIXED
+    is_scheduled: bool
+    execution_status: str | None = None
+
+    report_template: str | None = "DEFAULT"
+    report_format: str | None = "EXCEL"
+
     tugasan_count: int = 0
 
     class Config:

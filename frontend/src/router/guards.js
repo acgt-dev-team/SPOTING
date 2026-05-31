@@ -1,33 +1,86 @@
 export function setupGuards(router) {
+
   router.beforeEach((to, from, next) => {
-    const token = localStorage.getItem("token")
-    const role = localStorage.getItem("role")
 
-    // 🔐 If route requires auth
-    if (to.meta.requiresAuth) {
-      if (!token) {
-        return next("/login")
-      }
+    const token =
+      localStorage.getItem("token")
 
-      // 🚫 Role mismatch
-      if (to.meta.role && to.meta.role !== role) {
-        if (role === "admin") {
-          return next("/admin/configuration")
-        } else {
-          return next("/app/profil")
-        }
-      }
+    const role =
+      localStorage.getItem("role")
+
+    const forcePasswordChange =
+      localStorage.getItem(
+        "forcePasswordChange"
+      )
+
+    // =========================
+    // PROTECTED ROUTES
+    // =========================
+    if (
+      to.meta?.requiresAuth &&
+      !token
+    ) {
+      return next("/login")
     }
 
-    // 🚫 Prevent logged-in user going back to login
-    if (to.path === "/login" && token) {
-      if (role === "admin") {
-        return next("/admin/configuration")
-      } else {
-        return next("/app/profil")
-      }
+    // =========================
+    // FORCE CHANGE PASSWORD
+    // =========================
+    if (
+      forcePasswordChange === "true" &&
+      to.path !== "/change-password"
+    ) {
+      return next("/change-password")
     }
 
+    // =========================
+    // BLOCK LOGIN PAGE
+    // =========================
+    if (
+      (
+        to.path === "/login" ||
+        to.path === "/change-password"
+      ) &&
+      token &&
+      forcePasswordChange !== "true"
+    ) {
+
+      if (
+        role === "admin" ||
+        role === "super admin"
+      ) {
+        return next(
+          "/admin/configuration"
+        )
+      }
+
+      if (role === "user") {
+        return next(
+          "/admin/dashboard/"
+        )
+      }
+
+    }
+
+    // =========================
+    // USER ACCESS RESTRICTION
+    // =========================
+    if (
+      role === "user" &&
+      to.path.startsWith(
+        "/admin/accounts"
+      )
+    ) {
+      return next(
+        "/admin/dashboard/"
+      )
+    }
+
+    // =========================
+    // ALLOW ROUTE
+    // =========================
     next()
+
   })
+
 }
