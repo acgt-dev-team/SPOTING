@@ -7,7 +7,7 @@ from db.model.tugasan import Tugasan
 import ipaddress
 from datetime import datetime
 
-with Session(engine) as session:
+def run_check(session):
     stmt = select(ProfilTugasan).where(ProfilTugasan.status_id == 1)
     profil_tugasan_list = session.exec(stmt).all()
 
@@ -24,3 +24,7 @@ with Session(engine) as session:
             item.selesai_pada = datetime.now()
             session.add(item)
             session.commit()
+
+if __name__ == '__main__':
+    with Session(engine) as session:
+        run_check(session)

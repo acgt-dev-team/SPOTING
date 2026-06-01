@@ -8,7 +8,8 @@ import os
 
 agent_url = os.getenv('AGENT_URL')
 
-with Session(engine) as session:
+def run_schedule(session):
+
     now = datetime.now()
     stmt = select(ProfilTugasan).where(
         ProfilTugasan.status_id == 2,
@@ -37,3 +38,7 @@ with Session(engine) as session:
 
             except Exception as e:
                 print('error =', e)
+
+if __name__ == '__main__':
+    with Session(engine) as session:
+        run_schedule(session)

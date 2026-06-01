@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from api.controllers import agent
-from api.controllers import user
+from api.controllers import agent, user
+from db.model.tapak import Tapak
 
 app = FastAPI()
 
