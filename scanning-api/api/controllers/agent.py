@@ -58,17 +58,28 @@ async def hasil_imbasan(body: EjenHasil, session: SessionDep):
         stmt = select(Ejen).where(Ejen.ip_address == host_ip)
         ejen = session.exec(stmt).one()
 
-        hasil = HasilImbasan(
-            profil_tugasan_id=1,
-            ejen_id=ejen.id,
-            hasil=hasil_imbasan
+        stmt = select(Tugasan).where(
+            Tugasan.ip_start <= ejen.ip_address,
+            Tugasan.ip_end >= ejen.ip_address
         )
-        session.add(hasil)
-        session.commit()
+        tugasan = session.exec(stmt).one()
+
+        stmt = select(ProfilTugasan).where(ProfilTugasan.tugasan_id == tugasan.id)
+        profil_tugasan = session.exec(stmt).all()
+
+        for pt in profil_tugasan:
+            hasil = HasilImbasan(
+                profil_tugasan_id=pt.id,
+                ejen_id=ejen.id,
+                hasil=hasil_imbasan
+            )
+            session.add(hasil)
+            session.commit()
 
         return {
             'status': 200,
             'message': 'Succeed'
         }
-    except Exception:
+    except Exception as e:
+        print(e)
         raise HTTPException(status_code=400, detail={ 'message': 'Failed'})

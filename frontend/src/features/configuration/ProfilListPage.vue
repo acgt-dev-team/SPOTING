@@ -156,6 +156,7 @@ watch(cronEnabled, (enabled) => {
 ========================= */
 function initFlatpickr() {
   if (dateInput.value) {
+
     if (fpInstance) {
       fpInstance.destroy()
     }
@@ -373,6 +374,7 @@ function editProfile(profile) {
     dt.getDate()
   ).padStart(2,"0")}`
     selectedTime.value = dt.toTimeString().slice(0, 5)
+
   } else {
     const now = new Date()
 
@@ -698,7 +700,6 @@ onBeforeUnmount(() => {
       <div
         v-if="showModal"
         class="modal-overlay"
-        @click.self="closeModal"
       >
         <AppCard class="modal-card">
 

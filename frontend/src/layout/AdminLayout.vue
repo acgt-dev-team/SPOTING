@@ -217,7 +217,6 @@ function goProfile() {
 
         <div class="brand">
           <img :src="logo" class="logo" />
-          <span class="brand-text">Paparan Pentadbir</span>
         </div>
 
         <div class="logo-divider"></div>
@@ -363,7 +362,7 @@ function goProfile() {
 }
 
 .logo {
-  width: 110px;
+  width: 160px;
 }
 
 .brand-text {
