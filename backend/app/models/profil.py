@@ -21,6 +21,17 @@ class Profil(Base):
     scheduled_at = Column(TIMESTAMP, nullable=True)
     is_scheduled = Column(Boolean, default=False)
     execution_status = Column(String(50), default="belum")
+    cron_enabled = Column(Boolean, default=False)
+
+    frequency = Column(
+        String(20),
+        nullable=True
+    )
+
+    cron_expression = Column(
+        String(100),
+        nullable=True
+    )
 
     report_template = Column(String(100), default="DEFAULT")
     report_format = Column(String(20), default="EXCEL")

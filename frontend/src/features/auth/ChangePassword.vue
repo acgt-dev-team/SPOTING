@@ -33,19 +33,19 @@ async function submit(e) {
   try {
 
     const username =
-      localStorage.getItem("username")
+      sessionStorage.getItem("username")
 
     await api.post("/auth/change-password", {
       username,
       password: password.value
     })
 
-    localStorage.removeItem(
+    sessionStorage.removeItem(
       "forcePasswordChange"
     )
 
     const role =
-      localStorage.getItem("role")
+      sessionStorage.getItem("role")
 
     if (
       role === "admin" ||

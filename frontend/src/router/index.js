@@ -10,6 +10,7 @@ import ChangePassword from "../features/auth/ChangePassword.vue"
 // LAYOUTS
 // =========================
 import AdminLayout from "../layout/AdminLayout.vue"
+import ProfileUserPage from "../features/profile/ProfileUserPage.vue"
 
 // =========================
 // ADMIN
@@ -41,6 +42,8 @@ const routes = [
   component: ChangePassword
   },
 
+  
+
   // =========================
   // ADMIN (WITH LAYOUT)
   // =========================
@@ -56,6 +59,10 @@ const routes = [
       {
         path: "dashboard/",
         component: DashboardContent // ✅ now using your new file
+      },
+      {
+        path: "profile-user",
+        component: ProfileUserPage
       },
       {
         path: "configuration",

@@ -40,6 +40,9 @@ def get_profil_by_tapak(db: Session, tapak_id: int):
             "execution_type": profil.execution_type,
             "scheduled_at": profil.scheduled_at,
             "is_scheduled": profil.is_scheduled,
+            "cron_enabled": profil.cron_enabled,
+            "frequency": profil.frequency,
+            "cron_expression": profil.cron_expression,
             "tugasan_count": tugasan_count,
             "execution_status": profil.execution_status   # ✅ source of truth
         })
@@ -93,6 +96,18 @@ def create_profil(db: Session, data: dict):
         scheduled_at=data.get("scheduled_at"),
         is_scheduled=(execution_type == "SCHEDULED"),
         execution_status=status,
+        cron_enabled=data.get(
+            "cron_enabled",
+            False
+        ),
+
+        frequency=data.get(
+            "frequency"
+        ),
+
+        cron_expression=data.get(
+            "cron_expression"
+        ),
         report_template=data.get("report_template", "DEFAULT"),
         report_format=data.get("report_format", "EXCEL")
     )
@@ -114,6 +129,9 @@ def create_profil(db: Session, data: dict):
         "scheduled_at": new_profil.scheduled_at,
         "is_scheduled": new_profil.is_scheduled,
         "execution_status": new_profil.execution_status,
+        "cron_enabled": new_profil.cron_enabled,
+        "frequency": new_profil.frequency,
+        "cron_expression": new_profil.cron_expression,
         "report_template": new_profil.report_template,
         "report_format": new_profil.report_format
     }
@@ -139,6 +157,19 @@ def update_profil(db: Session, id: int, data: dict):
         profil.execution_status = "in process"
     else:
         profil.execution_status = "telah dijadualkan"
+    
+    profil.cron_enabled = data.get(
+        "cron_enabled",
+        False
+    )
+
+    profil.frequency = data.get(
+        "frequency"
+    )
+
+    profil.cron_expression = data.get(
+        "cron_expression"
+    )
 
     profil.report_template = data.get("report_template", "DEFAULT")
     profil.report_format = data.get("report_format", "EXCEL")
@@ -157,6 +188,9 @@ def update_profil(db: Session, id: int, data: dict):
         "scheduled_at": profil.scheduled_at,
         "is_scheduled": profil.is_scheduled,
         "execution_status": profil.execution_status,
+        "cron_enabled": profil.cron_enabled,
+        "frequency": profil.frequency,
+        "cron_expression": profil.cron_expression,
         "report_template": profil.report_template,
         "report_format": profil.report_format
     }

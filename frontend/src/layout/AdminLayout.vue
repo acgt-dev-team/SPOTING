@@ -13,11 +13,11 @@ import {
 const route = useRoute()
 const router = useRouter()
 
-const currentRole = localStorage.getItem("role")
+const currentRole = sessionStorage.getItem("role")
 
 const user = ref({
-  username: localStorage.getItem("username") || "User",
-  role: localStorage.getItem("role") || "user"
+  username: sessionStorage.getItem("username") || "User",
+  role: sessionStorage.getItem("role") || "user"
 })
 
 const ministryName = computed(() => "Kementerian Dalam Negeri")
@@ -37,6 +37,12 @@ const menuItems = computed(() => {
       icon: Settings,
       path: "/admin/configuration",
       active: route.path.startsWith("/admin/configuration")
+    },
+    {
+      label: "Profil Saya",
+      icon: UserPlus,
+      path: "/admin/profile-user",
+      active: route.path.startsWith("/admin/profile-user")
     }
   ]
 }
@@ -83,6 +89,11 @@ const breadcrumbs = computed(() => {
       to: null
     })
 
+  } else if (path.includes("/profile-user")) {
+    crumbs.push({
+      label: "Profil Saya",
+      to: null
+    })
   } else if (path.includes("/accounts")) {
     crumbs.push({
       label: "Pengurusan Pengguna",
@@ -181,9 +192,18 @@ function goTo(crumb, index) {
 }
 
 function logout() {
-  localStorage.removeItem("token")
-  localStorage.removeItem("role")
+
+  sessionStorage.removeItem("token")
+  sessionStorage.removeItem("role")
+  sessionStorage.removeItem("username")
+  sessionStorage.removeItem("forcePasswordChange")
+
   router.push("/login")
+
+}
+
+function goProfile() {
+  router.push("/admin/profile-user")
 }
 </script>
 
@@ -221,7 +241,10 @@ function logout() {
       <!-- PROFILE -->
       <div class="profile-card">
 
-        <div class="profile-top">
+        <div
+  class="profile-top clickable-profile"
+  @click="goProfile"
+>
           <div class="avatar">
             {{ user.username.charAt(0) }}
           </div>
@@ -520,5 +543,16 @@ function logout() {
   font-size: 20px;
   font-weight: 500;
   color: #111827;
+}
+
+.clickable-profile {
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 6px;
+  transition: 0.15s ease;
+}
+
+.clickable-profile:hover {
+  background: #f3f4f6;
 }
 </style>
