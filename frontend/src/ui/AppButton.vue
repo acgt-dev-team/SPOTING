@@ -25,92 +25,97 @@ defineProps({
 </template>
 
 <style scoped>
-.btn {
-  min-height: 52px;
-  padding: 14px 22px;
-  border-radius: 16px;
-  font-size: 14px;
-  font-weight: 800;
-  cursor: pointer;
-  border: none;
-  transition: 0.18s ease;
-  white-space: nowrap;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.btn{
+  min-height:46px;
+  padding:0 20px;
+  border-radius:14px;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  border:none;
+  transition:.18s;
+  white-space:nowrap;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
 }
 
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-.full {
-  width: 100%;
+.full{
+  width:100%;
 }
 
 /* PRIMARY */
-.primary {
-  background: linear-gradient(135deg, #020265, #0b0b8f);
-  color: white;
-  box-shadow: 0 14px 28px rgba(2, 2, 101, 0.25);
+
+.primary{
+  background:#4F46E5;
+  color:white;
+  box-shadow:0 8px 18px rgba(79,70,229,.18);
+}
+
+.primary:hover{
+  background:#4338CA;
 }
 
 /* OUTLINE */
-.outline {
-  background: white;
-  border: 1px solid #d1d5db;
-  color: #111827;
+
+.outline{
+  background:white;
+  border:1px solid #E2E8F0;
+  color:#475569;
 }
 
-.outline:hover {
-  border-color: #c7d2fe;
-  background: #f4f6ff;
+.outline:hover{
+  background:#F8FAFC;
+  border-color:#CBD5E1;
 }
 
 /* SECONDARY */
-.secondary {
-  background: #eef1ff;
-  color: #020265;
+
+.secondary{
+  background:#EEF2FF;
+  color:#4F46E5;
 }
 
-.secondary:hover {
-  background: #dde3ff;
+.secondary:hover{
+  background:#E0E7FF;
 }
 
 /* LINK */
-.link {
-  background: none;
-  color: #020265;
-  text-decoration: underline;
-  padding: 0;
-  min-height: auto;
-  border-radius: 0;
-  box-shadow: none;
+
+.link{
+  background:none;
+  color:#4F46E5;
+  text-decoration:none;
+  padding:0;
+  min-height:auto;
+  border-radius:0;
+  box-shadow:none;
 }
 
-/* =========================
-    DANGER BUTTON (RED)
-========================= */
-
-/* solid danger */
-.danger {
-  background: #dc2626;
-  color: white;
+.link:hover{
+  color:#4338CA;
 }
 
-.danger:hover {
-  background: #b91c1c;
+/* DANGER */
+
+.danger{
+  background:#DC2626;
+  color:white;
 }
 
-/* outline + danger */
-.outline.danger {
-  background: white;
-  border: 1px solid #dc2626;
-  color: #dc2626;
+.danger:hover{
+  background:#B91C1C;
 }
 
-.outline.danger:hover {
-  background: #fee2e2;
-  border-color: #dc2626;
+/* OUTLINE DANGER */
+
+.outline.danger{
+  background:white;
+  border:1px solid #DC2626;
+  color:#DC2626;
+}
+
+.outline.danger:hover{
+  background:#FEF2F2;
 }
 </style>

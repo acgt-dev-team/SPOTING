@@ -91,6 +91,7 @@ onMounted(loadProfile)
     <AppCard class="profile-card">
 
       <div class="card-header">
+        <p class="eyebrow">PROFIL PENGGUNA</p>
         <h3>Maklumat Akaun</h3>
       </div>
 
@@ -104,7 +105,7 @@ onMounted(loadProfile)
 
         <AppInput
           v-model="username"
-          label="Nama Pengguna"
+          label="ID Pengguna"
           disabled
         />
 
@@ -175,61 +176,133 @@ onMounted(loadProfile)
   line-height: 1.6;
 }
 
+.eyebrow{
+  color:#4F46E5;
+  font-size:12px;
+  letter-spacing:.12em;
+  font-weight:700;
+  margin-bottom:8px;
+}
+
 /* CARD */
-.profile-card {
-  padding: 24px;
+:root{
+  --primary:#4F46E5;
+  --primary-soft:#EEF2FF;
+  --text:#0F172A;
+  --muted:#64748B;
+  --border:#E2E8F0;
+  --bg:#F8FAFC;
 }
 
-.card-header {
-  margin-bottom: 24px;
+/* HEADER */
+
+.hierarchy-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:32px;
+  margin-bottom:32px;
+  box-shadow:0 1px 2px rgba(15,23,42,.04);
 }
 
-.card-header h3 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 600;
+.hierarchy-left h2{
+  margin:0;
+  font-size:32px;
+  font-weight:800;
+  color:var(--text);
+}
+
+.section-desc{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.6;
+  max-width:720px;
+}
+
+/* CARD */
+
+.profile-card{
+  padding:32px !important;
+  border-radius:20px;
+  border:1px solid var(--border);
+  box-shadow:0 1px 2px rgba(15,23,42,.04);
+}
+
+.card-header{
+  margin-bottom:28px;
+}
+
+.card-header h3{
+  margin:0;
+  font-size:22px;
+  font-weight:800;
+  color:var(--text);
 }
 
 /* FORM */
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
 }
 
-/* STATUS */
-.success-message {
-  margin-top: 20px;
-  padding: 12px;
-  border-radius: 8px;
-  background: #ecfdf5;
-  color: #065f46;
-  font-size: 14px;
+/* SUCCESS */
+
+.success-message{
+  margin-top:24px;
+  padding:14px 16px;
+  border-radius:14px;
+  background:#ECFDF5;
+  border:1px solid #BBF7D0;
+  color:#166534;
+  font-size:14px;
+  font-weight:600;
 }
 
-.error-message {
-  margin-top: 20px;
-  padding: 12px;
-  border-radius: 8px;
-  background: #fef2f2;
-  color: #991b1b;
-  font-size: 14px;
+/* ERROR */
+
+.error-message{
+  margin-top:24px;
+  padding:14px 16px;
+  border-radius:14px;
+  background:#FEF2F2;
+  border:1px solid #FECACA;
+  color:#B91C1C;
+  font-size:14px;
+  font-weight:600;
 }
 
-/* BUTTON */
-.action-bar {
-  margin-top: 24px;
-  display: flex;
-  justify-content: flex-end;
+/* ACTIONS */
+
+.action-bar{
+  margin-top:32px;
+  padding-top:24px;
+  border-top:1px solid #F1F5F9;
+  display:flex;
+  justify-content:flex-end;
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
 
-  .form-grid {
-    grid-template-columns: 1fr;
+@media(max-width:768px){
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .profile-card{
+    padding:24px !important;
+  }
+
+  .hierarchy-card{
+    padding:24px;
+  }
+
+  .hierarchy-left h2{
+    font-size:28px;
   }
 
 }
-
 </style>

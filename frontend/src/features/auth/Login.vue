@@ -84,17 +84,19 @@ if (
 
       <div class="card">
 
-        <h2 class="title">Log masuk</h2>
+        <h2 class="title">
+          Log Masuk
+        </h2>
 
         <form @submit.prevent="login">
 
           <AppInput
-            label="Nama pengguna"
+            label="ID Pengguna"
             v-model="username"
           />
 
           <AppInput
-            label="Kata laluan"
+            label="Kata Laluan"
             type="password"
             v-model="password"
           />
@@ -124,70 +126,124 @@ if (
 </template>
 
 <style scoped>
-/* PAGE BACKGROUND */
-.page {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+:root{
+  --primary:#4F46E5;
+  --primary-hover:#4338CA;
+  --text:#0F172A;
+  --muted:#64748B;
+  --border:#E2E8F0;
+  --bg:#F8FAFC;
 }
 
-/* CENTER WRAPPER */
-.login-wrapper {
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
+.page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:#F8FAFC;
 }
 
-/* LOGO */
-.logo {
-  width: 140px;
-  margin-bottom: 20px;
+.login-wrapper{
+  width:100%;
+  max-width:480px;
+  text-align:center;
 }
 
-/* CARD */
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  text-align: left;
+.logo{
+  width:160px;
+  margin-bottom:16px;
 }
 
-/* TITLE */
-.title {
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 600;
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:32px;
+  text-align:left;
+  box-shadow:0 1px 2px rgba(15,23,42,.04);
 }
 
-/* BUTTON */
-.login-btn {
-  width: 100%;
-  margin-top: 15px;
+.eyebrow{
+  text-align:center;
+  color:var(--primary);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.12em;
+  margin-bottom:10px;
 }
 
-/* ERROR */
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: 6px;
+.title{
+  text-align:center;
+  margin:0 0 36px;
+  font-size:30px;
+  font-weight:800;
+  color:var(--text);
+  letter-spacing:-0.02em;
 }
 
-/* LINKS */
-.links {
-  margin-top: 12px;
-  text-align: center;
+.desc{
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+  margin:12px 0 40px;
+  line-height:1.6;
 }
 
-.forgot {
-  font-size: 13px;
-  color: #6366f1;
-  cursor: pointer;
+form{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
 }
 
-.forgot:hover {
-  text-decoration: underline;
+.login-btn{
+  width:100%;
+  margin-top:4px;
+}
+
+.error{
+  background:#FEF2F2;
+  border:1px solid #FECACA;
+  color:#DC2626;
+  border-radius:12px;
+  padding:12px 14px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.links{
+  margin-top:18px;
+  text-align:center;
+}
+
+.forgot{
+  font-size:13px;
+  color:var(--primary);
+  cursor:pointer;
+  font-weight:600;
+}
+
+.forgot:hover{
+  color:var(--primary-hover);
+}
+
+@media(max-width:640px){
+
+  .page{
+    padding:16px;
+  }
+
+  .card{
+    padding:24px;
+  }
+
+  .title{
+    font-size:26px;
+  }
+
+  .logo{
+    width:140px;
+  }
+
 }
 </style>

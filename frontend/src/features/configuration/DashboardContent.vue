@@ -111,140 +111,441 @@ function goAccounts() {
 </script>
 
 <template>
-  <div class="dashboard">
+  <div class="dashboard-container">
 
-    <!-- HEADER -->
-    <div class="header">
-      <div>
-        <h1>Papan Pemuka</h1>
-        <p>Ringkasan prestasi sistem pentadbiran</p>
-      </div>
-
-      <div class="filters">
-        <button
-          v-for="r in ranges"
-          :key="r.value"
-          :class="{ active: selectedRange === r.value }"
-          @click="selectedRange = r.value"
-        >
-          {{ r.label }}
-        </button>
-      </div>
+    <!-- PAGE TITLE -->
+    <div class="page-title">
+      <h1>Ringkasan Prestasi</h1>
+      <p>Prestasi semasa sistem pentadbiran agensi.</p>
     </div>
 
-    <!-- STATS -->
-    <div class="stats">
+    <!-- KPI -->
+    <div class="stats-grid">
 
+      <!-- ORGANISASI -->
       <div class="stat-card">
-        <div class="number blue">
-          {{ stats.organisasi }}
+
+        <div class="card-icon">
+
+          <svg viewBox="0 0 24 24" fill="none">
+
+            <path
+              d="M4 21H20M7 21V4H17V21"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
+
+            <path d="M10 8H10.01" stroke="currentColor" stroke-width="2"/>
+            <path d="M14 8H14.01" stroke="currentColor" stroke-width="2"/>
+
+            <path d="M10 12H10.01" stroke="currentColor" stroke-width="2"/>
+            <path d="M14 12H14.01" stroke="currentColor" stroke-width="2"/>
+
+          </svg>
+
         </div>
-        <div class="label">Organisasi</div>
+
+        <h3>{{ stats.organisasi }}</h3>
+
+        <span>Organisasi</span>
+
       </div>
 
+      <!-- SUB ORGANISASI -->
       <div class="stat-card">
-        <div class="number blue">
-          {{ stats.sub_organisasi }}
+
+        <div class="card-icon">
+
+          <svg viewBox="0 0 24 24" fill="none">
+
+            <circle cx="12" cy="7" r="2" stroke="currentColor" stroke-width="1.8"/>
+
+            <circle cx="6.5" cy="10" r="2" stroke="currentColor" stroke-width="1.8"/>
+
+            <circle cx="17.5" cy="10" r="2" stroke="currentColor" stroke-width="1.8"/>
+
+            <path
+              d="M8 18C8 15.5 10 14 12 14C14 14 16 15.5 16 18"
+              stroke="currentColor"
+              stroke-width="1.8"
+            />
+
+            <path
+              d="M3 18C3 16.5 4.5 15.5 6.5 15.5"
+              stroke="currentColor"
+              stroke-width="1.8"
+            />
+
+            <path
+              d="M17.5 15.5C19.5 15.5 21 16.5 21 18"
+              stroke="currentColor"
+              stroke-width="1.8"
+            />
+
+          </svg>
+
         </div>
-        <div class="label">Sub Organisasi</div>
+
+        <h3>{{ stats.sub_organisasi }}</h3>
+
+        <span>Sub Organisasi</span>
+
       </div>
 
+      <!-- TAPAK -->
       <div class="stat-card">
-        <div class="number blue">
-          {{ stats.tapak }}
+
+        <div class="card-icon">
+
+          <svg viewBox="0 0 24 24" fill="none">
+
+            <path
+              d="M12 21C16 16 18 13 18 9A6 6 0 006 9C6 13 8 16 12 21Z"
+              stroke="currentColor"
+              stroke-width="1.8"
+            />
+
+            <circle
+              cx="12"
+              cy="9"
+              r="2.5"
+              stroke="currentColor"
+              stroke-width="1.8"
+            />
+
+          </svg>
+
         </div>
-        <div class="label">Tapak</div>
+
+        <h3>{{ stats.tapak }}</h3>
+
+        <span>Tapak</span>
+
       </div>
 
+      <!-- PROFIL -->
       <div class="stat-card">
-        <div class="number blue">
-          {{ stats.profil }}
+
+        <div class="card-icon">
+
+          <svg viewBox="0 0 24 24" fill="none">
+
+            <circle
+              cx="12"
+              cy="8"
+              r="3"
+              stroke="currentColor"
+              stroke-width="1.8"
+            />
+
+            <path
+              d="M6 20C6 16.5 8.5 15 12 15C15.5 15 18 16.5 18 20"
+              stroke="currentColor"
+              stroke-width="1.8"
+            />
+
+          </svg>
+
         </div>
-        <div class="label">Profil</div>
+
+        <h3>{{ stats.profil }}</h3>
+
+        <span>Profil</span>
+
       </div>
 
+      <!-- TUGASAN -->
       <div class="stat-card">
-        <div class="number green">
-          {{ stats.tugasan }}
+
+        <div class="card-icon success">
+
+          <svg viewBox="0 0 24 24" fill="none">
+
+            <!-- body -->
+            <rect
+              x="6"
+              y="3"
+              width="12"
+              height="18"
+              rx="2"
+              stroke="currentColor"
+              stroke-width="1.8"
+            />
+
+            <!-- top clip -->
+            <path
+              d="M10 3H14"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
+
+            <!-- row 1 -->
+            <rect
+              x="8.2"
+              y="8"
+              width="1.2"
+              height="1.2"
+              rx=".3"
+              fill="currentColor"
+            />
+
+            <path
+              d="M11 8.6H15"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
+
+            <!-- row 2 -->
+            <rect
+              x="8.2"
+              y="11.8"
+              width="1.2"
+              height="1.2"
+              rx=".3"
+              fill="currentColor"
+            />
+
+            <path
+              d="M11 12.4H15"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
+
+            <!-- row 3 -->
+            <rect
+              x="8.2"
+              y="15.6"
+              width="1.2"
+              height="1.2"
+              rx=".3"
+              fill="currentColor"
+            />
+
+            <path
+              d="M11 16.2H15"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
+
+          </svg>
+
         </div>
-        <div class="label">Tugasan</div>
+
+        <h3>{{ stats.tugasan }}</h3>
+
+        <span>Tugasan</span>
+
       </div>
 
     </div>
 
-    <!-- GRID -->
-    <div class="grid">
+    <!-- CONTENT GRID -->
+    <div class="content-grid">
 
-      <!-- TABLE -->
       <div class="panel">
+
         <div class="panel-header">
+
           <h2>Prestasi Organisasi</h2>
-          <AppButton text="Lihat semua" variant="outline" @click="goConfig" />
-        </div>
 
-        <div v-if="organizations.length" class="table">
-          <div class="row header">
-            <div>Bil</div>
-            <div>Nama</div>
-            <div>Kemajuan</div>
-          </div>
-
-          <div
-            v-for="(org, index) in paginatedOrganizations"
-            :key="org.bil"
-            class="row hover"
+          <button
+            class="link-btn"
+            @click="goConfig"
           >
-            <div>{{ (currentPage - 1) * itemsPerPage + index + 1 }}</div>
-            <div>{{ org.nama }}</div>
+            Lihat semua
+          </button>
 
-            <div>
-              <div class="bar">
-                <div
-                  class="fill"
-                  :style="{ width: getPercent(org.done, org.total) + '%' }"
-                ></div>
-              </div>
-              <small>
-                {{ org.done }} / {{ org.total }} ({{ getPercent(org.done, org.total) }}%)
-              </small>
-            </div>
-          </div>
         </div>
 
-        <div v-else class="empty">
+        <div v-if="organizations.length">
+
+          <table class="performance-table">
+
+            <thead>
+              <tr>
+                <th>Nama Organisasi</th>
+                <th>Kemajuan</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr
+                v-for="org in paginatedOrganizations"
+                :key="org.nama"
+              >
+
+                <td>
+
+                  <div class="org-name">
+                    {{ org.nama }}
+                  </div>
+
+                </td>
+
+                <td>
+
+                  <div class="progress-header">
+
+                    <span>
+                      {{ org.done }} / {{ org.total }}
+                    </span>
+
+                    <span class="progress-percent">
+                      {{ getPercent(org.done, org.total) }}%
+                    </span>
+
+                  </div>
+
+                  <div class="progress-bar">
+
+                    <div
+                      class="progress-fill"
+                      :style="{
+                        width:
+                        getPercent(
+                          org.done,
+                          org.total
+                        ) + '%'
+                      }"
+                    />
+
+                  </div>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <div
+          v-else
+          class="empty"
+        >
           Tiada data organisasi
         </div>
 
-      <!-- ✅ pagination inside the same panel -->
-      <div class="pagination-wrapper" v-if="totalPages > 1">
-        <AppPagination
-          :currentPage="currentPage"
-          :totalPages="totalPages"
-          @update:currentPage="(page) => currentPage = page"
-        />
-      </div>
+        <div
+          v-if="totalPages > 1"
+          class="pagination-wrapper"
+        >
+
+          <AppPagination
+            :currentPage="currentPage"
+            :totalPages="totalPages"
+            @update:currentPage="
+            (page)=>
+            currentPage=page
+            "
+          />
+
+        </div>
 
       </div>
 
-      <!-- SIDE -->
-      <div class="panel">
-        <h2>Insight</h2>
+      <div class="insight-card">
 
-        <div class="insight">
-          <p>Organisasi terbaik:</p>
+        <h2>
+          Insight Minggu Ini
+        </h2>
 
-          <div class="insight-row">
-            <strong>{{ topOrg?.nama || "-" }}</strong>
-            <span class="percent">
-              {{ topOrg ? getPercent(topOrg.done, topOrg.total) + "%" : "-" }}
-            </span>
+        <div class="top-org">
+
+          <div class="avatar">
+
+            {{
+              topOrg?.nama?.charAt(0)
+              || "O"
+            }}
+
           </div>
+
+          <div>
+
+            <strong>
+              {{ topOrg?.nama || "-" }}
+            </strong>
+
+          </div>
+
+        </div>
+
+        <div class="metric">
+
+          <div class="metric-header">
+
+            <span>
+              Tugas Selesai
+            </span>
+
+            <strong>
+
+              {{
+                totalTasks
+                ? Math.round(
+                  (
+                    completedTasks
+                    /
+                    totalTasks
+                  )
+                  *
+                  100
+                )
+                : 0
+              }}%
+
+            </strong>
+
+          </div>
+
+          <div class="metric-bar">
+
+            <div
+              class="metric-fill success-fill"
+              :style="{
+                width:
+                totalTasks
+                ? Math.round(
+                  (
+                    completedTasks
+                    /
+                    totalTasks
+                  )
+                  *
+                  100
+                ) + '%'
+                : '0%'
+              }"
+            />
+
+          </div>
+
         </div>
 
         <div class="actions">
-          <AppButton text="Konfigurasi" @click="goConfig" />
-          <AppButton text="Pengguna" variant="outline" @click="goAccounts" />
+
+          <AppButton
+            text="Konfigurasi"
+            @click="goConfig"
+          />
+
+          <AppButton
+            text="Pengguna"
+            variant="outline"
+            @click="goAccounts"
+          />
+
         </div>
+
       </div>
 
     </div>
@@ -253,155 +554,266 @@ function goAccounts() {
 </template>
 
 <style scoped>
-.dashboard {
+.dashboard-container {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-/* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
+.page-title h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
 }
 
-/* FILTER */
-.filters button {
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  background: transparent;
+.page-title p {
+  margin-top: 4px;
+  color: #64748b;
+}
+
+.filter-group {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-group button {
+  border: none;
+  background: #f1f5f9;
+  color: #64748b;
+  padding: 8px 14px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
-  color: #6b7280;
-  transition: 0.2s ease;
 }
 
-.filters button:hover {
-  background: #f8fafc;
-}
-
-.filters .active {
-  background: #eef2ff;
-  color: #020265;
+.filter-group button.active {
+  background: white;
+  color: #4f46e5;
   border: 1px solid #c7d2fe;
 }
 
-/* STATS */
-.stats {
+/* =====================
+   KPI
+===================== */
+
+.stats-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
 }
 
 .stat-card {
-  background: #ffffff;
-  padding: 22px;
-  border-radius: 18px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
-  transition: 0.2s;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
 }
 
-.stat-card:hover {
-  transform: translateY(-2px);
+.card-icon {
+  width: 26px;
+  height: 26px;
+
+  margin-bottom: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  color: #6366f1;
 }
 
-.number {
-  font-size: 32px;
-  font-weight: 800;
+.card-icon.success {
+  color: #10b981;
 }
 
-.blue {
-  color: #2563eb;
+.card-icon svg {
+  width: 26px;
+  height: 26px;
+
+  fill: none;
+
+  overflow: visible;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.green {
-  color: #16a34a;
+/* END NEW */
+
+.stat-card h3 {
+  font-size: 34px;
+  font-weight: 700;
+  color: #334155;
 }
 
-.label {
+.stat-card span {
+  display: block;
   margin-top: 8px;
-  font-size: 14px;
-  color: #6b7280;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #94a3b8;
 }
 
-/* GRID */
-.grid {
+.success {
+  color: #16a34a !important;
+}
+
+.content-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 20px;
-  align-items: start;
+  gap: 24px;
+}
+
+.panel,
+.insight-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
 }
 
 .panel {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  border: 1px solid #e5e7eb;
-  display: flex;
-  flex-direction: column;
+  overflow: hidden;
 }
 
 .panel-header {
+  padding: 24px;
+  border-bottom: 1px solid #f1f5f9;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* TABLE */
-.row {
-  display: grid;
-  grid-template-columns: 60px 1fr 200px;
-  padding: 16px 12px;
+.panel-header h2,
+.insight-card h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
 }
 
-.hover:hover {
+.link-btn {
+  background: none;
+  border: none;
+  color: #4f46e5;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.performance-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.performance-table th {
+  text-align: left;
   background: #f8fafc;
+  color: #64748b;
+  padding: 16px 24px;
 }
 
-/* BAR */
-.bar {
-  height: 6px;
-  background: #e5e7eb;
+.performance-table td {
+  padding: 20px 24px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.performance-table tr:hover {
+  background: #fafafa;
+}
+
+.org-name {
+  font-weight: 600;
+  color: #334155;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.progress-percent {
+  color: #4f46e5;
+  font-weight: 700;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #e2e8f0;
   border-radius: 999px;
 }
 
-.fill {
+.progress-fill {
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  background: #4f46e5;
 }
 
-/* INSIGHT */
-.insight {
-  margin: 12px 0;
+.insight-card {
+  padding: 24px;
 }
 
-.insight-row {
+.top-org {
+  display: flex;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: #e0e7ff;
+  color: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.metric {
+  margin-bottom: 20px;
+}
+
+.metric-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-top: 4px;
+  margin-bottom: 8px;
 }
 
-.percent {
-  color: #16a34a;
-  font-weight: 700;
-  font-size: 14px;
+.metric-bar {
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 999px;
 }
 
-/* ACTIONS (buttons area) */
+.metric-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.success-fill {
+  background: #16a34a;
+}
+
 .actions {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 10px;
 }
 
-/* Removed heavy shadow from AppButton ONLY here */
 .actions :deep(button) {
   box-shadow: none !important;
-  transform: none !important;
 }
+
+.pagination-wrapper {
+  padding: 16px;
+}
+
+.empty {
+  padding: 40px;
+  text-align: center;
+  color: #94a3b8;
+}
+
 </style>

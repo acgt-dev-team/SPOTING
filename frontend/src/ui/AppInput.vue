@@ -28,41 +28,50 @@ const emit = defineEmits(["update:modelValue"])
 </template>
 
 <style scoped>
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-  width: 100%;
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  width:100%;
+  margin-bottom:14px;
 }
 
-.label {
-  font-size: 14px;
-  font-weight: 700;
-  color: #374151;
+.label{
+  font-size:14px;
+  font-weight:600;
+  color:#334155;
 }
 
-input {
-  width: 100%;
-  height: 54px;
-  padding: 0 16px;
-  border-radius: 18px;
-  border: 1px solid #e5e7eb;
-  background: #f9fafb;
-  font-size: 15px;
-  color: #111827;
-  transition: 0.18s ease;
-  box-sizing: border-box;
+input{
+  width:100%;
+  height:48px;
+  padding:0 16px;
+
+  border:1px solid #E2E8F0;
+  border-radius:14px;
+
+  background:#F8FAFC;
+
+  font-size:14px;
+  color:#0F172A;
+
+  transition:.18s ease;
+  box-sizing:border-box;
 }
 
-input::placeholder {
-  color: #9ca3af;
+input::placeholder{
+  color:#94A3B8;
 }
 
-input:focus {
-  outline: none;
-  border-color: #020265;
-  background: white;
-  box-shadow: 0 0 0 4px rgba(2, 2, 101, 0.12);
+input:hover{
+  border-color:#CBD5E1;
+}
+
+input:focus{
+  outline:none;
+  border-color:#4F46E5;
+  background:white;
+  color:#0F172A;
+  box-shadow:0 0 0 3px rgba(79,70,229,.08);
 }
 </style>
