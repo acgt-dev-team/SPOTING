@@ -314,9 +314,9 @@ onMounted(() => {
   width: 430px;
   max-width: 100%;
   background: #ffffff;
-  border-radius: 30px;
-  border: 1px solid #dbe3ff;
-  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.14);
+  border-radius: 20px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 2px rgba(15,23,42,.04);
   display: flex;
   flex-direction: column;
   max-height: 760px;
@@ -325,7 +325,7 @@ onMounted(() => {
 
 .panel-header {
   padding: 28px;
-  border-bottom: 1px solid #eef2ff;
+  border-bottom: 1px solid #F1F5F9;
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -333,17 +333,17 @@ onMounted(() => {
 
 .eyebrow {
   font-size: 12px;
-  font-weight: 800;
-  color: #020265;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: #4F46E5;
+  letter-spacing: .12em;
   margin-bottom: 10px;
 }
 
 .panel-header h2 {
   margin: 0;
   font-size: 28px;
-  font-weight: 900;
-  color: #111827;
+  font-weight: 800;
+  color: #0F172A;
   line-height: 1.15;
 }
 
@@ -356,13 +356,13 @@ onMounted(() => {
 }
 
 .close-btn {
-  width: 46px;
-  height: 46px;
-  border-radius: 999px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   border: none;
-  background: #f3f4f6;
+  background: #F8FAFC;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   flex-shrink: 0;
 }
 
@@ -377,8 +377,8 @@ onMounted(() => {
 
 .section-card {
   background: #ffffff;
-  border: 1px solid #eef2ff;
-  border-radius: 22px;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
   padding: 20px;
 }
 
@@ -409,12 +409,12 @@ onMounted(() => {
 input,
 textarea {
   width: 100%;
-  border: 1px solid #dbe3ff;
-  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
   padding: 14px 16px;
   font-size: 14px;
   color: #111827;
-  background: #f9fafb;
+  background: #F8FAFC;
   box-sizing: border-box;
 }
 
@@ -422,9 +422,9 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: #020265;
-  background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(2, 2, 101, 0.08);
+  border-color: #4F46E5;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(79,70,229,.08);
 }
 
 textarea {
@@ -482,7 +482,7 @@ textarea {
 }
 
 .toggle-btn.active {
-  background: #020265;
+  background: #4F46E5;
 }
 
 .toggle-btn.active span {
@@ -510,7 +510,7 @@ textarea {
 
 .panel-footer {
   padding: 22px 28px;
-  border-top: 1px solid #eef2ff;
+  border-top: 1px solid #F1F5F9;
   display: flex;
   gap: 12px;
   flex-shrink: 0;
@@ -528,23 +528,24 @@ textarea {
 }
 
 .outline-btn {
-  border: 1px solid #dbe3ff;
+  border: 1px solid #E2E8F0;
   background: white;
-  color: #374151;
+  color: #475569;
 }
 
 .outline-btn:hover {
-  background: #f8fafc;
+  background: #F8FAFC;
 }
 
 .save-btn {
   border: none;
-  background: linear-gradient(135deg, #020265, #0b0b8f);
+  background: #4F46E5;
   color: white;
 }
 
 .save-btn:hover:not(:disabled) {
-  transform: translateY(-1px);
+  background: #4338CA;
+  transform: none;
 }
 
 .save-btn:disabled {

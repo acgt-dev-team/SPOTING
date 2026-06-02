@@ -73,6 +73,10 @@ async function submit(e) {
 
       <div class="card">
 
+        <p class="eyebrow">
+          KESELAMATAN AKAUN
+        </p>
+
         <h2 class="title">
           Tukar Kata Laluan
         </h2>
@@ -103,7 +107,7 @@ async function submit(e) {
           </p>
 
           <AppButton
-            text="Simpan Password"
+            text="Simpan Kata Laluan"
             type="button"
             class="submit-btn"
             @click="submit"
@@ -119,61 +123,97 @@ async function submit(e) {
 </template>
 
 <style scoped>
-/* PAGE BACKGROUND */
-.page {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background:
-    linear-gradient(
-      135deg,
-      #eef2ff,
-      #f8fafc
-    );
+:root{
+  --primary:#4F46E5;
+  --primary-hover:#4338CA;
+  --text:#0F172A;
+  --muted:#64748B;
+  --border:#E2E8F0;
+  --bg:#F8FAFC;
 }
 
-/* CENTER WRAPPER */
-.change-wrapper {
-  width: 100%;
-  max-width: 400px;
+.page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:#F8FAFC;
 }
 
-/* CARD */
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.08);
+.change-wrapper{
+  width:100%;
+  max-width:480px;
 }
 
-/* TITLE */
-.title {
-  text-align: center;
-  margin-bottom: 8px;
-  font-weight: 600;
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:32px;
+  box-shadow:0 1px 2px rgba(15,23,42,.04);
 }
 
-/* DESCRIPTION */
-.desc {
-  text-align: center;
-  font-size: 14px;
-  color: #6b7280;
-  margin-bottom: 24px;
-  line-height: 1.5;
+.title{
+  margin:0;
+  text-align:center;
+  font-size:28px;
+  font-weight:800;
+  color:var(--text);
+  letter-spacing:-0.02em;
 }
 
-/* BUTTON */
-.submit-btn {
-  width: 100%;
-  margin-top: 15px;
+.desc{
+  text-align:center;
+  font-size:14px;
+  color:var(--muted);
+  margin:12px 0 28px;
+  line-height:1.6;
 }
 
-/* ERROR */
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: 6px;
+form{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.submit-btn{
+  width:100%;
+  margin-top:6px;
+}
+
+.error{
+  background:#FEF2F2;
+  border:1px solid #FECACA;
+  color:#DC2626;
+  border-radius:12px;
+  padding:12px 14px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.eyebrow{
+  text-align:center;
+  color:#4F46E5;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.12em;
+  margin-bottom:12px;
+}
+
+@media(max-width:640px){
+
+  .page{
+    padding:16px;
+  }
+
+  .card{
+    padding:24px;
+  }
+
+  .title{
+    font-size:24px;
+  }
+
 }
 </style>

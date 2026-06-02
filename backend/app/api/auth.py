@@ -23,19 +23,19 @@ def login(
     if not user:
         raise HTTPException(
             status_code=404,
-            detail="User account does not exist."
+            detail="Tiada akaun wujud."
         )
 
     if not user.aktif:
         raise HTTPException(
             status_code=403,
-            detail="Account has been deactivated. Contact the system administrator for further action."
+            detail="Akaun sudah dinyahaktif. Hubungi pentadbir sistem untuk tindakan selanjutnya."
         )
 
     if user.password != data.password:
         raise HTTPException(
             status_code=401,
-            detail="Invalid password"
+            detail="Kata laluan salah."
         )
 
     return {

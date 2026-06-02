@@ -213,16 +213,16 @@ function goProfile() {
     <!-- SIDEBAR -->
     <aside class="sidebar">
 
-      <div class="sidebar-top">
+      <div>
 
-        <div class="brand">
+        <!-- LOGO -->
+        <div class="logo-section">
           <img :src="logo" class="logo" />
         </div>
 
-        <div class="logo-divider"></div>
-
         <!-- MENU -->
-        <div class="menu-list">
+        <nav class="menu-list">
+
           <button
             v-for="item in menuItems"
             :key="item.path"
@@ -233,325 +233,389 @@ function goProfile() {
             <component :is="item.icon" size="18" />
             <span>{{ item.label }}</span>
           </button>
-        </div>
+
+        </nav>
 
       </div>
 
       <!-- PROFILE -->
-      <div class="profile-card">
+      <div class="profile-section">
+
+        <div class="profile-card">
 
         <div
   class="profile-top clickable-profile"
   @click="goProfile"
 >
           <div class="avatar">
-            {{ user.username.charAt(0) }}
+            {{ user.username.charAt(0).toUpperCase() }}
           </div>
 
-          <div>
-            <div class="username">{{ user.username }}</div>
-            <div class="role">{{ user.role }}</div>
+          <div class="profile-info">
+            <div class="username">
+              {{ user.username }}
+            </div>
+
+            <div class="role">
+              {{ user.role }}
+            </div>
           </div>
+
         </div>
 
-        <button class="logout-btn" @click="logout">
-          <LogOut size="16" />
+        <button
+          class="logout-btn"
+          @click="logout"
+        >
+          <LogOut size="14" />
           <span>Log keluar</span>
         </button>
+
+        </div>
 
       </div>
 
     </aside>
 
     <!-- MAIN -->
-    <div class="main-area">
+    <main class="main-content">
 
-      <div class="admin-container">
+      <!-- HEADER -->
+      <header class="top-header">
 
-        <!-- HEADER -->
-        <div class="page-top-header">
+        <div class="breadcrumbs">
 
-          <div class="breadcrumbs">
-            <template
-              v-for="(item, index) in breadcrumbs"
-              :key="index"
+          <template
+            v-for="(item, index) in breadcrumbs"
+            :key="index"
+          >
+
+            <button
+              v-if="item.to && index !== breadcrumbs.length - 1"
+              class="crumb link"
+              @click="goTo(item, index)"
             >
-              <button
-                v-if="item.to && index !== breadcrumbs.length - 1"
-                class="crumb link"
-                @click="goTo(item, index)"
-              >
-                {{ item.label }}
-              </button>
+              {{ item.label }}
+            </button>
 
-              <span
-                v-else
-                class="crumb"
-                :class="{ current: index === breadcrumbs.length - 1 }"
-              >
-                {{ item.label }}
-              </span>
+            <span
+              v-else
+              class="crumb"
+              :class="{ current: index === breadcrumbs.length - 1 }"
+            >
+              {{ item.label }}
+            </span>
 
-              <span
-                v-if="index !== breadcrumbs.length - 1"
-                class="divider"
-              >
-                ›
-              </span>
-            </template>
-          </div>
+            <span
+              v-if="index !== breadcrumbs.length - 1"
+              class="divider"
+            >
+              ›
+            </span>
 
-          <div class="customer-block">
-            <h2 class="customer-name">
-              {{ ministryName }}
-            </h2>
-          </div>
+          </template>
 
         </div>
 
-        <router-view />
+        <div class="header-right">
+          {{ ministryName }}
+        </div>
 
+      </header>
+
+      <!-- PAGE CONTENT -->
+      <div class="content-wrapper">
+        <router-view />
       </div>
 
-    </div>
+    </main>
 
   </div>
 </template>
 
 <style scoped>
 .admin-layout {
+  display: flex;
   min-height: 100vh;
-  background: #f5f7fb;
+  background: #f8fafc;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-/* SIDEBAR */
+/* =========================
+   SIDEBAR
+========================= */
+
 .sidebar {
+  width: 256px;
+  background: white;
+  border-right: 1px solid #e2e8f0;
+
   position: fixed;
-  top: 0;
   left: 0;
-  width: 240px; /* slightly reduced */
-  height: 100vh;
-  background: #ffffff;
-  border-right: 1px solid #e5e7eb;
-  padding: 24px 16px;
+  top: 0;
+  bottom: 0;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow-y: auto;
-  z-index: 50;
 }
 
-.sidebar-top {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+/* LOGO SECTION */
 
-/* BRAND */
-.brand {
+.logo-section {
+  height: 64px;
+  padding: 0 24px;
+
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding-bottom: 6px;
-}
 
-.logo-divider {
-  width: 100%;
-  height: 1px;
-  background: #e5e7eb;
+  border-bottom: 1px solid #e2e8f0;
+
+  box-sizing: border-box;
 }
 
 .logo {
-  width: 160px;
-}
-
-.brand-text {
-  font-weight: 700;
-  color: #020265;
-  font-size: 15px;
+  width: 170px;
+  display: block;
 }
 
 /* MENU */
+
 .menu-list {
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 .menu-btn {
   width: 100%;
+
   border: none;
   background: transparent;
-  color: #374151;
-  padding: 10px 12px;
-  border-radius: 10px;
-  text-align: left;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.15s ease;
+
+  padding: 12px 16px;
+  border-radius: 12px;
+
   display: flex;
   align-items: center;
-  gap: 10px;
-  position: relative;
+  gap: 12px;
+
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
-/* Hover (light only) */
 .menu-btn:hover {
   background: #f8fafc;
+  color: #0f172a;
 }
 
-/* ACTIVE (clean style, no heavy block) */
 .menu-btn.active {
   background: #eef2ff;
-  color: #020265;
+  color: #4f46e5;
 }
 
-/* LEFT INDICATOR */
-.menu-btn.active::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 6px;
-  bottom: 6px;
-  width: 3px;
-  background: #020265;
-  border-radius: 3px;
+/* PROFILE */
+
+.profile-section {
+  padding: 16px;
+  border-top: 1px solid #f1f5f9;
 }
 
-/* PROFILE (less "cardy") */
-.profile-card {
-  background: transparent;
-  border: none;
-  padding: 8px 4px;
+.profile-top{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-.profile-top {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
+.profile-card{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
-.avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #1d4ed8;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 14px;
+.avatar{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+
+  background:#EEF2FF;
+  color:#4F46E5;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-weight:700;
+  font-size:14px;
+
+  flex-shrink:0;
+}
+
+.profile-info {
+  flex: 1;
 }
 
 .username {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
+  color: #0f172a;
 }
 
 .role {
-  font-size: 11px;
-  color: #6b7280;
+  font-size: 12px;
+  color: #94a3b8;
 }
 
-/* LOGOUT */
 .logout-btn {
   width: 100%;
-  border: 1px solid #e5e7eb;
+  min-height:42px;
+
+  border: none;
   border-radius: 10px;
-  padding: 8px;
+
+  background: #fef2f2;
   color: #dc2626;
-  font-weight: 600;
-  cursor: pointer;
-  background: white;
+
+  padding: 10px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  transition: 0.15s ease;
+  gap: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.15s ease;
 }
 
 .logout-btn:hover {
-  background: #fef2f2;
+  background: #fee2e2;
 }
 
-/* MAIN */
-.main-area {
-  margin-left: 240px;
-  width: calc(100% - 240px);
+/* =========================
+   MAIN
+========================= */
+
+.main-content {
+  flex: 1;
+  margin-left: 256px;
+
   min-height: 100vh;
-}
 
-.admin-container {
-  padding: 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* HEADER */
-.page-top-header {
+
+.top-header {
+  height: 64px;
+
+  background: white;
+
+  border-bottom: 1px solid #e2e8f0;
+
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
+  justify-content: space-between;
+
+  padding: 0 32px;
+
+  box-sizing: border-box;
 }
 
-/* BREADCRUMBS */
 .breadcrumbs {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px;
 }
 
 .crumb {
   font-size: 13px;
-  font-weight: 500;
-  color: #6b7280;
+  color: #94a3b8;
 }
 
 .crumb.current {
-  color: #020265;
+  color: #0f172a;
   font-weight: 700;
 }
 
 .link {
-  cursor: pointer;
-  background: none;
   border: none;
+  background: none;
+  cursor: pointer;
   padding: 0;
 }
 
 .link:hover {
-  color: #020265;
+  color: #4f46e5;
 }
 
-/* Divider spacing fix */
 .divider {
-  color: #9ca3af;
-  margin: 0 6px;
-  vertical-align: middle;
-  position: relative;
-  top: -2px;
+  margin: 0 8px;
+  color: #cbd5e1;
 }
 
-/* TITLE */
-.customer-block {
-  margin-left: auto;
+.header-right {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
 }
 
-.customer-name {
-  font-size: 20px;
-  font-weight: 500;
-  color: #111827;
+/* CONTENT */
+
+.content-wrapper {
+  padding: 32px;
+  flex: 1;
 }
 
-.clickable-profile {
-  cursor: pointer;
-  border-radius: 10px;
-  padding: 6px;
-  transition: 0.15s ease;
+/* RESPONSIVE */
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 220px;
+  }
+
+  .main-content {
+    margin-left: 220px;
+  }
 }
 
-.clickable-profile:hover {
-  background: #f3f4f6;
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .top-header {
+    padding: 0 16px;
+  }
+
+  .content-wrapper {
+    padding: 16px;
+  }
+}
+
+.clickable-profile{
+  cursor:pointer;
+  border-radius:14px;
+  padding:10px;
+  transition:.15s ease;
+}
+
+.clickable-profile:hover{
+  background:#F8FAFC;
 }
 </style>
