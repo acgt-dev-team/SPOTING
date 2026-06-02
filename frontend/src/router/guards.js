@@ -3,13 +3,13 @@ export function setupGuards(router) {
   router.beforeEach((to, from, next) => {
 
     const token =
-      localStorage.getItem("token")
+      sessionStorage.getItem("token")
 
     const role =
-      localStorage.getItem("role")
+      sessionStorage.getItem("role")
 
     const forcePasswordChange =
-      localStorage.getItem(
+      sessionStorage.getItem(
         "forcePasswordChange"
       )
 

@@ -27,6 +27,13 @@ const selectedProfile = ref(null)
 const nama = ref("")
 const keterangan = ref("")
 const executionType = ref("IMMEDIATE")
+const cronEnabled = ref(false)
+
+const frequency = ref("")
+
+const cronExpression = ref("")
+
+
 const selectedDate = ref("")
 const selectedTime = ref("")
 const showTimeDropdown = ref(false)
@@ -132,6 +139,18 @@ watch(executionType, async (val) => {
   }
 })
 
+watch(cronEnabled, (enabled) => {
+
+  if (!enabled) {
+
+    frequency.value = ""
+
+    cronExpression.value = ""
+
+  }
+
+})
+
 /* =========================
  ADDED: HELPER FUNCTION
 ========================= */
@@ -142,15 +161,34 @@ function initFlatpickr() {
       fpInstance.destroy()
     }
 
-    fpInstance = flatpickr(dateInput.value, {
-      dateFormat: "Y-m-d",
-      defaultDate: selectedDate.value || null,
+        fpInstance = flatpickr(
+  dateInput.value,
+  {
+    dateFormat: "Y-m-d",
 
+    minDate: "today",
+
+    defaultDate:
+      selectedDate.value || new Date(),
       onChange: (dates) => {
-        selectedDate.value = dates[0]
-          ? flatpickr.formatDate(dates[0], "Y-m-d")
-          : ""
-      }
+
+  if (!dates[0]) {
+    selectedDate.value = ""
+    return
+  }
+
+  const year = dates[0].getFullYear()
+  const month = String(
+    dates[0].getMonth() + 1
+  ).padStart(2, "0")
+
+  const day = String(
+    dates[0].getDate()
+  ).padStart(2, "0")
+
+  selectedDate.value =
+    `${year}-${month}-${day}`
+}
     })
   }
 }
@@ -219,11 +257,29 @@ async function saveProfile() {
 
     const payload = {
       tapak_id: siteId,
+
       nama: nama.value,
+
       keterangan: keterangan.value,
-      execution_type: executionType.value,
-      scheduled_at: scheduledAt,
-      is_scheduled: executionType.value === "SCHEDULED"
+
+      execution_type:
+        executionType.value,
+
+      scheduled_at:
+        scheduledAt,
+
+      is_scheduled:
+        executionType.value ===
+        "SCHEDULED",
+
+      cron_enabled:
+        cronEnabled.value,
+
+      frequency:
+        frequency.value,
+
+      cron_expression:
+        cronExpression.value
     }
 
     if (editingId.value) {
@@ -286,6 +342,9 @@ function openAddModal() {
   executionType.value = "IMMEDIATE"
   selectedDate.value = ""
   selectedTime.value = ""
+  cronEnabled.value = false
+  frequency.value = ""
+  cronExpression.value = ""
 
   showModal.value = true
 }
@@ -308,13 +367,48 @@ function editProfile(profile) {
   if (profile.scheduled_at) {
     const dt = new Date(profile.scheduled_at)
 
-    selectedDate.value = flatpickr.formatDate(dt, "Y-m-d")
+    selectedDate.value =
+  `${dt.getFullYear()}-${String(
+    dt.getMonth() + 1
+  ).padStart(2,"0")}-${String(
+    dt.getDate()
+  ).padStart(2,"0")}`
     selectedTime.value = dt.toTimeString().slice(0, 5)
 
   } else {
-    selectedDate.value = ""
-    selectedTime.value = ""
+    const now = new Date()
+
+selectedDate.value =
+  `${now.getFullYear()}-${String(
+    now.getMonth() + 1
+  ).padStart(2,"0")}-${String(
+    now.getDate()
+  ).padStart(2,"0")}`
+
+selectedTime.value =
+  `${String(
+    now.getHours()
+  ).padStart(2,"0")}:${String(
+    now.getMinutes()
+  ).padStart(2,"0")}`
+    nextTick(() => {
+
+  if (
+    fpInstance &&
+    selectedDate.value
+  ) {
+    fpInstance.setDate(
+      selectedDate.value,
+      true
+    )
   }
+
+})
+  }
+
+  cronEnabled.value = profile.cron_enabled || false
+  frequency.value = profile.frequency || ""
+  cronExpression.value = profile.cron_expression || ""
 }
 
 function openDropdown() {
@@ -466,6 +560,9 @@ onBeforeUnmount(() => {
               <th>Nama Profil</th>
               <th style="width:140px; white-space: nowrap;">Jumlah Tugasan</th>
               <th style="width:140px">Status</th>
+              <th style="width:180px">
+  Jadual Pelaksanaan
+</th>
               <th style="width:180px; white-space: nowrap;">Masa Dijadualkan</th>
               <th style="width:200px">Tindakan</th>
             </tr>
@@ -505,6 +602,45 @@ onBeforeUnmount(() => {
               <td>
                 <StatusPill :status="profile.execution_status" />
               </td>
+
+              <td>
+
+  <span
+    v-if="profile.cron_enabled"
+  >
+
+    {{
+      profile.frequency === "DAILY"
+        ? "Harian"
+
+      : profile.frequency === "WEEKLY"
+        ? "Mingguan"
+
+      : profile.frequency === "MONTHLY"
+        ? "Bulanan"
+
+      : profile.frequency === "CUSTOM"
+        ? profile.cron_expression
+
+      : "-"
+    }}
+
+  </span>
+
+  <span
+    v-else-if="
+      profile.execution_type ===
+      'SCHEDULED'
+    "
+  >
+    Sekali Sahaja
+  </span>
+
+  <span v-else>
+    Segera
+  </span>
+
+</td>
 
               <td>
                 <span v-if="profile.execution_type === 'SCHEDULED' && profile.scheduled_at">
@@ -660,7 +796,7 @@ onBeforeUnmount(() => {
                         class="custom-select" 
                         :class="{ active: showTimeDropdown }" 
                         @click.stop="openDropdown"
-                      >
+                        >
                         <span :class="{ placeholder: !selectedTime }">
                           {{ selectedTime || "Pilih masa" }}
                         </span>
@@ -677,6 +813,52 @@ onBeforeUnmount(() => {
                         </div>
                       </div>
                     </div>
+
+                    <label class="field-label">
+  Cron Job
+</label>
+
+<label class="switch">
+  <input
+    type="checkbox"
+    v-model="cronEnabled"
+  />
+  <span class="slider"></span>
+</label>
+                    <!-- FREQUENCY -->
+
+<AppSelect
+  v-if="cronEnabled"
+  v-model="frequency"
+  label="Kekerapan"
+  :options="[
+    {
+      label: 'Harian',
+      value: 'DAILY'
+    },
+    {
+      label: 'Mingguan',
+      value: 'WEEKLY'
+    },
+    {
+      label: 'Bulanan',
+      value: 'MONTHLY'
+    },
+    {
+      label: 'Cron Custom',
+      value: 'CUSTOM'
+    }
+  ]"
+/>
+
+<!-- CUSTOM CRON -->
+
+<AppInput
+  v-if="cronEnabled && frequency === 'CUSTOM'"
+  v-model="cronExpression"
+  label='Cron Expression'
+  placeholder='0 0 * * *'
+/>
 
                   </div>
                 </div>
@@ -1042,14 +1224,33 @@ th:nth-child(5) {
   align-items: center;
   justify-content: center;
   z-index: 999;
+
   padding: 24px;
+  overflow-y: auto; /* ADD THIS */
 }
 
 .modal-card {
   width: 100%;
   max-width: 720px;
+
   padding: 28px !important;
   box-sizing: border-box;
+
+  max-height: 85vh; /* ADD */
+  overflow-y: auto; /* ADD */
+}
+
+.modal-card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-card::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.modal-card::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .modal-header {

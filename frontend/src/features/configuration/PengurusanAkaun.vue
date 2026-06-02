@@ -29,13 +29,14 @@ const nama = ref("")
 const username = ref("")
 const role = ref("user")
 const aktif = ref(true)
-const currentRole = localStorage.getItem("role")
+const currentRole = sessionStorage.getItem("role")
 
 const accounts = ref([])
 const errors = ref({})
 
 const currentPage = ref(1)
 const pageSize = 10
+
 
 const totalPages = computed(() => {
   return Math.ceil(filteredAccounts.value.length / pageSize)
@@ -138,12 +139,22 @@ onMounted(() => {
 
 async function saveAccount() {
 
-  // ✅ VALIDATION
+  // ✅ REQUIRED FIELD VALIDATION
   if (
     !nama.value.trim() ||
     !username.value.trim()
   ) {
     alert("Sila lengkapkan semua maklumat sebelum simpan.")
+    return
+  }
+
+  // ✅ USERNAME VALIDATION
+  const usernameRegex = /^[a-z0-9]{12}$/
+
+  if (!usernameRegex.test(username.value)) {
+    alert(
+      "Nama pengguna mesti 12 aksara dan hanya huruf kecil atau nombor."
+    )
     return
   }
 
@@ -211,7 +222,7 @@ async function confirmDelete() {
 }
 
 // ✅ HANDLE TOGGLE (core logic you wanted)
-function handleToggle(event, isEdit = false) {
+async function handleToggle(event, isEdit = false) {
   if (!editingId.value) {
     aktif.value = !aktif.value
     return
@@ -235,9 +246,59 @@ function closeToggleModal() {
   showToggleModal.value = false
 }
 
-function confirmToggle() {
-  aktif.value = !toggleTarget.value.aktif
-  showToggleModal.value = false
+async function confirmToggle() {
+
+  try {
+
+    if (toggleTarget.value.aktif) {
+
+      await api.put(
+        `/auth/users/${toggleTarget.value.id}/deactivate`
+      )
+
+      aktif.value = false
+
+    } else {
+
+      await api.put(
+        `/auth/users/${toggleTarget.value.id}/activate`
+      )
+
+      aktif.value = true
+
+    }
+
+    await fetchAccounts()
+
+    showToggleModal.value = false
+
+  } catch (err) {
+
+    console.error(err)
+
+  }
+}
+
+async function resetPassword(item) {
+
+  try {
+
+    const res = await api.put(
+      `/auth/users/${item.id}/reset-password`
+    )
+
+    alert(
+      `Password sementara:\n${res.data.temporary_password}`
+    )
+
+  } catch (err) {
+
+    console.error(err)
+
+    alert("Gagal reset password")
+
+  }
+
 }
 </script>
 
@@ -329,12 +390,23 @@ function confirmToggle() {
 </td>
 
               <td>
-                <button
-                  class="ghost-btn"
-                  @click="editAccount(item)"
-                >
-                  ✏️
-                </button>
+                <div style="display:flex; gap:8px;">
+
+  <button
+    class="ghost-btn"
+    @click="editAccount(item)"
+  >
+    ✏️
+  </button>
+
+  <button
+    class="ghost-btn"
+    @click="resetPassword(item)"
+  >
+    🔑
+  </button>
+
+</div>
               </td>
 
             </tr>

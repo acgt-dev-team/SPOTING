@@ -42,10 +42,10 @@ async function login(e){
       throw new Error("Token tidak diterima")
     }
 
-    localStorage.setItem("token", token)
-    localStorage.setItem("role", role)
-    localStorage.setItem("username", username.value)
-    localStorage.setItem("forcePasswordChange", forcePasswordChange.toString())
+    sessionStorage.setItem("token", token)
+    sessionStorage.setItem("role", role)
+    sessionStorage.setItem("username", username.value)
+    sessionStorage.setItem("forcePasswordChange", forcePasswordChange.toString())
     if (forcePasswordChange) {
   router.push("/change-password")
   return
@@ -61,21 +61,18 @@ if (
 }
 
   } catch (err) {
-    console.error("Login error:", err)
 
-    if (
-      err.response?.status === 401 ||
-      err.response?.status === 400
-    ) {
-      error.value = "Nama pengguna atau kata laluan tidak sah"
-    } else {
-      error.value = "Login gagal"
-    }
+    console.error(err)
+
+    error.value =
+      err.response?.data?.detail ||
+      "Login gagal"
 
   } finally {
     loading.value = false
   }
 }
+
 </script>
 
 <template>
