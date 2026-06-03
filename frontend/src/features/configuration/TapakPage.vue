@@ -13,6 +13,8 @@ const router = useRouter()
 
 const editingId = ref(null)
 
+const saving = ref(false)
+
 const organizationId = route.params.organizationId
 const subOrganizationId = route.params.subOrganizationId
 
@@ -178,9 +180,11 @@ function closeModal() {
 }
 
 async function saveSite() {
+  if (saving.value) return
   if (!nama.value.trim()) return
 
   try {
+      saving.value = true
     const payload = {
       sub_organisasi_id: subOrganizationId,
       nama: nama.value,
@@ -200,6 +204,8 @@ async function saveSite() {
 
   } catch (err) {
     console.error("Failed to save tapak:", err)
+  } finally {
+    saving.value = false
   }
 }
 
@@ -452,9 +458,18 @@ onMounted(() => {
               @click="closeModal"
             />
 
+
+
+            
+
             <AppButton
-              :text="editingId ? 'Simpan Perubahan' : 'Simpan'"
-              @click="saveSite"
+              :text="saving
+    ? 'Menyimpan...'
+    : editingId
+      ? 'Kemaskini'
+      : 'Simpan'"
+  :disabled="saving"
+  @click="saveSite"
             />
 
           </div>

@@ -15,6 +15,7 @@ const showDeleteModal = ref(false)
 const showPasswordModal = ref(false)
 const generatedPassword = ref("")
 const generatedUsername = ref("")
+const passwordModalTitle = ref("")
 
 // ✅ TOGGLE MODAL
 const showToggleModal = ref(false)
@@ -125,11 +126,19 @@ function editAccount(item) {
 }
 
 async function fetchAccounts() {
+
   try {
-    const res = await api.get("/auth/users")
+
+    const res = await api.get(
+      `/auth/users?role=${currentRole}`
+    )
+
     accounts.value = res.data
+
   } catch (err) {
+
     console.error(err)
+
   }
 }
 
@@ -181,9 +190,16 @@ async function saveAccount() {
         aktif: aktif.value
       })
 
-      generatedPassword.value = res.data.generated_password
-      generatedUsername.value = username.value
-      showPasswordModal.value = true
+      passwordModalTitle.value =
+  "Akaun Berjaya Dicipta"
+
+generatedPassword.value =
+  res.data.generated_password
+
+generatedUsername.value =
+  username.value
+
+showPasswordModal.value = true
     }
 
     await fetchAccounts()
@@ -287,9 +303,16 @@ async function resetPassword(item) {
       `/auth/users/${item.id}/reset-password`
     )
 
-    alert(
-      `Password sementara:\n${res.data.temporary_password}`
-    )
+    passwordModalTitle.value =
+      "Kata Laluan Berjaya Ditetapkan Semula"
+
+    generatedUsername.value =
+      item.username
+
+    generatedPassword.value =
+      res.data.temporary_password
+
+    showPasswordModal.value = true
 
   } catch (err) {
 
@@ -697,12 +720,12 @@ async function resetPassword(item) {
 
       <div class="delete-icon">🔐</div>
 
-      <h3>Akaun Berjaya Dicipta</h3>
+      <h3>{{ passwordModalTitle }}</h3>
 
       <p class="delete-desc">
-        Kata laluan sementara hanya dipaparkan sekali.
-        Sila simpan dan kongsi kepada pengguna.
-      </p>
+  Kata laluan sementara hanya dipaparkan sekali.
+  Sila simpan dan serahkan kepada pengguna dengan selamat.
+</p>
 
       <div class="confirm-box">
 

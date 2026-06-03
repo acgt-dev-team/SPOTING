@@ -24,6 +24,8 @@ const showModal = ref(false)
 const editingId = ref(null)
 const selectedProfile = ref(null)
 
+const saving = ref(false)
+
 const nama = ref("")
 const keterangan = ref("")
 const executionType = ref("IMMEDIATE")
@@ -241,9 +243,11 @@ async function loadTapakDetail() {
 // SAVE
 // =========================
 async function saveProfile() {
+  if (saving.value) return
   if (!nama.value.trim()) return
 
   try {
+    saving.value = true
     let scheduledAt = null
 
     if (executionType.value === "SCHEDULED") {
@@ -294,6 +298,9 @@ async function saveProfile() {
   } catch (err) {
     console.error("Error saving profile:", err)
   }
+    finally {
+      saving.value = false
+    }
 }
 
 // =========================
@@ -900,9 +907,16 @@ onBeforeUnmount(() => {
               @click="closeModal"
             />
 
+
+
             <AppButton
-              :text="editingId ? 'Simpan Perubahan' : 'Simpan'"
-              @click="saveProfile"
+              :text="saving
+    ? 'Menyimpan...'
+    : editingId
+      ? 'Kemaskini'
+      : 'Simpan'"
+  :disabled="saving"
+  @click="saveProfile"
             />
 
           </div>
