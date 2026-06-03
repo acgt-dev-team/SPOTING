@@ -16,7 +16,6 @@ const props = defineProps({
 })
 
 const jenisList = ref([])
-const saving = ref(false)
 
 const isEditMode = computed(() => !!props.task)
 
