@@ -24,6 +24,8 @@ const showModal = ref(false)
 const selectedSub = ref(null)
 const editingId = ref(null)
 
+const saving = ref(false)
+
 const nama = ref("")
 const keterangan = ref("")
 const pegawai_tadbir = ref("")
@@ -157,9 +159,13 @@ function closeModal() {
 }
 
 async function saveSub() {
+
+  if (saving.value) return
+
   if (!nama.value.trim()) return
 
   try {
+    saving.value = true
     const payload = {
       organisasi_id: organisasiId,
       nama: nama.value,
@@ -179,6 +185,8 @@ async function saveSub() {
 
   } catch (err) {
     console.error("Failed to save sub organisasi:", err.response?.data || err)
+  } finally {
+    saving.value = false
   }
 }
 
@@ -477,9 +485,15 @@ onMounted(() => {
             />
 
             <AppButton
-              :text="isEditMode ? 'Kemaskini' : 'Simpan'"
-              @click="saveSub"
-            />
+  :text="saving
+    ? 'Menyimpan...'
+    : editingId
+      ? 'Kemaskini'
+      : 'Simpan'"
+  :disabled="saving"
+  @click="saveSub"
+/>
+
 
           </div>
 

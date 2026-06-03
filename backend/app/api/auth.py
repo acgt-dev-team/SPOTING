@@ -113,12 +113,26 @@ def create_user(
 }
 
 @router.get("/users")
-def get_users(db: Session = Depends(get_db)):
-    users = (
-        db.query(User)
-        .filter(User.role != "super admin")
-        .all()
-    )
+def get_users(
+    role: str,
+    db: Session = Depends(get_db)
+):
+
+    if role == "super admin":
+
+        users = (
+            db.query(User)
+            .filter(User.role != "super admin")
+            .all()
+        )
+
+    else:
+
+        users = (
+            db.query(User)
+            .filter(User.role == "user")
+            .all()
+        )
 
     return users
 

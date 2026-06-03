@@ -14,6 +14,8 @@ const search = ref("")
 const showModal = ref(false)
 const editingId = ref(null)
 
+const saving = ref(false)
+
 const nama = ref("")
 const keterangan = ref("")
 
@@ -124,12 +126,17 @@ function editOrganization(org) {
 // ADD / UPDATE (UNCHANGED)
 // =========================
 async function saveOrganization() {
+  if (saving.value) return
+
   if (!nama.value.trim()) {
     alert("Nama organisasi wajib diisi")
     return
   }
 
   try {
+
+    saving.value = true
+
     const payload = {
       pelanggan_id: 1,
       nama: nama.value,
@@ -149,6 +156,8 @@ async function saveOrganization() {
 
   } catch (err) {
     console.error("Save failed:", err)
+  } finally {
+    saving.value = false
   }
 }
 
@@ -383,9 +392,14 @@ onMounted(() => {
             />
 
             <AppButton
-              :text="editingId ? 'Kemaskini' : 'Simpan'"
-              @click="saveOrganization"
-            />
+  :text="saving
+    ? 'Menyimpan...'
+    : editingId
+      ? 'Kemaskini'
+      : 'Simpan'"
+  :disabled="saving"
+  @click="saveOrganization"
+/>
 
           </div>
 

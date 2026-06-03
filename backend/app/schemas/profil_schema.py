@@ -11,6 +11,10 @@ class ProfilCreate(BaseModel):
     scheduled_at: datetime | None = None   # ✅ FIXED
     is_scheduled: bool = False
 
+    cron_enabled: bool = False
+    frequency: str | None = None
+    cron_expression: str | None = None
+
     report_template: str | None = "DEFAULT"
     report_format: str | None = "EXCEL"
 
@@ -27,6 +31,10 @@ class ProfilResponse(BaseModel):
     scheduled_at: datetime | None = None   # ✅ FIXED
     is_scheduled: bool
     execution_status: str | None = None
+
+    cron_enabled: bool = False
+    frequency: str | None = None
+    cron_expression: str | None = None
 
     report_template: str | None = "DEFAULT"
     report_format: str | None = "EXCEL"

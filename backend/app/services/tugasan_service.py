@@ -91,6 +91,17 @@ def assign_tugasan_to_profil(
 # CREATE TASK
 # ==========================================
 def create_tugasan(db: Session, data: dict):
+
+    existing = db.query(Tugasan).filter(
+        Tugasan.nama == data["nama"]
+    ).first()
+
+    if existing:
+        raise HTTPException(
+            status_code=400,
+            detail="Tugasan already exists"
+        )
+    
     new_tugasan = Tugasan(
         nama=data["nama"],
         kod=data["kod"],

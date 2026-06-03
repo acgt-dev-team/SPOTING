@@ -6,6 +6,8 @@ import AppSelect from "../../../ui/AppSelect.vue"
 
 const emit = defineEmits(["close", "saved"])
 
+const saving = ref(false)
+
 const props = defineProps({
   task: {
     type: Object,
@@ -84,6 +86,7 @@ async function fetchJenis() {
 }
 
 async function handleSave() {
+  if (saving.value) return
   if (!form.nama || !form.jenis_id) return
 
   try {
