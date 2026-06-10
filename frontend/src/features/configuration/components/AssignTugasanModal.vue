@@ -499,12 +499,32 @@ onMounted(() => {
   font-size:14px;
 }
 
-.clear-btn {
-  border: none;
-  background: transparent;
-  color: #4F46E5;
-  font-weight: 700;
-  cursor: pointer;
+.clear-btn{
+  border:1px solid #FECACA;
+
+  background:#FEF2F2;
+  color:#DC2626;
+
+  height:36px;
+  padding:0 14px;
+
+  border-radius:10px;
+
+  font-size:13px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.15s ease;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.clear-btn:hover{
+  background:#FEE2E2;
+  border-color:#FCA5A5;
 }
 
 .table-wrap {
