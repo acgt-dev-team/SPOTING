@@ -899,7 +899,7 @@ td{
   width:40px;
   height:40px;
   border-radius:12px;
-  background:#312E81;
+  background:var(--primary);
   color:white;
   display:flex;
   align-items:center;
