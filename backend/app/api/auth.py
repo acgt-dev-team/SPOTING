@@ -1,4 +1,4 @@
-import random
+import secrets
 import string
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -7,6 +7,7 @@ import re
 from app.database.session import get_db
 from app.models.user import User
 from app.schemas.auth_schema import LoginRequest, CreateUserRequest, ProfileUpdateRequest, ProfileResponse
+from app.utils.security import hash_password, is_password_hashed, verify_password
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
@@ -32,11 +33,15 @@ def login(
             detail="Akaun sudah dinyahaktif. Hubungi pentadbir sistem untuk tindakan selanjutnya."
         )
 
-    if user.password != data.password:
+    if not verify_password(data.password, user.password):
         raise HTTPException(
             status_code=401,
             detail="Kata laluan salah."
         )
+
+    if not is_password_hashed(user.password):
+        user.password = hash_password(data.password)
+        db.commit()
 
     return {
         "access_token": "dummy-token",
@@ -60,7 +65,7 @@ def change_password(
             detail="User not found"
         )
 
-    user.password = data.password
+    user.password = hash_password(data.password)
     user.force_password_change = False
 
     db.commit()
@@ -97,7 +102,7 @@ def create_user(
     new_user = User(
         nama=data.nama,
         username=data.username,
-        password=generated_password,
+        password=hash_password(generated_password),
         role=data.role,
         aktif=data.aktif,
         pelanggan_id=data.pelanggan_id,
@@ -229,7 +234,7 @@ def reset_password(
 
     temp_password = generate_password()
 
-    user.password = temp_password
+    user.password = hash_password(temp_password)
     user.force_password_change = True
 
     db.commit()
@@ -270,15 +275,18 @@ def generate_password(length=12):
     all_chars = lowercase + uppercase + numbers + symbols
 
     password = [
-        random.choice(lowercase),
-        random.choice(uppercase),
-        random.choice(numbers),
-        random.choice(symbols)
+        secrets.choice(lowercase),
+        secrets.choice(uppercase),
+        secrets.choice(numbers),
+        secrets.choice(symbols)
     ]
 
-    password += random.choices(all_chars, k=length - 4)
+    password += [
+        secrets.choice(all_chars)
+        for _ in range(length - 4)
+    ]
 
-    random.shuffle(password)
+    secrets.SystemRandom().shuffle(password)
 
     return ''.join(password)
 
@@ -327,7 +335,7 @@ def update_profile(
     user.phone = data.phone
 
     if data.password:
-        user.password = data.password
+        user.password = hash_password(data.password)
 
     db.commit()
 
