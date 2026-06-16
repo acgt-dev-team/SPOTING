@@ -364,18 +364,20 @@ function goProfile() {
 
 .logo-section {
   height: 64px;
-  padding: 0 24px;
 
   display: flex;
+  justify-content: center;
   align-items: center;
 
   border-bottom: 1px solid #e2e8f0;
-
   box-sizing: border-box;
+
+  padding: 0;
 }
 
 .logo {
-  width: 170px;
+  width: 100px;
+  height: auto;
   display: block;
 }
 
