@@ -41,6 +41,9 @@ def get_tugasan_by_profil(db: Session, profil_id: int):
 # ==========================================
 # ASSIGN TASK TO PROFILE
 # ==========================================
+# ==========================================
+# ASSIGN TASK TO PROFILE
+# ==========================================
 def assign_tugasan_to_profil(
     db: Session,
     profil_id: int,
@@ -56,7 +59,7 @@ def assign_tugasan_to_profil(
             "message": "Already assigned"
         }
 
-    # default status = PENDING
+    # Default status = PENDING
     pending_status_id = 1
 
     new_item = XProfilTugasan(
@@ -66,25 +69,47 @@ def assign_tugasan_to_profil(
     )
 
     db.add(new_item)
+
+    # Save the new assignment first
     db.commit()
     db.refresh(new_item)
 
-    # ==========================================
-    # AUTO RUN IMMEDIATE PROFILE
-    # ==========================================
-    from app.scheduler.profile_scheduler import run_single_profile
+    print("\n========== ASSIGN TASK ==========")
+    print(f"Profile ID : {profil_id}")
+    print(f"Task ID    : {tugasan_id}")
 
+    # Get the profile
     profile = db.query(Profil).filter(
         Profil.id == profil_id
     ).first()
 
-    if profile and profile.execution_type == "IMMEDIATE":
-        run_single_profile(profil_id)
+    if not profile:
+        print("Profile not found!")
+        return {
+            "message": "Profile not found"
+        }
+
+    print("Execution Type :", profile.execution_type)
+    print("Status BEFORE  :", profile.execution_status)
+
+    # Update profile status
+    if profile.execution_type == "IMMEDIATE":
+        profile.execution_status = "in process"
+
+    elif profile.execution_type == "SCHEDULED":
+        profile.execution_status = "telah dijadualkan"
+
+    db.commit()
+    db.refresh(profile)
+
+    print("Status AFTER   :", profile.execution_status)
+    print("=================================\n")
 
     return {
         "message": "Assigned successfully",
         "profil_tugasan_id": new_item.id
     }
+
 
 
 # ==========================================

@@ -32,3 +32,7 @@ class Tugasan(Base):
         back_populates="tugasan",
         cascade="all, delete"
     )
+
+    ejen = relationship(
+    "Ejen"
+)

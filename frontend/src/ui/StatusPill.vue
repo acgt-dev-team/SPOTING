@@ -12,37 +12,62 @@ const props = defineProps({
 LABEL (DISPLAY TEXT - MALAY)
 ========================= */
 const label = computed(() => {
-  const s = String(props.status).toLowerCase()
+  const s = String(props.status).toLowerCase().trim()
 
-  // Numeric mapping
-  if (s === "1") return "Belum Bermula"
-  if (s === "2") return "Dalam Proses"
-  if (s === "3") return "Telah Selesai"
-  if (s === "4") return "Gagal"
+  switch (s) {
+    case "1":
+    case "belum dimulakan":
+      return "Belum Bermula"
 
-  // String mapping (Profil page)
-  if (s.includes("proses")) return "Dalam Proses"
-  if (s.includes("dijadualkan")) return "Telah Dijadualkan"
-  if (s.includes("selesai")) return "Telah Selesai"
-  if (s.includes("gagal")) return "Gagal"
-  if (s.includes("belum")) return "Belum Bermula"
+    case "2":
+    case "in process":
+      return "Dalam Proses"
 
-  return "Tidak Diketahui"
+    case "3":
+    case "execution completed":
+      return "Telah Selesai"
+
+    case "4":
+    case "gagal":
+      return "Gagal"
+
+    case "telah dijadualkan":
+      return "Telah Dijadualkan"
+
+    default:
+      return "Tidak Diketahui"
+  }
 })
 
 /* =========================
 COLOR CLASS
 ========================= */
 const pillClass = computed(() => {
-  const s = String(props.status).toLowerCase()
+  const s = String(props.status).toLowerCase().trim()
 
-  if (s === "1" || s.includes("belum")) return "running"
-  if (s === "2" || s.includes("proses")) return "pending"
-  if (s.includes("dijadualkan")) return "scheduled"
-  if (s === "3" || s.includes("selesai")) return "success"
-  if (s === "4" || s.includes("gagal")) return "failed"
-  
-  return "default"
+  switch (s) {
+    case "1":
+    case "belum dimulakan":
+      return "running"
+
+    case "2":
+    case "in process":
+      return "pending"
+
+    case "3":
+    case "execution completed":
+      return "success"
+
+    case "4":
+    case "gagal":
+      return "failed"
+
+    case "telah dijadualkan":
+      return "scheduled"
+
+    default:
+      return "default"
+  }
 })
 </script>
 
