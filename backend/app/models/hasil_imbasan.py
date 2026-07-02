@@ -1,12 +1,12 @@
-from sqlalchemy import Column, BigInteger, ForeignKey, DateTime
+from sqlalchemy import Column, BigInteger, ForeignKey, TIMESTAMP
 from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy.sql import func
+from sqlalchemy.orm import relationship
 
-from app.db.database import Base
+from app.database.session import Base
 
 
 class HasilImbasan(Base):
-
     __tablename__ = "hasil_imbasan"
 
     id = Column(BigInteger, primary_key=True, index=True)
@@ -23,9 +23,22 @@ class HasilImbasan(Base):
         nullable=False
     )
 
-    hasil = Column(JSON, nullable=False)
+    hasil = Column(
+        JSON,
+        nullable=False
+    )
 
     created_at = Column(
-        DateTime,
+        TIMESTAMP,
         server_default=func.now()
+    )
+
+    # Relationships
+    ejen = relationship(
+        "Ejen",
+        back_populates="hasil_imbasan"
+    )
+
+    profil_tugasan = relationship(
+        "XProfilTugasan"
     )

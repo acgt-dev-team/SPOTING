@@ -58,6 +58,7 @@ def generate_report(db: Session, profil_id: int):
 
             if isinstance(hasil, str):
                 hasil = json.loads(hasil)
+                print(json.dumps(hasil, indent=4))
 
             # ensure list
             if not isinstance(hasil, list):
@@ -68,11 +69,6 @@ def generate_report(db: Session, profil_id: int):
                 if not item:
                     continue
 
-                cbom = item.get("cbom_data", {})
-
-                if not cbom:
-                    continue
-
                 report_rows.append({
 
                     "Profile Name": profile.nama,
@@ -81,42 +77,16 @@ def generate_report(db: Session, profil_id: int):
 
                     "Agent IP": host_ip,
 
-                    "Path": cbom.get("path"),
-                    "File Type": cbom.get("file_type"),
-
-                    "Algorithm": cbom.get("algorithm"),
-                    "Key Size": cbom.get("key_size"),
-                    "Curve": cbom.get("curve"),
-
-                    "RSA Modulus Fingerprint":
-                        cbom.get("rsa_modulus_fingerprint"),
-
-                    "RSA Exponent":
-                        cbom.get("rsa_exponent"),
-
-                    "Signature Algorithm":
-                        cbom.get("signature_algorithm"),
-
-                    "Subject":
-                        cbom.get("subject"),
-
-                    "Issuer":
-                        cbom.get("issuer"),
-
-                    "Serial":
-                        cbom.get("serial"),
-
-                    "Not Before":
-                        cbom.get("not_before"),
-
-                    "Not After":
-                        cbom.get("not_after"),
-
-                    "SHA1":
-                        cbom.get("fingerprint_sha1"),
-
-                    "SHA256":
-                        cbom.get("fingerprint_sha256"),
+                    "Process": item.get("Process"),
+                    "PID": item.get("PID"),
+                    "Protocol": item.get("Protocol"),
+                    "Remote IP": item.get("RemoteIP"),
+                    "Remote Port": item.get("RemotePort"),
+                    "Executable Path": item.get("ExecutablePath"),
+                    "Role": item.get("Role"),
+                    "Crypto Details": item.get("CryptoDetails"),
+                    "Script Path": item.get("ScriptPath"),
+                    "Scan Time": item.get("ScanTimeUTC"),
                 })
 
     # ==========================================
