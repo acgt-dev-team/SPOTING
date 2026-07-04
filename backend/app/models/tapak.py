@@ -39,3 +39,7 @@ class Tapak(Base):
         back_populates="tapak",
         cascade="all, delete-orphan"
     )
+
+    ejen = relationship(
+    "Ejen"
+)

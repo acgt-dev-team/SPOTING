@@ -32,29 +32,20 @@ def run_single_profile(profile_id: int):
         profile.execution_status = "in process"
         db.commit()
 
-        tasks = db.query(XProfilTugasan).filter(
+        tasks = db.query(
+            XProfilTugasan
+        ).filter(
             XProfilTugasan.profil_id == profile.id
         ).all()
 
         if not tasks:
             print("No tasks found")
-            profile.execution_status = "gagal"
-            db.commit()
             return
 
-        for task in tasks:
-            try:
-                execute_scan(
-                    db=db,
-                    profil_tugasan_id=task.id,
-                    penjadualan=True
-                )
-            except Exception as e:
-                print(f"Task failed: {str(e)}")
-
-        # ✅ success
-        profile.execution_status = "execution completed"
+        profile.execution_status = "in process"
         db.commit()
+
+        print("Released profile to agent.")
 
     except Exception as e:
         print(f"Scheduler error: {str(e)}")

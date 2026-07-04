@@ -38,3 +38,7 @@ class XProfilTugasan(Base):
         "Tugasan",
         back_populates="profil_tugasan"
     )
+
+    hasil_imbasan = relationship(
+    "HasilImbasan"
+)

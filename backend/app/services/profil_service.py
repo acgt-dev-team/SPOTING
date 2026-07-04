@@ -82,10 +82,9 @@ def create_profil(db: Session, data: dict):
     execution_type = data.get("execution_type", "IMMEDIATE")
 
     # ✅ status logic
-    if execution_type == "IMMEDIATE":
-        status = "in process"
-    else:
-        status = "telah dijadualkan"
+    execution_type = data.get("execution_type", "IMMEDIATE")
+
+    status = "belum dimulakan"
 
     new_profil = Profil(
         tapak_id=data["tapak_id"],
@@ -153,10 +152,7 @@ def update_profil(db: Session, id: int, data: dict):
     profil.is_scheduled = (profil.execution_type == "SCHEDULED")
 
     # ✅ update status
-    if profil.execution_type == "IMMEDIATE":
-        profil.execution_status = "in process"
-    else:
-        profil.execution_status = "telah dijadualkan"
+    profil.execution_status = "belum dimulakan"
     
     profil.cron_enabled = data.get(
         "cron_enabled",
