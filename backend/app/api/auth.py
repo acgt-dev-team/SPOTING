@@ -81,7 +81,7 @@ def create_user(
     db: Session = Depends(get_db)
 ):
     if not re.fullmatch(
-        r"[a-z0-9]{12}",
+        r"[a-z0-9.]{12,24}",
         data.username
     ):
         raise HTTPException(
@@ -156,6 +156,15 @@ def update_user(
         raise HTTPException(
             status_code=404,
             detail=t("auth.userNotFound")
+        )
+    
+    if not re.fullmatch(
+        r"[a-z0-9.]{12,24}",
+        data.username
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail="Username mesti mengandungi 12 hingga 24 aksara dan hanya huruf kecil, nombor atau tanda titik (.)"
         )
 
     user.nama = data.nama
