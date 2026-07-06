@@ -49,7 +49,7 @@
     "passwordMismatch": "Kata laluan tidak sama",
     "selectDateTime": "Sila pilih tarikh dan masa",
     "usernameRequired": "Nama pengguna diperlukan",
-    "usernameFormat": "Nama pengguna mesti 12 aksara dan hanya huruf kecil atau nombor."
+    "usernameFormat": "Nama pengguna mesti mengandungi 12 hingga 24 aksara dan hanya huruf kecil, nombor atau tanda titik (.)"
   },
   "auth": {
     "changePassword": {

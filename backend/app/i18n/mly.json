@@ -16,7 +16,7 @@
     "userNotFound": "Pengguna tidak ditemui",
     "userUpdated": "Pengguna berjaya dikemas kini",
     "usernameExists": "ID pengguna telah wujud",
-    "usernameInvalid": "ID pengguna mesti mengandungi tepat 12 huruf kecil atau nombor"
+    "usernameInvalid": "Username mesti mengandungi 12 hingga 24 aksara dan hanya huruf kecil, nombor atau tanda titik (.)"
   },
   "common": {
     "deleted": "Berjaya dipadam",
