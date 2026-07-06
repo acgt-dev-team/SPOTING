@@ -1,0 +1,308 @@
+{
+  "app": {
+    "name": "SPOTING_MLY"
+  },
+  "common": {
+    "active": "Aktif",
+    "account": "Akaun",
+    "actions": "Tindakan",
+    "add": "Tambah",
+    "back": "Kembali",
+    "cancel": "Batal",
+    "clear": "Kosongkan",
+    "close": "Tutup",
+    "code": "Kod",
+    "confirm": "Sahkan",
+    "delete": "Padam",
+    "deleteNow": "Padam Sekarang",
+    "deleteKeyword": "Padam",
+    "deleteTitle": "Padam {name}?",
+    "deleteWarning": "Tindakan ini tidak boleh dibatalkan.",
+    "description": "Keterangan",
+    "emptyValue": "-",
+    "loading": "Memuatkan...",
+    "name": "Nama",
+    "noData": "Tiada data ditemui",
+    "nextPage": "Halaman seterusnya",
+    "officer": "Pegawai",
+    "officerAdmin": "Pegawai Tadbir",
+    "position": "Jawatan",
+    "positionPlaceholder": "Masukkan jawatan",
+    "progress": "Kemajuan",
+    "previousPage": "Halaman sebelumnya",
+    "save": "Simpan",
+    "saveChanges": "Simpan Perubahan",
+    "saving": "Menyimpan...",
+    "search": "Cari...",
+    "select": "Pilih",
+    "status": "Status",
+    "tableNumber": "Bil",
+    "typeToConfirm": "Taip {keyword} untuk sahkan:",
+    "typeKeyword": "Taip {keyword}",
+    "update": "Kemaskini"
+  },
+  "validation": {
+    "allFieldsRequired": "Sila isi semua maklumat",
+    "completeBeforeSave": "Sila lengkapkan semua maklumat sebelum simpan.",
+    "nameRequired": "Nama diperlukan",
+    "organizationNameRequired": "Nama organisasi wajib diisi",
+    "passwordMismatch": "Kata laluan tidak sama",
+    "selectDateTime": "Sila pilih tarikh dan masa",
+    "usernameRequired": "Nama pengguna diperlukan",
+    "usernameFormat": "Nama pengguna mesti 12 aksara dan hanya huruf kecil atau nombor."
+  },
+  "auth": {
+    "changePassword": {
+      "eyebrow": "KESELAMATAN AKAUN",
+      "description": "Anda perlu menukar kata laluan sementara.",
+      "error": "Gagal menukar kata laluan",
+      "newPassword": "Kata Laluan Baru",
+      "confirmPassword": "Sahkan Kata Laluan",
+      "submit": "Simpan Kata Laluan",
+      "title": "Tukar Kata Laluan"
+    },
+    "forgotPassword": "Lupa kata laluan",
+    "login": "Log Masuk",
+    "loginButton": "Log masuk",
+    "loginFailed": "Log masuk gagal",
+    "logout": "Log keluar",
+    "password": "Kata Laluan",
+    "tokenMissing": "Token tidak diterima",
+    "username": "ID Pengguna"
+  },
+  "layout": {
+    "breadcrumbs": {
+      "organizations": "Senarai Organisasi",
+      "profiles": "Senarai Profil",
+      "sites": "Senarai Tapak",
+      "subOrganizations": "Senarai Sub Organisasi",
+      "tasks": "Senarai Tugasan"
+    },
+    "menu": {
+      "accounts": "Pengurusan Pengguna",
+      "configuration": "Konfigurasi",
+      "dashboard": "Papan Pemuka",
+      "profile": "Profil Saya"
+    },
+    "ministryName": "Kementerian Dalam Negeri"
+  },
+  "dashboard": {
+    "actions": {
+      "accounts": "Pengguna",
+      "configuration": "Konfigurasi",
+      "viewAll": "Lihat semua"
+    },
+    "emptyOrganizations": "Tiada data organisasi",
+    "insightTitle": "Insight Minggu Ini",
+    "organizationPerformance": "Prestasi Organisasi",
+    "pageDescription": "Prestasi semasa sistem pentadbiran agensi.",
+    "pageTitle": "Ringkasan Prestasi",
+    "ranges": {
+      "day": "Hari ini",
+      "week": "Minggu",
+      "month": "Bulan"
+    },
+    "statLabels": {
+      "organization": "Organisasi",
+      "profile": "Profil",
+      "site": "Tapak",
+      "subOrganization": "Sub Organisasi",
+      "task": "Tugasan"
+    },
+    "taskComplete": "Tugas Selesai"
+  },
+  "configuration": {
+    "shared": {
+      "addData": "TAMBAH DATA",
+      "count": "Bilangan {entity}:",
+      "descriptionPlaceholder": "Masukkan penerangan ringkas",
+      "editData": "KEMASKINI DATA",
+      "search": "Carian {entity}..."
+    },
+    "organization": {
+      "add": "Tambah Organisasi",
+      "countEntity": "Organisasi",
+      "deleteSuccess": "Organisasi berjaya dipadam",
+      "description": "Urus organisasi utama dalam sistem.",
+      "edit": "Kemaskini Organisasi",
+      "empty": "Tiada organisasi dijumpai.",
+      "name": "Nama Organisasi",
+      "namePlaceholder": "Masukkan nama organisasi",
+      "officerPlaceholder": "Masukkan nama pegawai tadbir",
+      "pageTitle": "Senarai Organisasi",
+      "searchEntity": "organisasi",
+      "title": "Kementerian Dalam Negeri"
+    },
+    "subOrganization": {
+      "add": "Tambah Sub Organisasi",
+      "countEntity": "Sub Organisasi",
+      "deleteSuccess": "Sub organisasi berjaya dipadam",
+      "edit": "Kemaskini Sub Organisasi",
+      "empty": "Tiada sub organisasi dijumpai.",
+      "name": "Nama Sub Organisasi",
+      "namePlaceholder": "Masukkan nama sub organisasi",
+      "pageTitle": "Senarai Sub Organisasi",
+      "searchEntity": "sub organisasi"
+    },
+    "site": {
+      "add": "Tambah Tapak",
+      "countEntity": "Tapak",
+      "deleteSuccess": "Tapak berjaya dipadam",
+      "edit": "Edit Tapak",
+      "empty": "Tiada tapak dijumpai.",
+      "name": "Nama Tapak",
+      "namePlaceholder": "Masukkan nama tapak",
+      "officerPlaceholder": "Masukkan pegawai",
+      "pageTitle": "Senarai Tapak",
+      "searchEntity": "tapak",
+      "tasksTotal": "Jumlah Tugasan"
+    },
+    "profile": {
+      "add": "Tambah Profil",
+      "countEntity": "Profil",
+      "defaultDescription": "Maklumat tapak",
+      "defaultName": "Tapak",
+      "deleteSuccess": "Profil berjaya dipadam",
+      "downloadFailed": "Gagal memuat turun laporan",
+      "edit": "Edit Profil",
+      "empty": "Tiada profil dijumpai.",
+      "name": "Nama Profil",
+      "namePlaceholder": "Masukkan nama profil",
+      "pageTitle": "Senarai Profil",
+      "searchEntity": "profil"
+    },
+    "taskList": {
+      "assign": "Tetapkan Tugasan",
+      "codeName": "Nama / Kod",
+      "countEntity": "Tugasan",
+      "defaultDescription": "Tetapan operasi tapak",
+      "defaultName": "Profil Operasi",
+      "empty": "Tiada tugasan dijumpai.",
+      "ipRange": "Julat IP",
+      "name": "Nama Tugasan",
+      "pageTitle": "Senarai Tugasan",
+      "protocol": "Protokol",
+      "removeConfirm": "Buang tugasan ini?",
+      "searchEntity": "tugasan"
+    }
+  },
+  "profileUser": {
+    "accountInfo": "Maklumat Akaun",
+    "description": "Sistem membenarkan pengguna mengemaskini maklumat akaun dan kata laluan mereka.",
+    "email": "Emel",
+    "emailPlaceholder": "Masukkan emel",
+    "errorLoad": "Gagal mendapatkan maklumat profil.",
+    "errorSave": "Gagal mengemaskini profil.",
+    "eyebrow": "PROFIL PENGGUNA",
+    "namePlaceholder": "Masukkan nama",
+    "newPassword": "Kata Laluan Baru",
+    "passwordPlaceholder": "Kosongkan jika tidak mahu tukar",
+    "phone": "Telefon",
+    "phonePlaceholder": "Masukkan nombor telefon",
+    "successSave": "Profil berjaya dikemaskini.",
+    "title": "Profil Saya"
+  },
+  "accounts": {
+    "activate": "Aktifkan",
+    "activeQuestion": "Aktifkan akaun ini?",
+    "add": "Tambah Akaun",
+    "countEntity": "Akaun",
+    "createdTitle": "Akaun Berjaya Dicipta",
+    "deactivate": "Nyahaktif",
+    "deactivateQuestion": "Nyahaktif akaun ini?",
+    "description": "Sistem memaparkan senarai akaun yang telah didaftarkan bagi membolehkan pentadbir membuat semakan dan pengurusan akaun.",
+    "edit": "Kemaskini Akaun",
+    "empty": "Tiada akaun dijumpai.",
+    "eyebrow": "AKAUN SISTEM",
+    "listTitle": "Senarai Akaun",
+    "passwordResetFailed": "Gagal menetapkan semula kata laluan",
+    "passwordResetTitle": "Kata Laluan Berjaya Ditetapkan Semula",
+    "resetPassword": "Tetapkan semula kata laluan",
+    "role": "Peranan",
+    "roles": {
+      "admin": "Pentadbir",
+      "superAdmin": "Super Admin",
+      "user": "Pengguna"
+    },
+    "searchEntity": "akaun",
+    "status": "Status Akaun",
+    "temporaryPassword": "Kata Laluan Sementara",
+    "temporaryPasswordNotice": "Kata laluan sementara hanya dipaparkan sekali. Sila simpan dan serahkan kepada pengguna dengan selamat.",
+    "title": "Pengurusan Pengguna",
+    "toggleConfirm": "Sahkan tindakan:",
+    "typeToggleToConfirm": "Taip {keyword} untuk sahkan.",
+    "usernamePlaceholder": "Masukkan ID Pengguna"
+  },
+  "schedule": {
+    "cronCustom": "Cron Custom",
+    "cronExpression": "Ekspresi Cron",
+    "cronPlaceholder": "0 0 * * *",
+    "cronJob": "Cron Job",
+    "date": "Tarikh",
+    "daily": "Harian",
+    "executionType": "Jenis Pelaksanaan",
+    "frequency": "Kekerapan",
+    "immediate": "Imbas Segera",
+    "immediateDescription": "Jalankan serta-merta",
+    "monthly": "Bulanan",
+    "once": "Sekali Sahaja",
+    "pickDate": "Pilih tarikh",
+    "pickTime": "Pilih masa",
+    "scheduled": "Jadualkan",
+    "scheduledDescription": "Tetapkan masa pelaksanaan",
+    "scheduledTime": "Masa Dijadualkan",
+    "scheduleExecution": "Jadual Pelaksanaan",
+    "time": "Masa",
+    "weekly": "Mingguan"
+  },
+  "tasks": {
+    "add": {
+      "addTitle": "Tambah Tugasan",
+      "code": "Kod Tugasan",
+      "codePlaceholder": "Contoh: TGS-001",
+      "description": "Penerangan",
+      "descriptionPlaceholder": "Masukkan penerangan tugasan",
+      "editDescription": "Kemaskini maklumat tugasan sedia ada.",
+      "editTitle": "Edit Tugasan",
+      "newDescription": "Cipta tugasan baharu untuk digunakan dalam sistem.",
+      "info": "Maklumat Tugasan",
+      "ipEndPlaceholder": "192.168.0.254",
+      "ipStartPlaceholder": "192.168.0.1",
+      "network": "Maklumat Rangkaian",
+      "nameRequired": "Nama Tugasan *",
+      "namePlaceholder": "Masukkan nama tugasan",
+      "save": "Simpan Tugasan",
+      "statusDescription": "Tandakan sama ada tugasan aktif atau tidak.",
+      "statusTitle": "Status Tugasan",
+      "type": "Jenis Tugasan"
+    },
+    "assign": {
+      "add": "Tambah Tugasan",
+      "description": "Pilih tugasan yang ingin diberikan kepada profil ini.",
+      "eyebrow": "PENGURUSAN TUGASAN",
+      "ipRange": "Julat IP",
+      "loading": "Memuatkan tugasan...",
+      "selected": "{count} dipilih",
+      "title": "Tetapkan Tugasan"
+    },
+    "ipEnd": "IP Akhir",
+    "ipStart": "IP Mula",
+    "protocol": "Protokol"
+  },
+  "status": {
+    "active": "Aktif",
+    "completed": "Telah Selesai",
+    "failed": "Gagal",
+    "inProcess": "Dalam Proses",
+    "notActive": "Tidak Aktif",
+    "notStarted": "Belum Bermula",
+    "scheduled": "Telah Dijadualkan",
+    "unknown": "Tidak Diketahui"
+  },
+  "reports": {
+    "download": "Muat turun laporan"
+  },
+  "errors": {
+    "unauthorizedLogout": "Tidak dibenarkan - log keluar"
+  }
+}

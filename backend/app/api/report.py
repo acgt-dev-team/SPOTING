@@ -4,10 +4,11 @@ from fastapi.responses import FileResponse
 
 from app.database.session import get_db
 from app.services.report_service import generate_report
+from app.i18n import t
 
 router = APIRouter(
     prefix="/report",
-    tags=["Report"]
+    tags=[t("docs.tags.report")]
 )
 
 

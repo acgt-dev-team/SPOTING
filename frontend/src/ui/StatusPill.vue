@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from "vue"
+import { t } from "../i18n"
 
 const props = defineProps({
   status: {
@@ -17,25 +18,25 @@ const label = computed(() => {
   switch (s) {
     case "1":
     case "belum dimulakan":
-      return "Belum Bermula"
+      return t("status.notStarted")
 
     case "2":
     case "in process":
-      return "Dalam Proses"
+      return t("status.inProcess")
 
     case "3":
     case "execution completed":
-      return "Telah Selesai"
+      return t("status.completed")
 
     case "4":
     case "gagal":
-      return "Gagal"
+      return t("status.failed")
 
     case "telah dijadualkan":
-      return "Telah Dijadualkan"
+      return t("status.scheduled")
 
     default:
-      return "Tidak Diketahui"
+      return t("status.unknown")
   }
 })
 
@@ -48,81 +49,31 @@ const pillClass = computed(() => {
   switch (s) {
     case "1":
     case "belum dimulakan":
-      return "running"
+      return "ui-status--idle"
 
     case "2":
     case "in process":
-      return "pending"
+      return "ui-status--pending"
 
     case "3":
     case "execution completed":
-      return "success"
+      return "ui-status--success"
 
     case "4":
     case "gagal":
-      return "failed"
+      return "ui-status--failed"
 
     case "telah dijadualkan":
-      return "scheduled"
+      return "ui-status--scheduled"
 
     default:
-      return "default"
+      return "ui-status--unknown"
   }
 })
 </script>
 
 <template>
-  <span class="status-pill" :class="pillClass">
+  <span class="ui-status" :class="pillClass">
     {{ label }}
   </span>
 </template>
-
-<style scoped>
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-
-/* Belum Bermula */
-.running {
-  background: #e5e7eb;
-  color: #6b7280;
-}
-
-/* Dalam Proses */
-.pending {
-  background: #fef3c7;
-  color: #d97706;
-}
-
-/* Telah Dijadualkan */
-.scheduled {
-  background: #e0e7ff;
-  color: #4338ca;
-}
-
-/* Telah Selesai */
-.success {
-  background: #dcfce7;
-  color: #16a34a;
-}
-
-/* Gagal */
-.failed {
-  background: #fef2f2;
-  color: #dc2626;
-}
-
-/* Fallback */
-.default {
-  background: #f3f4f6;
-  color: #6b7280;
-}
-</style>

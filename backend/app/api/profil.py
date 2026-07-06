@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database.session import get_db
+from app.i18n import t
 
 from app.schemas.profil_schema import ProfilCreate, ProfilResponse
 
@@ -11,7 +12,7 @@ from app.services.profil_service import (
     delete_profil
 )
 
-router = APIRouter(prefix="/profil", tags=["Profil"])
+router = APIRouter(prefix="/profil", tags=[t("docs.tags.profile")])
 
 
 @router.get("/tapak/{tapak_id}", response_model=list[ProfilResponse])
@@ -29,7 +30,7 @@ def update(id: int, data: ProfilCreate, db: Session = Depends(get_db)):
     updated = update_profil(db, id, data.dict())
 
     if not updated:
-        raise HTTPException(status_code=404, detail="Profil not found")
+        raise HTTPException(status_code=404, detail=t("profile.notFound"))
 
     return updated
 
@@ -39,6 +40,6 @@ def delete(id: int, db: Session = Depends(get_db)):
     deleted = delete_profil(db, id)
 
     if not deleted:
-        raise HTTPException(status_code=404, detail="Profil not found")
+        raise HTTPException(status_code=404, detail=t("profile.notFound"))
 
-    return {"message": "Deleted"}
+    return {"message": t("common.deleted")}

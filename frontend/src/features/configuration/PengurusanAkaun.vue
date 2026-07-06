@@ -1,6 +1,8 @@
 <script setup>
 import { ref, computed, onMounted, watch } from "vue"
+import { KeyRound, LockKeyhole, Pencil, Plus, Search, Trash2, TriangleAlert, X } from "lucide-vue-next"
 import api from "../../services/api"
+import { t } from "../../i18n"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
@@ -68,12 +70,12 @@ const selectedAccount = computed(() =>
 )
 
 const canDelete = computed(() =>
-  deleteConfirmText.value.trim().toLowerCase() === "padam"
+  deleteConfirmText.value.trim().toLowerCase() === t("common.deleteKeyword").toLowerCase()
 )
 
 // ✅ Toggle keyword logic
 const toggleKeyword = computed(() =>
-  toggleTarget.value?.aktif ? "Nyahaktif" : "Aktifkan"
+  toggleTarget.value?.aktif ? t("accounts.deactivate") : t("accounts.activate")
 )
 
 const toggleKeywordLower = computed(() =>
@@ -104,11 +106,11 @@ function validateForm() {
   const e = {}
 
   if (!nama.value.trim()) {
-    e.nama = "Nama diperlukan"
+    e.nama = t("validation.nameRequired")
   }
 
   if (!username.value.trim()) {
-    e.username = "Nama pengguna diperlukan"
+    e.username = t("validation.usernameRequired")
   }
 
   errors.value = e
@@ -153,7 +155,7 @@ async function saveAccount() {
     !nama.value.trim() ||
     !username.value.trim()
   ) {
-    alert("Sila lengkapkan semua maklumat sebelum simpan.")
+    alert(t("validation.completeBeforeSave"))
     return
   }
 
@@ -161,9 +163,7 @@ async function saveAccount() {
   const usernameRegex = /^[a-z0-9.]{12,24}$/
 
   if (!usernameRegex.test(username.value)) {
-    alert(
-      "Nama pengguna mesti mengandungi 12 hingga 24 aksara dan hanya huruf kecil, nombor atau tanda titik (.)."
-    )
+    alert(t("validation.usernameFormat"))
     return
   }
 
@@ -190,8 +190,7 @@ async function saveAccount() {
         aktif: aktif.value
       })
 
-      passwordModalTitle.value =
-  "Akaun Berjaya Dicipta"
+      passwordModalTitle.value = t("accounts.createdTitle")
 
 generatedPassword.value =
   res.data.generated_password
@@ -303,8 +302,7 @@ async function resetPassword(item) {
       `/auth/users/${item.id}/reset-password`
     )
 
-    passwordModalTitle.value =
-      "Kata Laluan Berjaya Ditetapkan Semula"
+    passwordModalTitle.value = t("accounts.passwordResetTitle")
 
     generatedUsername.value =
       item.username
@@ -318,7 +316,7 @@ async function resetPassword(item) {
 
     console.error(err)
 
-    alert("Gagal reset password")
+    alert(t("accounts.passwordResetFailed"))
 
   }
 
@@ -330,35 +328,34 @@ async function resetPassword(item) {
 
     <div class="hierarchy-card">
       <div class="hierarchy-left">
-        <h2>Pengurusan Pengguna</h2>
+        <h2>{{ t("accounts.title") }}</h2>
         <p class="section-desc">
-          Sistem memaparkan senarai akaun yang telah didaftarkan bagi
-          membolehkan pentadbir membuat semakan dan pengurusan akaun.
+          {{ t("accounts.description") }}
         </p>
       </div>
     </div>
 
     <div class="toolbar">
       <div class="search-box">
-        <span class="search-icon">⌕</span>
+        <Search class="search-icon" :size="18" aria-hidden="true" />
         <input
           v-model="search"
           type="text"
-          placeholder="Carian akaun..."
+          :placeholder="t('configuration.shared.search', { entity: t('accounts.searchEntity') })"
         />
       </div>
 
       <button
-        class="primary-btn"
+        class="ui-button ui-button--primary"
         @click="openModal"
       >
-        <span class="btn-plus">+</span>
-        Tambah Akaun
+        <Plus :size="18" aria-hidden="true" />
+        {{ t("accounts.add") }}
       </button>
     </div>
 
     <div class="page-heading-block">
-      <h1 class="main-page-title">Senarai Akaun</h1>
+      <h1 class="main-page-title">{{ t("accounts.listTitle") }}</h1>
     </div>
 
     <div class="table-card">
@@ -367,17 +364,17 @@ async function resetPassword(item) {
         <table>
           <thead>
             <tr>
-              <th style="width:80px">BIL</th>
-              <th style="width:220px">NAMA</th>
-              <th style="width:160px">ID PENGGUNA</th>
-              <th style="width:120px">PERANAN</th>
+              <th style="width:80px">{{ t("common.tableNumber") }}</th>
+              <th style="width:220px">{{ t("common.name") }}</th>
+              <th style="width:160px">{{ t("auth.username") }}</th>
+              <th style="width:120px">{{ t("accounts.role") }}</th>
               <th
                 style="
                   width:160px;
                   text-align:center;
                 "
               >
-                TINDAKAN
+                {{ t("common.actions") }}
               </th>
             </tr>
           </thead>
@@ -386,7 +383,7 @@ async function resetPassword(item) {
 
             <tr v-if="filteredAccounts.length === 0">
               <td colspan="7" class="empty-cell">
-                Tiada akaun dijumpai.
+                {{ t("accounts.empty") }}
               </td>
             </tr>
 
@@ -406,7 +403,7 @@ async function resetPassword(item) {
                   <div>
                     <p class="org-name">{{ item.nama }}</p>
                     <p class="org-desc">
-                      {{ item.aktif ? "Aktif" : "Tidak Aktif" }}
+                      {{ item.aktif ? t("status.active") : t("status.notActive") }}
                     </p>
                   </div>
                 </div>
@@ -416,10 +413,10 @@ async function resetPassword(item) {
               <td>
   {{
     item.role === "super admin"
-      ? "Super Admin"
+      ? t("accounts.roles.superAdmin")
       : item.role === "admin"
-      ? "Pentadbir"
-      : "Pengguna"
+      ? t("accounts.roles.admin")
+      : t("accounts.roles.user")
   }}
 </td>
 
@@ -434,17 +431,21 @@ async function resetPassword(item) {
                 >
 
               <button
-                class="ghost-btn"
+                class="ui-icon-button"
+                :title="t('accounts.edit')"
+                :aria-label="t('accounts.edit')"
                 @click="editAccount(item)"
               >
-                ✏️
+                <Pencil :size="17" aria-hidden="true" />
               </button>
 
               <button
-                class="ghost-btn"
+                class="ui-icon-button"
+                :title="t('accounts.resetPassword')"
+                :aria-label="t('accounts.resetPassword')"
                 @click="resetPassword(item)"
               >
-                🔑
+                <KeyRound :size="17" aria-hidden="true" />
               </button>
 
               </div>
@@ -467,7 +468,7 @@ async function resetPassword(item) {
 
     <div class="footer-bar">
       <div class="count-pill">
-        Bilangan Akaun:
+        {{ t("configuration.shared.count", { entity: t("accounts.countEntity") }) }}
         <strong>
           {{ filteredAccounts.length.toString().padStart(2,"0") }}
         </strong>
@@ -485,20 +486,22 @@ async function resetPassword(item) {
 
           <div class="modal-header">
             <div>
-              <p class="eyebrow">AKAUN SISTEM</p>
+              <p class="eyebrow">{{ t("accounts.eyebrow") }}</p>
               <h2>
                 {{ editingId
-                  ? "Kemaskini Akaun"
-                  : "Tambah Akaun"
+                  ? t("accounts.edit")
+                  : t("accounts.add")
                 }}
               </h2>
             </div>
 
             <button
-              class="close-btn"
+              class="ui-icon-button"
+              :title="t('common.close')"
+              :aria-label="t('common.close')"
               @click="closeModal"
             >
-              ✕
+              <X :size="18" aria-hidden="true" />
             </button>
           </div>
 
@@ -506,34 +509,34 @@ async function resetPassword(item) {
 
             <AppInput
               v-model="nama"
-              label="Nama"
-              placeholder="Masukkan nama"
+              :label="t('common.name')"
+              :placeholder="t('profileUser.namePlaceholder')"
             />
 
             <AppInput
               v-model="username"
-              label="ID Pengguna"
-              placeholder="Masukkan ID Pengguna"
+              :label="t('auth.username')"
+              :placeholder="t('accounts.usernamePlaceholder')"
             />
 
             <AppSelect
               v-model="role"
-              label="Peranan"
+              :label="t('accounts.role')"
               :options="
   currentRole === 'super admin'
     ? [
-        { label: 'Pentadbir', value: 'admin' },
-        { label: 'Pengguna', value: 'user' }
+        { label: t('accounts.roles.admin'), value: 'admin' },
+        { label: t('accounts.roles.user'), value: 'user' }
       ]
     : [
-        { label: 'Pengguna', value: 'user' }
+        { label: t('accounts.roles.user'), value: 'user' }
       ]
 "
             />
 
             <!-- ✅ TOGGLE (UPDATED) -->
             <div class="field">
-              <label>Status Akaun</label>
+              <label>{{ t("accounts.status") }}</label>
 
               <div class="switch-wrapper">
                 <label class="switch">
@@ -546,7 +549,7 @@ async function resetPassword(item) {
                 </label>
 
                 <span class="status-text">
-                  {{ aktif ? "Aktif" : "Tidak Aktif" }}
+                  {{ aktif ? t("status.active") : t("status.notActive") }}
                 </span>
               </div>
             </div>
@@ -557,20 +560,20 @@ async function resetPassword(item) {
 
             <button
               v-if="editingId"
-              class="delete-trigger-btn"
+              class="ui-button ui-button--outline ui-button--danger"
               @click="askDelete({ id: editingId })"
             >
-              Padam
+              {{ t("common.delete") }}
             </button>
 
             <AppButton
-              text="Batal"
+              :text="t('common.cancel')"
               variant="outline"
               @click="closeModal"
             />
 
             <AppButton
-              :text="editingId ? 'Kemaskini' : 'Simpan'"
+              :text="editingId ? t('common.update') : t('common.save')"
               @click="saveAccount"
             />
 
@@ -590,30 +593,32 @@ async function resetPassword(item) {
 
         <div class="delete-modal">
 
-          <div class="delete-icon">🗑️</div>
+          <div class="delete-icon">
+            <Trash2 :size="28" aria-hidden="true" />
+          </div>
 
           <h3>
-            Padam {{ selectedAccount?.nama }}?
+            {{ t("common.deleteTitle", { name: selectedAccount?.nama }) }}
           </h3>
 
           <p class="delete-desc">
-            Tindakan ini tidak boleh dibatalkan.
+            {{ t("common.deleteWarning") }}
           </p>
 
           <div class="confirm-box">
 
             <label>
-              Taip <strong>Padam</strong> untuk sahkan:
+              {{ t("common.typeToConfirm", { keyword: t("common.deleteKeyword") }) }}
             </label>
 
             <div class="org-delete-name">
-              <span class="danger-word">Padam</span>
+              <span class="danger-word">{{ t("common.deleteKeyword") }}</span>
             </div>
 
             <input
               v-model="deleteConfirmText"
               class="delete-input"
-              placeholder="Taip Padam"
+              :placeholder="t('common.typeKeyword', { keyword: t('common.deleteKeyword') })"
             />
 
           </div>
@@ -621,18 +626,18 @@ async function resetPassword(item) {
           <div class="delete-actions">
 
             <button
-              class="cancel-delete-btn"
+              class="ui-button ui-button--outline"
               @click="closeDeleteModal"
             >
-              Batal
+              {{ t("common.cancel") }}
             </button>
 
             <button
-              class="danger-btn"
+              class="ui-button ui-button--danger"
               :disabled="!canDelete"
               @click="confirmDelete"
             >
-              Padam Sekarang
+              {{ t("common.deleteNow") }}
             </button>
 
           </div>
@@ -651,23 +656,25 @@ async function resetPassword(item) {
 
         <div class="delete-modal">
 
-          <div class="delete-icon">⚠️</div>
+          <div class="delete-icon">
+            <TriangleAlert :size="28" aria-hidden="true" />
+          </div>
 
           <h3>
             {{ toggleTarget?.aktif
-              ? "Nyahaktif akaun ini?"
-              : "Aktifkan akaun ini?"
+              ? t("accounts.deactivateQuestion")
+              : t("accounts.activeQuestion")
             }}
           </h3>
 
           <p class="delete-desc">
-            Taip <strong>{{ toggleKeyword }}</strong> untuk sahkan.
+            {{ t("accounts.typeToggleToConfirm", { keyword: toggleKeyword }) }}
           </p>
 
           <div class="confirm-box">
 
             <label>
-              Sahkan tindakan:
+              {{ t("accounts.toggleConfirm") }}
             </label>
 
             <div class="org-delete-name">
@@ -687,18 +694,18 @@ async function resetPassword(item) {
           <div class="delete-actions">
 
             <button
-              class="cancel-delete-btn"
+              class="ui-button ui-button--outline"
               @click="closeToggleModal"
             >
-              Batal
+              {{ t("common.cancel") }}
             </button>
 
             <button
-              class="danger-btn"
+              class="ui-button ui-button--danger"
               :disabled="!canToggle"
               @click="confirmToggle"
             >
-              Sahkan
+              {{ t("common.confirm") }}
             </button>
 
           </div>
@@ -718,25 +725,26 @@ async function resetPassword(item) {
   >
     <div class="delete-modal">
 
-      <div class="delete-icon">🔐</div>
+      <div class="delete-icon">
+        <LockKeyhole :size="28" aria-hidden="true" />
+      </div>
 
       <h3>{{ passwordModalTitle }}</h3>
 
       <p class="delete-desc">
-  Kata laluan sementara hanya dipaparkan sekali.
-  Sila simpan dan serahkan kepada pengguna dengan selamat.
+        {{ t("accounts.temporaryPasswordNotice") }}
 </p>
 
       <div class="confirm-box">
 
-        <label>ID Pengguna</label>
+        <label>{{ t("auth.username") }}</label>
 
         <div class="org-delete-name">
           {{ generatedUsername }}
         </div>
 
         <label style="margin-top:12px">
-          Kata Laluan Sementara
+          {{ t("accounts.temporaryPassword") }}
         </label>
 
         <div class="org-delete-name">
@@ -748,10 +756,10 @@ async function resetPassword(item) {
       <div class="delete-actions">
 
         <button
-          class="cancel-delete-btn"
+          class="ui-button ui-button--outline"
           @click="showPasswordModal = false"
         >
-          Tutup
+          {{ t("common.close") }}
         </button>
 
       </div>
@@ -930,26 +938,6 @@ td{
   font-weight:700;
 }
 
-.ghost-btn{
-  width:36px;
-  height:36px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:none;
-  border-radius:10px;
-  background:transparent;
-  color:#64748B;
-  cursor:pointer;
-  transition:.15s;
-  padding:0;
-}
-
-.ghost-btn:hover{
-  background:#EEF2FF;
-  color:#4F46E5;
-}
-
 .empty-cell{
   text-align:center;
   color:#94A3B8;
@@ -972,27 +960,6 @@ td{
 
 .count-pill strong{
   color:var(--primary);
-}
-
-.primary-btn{
-  border:none;
-  background:var(--primary);
-  color:white;
-  padding:0 22px;
-  min-height:48px;
-  border-radius:12px;
-  font-size:14px;
-  font-weight:700;
-  cursor:pointer;
-  transition:.18s;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-}
-
-.primary-btn:hover{
-  background:#4338CA;
 }
 
 .btn-plus{
@@ -1056,22 +1023,6 @@ td{
   margin:0;
 }
 
-.close-btn{
-  width:40px;
-  height:40px;
-  border:none;
-  border-radius:12px;
-  background:#F8FAFC;
-  cursor:pointer;
-  font-size:16px;
-  transition:.15s;
-}
-
-.close-btn:hover{
-  background:#E0E7FF;
-  color:#4F46E5;
-}
-
 .form-area{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -1098,50 +1049,6 @@ td{
   padding-top:20px;
   border-top:1px solid #F1F5F9;
   flex-wrap:wrap;
-}
-
-.modal-actions :deep(button){
-  min-height:46px;
-  border-radius:14px;
-  font-weight:700;
-  padding:0 20px;
-}
-
-.modal-actions :deep(button:not(.delete-trigger-btn):not(.outline)){
-  background:#4F46E5;
-  color:white;
-}
-
-.modal-actions :deep(button:not(.delete-trigger-btn):not(.outline):hover){
-  background:#4338CA;
-  box-shadow:0 8px 18px rgba(79,70,229,.18);
-}
-
-.modal-actions :deep(.outline){
-  background:white;
-  border:1px solid #E2E8F0;
-  color:#475569;
-}
-
-.modal-actions :deep(.outline:hover){
-  background:#F1F5F9;
-  border-color:#CBD5E1;
-}
-
-.delete-trigger-btn{
-  background:#FEF2F2;
-  color:#DC2626;
-  border:none;
-  border-radius:14px;
-  padding:12px 18px;
-  font-weight:700;
-  cursor:pointer;
-  transition:.18s;
-}
-
-.delete-trigger-btn:hover{
-  background:#FECACA;
-  color:#B91C1C;
 }
 
 /* DELETE MODAL */
@@ -1229,41 +1136,6 @@ td{
   margin-top:24px;
 }
 
-.cancel-delete-btn{
-  border:1px solid var(--border);
-  background:white;
-  color:#475569;
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:700;
-  cursor:pointer;
-  transition:.15s;
-}
-
-.cancel-delete-btn:hover{
-  background:#F1F5F9;
-}
-
-.danger-btn{
-  border:none;
-  background:#DC2626;
-  color:white;
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:700;
-  cursor:pointer;
-  transition:.15s;
-}
-
-.danger-btn:hover:not(:disabled){
-  background:#991B1B;
-}
-
-.danger-btn:disabled{
-  opacity:.45;
-  cursor:not-allowed;
-}
-
 /* TOGGLE SWITCH */
 
 .switch-wrapper{
@@ -1339,10 +1211,6 @@ td{
 
   .search-box{
     max-width:none;
-    width:100%;
-  }
-
-  .primary-btn{
     width:100%;
   }
 

@@ -11,10 +11,11 @@ from app.schemas.hasil_imbasan import (
 from app.services.hasil_imbasan_service import (
     create_hasil_imbasan
 )
+from app.i18n import t
 
 router = APIRouter(
     prefix="/ejen",
-    tags=["Ejen Results"]
+    tags=[t("docs.tags.scanResult")]
 )
 
 

@@ -1,6 +1,8 @@
 <script setup>
 import { reactive, ref, onMounted, computed, watch } from "vue"
+import { X } from "lucide-vue-next"
 import api from "../../../services/api"
+import { t } from "../../../i18n"
 
 import AppSelect from "../../../ui/AppSelect.vue"
 
@@ -131,24 +133,29 @@ onMounted(() => {
 
       <div>
         <p class="eyebrow">
-          {{ isEditMode ? "KEMASKINI DATA" : "TAMBAH DATA" }}
+          {{ isEditMode ? t("configuration.shared.editData") : t("configuration.shared.addData") }}
         </p>
 
         <h2>
-          {{ isEditMode ? "Edit Tugasan" : "Tambah Tugasan" }}
+          {{ isEditMode ? t("tasks.add.editTitle") : t("tasks.add.addTitle") }}
         </h2>
 
         <p class="subtext">
           {{
             isEditMode
-              ? "Kemaskini maklumat tugasan sedia ada."
-              : "Cipta tugasan baharu untuk digunakan dalam sistem."
+              ? t("tasks.add.editDescription")
+              : t("tasks.add.newDescription")
           }}
         </p>
       </div>
 
-      <button class="close-btn" @click="$emit('close')">
-        ✕
+      <button
+        class="ui-icon-button"
+        :title="t('common.close')"
+        :aria-label="t('common.close')"
+        @click="$emit('close')"
+      >
+        <X :size="18" aria-hidden="true" />
       </button>
 
     </div>
@@ -159,21 +166,21 @@ onMounted(() => {
       <!-- MAKLUMAT -->
       <div class="section-card">
 
-        <h3>Maklumat Tugasan</h3>
+        <h3>{{ t("tasks.add.info") }}</h3>
 
         <div class="field">
-          <label>Nama Tugasan *</label>
+          <label>{{ t("tasks.add.nameRequired") }}</label>
 
           <input
             v-model="form.nama"
             type="text"
-            placeholder="Masukkan nama tugasan"
+            :placeholder="t('tasks.add.namePlaceholder')"
           />
         </div>
 
         <AppSelect
           v-model="form.jenis_id"
-          label="Jenis Tugasan"
+          :label="t('tasks.add.type')"
           :options="jenisList.map(j => ({
             label: j.nama,
             value: String(j.id)
@@ -181,12 +188,12 @@ onMounted(() => {
         />
 
         <div class="field">
-          <label>Kod Tugasan</label>
+          <label>{{ t("tasks.add.code") }}</label>
 
           <input
             v-model="form.kod"
             type="text"
-            placeholder="Contoh: TGS-001"
+            :placeholder="t('tasks.add.codePlaceholder')"
           />
         </div>
 
@@ -195,11 +202,11 @@ onMounted(() => {
       <!-- NETWORK -->
       <div class="section-card">
 
-        <h3>Maklumat Network</h3>
+        <h3>{{ t("tasks.add.network") }}</h3>
 
         <AppSelect
           v-model="form.protocol"
-          label="Protokol"
+          :label="t('tasks.protocol')"
           :options="protocols.map(p => ({
             label: p,
             value: p
@@ -209,22 +216,22 @@ onMounted(() => {
         <div class="grid-2">
 
           <div class="field">
-            <label>IP Mula</label>
+            <label>{{ t("tasks.ipStart") }}</label>
 
             <input
               v-model="form.ip_start"
               type="text"
-              placeholder="192.168.0.1"
+              :placeholder="t('tasks.add.ipStartPlaceholder')"
             />
           </div>
 
           <div class="field">
-            <label>IP Akhir</label>
+            <label>{{ t("tasks.ipEnd") }}</label>
 
             <input
               v-model="form.ip_end"
               type="text"
-              placeholder="192.168.0.254"
+              :placeholder="t('tasks.add.ipEndPlaceholder')"
             />
           </div>
 
@@ -235,15 +242,15 @@ onMounted(() => {
       <!-- KETERANGAN -->
       <div class="section-card">
 
-        <h3>Keterangan</h3>
+        <h3>{{ t("common.description") }}</h3>
 
         <div class="field">
-          <label>Penerangan</label>
+          <label>{{ t("tasks.add.description") }}</label>
 
           <textarea
             v-model="form.keterangan"
             rows="5"
-            placeholder="Masukkan penerangan tugasan"
+            :placeholder="t('tasks.add.descriptionPlaceholder')"
           ></textarea>
         </div>
 
@@ -252,15 +259,15 @@ onMounted(() => {
       <!-- STATUS -->
       <div class="section-card">
 
-        <h3>Status</h3>
+        <h3>{{ t("common.status") }}</h3>
 
         <div class="toggle-row">
 
           <div>
-            <p class="toggle-title">Status Tugasan</p>
+            <p class="toggle-title">{{ t("tasks.add.statusTitle") }}</p>
 
             <p class="toggle-desc">
-              Tandakan sama ada tugasan aktif atau tidak.
+              {{ t("tasks.add.statusDescription") }}
             </p>
           </div>
 
@@ -275,7 +282,7 @@ onMounted(() => {
         </div>
 
         <div class="status-pill" :class="form.aktif ? 'on' : 'off'">
-          {{ form.aktif ? "Aktif" : "Tidak Aktif" }}
+          {{ form.aktif ? t("status.active") : t("status.notActive") }}
         </div>
 
       </div>
@@ -286,23 +293,23 @@ onMounted(() => {
     <div class="panel-footer">
 
       <button
-        class="outline-btn"
+        class="ui-button ui-button--outline"
         @click="$emit('close')"
       >
-        Batal
+        {{ t("common.cancel") }}
       </button>
 
       <button
-        class="save-btn"
+        class="ui-button ui-button--primary"
         :disabled="!form.nama || !form.jenis_id || saving"
         @click="handleSave"
       >
         {{
           saving
-            ? "Menyimpan..."
+            ? t("common.saving")
             : isEditMode
-              ? "Simpan Perubahan"
-              : "Simpan Tugasan"
+              ? t("common.saveChanges")
+              : t("tasks.add.save")
         }}
       </button>
 
@@ -355,17 +362,6 @@ onMounted(() => {
   color: #6b7280;
   line-height: 1.5;
   max-width: 320px;
-}
-
-.close-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  border: none;
-  background: #F8FAFC;
-  cursor: pointer;
-  font-size: 16px;
-  flex-shrink: 0;
 }
 
 .panel-body {
@@ -518,43 +514,6 @@ textarea {
   flex-shrink: 0;
 }
 
-.outline-btn,
-.save-btn {
-  flex: 1;
-  padding: 14px 18px;
-  border-radius: 16px;
-  font-weight: 800;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.outline-btn {
-  border: 1px solid #E2E8F0;
-  background: white;
-  color: #475569;
-}
-
-.outline-btn:hover {
-  background: #F8FAFC;
-}
-
-.save-btn {
-  border: none;
-  background: #4F46E5;
-  color: white;
-}
-
-.save-btn:hover:not(:disabled) {
-  background: #4338CA;
-  transform: none;
-}
-
-.save-btn:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
 @media (max-width: 1100px) {
   .side-panel {
     width: 100%;
@@ -568,11 +527,6 @@ textarea {
 
   .panel-footer {
     flex-direction: column;
-  }
-
-  .outline-btn,
-  .save-btn {
-    width: 100%;
   }
 
   .panel-header {

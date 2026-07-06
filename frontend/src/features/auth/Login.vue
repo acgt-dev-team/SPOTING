@@ -2,6 +2,7 @@
 import { ref } from "vue"
 import { useRouter } from "vue-router"
 import api from "../../services/api"
+import { t } from "../../i18n"
 
 import logo from "../../assets/images/spoting-logo.png"
 
@@ -21,7 +22,7 @@ async function login(e){
   error.value = ""
 
   if(!username.value || !password.value){
-    error.value = "Sila isi semua maklumat"
+    error.value = t("validation.allFieldsRequired")
     return
   }
 
@@ -39,7 +40,7 @@ async function login(e){
       res.data.force_password_change
 
     if(!token){
-      throw new Error("Token tidak diterima")
+      throw new Error(t("auth.tokenMissing"))
     }
 
     sessionStorage.setItem("token", token)
@@ -66,7 +67,7 @@ if (
 
     error.value =
       err.response?.data?.detail ||
-      "Login gagal"
+      t("auth.loginFailed")
 
   } finally {
     loading.value = false
@@ -85,18 +86,18 @@ if (
       <div class="card">
 
         <h2 class="title">
-          Log Masuk
+          {{ t("auth.login") }}
         </h2>
 
         <form @submit.prevent="login">
 
           <AppInput
-            label="ID Pengguna"
+            :label="t('auth.username')"
             v-model="username"
           />
 
           <AppInput
-            label="Kata Laluan"
+            :label="t('auth.password')"
             type="password"
             v-model="password"
           />
@@ -104,7 +105,7 @@ if (
           <p v-if="error" class="error">{{ error }}</p>
 
           <AppButton
-            text="Log masuk"
+            :text="t('auth.loginButton')"
             type="button"
             class="login-btn"
             @click="login"
@@ -114,7 +115,7 @@ if (
 
         <div class="links">
           <span class="forgot">
-            Lupa kata laluan
+            {{ t("auth.forgotPassword") }}
           </span>
         </div>
 

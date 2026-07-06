@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.database.session import engine, Base
+from app.i18n import t
 
 # ✅ Load models (for ORM registration)
 from app.models.tapak import Tapak
@@ -34,7 +35,7 @@ from app.api import (
 )
 
 app = FastAPI(
-    title="SPOTING Backend",
+    title=t("app.title"),
     version="1.0.0"
 )
 
@@ -64,7 +65,7 @@ app.include_router(dashboard.router)
 @app.get("/")
 def root():
     return {
-        "message": "SPOTING backend running",
+        "message": t("app.running"),
         "version": "1.0.0"
     }
 

@@ -1,0 +1,91 @@
+{
+  "app": {
+    "running": "Backend SPOTING sedang berjalan",
+    "title": "Backend SPOTING_MLY"
+  },
+  "auth": {
+    "accountDeactivated": "Akaun telah dinyahaktifkan. Hubungi pentadbir sistem untuk tindakan selanjutnya.",
+    "accountNotFound": "Tiada akaun ditemui.",
+    "invalidPassword": "Kata laluan salah.",
+    "passwordUpdated": "Kata laluan berjaya dikemas kini",
+    "profileUpdated": "Profil berjaya dikemas kini",
+    "userActivated": "Pengguna berjaya diaktifkan",
+    "userCreated": "Pengguna berjaya dicipta",
+    "userDeactivated": "Pengguna berjaya dinyahaktifkan",
+    "userDeleted": "Pengguna berjaya dipadam",
+    "userNotFound": "Pengguna tidak ditemui",
+    "userUpdated": "Pengguna berjaya dikemas kini",
+    "usernameExists": "ID pengguna telah wujud",
+    "usernameInvalid": "ID pengguna mesti mengandungi tepat 12 huruf kecil atau nombor"
+  },
+  "common": {
+    "deleted": "Berjaya dipadam",
+    "notFound": "Tidak ditemui"
+  },
+  "docs": {
+    "examples": {
+      "taskDescription": "Imbas port terbuka",
+      "taskName": "Imbasan Port"
+    },
+    "tags": {
+      "agent": "Ejen",
+      "auth": "Pengesahan",
+      "dashboard": "Papan Pemuka",
+      "organization": "Organisasi",
+      "profile": "Profil",
+      "report": "Laporan",
+      "scanResult": "Hasil Imbasan",
+      "site": "Tapak",
+      "subOrganization": "Sub Organisasi",
+      "task": "Tugasan",
+      "taskType": "Jenis Tugasan"
+    }
+  },
+  "organization": {
+    "notFound": "Organisasi tidak ditemui"
+  },
+  "profile": {
+    "notFound": "Profil tidak ditemui"
+  },
+  "report": {
+    "columns": {
+      "agentIp": "IP Ejen",
+      "cryptoDetails": "Butiran Kripto",
+      "executablePath": "Laluan Boleh Laksana",
+      "pid": "PID",
+      "process": "Proses",
+      "profileName": "Nama Profil",
+      "protocol": "Protokol",
+      "remoteIp": "IP Jauh",
+      "remotePort": "Port Jauh",
+      "role": "Peranan",
+      "scanTime": "Masa Imbasan",
+      "scriptPath": "Laluan Skrip",
+      "taskCode": "Kod Tugasan",
+      "taskName": "Nama Tugasan"
+    },
+    "generated": "Laporan berjaya dijana",
+    "noResults": "Tiada hasil imbasan ditemui",
+    "profileNotFound": "Profil tidak ditemui"
+  },
+  "site": {
+    "notFound": "Tapak tidak ditemui"
+  },
+  "subOrganization": {
+    "notFound": "Sub organisasi tidak ditemui"
+  },
+  "task": {
+    "alreadyAssigned": "Tugasan telah ditetapkan",
+    "assigned": "Tugasan berjaya ditetapkan",
+    "assignmentNotFound": "Penetapan tugasan tidak ditemui",
+    "cannotRemoveWithHistory": "Tugasan ini tidak boleh dibuang kerana sejarah imbasan telah wujud.",
+    "exists": "Tugasan telah wujud",
+    "externalScannerEmpty": "Pengimbas luaran tidak mengembalikan hasil terperinci",
+    "notFound": "Tugasan tidak ditemui",
+    "profileNotFound": "Profil tidak ditemui",
+    "removed": "Tugasan berjaya dibuang",
+    "scanCompleted": "Imbasan selesai",
+    "scanExecuted": "Imbasan berjaya dilaksanakan",
+    "updated": "Tugasan berjaya dikemas kini"
+  }
+}

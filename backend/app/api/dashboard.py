@@ -6,8 +6,9 @@ from app.services.dashboard_service import (
     get_dashboard_stats,
     get_organization_performance
 )
+from app.i18n import t
 
-router = APIRouter(prefix="/dashboard", tags=["Dashboard"])
+router = APIRouter(prefix="/dashboard", tags=[t("docs.tags.dashboard")])
 
 
 # =========================

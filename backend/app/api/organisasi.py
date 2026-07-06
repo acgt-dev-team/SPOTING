@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database.session import get_db
+from app.i18n import t
 
 from app.schemas.organisasi_schema import (
     OrganisasiCreate,
@@ -15,7 +16,7 @@ from app.services.organisasi_service import (
 )
 from fastapi import HTTPException
 from app.models.organisasi import Organisasi
-router = APIRouter(prefix="/organisasi", tags=["Organisasi"])
+router = APIRouter(prefix="/organisasi", tags=[t("docs.tags.organization")])
 
 
 # =========================
@@ -31,7 +32,7 @@ def get_by_id(id: int, db: Session = Depends(get_db)):
     org = db.query(Organisasi).filter(Organisasi.id == id).first()
 
     if not org:
-        raise HTTPException(status_code=404, detail="Organisasi not found")
+        raise HTTPException(status_code=404, detail=t("organization.notFound"))
 
     return org
 
@@ -51,7 +52,7 @@ def update(id: int, data: OrganisasiCreate, db: Session = Depends(get_db)):
     updated = update_organisasi(db, id, data.dict())
 
     if not updated:
-        raise HTTPException(status_code=404, detail="Organisasi not found")
+        raise HTTPException(status_code=404, detail=t("organization.notFound"))
 
     return updated
 
@@ -64,6 +65,6 @@ def delete(id: int, db: Session = Depends(get_db)):
     deleted = delete_organisasi(db, id)
 
     if not deleted:
-        raise HTTPException(status_code=404, detail="Organisasi not found")
+        raise HTTPException(status_code=404, detail=t("organization.notFound"))
 
-    return {"message": "Deleted"}
+    return {"message": t("common.deleted")}

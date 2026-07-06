@@ -1,14 +1,15 @@
 from pydantic import BaseModel, Field
 from typing import Optional
+from app.i18n import t
 
 
 # =========================
 # CREATE SCHEMA
 # =========================
 class TugasanCreate(BaseModel):
-    nama: str = Field(..., example="Port Scan")
+    nama: str = Field(..., example=t("docs.examples.taskName"))
     kod: str = Field(..., example="TSK001")
-    keterangan: Optional[str] = Field(None, example="Scan open ports")
+    keterangan: Optional[str] = Field(None, example=t("docs.examples.taskDescription"))
     jenis_id: int = Field(..., example=1)
 
     # ✅ ADD THESE

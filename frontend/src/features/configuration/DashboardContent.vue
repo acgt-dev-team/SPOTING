@@ -2,6 +2,7 @@
 import { computed, ref, onMounted, watch } from "vue"
 import { useRouter } from "vue-router"
 import api from "../../services/api"
+import { t } from "../../i18n"
 import AppButton from "../../ui/AppButton.vue"
 import AppPagination from "../../ui/AppPagination.vue"
 
@@ -13,9 +14,9 @@ const router = useRouter()
 const selectedRange = ref("minggu")
 
 const ranges = [
-  { label: "Hari ini", value: "hari" },
-  { label: "Minggu", value: "minggu" },
-  { label: "Bulan", value: "bulan" }
+  { label: t("dashboard.ranges.day"), value: "hari" },
+  { label: t("dashboard.ranges.week"), value: "minggu" },
+  { label: t("dashboard.ranges.month"), value: "bulan" }
 ]
 
 // =======================
@@ -115,8 +116,8 @@ function goAccounts() {
 
     <!-- PAGE TITLE -->
     <div class="page-title">
-      <h1>Ringkasan Prestasi</h1>
-      <p>Prestasi semasa sistem pentadbiran agensi.</p>
+      <h1>{{ t("dashboard.pageTitle") }}</h1>
+      <p>{{ t("dashboard.pageDescription") }}</p>
     </div>
 
     <!-- KPI -->
@@ -148,7 +149,7 @@ function goAccounts() {
 
         <h3>{{ stats.organisasi }}</h3>
 
-        <span>Organisasi</span>
+        <span>{{ t("dashboard.statLabels.organization") }}</span>
 
       </div>
 
@@ -189,7 +190,7 @@ function goAccounts() {
 
         <h3>{{ stats.sub_organisasi }}</h3>
 
-        <span>Sub Organisasi</span>
+        <span>{{ t("dashboard.statLabels.subOrganization") }}</span>
 
       </div>
 
@@ -220,7 +221,7 @@ function goAccounts() {
 
         <h3>{{ stats.tapak }}</h3>
 
-        <span>Tapak</span>
+        <span>{{ t("dashboard.statLabels.site") }}</span>
 
       </div>
 
@@ -251,7 +252,7 @@ function goAccounts() {
 
         <h3>{{ stats.profil }}</h3>
 
-        <span>Profil</span>
+        <span>{{ t("dashboard.statLabels.profile") }}</span>
 
       </div>
 
@@ -338,7 +339,7 @@ function goAccounts() {
 
         <h3>{{ stats.tugasan }}</h3>
 
-        <span>Tugasan</span>
+        <span>{{ t("dashboard.statLabels.task") }}</span>
 
       </div>
 
@@ -351,13 +352,13 @@ function goAccounts() {
 
         <div class="panel-header">
 
-          <h2>Prestasi Organisasi</h2>
+          <h2>{{ t("dashboard.organizationPerformance") }}</h2>
 
           <button
             class="link-btn"
             @click="goConfig"
           >
-            Lihat semua
+            {{ t("dashboard.actions.viewAll") }}
           </button>
 
         </div>
@@ -368,8 +369,8 @@ function goAccounts() {
 
             <thead>
               <tr>
-                <th>Nama Organisasi</th>
-                <th>Kemajuan</th>
+                <th>{{ t("configuration.organization.name") }}</th>
+                <th>{{ t("common.progress") }}</th>
               </tr>
             </thead>
 
@@ -431,7 +432,7 @@ function goAccounts() {
           v-else
           class="empty"
         >
-          Tiada data organisasi
+          {{ t("dashboard.emptyOrganizations") }}
         </div>
 
         <div
@@ -455,7 +456,7 @@ function goAccounts() {
       <div class="insight-card">
 
         <h2>
-          Insight Minggu Ini
+          {{ t("dashboard.insightTitle") }}
         </h2>
 
         <div class="top-org">
@@ -464,7 +465,7 @@ function goAccounts() {
 
             {{
               topOrg?.nama?.charAt(0)
-              || "O"
+              || t("dashboard.statLabels.organization").charAt(0)
             }}
 
           </div>
@@ -472,7 +473,7 @@ function goAccounts() {
           <div>
 
             <strong>
-              {{ topOrg?.nama || "-" }}
+              {{ topOrg?.nama || t("common.emptyValue") }}
             </strong>
 
           </div>
@@ -484,7 +485,7 @@ function goAccounts() {
           <div class="metric-header">
 
             <span>
-              Tugas Selesai
+              {{ t("dashboard.taskComplete") }}
             </span>
 
             <strong>
@@ -534,12 +535,12 @@ function goAccounts() {
         <div class="actions">
 
           <AppButton
-            text="Konfigurasi"
+            :text="t('dashboard.actions.configuration')"
             @click="goConfig"
           />
 
           <AppButton
-            text="Pengguna"
+            :text="t('dashboard.actions.accounts')"
             variant="outline"
             @click="goAccounts"
           />

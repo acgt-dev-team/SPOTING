@@ -4,7 +4,7 @@ import { setupGuards } from "../router/guards"
 // =========================
 // AUTH
 // =========================
-import Auth from "../features/auth/Auth.vue"
+import Login from "../features/auth/Login.vue"
 import ChangePassword from "../features/auth/ChangePassword.vue"
 // =========================
 // LAYOUTS
@@ -34,7 +34,7 @@ const routes = [
 
   {
     path: "/login",
-    component: Auth
+    component: Login
   },
 
   {
