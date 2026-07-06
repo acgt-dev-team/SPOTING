@@ -7,7 +7,7 @@ class User(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     nama = Column(String, nullable=False)
-    username = Column(String, unique=True, nullable=False)
+    username = Column(String(24), unique=True, nullable=False)
     password = Column(String, nullable=False)
     role = Column(String, default="user")
     aktif = Column(Boolean, default=True)

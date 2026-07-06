@@ -158,11 +158,11 @@ async function saveAccount() {
   }
 
   // ✅ USERNAME VALIDATION
-  const usernameRegex = /^[a-z0-9]{12}$/
+  const usernameRegex = /^[a-z0-9.]{12,24}$/
 
   if (!usernameRegex.test(username.value)) {
     alert(
-      "Nama pengguna mesti 12 aksara dan hanya huruf kecil atau nombor."
+      "Nama pengguna mesti mengandungi 12 hingga 24 aksara dan hanya huruf kecil, nombor atau tanda titik (.)."
     )
     return
   }
