@@ -5,11 +5,12 @@ from sqlalchemy.orm import Session
 import re
 
 from app.database.session import get_db
+from app.i18n import t
 from app.models.user import User
 from app.schemas.auth_schema import LoginRequest, CreateUserRequest, ProfileUpdateRequest, ProfileResponse
 from app.utils.security import hash_password, is_password_hashed, verify_password
 
-router = APIRouter(prefix="/auth", tags=["Auth"])
+router = APIRouter(prefix="/auth", tags=[t("docs.tags.auth")])
 
 
 @router.post("/login")
@@ -24,19 +25,19 @@ def login(
     if not user:
         raise HTTPException(
             status_code=404,
-            detail="Tiada akaun wujud."
+            detail=t("auth.accountNotFound")
         )
 
     if not user.aktif:
         raise HTTPException(
             status_code=403,
-            detail="Akaun sudah dinyahaktif. Hubungi pentadbir sistem untuk tindakan selanjutnya."
+            detail=t("auth.accountDeactivated")
         )
 
     if not verify_password(data.password, user.password):
         raise HTTPException(
             status_code=401,
-            detail="Kata laluan salah."
+            detail=t("auth.invalidPassword")
         )
 
     if not is_password_hashed(user.password):
@@ -62,7 +63,7 @@ def change_password(
     if not user:
         raise HTTPException(
             status_code=404,
-            detail="User not found"
+            detail=t("auth.userNotFound")
         )
 
     user.password = hash_password(data.password)
@@ -71,7 +72,7 @@ def change_password(
     db.commit()
 
     return {
-        "message": "Password updated successfully"
+        "message": t("auth.passwordUpdated")
     }
 
 @router.post("/users")
@@ -85,7 +86,7 @@ def create_user(
     ):
         raise HTTPException(
             status_code=400,
-            detail="Username must contain exactly 12 lowercase letters and digits"
+            detail=t("auth.usernameInvalid")
         )
 
     existing = db.query(User).filter(
@@ -95,7 +96,7 @@ def create_user(
     if existing:
         raise HTTPException(
             status_code=400,
-            detail="Username already exists"
+            detail=t("auth.usernameExists")
         )
     generated_password = generate_password()
 
@@ -113,7 +114,7 @@ def create_user(
     db.refresh(new_user)
 
     return {
-    "message": "User created successfully",
+    "message": t("auth.userCreated"),
     "generated_password": generated_password
 }
 
@@ -154,7 +155,7 @@ def update_user(
     if not user:
         raise HTTPException(
             status_code=404,
-            detail="User not found"
+            detail=t("auth.userNotFound")
         )
 
     user.nama = data.nama
@@ -165,7 +166,7 @@ def update_user(
     db.commit()
 
     return {
-        "message": "User updated"
+        "message": t("auth.userUpdated")
     }
 
 @router.put("/users/{user_id}/deactivate")
@@ -181,7 +182,7 @@ def deactivate_user(
     if not user:
         raise HTTPException(
             status_code=404,
-            detail="User not found"
+            detail=t("auth.userNotFound")
         )
 
     user.aktif = False
@@ -189,7 +190,7 @@ def deactivate_user(
     db.commit()
 
     return {
-        "message": "User deactivated"
+        "message": t("auth.userDeactivated")
     }
 
 @router.put("/users/{user_id}/activate")
@@ -205,7 +206,7 @@ def activate_user(
     if not user:
         raise HTTPException(
             status_code=404,
-            detail="User not found"
+            detail=t("auth.userNotFound")
         )
 
     user.aktif = True
@@ -213,7 +214,7 @@ def activate_user(
     db.commit()
 
     return {
-        "message": "User activated"
+        "message": t("auth.userActivated")
     }
 
 @router.put("/users/{user_id}/reset-password")
@@ -229,7 +230,7 @@ def reset_password(
     if not user:
         raise HTTPException(
             status_code=404,
-            detail="User not found"
+            detail=t("auth.userNotFound")
         )
 
     temp_password = generate_password()
@@ -255,14 +256,14 @@ def delete_user(
     if not user:
         raise HTTPException(
             status_code=404,
-            detail="User not found"
+            detail=t("auth.userNotFound")
         )
 
     db.delete(user)
     db.commit()
 
     return {
-        "message": "User deleted"
+        "message": t("auth.userDeleted")
     }
 
 
@@ -303,7 +304,7 @@ def get_profile(
     if not user:
         raise HTTPException(
             status_code=404,
-            detail="User not found"
+            detail=t("auth.userNotFound")
         )
 
     return {
@@ -327,7 +328,7 @@ def update_profile(
     if not user:
         raise HTTPException(
             status_code=404,
-            detail="User not found"
+            detail=t("auth.userNotFound")
         )
 
     user.nama = data.nama
@@ -340,5 +341,5 @@ def update_profile(
     db.commit()
 
     return {
-        "message": "Profile updated"
+        "message": t("auth.profileUpdated")
     }

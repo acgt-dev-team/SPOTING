@@ -2,6 +2,7 @@
 import { computed, ref } from "vue"
 import { useRoute, useRouter } from "vue-router"
 import logo from "../assets/images/spoting-logo.png"
+import { t } from "../i18n"
 
 import {
   LayoutDashboard,
@@ -16,30 +17,30 @@ const router = useRouter()
 const currentRole = sessionStorage.getItem("role")
 
 const user = ref({
-  username: sessionStorage.getItem("username") || "User",
+  username: sessionStorage.getItem("username") || t("accounts.roles.user"),
   role: sessionStorage.getItem("role") || "user"
 })
 
-const ministryName = computed(() => "Kementerian Dalam Negeri")
+const ministryName = computed(() => t("layout.ministryName"))
 
 const menuItems = computed(() => {
   // user only sees configuration
   if (currentRole === "user") {
   return [
     {
-      label: "Papan Pemuka",
+      label: t("layout.menu.dashboard"),
       icon: LayoutDashboard,
       path: "/admin/dashboard",
       active: route.path.startsWith("/admin/dashboard")
     },
     {
-      label: "Konfigurasi",
+      label: t("layout.menu.configuration"),
       icon: Settings,
       path: "/admin/configuration",
       active: route.path.startsWith("/admin/configuration")
     },
     {
-      label: "Profil Saya",
+      label: t("layout.menu.profile"),
       icon: UserPlus,
       path: "/admin/profile-user",
       active: route.path.startsWith("/admin/profile-user")
@@ -50,19 +51,19 @@ const menuItems = computed(() => {
   // admin + super admin
   return [
     {
-      label: "Papan Pemuka",
+      label: t("layout.menu.dashboard"),
       icon: LayoutDashboard,
       path: "/admin/dashboard",
       active: route.path.startsWith("/admin/dashboard")
     },
     {
-      label: "Konfigurasi",
+      label: t("layout.menu.configuration"),
       icon: Settings,
       path: "/admin/configuration",
       active: route.path.startsWith("/admin/configuration")
     },
     {
-      label: "Pengurusan Pengguna",
+      label: t("layout.menu.accounts"),
       icon: UserPlus,
       path: "/admin/accounts",
       active: route.path.startsWith("/admin/accounts")
@@ -85,34 +86,34 @@ const breadcrumbs = computed(() => {
 
   if (path.includes("/dashboard")) {
     crumbs.push({
-      label: "Papan Pemuka",
+      label: t("layout.menu.dashboard"),
       to: null
     })
 
   } else if (path.includes("/profile-user")) {
     crumbs.push({
-      label: "Profil Saya",
+      label: t("layout.menu.profile"),
       to: null
     })
   } else if (path.includes("/accounts")) {
     crumbs.push({
-      label: "Pengurusan Pengguna",
+      label: t("layout.menu.accounts"),
       to: null
     })
 
   } else if (path.includes("/tugasan")) {
     crumbs.push(
-      { label: "Senarai Organisasi", to: "/admin/configuration" },
+      { label: t("layout.breadcrumbs.organizations"), to: "/admin/configuration" },
 
       {
-        label: "Senarai Sub Organisasi",
+        label: t("layout.breadcrumbs.subOrganizations"),
         to: organizationId
           ? `/admin/configuration/sub-organisasi/${organizationId}`
           : null
       },
 
       {
-        label: "Senarai Tapak",
+        label: t("layout.breadcrumbs.sites"),
         to:
           organizationId && subOrganizationId
             ? `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}`
@@ -120,61 +121,61 @@ const breadcrumbs = computed(() => {
       },
 
       {
-        label: "Senarai Profil",
+        label: t("layout.breadcrumbs.profiles"),
         to:
           organizationId && subOrganizationId && siteId
             ? `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}/profil/${siteId}`
             : null
       },
 
-      { label: "Senarai Tugasan", to: null }
+      { label: t("layout.breadcrumbs.tasks"), to: null }
     )
 
   } else if (path.includes("/profil")) {
     crumbs.push(
-      { label: "Senarai Organisasi", to: "/admin/configuration" },
+      { label: t("layout.breadcrumbs.organizations"), to: "/admin/configuration" },
 
       {
-        label: "Senarai Sub Organisasi",
+        label: t("layout.breadcrumbs.subOrganizations"),
         to: organizationId
           ? `/admin/configuration/sub-organisasi/${organizationId}`
           : null
       },
 
       {
-        label: "Senarai Tapak",
+        label: t("layout.breadcrumbs.sites"),
         to:
           organizationId && subOrganizationId
             ? `/admin/configuration/sub-organisasi/${organizationId}/tapak/${subOrganizationId}`
             : null
       },
 
-      { label: "Senarai Profil", to: null }
+      { label: t("layout.breadcrumbs.profiles"), to: null }
     )
 
   } else if (path.includes("/tapak")) {
     crumbs.push(
-      { label: "Senarai Organisasi", to: "/admin/configuration" },
+      { label: t("layout.breadcrumbs.organizations"), to: "/admin/configuration" },
 
       {
-        label: "Senarai Sub Organisasi",
+        label: t("layout.breadcrumbs.subOrganizations"),
         to: organizationId
           ? `/admin/configuration/sub-organisasi/${organizationId}`
           : null
       },
 
-      { label: "Senarai Tapak", to: null }
+      { label: t("layout.breadcrumbs.sites"), to: null }
     )
 
   } else if (path.includes("/sub-organisasi")) {
     crumbs.push(
-      { label: "Senarai Organisasi", to: "/admin/configuration" },
-      { label: "Senarai Sub Organisasi", to: null }
+      { label: t("layout.breadcrumbs.organizations"), to: "/admin/configuration" },
+      { label: t("layout.breadcrumbs.subOrganizations"), to: null }
     )
 
   } else {
     crumbs.push({
-      label: "Senarai Organisasi",
+      label: t("layout.breadcrumbs.organizations"),
       to: null
     })
   }
@@ -268,7 +269,7 @@ function goProfile() {
           @click="logout"
         >
           <LogOut size="14" />
-          <span>Log keluar</span>
+          <span>{{ t("auth.logout") }}</span>
         </button>
 
         </div>

@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue"
 import api from "../../services/api"
+import { t } from "../../i18n"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
@@ -32,8 +33,7 @@ async function loadProfile() {
   } catch (err) {
     console.error(err)
 
-    errorMessage.value =
-      "Gagal mendapatkan maklumat profil."
+    errorMessage.value = t("profileUser.errorLoad")
   }
 }
 
@@ -56,15 +56,13 @@ async function saveProfile() {
 
     password.value = ""
 
-    successMessage.value =
-      "Profil berjaya dikemaskini."
+    successMessage.value = t("profileUser.successSave")
 
   } catch (err) {
 
     console.error(err)
 
-    errorMessage.value =
-      "Gagal mengemaskini profil."
+    errorMessage.value = t("profileUser.errorSave")
 
   }
 }
@@ -78,11 +76,10 @@ onMounted(loadProfile)
     <!-- HEADER -->
     <div class="hierarchy-card">
       <div class="hierarchy-left">
-        <h2>Profil Saya</h2>
+        <h2>{{ t("profileUser.title") }}</h2>
 
         <p class="section-desc">
-          Sistem membenarkan pengguna mengemaskini
-          maklumat akaun dan kata laluan mereka.
+          {{ t("profileUser.description") }}
         </p>
       </div>
     </div>
@@ -91,41 +88,41 @@ onMounted(loadProfile)
     <AppCard class="profile-card">
 
       <div class="card-header">
-        <p class="eyebrow">PROFIL PENGGUNA</p>
-        <h3>Maklumat Akaun</h3>
+        <p class="eyebrow">{{ t("profileUser.eyebrow") }}</p>
+        <h3>{{ t("profileUser.accountInfo") }}</h3>
       </div>
 
       <div class="form-grid">
 
         <AppInput
           v-model="nama"
-          label="Nama"
-          placeholder="Masukkan nama"
+          :label="t('common.name')"
+          :placeholder="t('profileUser.namePlaceholder')"
         />
 
         <AppInput
           v-model="username"
-          label="ID Pengguna"
+          :label="t('auth.username')"
           disabled
         />
 
         <AppInput
           v-model="email"
-          label="Emel"
-          placeholder="Masukkan emel"
+          :label="t('profileUser.email')"
+          :placeholder="t('profileUser.emailPlaceholder')"
         />
 
         <AppInput
           v-model="phone"
-          label="Telefon"
-          placeholder="Masukkan nombor telefon"
+          :label="t('profileUser.phone')"
+          :placeholder="t('profileUser.phonePlaceholder')"
         />
 
         <AppInput
           v-model="password"
-          label="Kata Laluan Baru"
+          :label="t('profileUser.newPassword')"
           type="password"
-          placeholder="Kosongkan jika tidak mahu tukar"
+          :placeholder="t('profileUser.passwordPlaceholder')"
         />
 
       </div>
@@ -146,7 +143,7 @@ onMounted(loadProfile)
 
       <div class="action-bar">
         <AppButton
-          text="Simpan Perubahan"
+          :text="t('common.saveChanges')"
           @click="saveProfile"
         />
       </div>

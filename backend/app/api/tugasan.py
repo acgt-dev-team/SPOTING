@@ -13,8 +13,9 @@ from app.services.tugasan_service import (
     update_tugasan,
     execute_scan
 )
+from app.i18n import t
 
-router = APIRouter(prefix="/tugasan", tags=["Tugasan"])
+router = APIRouter(prefix="/tugasan", tags=[t("docs.tags.task")])
 
 
 # ✅ GET ALL (for dropdown)

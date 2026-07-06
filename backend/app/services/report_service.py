@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from app.models.profil import Profil
 from app.models.x_profil_tugasan import XProfilTugasan
+from app.i18n import t
 
 import pandas as pd
 import os
@@ -17,7 +18,7 @@ def generate_report(db: Session, profil_id: int):
 
     if not profile:
         return {
-            "message": "Profile not found"
+            "message": t("report.profileNotFound")
         }
 
     tasks = db.query(XProfilTugasan).filter(
@@ -71,22 +72,22 @@ def generate_report(db: Session, profil_id: int):
 
                 report_rows.append({
 
-                    "Profile Name": profile.nama,
-                    "Task Name": task.tugasan.nama,
-                    "Task Code": task.tugasan.kod,
+                    t("report.columns.profileName"): profile.nama,
+                    t("report.columns.taskName"): task.tugasan.nama,
+                    t("report.columns.taskCode"): task.tugasan.kod,
 
-                    "Agent IP": host_ip,
+                    t("report.columns.agentIp"): host_ip,
 
-                    "Process": item.get("Process"),
-                    "PID": item.get("PID"),
-                    "Protocol": item.get("Protocol"),
-                    "Remote IP": item.get("RemoteIP"),
-                    "Remote Port": item.get("RemotePort"),
-                    "Executable Path": item.get("ExecutablePath"),
-                    "Role": item.get("Role"),
-                    "Crypto Details": item.get("CryptoDetails"),
-                    "Script Path": item.get("ScriptPath"),
-                    "Scan Time": item.get("ScanTimeUTC"),
+                    t("report.columns.process"): item.get("Process"),
+                    t("report.columns.pid"): item.get("PID"),
+                    t("report.columns.protocol"): item.get("Protocol"),
+                    t("report.columns.remoteIp"): item.get("RemoteIP"),
+                    t("report.columns.remotePort"): item.get("RemotePort"),
+                    t("report.columns.executablePath"): item.get("ExecutablePath"),
+                    t("report.columns.role"): item.get("Role"),
+                    t("report.columns.cryptoDetails"): item.get("CryptoDetails"),
+                    t("report.columns.scriptPath"): item.get("ScriptPath"),
+                    t("report.columns.scanTime"): item.get("ScanTimeUTC"),
                 })
 
     # ==========================================
@@ -95,7 +96,7 @@ def generate_report(db: Session, profil_id: int):
 
     if len(report_rows) == 0:
         return {
-            "message": "No scan results found"
+            "message": t("report.noResults")
         }
 
     # ==========================================
@@ -113,6 +114,6 @@ def generate_report(db: Session, profil_id: int):
     df.to_excel(filepath, index=False)
 
     return {
-        "message": "Report generated",
+        "message": t("report.generated"),
         "file": filepath
     }

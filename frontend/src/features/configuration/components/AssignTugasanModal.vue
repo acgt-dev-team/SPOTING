@@ -1,8 +1,10 @@
 <script setup>
 import { ref, computed, onMounted } from "vue"
 import { useRoute } from "vue-router"
+import { Pencil, Plus, Search, X } from "lucide-vue-next"
 import AddTugasanModal from "./AddTugasanModal.vue"
 import api from "../../../services/api"
+import { t } from "../../../i18n"
 
 const emit = defineEmits(["close", "assigned"])
 
@@ -160,16 +162,21 @@ onMounted(() => {
         <div class="modal-header">
 
           <div>
-            <p class="eyebrow">PENGURUSAN TUGASAN</p>
-            <h2>Tetapkan Tugasan</h2>
+            <p class="eyebrow">{{ t("tasks.assign.eyebrow") }}</p>
+            <h2>{{ t("tasks.assign.title") }}</h2>
 
             <p class="subtext">
-              Pilih tugasan yang ingin diberikan kepada profil ini.
+              {{ t("tasks.assign.description") }}
             </p>
           </div>
 
-          <button class="close-btn" @click="$emit('close')">
-            ✕
+          <button
+            class="ui-icon-button"
+            :title="t('common.close')"
+            :aria-label="t('common.close')"
+            @click="$emit('close')"
+          >
+            <X :size="18" aria-hidden="true" />
           </button>
 
         </div>
@@ -178,17 +185,18 @@ onMounted(() => {
         <div class="toolbar">
 
           <div class="search-box">
-            <span class="search-icon">⌕</span>
+            <Search class="search-icon" :size="18" aria-hidden="true" />
 
             <input
               v-model="search"
               type="text"
-              placeholder="Carian tugasan..."
+              :placeholder="t('configuration.shared.search', { entity: t('configuration.taskList.searchEntity') })"
             />
           </div>
 
-          <button class="primary-btn" @click="openAdd">
-            + Tambah Tugasan
+          <button class="ui-button ui-button--primary" @click="openAdd">
+            <Plus :size="18" aria-hidden="true" />
+            {{ t("tasks.assign.add") }}
           </button>
 
         </div>
@@ -197,7 +205,7 @@ onMounted(() => {
         <div class="selection-bar">
 
           <span>
-            {{ selectedIds.length }} dipilih
+            {{ t("tasks.assign.selected", { count: selectedIds.length }) }}
           </span>
 
           <button
@@ -205,7 +213,7 @@ onMounted(() => {
             class="clear-btn"
             @click="selectedIds = []"
           >
-            Kosongkan
+            {{ t("common.clear") }}
           </button>
 
         </div>
@@ -224,77 +232,79 @@ onMounted(() => {
               />
             </div>
 
-            <div>Nama Tugasan</div>
-            <div>Protokol</div>
-            <div>IP Range</div>
-            <div>Status</div>
-            <div>Tindakan</div>
+            <div>{{ t("configuration.taskList.name") }}</div>
+            <div>{{ t("tasks.protocol") }}</div>
+            <div>{{ t("tasks.assign.ipRange") }}</div>
+            <div>{{ t("common.status") }}</div>
+            <div>{{ t("common.actions") }}</div>
 
           </div>
 
           <div class="table-body">
 
             <div v-if="loading" class="empty-state">
-              Memuatkan tugasan...
+              {{ t("tasks.assign.loading") }}
             </div>
 
             <div
               v-else-if="filtered.length === 0"
               class="empty-state"
             >
-              Tiada tugasan dijumpai.
+              {{ t("configuration.taskList.empty") }}
             </div>
 
             <label
-              v-for="t in filtered"
-              :key="t.id"
+              v-for="task in filtered"
+              :key="task.id"
               class="row-item"
-              :class="{ active: selectedIds.includes(t.id) }"
+              :class="{ active: selectedIds.includes(task.id) }"
             >
 
               <div>
                 <input
                   type="checkbox"
-                  :value="t.id"
+                  :value="task.id"
                   v-model="selectedIds"
                 />
               </div>
 
               <div class="task-info">
-                <p class="task-name">{{ t.nama }}</p>
-                <p class="task-code">{{ t.kod || "-" }}</p>
+                <p class="task-name">{{ task.nama }}</p>
+                <p class="task-code">{{ task.kod || t("common.emptyValue") }}</p>
               </div>
 
               <div>
                 <span
                   class="protocol-pill"
                   :style="{
-                    color: protocolColor(t.protocol),
-                    borderColor: protocolColor(t.protocol) + '30'
+                    color: protocolColor(task.protocol),
+                    borderColor: protocolColor(task.protocol) + '30'
                   }"
                 >
-                  {{ t.protocol || "-" }}
+                  {{ task.protocol || t("common.emptyValue") }}
                 </span>
               </div>
 
               <div class="ip-range">
-                {{ t.ip_start || "-" }}
+                {{ task.ip_start || t("common.emptyValue") }}
                 <span>→</span>
-                {{ t.ip_end || "-" }}
+                {{ task.ip_end || t("common.emptyValue") }}
               </div>
 
               <div>
-                <span :class="t.aktif ? 'success' : 'danger'">
-                  {{ t.aktif ? "Aktif" : "Tidak Aktif" }}
+                <span :class="task.aktif ? 'success' : 'danger'">
+                  {{ task.aktif ? t("status.active") : t("status.notActive") }}
                 </span>
               </div>
 
               <div>
                 <button
-                  class="ghost-btn edit-btn"
-                  @click.stop="openEdit(t)"
+                  class="ui-icon-button edit-btn"
+                  :title="t('tasks.add.editTitle')"
+                  :aria-label="t('tasks.add.editTitle')"
+                  @click.stop="openEdit(task)"
                 >
-                  ✏️
+                  <Pencil :size="17" aria-hidden="true" />
                 </button>
               </div>
 
@@ -308,18 +318,18 @@ onMounted(() => {
         <div class="modal-footer">
 
           <button
-            class="outline-btn"
+            class="ui-button ui-button--outline"
             @click="$emit('close')"
           >
-            Batal
+            {{ t("common.cancel") }}
           </button>
 
           <button
-            class="save-btn"
+            class="ui-button ui-button--primary"
             :disabled="saving"
             @click="handleSubmit"
           >
-            {{ saving ? "Menyimpan..." : "Tetapkan Tugasan" }}
+            {{ saving ? t("common.saving") : t("tasks.assign.title") }}
           </button>
 
         </div>
@@ -409,16 +419,6 @@ onMounted(() => {
   font-size:14px;
 }
 
-.close-btn{
-  width:40px;
-  height:40px;
-  border:none;
-  border-radius:12px;
-  background:#F8FAFC;
-  cursor:pointer;
-  font-size:16px;
-}
-
 .toolbar {
   padding: 20px 30px;
   display: flex;
@@ -453,42 +453,6 @@ onMounted(() => {
 
 .search-icon {
   color: #94A3B8;
-}
-
-.primary-btn{
-  border:none;
-  background:#4F46E5;
-  color:white;
-  padding:0 22px;
-  min-height:48px;
-  border-radius:12px;
-  font-size:14px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.save-btn{
-  border:none;
-  background:#4F46E5;
-  color:white;
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.save-btn:hover:not(:disabled){
-  background:#4338CA;
-}
-
-.outline-btn{
-  border:1px solid #E2E8F0;
-  background:white;
-  color:#475569;
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:700;
-  cursor:pointer;
 }
 
 .selection-bar{
@@ -632,23 +596,6 @@ onMounted(() => {
   color:#DC2626;
 }
 
-.ghost-btn{
-  width:36px;
-  height:36px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:none;
-  border-radius:10px;
-  background:transparent;
-  cursor:pointer;
-  transition:.15s;
-}
-
-.ghost-btn:hover{
-  background:#EEF2FF;
-}
-
 .empty-state {
   padding: 60px 20px;
   text-align: center;
@@ -693,12 +640,6 @@ onMounted(() => {
 
   .modal-footer {
     flex-direction: column;
-  }
-
-  .save-btn,
-  .outline-btn,
-  .primary-btn {
-    width: 100%;
   }
 
   .edit-btn {

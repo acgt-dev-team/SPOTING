@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from app.models.tugasan import Tugasan
 from app.models.x_profil_tugasan import XProfilTugasan
 from app.models.profil import Profil
+from app.i18n import t
 
 import requests
 import json
@@ -56,7 +57,7 @@ def assign_tugasan_to_profil(
 
     if existing:
         return {
-            "message": "Already assigned"
+            "message": t("task.alreadyAssigned")
         }
 
     # Default status = PENDING
@@ -86,7 +87,7 @@ def assign_tugasan_to_profil(
     if not profile:
         print("Profile not found!")
         return {
-            "message": "Profile not found"
+            "message": t("task.profileNotFound")
         }
 
     print("Execution Type :", profile.execution_type)
@@ -106,7 +107,7 @@ def assign_tugasan_to_profil(
     print("=================================\n")
 
     return {
-        "message": "Assigned successfully",
+        "message": t("task.assigned"),
         "profil_tugasan_id": new_item.id
     }
 
@@ -124,7 +125,7 @@ def create_tugasan(db: Session, data: dict):
     if existing:
         raise HTTPException(
             status_code=400,
-            detail="Tugasan already exists"
+            detail=t("task.exists")
         )
     
     new_tugasan = Tugasan(
@@ -170,7 +171,7 @@ def update_tugasan(
     if not tugasan:
         raise HTTPException(
             status_code=404,
-            detail="Tugasan not found"
+            detail=t("task.notFound")
         )
 
     tugasan.nama = data["nama"]
@@ -186,7 +187,7 @@ def update_tugasan(
     db.refresh(tugasan)
 
     return {
-        "message": "Tugasan updated successfully",
+        "message": t("task.updated"),
         "id": tugasan.id
     }
 
@@ -207,7 +208,7 @@ def remove_tugasan_from_profil(
     if not item:
         raise HTTPException(
             status_code=404,
-            detail="Task assignment not found"
+            detail=t("task.assignmentNotFound")
         )
 
     # prevent deletion if scan history exists
@@ -225,14 +226,14 @@ def remove_tugasan_from_profil(
     if existing_scan:
         raise HTTPException(
             status_code=400,
-            detail="This task cannot be removed because scan history already exists."
+            detail=t("task.cannotRemoveWithHistory")
         )
 
     db.delete(item)
     db.commit()
 
     return {
-        "message": "Task removed successfully"
+        "message": t("task.removed")
     }
 
 
@@ -275,7 +276,7 @@ def execute_scan(
     if not task:
         raise HTTPException(
             status_code=404,
-            detail="Task not found"
+            detail=t("task.notFound")
         )
 
     try:
@@ -312,8 +313,8 @@ def execute_scan(
 
         if scan_result is None:
             scan_result = {
-                "message": "Scan executed successfully",
-                "note": "External scanner returned no detailed results"
+                "message": t("task.scanExecuted"),
+                "note": t("task.externalScannerEmpty")
             }
 
         print("Raw scan result:", scan_result)
@@ -328,7 +329,7 @@ def execute_scan(
 
         return {
             "success": True,
-            "message": "Scan completed",
+            "message": t("task.scanCompleted"),
             "data": scan_result
         }
 

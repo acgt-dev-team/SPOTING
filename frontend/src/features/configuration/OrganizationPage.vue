@@ -1,7 +1,9 @@
 <script setup>
 import { ref, computed, onMounted, watch } from "vue"
 import { useRouter } from "vue-router"
+import { CircleCheck, Pencil, Plus, Search, Trash2, X } from "lucide-vue-next"
 import api from "../../services/api"
+import { t } from "../../i18n"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
@@ -94,7 +96,7 @@ const selectedOrganization = computed(() => {
 })
 
 const canDelete = computed(() => {
-  return deleteConfirmText.value.trim().toLowerCase() === "padam"
+  return deleteConfirmText.value.trim().toLowerCase() === t("common.deleteKeyword").toLowerCase()
 })
 
 // =========================
@@ -129,7 +131,7 @@ async function saveOrganization() {
   if (saving.value) return
 
   if (!nama.value.trim()) {
-    alert("Nama organisasi wajib diisi")
+    alert(t("validation.organizationNameRequired"))
     return
   }
 
@@ -212,27 +214,31 @@ onMounted(() => {
 
     <div class="hierarchy-card">
       <div class="hierarchy-left">
-        <h2>Kementerian Dalam Negeri</h2>
+        <h2>{{ t("configuration.organization.title") }}</h2>
         <p class="section-desc">
-          Urus organisasi utama dalam sistem.
+          {{ t("configuration.organization.description") }}
         </p>
       </div>
     </div>
 
     <div class="toolbar">
       <div class="search-box">
-        <span class="search-icon">⌕</span>
-        <input v-model="search" type="text" placeholder="Carian organisasi..." />
+        <Search class="search-icon" :size="18" aria-hidden="true" />
+        <input
+          v-model="search"
+          type="text"
+          :placeholder="t('configuration.shared.search', { entity: t('configuration.organization.searchEntity') })"
+        />
       </div>
 
-      <button class="primary-btn" @click="openModal">
-        <span class="btn-plus">+</span>
-        Tambah organisasi
+      <button class="ui-button ui-button--primary" @click="openModal">
+        <Plus :size="18" aria-hidden="true" />
+        {{ t("configuration.organization.add") }}
       </button>
     </div>
 
     <div class="page-heading-block">
-      <h1 class="main-page-title">Senarai Organisasi</h1>
+      <h1 class="main-page-title">{{ t("configuration.organization.pageTitle") }}</h1>
     </div>
 
     <div class="table-card">
@@ -240,13 +246,13 @@ onMounted(() => {
         <table>
           <thead>
             <tr>
-              <th style="width:80px">Kod</th>
-              <th>Nama Organisasi</th>
-              <th style="width:220px">Pegawai</th>
-              <th style="width:180px">Sub Organisasi</th>
-              <th style="width:140px">Tapak</th>
-              <th style="width:180px">Tugasan</th>
-              <th style="width:140px">Tindakan</th>
+              <th style="width:80px">{{ t("common.code") }}</th>
+              <th>{{ t("configuration.organization.name") }}</th>
+              <th style="width:220px">{{ t("common.officer") }}</th>
+              <th style="width:180px">{{ t("dashboard.statLabels.subOrganization") }}</th>
+              <th style="width:140px">{{ t("dashboard.statLabels.site") }}</th>
+              <th style="width:180px">{{ t("dashboard.statLabels.task") }}</th>
+              <th style="width:140px">{{ t("common.actions") }}</th>
             </tr>
           </thead>
 
@@ -255,7 +261,7 @@ onMounted(() => {
             <!-- ✅ FIXED -->
             <tr v-if="paginatedOrganizations.length === 0">
               <td colspan="7" class="empty-cell">
-                Tiada organisasi dijumpai.
+                {{ t("configuration.organization.empty") }}
               </td>
             </tr>
 
@@ -284,10 +290,10 @@ onMounted(() => {
               <td>
                 <div class="pegawai-cell">
                   <p class="pegawai-name">
-                    {{ org.pegawai_tadbir || "-" }}
+                    {{ org.pegawai_tadbir || t("common.emptyValue") }}
                   </p>
                   <p class="pegawai-jawatan">
-                    {{ org.jawatan || "-" }}
+                    {{ org.jawatan || t("common.emptyValue") }}
                   </p>
                 </div>
               </td>
@@ -298,8 +304,13 @@ onMounted(() => {
 
               <td>
                 <div style="display:flex; gap:8px;">
-                  <button class="ghost-btn" @click.stop="editOrganization(org)">
-                    ✏️
+                  <button
+                    class="ui-icon-button"
+                    :title="t('configuration.organization.edit')"
+                    :aria-label="t('configuration.organization.edit')"
+                    @click.stop="editOrganization(org)"
+                  >
+                    <Pencil :size="17" aria-hidden="true" />
                   </button>
                 </div>
               </td>
@@ -319,7 +330,7 @@ onMounted(() => {
 
     <div class="footer-bar">
       <div class="count-pill">
-        Bilangan Organisasi:
+        {{ t("configuration.shared.count", { entity: t("configuration.organization.countEntity") }) }}
         <strong>
           {{ filteredOrganizations.length.toString().padStart(2,"0") }}
         </strong>
@@ -334,42 +345,49 @@ onMounted(() => {
 
           <div class="modal-header">
             <div>
-              <p class="eyebrow">TAMBAH DATA</p>
+              <p class="eyebrow">{{ t("configuration.shared.addData") }}</p>
               <h2>
-                {{ editingId ? "Kemaskini Organisasi" : "Tambah Organisasi" }}
+                {{ editingId ? t("configuration.organization.edit") : t("configuration.organization.add") }}
               </h2>
             </div>
 
-            <button class="close-btn" @click="closeModal">✕</button>
+            <button
+              class="ui-icon-button"
+              :title="t('common.close')"
+              :aria-label="t('common.close')"
+              @click="closeModal"
+            >
+              <X :size="18" aria-hidden="true" />
+            </button>
           </div>
 
           <div class="form-area">
 
             <AppInput
               v-model="nama"
-              label="Nama Organisasi"
-              placeholder="Masukkan nama organisasi"
+              :label="t('configuration.organization.name')"
+              :placeholder="t('configuration.organization.namePlaceholder')"
             />
 
             <AppInput
               v-model="pegawai_tadbir"
-              label="Pegawai Tadbir"
-              placeholder="Masukkan nama pegawai tadbir"
+              :label="t('common.officerAdmin')"
+              :placeholder="t('configuration.organization.officerPlaceholder')"
             />
 
             <AppInput
               v-model="jawatan"
-              label="Jawatan"
-              placeholder="Masukkan jawatan"
+              :label="t('common.position')"
+              :placeholder="t('common.positionPlaceholder')"
             />
 
             <div class="textarea-field">
-              <label class="textarea-label">Keterangan</label>
+              <label class="textarea-label">{{ t("common.description") }}</label>
 
               <textarea
                 v-model="keterangan"
                 rows="5"
-                placeholder="Masukkan penerangan ringkas"
+                :placeholder="t('configuration.shared.descriptionPlaceholder')"
               ></textarea>
             </div>
 
@@ -379,24 +397,24 @@ onMounted(() => {
 
             <button
               v-if="editingId"
-              class="delete-trigger-btn"
+              class="ui-button ui-button--outline ui-button--danger"
               @click="handleDelete"
             >
-              Padam
+              {{ t("common.delete") }}
             </button>
 
             <AppButton
-              text="Batal"
+              :text="t('common.cancel')"
               variant="outline"
               @click="closeModal"
             />
 
             <AppButton
   :text="saving
-    ? 'Menyimpan...'
+    ? t('common.saving')
     : editingId
-      ? 'Kemaskini'
-      : 'Simpan'"
+      ? t('common.update')
+      : t('common.save')"
   :disabled="saving"
   @click="saveOrganization"
 />
@@ -414,31 +432,33 @@ onMounted(() => {
 
         <div class="delete-modal">
 
-          <div class="delete-icon">🗑️</div>
+          <div class="delete-icon">
+            <Trash2 :size="28" aria-hidden="true" />
+          </div>
 
           <h3>
-            Padam {{ selectedOrganization?.nama }}?
+            {{ t("common.deleteTitle", { name: selectedOrganization?.nama || t("common.emptyValue") }) }}
           </h3>
 
           <p class="delete-desc">
-            Tindakan ini tidak boleh dibatalkan.
+            {{ t("common.deleteWarning") }}
           </p>
 
           <div class="confirm-box">
 
             <label>
-              Taip <strong>Padam</strong> untuk sahkan:
+              {{ t("common.typeToConfirm", { keyword: t("common.deleteKeyword") }) }}
             </label>
 
             <div class="org-delete-name danger-word">
-              Padam
+              {{ t("common.deleteKeyword") }}
             </div>
 
             <input
               v-model="deleteConfirmText"
               class="delete-input"
               type="text"
-              placeholder="Taip Padam"
+              :placeholder="t('common.typeKeyword', { keyword: t('common.deleteKeyword') })"
             />
 
           </div>
@@ -446,19 +466,19 @@ onMounted(() => {
           <div class="delete-actions">
 
             <button
-              class="cancel-delete-btn"
+              class="ui-button ui-button--outline"
               @click="closeDeleteModal"
             >
-              Batal
+              {{ t("common.cancel") }}
             </button>
 
             <button
               type="button"
-              class="danger-btn"
+              class="ui-button ui-button--danger"
               :disabled="!canDelete"
               @click="confirmDelete"
             >
-              Padam Sekarang
+              {{ t("common.deleteNow") }}
             </button>
 
           </div>
@@ -471,7 +491,8 @@ onMounted(() => {
     <!-- TOAST -->
     <transition name="fade">
       <div v-if="showToast" class="toast-success">
-        ✅ Organisasi berjaya dipadam
+        <CircleCheck :size="18" aria-hidden="true" />
+        {{ t("configuration.organization.deleteSuccess") }}
       </div>
     </transition>
 
@@ -583,42 +604,6 @@ onMounted(() => {
 }
 
 /* BUTTON */
-
-.primary-btn{
-  border:none;
-
-  background:var(--primary);
-
-  color:white;
-
-  padding:0 22px;
-
-  min-height:48px;
-
-  border-radius:12px;
-
-  font-size:14px;
-
-  font-weight:700;
-
-  cursor:pointer;
-
-  transition:.18s;
-
-  display:inline-flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  gap:8px;
-
-  white-space:nowrap;
-}
-
-.primary-btn:hover{
-  background:#4338CA;
-}
 
 .btn-plus{
   font-size:18px;
@@ -755,30 +740,6 @@ td{
   font-size:13px;
 }
 
-.ghost-btn{
-  width:36px;
-
-  height:36px;
-
-  border:none;
-
-  border-radius:10px;
-
-  background:transparent;
-
-  color:#64748B;
-
-  cursor:pointer;
-
-  transition:.15s;
-}
-
-.ghost-btn:hover{
-  background:var(--primary-soft);
-
-  color:var(--primary);
-}
-
 .empty-cell{
   text-align:center;
 
@@ -871,20 +832,6 @@ td{
   font-weight:700;
 }
 
-.close-btn{
-  width:40px;
-
-  height:40px;
-
-  border:none;
-
-  border-radius:12px;
-
-  background:#F8FAFC;
-
-  cursor:pointer;
-}
-
 .textarea-field{
   margin-top:18px;
 }
@@ -937,92 +884,13 @@ textarea:focus{
 
 /* Normal AppButton only */
 
-.modal-actions :deep(button){
-  min-height:46px;
-
-  border-radius:14px;
-
-  font-weight:700;
-
-  padding:0 20px;
-
-  transition:.18s;
-}
-
 /* Save / Update */
-
-.modal-actions :deep(button:not(.delete-trigger-btn):not(.outline)){
-  background:#4F46E5;
-
-  color:white;
-
-  box-shadow:
-  0 8px 18px rgba(79,70,229,.18);
-}
-
-.modal-actions :deep(button:not(.delete-trigger-btn):not(.outline):hover){
-  background:#4338CA;
-}
 
 /* Batal */
 
-.modal-actions :deep(.outline){
-  background:white;
-
-  border:1px solid #E2E8F0;
-
-  color:#475569;
-}
-
-.modal-actions :deep(.outline:hover){
-  background:#F8FAFC;
-}
-
 /* KEEP PADAM RED */
 
-.delete-trigger-btn{
-  background:#FEF2F2;
-
-  color:#DC2626;
-
-  border:none;
-
-  border-radius:14px;
-
-  padding:0 20px;
-
-  min-height:46px;
-
-  font-weight:700;
-}
-
-.delete-trigger-btn:hover{
-  background:#FEE2E2;
-}
-
 /* DELETE BUTTON INSIDE EDIT MODAL */
-
-.delete-trigger-btn{
-  border:none;
-
-  background:#FEF2F2;
-
-  color:#DC2626;
-
-  padding:12px 18px;
-
-  border-radius:12px;
-
-  font-weight:700;
-
-  cursor:pointer;
-
-  transition:.18s;
-}
-
-.delete-trigger-btn:hover{
-  background:#FEE2E2;
-}
 
 /* DELETE MODAL */
 
@@ -1148,44 +1016,6 @@ textarea:focus{
   outline:none;
 
   border-color:#EF4444;
-}
-
-.danger-btn{
-  background:linear-gradient(135deg,#DC2626,#B91C1C);
-
-  color:white;
-
-  border:none;
-
-  border-radius:12px;
-
-  padding:12px 18px;
-
-  font-weight:700;
-
-  cursor:pointer;
-
-  transition:.18s;
-}
-
-.danger-btn:disabled{
-  background:#E5E7EB;
-
-  color:#9CA3AF;
-
-  cursor:not-allowed;
-
-  opacity:1;
-}
-
-.cancel-delete-btn{
-  border:1px solid var(--border);
-
-  background:white;
-
-  border-radius:12px;
-
-  padding:12px 18px;
 }
 
 /* TOAST */

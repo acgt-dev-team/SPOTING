@@ -1,7 +1,9 @@
 <script setup>
 import { computed, ref, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
+import { Plus, Search } from "lucide-vue-next"
 import api from "../../../src/services/api.js"
+import { t } from "../../i18n"
 
 import StatusPill from "../../ui/StatusPill.vue"
 import AppPagination from "../../ui/AppPagination.vue"
@@ -30,8 +32,8 @@ const selectedTugasanId = ref(null)
 
 const profile = ref({
   id: profileId,
-  name: "Profil Operasi",
-  description: "Tetapan operasi tapak"
+  name: t("configuration.taskList.defaultName"),
+  description: t("configuration.taskList.defaultDescription")
 })
 
 // =========================
@@ -101,7 +103,7 @@ async function assignTask() {
 }
 
 async function removeTask(tugasanId) {
-  if (!confirm("Buang tugasan ini?")) return
+  if (!confirm(t("configuration.taskList.removeConfirm"))) return
 
   try {
     await api.delete(`/tugasan/profil/${profileId}/${tugasanId}`)
@@ -180,22 +182,26 @@ onMounted(() => {
     <!-- Toolbar -->
     <div class="toolbar">
       <div class="search-box">
-        <span class="search-icon">⌕</span>
-        <input v-model="search" type="text" placeholder="Carian tugasan..." />
+        <Search class="search-icon" :size="18" aria-hidden="true" />
+        <input
+          v-model="search"
+          type="text"
+          :placeholder="t('configuration.shared.search', { entity: t('configuration.taskList.searchEntity') })"
+        />
       </div>
 
       <button
-        class="primary-btn"
+        class="ui-button ui-button--primary"
         @click="showModal = true"
       >
-        <span class="btn-plus">+</span>
-        Tetapkan Tugasan
+        <Plus :size="18" aria-hidden="true" />
+        {{ t("configuration.taskList.assign") }}
       </button>
     </div>
 
     <!-- Title -->
     <div class="page-heading-block">
-      <h1 class="main-page-title">Senarai Tugasan</h1>
+      <h1 class="main-page-title">{{ t("configuration.taskList.pageTitle") }}</h1>
     </div>
 
     <!-- Table -->
@@ -204,11 +210,11 @@ onMounted(() => {
         <table>
           <thead>
             <tr>
-              <th style="width: 50px">Bil</th>
-              <th style="width: 35%">Nama / Kod</th>
-              <th style="width: 100px">Protokol</th>
-              <th style="width: 180px">IP Range</th>
-              <th style="width: 160px">Status</th>
+              <th style="width: 50px">{{ t("common.tableNumber") }}</th>
+              <th style="width: 35%">{{ t("configuration.taskList.codeName") }}</th>
+              <th style="width: 100px">{{ t("configuration.taskList.protocol") }}</th>
+              <th style="width: 180px">{{ t("configuration.taskList.ipRange") }}</th>
+              <th style="width: 160px">{{ t("common.status") }}</th>
             </tr>
           </thead>
 
@@ -217,7 +223,7 @@ onMounted(() => {
             <!-- ✅ FIXED EMPTY STATE -->
             <tr v-if="paginatedTasks.length === 0">
               <td colspan="5" class="empty-cell">
-                Tiada tugasan dijumpai.
+                {{ t("configuration.taskList.empty") }}
               </td>
             </tr>
 
@@ -246,16 +252,16 @@ onMounted(() => {
                   class="protocol-badge"
                   :class="'protocol-' + (task.protocol || 'default').toLowerCase()"
                 >
-                  {{ task.protocol || '-' }}
+                  {{ task.protocol || t("common.emptyValue") }}
                 </span>
               </td>
 
               <!-- IP -->
               <td>
                 <div class="ip-range">
-                  <span>{{ task.ip_start || '-' }}</span>
+                  <span>{{ task.ip_start || t("common.emptyValue") }}</span>
                   <span class="ip-sep">→</span>
-                  <span>{{ task.ip_end || '-' }}</span>
+                  <span>{{ task.ip_end || t("common.emptyValue") }}</span>
                 </div>
               </td>
 
@@ -279,12 +285,12 @@ onMounted(() => {
 
     <!-- Footer -->
     <div class="footer-bar">
-      <button class="secondary-btn" @click="goBack">
-        ← Kembali
+      <button class="ui-button ui-button--outline" @click="goBack">
+        {{ t("common.back") }}
       </button>
 
       <div class="count-pill">
-        Bilangan Tugasan:
+        {{ t("configuration.shared.count", { entity: t("configuration.taskList.countEntity") }) }}
         <strong>
           {{ filteredTasks.length.toString().padStart(2, "0") }}
         </strong>
@@ -427,42 +433,6 @@ onMounted(() => {
 
 /* BUTTON */
 
-.primary-btn{
-  border:none;
-
-  background:var(--primary);
-
-  color:white;
-
-  padding:0 22px;
-
-  min-height:48px;
-
-  border-radius:12px;
-
-  font-size:14px;
-
-  font-weight:700;
-
-  cursor:pointer;
-
-  transition:.18s;
-
-  display:inline-flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  gap:8px;
-
-  white-space:nowrap;
-}
-
-.primary-btn:hover{
-  background:#4338CA;
-}
-
 .btn-plus{
   font-size:18px;
 
@@ -471,26 +441,6 @@ onMounted(() => {
   line-height:1;
 
   margin-top:-1px;
-}
-
-.secondary-btn{
-  background:white;
-
-  border:1px solid var(--border);
-
-  color:#111827;
-
-  padding:12px 18px;
-
-  border-radius:12px;
-
-  cursor:pointer;
-
-  transition:.18s;
-}
-
-.secondary-btn:hover{
-  background:#F8FAFC;
 }
 
 /* TABLE */
@@ -629,36 +579,6 @@ td{
   font-size:13px;
 }
 
-.ghost-btn{
-  width:36px;
-
-  height:36px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:none;
-
-  border-radius:10px;
-
-  background:transparent;
-
-  color:#64748B;
-
-  cursor:pointer;
-
-  transition:.15s;
-}
-
-.ghost-btn:hover{
-  background:var(--primary-soft);
-
-  color:var(--primary);
-}
-
 .empty-cell{
   text-align:center;
 
@@ -765,15 +685,6 @@ td{
   font-weight:700;
 }
 
-.close-btn{
-  width:40px;
-  height:40px;
-  border:none;
-  border-radius:12px;
-  background:#F8FAFC;
-  cursor:pointer;
-}
-
 .form-area{
   width:100%;
 }
@@ -817,51 +728,7 @@ textarea:focus{
 
 /* APPBUTTON STYLING */
 
-.modal-actions :deep(button){
-  min-height:46px;
-  border-radius:14px;
-  font-weight:700;
-  padding:0 20px;
-  transition:.18s;
-}
-
-.modal-actions :deep(button:not(.delete-trigger-btn):not(.outline)){
-  background:#4F46E5;
-  color:white;
-  box-shadow:
-  0 8px 18px rgba(79,70,229,.18);
-}
-
-.modal-actions :deep(button:not(.delete-trigger-btn):not(.outline):hover){
-  background:#4338CA;
-}
-
-.modal-actions :deep(.outline){
-  background:white;
-  border:1px solid #E2E8F0;
-  color:#475569;
-}
-
-.modal-actions :deep(.outline:hover){
-  background:#F8FAFC;
-}
-
 /* DELETE BUTTON */
-
-.delete-trigger-btn{
-  background:#FEF2F2;
-  color:#DC2626;
-  border:none;
-  border-radius:14px;
-  padding:12px 18px;
-  font-weight:700;
-  cursor:pointer;
-  transition:.18s;
-}
-
-.delete-trigger-btn:hover{
-  background:#FEE2E2;
-}
 
 /* DELETE MODAL */
 
@@ -947,32 +814,6 @@ textarea:focus{
   margin-top:24px;
 }
 
-.cancel-delete-btn{
-  border:1px solid var(--border);
-  background:white;
-  border-radius:12px;
-  padding:12px 18px;
-  cursor:pointer;
-}
-
-.danger-btn{
-  background:linear-gradient(135deg,#DC2626,#B91C1C);
-  color:white;
-  border:none;
-  border-radius:12px;
-  padding:12px 18px;
-  font-weight:700;
-  cursor:pointer;
-  transition:.18s;
-}
-
-.danger-btn:disabled{
-  background:#E5E7EB;
-  color:#9CA3AF;
-  cursor:not-allowed;
-  opacity:1;
-}
-
 /* TOAST */
 
 .toast-success{
@@ -999,11 +840,6 @@ textarea:focus{
   .search-box{
     max-width:none;
     width:100%;
-  }
-
-  .primary-btn{
-    width:100%;
-    justify-content:center;
   }
 
   .modal-actions,

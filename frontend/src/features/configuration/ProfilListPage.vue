@@ -1,7 +1,9 @@
 <script setup>
 import { computed, ref, watch, onMounted, onBeforeUnmount, nextTick } from "vue"
 import { useRoute, useRouter } from "vue-router"
+import { FileDown, Pencil, Plus, Search, Trash2, X } from "lucide-vue-next"
 import api from "../../../src/services/api"
+import { t } from "../../i18n"
 import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.css"
 
@@ -61,8 +63,8 @@ for (let h = 0; h < 24; h++) {
 // =========================
 const site = ref({
   id: siteId,
-  name: "Tapak",
-  description: "Maklumat tapak"
+  name: t("configuration.profile.defaultName"),
+  description: t("configuration.profile.defaultDescription")
 })
 
 const profiles = ref([])
@@ -127,7 +129,7 @@ watch(showModal, async (val) => {
   if (val) {
     await nextTick()
 
-    initFlatpickr() // ✅ replaced inline with helper
+    initFlatpickr() // âœ… replaced inline with helper
   }
 })
 
@@ -210,8 +212,36 @@ const selectedProfil = computed(() => {
 })
 
 const canDelete = computed(() => {
-  return deleteConfirmText.value.trim().toLowerCase() === "padam"
+  return deleteConfirmText.value.trim().toLowerCase() === t("common.deleteKeyword").toLowerCase()
 })
+
+const frequencyOptions = [
+  {
+    label: t("schedule.daily"),
+    value: "DAILY"
+  },
+  {
+    label: t("schedule.weekly"),
+    value: "WEEKLY"
+  },
+  {
+    label: t("schedule.monthly"),
+    value: "MONTHLY"
+  },
+  {
+    label: t("schedule.cronCustom"),
+    value: "CUSTOM"
+  }
+]
+
+function formatFrequency(profile) {
+  if (profile.frequency === "DAILY") return t("schedule.daily")
+  if (profile.frequency === "WEEKLY") return t("schedule.weekly")
+  if (profile.frequency === "MONTHLY") return t("schedule.monthly")
+  if (profile.frequency === "CUSTOM") return profile.cron_expression
+
+  return t("common.emptyValue")
+}
 
 // =========================
 // LOAD
@@ -252,7 +282,7 @@ async function saveProfile() {
 
     if (executionType.value === "SCHEDULED") {
       if (!selectedDate.value || !selectedTime.value) {
-        alert("Sila pilih tarikh dan masa")
+        alert(t("validation.selectDateTime"))
         return
       }
 
@@ -509,7 +539,7 @@ async function generateReport(profile) {
 
     console.error(err)
 
-    alert("Gagal memuat turun laporan")
+    alert(t("configuration.profile.downloadFailed"))
   }
 }
 
@@ -543,22 +573,26 @@ onBeforeUnmount(() => {
     <!-- Toolbar -->
     <div class="toolbar">
       <div class="search-box">
-        <span class="search-icon">⌕</span>
-        <input v-model="search" type="text" placeholder="Carian profil..." />
+        <Search class="search-icon" :size="18" aria-hidden="true" />
+        <input
+          v-model="search"
+          type="text"
+          :placeholder="t('configuration.shared.search', { entity: t('configuration.profile.searchEntity') })"
+        />
       </div>
 
       <button
-        class="primary-btn"
+        class="ui-button ui-button--primary"
         @click="openAddModal"
       >
-        <span class="btn-plus">+</span>
-        Tambah Profil
+        <Plus :size="18" aria-hidden="true" />
+        {{ t("configuration.profile.add") }}
       </button>
     </div>
 
     <!-- Title -->
     <div class="page-heading-block">
-      <h1 class="main-page-title">Senarai Profil</h1>
+      <h1 class="main-page-title">{{ t("configuration.profile.pageTitle") }}</h1>
     </div>
 
     <!-- Table -->
@@ -567,21 +601,21 @@ onBeforeUnmount(() => {
         <table>
           <thead>
             <tr>
-              <th style="width:100px">Kod</th>
-              <th>Nama Profil</th>
-              <th style="width:140px; white-space: nowrap;">Jumlah Tugasan</th>
-              <th style="width:140px">Status</th>
+              <th style="width:100px">{{ t("common.code") }}</th>
+              <th>{{ t("configuration.profile.name") }}</th>
+              <th style="width:140px; white-space: nowrap;">{{ t("configuration.site.tasksTotal") }}</th>
+              <th style="width:140px">{{ t("common.status") }}</th>
               <th style="width:180px">
-                Jadual Pelaksanaan
+                {{ t("schedule.scheduleExecution") }}
               </th>
-              <th style="width:180px; white-space: nowrap;">Masa Dijadualkan</th>
+              <th style="width:180px; white-space: nowrap;">{{ t("schedule.scheduledTime") }}</th>
               <th
                 style="
                   width:140px;
                   padding-left:40px;
                 "
               >
-                Tindakan
+                {{ t("common.actions") }}
               </th>
             </tr>
           </thead>
@@ -590,7 +624,7 @@ onBeforeUnmount(() => {
 
             <tr v-if="paginatedProfiles.length === 0">
               <td colspan="6" class="empty-cell">
-                Tiada profil dijumpai.
+                {{ t("configuration.profile.empty") }}
               </td>
             </tr>
 
@@ -628,19 +662,7 @@ onBeforeUnmount(() => {
   >
 
     {{
-      profile.frequency === "DAILY"
-        ? "Harian"
-
-      : profile.frequency === "WEEKLY"
-        ? "Mingguan"
-
-      : profile.frequency === "MONTHLY"
-        ? "Bulanan"
-
-      : profile.frequency === "CUSTOM"
-        ? profile.cron_expression
-
-      : "-"
+      formatFrequency(profile)
     }}
 
   </span>
@@ -651,11 +673,11 @@ onBeforeUnmount(() => {
       'SCHEDULED'
     "
   >
-    Sekali Sahaja
+    {{ t("schedule.once") }}
   </span>
 
   <span v-else>
-    Segera
+    {{ t("schedule.immediate") }}
   </span>
 
 </td>
@@ -664,7 +686,7 @@ onBeforeUnmount(() => {
                 <span v-if="profile.execution_type === 'SCHEDULED' && profile.scheduled_at">
                   {{ formatDateTime(profile.scheduled_at) }}
                 </span>
-                <span v-else>-</span>
+                <span v-else>{{ t("common.emptyValue") }}</span>
               </td>
 
               <td style="text-align:center">
@@ -677,17 +699,21 @@ onBeforeUnmount(() => {
                   "
                 >
                   <button
-                    class="ghost-btn"
+                    class="ui-icon-button"
+                    :title="t('configuration.profile.edit')"
+                    :aria-label="t('configuration.profile.edit')"
                     @click.stop="editProfile(profile)"
                   >
-                    ✏️
+                    <Pencil :size="17" aria-hidden="true" />
                   </button>
 
                   <button
-                    class="ghost-btn"
+                    class="ui-icon-button"
+                    :title="t('reports.download')"
+                    :aria-label="t('reports.download')"
                     @click.stop="generateReport(profile)"
                   >
-                    📄
+                    <FileDown :size="17" aria-hidden="true" />
                   </button>
                 </div>
               </td>
@@ -707,12 +733,12 @@ onBeforeUnmount(() => {
     <!-- Footer -->
     <div class="footer-bar">
 
-      <button class="secondary-btn" @click="goBack">
-        ← Kembali
+      <button class="ui-button ui-button--outline" @click="goBack">
+        {{ t("common.back") }}
       </button>
 
       <div class="count-pill">
-        Bilangan Profil:
+        {{ t("configuration.shared.count", { entity: t("configuration.profile.countEntity") }) }}
         <strong>
           {{ filteredProfiles.length.toString().padStart(2,"0") }}
         </strong>
@@ -731,16 +757,21 @@ onBeforeUnmount(() => {
           <div class="modal-header">
             <div>
               <p class="eyebrow">
-                {{ editingId ? "KEMASKINI DATA" : "TAMBAH DATA" }}
+                {{ editingId ? t("configuration.shared.editData") : t("configuration.shared.addData") }}
               </p>
 
               <h2>
-                {{ editingId ? "Edit Profil" : "Tambah Profil" }}
+                {{ editingId ? t("configuration.profile.edit") : t("configuration.profile.add") }}
               </h2>
             </div>
 
-            <button class="close-btn" @click="closeModal">
-              ✕
+            <button
+              class="ui-icon-button"
+              :title="t('common.close')"
+              :aria-label="t('common.close')"
+              @click="closeModal"
+            >
+              <X :size="18" aria-hidden="true" />
             </button>
           </div>
 
@@ -748,22 +779,22 @@ onBeforeUnmount(() => {
 
             <AppInput
               v-model="nama"
-              label="Nama Profil"
-              placeholder="Masukkan nama profil"
+              :label="t('configuration.profile.name')"
+              :placeholder="t('configuration.profile.namePlaceholder')"
             />
 
             <div class="textarea-field">
-              <label class="textarea-label">Keterangan</label>
+              <label class="textarea-label">{{ t("common.description") }}</label>
 
               <textarea
                 v-model="keterangan"
                 rows="5"
-                placeholder="Masukkan penerangan ringkas"
+                :placeholder="t('configuration.shared.descriptionPlaceholder')"
               ></textarea>
             </div>
 
             <div class="execution-type">
-              <label class="field-label">Jenis Pelaksanaan</label>
+              <label class="field-label">{{ t("schedule.executionType") }}</label>
 
               <!-- NEW GRID WRAPPER -->
               <div class="execution-grid">
@@ -776,8 +807,8 @@ onBeforeUnmount(() => {
                     v-model="executionType"
                   />
                   <span class="radio-label">
-                    Imbas Segera
-                    <small>Jalankan serta-merta</small>
+                    {{ t("schedule.immediate") }}
+                    <small>{{ t("schedule.immediateDescription") }}</small>
                   </span>
                 </label>
 
@@ -790,8 +821,8 @@ onBeforeUnmount(() => {
                       v-model="executionType"
                     />
                     <span class="radio-label">
-                      Jadualkan
-                      <small>Tetapkan masa pelaksanaan</small>
+                      {{ t("schedule.scheduled") }}
+                      <small>{{ t("schedule.scheduledDescription") }}</small>
                     </span>
                   </label>
 
@@ -800,13 +831,13 @@ onBeforeUnmount(() => {
 
                     <!-- DATE -->
                     <div class="schedule-field tarikh-field">
-                      <label class="field-label">Tarikh</label>
+                      <label class="field-label">{{ t("schedule.date") }}</label>
 
                       <div class="input-wrapper">
                         <input
                           ref="dateInput"
                           type="text"
-                          placeholder="Pilih tarikh"
+                          :placeholder="t('schedule.pickDate')"
                           class="spoting-input"
                           readonly
                         />
@@ -815,7 +846,7 @@ onBeforeUnmount(() => {
 
                     <!-- TIME -->
                     <div class="schedule-field masa-field">
-                      <label class="field-label">Masa</label>
+                      <label class="field-label">{{ t("schedule.time") }}</label>
 
                       <div 
                         class="custom-select" 
@@ -823,7 +854,7 @@ onBeforeUnmount(() => {
                         @click.stop="openDropdown"
                         >
                         <span :class="{ placeholder: !selectedTime }">
-                          {{ selectedTime || "Pilih masa" }}
+                          {{ selectedTime || t("schedule.pickTime") }}
                         </span>
 
                         <div v-if="showTimeDropdown" class="dropdown">
@@ -840,7 +871,7 @@ onBeforeUnmount(() => {
                     </div>
 
                     <label class="field-label">
-  Cron Job
+  {{ t("schedule.cronJob") }}
 </label>
 
 <label class="switch">
@@ -855,25 +886,8 @@ onBeforeUnmount(() => {
 <AppSelect
   v-if="cronEnabled"
   v-model="frequency"
-  label="Kekerapan"
-  :options="[
-    {
-      label: 'Harian',
-      value: 'DAILY'
-    },
-    {
-      label: 'Mingguan',
-      value: 'WEEKLY'
-    },
-    {
-      label: 'Bulanan',
-      value: 'MONTHLY'
-    },
-    {
-      label: 'Cron Custom',
-      value: 'CUSTOM'
-    }
-  ]"
+  :label="t('schedule.frequency')"
+  :options="frequencyOptions"
 />
 
 <!-- CUSTOM CRON -->
@@ -881,8 +895,8 @@ onBeforeUnmount(() => {
 <AppInput
   v-if="cronEnabled && frequency === 'CUSTOM'"
   v-model="cronExpression"
-  label='Cron Expression'
-  placeholder='0 0 * * *'
+  :label="t('schedule.cronExpression')"
+  :placeholder="t('schedule.cronPlaceholder')"
 />
 
                   </div>
@@ -895,14 +909,14 @@ onBeforeUnmount(() => {
 
             <button
               v-if="editingId"
-              class="delete-trigger-btn"
+              class="ui-button ui-button--outline ui-button--danger"
               @click="handleDelete"
             >
-              Padam
+              {{ t("common.delete") }}
             </button>
 
             <AppButton
-              text="Batal"
+              :text="t('common.cancel')"
               variant="outline"
               @click="closeModal"
             />
@@ -911,10 +925,10 @@ onBeforeUnmount(() => {
 
             <AppButton
               :text="saving
-    ? 'Menyimpan...'
+    ? t('common.saving')
     : editingId
-      ? 'Kemaskini'
-      : 'Simpan'"
+      ? t('common.update')
+      : t('common.save')"
   :disabled="saving"
   @click="saveProfile"
             />
@@ -931,31 +945,33 @@ onBeforeUnmount(() => {
 
         <div class="delete-modal">
 
-          <div class="delete-icon">🗑️</div>
+          <div class="delete-icon">
+            <Trash2 :size="28" aria-hidden="true" />
+          </div>
 
           <h3>
-            Padam {{ selectedProfil?.nama }}?
+            {{ t("common.deleteTitle", { name: selectedProfil?.nama || t("common.emptyValue") }) }}
           </h3>
 
           <p class="delete-desc">
-            Tindakan ini tidak boleh dibatalkan.
+            {{ t("common.deleteWarning") }}
           </p>
 
           <div class="confirm-box">
 
             <label>
-              Taip <strong>Padam</strong> untuk sahkan:
+              {{ t("common.typeToConfirm", { keyword: t("common.deleteKeyword") }) }}
             </label>
 
             <div class="org-delete-name danger-word">
-              Padam
+              {{ t("common.deleteKeyword") }}
             </div>
 
             <input
               v-model="deleteConfirmText"
               class="delete-input"
               type="text"
-              placeholder="Taip Padam"
+              :placeholder="t('common.typeKeyword', { keyword: t('common.deleteKeyword') })"
             />
 
           </div>
@@ -963,19 +979,19 @@ onBeforeUnmount(() => {
           <div class="delete-actions">
 
             <button
-              class="cancel-delete-btn"
+              class="ui-button ui-button--outline"
               @click="closeDeleteModal"
             >
-              Batal
+              {{ t("common.cancel") }}
             </button>
 
             <button
               type="button"
-              class="danger-btn"
+              class="ui-button ui-button--danger"
               :disabled="!canDelete"
               @click="confirmDelete"
             >
-              Padam Sekarang
+              {{ t("common.deleteNow") }}
             </button>
 
           </div>
@@ -989,7 +1005,7 @@ onBeforeUnmount(() => {
     <!-- TOAST -->
     <transition name="fade">
       <div v-if="showToast" class="toast-success">
-        ✅ Profil berjaya dipadam
+        {{ t("configuration.profile.deleteSuccess") }}
       </div>
     </transition>
 
@@ -1122,42 +1138,6 @@ onBeforeUnmount(() => {
 
 /* BUTTON */
 
-.primary-btn{
-  border:none;
-
-  background:var(--primary);
-
-  color:white;
-
-  padding:0 22px;
-
-  min-height:48px;
-
-  border-radius:12px;
-
-  font-size:14px;
-
-  font-weight:700;
-
-  cursor:pointer;
-
-  transition:.18s;
-
-  display:inline-flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  gap:8px;
-
-  white-space:nowrap;
-}
-
-.primary-btn:hover{
-  background:#4338CA;
-}
-
 .btn-plus{
   font-size:18px;
 
@@ -1166,26 +1146,6 @@ onBeforeUnmount(() => {
   line-height:1;
 
   margin-top:-1px;
-}
-
-.secondary-btn{
-  background:white;
-
-  border:1px solid var(--border);
-
-  color:#111827;
-
-  padding:12px 18px;
-
-  border-radius:12px;
-
-  cursor:pointer;
-
-  transition:.18s;
-}
-
-.secondary-btn:hover{
-  background:#F8FAFC;
 }
 
 /* TABLE */
@@ -1324,36 +1284,6 @@ td{
   font-size:13px;
 }
 
-.ghost-btn{
-  width:36px;
-
-  height:36px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:none;
-
-  border-radius:10px;
-
-  background:transparent;
-
-  color:#64748B;
-
-  cursor:pointer;
-
-  transition:.15s;
-}
-
-.ghost-btn:hover{
-  background:var(--primary-soft);
-
-  color:var(--primary);
-}
-
 .empty-cell{
   text-align:center;
 
@@ -1460,15 +1390,6 @@ td{
   font-weight:700;
 }
 
-.close-btn{
-  width:40px;
-  height:40px;
-  border:none;
-  border-radius:12px;
-  background:#F8FAFC;
-  cursor:pointer;
-}
-
 .form-area{
   width:100%;
 }
@@ -1512,51 +1433,7 @@ textarea:focus{
 
 /* APPBUTTON STYLING */
 
-.modal-actions :deep(button){
-  min-height:46px;
-  border-radius:14px;
-  font-weight:700;
-  padding:0 20px;
-  transition:.18s;
-}
-
-.modal-actions :deep(button:not(.delete-trigger-btn):not(.outline)){
-  background:#4F46E5;
-  color:white;
-  box-shadow:
-  0 8px 18px rgba(79,70,229,.18);
-}
-
-.modal-actions :deep(button:not(.delete-trigger-btn):not(.outline):hover){
-  background:#4338CA;
-}
-
-.modal-actions :deep(.outline){
-  background:white;
-  border:1px solid #E2E8F0;
-  color:#475569;
-}
-
-.modal-actions :deep(.outline:hover){
-  background:#F8FAFC;
-}
-
 /* DELETE BUTTON */
-
-.delete-trigger-btn{
-  background:#FEF2F2;
-  color:#DC2626;
-  border:none;
-  border-radius:14px;
-  padding:12px 18px;
-  font-weight:700;
-  cursor:pointer;
-  transition:.18s;
-}
-
-.delete-trigger-btn:hover{
-  background:#FEE2E2;
-}
 
 /* DELETE MODAL */
 
@@ -1642,32 +1519,6 @@ textarea:focus{
   margin-top:24px;
 }
 
-.cancel-delete-btn{
-  border:1px solid var(--border);
-  background:white;
-  border-radius:12px;
-  padding:12px 18px;
-  cursor:pointer;
-}
-
-.danger-btn{
-  background:linear-gradient(135deg,#DC2626,#B91C1C);
-  color:white;
-  border:none;
-  border-radius:12px;
-  padding:12px 18px;
-  font-weight:700;
-  cursor:pointer;
-  transition:.18s;
-}
-
-.danger-btn:disabled{
-  background:#E5E7EB;
-  color:#9CA3AF;
-  cursor:not-allowed;
-  opacity:1;
-}
-
 /* TOAST */
 
 .toast-success{
@@ -1694,11 +1545,6 @@ textarea:focus{
   .search-box{
     max-width:none;
     width:100%;
-  }
-
-  .primary-btn{
-    width:100%;
-    justify-content:center;
   }
 
   .modal-actions,
@@ -1853,13 +1699,15 @@ textarea:focus{
 
 /* Arrow icon */
 .input-wrapper::after {
-  content: "▾";
+  content: "";
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translateY(-50%);
-  font-size: 12px;
-  color: #6b7280;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid #6b7280;
+  border-bottom: 2px solid #6b7280;
+  transform: translateY(-70%) rotate(45deg);
   pointer-events: none;
 }
 
@@ -1896,13 +1744,15 @@ CUSTOM TIME DROPDOWN (FIX)
 }
 
 .custom-select::after {
-  content: "▾";
+  content: "";
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translateY(-50%);
-  font-size: 12px;
-  color: #6b7280;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid #6b7280;
+  border-bottom: 2px solid #6b7280;
+  transform: translateY(-70%) rotate(45deg);
   pointer-events: none;
 }
 

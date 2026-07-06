@@ -7,7 +7,7 @@ import {
   vi
 } from "vitest"
 
-import Auth from "../src/features/auth/Auth.vue"
+import Login from "../src/features/auth/Login.vue"
 import router from "../src/router"
 
 import api from "../src/services/api"
@@ -27,7 +27,7 @@ vi.mock("../src/services/api", () => ({
 vi.spyOn(console, "error")
   .mockImplementation(() => {})
 
-describe("Auth.vue", () => {
+describe("Login.vue", () => {
 
   beforeEach(async () => {
 
@@ -44,7 +44,7 @@ describe("Auth.vue", () => {
   // =========================
   it("memaparkan halaman log masuk", () => {
 
-    const wrapper = mount(Auth, {
+    const wrapper = mount(Login, {
       global: {
         plugins: [router]
       }
@@ -60,7 +60,7 @@ describe("Auth.vue", () => {
   // =========================
   it("menerima input nama pengguna", async () => {
 
-    const wrapper = mount(Auth, {
+    const wrapper = mount(Login, {
       global: {
         plugins: [router]
       }
@@ -81,7 +81,7 @@ describe("Auth.vue", () => {
   // =========================
   it("menerima input kata laluan", async () => {
 
-    const wrapper = mount(Auth, {
+    const wrapper = mount(Login, {
       global: {
         plugins: [router]
       }
@@ -102,7 +102,7 @@ describe("Auth.vue", () => {
   // =========================
   it("memaparkan ralat jika maklumat kosong", async () => {
 
-    const wrapper = mount(Auth, {
+    const wrapper = mount(Login, {
       global: {
         plugins: [router]
       }
@@ -128,7 +128,7 @@ describe("Auth.vue", () => {
       }
     })
 
-    const wrapper = mount(Auth, {
+    const wrapper = mount(Login, {
       global: {
         plugins: [router]
       }
@@ -169,7 +169,7 @@ describe("Auth.vue", () => {
     const pushSpy =
       vi.spyOn(router, "push")
 
-    const wrapper = mount(Auth, {
+    const wrapper = mount(Login, {
       global: {
         plugins: [router]
       }
@@ -214,7 +214,7 @@ describe("Auth.vue", () => {
     const pushSpy =
       vi.spyOn(router, "push")
 
-    const wrapper = mount(Auth, {
+    const wrapper = mount(Login, {
       global: {
         plugins: [router]
       }

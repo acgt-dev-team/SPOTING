@@ -2,6 +2,7 @@
 import { ref } from "vue"
 import { useRouter } from "vue-router"
 import api from "../../services/api"
+import { t } from "../../i18n"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
@@ -19,12 +20,12 @@ async function submit(e) {
   error.value = ""
 
   if (!password.value || !confirmPassword.value) {
-    error.value = "Sila isi semua maklumat"
+    error.value = t("validation.allFieldsRequired")
     return
   }
 
   if (password.value !== confirmPassword.value) {
-    error.value = "Password tidak sama"
+    error.value = t("validation.passwordMismatch")
     return
   }
 
@@ -59,7 +60,7 @@ async function submit(e) {
   } catch (err) {
     console.error(err)
     error.value =
-      "Gagal tukar password"
+      t("auth.changePassword.error")
   } finally {
     loading.value = false
   }
@@ -74,27 +75,27 @@ async function submit(e) {
       <div class="card">
 
         <p class="eyebrow">
-          KESELAMATAN AKAUN
+          {{ t("auth.changePassword.eyebrow") }}
         </p>
 
         <h2 class="title">
-          Tukar Kata Laluan
+          {{ t("auth.changePassword.title") }}
         </h2>
 
         <p class="desc">
-          Anda perlu menukar kata laluan sementara.
+          {{ t("auth.changePassword.description") }}
         </p>
 
         <form @submit.prevent="submit">
 
           <AppInput
-            label="Password Baru"
+            :label="t('auth.changePassword.newPassword')"
             type="password"
             v-model="password"
           />
 
           <AppInput
-            label="Sahkan Password"
+            :label="t('auth.changePassword.confirmPassword')"
             type="password"
             v-model="confirmPassword"
           />
@@ -107,7 +108,7 @@ async function submit(e) {
           </p>
 
           <AppButton
-            text="Simpan Kata Laluan"
+            :text="t('auth.changePassword.submit')"
             type="button"
             class="submit-btn"
             @click="submit"

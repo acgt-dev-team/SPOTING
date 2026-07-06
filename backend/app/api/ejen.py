@@ -13,10 +13,11 @@ from app.services.agent_service import get_tasks_for_agent
 from app.schemas.agent_task import AgentTask
 
 from app.services.ejen_service import register_ejen
+from app.i18n import t
 
 router = APIRouter(
     prefix="/ejen",
-    tags=["Ejen"]
+    tags=[t("docs.tags.agent")]
 )
 
 

@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database.session import get_db
+from app.i18n import t
 
 from app.schemas.tapak_schema import TapakCreate, TapakResponse
 
@@ -11,7 +12,7 @@ from app.services.tapak_service import (
     delete_tapak
 )
 
-router = APIRouter(prefix="/tapak", tags=["Tapak"])
+router = APIRouter(prefix="/tapak", tags=[t("docs.tags.site")])
 
 
 # =========================
@@ -38,7 +39,7 @@ def update(id: int, data: TapakCreate, db: Session = Depends(get_db)):
     updated = update_tapak(db, id, data.dict())
 
     if not updated:
-        raise HTTPException(status_code=404, detail="Tapak not found")
+        raise HTTPException(status_code=404, detail=t("site.notFound"))
 
     return updated
 
@@ -51,9 +52,9 @@ def delete(id: int, db: Session = Depends(get_db)):
     deleted = delete_tapak(db, id)
 
     if not deleted:
-        raise HTTPException(status_code=404, detail="Tapak not found")
+        raise HTTPException(status_code=404, detail=t("site.notFound"))
 
-    return {"message": "Deleted"}
+    return {"message": t("common.deleted")}
 
 @router.get("/{id}")
 def get_one(id: int, db: Session = Depends(get_db)):
@@ -62,7 +63,7 @@ def get_one(id: int, db: Session = Depends(get_db)):
     tapak = db.query(Tapak).filter(Tapak.id == id).first()
 
     if not tapak:
-        return {"message": "Not found"}
+        return {"message": t("common.notFound")}
 
     return {
     "id": tapak.id,
