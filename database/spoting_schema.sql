@@ -59,12 +59,24 @@ ALTER TABLE public.ejen ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 -- Name: hasil_imbasan; Type: TABLE; Schema: public; Owner: postgres
 --
 
+-- CREATE TABLE public.hasil_imbasan (
+--     id bigint NOT NULL,
+--     profil_tugasan_id bigint NOT NULL,
+--     ejen_id bigint NOT NULL,
+--     hasil json NOT NULL,
+--     created_at timestamp without time zone DEFAULT now()
+
+-- );
+
+
 CREATE TABLE public.hasil_imbasan (
     id bigint NOT NULL,
     profil_tugasan_id bigint NOT NULL,
     ejen_id bigint NOT NULL,
     hasil json NOT NULL,
-    created_at timestamp without time zone DEFAULT now()
+    created_at timestamp without time zone DEFAULT now(),
+    prev_hash TEXT,
+    row_hash TEXT
 );
 
 
@@ -533,6 +545,13 @@ CREATE SEQUENCE public.x_profil_tugasan_id_seq
 
 ALTER SEQUENCE public.x_profil_tugasan_id_seq OWNER TO postgres;
 
+
+-- COPY public.users (id, username, password, role, created_at, pelanggan_id, nama, aktif, force_password_change, email, phone) FROM stdin;
+-- 1	HangTuah	pbkdf2_sha256$600000$SY/ljhCoZ7kF0J0qMxn4WA==$MA1Hl0OMA+7XvzCHVHsaIGBjOvnWsrD71/ME6ptxJyg=	super admin	2026-05-10 10:43:34.926637	1	Super Admin	t	f	\N	\N
+-- 2	HangJebat	pbkdf2_sha256$600000$t3u19N4vkuclnlx8Im0VGw==$YPW2J2dMoYhvCmH3Z3Xj/q8kVVJYBE6exzG0cw1x8L0=	super admin	2026-05-10 10:43:34.926637	1	Super Admin	t	f	\N	\N
+-- 3	HangLekiu	pbkdf2_sha256$600000$XbGr9OHccg1Nvy7TAWq4+w==$R0JPkwiVzLhLpaHM6FeGwZaJ/N/KN90Ln1t/Kh+SAyk=	super admin	2026-05-10 10:43:34.926637	1	Super Admin	t	f	\N	\N
+-- \.
+
 --
 -- Name: x_profil_tugasan_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -542,7 +561,7 @@ ALTER SEQUENCE public.x_profil_tugasan_id_seq OWNED BY public.x_profil_tugasan.i
 
 --
 -- Name: hasil_imbasan id; Type: DEFAULT; Schema: public; Owner: postgres
---
+
 
 ALTER TABLE ONLY public.hasil_imbasan ALTER COLUMN id SET DEFAULT nextval('public.hasil_imbasan_id_seq'::regclass);
 
