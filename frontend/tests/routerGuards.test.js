@@ -27,7 +27,7 @@ describe("router guards", () => {
 
   beforeEach(() => {
 
-    localStorage.clear()
+    sessionStorage.clear()
 
     router = createMockRouter()
 
@@ -67,8 +67,8 @@ describe("router guards", () => {
   // =========================
   it("redirect ke tukar kata laluan jika dipaksa", () => {
 
-    localStorage.setItem("token", "abc")
-    localStorage.setItem(
+    sessionStorage.setItem("token", "abc")
+    sessionStorage.setItem(
       "forcePasswordChange",
       "true"
     )
@@ -98,8 +98,8 @@ describe("router guards", () => {
   // =========================
   it("admin tidak boleh kembali ke login", () => {
 
-    localStorage.setItem("token", "abc")
-    localStorage.setItem("role", "admin")
+    sessionStorage.setItem("token", "abc")
+    sessionStorage.setItem("role", "admin")
 
     const next = vi.fn()
 
@@ -123,8 +123,8 @@ describe("router guards", () => {
   // =========================
   it("super admin redirect ke configuration", () => {
 
-    localStorage.setItem("token", "abc")
-    localStorage.setItem(
+    sessionStorage.setItem("token", "abc")
+    sessionStorage.setItem(
       "role",
       "super admin"
     )
@@ -151,8 +151,8 @@ describe("router guards", () => {
   // =========================
   it("user redirect ke dashboard", () => {
 
-    localStorage.setItem("token", "abc")
-    localStorage.setItem("role", "user")
+    sessionStorage.setItem("token", "abc")
+    sessionStorage.setItem("role", "user")
 
     const next = vi.fn()
 
@@ -176,8 +176,8 @@ describe("router guards", () => {
   // =========================
   it("user tidak boleh akses accounts", () => {
 
-    localStorage.setItem("token", "abc")
-    localStorage.setItem("role", "user")
+    sessionStorage.setItem("token", "abc")
+    sessionStorage.setItem("role", "user")
 
     const next = vi.fn()
 
@@ -201,8 +201,8 @@ describe("router guards", () => {
   // =========================
   it("membenarkan akses biasa", () => {
 
-    localStorage.setItem("token", "abc")
-    localStorage.setItem("role", "admin")
+    sessionStorage.setItem("token", "abc")
+    sessionStorage.setItem("role", "admin")
 
     const next = vi.fn()
 
@@ -227,8 +227,8 @@ describe("router guards", () => {
   // =========================
   it("membenarkan akses ke change password", () => {
 
-    localStorage.setItem("token", "abc")
-    localStorage.setItem(
+    sessionStorage.setItem("token", "abc")
+    sessionStorage.setItem(
       "forcePasswordChange",
       "true"
     )

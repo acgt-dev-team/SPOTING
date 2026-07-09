@@ -21,7 +21,7 @@ describe("api interceptor", () => {
 
   beforeEach(() => {
 
-    localStorage.clear()
+    sessionStorage.clear()
 
     vi.clearAllMocks()
 
@@ -34,7 +34,7 @@ describe("api interceptor", () => {
   // =========================
   it("menambah bearer token pada request", async () => {
 
-    localStorage.setItem(
+    sessionStorage.setItem(
       "token",
       "abc123"
     )
@@ -106,12 +106,12 @@ describe("api interceptor", () => {
   // =========================
   it("logout automatik apabila 401", async () => {
 
-    localStorage.setItem(
+    sessionStorage.setItem(
       "token",
       "abc"
     )
 
-    localStorage.setItem(
+    sessionStorage.setItem(
       "role",
       "admin"
     )
@@ -138,11 +138,11 @@ describe("api interceptor", () => {
       .toHaveBeenCalled()
 
     expect(
-      localStorage.getItem("token")
+      sessionStorage.getItem("token")
     ).toBeNull()
 
     expect(
-      localStorage.getItem("role")
+      sessionStorage.getItem("role")
     ).toBeNull()
 
     expect(window.location.href)
@@ -155,12 +155,12 @@ describe("api interceptor", () => {
   // =========================
   it("tidak logout untuk error selain 401", async () => {
 
-    localStorage.setItem(
+    sessionStorage.setItem(
       "token",
       "abc"
     )
 
-    localStorage.setItem(
+    sessionStorage.setItem(
       "role",
       "admin"
     )
@@ -180,11 +180,11 @@ describe("api interceptor", () => {
     ).rejects.toEqual(error)
 
     expect(
-      localStorage.getItem("token")
+      sessionStorage.getItem("token")
     ).toBe("abc")
 
     expect(
-      localStorage.getItem("role")
+      sessionStorage.getItem("role")
     ).toBe("admin")
 
     expect(window.location.href)

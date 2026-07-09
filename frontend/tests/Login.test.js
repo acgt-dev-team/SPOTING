@@ -31,7 +31,7 @@ describe("Login.vue", () => {
 
   beforeEach(async () => {
 
-    localStorage.clear()
+    sessionStorage.clear()
 
     router.push("/login")
 
@@ -148,7 +148,7 @@ describe("Login.vue", () => {
 
     expect(wrapper.text())
       .toContain(
-        "Nama pengguna atau kata laluan tidak sah"
+        "Log masuk gagal"
       )
 
   })
@@ -188,7 +188,7 @@ describe("Login.vue", () => {
     await button.trigger("click")
 
     expect(
-      localStorage.getItem("token")
+      sessionStorage.getItem("token")
     ).toBe("fake-token")
 
     expect(pushSpy)

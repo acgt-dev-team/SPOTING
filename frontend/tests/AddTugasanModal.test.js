@@ -135,7 +135,7 @@ describe("AddTugasanModal.vue", () => {
     })
 
     const saveButton =
-      wrapper.find(".save-btn")
+      wrapper.find(".panel-footer .ui-button--primary")
 
     expect(saveButton.element.disabled)
       .toBe(true)
@@ -193,7 +193,7 @@ describe("AddTugasanModal.vue", () => {
     await wrapper.vm.$nextTick()
 
     const saveButton =
-      wrapper.find(".save-btn")
+      wrapper.find(".panel-footer .ui-button--primary")
 
     await saveButton.trigger("click")
 
@@ -235,7 +235,7 @@ describe("AddTugasanModal.vue", () => {
     await wrapper.vm.$nextTick()
 
     const saveButton =
-      wrapper.find(".save-btn")
+      wrapper.find(".panel-footer .ui-button--primary")
 
     await saveButton.trigger("click")
 

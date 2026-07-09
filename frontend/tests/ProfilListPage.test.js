@@ -270,7 +270,7 @@ describe("ProfilListPage.vue", () => {
     })
 
     const button =
-      wrapper.find(".primary-btn")
+      wrapper.find(".toolbar .ui-button--primary")
 
     await button.trigger("click")
 
@@ -301,7 +301,7 @@ describe("ProfilListPage.vue", () => {
     await wrapper.vm.$nextTick()
 
     const editButtons =
-      wrapper.findAll(".ghost-btn")
+      wrapper.findAll(".clickable-row .ui-icon-button")
 
     expect(editButtons.length)
       .toBeGreaterThan(0)
@@ -334,7 +334,7 @@ describe("ProfilListPage.vue", () => {
       }
     })
 
-    await wrapper.find(".primary-btn")
+    await wrapper.find(".toolbar .ui-button--primary")
       .trigger("click")
 
     const inputs =
@@ -380,13 +380,13 @@ describe("ProfilListPage.vue", () => {
     await wrapper.vm.$nextTick()
 
     const editButtons =
-      wrapper.findAll(".ghost-btn")
+      wrapper.findAll(".clickable-row .ui-icon-button")
 
     await editButtons[0]
       .trigger("click")
 
     const deleteButton =
-      wrapper.find(".delete-trigger-btn")
+      wrapper.find(".modal-actions .ui-button--danger")
 
     await deleteButton.trigger("click")
 
@@ -417,13 +417,13 @@ describe("ProfilListPage.vue", () => {
     await wrapper.vm.$nextTick()
 
     const editButtons =
-      wrapper.findAll(".ghost-btn")
+      wrapper.findAll(".clickable-row .ui-icon-button")
 
     await editButtons[0]
       .trigger("click")
 
     const deleteButton =
-      wrapper.find(".delete-trigger-btn")
+      wrapper.find(".modal-actions .ui-button--danger")
 
     await deleteButton.trigger("click")
 
@@ -433,7 +433,7 @@ describe("ProfilListPage.vue", () => {
     await confirmInput.setValue("salah")
 
     const dangerButton =
-      wrapper.find(".danger-btn")
+      wrapper.find(".delete-actions .ui-button--danger")
 
     expect(dangerButton.element.disabled)
       .toBe(true)
@@ -474,9 +474,25 @@ describe("ProfilListPage.vue", () => {
   })
 
   // =========================
-  // TEMPLATE MODAL
+  // REPORT DOWNLOAD
   // =========================
-  it("membuka modal template laporan", async () => {
+  it("memuat turun laporan profil", async () => {
+
+    api.post.mockResolvedValue({
+      data: new Uint8Array([1, 2, 3])
+    })
+
+    const createObjectUrlSpy =
+      vi.spyOn(window.URL, "createObjectURL")
+        .mockReturnValue("blob:profile-report")
+
+    const revokeObjectUrlSpy =
+      vi.spyOn(window.URL, "revokeObjectURL")
+        .mockImplementation(() => {})
+
+    const clickSpy =
+      vi.spyOn(HTMLAnchorElement.prototype, "click")
+        .mockImplementation(() => {})
 
     const wrapper = mount(ProfilListPage, {
       global: {
@@ -495,7 +511,7 @@ describe("ProfilListPage.vue", () => {
     await wrapper.vm.$nextTick()
 
     const buttons =
-      wrapper.findAll(".ghost-btn")
+      wrapper.findAll(".clickable-row .ui-icon-button")
 
     expect(buttons.length)
       .toBeGreaterThan(1)
@@ -503,8 +519,25 @@ describe("ProfilListPage.vue", () => {
     await buttons[1]
       .trigger("click")
 
-    expect(wrapper.text())
-      .toContain("Pilih Template")
+    expect(api.post)
+      .toHaveBeenCalledWith(
+        "/report/profil/1",
+        {},
+        {
+          responseType: "blob"
+        }
+      )
+
+    expect(createObjectUrlSpy)
+      .toHaveBeenCalled()
+
+    expect(clickSpy)
+      .toHaveBeenCalled()
+
+    expect(revokeObjectUrlSpy)
+      .toHaveBeenCalledWith(
+        "blob:profile-report"
+      )
 
   })
 

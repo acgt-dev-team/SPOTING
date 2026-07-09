@@ -328,7 +328,7 @@ describe("AssignTugasanModal.vue", () => {
     )
 
     const button =
-      wrapper.find(".primary-btn")
+      wrapper.find(".toolbar .ui-button--primary")
 
     await button.trigger("click")
 
@@ -404,7 +404,7 @@ describe("AssignTugasanModal.vue", () => {
       .setValue(true)
 
     const saveButton =
-      wrapper.find(".save-btn")
+      wrapper.find(".modal-footer .ui-button--primary")
 
     await saveButton.trigger("click")
 
@@ -452,7 +452,7 @@ describe("AssignTugasanModal.vue", () => {
       .setValue(false)
 
     const saveButton =
-      wrapper.find(".save-btn")
+      wrapper.find(".modal-footer .ui-button--primary")
 
     await saveButton.trigger("click")
 
