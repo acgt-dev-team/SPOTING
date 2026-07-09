@@ -39,9 +39,9 @@ describe("ChangePassword.vue", () => {
 
     vi.clearAllMocks()
 
-    localStorage.clear()
+    sessionStorage.clear()
 
-    localStorage.setItem(
+    sessionStorage.setItem(
       "username",
       "admin"
     )
@@ -147,7 +147,7 @@ describe("ChangePassword.vue", () => {
 
     expect(wrapper.text())
       .toContain(
-        "Password tidak sama"
+        "Kata laluan tidak sama"
       )
 
   })
@@ -159,12 +159,12 @@ describe("ChangePassword.vue", () => {
 
     api.post.mockResolvedValue({})
 
-    localStorage.setItem(
+    sessionStorage.setItem(
       "role",
       "admin"
     )
 
-    localStorage.setItem(
+    sessionStorage.setItem(
       "forcePasswordChange",
       "true"
     )
@@ -196,7 +196,7 @@ describe("ChangePassword.vue", () => {
       )
 
     expect(
-      localStorage.getItem(
+      sessionStorage.getItem(
         "forcePasswordChange"
       )
     ).toBeNull()
@@ -215,7 +215,7 @@ describe("ChangePassword.vue", () => {
 
     api.post.mockResolvedValue({})
 
-    localStorage.setItem(
+    sessionStorage.setItem(
       "role",
       "user"
     )
@@ -276,7 +276,7 @@ describe("ChangePassword.vue", () => {
 
     expect(wrapper.text())
       .toContain(
-        "Gagal tukar password"
+        "Gagal menukar kata laluan"
       )
 
   })

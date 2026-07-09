@@ -111,7 +111,7 @@ describe("DashboardContent.vue", () => {
     await wrapper.vm.$nextTick()
 
     expect(wrapper.text())
-      .toContain("Papan Pemuka")
+      .toContain("Ringkasan Prestasi")
 
   })
 
@@ -222,41 +222,35 @@ describe("DashboardContent.vue", () => {
   })
 
   // =========================
-  // FILTER BUTTONS
+  // ORGANIZATION PERFORMANCE PANEL
   // =========================
-  it("memaparkan butang filter", async () => {
+  it("memaparkan panel prestasi organisasi", async () => {
 
     const wrapper =
       mount(DashboardContent)
 
     expect(wrapper.text())
-      .toContain("Hari ini")
-
-    expect(wrapper.text())
-      .toContain("Minggu")
-
-    expect(wrapper.text())
-      .toContain("Bulan")
+      .toContain("Prestasi Organisasi")
 
   })
 
   // =========================
-  // CHANGE FILTER
+  // QUICK ACTIONS
   // =========================
-  it("menukar filter aktif", async () => {
+  it("memaparkan tindakan pantas dashboard", async () => {
 
     const wrapper =
       mount(DashboardContent)
 
     const buttons =
-      wrapper.findAll(".filters button")
-
-    await buttons[0]
-      .trigger("click")
+      wrapper.findAll(".actions button")
 
     expect(
-      buttons[0].classes()
-    ).toContain("active")
+      buttons.map((button) => button.text())
+    ).toEqual([
+      "Konfigurasi",
+      "Pengguna"
+    ])
 
   })
 

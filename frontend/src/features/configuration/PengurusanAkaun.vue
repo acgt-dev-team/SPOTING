@@ -411,14 +411,14 @@ async function resetPassword(item) {
 
               <td>{{ item.username }}</td>
               <td>
-  {{
-    item.role === "super admin"
-      ? t("accounts.roles.superAdmin")
-      : item.role === "admin"
-      ? t("accounts.roles.admin")
-      : t("accounts.roles.user")
-  }}
-</td>
+                {{
+                  item.role === "super admin"
+                    ? t("accounts.roles.superAdmin")
+                    : item.role === "admin"
+                    ? t("accounts.roles.admin")
+                    : t("accounts.roles.user")
+                }}
+              </td>
 
               <td style="text-align:center">
                 <div

@@ -244,7 +244,7 @@ describe("TapakPage.vue", () => {
     })
 
     const button =
-      wrapper.find(".primary-btn")
+      wrapper.find(".toolbar .ui-button--primary")
 
     await button.trigger("click")
 
@@ -273,7 +273,7 @@ describe("TapakPage.vue", () => {
     await wrapper.vm.$nextTick()
 
     const editButtons =
-      wrapper.findAll(".ghost-btn")
+      wrapper.findAll(".clickable-row .ui-icon-button")
 
     expect(editButtons.length)
       .toBeGreaterThan(0)
@@ -304,7 +304,7 @@ describe("TapakPage.vue", () => {
       }
     })
 
-    await wrapper.find(".primary-btn")
+    await wrapper.find(".toolbar .ui-button--primary")
       .trigger("click")
 
     const inputs =
@@ -348,13 +348,13 @@ describe("TapakPage.vue", () => {
     await wrapper.vm.$nextTick()
 
     const editButtons =
-      wrapper.findAll(".ghost-btn")
+      wrapper.findAll(".clickable-row .ui-icon-button")
 
     await editButtons[0]
       .trigger("click")
 
     const deleteButton =
-      wrapper.find(".delete-trigger-btn")
+      wrapper.find(".modal-actions .ui-button--danger")
 
     await deleteButton.trigger("click")
 
@@ -383,13 +383,13 @@ describe("TapakPage.vue", () => {
     await wrapper.vm.$nextTick()
 
     const editButtons =
-      wrapper.findAll(".ghost-btn")
+      wrapper.findAll(".clickable-row .ui-icon-button")
 
     await editButtons[0]
       .trigger("click")
 
     const deleteButton =
-      wrapper.find(".delete-trigger-btn")
+      wrapper.find(".modal-actions .ui-button--danger")
 
     await deleteButton.trigger("click")
 
@@ -399,7 +399,7 @@ describe("TapakPage.vue", () => {
     await confirmInput.setValue("salah")
 
     const dangerButton =
-      wrapper.find(".danger-btn")
+      wrapper.find(".delete-actions .ui-button--danger")
 
     expect(dangerButton.element.disabled)
       .toBe(true)

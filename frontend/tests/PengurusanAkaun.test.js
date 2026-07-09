@@ -42,7 +42,7 @@ const AppButtonStub = {
   props: ["text"],
 
   template: `
-    <button>
+    <button @click="$emit('click')">
       {{ text }}
     </button>
   `
@@ -85,7 +85,7 @@ describe("PengurusanAkaun.vue", () => {
 
     vi.clearAllMocks()
 
-    localStorage.setItem(
+    sessionStorage.setItem(
       "role",
       "super admin"
     )
@@ -144,7 +144,7 @@ describe("PengurusanAkaun.vue", () => {
     })
 
     expect(api.get)
-      .toHaveBeenCalledWith("/auth/users")
+      .toHaveBeenCalledWith("/auth/users?role=super admin")
 
   })
 
@@ -166,7 +166,7 @@ describe("PengurusanAkaun.vue", () => {
     })
 
     const button =
-      wrapper.find(".primary-btn")
+      wrapper.find(".toolbar .ui-button--primary")
 
     await button.trigger("click")
 
@@ -223,7 +223,7 @@ describe("PengurusanAkaun.vue", () => {
     await wrapper.vm.$nextTick()
 
     const editButtons =
-      wrapper.findAll(".ghost-btn")
+      wrapper.findAll(".clickable-row .ui-icon-button")
 
     expect(editButtons.length)
       .toBeGreaterThan(0)
@@ -261,7 +261,7 @@ describe("PengurusanAkaun.vue", () => {
       }
     })
 
-    await wrapper.find(".primary-btn")
+    await wrapper.find(".toolbar .ui-button--primary")
       .trigger("click")
 
     const inputs =
@@ -271,12 +271,12 @@ describe("PengurusanAkaun.vue", () => {
       .setValue("Ali")
 
     await inputs[2]
-      .setValue("ali123")
+      .setValue("ali.akaun123")
 
     const saveButtons =
-      wrapper.findAll("button")
+      wrapper.findAll(".modal-actions button")
 
-    await saveButtons[4]
+    await saveButtons[1]
       .trigger("click")
 
     expect(api.post)
@@ -305,7 +305,7 @@ describe("PengurusanAkaun.vue", () => {
     await wrapper.vm.$nextTick()
 
     const editButtons =
-      wrapper.findAll(".ghost-btn")
+      wrapper.findAll(".clickable-row .ui-icon-button")
 
     expect(editButtons.length)
       .toBeGreaterThan(0)
@@ -314,7 +314,7 @@ describe("PengurusanAkaun.vue", () => {
       .trigger("click")
 
     const deleteButton =
-      wrapper.find(".delete-trigger-btn")
+      wrapper.find(".modal-actions .ui-button--danger")
 
     await deleteButton.trigger("click")
 
@@ -344,7 +344,7 @@ describe("PengurusanAkaun.vue", () => {
     await wrapper.vm.$nextTick()
 
     const editButtons =
-      wrapper.findAll(".ghost-btn")
+      wrapper.findAll(".clickable-row .ui-icon-button")
 
     expect(editButtons.length)
       .toBeGreaterThan(0)
