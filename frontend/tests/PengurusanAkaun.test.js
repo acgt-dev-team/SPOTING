@@ -39,10 +39,14 @@ const AppInputStub = {
 }
 
 const AppButtonStub = {
-  props: ["text"],
+  props: ["text", "variant", "disabled"],
 
   template: `
-    <button @click="$emit('click')">
+    <button
+      :class="['ui-button', 'ui-button--' + (variant || 'primary')]"
+      :disabled="disabled"
+      @click="$emit('click')"
+    >
       {{ text }}
     </button>
   `
@@ -274,7 +278,7 @@ describe("PengurusanAkaun.vue", () => {
       .setValue("ali.akaun123")
 
     const saveButtons =
-      wrapper.findAll(".modal-actions button")
+      wrapper.findAll(".form-modal__actions button")
 
     await saveButtons[1]
       .trigger("click")
@@ -314,7 +318,7 @@ describe("PengurusanAkaun.vue", () => {
       .trigger("click")
 
     const deleteButton =
-      wrapper.find(".modal-actions .ui-button--danger")
+      wrapper.find(".form-modal__actions .ui-button--danger")
 
     await deleteButton.trigger("click")
 

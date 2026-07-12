@@ -50,10 +50,14 @@ const AppInputStub = {
 }
 
 const AppButtonStub = {
-  props: ["text"],
+  props: ["text", "variant", "disabled"],
 
   template: `
-    <button @click="$emit('click')">
+    <button
+      :class="['ui-button', 'ui-button--' + (variant || 'primary')]"
+      :disabled="disabled"
+      @click="$emit('click')"
+    >
       {{ text }}
     </button>
   `
@@ -264,7 +268,7 @@ describe("OrganizationPage.vue", () => {
     await wrapper.vm.$nextTick()
 
     const modalButtons =
-      wrapper.findAll(".modal-actions button")
+      wrapper.findAll(".form-modal__actions button")
 
     expect(modalButtons.length)
       .toBeGreaterThan(0)
@@ -305,7 +309,7 @@ describe("OrganizationPage.vue", () => {
       .trigger("click")
 
     const deleteButton =
-      wrapper.find(".modal-actions .ui-button--danger")
+      wrapper.find(".form-modal__actions .ui-button--danger")
 
     await deleteButton.trigger("click")
 
@@ -340,17 +344,17 @@ describe("OrganizationPage.vue", () => {
       .trigger("click")
 
     const deleteButton =
-      wrapper.find(".modal-actions .ui-button--danger")
+      wrapper.find(".form-modal__actions .ui-button--danger")
 
     await deleteButton.trigger("click")
 
     const confirmInput =
-      wrapper.find(".delete-input")
+      wrapper.find(".confirm-action-modal__input")
 
     await confirmInput.setValue("salah")
 
     const dangerButton =
-      wrapper.find(".delete-actions .ui-button--danger")
+      wrapper.find(".confirm-action-modal__actions .ui-button--danger")
 
     expect(dangerButton.element.disabled)
       .toBe(true)
