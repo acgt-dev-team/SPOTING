@@ -65,10 +65,14 @@ const AppInputStub = {
 }
 
 const AppButtonStub = {
-  props: ["text"],
+  props: ["text", "variant", "disabled"],
 
   template: `
-    <button @click="$emit('click')">
+    <button
+      :class="['ui-button', 'ui-button--' + (variant || 'primary')]"
+      :disabled="disabled"
+      @click="$emit('click')"
+    >
       {{ text }}
     </button>
   `
@@ -83,19 +87,19 @@ const AppCardStub = {
 }
 
 const AppSelectStub = {
-  props: ["modelValue"],
+  props: ["modelValue", "options"],
 
   template: `
     <select
       :value="modelValue"
       @change="$emit('update:modelValue', $event.target.value)"
     >
-      <option value="IMMEDIATE">
-        Immediate
-      </option>
-
-      <option value="SCHEDULED">
-        Scheduled
+      <option
+        v-for="option in options"
+        :key="option.value"
+        :value="option.value"
+      >
+        {{ option.label }}
       </option>
     </select>
   `
@@ -346,7 +350,7 @@ describe("ProfilListPage.vue", () => {
     await wrapper.vm.$nextTick()
 
     const modalButtons =
-      wrapper.findAll(".modal-actions button")
+      wrapper.findAll(".form-modal__actions button")
 
     const saveButton =
       modalButtons[1]
@@ -386,7 +390,7 @@ describe("ProfilListPage.vue", () => {
       .trigger("click")
 
     const deleteButton =
-      wrapper.find(".modal-actions .ui-button--danger")
+      wrapper.find(".form-modal__actions .ui-button--danger")
 
     await deleteButton.trigger("click")
 
@@ -423,17 +427,17 @@ describe("ProfilListPage.vue", () => {
       .trigger("click")
 
     const deleteButton =
-      wrapper.find(".modal-actions .ui-button--danger")
+      wrapper.find(".form-modal__actions .ui-button--danger")
 
     await deleteButton.trigger("click")
 
     const confirmInput =
-      wrapper.find(".delete-input")
+      wrapper.find(".confirm-action-modal__input")
 
     await confirmInput.setValue("salah")
 
     const dangerButton =
-      wrapper.find(".delete-actions .ui-button--danger")
+      wrapper.find(".confirm-action-modal__actions .ui-button--danger")
 
     expect(dangerButton.element.disabled)
       .toBe(true)
@@ -519,11 +523,22 @@ describe("ProfilListPage.vue", () => {
     await buttons[1]
       .trigger("click")
 
+    expect(wrapper.text())
+      .toContain("Muat Turun Hasil Imbasan")
+
+    const downloadButton =
+      wrapper.findAll(".form-modal__actions .ui-button--primary")[0]
+
+    await downloadButton.trigger("click")
+
+    await Promise.resolve()
+
     expect(api.post)
       .toHaveBeenCalledWith(
         "/report/profil/1",
-        {},
+        null,
         {
+          params: { format: "default" },
           responseType: "blob"
         }
       )

@@ -41,30 +41,17 @@ describe("DashboardContent.vue", () => {
 
     api.get.mockImplementation((url) => {
 
-      // =========================
-      // DASHBOARD STATS
-      // =========================
-      if (url === "/dashboard/") {
+      if (url === "/dashboard/full") {
 
         return Promise.resolve({
           data: {
+            stats: {
             organisasi: 5,
             sub_organisasi: 8,
             tapak: 12,
             profil: 20,
             tugasan: 50
-          }
-        })
-
-      }
-
-      // =========================
-      // FULL ORGANIZATION DATA
-      // =========================
-      if (url === "/dashboard/full") {
-
-        return Promise.resolve({
-          data: {
+            },
             organizations: [
               {
                 bil: 1,
@@ -84,7 +71,14 @@ describe("DashboardContent.vue", () => {
                 done: 75,
                 total: 100
               }
-            ]
+            ],
+            profile_health: {
+              counts: {},
+              profiles: [],
+              failed_profiles: [],
+              scheduled_profiles: [],
+              recent_profiles: []
+            }
           }
         })
 
@@ -118,7 +112,7 @@ describe("DashboardContent.vue", () => {
   // =========================
   // FETCH DASHBOARD STATS
   // =========================
-  it("mengambil dashboard stats", async () => {
+  it("mengambil data dashboard", async () => {
 
     mount(DashboardContent)
 
@@ -127,7 +121,7 @@ describe("DashboardContent.vue", () => {
 
     expect(api.get)
       .toHaveBeenCalledWith(
-        "/dashboard/"
+        "/dashboard/full"
       )
 
   })
@@ -243,12 +237,13 @@ describe("DashboardContent.vue", () => {
       mount(DashboardContent)
 
     const buttons =
-      wrapper.findAll(".actions button")
+      wrapper.findAll(".quick-actions button")
 
     expect(
       buttons.map((button) => button.text())
     ).toEqual([
-      "Konfigurasi",
+      "Buka Konfigurasi",
+      "Tambah Organisasi",
       "Pengguna"
     ])
 
@@ -319,25 +314,25 @@ describe("DashboardContent.vue", () => {
 
     api.get.mockImplementation((url) => {
 
-      if (url === "/dashboard/") {
-
-        return Promise.resolve({
-          data: {
-            organisasi: 0,
-            sub_organisasi: 0,
-            tapak: 0,
-            profil: 0,
-            tugasan: 0
-          }
-        })
-
-      }
-
       if (url === "/dashboard/full") {
 
         return Promise.resolve({
           data: {
-            organizations: []
+            stats: {
+              organisasi: 0,
+              sub_organisasi: 0,
+              tapak: 0,
+              profil: 0,
+              tugasan: 0
+            },
+            organizations: [],
+            profile_health: {
+              counts: {},
+              profiles: [],
+              failed_profiles: [],
+              scheduled_profiles: [],
+              recent_profiles: []
+            }
           }
         })
 
