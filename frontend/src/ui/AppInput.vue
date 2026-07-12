@@ -6,6 +6,22 @@ defineProps({
   type: {
     type: String,
     default: "text"
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  error: {
+    type: String,
+    default: ""
+  },
+  hint: {
+    type: String,
+    default: ""
+  },
+  autocomplete: {
+    type: String,
+    default: ""
   }
 })
 
@@ -20,10 +36,22 @@ const emit = defineEmits(["update:modelValue"])
 
     <input
       class="ui-input"
+      :class="{ 'ui-input--error': error }"
       :type="type"
       :placeholder="placeholder"
       :value="modelValue"
+      :disabled="disabled"
+      :autocomplete="autocomplete"
+      :aria-invalid="Boolean(error)"
       @input="emit('update:modelValue', $event.target.value)"
     />
+
+    <p v-if="error" class="ui-field__message ui-field__message--error">
+      {{ error }}
+    </p>
+
+    <p v-else-if="hint" class="ui-field__message">
+      {{ hint }}
+    </p>
   </div>
 </template>

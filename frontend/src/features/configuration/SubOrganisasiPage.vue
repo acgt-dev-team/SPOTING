@@ -1,17 +1,23 @@
 <script setup>
 import { computed, ref, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
-import { CircleCheck, Pencil, Plus, Search, Trash2, X } from "lucide-vue-next"
+import { Pencil, Plus } from "lucide-vue-next"
 import api from "../../../src/services/api"
 import { t } from "../../i18n"
+import { useToast } from "../../ui/AppToast.vue"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
-import AppCard from "../../ui/AppCard.vue"
 import AppPagination from "../../ui/AppPagination.vue"
+import ConfigTable from "../../ui/ConfigTable.vue"
+import ConfirmActionModal from "../../ui/ConfirmActionModal.vue"
+import FormModal from "../../ui/FormModal.vue"
+import PageHeader from "../../ui/PageHeader.vue"
+import PageToolbar from "../../ui/PageToolbar.vue"
 
 const route = useRoute()
 const router = useRouter()
+const toast = useToast()
 
 const organisasiId = route.params.organizationId
 
@@ -34,24 +40,36 @@ const pegawai_tadbir = ref("")
 const jawatan = ref("")
 
 const subs = ref([])
+const loading = ref(true)
 
 const isEditMode = computed(() => !!editingId.value)
 
 /* DELETE UX */
 const showDeleteModal = ref(false)
-const showToast = ref(false)
 const deleteConfirmText = ref("")
 
-// ✅ PAGINATION (added)
 const currentPage = ref(1)
 const pageSize = 10
 
+const tableColumns = [
+  { key: "code", label: t("common.code"), width: "100px" },
+  { key: "name", label: t("configuration.subOrganization.name") },
+  { key: "officer", label: t("common.officer"), width: "220px" },
+  { key: "sites", label: t("dashboard.statLabels.site"), width: "150px" },
+  { key: "actions", label: t("common.actions"), width: "140px", align: "center" }
+]
+
 async function loadSubOrganisasi() {
+  loading.value = true
+
   try {
     const res = await api.get(`/sub-organisasi/organisasi/${organisasiId}`)
     subs.value = res.data || []
   } catch (err) {
     console.error("Failed to load sub organisasi:", err)
+    toast.error(t("common.loadFailed", { entity: t("configuration.subOrganization.countEntity") }))
+  } finally {
+    loading.value = false
   }
 }
 
@@ -68,9 +86,6 @@ async function loadOrganisasiDetail() {
   }
 }
 
-// =========================
-// FILTER (UNCHANGED)
-// =========================
 const filteredSubs = computed(() => {
   return subs.value
     .filter((sub) =>
@@ -87,23 +102,19 @@ const filteredSubs = computed(() => {
     })
 })
 
-// ✅ PAGINATION SLICE
 const paginatedSubs = computed(() => {
   const start = (currentPage.value - 1) * pageSize
   return filteredSubs.value.slice(start, start + pageSize)
 })
 
-// ✅ TOTAL PAGES
 const totalPages = computed(() => {
   return Math.ceil(filteredSubs.value.length / pageSize)
 })
 
-// ✅ RESET PAGE
 watch(search, () => {
   currentPage.value = 1
 })
 
-// ✅ PREVENT EMPTY PAGE
 watch(filteredSubs, () => {
   if (currentPage.value > totalPages.value) {
     currentPage.value = totalPages.value || 1
@@ -164,7 +175,10 @@ async function saveSub() {
 
   if (saving.value) return
 
-  if (!nama.value.trim()) return
+  if (!nama.value.trim()) {
+    toast.warning(t("validation.nameRequired"))
+    return
+  }
 
   try {
     saving.value = true
@@ -184,9 +198,11 @@ async function saveSub() {
 
     await loadSubOrganisasi()
     closeModal()
+    toast.success(t("common.saveSuccess", { entity: t("configuration.subOrganization.countEntity") }))
 
   } catch (err) {
     console.error("Failed to save sub organisasi:", err.response?.data || err)
+    toast.error(t("common.saveFailed", { entity: t("configuration.subOrganization.countEntity") }))
   } finally {
     saving.value = false
   }
@@ -211,14 +227,11 @@ async function confirmDelete() {
     showDeleteModal.value = false
     closeModal()
 
-    showToast.value = true
-
-    setTimeout(() => {
-      showToast.value = false
-    }, 1600)
+    toast.success(t("configuration.subOrganization.deleteSuccess"))
 
   } catch (err) {
     console.error("Delete failed:", err)
+    toast.error(t("common.deleteFailed", { entity: t("configuration.subOrganization.countEntity") }))
   }
 }
 
@@ -231,37 +244,21 @@ onMounted(() => {
 <template>
   <div>
 
-    <div class="hierarchy-card">
-      <div class="hierarchy-left">
-        <h2>{{ organisasi?.name }}</h2>
-
-        <p class="section-desc">
-          {{ organisasi?.description }}
-        </p>
-      </div>
-    </div>
+    <PageHeader
+      :title="organisasi?.name"
+      :description="organisasi?.description"
+    />
     
-    <div class="toolbar">
-
-      <div class="search-box">
-        <Search class="search-icon" :size="18" aria-hidden="true" />
-
-        <input
-          v-model="search"
-          type="text"
-          :placeholder="t('configuration.shared.search', { entity: t('configuration.subOrganization.searchEntity') })"
-        />
-      </div>
-
-      <button
-        class="ui-button ui-button--primary"
-        @click="openAddModal"
-      >
+    <PageToolbar
+      v-model="search"
+      :placeholder="t('configuration.shared.search', { entity: t('configuration.subOrganization.searchEntity') })"
+      :action-text="t('configuration.subOrganization.add')"
+      @action="openAddModal"
+    >
+      <template #action-icon>
         <Plus :size="18" aria-hidden="true" />
-        {{ t("configuration.subOrganization.add") }}
-      </button>
-
-    </div>
+      </template>
+    </PageToolbar>
 
     <div class="page-heading-block">
       <h1 class="main-page-title">
@@ -269,31 +266,15 @@ onMounted(() => {
       </h1>
     </div>
 
-    <div class="table-card">
-
-      <div class="table-scroll">
-
-        <table>
-
-          <thead>
-            <tr>
-              <th style="width:100px">{{ t("common.code") }}</th>
-              <th>{{ t("configuration.subOrganization.name") }}</th>
-              <th style="width:220px">{{ t("common.officer") }}</th>
-              <th style="width:150px">{{ t("dashboard.statLabels.site") }}</th>
-              <th style="width:140px">{{ t("common.actions") }}</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            <tr v-if="paginatedSubs.length === 0">
-
-              <td colspan="5" class="empty-cell">
-                {{ t("configuration.subOrganization.empty") }}
-              </td>
-
-            </tr>
+    <ConfigTable
+      :columns="tableColumns"
+      :loading="loading"
+      :empty="paginatedSubs.length === 0"
+      :empty-message="t('configuration.subOrganization.empty')"
+      :empty-action-text="search.trim() ? '' : t('configuration.subOrganization.add')"
+      min-width="780px"
+      @empty-action="openAddModal"
+    >
 
             <tr
               v-for="(sub,index) in paginatedSubs"
@@ -348,14 +329,8 @@ onMounted(() => {
                 {{ sub.tapak_count }}
               </td>
 
-              <td style="text-align:center">
-                <div
-                  style="
-                    display:flex;
-                    justify-content:center;
-                    align-items:center;
-                  "
-                >
+              <td class="table-cell--center">
+                <div class="config-row-actions">
                   <button
                     class="ui-icon-button"
                     :title="t('configuration.subOrganization.edit')"
@@ -368,14 +343,7 @@ onMounted(() => {
               </td>
 
             </tr>
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
+    </ConfigTable>
 
     <AppPagination
       :currentPage="currentPage"
@@ -404,39 +372,12 @@ onMounted(() => {
 
     </div>
 
-    <transition name="fade">
-
-      <div
-        v-if="showModal"
-        class="modal-overlay"
-      >
-
-        <AppCard class="modal-card">
-
-          <div class="modal-header">
-
-            <div>
-
-              <p class="eyebrow">
-                {{ isEditMode ? t("configuration.shared.editData") : t("configuration.shared.addData") }}
-              </p>
-
-              <h2>
-                {{ isEditMode ? t("configuration.subOrganization.edit") : t("configuration.subOrganization.add") }}
-              </h2>
-
-            </div>
-
-            <button
-              class="ui-icon-button"
-              :title="t('common.close')"
-              :aria-label="t('common.close')"
-              @click="closeModal"
-            >
-              <X :size="18" aria-hidden="true" />
-            </button>
-
-          </div>
+    <FormModal
+      :show="showModal"
+      :eyebrow="isEditMode ? t('configuration.shared.editData') : t('configuration.shared.addData')"
+      :title="isEditMode ? t('configuration.subOrganization.edit') : t('configuration.subOrganization.add')"
+      @close="closeModal"
+    >
 
           <div class="form-area">
 
@@ -474,7 +415,7 @@ onMounted(() => {
 
           </div>
 
-          <div class="modal-actions">
+          <template #actions>
 
             <button
               v-if="editingId"
@@ -501,90 +442,19 @@ onMounted(() => {
 />
 
 
-          </div>
+          </template>
 
-        </AppCard>
+    </FormModal>
 
-      </div>
-
-    </transition>
-
-    <transition name="fade">
-
-      <div
-        v-if="showDeleteModal"
-        class="modal-overlay"
-      >
-
-        <div class="delete-modal">
-
-          <div class="delete-icon">
-            <Trash2 :size="28" aria-hidden="true" />
-          </div>
-
-          <h3>
-            {{ t("common.deleteTitle", { name: selectedSubRecord?.nama || t("common.emptyValue") }) }}
-          </h3>
-
-          <p class="delete-desc">
-            {{ t("common.deleteWarning") }}
-          </p>
-
-          <div class="confirm-box">
-
-            <label>
-              {{ t("common.typeToConfirm", { keyword: t("common.deleteKeyword") }) }}
-            </label>
-
-            <div class="org-delete-name danger-word">
-              {{ t("common.deleteKeyword") }}
-            </div>
-
-            <input
-              v-model="deleteConfirmText"
-              class="delete-input"
-              type="text"
-              :placeholder="t('common.typeKeyword', { keyword: t('common.deleteKeyword') })"
-            />
-
-          </div>
-
-          <div class="delete-actions">
-
-            <button
-              class="ui-button ui-button--outline"
-              @click="closeDeleteModal"
-            >
-              {{ t("common.cancel") }}
-            </button>
-
-            <button
-              class="ui-button ui-button--danger"
-              :disabled="!canDelete"
-              @click="confirmDelete"
-            >
-              {{ t("common.deleteNow") }}
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </transition>
-
-    <transition name="fade">
-
-      <div
-        v-if="showToast"
-        class="toast-success"
-      >
-        <CircleCheck :size="18" aria-hidden="true" />
-        {{ t("configuration.subOrganization.deleteSuccess") }}
-      </div>
-
-    </transition>
+    <ConfirmActionModal
+      v-model="deleteConfirmText"
+      :show="showDeleteModal"
+      :title="t('common.deleteTitle', { name: selectedSubRecord?.nama || t('common.emptyValue') })"
+      :keyword="t('common.deleteKeyword')"
+      :disabled="!canDelete"
+      @close="closeDeleteModal"
+      @confirm="confirmDelete"
+    />
 
   </div>
 </template>
@@ -598,188 +468,6 @@ onMounted(() => {
   --muted:#64748B;
   --border:#E2E8F0;
   --bg:#F8FAFC;
-}
-
-.page-heading-block{
-  margin-bottom:28px;
-}
-
-.main-page-title{
-  font-size:30px;
-  font-weight:800;
-  color:var(--text);
-  margin:0;
-  letter-spacing:-0.03em;
-}
-
-/* HERO */
-
-.hierarchy-card{
-  background:white;
-
-  border:1px solid var(--border);
-
-  border-radius:20px;
-
-  padding:32px;
-
-  margin-bottom:32px;
-
-  box-shadow:0 1px 2px rgba(15,23,42,.04);
-}
-
-.hierarchy-left h2{
-  margin:0;
-
-  font-size:32px;
-
-  font-weight:800;
-
-  color:var(--text);
-}
-
-.section-desc{
-  margin-top:8px;
-
-  color:var(--muted);
-}
-
-/* TOOLBAR */
-
-.toolbar{
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  gap:16px;
-
-  margin-bottom:28px;
-
-  flex-wrap:wrap;
-}
-
-.search-box{
-  width:100%;
-
-  max-width:360px;
-}
-
-/* SEARCH */
-
-.search-box{
-  width:100%;
-
-  max-width:360px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-
-  background:white;
-
-  border:1px solid var(--border);
-
-  border-radius:14px;
-
-  height:48px;
-
-  padding:0 16px;
-
-  transition:.2s;
-}
-
-.search-box:focus-within{
-  border-color:var(--primary);
-
-  box-shadow:0 0 0 3px rgba(79,70,229,.08);
-}
-
-.search-icon{
-  color:#94A3B8;
-}
-
-.search-box input{
-  border:none;
-
-  background:none;
-
-  width:100%;
-
-  outline:none;
-
-  color:var(--text);
-}
-
-/* BUTTON */
-
-.btn-plus{
-  font-size:18px;
-
-  font-weight:500;
-
-  line-height:1;
-
-  margin-top:-1px;
-}
-
-/* TABLE */
-
-.table-card{
-  background:white;
-
-  border:1px solid var(--border);
-
-  border-radius:20px;
-
-  overflow:hidden;
-
-  box-shadow:0 1px 2px rgba(15,23,42,.04);
-}
-
-.table-scroll{
-  overflow:auto;
-}
-
-table{
-  width:100%;
-
-  border-collapse:collapse;
-}
-
-thead{
-  background:#F8FAFC;
-}
-
-th{
-  text-align:left;
-
-  padding:18px 24px;
-
-  font-size:12px;
-
-  color:#64748B;
-
-  text-transform:uppercase;
-
-  letter-spacing:.04em;
-
-  font-weight:700;
-
-  border-bottom:1px solid var(--border);
-}
-
-td{
-  padding:18px 24px;
-
-  vertical-align:middle;
-
-  border-bottom:1px solid #F1F5F9;
-
-  color:#334155;
 }
 
 .clickable-row{
@@ -862,17 +550,6 @@ td{
   font-size:13px;
 }
 
-.empty-cell{
-  text-align:center;
-
-  color:#94A3B8;
-
-  padding:50px;
-}
-
-
-/* FOOTER */
-
 .footer-bar{
   display:flex;
 
@@ -897,74 +574,6 @@ td{
 
 .count-pill strong{
   color:var(--primary);
-}
-
-/* MODAL */
-
-.fade-enter-active,
-.fade-leave-active{
-  transition:.18s;
-}
-
-.fade-enter-from,
-.fade-leave-to{
-  opacity:0;
-}
-
-.modal-overlay{
-  position:fixed;
-
-  inset:0;
-
-  background:rgba(15,23,42,.55);
-
-  backdrop-filter:blur(6px);
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  z-index:999;
-}
-
-.modal-card{
-  max-width:700px;
-
-  width:100%;
-
-  border-radius:20px;
-
-  background:white;
-
-  padding:30px !important;
-}
-
-.modal-header{
-  display:flex;
-
-  justify-content:space-between;
-
-  margin-bottom:28px;
-}
-
-.modal-header h2{
-  font-size:28px;
-
-  font-weight:800;
-
-  color:var(--text);
-}
-
-.eyebrow{
-  color:var(--primary);
-
-  font-size:12px;
-
-  letter-spacing:.12em;
-
-  font-weight:700;
 }
 
 .textarea-field{
@@ -996,199 +605,21 @@ textarea{
 textarea:focus{
   outline:none;
 
-  border-color:var(--primary);
+  border-color:var(--color-focus-border);
 
   background:white;
+
+  box-shadow:var(--focus-ring);
 }
-
-.modal-actions{
-  display:flex;
-
-  justify-content:flex-end;
-
-  align-items:center;
-
-  gap:12px;
-
-  margin-top:32px;
-
-  padding-top:20px;
-
-  border-top:1px solid #F1F5F9;
-}
-
-/* APPBUTTON STYLING */
-
-/* DELETE BUTTON IN EDIT MODAL */
-
-
-/* DELETE MODAL */
-
-.delete-modal{
-  background:white;
-
-  border-radius:20px;
-
-  padding:28px;
-
-  width:100%;
-
-  max-width:480px;
-
-  border:1px solid var(--border);
-}
-
-.delete-modal h3{
-  text-align:center;
-
-  font-size:24px;
-
-  font-weight:900;
-
-  color:#111827;
-
-  margin-bottom:8px;
-
-  width:100%;
-}
-
-.delete-icon{
-  width:64px;
-
-  height:64px;
-
-  margin:auto;
-
-  border-radius:999px;
-
-  background:#FEF2F2;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-}
-
-.delete-desc{
-  text-align:center;
-
-  color:#64748B;
-
-  margin-bottom:22px;
-}
-
-.confirm-box label{
-  display:block;
-
-  margin-bottom:10px;
-
-  font-size:14px;
-
-  font-weight:600;
-
-  color:#334155;
-}
-
-.org-delete-name{
-  background:#F8FAFC;
-
-  border:1px solid var(--border);
-
-  padding:14px;
-
-  border-radius:12px;
-
-  margin-bottom:12px;
-
-  font-weight:700;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  text-align:center;
-}
-
-.danger-word{
-  text-align:center;
-
-  color:#DC2626;
-
-  font-size:20px;
-
-  font-weight:800;
-}
-
-.delete-input{
-  width:100%;
-
-  border:1px solid var(--border);
-
-  border-radius:12px;
-
-  padding:14px;
-}
-
-.delete-input:focus{
-  outline:none;
-
-  border-color:#EF4444;
-}
-
-.delete-actions{
-  display:flex;
-
-  justify-content:flex-end;
-
-  gap:12px;
-
-  margin-top:24px;
-}
-
-/* TOAST */
-
-.toast-success{
-  position:fixed;
-
-  right:24px;
-
-  bottom:24px;
-
-  background:white;
-
-  border:1px solid #DCFCE7;
-
-  border-radius:14px;
-
-  padding:14px 18px;
-
-  box-shadow:0 10px 24px rgba(15,23,42,.08);
-
-  z-index:9999;
-}
-
-/* RESPONSIVE */
 
 @media(max-width:768px){
 
-  .toolbar{
+  .footer-bar{
     flex-direction:column;
     align-items:stretch;
-  }
-
-  .search-box{
-    max-width:none;
-    width:100%;
-  }
-
-  .modal-actions,
-  .delete-actions{
-    flex-direction:column;
   }
 
 }
 
 </style>
+

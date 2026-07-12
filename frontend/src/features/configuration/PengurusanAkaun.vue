@@ -1,16 +1,25 @@
 <script setup>
 import { ref, computed, onMounted, watch } from "vue"
-import { KeyRound, LockKeyhole, Pencil, Plus, Search, Trash2, TriangleAlert, X } from "lucide-vue-next"
+import { KeyRound, LockKeyhole, Pencil, Plus } from "lucide-vue-next"
 import api from "../../services/api"
 import { t } from "../../i18n"
+import { useToast } from "../../ui/AppToast.vue"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
-import AppCard from "../../ui/AppCard.vue"
 import AppSelect from "../../ui/AppSelect.vue"
 import AppPagination from "../../ui/AppPagination.vue"
+import ConfigTable from "../../ui/ConfigTable.vue"
+import ConfirmActionModal from "../../ui/ConfirmActionModal.vue"
+import FormModal from "../../ui/FormModal.vue"
+import PageHeader from "../../ui/PageHeader.vue"
+import PageToolbar from "../../ui/PageToolbar.vue"
+
+const toast = useToast()
 
 const search = ref("")
+const roleFilter = ref("")
+const accountStatusFilter = ref("")
 const showModal = ref(false)
 const showDeleteModal = ref(false)
 
@@ -19,7 +28,6 @@ const generatedPassword = ref("")
 const generatedUsername = ref("")
 const passwordModalTitle = ref("")
 
-// ✅ TOGGLE MODAL
 const showToggleModal = ref(false)
 const toggleConfirmText = ref("")
 const toggleTarget = ref(null)
@@ -36,27 +44,73 @@ const currentRole = sessionStorage.getItem("role")
 
 const accounts = ref([])
 const errors = ref({})
+const loading = ref(true)
 
 const currentPage = ref(1)
 const pageSize = 10
 
+const tableColumns = [
+  { key: "number", label: t("common.tableNumber"), width: "72px" },
+  { key: "name", label: t("common.name") },
+  { key: "username", label: t("auth.username"), width: "180px" },
+  { key: "role", label: t("accounts.role"), width: "140px" },
+  { key: "actions", label: t("common.actions"), width: "152px", align: "center" }
+]
+
+const accountRoleFilterOptions = computed(() => {
+  const roles = currentRole === "super admin"
+    ? ["admin", "user"]
+    : ["user"]
+
+  return [
+    { label: t("filters.allRoles"), value: "" },
+    ...roles.map((item) => ({
+      label: item === "admin" ? t("accounts.roles.admin") : t("accounts.roles.user"),
+      value: item
+    }))
+  ]
+})
+
+const accountStatusFilterOptions = [
+  { label: t("filters.allStatuses"), value: "" },
+  { label: t("status.active"), value: "active" },
+  { label: t("status.notActive"), value: "inactive" }
+]
+
+const hasAccountFilters = computed(() =>
+  Boolean(roleFilter.value || accountStatusFilter.value)
+)
+
+const hasAccountQuery = computed(() =>
+  Boolean(search.value.trim() || hasAccountFilters.value)
+)
 
 const totalPages = computed(() => {
   return Math.ceil(filteredAccounts.value.length / pageSize)
 })
 
 const filteredAccounts = computed(() => {
+  const query = search.value.trim().toLowerCase()
+
   return accounts.value
-  .slice()
-  .sort((a, b) => a.id - b.id) // ascending (stable)
-  .filter((item) =>
-    item.nama.toLowerCase().includes(search.value.toLowerCase()) ||
-    item.username.toLowerCase().includes(search.value.toLowerCase()) ||
-    item.role.toLowerCase().includes(search.value.toLowerCase())
-  )
+    .slice()
+    .sort((a, b) => a.id - b.id)
+    .filter((item) => {
+      const activeStatus = item.aktif ? "active" : "inactive"
+      const searchableValues = [item.nama, item.username, item.role]
+
+      const matchesSearch = !query || searchableValues.some((value) =>
+        String(value || "").toLowerCase().includes(query)
+      )
+
+      const matchesRole = !roleFilter.value || item.role === roleFilter.value
+      const matchesStatus = !accountStatusFilter.value || activeStatus === accountStatusFilter.value
+
+      return matchesSearch && matchesRole && matchesStatus
+    })
 })
 
-watch(search, () => {
+watch([search, roleFilter, accountStatusFilter], () => {
   currentPage.value = 1
 })
 
@@ -73,7 +127,6 @@ const canDelete = computed(() =>
   deleteConfirmText.value.trim().toLowerCase() === t("common.deleteKeyword").toLowerCase()
 )
 
-// ✅ Toggle keyword logic
 const toggleKeyword = computed(() =>
   toggleTarget.value?.aktif ? t("accounts.deactivate") : t("accounts.activate")
 )
@@ -102,6 +155,11 @@ function closeModal() {
   showModal.value = false
 }
 
+function clearAccountFilters() {
+  roleFilter.value = ""
+  accountStatusFilter.value = ""
+}
+
 function validateForm() {
   const e = {}
 
@@ -128,6 +186,7 @@ function editAccount(item) {
 }
 
 async function fetchAccounts() {
+  loading.value = true
 
   try {
 
@@ -140,7 +199,10 @@ async function fetchAccounts() {
   } catch (err) {
 
     console.error(err)
+    toast.error(t("common.loadFailed", { entity: t("accounts.countEntity") }))
 
+  } finally {
+    loading.value = false
   }
 }
 
@@ -150,20 +212,18 @@ onMounted(() => {
 
 async function saveAccount() {
 
-  // ✅ REQUIRED FIELD VALIDATION
   if (
     !nama.value.trim() ||
     !username.value.trim()
   ) {
-    alert(t("validation.completeBeforeSave"))
+    toast.warning(t("validation.completeBeforeSave"))
     return
   }
 
-  // ✅ USERNAME VALIDATION
   const usernameRegex = /^[a-z0-9.]{12,24}$/
 
   if (!usernameRegex.test(username.value)) {
-    alert(t("validation.usernameFormat"))
+    toast.warning(t("validation.usernameFormat"))
     return
   }
 
@@ -199,14 +259,17 @@ generatedUsername.value =
   username.value
 
 showPasswordModal.value = true
+      toast.success(t("accounts.passwordCreatedSuccess"))
     }
 
     await fetchAccounts()
 
     closeModal()
+    toast.success(t("accounts.saveSuccess"))
 
   } catch (err) {
     console.error(err)
+    toast.error(t("common.saveFailed", { entity: t("accounts.countEntity") }))
   }
 }
 
@@ -230,13 +293,14 @@ async function confirmDelete() {
 
     showDeleteModal.value = false
     showModal.value = false
+    toast.success(t("accounts.deleteSuccess"))
 
   } catch (err) {
     console.error(err)
+    toast.error(t("common.deleteFailed", { entity: t("accounts.countEntity") }))
   }
 }
 
-// ✅ HANDLE TOGGLE (core logic you wanted)
 async function handleToggle(event, isEdit = false) {
   if (!editingId.value) {
     aktif.value = !aktif.value
@@ -286,10 +350,12 @@ async function confirmToggle() {
     await fetchAccounts()
 
     showToggleModal.value = false
+    toast.success(t("accounts.toggleSuccess"))
 
   } catch (err) {
 
     console.error(err)
+    toast.error(t("common.saveFailed", { entity: t("accounts.countEntity") }))
 
   }
 }
@@ -311,12 +377,13 @@ async function resetPassword(item) {
       res.data.temporary_password
 
     showPasswordModal.value = true
+    toast.success(t("accounts.passwordResetSuccess"))
 
   } catch (err) {
 
     console.error(err)
 
-    alert(t("accounts.passwordResetFailed"))
+    toast.error(t("accounts.passwordResetFailed"))
 
   }
 
@@ -326,66 +393,58 @@ async function resetPassword(item) {
 <template>
   <div>
 
-    <div class="hierarchy-card">
-      <div class="hierarchy-left">
-        <h2>{{ t("accounts.title") }}</h2>
-        <p class="section-desc">
-          {{ t("accounts.description") }}
-        </p>
-      </div>
-    </div>
+    <PageHeader
+      :title="t('accounts.title')"
+      :description="t('accounts.description')"
+    />
 
-    <div class="toolbar">
-      <div class="search-box">
-        <Search class="search-icon" :size="18" aria-hidden="true" />
-        <input
-          v-model="search"
-          type="text"
-          :placeholder="t('configuration.shared.search', { entity: t('accounts.searchEntity') })"
+    <PageToolbar
+      v-model="search"
+      :placeholder="t('configuration.shared.search', { entity: t('accounts.searchEntity') })"
+      :action-text="t('accounts.add')"
+      @action="openModal"
+    >
+      <template #filters>
+        <AppSelect
+          v-model="roleFilter"
+          :label="t('accounts.role')"
+          :options="accountRoleFilterOptions"
         />
-      </div>
 
-      <button
-        class="ui-button ui-button--primary"
-        @click="openModal"
-      >
+        <AppSelect
+          v-model="accountStatusFilter"
+          :label="t('accounts.status')"
+          :options="accountStatusFilterOptions"
+        />
+
+        <button
+          v-if="hasAccountFilters"
+          class="ui-button ui-button--outline"
+          type="button"
+          @click="clearAccountFilters"
+        >
+          {{ t("filters.clear") }}
+        </button>
+      </template>
+
+      <template #action-icon>
         <Plus :size="18" aria-hidden="true" />
-        {{ t("accounts.add") }}
-      </button>
-    </div>
+      </template>
+    </PageToolbar>
 
     <div class="page-heading-block">
       <h1 class="main-page-title">{{ t("accounts.listTitle") }}</h1>
     </div>
 
-    <div class="table-card">
-      <div class="table-scroll">
-
-        <table>
-          <thead>
-            <tr>
-              <th style="width:80px">{{ t("common.tableNumber") }}</th>
-              <th style="width:220px">{{ t("common.name") }}</th>
-              <th style="width:160px">{{ t("auth.username") }}</th>
-              <th style="width:120px">{{ t("accounts.role") }}</th>
-              <th
-                style="
-                  width:160px;
-                  text-align:center;
-                "
-              >
-                {{ t("common.actions") }}
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            <tr v-if="filteredAccounts.length === 0">
-              <td colspan="7" class="empty-cell">
-                {{ t("accounts.empty") }}
-              </td>
-            </tr>
+    <ConfigTable
+      :columns="tableColumns"
+      :loading="loading"
+      :empty="filteredAccounts.length === 0"
+      :empty-message="t('accounts.empty')"
+      :empty-action-text="hasAccountQuery ? '' : t('accounts.add')"
+      min-width="760px"
+      @empty-action="openModal"
+    >
 
             <tr
               v-for="(item,index) in paginatedAccounts"
@@ -420,15 +479,8 @@ async function resetPassword(item) {
                 }}
               </td>
 
-              <td style="text-align:center">
-                <div
-                  style="
-                    display:flex;
-                    justify-content:center;
-                    align-items:center;
-                    gap:8px;
-                  "
-                >
+              <td class="table-cell--center">
+                <div class="config-row-actions">
 
               <button
                 class="ui-icon-button"
@@ -454,11 +506,7 @@ async function resetPassword(item) {
 
             </tr>
 
-          </tbody>
-        </table>
-
-      </div>
-    </div>
+    </ConfigTable>
 
     <AppPagination
       :currentPage="currentPage"
@@ -475,35 +523,12 @@ async function resetPassword(item) {
       </div>
     </div>
 
-    <!-- MAIN MODAL -->
-    <transition name="fade">
-      <div
-        v-if="showModal"
-        class="modal-overlay"
-      >
-
-        <AppCard class="modal-card">
-
-          <div class="modal-header">
-            <div>
-              <p class="eyebrow">{{ t("accounts.eyebrow") }}</p>
-              <h2>
-                {{ editingId
-                  ? t("accounts.edit")
-                  : t("accounts.add")
-                }}
-              </h2>
-            </div>
-
-            <button
-              class="ui-icon-button"
-              :title="t('common.close')"
-              :aria-label="t('common.close')"
-              @click="closeModal"
-            >
-              <X :size="18" aria-hidden="true" />
-            </button>
-          </div>
+    <FormModal
+      :show="showModal"
+      :eyebrow="t('accounts.eyebrow')"
+      :title="editingId ? t('accounts.edit') : t('accounts.add')"
+      @close="closeModal"
+    >
 
           <div class="form-area">
 
@@ -534,7 +559,6 @@ async function resetPassword(item) {
 "
             />
 
-            <!-- ✅ TOGGLE (UPDATED) -->
             <div class="field">
               <label>{{ t("accounts.status") }}</label>
 
@@ -556,7 +580,7 @@ async function resetPassword(item) {
 
           </div>
 
-          <div class="modal-actions">
+          <template #actions>
 
             <button
               v-if="editingId"
@@ -577,147 +601,37 @@ async function resetPassword(item) {
               @click="saveAccount"
             />
 
-          </div>
+          </template>
 
-        </AppCard>
+    </FormModal>
 
-      </div>
-    </transition>
+    <ConfirmActionModal
+      v-model="deleteConfirmText"
+      :show="showDeleteModal"
+      :title="t('common.deleteTitle', { name: selectedAccount?.nama || t('common.emptyValue') })"
+      :keyword="t('common.deleteKeyword')"
+      :disabled="!canDelete"
+      @close="closeDeleteModal"
+      @confirm="confirmDelete"
+    />
 
-    <!-- DELETE MODAL -->
-    <transition name="fade">
-      <div
-        v-if="showDeleteModal"
-        class="modal-overlay"
-      >
-
-        <div class="delete-modal">
-
-          <div class="delete-icon">
-            <Trash2 :size="28" aria-hidden="true" />
-          </div>
-
-          <h3>
-            {{ t("common.deleteTitle", { name: selectedAccount?.nama }) }}
-          </h3>
-
-          <p class="delete-desc">
-            {{ t("common.deleteWarning") }}
-          </p>
-
-          <div class="confirm-box">
-
-            <label>
-              {{ t("common.typeToConfirm", { keyword: t("common.deleteKeyword") }) }}
-            </label>
-
-            <div class="org-delete-name">
-              <span class="danger-word">{{ t("common.deleteKeyword") }}</span>
-            </div>
-
-            <input
-              v-model="deleteConfirmText"
-              class="delete-input"
-              :placeholder="t('common.typeKeyword', { keyword: t('common.deleteKeyword') })"
-            />
-
-          </div>
-
-          <div class="delete-actions">
-
-            <button
-              class="ui-button ui-button--outline"
-              @click="closeDeleteModal"
-            >
-              {{ t("common.cancel") }}
-            </button>
-
-            <button
-              class="ui-button ui-button--danger"
-              :disabled="!canDelete"
-              @click="confirmDelete"
-            >
-              {{ t("common.deleteNow") }}
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-    </transition>
-
-    <!-- ✅ TOGGLE CONFIRM MODAL -->
-    <transition name="fade">
-      <div
-        v-if="showToggleModal"
-        class="modal-overlay"
-      >
-
-        <div class="delete-modal">
-
-          <div class="delete-icon">
-            <TriangleAlert :size="28" aria-hidden="true" />
-          </div>
-
-          <h3>
-            {{ toggleTarget?.aktif
-              ? t("accounts.deactivateQuestion")
-              : t("accounts.activeQuestion")
-            }}
-          </h3>
-
-          <p class="delete-desc">
-            {{ t("accounts.typeToggleToConfirm", { keyword: toggleKeyword }) }}
-          </p>
-
-          <div class="confirm-box">
-
-            <label>
-              {{ t("accounts.toggleConfirm") }}
-            </label>
-
-            <div class="org-delete-name">
-              <span class="danger-word">
-                {{ toggleKeyword }}
-              </span>
-            </div>
-
-            <input
-              v-model="toggleConfirmText"
-              class="delete-input"
-              :placeholder="toggleKeyword"
-            />
-
-          </div>
-
-          <div class="delete-actions">
-
-            <button
-              class="ui-button ui-button--outline"
-              @click="closeToggleModal"
-            >
-              {{ t("common.cancel") }}
-            </button>
-
-            <button
-              class="ui-button ui-button--danger"
-              :disabled="!canToggle"
-              @click="confirmToggle"
-            >
-              {{ t("common.confirm") }}
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-    </transition>
+    <ConfirmActionModal
+      v-model="toggleConfirmText"
+      :show="showToggleModal"
+      :title="toggleTarget?.aktif ? t('accounts.deactivateQuestion') : t('accounts.activeQuestion')"
+      :description="t('accounts.typeToggleToConfirm', { keyword: toggleKeyword })"
+      :keyword="toggleKeyword"
+      :placeholder="toggleKeyword"
+      :confirm-text="t('common.confirm')"
+      confirm-variant="primary"
+      :disabled="!canToggle"
+      icon="warning"
+      @close="closeToggleModal"
+      @confirm="confirmToggle"
+    />
 
   </div>
 
-  <!-- PASSWORD SUCCESS MODAL -->
 <transition name="fade">
   <div
     v-if="showPasswordModal"
@@ -779,124 +693,6 @@ async function resetPassword(item) {
   --bg:#F8FAFC;
 }
 
-.page-heading-block{
-  margin-bottom:28px;
-}
-
-.main-page-title{
-  font-size:30px;
-  font-weight:800;
-  color:var(--text);
-  margin:0;
-  letter-spacing:-0.03em;
-}
-
-.toolbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:16px;
-  margin-bottom:28px;
-  flex-wrap:wrap;
-}
-
-.search-box{
-  width:100%;
-  max-width:360px;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:white;
-  border:1px solid var(--border);
-  border-radius:14px;
-  height:48px;
-  padding:0 16px;
-  transition:.2s;
-}
-
-.search-box:focus-within{
-  border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(79,70,229,.08);
-}
-
-.search-icon{
-  color:#94A3B8;
-}
-
-.search-box input{
-  border:none;
-  background:none;
-  width:100%;
-  outline:none;
-  color:var(--text);
-}
-
-.hierarchy-card{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:32px;
-  margin-bottom:32px;
-  box-shadow:0 1px 2px rgba(15,23,42,.04);
-}
-
-.hierarchy-left{
-  flex:1;
-  min-width:280px;
-}
-
-.hierarchy-left h2{
-  margin:0;
-  font-size:32px;
-  font-weight:800;
-  color:var(--text);
-}
-
-.section-desc{
-  margin-top:8px;
-  color:var(--muted);
-  font-size:15px;
-}
-
-.table-card{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 1px 2px rgba(15,23,42,.04);
-}
-
-.table-scroll{
-  overflow:auto;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-thead{
-  background:#F8FAFC;
-}
-
-th{
-  text-align:left;
-  padding:18px 24px;
-  font-size:12px;
-  color:#64748B;
-  text-transform:uppercase;
-  letter-spacing:.04em;
-  font-weight:700;
-  border-bottom:1px solid var(--border);
-}
-
-td{
-  padding:18px 24px;
-  font-size:14px;
-  color:#334155;
-  border-bottom:1px solid #F1F5F9;
-}
-
 .org-cell{
   display:flex;
   align-items:center;
@@ -938,12 +734,6 @@ td{
   font-weight:700;
 }
 
-.empty-cell{
-  text-align:center;
-  color:#94A3B8;
-  padding:50px;
-}
-
 .footer-bar{
   display:flex;
   justify-content:flex-end;
@@ -960,67 +750,6 @@ td{
 
 .count-pill strong{
   color:var(--primary);
-}
-
-.btn-plus{
-  font-size:18px;
-  line-height:1;
-}
-
-.fade-enter-active,
-.fade-leave-active{
-  transition:.18s;
-}
-
-.fade-enter-from,
-.fade-leave-to{
-  opacity:0;
-}
-
-.modal-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(15,23,42,.55);
-  backdrop-filter:blur(6px);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:999;
-  padding:24px;
-}
-
-.modal-card{
-  width:100%;
-  max-width:760px;
-  background:white;
-  border-radius:20px;
-  padding:30px !important;
-  box-sizing:border-box;
-  border:1px solid var(--border);
-  box-shadow:0 1px 2px rgba(15,23,42,.04);
-}
-
-.modal-header{
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  margin-bottom:28px;
-}
-
-.eyebrow{
-  font-size:12px;
-  font-weight:700;
-  color:var(--primary);
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  margin-bottom:10px;
-}
-
-.modal-header h2{
-  font-size:28px;
-  font-weight:800;
-  color:var(--text);
-  margin:0;
 }
 
 .form-area{
@@ -1040,18 +769,6 @@ td{
   font-weight:600;
   color:#334155;
 }
-
-.modal-actions{
-  display:flex;
-  justify-content:flex-end;
-  gap:12px;
-  margin-top:32px;
-  padding-top:20px;
-  border-top:1px solid #F1F5F9;
-  flex-wrap:wrap;
-}
-
-/* DELETE MODAL */
 
 .delete-modal{
   width:100%;
@@ -1108,35 +825,12 @@ td{
   text-align:center;
 }
 
-.danger-word{
-  color:#DC2626;
-  font-size:20px;
-  font-weight:800;
-  letter-spacing:.04em;
-}
-
-.delete-input{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:14px;
-  font-size:14px;
-  box-sizing:border-box;
-}
-
-.delete-input:focus{
-  outline:none;
-  border-color:#EF4444;
-}
-
 .delete-actions{
   display:flex;
   justify-content:flex-end;
   gap:12px;
   margin-top:24px;
 }
-
-/* TOGGLE SWITCH */
 
 .switch-wrapper{
   display:flex;
@@ -1190,8 +884,6 @@ td{
   color:#475569;
 }
 
-/* TABLE ROWS */
-
 .clickable-row{
   transition:.15s;
 }
@@ -1200,25 +892,12 @@ td{
   background:#F8FAFC;
 }
 
-/* RESPONSIVE */
-
 @media(max-width:768px){
-
-  .toolbar{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .search-box{
-    max-width:none;
-    width:100%;
-  }
 
   .form-area{
     grid-template-columns:1fr;
   }
 
-  .modal-actions,
   .delete-actions{
     flex-direction:column;
     align-items:stretch;
@@ -1227,3 +906,4 @@ td{
 }
 
 </style>
+
