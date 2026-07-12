@@ -1,32 +1,44 @@
 <script setup>
 import { computed, ref, watch, onMounted, onBeforeUnmount, nextTick } from "vue"
 import { useRoute, useRouter } from "vue-router"
-import { FileDown, Pencil, Plus, Search, Trash2, X } from "lucide-vue-next"
+import { FileDown, Pencil, Plus } from "lucide-vue-next"
 import api from "../../../src/services/api"
 import { t } from "../../i18n"
+import { useToast } from "../../ui/AppToast.vue"
 import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.css"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
-import AppCard from "../../ui/AppCard.vue"
 import AppSelect from "../../ui/AppSelect.vue"
 import StatusPill from "../../ui/StatusPill.vue"
 import AppPagination from "../../ui/AppPagination.vue"
+import ConfigTable from "../../ui/ConfigTable.vue"
+import ConfirmActionModal from "../../ui/ConfirmActionModal.vue"
+import FormModal from "../../ui/FormModal.vue"
+import PageHeader from "../../ui/PageHeader.vue"
+import PageToolbar from "../../ui/PageToolbar.vue"
 
 const route = useRoute()
 const router = useRouter()
+const toast = useToast()
 
 const organizationId = route.params.organizationId
 const subOrganizationId = route.params.subOrganizationId
 const siteId = route.params.siteId
 
 const search = ref("")
+const profileStatusFilter = ref("")
+const profileScheduleFilter = ref("")
 const showModal = ref(false)
 const editingId = ref(null)
 const selectedProfile = ref(null)
 
 const saving = ref(false)
+const showDownloadModal = ref(false)
+const downloadingReport = ref(false)
+const profileForDownload = ref(null)
+const downloadFormat = ref("default")
 
 const nama = ref("")
 const keterangan = ref("")
@@ -68,10 +80,10 @@ const site = ref({
 })
 
 const profiles = ref([])
+const loading = ref(true)
 
 /* DELETE UX */
 const showDeleteModal = ref(false)
-const showToast = ref(false)
 const deleteConfirmText = ref("")
 
 // =========================
@@ -80,14 +92,81 @@ const deleteConfirmText = ref("")
 const currentPage = ref(1)
 const pageSize = 10
 
+const tableColumns = [
+  { key: "code", label: t("common.code"), width: "100px" },
+  { key: "name", label: t("configuration.profile.name") },
+  { key: "tasks", label: t("configuration.site.tasksTotal"), width: "140px", nowrap: true },
+  { key: "status", label: t("common.status"), width: "140px" },
+  { key: "schedule", label: t("schedule.scheduleExecution"), width: "180px", nowrap: true },
+  { key: "scheduledTime", label: t("schedule.scheduledTime"), width: "180px", nowrap: true },
+  { key: "actions", label: t("common.actions"), width: "140px", align: "center" }
+]
+
+const profileStatusFilterOptions = [
+  { label: t("filters.allStatuses"), value: "" },
+  { label: t("status.notStarted"), value: "belum dimulakan" },
+  { label: t("status.inProcess"), value: "in process" },
+  { label: t("status.scheduled"), value: "telah dijadualkan" },
+  { label: t("status.completed"), value: "execution completed" },
+  { label: t("status.failed"), value: "gagal" }
+]
+
+const profileScheduleFilterOptions = [
+  { label: t("filters.allSchedules"), value: "" },
+  { label: t("schedule.immediate"), value: "IMMEDIATE" },
+  { label: t("schedule.once"), value: "SCHEDULED" },
+  { label: t("schedule.cronJob"), value: "CRON" }
+]
+
+const downloadFormatOptions = [
+  {
+    value: "default",
+    label: t("configuration.profile.downloadDefaultLabel"),
+    description: t("configuration.profile.downloadDefaultDescription")
+  },
+  {
+    value: "cyclonedx",
+    label: t("configuration.profile.downloadCycloneDxLabel"),
+    description: t("configuration.profile.downloadCycloneDxDescription")
+  }
+]
+
+const hasProfileFilters = computed(() =>
+  Boolean(profileStatusFilter.value || profileScheduleFilter.value)
+)
+
+const hasProfileQuery = computed(() =>
+  Boolean(search.value.trim() || hasProfileFilters.value)
+)
+
+function normalizeProfileStatus(status) {
+  const value = String(status || "").toLowerCase().trim()
+  return value === "belum" ? "belum dimulakan" : value
+}
+
+function getProfileScheduleType(profile) {
+  if (profile.cron_enabled) return "CRON"
+  return profile.execution_type || "IMMEDIATE"
+}
+
 // =========================
 // FILTER
 // =========================
 const filteredProfiles = computed(() => {
+  const query = search.value.trim().toLowerCase()
+
   return profiles.value
-    .filter((profile) =>
-      profile.nama?.toLowerCase().includes(search.value.toLowerCase())
-    )
+    .filter((profile) => {
+      const matchesSearch = !query || String(profile.nama || "").toLowerCase().includes(query)
+      const matchesStatus =
+        !profileStatusFilter.value ||
+        normalizeProfileStatus(profile.execution_status) === profileStatusFilter.value
+      const matchesSchedule =
+        !profileScheduleFilter.value ||
+        getProfileScheduleType(profile) === profileScheduleFilter.value
+
+      return matchesSearch && matchesStatus && matchesSchedule
+    })
     .sort((a, b) => {
       const kodA = (a.kod || "").toLowerCase()
       const kodB = (b.kod || "").toLowerCase()
@@ -114,9 +193,14 @@ const totalPages = computed(() => {
 // =========================
 // WATCHERS
 // =========================
-watch(search, () => {
+watch([search, profileStatusFilter, profileScheduleFilter], () => {
   currentPage.value = 1
 })
+
+function clearProfileFilters() {
+  profileStatusFilter.value = ""
+  profileScheduleFilter.value = ""
+}
 
 watch(filteredProfiles, () => {
   if (currentPage.value > totalPages.value) {
@@ -124,18 +208,14 @@ watch(filteredProfiles, () => {
   }
 })
 
-// INIT FLATPICKR WHEN MODAL OPENS (UNCHANGED except 1 line)
 watch(showModal, async (val) => {
   if (val) {
     await nextTick()
 
-    initFlatpickr() // âœ… replaced inline with helper
+    initFlatpickr()
   }
 })
 
-/* =========================
- ADDED: WATCH executionType
-========================= */
 watch(executionType, async (val) => {
   if (val === "SCHEDULED") {
     await nextTick()
@@ -155,9 +235,6 @@ watch(cronEnabled, (enabled) => {
 
 })
 
-/* =========================
- ADDED: HELPER FUNCTION
-========================= */
 function initFlatpickr() {
   if (dateInput.value) {
 
@@ -247,11 +324,16 @@ function formatFrequency(profile) {
 // LOAD
 // =========================
 async function loadProfiles() {
+  loading.value = true
+
   try {
     const res = await api.get(`/profil/tapak/${siteId}`)
     profiles.value = res.data || []
   } catch (err) {
     console.error("Error loading profiles:", err)
+    toast.error(t("common.loadFailed", { entity: t("configuration.profile.countEntity") }))
+  } finally {
+    loading.value = false
   }
 }
 
@@ -274,7 +356,11 @@ async function loadTapakDetail() {
 // =========================
 async function saveProfile() {
   if (saving.value) return
-  if (!nama.value.trim()) return
+
+  if (!nama.value.trim()) {
+    toast.warning(t("validation.nameRequired"))
+    return
+  }
 
   try {
     saving.value = true
@@ -282,7 +368,7 @@ async function saveProfile() {
 
     if (executionType.value === "SCHEDULED") {
       if (!selectedDate.value || !selectedTime.value) {
-        alert(t("validation.selectDateTime"))
+        toast.warning(t("validation.selectDateTime"))
         return
       }
 
@@ -324,9 +410,11 @@ async function saveProfile() {
 
     await loadProfiles()
     closeModal()
+    toast.success(t("common.saveSuccess", { entity: t("configuration.profile.countEntity") }))
 
   } catch (err) {
     console.error("Error saving profile:", err)
+    toast.error(t("common.saveFailed", { entity: t("configuration.profile.countEntity") }))
   }
     finally {
       saving.value = false
@@ -356,14 +444,11 @@ async function confirmDelete() {
     showDeleteModal.value = false
     closeModal()
 
-    showToast.value = true
-
-    setTimeout(() => {
-      showToast.value = false
-    }, 1600)
+    toast.success(t("configuration.profile.deleteSuccess"))
 
   } catch (err) {
     console.error("Delete failed:", err)
+    toast.error(t("common.deleteFailed", { entity: t("configuration.profile.countEntity") }))
   }
 }
 
@@ -496,50 +581,95 @@ function goToTugasan(profile) {
   )
 }
 
-async function generateReport(profile) {
+function openDownloadModal(profile) {
+  profileForDownload.value = profile
+  downloadFormat.value = "default"
+  showDownloadModal.value = true
+}
+
+function closeDownloadModal() {
+  if (downloadingReport.value) return
+
+  showDownloadModal.value = false
+  profileForDownload.value = null
+  downloadFormat.value = "default"
+}
+
+function getReportFilename(response, profile, reportFormat) {
+  const contentDisposition = response.headers?.["content-disposition"] || ""
+  const filenameMatch = contentDisposition.match(/filename="?([^";]+)"?/i)
+
+  if (filenameMatch?.[1]) {
+    return decodeURIComponent(filenameMatch[1])
+  }
+
+  return reportFormat === "cyclonedx"
+    ? `${profile.nama}-cyclonedx.json`
+    : `${profile.nama}.xlsx`
+}
+
+async function getReportDownloadError(err) {
+  const payload = err.response?.data
+
+  if (payload instanceof Blob) {
+    try {
+      const errorBody = JSON.parse(await payload.text())
+      return errorBody.detail || errorBody.message
+    } catch {
+      return ""
+    }
+  }
+
+  return payload?.detail || payload?.message || ""
+}
+
+async function downloadReport() {
+  const profile = profileForDownload.value
+
+  if (!profile || downloadingReport.value) return
+
+  const reportFormat = downloadFormat.value
+  let completed = false
 
   try {
+    downloadingReport.value = true
 
     const response = await api.post(
       `/report/profil/${profile.id}`,
-      {},
+      null,
       {
+        params: { format: reportFormat },
         responseType: "blob"
       }
     )
 
-    const blob = new Blob(
-      [response.data],
-      {
-        type:
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-      }
-    )
-
-    const url =
-      window.URL.createObjectURL(blob)
-
-    const link =
-      document.createElement("a")
+    const blob = new Blob([response.data], {
+      type: response.headers?.["content-type"]
+    })
+    const url = window.URL.createObjectURL(blob)
+    const link = document.createElement("a")
 
     link.href = url
-
-    link.download =
-      `${profile.nama}.xlsx`
-
+    link.download = getReportFilename(response, profile, reportFormat)
     document.body.appendChild(link)
-
     link.click()
-
     link.remove()
-
     window.URL.revokeObjectURL(url)
 
+    completed = true
+    toast.success(t("configuration.profile.downloadSuccess"))
   } catch (err) {
-
     console.error(err)
+    toast.error(
+      (await getReportDownloadError(err)) ||
+      t("configuration.profile.downloadFailed")
+    )
+  } finally {
+    downloadingReport.value = false
 
-    alert(t("configuration.profile.downloadFailed"))
+    if (completed) {
+      closeDownloadModal()
+    }
   }
 }
 
@@ -562,71 +692,58 @@ onBeforeUnmount(() => {
 <template>
   <div>
 
-    <!-- Header -->
-    <div class="hierarchy-card">
-      <div class="hierarchy-left">
-        <h2>{{ site.name }}</h2>
-        <p class="section-desc">{{ site.description }}</p>
-      </div>
-    </div>
+    <PageHeader
+      :title="site.name"
+      :description="site.description"
+    />
 
-    <!-- Toolbar -->
-    <div class="toolbar">
-      <div class="search-box">
-        <Search class="search-icon" :size="18" aria-hidden="true" />
-        <input
-          v-model="search"
-          type="text"
-          :placeholder="t('configuration.shared.search', { entity: t('configuration.profile.searchEntity') })"
+    <PageToolbar
+      v-model="search"
+      :placeholder="t('configuration.shared.search', { entity: t('configuration.profile.searchEntity') })"
+      :action-text="t('configuration.profile.add')"
+      @action="openAddModal"
+    >
+      <template #filters>
+        <AppSelect
+          v-model="profileStatusFilter"
+          :label="t('common.status')"
+          :options="profileStatusFilterOptions"
         />
-      </div>
 
-      <button
-        class="ui-button ui-button--primary"
-        @click="openAddModal"
-      >
+        <AppSelect
+          v-model="profileScheduleFilter"
+          :label="t('filters.schedule')"
+          :options="profileScheduleFilterOptions"
+        />
+
+        <button
+          v-if="hasProfileFilters"
+          class="ui-button ui-button--outline"
+          type="button"
+          @click="clearProfileFilters"
+        >
+          {{ t("filters.clear") }}
+        </button>
+      </template>
+
+      <template #action-icon>
         <Plus :size="18" aria-hidden="true" />
-        {{ t("configuration.profile.add") }}
-      </button>
-    </div>
+      </template>
+    </PageToolbar>
 
-    <!-- Title -->
     <div class="page-heading-block">
       <h1 class="main-page-title">{{ t("configuration.profile.pageTitle") }}</h1>
     </div>
 
-    <!-- Table -->
-    <div class="table-card">
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr>
-              <th style="width:100px">{{ t("common.code") }}</th>
-              <th>{{ t("configuration.profile.name") }}</th>
-              <th style="width:140px; white-space: nowrap;">{{ t("configuration.site.tasksTotal") }}</th>
-              <th style="width:140px">{{ t("common.status") }}</th>
-              <th style="width:180px">
-                {{ t("schedule.scheduleExecution") }}
-              </th>
-              <th style="width:180px; white-space: nowrap;">{{ t("schedule.scheduledTime") }}</th>
-              <th
-                style="
-                  width:140px;
-                  padding-left:40px;
-                "
-              >
-                {{ t("common.actions") }}
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            <tr v-if="paginatedProfiles.length === 0">
-              <td colspan="6" class="empty-cell">
-                {{ t("configuration.profile.empty") }}
-              </td>
-            </tr>
+    <ConfigTable
+      :columns="tableColumns"
+      :loading="loading"
+      :empty="paginatedProfiles.length === 0"
+      :empty-message="t('configuration.profile.empty')"
+      :empty-action-text="hasProfileQuery ? '' : t('configuration.profile.add')"
+      min-width="1060px"
+      @empty-action="openAddModal"
+    >
 
             <tr
               v-for="(profile,index) in paginatedProfiles"
@@ -689,15 +806,8 @@ onBeforeUnmount(() => {
                 <span v-else>{{ t("common.emptyValue") }}</span>
               </td>
 
-              <td style="text-align:center">
-                <div
-                  style="
-                    display:flex;
-                    justify-content:center;
-                    align-items:center;
-                    gap:8px;
-                  "
-                >
+              <td class="table-cell--center">
+                <div class="config-row-actions">
                   <button
                     class="ui-icon-button"
                     :title="t('configuration.profile.edit')"
@@ -711,7 +821,7 @@ onBeforeUnmount(() => {
                     class="ui-icon-button"
                     :title="t('reports.download')"
                     :aria-label="t('reports.download')"
-                    @click.stop="generateReport(profile)"
+                    @click.stop="openDownloadModal(profile)"
                   >
                     <FileDown :size="17" aria-hidden="true" />
                   </button>
@@ -719,10 +829,7 @@ onBeforeUnmount(() => {
               </td>
 
             </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    </ConfigTable>
 
     <AppPagination
       :currentPage="currentPage"
@@ -730,7 +837,6 @@ onBeforeUnmount(() => {
       @update:page="currentPage = $event"
     />
 
-    <!-- Footer -->
     <div class="footer-bar">
 
       <button class="ui-button ui-button--outline" @click="goBack">
@@ -746,34 +852,13 @@ onBeforeUnmount(() => {
 
     </div>
 
-    <!-- MAIN MODAL -->
-    <transition name="fade">
-      <div
-        v-if="showModal"
-        class="modal-overlay"
-      >
-        <AppCard class="modal-card">
-
-          <div class="modal-header">
-            <div>
-              <p class="eyebrow">
-                {{ editingId ? t("configuration.shared.editData") : t("configuration.shared.addData") }}
-              </p>
-
-              <h2>
-                {{ editingId ? t("configuration.profile.edit") : t("configuration.profile.add") }}
-              </h2>
-            </div>
-
-            <button
-              class="ui-icon-button"
-              :title="t('common.close')"
-              :aria-label="t('common.close')"
-              @click="closeModal"
-            >
-              <X :size="18" aria-hidden="true" />
-            </button>
-          </div>
+    <FormModal
+      :show="showModal"
+      :eyebrow="editingId ? t('configuration.shared.editData') : t('configuration.shared.addData')"
+      :title="editingId ? t('configuration.profile.edit') : t('configuration.profile.add')"
+      max-width="700px"
+      @close="closeModal"
+    >
 
           <div class="form-area">
 
@@ -796,10 +881,8 @@ onBeforeUnmount(() => {
             <div class="execution-type">
               <label class="field-label">{{ t("schedule.executionType") }}</label>
 
-              <!-- NEW GRID WRAPPER -->
               <div class="execution-grid">
 
-                <!-- LEFT: IMMEDIATE -->
                 <label class="radio-option" :class="{ active: executionType === 'IMMEDIATE' }">
                   <input
                     type="radio"
@@ -812,7 +895,6 @@ onBeforeUnmount(() => {
                   </span>
                 </label>
 
-                <!-- RIGHT: SCHEDULED + FIELDS -->
                 <div>
                   <label class="radio-option" :class="{ active: executionType === 'SCHEDULED' }">
                     <input
@@ -826,10 +908,8 @@ onBeforeUnmount(() => {
                     </span>
                   </label>
 
-                  <!-- MOVED HERE -->
                   <div v-show="executionType === 'SCHEDULED'" class="schedule-box">
 
-                    <!-- DATE -->
                     <div class="schedule-field tarikh-field">
                       <label class="field-label">{{ t("schedule.date") }}</label>
 
@@ -844,7 +924,6 @@ onBeforeUnmount(() => {
                       </div>
                     </div>
 
-                    <!-- TIME -->
                     <div class="schedule-field masa-field">
                       <label class="field-label">{{ t("schedule.time") }}</label>
 
@@ -881,16 +960,12 @@ onBeforeUnmount(() => {
   />
   <span class="slider"></span>
 </label>
-                    <!-- FREQUENCY -->
-
 <AppSelect
   v-if="cronEnabled"
   v-model="frequency"
   :label="t('schedule.frequency')"
   :options="frequencyOptions"
 />
-
-<!-- CUSTOM CRON -->
 
 <AppInput
   v-if="cronEnabled && frequency === 'CUSTOM'"
@@ -905,7 +980,7 @@ onBeforeUnmount(() => {
             </div>
           </div>
 
-          <div class="modal-actions">
+          <template #actions>
 
             <button
               v-if="editingId"
@@ -933,81 +1008,73 @@ onBeforeUnmount(() => {
   @click="saveProfile"
             />
 
-          </div>
+          </template>
 
-        </AppCard>
-      </div>
-    </transition>
+    </FormModal>
 
-    <!-- DELETE MODAL -->
-    <transition name="fade">
-      <div v-if="showDeleteModal" class="modal-overlay">
+    <FormModal
+      :show="showDownloadModal"
+      :title="t('configuration.profile.downloadFormatTitle')"
+      max-width="560px"
+      @close="closeDownloadModal"
+    >
+      <template #description>
+        {{ t('configuration.profile.downloadFormatDescription', { name: profileForDownload?.nama || t('common.emptyValue') }) }}
+      </template>
 
-        <div class="delete-modal">
+      <fieldset class="report-format-options">
+        <legend class="sr-only">{{ t('configuration.profile.downloadFormatTitle') }}</legend>
 
-          <div class="delete-icon">
-            <Trash2 :size="28" aria-hidden="true" />
-          </div>
+        <label
+          v-for="option in downloadFormatOptions"
+          :key="option.value"
+          class="report-format-option"
+          :class="{ 'report-format-option--selected': downloadFormat === option.value }"
+        >
+          <input
+            v-model="downloadFormat"
+            type="radio"
+            name="report-format"
+            :value="option.value"
+            :disabled="downloadingReport"
+          />
 
-          <h3>
-            {{ t("common.deleteTitle", { name: selectedProfil?.nama || t("common.emptyValue") }) }}
-          </h3>
+          <span class="report-format-option__content">
+            <span class="report-format-option__label">{{ option.label }}</span>
+            <span class="report-format-option__description">{{ option.description }}</span>
+          </span>
+        </label>
+      </fieldset>
 
-          <p class="delete-desc">
-            {{ t("common.deleteWarning") }}
-          </p>
+      <template #actions>
+        <AppButton
+          :text="t('common.cancel')"
+          variant="outline"
+          :disabled="downloadingReport"
+          @click="closeDownloadModal"
+        />
 
-          <div class="confirm-box">
+        <AppButton
+          :text="downloadingReport ? t('common.loading') : t('reports.download')"
+          :disabled="downloadingReport"
+          @click="downloadReport"
+        >
+          <template #icon>
+            <FileDown :size="17" aria-hidden="true" />
+          </template>
+        </AppButton>
+      </template>
+    </FormModal>
 
-            <label>
-              {{ t("common.typeToConfirm", { keyword: t("common.deleteKeyword") }) }}
-            </label>
-
-            <div class="org-delete-name danger-word">
-              {{ t("common.deleteKeyword") }}
-            </div>
-
-            <input
-              v-model="deleteConfirmText"
-              class="delete-input"
-              type="text"
-              :placeholder="t('common.typeKeyword', { keyword: t('common.deleteKeyword') })"
-            />
-
-          </div>
-
-          <div class="delete-actions">
-
-            <button
-              class="ui-button ui-button--outline"
-              @click="closeDeleteModal"
-            >
-              {{ t("common.cancel") }}
-            </button>
-
-            <button
-              type="button"
-              class="ui-button ui-button--danger"
-              :disabled="!canDelete"
-              @click="confirmDelete"
-            >
-              {{ t("common.deleteNow") }}
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-    </transition>
-
-
-    <!-- TOAST -->
-    <transition name="fade">
-      <div v-if="showToast" class="toast-success">
-        {{ t("configuration.profile.deleteSuccess") }}
-      </div>
-    </transition>
+    <ConfirmActionModal
+      v-model="deleteConfirmText"
+      :show="showDeleteModal"
+      :title="t('common.deleteTitle', { name: selectedProfil?.nama || t('common.emptyValue') })"
+      :keyword="t('common.deleteKeyword')"
+      :disabled="!canDelete"
+      @close="closeDeleteModal"
+      @confirm="confirmDelete"
+    />
 
   </div>
 </template>
@@ -1020,188 +1087,6 @@ onBeforeUnmount(() => {
   --muted:#64748B;
   --border:#E2E8F0;
   --bg:#F8FAFC;
-}
-
-.page-heading-block{
-  margin-bottom:28px;
-}
-
-.main-page-title{
-  font-size:30px;
-  font-weight:800;
-  color:var(--text);
-  margin:0;
-  letter-spacing:-0.03em;
-}
-
-/* HERO */
-
-.hierarchy-card{
-  background:white;
-
-  border:1px solid var(--border);
-
-  border-radius:20px;
-
-  padding:32px;
-
-  margin-bottom:32px;
-
-  box-shadow:0 1px 2px rgba(15,23,42,.04);
-}
-
-.hierarchy-left h2{
-  margin:0;
-
-  font-size:32px;
-
-  font-weight:800;
-
-  color:var(--text);
-}
-
-.section-desc{
-  margin-top:8px;
-
-  color:var(--muted);
-}
-
-/* TOOLBAR */
-
-.toolbar{
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  gap:16px;
-
-  margin-bottom:28px;
-
-  flex-wrap:wrap;
-}
-
-.search-box{
-  width:100%;
-
-  max-width:360px;
-}
-
-/* SEARCH */
-
-.search-box{
-  width:100%;
-
-  max-width:360px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-
-  background:white;
-
-  border:1px solid var(--border);
-
-  border-radius:14px;
-
-  height:48px;
-
-  padding:0 16px;
-
-  transition:.2s;
-}
-
-.search-box:focus-within{
-  border-color:var(--primary);
-
-  box-shadow:0 0 0 3px rgba(79,70,229,.08);
-}
-
-.search-icon{
-  color:#94A3B8;
-}
-
-.search-box input{
-  border:none;
-
-  background:none;
-
-  width:100%;
-
-  outline:none;
-
-  color:var(--text);
-}
-
-/* BUTTON */
-
-.btn-plus{
-  font-size:18px;
-
-  font-weight:500;
-
-  line-height:1;
-
-  margin-top:-1px;
-}
-
-/* TABLE */
-
-.table-card{
-  background:white;
-
-  border:1px solid var(--border);
-
-  border-radius:20px;
-
-  overflow:hidden;
-
-  box-shadow:0 1px 2px rgba(15,23,42,.04);
-}
-
-.table-scroll{
-  overflow:auto;
-}
-
-table{
-  width:100%;
-
-  border-collapse:collapse;
-}
-
-thead{
-  background:#F8FAFC;
-}
-
-th{
-  text-align:left;
-
-  padding:18px 24px;
-
-  font-size:12px;
-
-  color:#64748B;
-
-  text-transform:uppercase;
-
-  letter-spacing:.04em;
-
-  font-weight:700;
-
-  border-bottom:1px solid var(--border);
-}
-
-td{
-  padding:18px 24px;
-
-  vertical-align:middle;
-
-  border-bottom:1px solid #F1F5F9;
-
-  color:#334155;
 }
 
 .clickable-row{
@@ -1258,42 +1143,76 @@ td{
   font-size:13px;
 }
 
-.pegawai-cell{
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:center;
-
-  min-height:40px;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.pegawai-name{
-  margin:0;
-
-  font-weight:600;
-
-  color:#334155;
+.report-format-options {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: 12px;
 }
 
-.pegawai-jawatan{
-  margin-top:4px;
-
-  color:#94A3B8;
-
-  font-size:13px;
+.report-format-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
 }
 
-.empty-cell{
-  text-align:center;
-
-  color:#94A3B8;
-
-  padding:50px;
+.report-format-option:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
 }
 
+.report-format-option--selected {
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
+  box-shadow: var(--focus-ring);
+}
 
-/* FOOTER */
+.report-format-option input {
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+  accent-color: var(--color-primary);
+}
+
+.report-format-option input:disabled {
+  cursor: not-allowed;
+}
+
+.report-format-option__content {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.report-format-option__label {
+  color: var(--color-text);
+  font-weight: var(--font-weight-bold);
+}
+
+.report-format-option__description {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.45;
+}
 
 .footer-bar{
   display:flex;
@@ -1319,75 +1238,6 @@ td{
 
 .count-pill strong{
   color:var(--primary);
-}
-
-/* MODAL */
-
-.fade-enter-active,
-.fade-leave-active{
-  transition:.18s;
-}
-
-.fade-enter-from,
-.fade-leave-to{
-  opacity:0;
-}
-
-.modal-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(15,23,42,.55);
-  backdrop-filter:blur(6px);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:999;
-  padding:24px;
-  overflow-y:auto;
-}
-
-.modal-card{
-  max-width:700px;
-  width:100%;
-  border-radius:20px;
-  background:white;
-  padding:30px !important;
-
-  max-height:95vh;
-  overflow-y:auto;
-}
-
-.modal-card::-webkit-scrollbar{
-  width:8px;
-}
-
-.modal-card::-webkit-scrollbar-thumb{
-  background:#CBD5E1;
-  border-radius:999px;
-}
-
-.modal-card::-webkit-scrollbar-track{
-  background:transparent;
-}
-
-.modal-header{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:28px;
-}
-
-.modal-header h2{
-  font-size:28px;
-  font-weight:800;
-  color:var(--text);
-  margin:0;
-}
-
-.eyebrow{
-  color:var(--primary);
-  font-size:12px;
-  letter-spacing:.12em;
-  font-weight:700;
 }
 
 .form-area{
@@ -1416,139 +1266,13 @@ textarea{
 
 textarea:focus{
   outline:none;
-  border-color:var(--primary);
+  border-color:var(--color-focus-border);
   background:white;
+  box-shadow:var(--focus-ring);
 }
-
-.modal-actions{
-  display:flex;
-  justify-content:flex-end;
-  align-items:center;
-  gap:12px;
-  margin-top:32px;
-  padding-top:20px;
-  border-top:1px solid #F1F5F9;
-  flex-wrap:wrap;
-}
-
-/* APPBUTTON STYLING */
-
-/* DELETE BUTTON */
-
-/* DELETE MODAL */
-
-.delete-modal{
-  background:white;
-  border-radius:20px;
-  padding:28px;
-  width:100%;
-  max-width:480px;
-  border:1px solid var(--border);
-}
-
-.delete-modal h3{
-  text-align:center;
-  font-size:24px;
-  font-weight:900;
-  color:#111827;
-  margin-bottom:8px;
-  width:100%;
-}
-
-.delete-icon{
-  width:64px;
-  height:64px;
-  margin:auto;
-  border-radius:999px;
-  background:#FEF2F2;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.delete-desc{
-  text-align:center;
-  color:#64748B;
-  margin-bottom:22px;
-}
-
-.confirm-box label{
-  display:block;
-  margin-bottom:10px;
-  font-size:14px;
-  font-weight:600;
-  color:#334155;
-}
-
-.org-delete-name{
-  background:#F8FAFC;
-  border:1px solid var(--border);
-  padding:14px;
-  border-radius:12px;
-  margin-bottom:12px;
-  font-weight:700;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-.danger-word{
-  text-align:center;
-  color:#DC2626;
-  font-size:20px;
-  font-weight:800;
-}
-
-.delete-input{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:14px;
-}
-
-.delete-input:focus{
-  outline:none;
-  border-color:#EF4444;
-}
-
-.delete-actions{
-  display:flex;
-  justify-content:flex-end;
-  gap:12px;
-  margin-top:24px;
-}
-
-/* TOAST */
-
-.toast-success{
-  position:fixed;
-  right:24px;
-  bottom:24px;
-  background:white;
-  border:1px solid #DCFCE7;
-  border-radius:14px;
-  padding:14px 18px;
-  box-shadow:0 10px 24px rgba(15,23,42,.08);
-  z-index:9999;
-}
-
-/* RESPONSIVE */
 
 @media(max-width:768px){
 
-  .toolbar{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .search-box{
-    max-width:none;
-    width:100%;
-  }
-
-  .modal-actions,
-  .delete-actions,
   .footer-bar{
     flex-direction:column;
     align-items:stretch;
@@ -1599,18 +1323,24 @@ textarea:focus{
 /* Hide default radio */
 .radio-option input {
   margin-top: 3px;
-  accent-color: #020265;
+  accent-color: var(--primary);
 }
 
 /* Hover */
 .radio-option:hover {
   background: #f8fafc;
+  border-color: var(--color-focus-border);
 }
 
 /* Active */
 .radio-option.active {
-  border-color: #020265;
-  background: #eef2ff;
+  border-color: var(--color-focus-border);
+  background: var(--primary-soft);
+  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.08);
+}
+
+.radio-option.active .radio-label {
+  color: var(--primary);
 }
 
 /* Text */
@@ -1680,15 +1410,15 @@ textarea:focus{
 /* HOVER */
 .input-wrapper input:hover,
 .input-wrapper select:hover {
-  border-color: #c7d2fe;
+  border-color: var(--color-focus-border);
 }
 
 /* FOCUS */
 .input-wrapper input:focus,
 .input-wrapper select:focus {
   outline: none;
-  border-color: #020265;
-  box-shadow: 0 0 0 3px rgba(2, 2, 101, 0.08);
+  border-color: var(--color-focus-border);
+  box-shadow: var(--focus-ring);
 }
 
 /* CUSTOM SELECT ARROW */
@@ -1757,12 +1487,12 @@ CUSTOM TIME DROPDOWN (FIX)
 }
 
 .custom-select:hover {
-  border-color: #c7d2fe;
+  border-color: var(--color-focus-border);
 }
 
 .custom-select.active {
-  border-color: #020265;
-  box-shadow: 0 0 0 3px rgba(2, 2, 101, 0.08);
+  border-color: var(--color-focus-border);
+  box-shadow: var(--focus-ring);
 }
 
 .custom-select span.placeholder {

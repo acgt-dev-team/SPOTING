@@ -1,16 +1,22 @@
 <script setup>
 import { computed, ref, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
-import { Plus, Search } from "lucide-vue-next"
+import { Plus } from "lucide-vue-next"
 import api from "../../../src/services/api.js"
 import { t } from "../../i18n"
+import { useToast } from "../../ui/AppToast.vue"
 
+import AppSelect from "../../ui/AppSelect.vue"
 import StatusPill from "../../ui/StatusPill.vue"
 import AppPagination from "../../ui/AppPagination.vue"
+import ConfigTable from "../../ui/ConfigTable.vue"
+import PageHeader from "../../ui/PageHeader.vue"
+import PageToolbar from "../../ui/PageToolbar.vue"
 import AssignTugasanModal from "./components/AssignTugasanModal.vue"
 
 const route = useRoute()
 const router = useRouter()
+const toast = useToast()
 
 const organizationId = route.params.organizationId
 const subOrganizationId = route.params.subOrganizationId
@@ -23,10 +29,20 @@ const profileId = route.params.profileId
 const currentPage = ref(1)
 const pageSize = 10
 
+const tableColumns = [
+  { key: "number", label: t("common.tableNumber"), width: "50px" },
+  { key: "codeName", label: t("configuration.taskList.codeName") },
+  { key: "protocol", label: t("configuration.taskList.protocol"), width: "100px" },
+  { key: "ipRange", label: t("configuration.taskList.ipRange"), width: "180px" },
+  { key: "status", label: t("common.status"), width: "160px" }
+]
+
 // =========================
 // STATE
 // =========================
 const search = ref("")
+const taskProtocolFilter = ref("")
+const taskStatusFilter = ref("")
 const showModal = ref(false)
 const selectedTugasanId = ref(null)
 
@@ -41,14 +57,61 @@ const profile = ref({
 // =========================
 const tasks = ref([])
 const allTugasan = ref([])
+const loading = ref(true)
+
+const taskProtocolFilterOptions = computed(() => {
+  const protocols = Array.from(
+    new Set(
+      tasks.value
+        .map((item) => item.protocol)
+        .filter(Boolean)
+        .map((item) => String(item).toUpperCase())
+    )
+  ).sort()
+
+  return [
+    { label: t("filters.allProtocols"), value: "" },
+    ...protocols.map((item) => ({ label: item, value: item }))
+  ]
+})
+
+const taskStatusFilterOptions = [
+  { label: t("filters.allStatuses"), value: "" },
+  { label: t("status.notStarted"), value: "1" },
+  { label: t("status.inProcess"), value: "2" },
+  { label: t("status.completed"), value: "3" },
+  { label: t("status.failed"), value: "4" }
+]
+
+const hasTaskFilters = computed(() =>
+  Boolean(taskProtocolFilter.value || taskStatusFilter.value)
+)
+
+const hasTaskQuery = computed(() =>
+  Boolean(search.value.trim() || hasTaskFilters.value)
+)
 
 // =========================
 // FILTER
 // =========================
 const filteredTasks = computed(() => {
-  return tasks.value.filter((item) =>
-    item.nama?.toLowerCase().includes(search.value.toLowerCase())
-  )
+  const query = search.value.trim().toLowerCase()
+
+  return tasks.value.filter((item) => {
+    const searchableValues = [item.nama, item.kod, item.protocol]
+    const matchesSearch = !query || searchableValues.some((value) =>
+      String(value || "").toLowerCase().includes(query)
+    )
+
+    const matchesProtocol =
+      !taskProtocolFilter.value ||
+      String(item.protocol || "").toUpperCase() === taskProtocolFilter.value
+    const matchesStatus =
+      !taskStatusFilter.value ||
+      String(item.status || "") === taskStatusFilter.value
+
+    return matchesSearch && matchesProtocol && matchesStatus
+  })
 })
 
 // =========================
@@ -67,11 +130,16 @@ const totalPages = computed(() => {
 // API CALLS
 // =========================
 async function loadTasks() {
+  loading.value = true
+
   try {
     const res = await api.get(`/tugasan/profil/${profileId}`)
     tasks.value = res.data || []
   } catch (err) {
     console.error("Error loading tasks:", err)
+    toast.error(t("common.loadFailed", { entity: t("configuration.taskList.countEntity") }))
+  } finally {
+    loading.value = false
   }
 }
 
@@ -81,6 +149,7 @@ async function loadAllTugasan() {
     allTugasan.value = res.data
   } catch (err) {
     console.error("Error loading all tugasan:", err)
+    toast.error(t("common.loadFailed", { entity: t("configuration.taskList.countEntity") }))
   }
 }
 
@@ -97,8 +166,10 @@ async function assignTask() {
 
     await loadTasks()
     closeModal()
+    toast.success(t("common.saveSuccess", { entity: t("configuration.taskList.countEntity") }))
   } catch (err) {
     console.error("Error assigning task:", err)
+    toast.error(t("common.saveFailed", { entity: t("configuration.taskList.countEntity") }))
   }
 }
 
@@ -108,8 +179,10 @@ async function removeTask(tugasanId) {
   try {
     await api.delete(`/tugasan/profil/${profileId}/${tugasanId}`)
     await loadTasks()
+    toast.success(t("common.deleteSuccess", { entity: t("configuration.taskList.countEntity") }))
   } catch (err) {
     console.error("Error removing task:", err)
+    toast.error(t("common.deleteFailed", { entity: t("configuration.taskList.countEntity") }))
   }
 }
 
@@ -119,6 +192,7 @@ async function removeTask(tugasanId) {
 function handleAssigned() {
   loadTasks()
   showModal.value = false
+  toast.success(t("common.saveSuccess", { entity: t("configuration.taskList.countEntity") }))
 }
 
 watch(showModal, (value) => {
@@ -149,9 +223,14 @@ function goBack() {
 // =========================
 // WATCHERS
 // =========================
-watch(search, () => {
+watch([search, taskProtocolFilter, taskStatusFilter], () => {
   currentPage.value = 1
 })
+
+function clearTaskFilters() {
+  taskProtocolFilter.value = ""
+  taskStatusFilter.value = ""
+}
 
 watch(filteredTasks, () => {
   if (currentPage.value > totalPages.value) {
@@ -171,74 +250,68 @@ onMounted(() => {
 <template>
   <div>
 
-    <!-- Header -->
-    <div class="hierarchy-card">
-      <div class="hierarchy-left">
-        <h2>{{ profile.name }}</h2>
-        <p class="section-desc">{{ profile.description }}</p>
-      </div>
-    </div>
+    <PageHeader
+      :title="profile.name"
+      :description="profile.description"
+    />
 
-    <!-- Toolbar -->
-    <div class="toolbar">
-      <div class="search-box">
-        <Search class="search-icon" :size="18" aria-hidden="true" />
-        <input
-          v-model="search"
-          type="text"
-          :placeholder="t('configuration.shared.search', { entity: t('configuration.taskList.searchEntity') })"
+    <PageToolbar
+      v-model="search"
+      :placeholder="t('configuration.shared.search', { entity: t('configuration.taskList.searchEntity') })"
+      :action-text="t('configuration.taskList.assign')"
+      @action="showModal = true"
+    >
+      <template #filters>
+        <AppSelect
+          v-model="taskProtocolFilter"
+          :label="t('configuration.taskList.protocol')"
+          :options="taskProtocolFilterOptions"
         />
-      </div>
 
-      <button
-        class="ui-button ui-button--primary"
-        @click="showModal = true"
-      >
+        <AppSelect
+          v-model="taskStatusFilter"
+          :label="t('common.status')"
+          :options="taskStatusFilterOptions"
+        />
+
+        <button
+          v-if="hasTaskFilters"
+          class="ui-button ui-button--outline"
+          type="button"
+          @click="clearTaskFilters"
+        >
+          {{ t("filters.clear") }}
+        </button>
+      </template>
+
+      <template #action-icon>
         <Plus :size="18" aria-hidden="true" />
-        {{ t("configuration.taskList.assign") }}
-      </button>
-    </div>
+      </template>
+    </PageToolbar>
 
-    <!-- Title -->
     <div class="page-heading-block">
       <h1 class="main-page-title">{{ t("configuration.taskList.pageTitle") }}</h1>
     </div>
 
-    <!-- Table -->
-    <div class="table-card">
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 50px">{{ t("common.tableNumber") }}</th>
-              <th style="width: 35%">{{ t("configuration.taskList.codeName") }}</th>
-              <th style="width: 100px">{{ t("configuration.taskList.protocol") }}</th>
-              <th style="width: 180px">{{ t("configuration.taskList.ipRange") }}</th>
-              <th style="width: 160px">{{ t("common.status") }}</th>
-            </tr>
-          </thead>
+    <ConfigTable
+      :columns="tableColumns"
+      :loading="loading"
+      :empty="paginatedTasks.length === 0"
+      :empty-message="t('configuration.taskList.empty')"
+      :empty-action-text="hasTaskQuery ? '' : t('configuration.taskList.assign')"
+      min-width="760px"
+      @empty-action="openAddModal"
+    >
 
-          <tbody>
-
-            <!-- ✅ FIXED EMPTY STATE -->
-            <tr v-if="paginatedTasks.length === 0">
-              <td colspan="5" class="empty-cell">
-                {{ t("configuration.taskList.empty") }}
-              </td>
-            </tr>
-
-            <!-- ✅ PAGINATED LOOP -->
             <tr
               v-for="(task, index) in paginatedTasks"
               :key="task.id"
               class="clickable-row"
             >
-              <!-- Bil -->
               <td>
                 {{ (currentPage - 1) * pageSize + index + 1 }}
               </td>
 
-              <!-- Nama -->
               <td>
                 <div class="task-info">
                   <p class="task-name">{{ task.nama }}</p>
@@ -246,7 +319,6 @@ onMounted(() => {
                 </div>
               </td>
 
-              <!-- Protocol -->
               <td>
                 <span
                   class="protocol-badge"
@@ -256,7 +328,6 @@ onMounted(() => {
                 </span>
               </td>
 
-              <!-- IP -->
               <td>
                 <div class="ip-range">
                   <span>{{ task.ip_start || t("common.emptyValue") }}</span>
@@ -265,25 +336,19 @@ onMounted(() => {
                 </div>
               </td>
 
-              <!-- ✅ Status -->
               <td>
                 <StatusPill :status="task.status" />
               </td>
             </tr>
 
-          </tbody>
-        </table>
-      </div>
-    </div>
+    </ConfigTable>
 
-    <!-- ✅ PAGINATION -->
     <AppPagination
       :currentPage="currentPage"
       :totalPages="totalPages"
       @update:page="currentPage = $event"
     />
 
-    <!-- Footer -->
     <div class="footer-bar">
       <button class="ui-button ui-button--outline" @click="goBack">
         {{ t("common.back") }}
@@ -297,7 +362,6 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Modal -->
     <AssignTugasanModal
       v-if="showModal"
       @close="showModal = false"
@@ -317,188 +381,6 @@ onMounted(() => {
   --bg:#F8FAFC;
 }
 
-.page-heading-block{
-  margin-bottom:28px;
-}
-
-.main-page-title{
-  font-size:30px;
-  font-weight:800;
-  color:var(--text);
-  margin:0;
-  letter-spacing:-0.03em;
-}
-
-/* HERO */
-
-.hierarchy-card{
-  background:white;
-
-  border:1px solid var(--border);
-
-  border-radius:20px;
-
-  padding:32px;
-
-  margin-bottom:32px;
-
-  box-shadow:0 1px 2px rgba(15,23,42,.04);
-}
-
-.hierarchy-left h2{
-  margin:0;
-
-  font-size:32px;
-
-  font-weight:800;
-
-  color:var(--text);
-}
-
-.section-desc{
-  margin-top:8px;
-
-  color:var(--muted);
-}
-
-/* TOOLBAR */
-
-.toolbar{
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  gap:16px;
-
-  margin-bottom:28px;
-
-  flex-wrap:wrap;
-}
-
-.search-box{
-  width:100%;
-
-  max-width:360px;
-}
-
-/* SEARCH */
-
-.search-box{
-  width:100%;
-
-  max-width:360px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-
-  background:white;
-
-  border:1px solid var(--border);
-
-  border-radius:14px;
-
-  height:48px;
-
-  padding:0 16px;
-
-  transition:.2s;
-}
-
-.search-box:focus-within{
-  border-color:var(--primary);
-
-  box-shadow:0 0 0 3px rgba(79,70,229,.08);
-}
-
-.search-icon{
-  color:#94A3B8;
-}
-
-.search-box input{
-  border:none;
-
-  background:none;
-
-  width:100%;
-
-  outline:none;
-
-  color:var(--text);
-}
-
-/* BUTTON */
-
-.btn-plus{
-  font-size:18px;
-
-  font-weight:500;
-
-  line-height:1;
-
-  margin-top:-1px;
-}
-
-/* TABLE */
-
-.table-card{
-  background:white;
-
-  border:1px solid var(--border);
-
-  border-radius:20px;
-
-  overflow:hidden;
-
-  box-shadow:0 1px 2px rgba(15,23,42,.04);
-}
-
-.table-scroll{
-  overflow:auto;
-}
-
-table{
-  width:100%;
-
-  border-collapse:collapse;
-}
-
-thead{
-  background:#F8FAFC;
-}
-
-th{
-  text-align:left;
-
-  padding:18px 24px;
-
-  font-size:12px;
-
-  color:#64748B;
-
-  text-transform:uppercase;
-
-  letter-spacing:.04em;
-
-  font-weight:700;
-
-  border-bottom:1px solid var(--border);
-}
-
-td{
-  padding:18px 24px;
-
-  vertical-align:middle;
-
-  border-bottom:1px solid #F1F5F9;
-
-  color:#334155;
-}
-
 .clickable-row{
   transition:.15s;
 }
@@ -506,89 +388,6 @@ td{
 .clickable-row:hover{
   background:#F8FAFC;
 }
-
-.org-cell{
-  display:flex;
-
-  align-items:center;
-
-  gap:14px;
-
-  min-height:40px;
-}
-
-.org-avatar{
-  width:40px;
-
-  height:40px;
-
-  border-radius:12px;
-
-  background:#312E81;
-
-  color:white;
-
-  font-weight:800;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-}
-
-.org-name{
-  margin:0;
-
-  font-weight:700;
-
-  color:#1E293B;
-}
-
-.org-desc{
-  margin-top:4px;
-
-  color:#94A3B8;
-
-  font-size:13px;
-}
-
-.pegawai-cell{
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:center;
-
-  min-height:40px;
-}
-
-.pegawai-name{
-  margin:0;
-
-  font-weight:600;
-
-  color:#334155;
-}
-
-.pegawai-jawatan{
-  margin-top:4px;
-
-  color:#94A3B8;
-
-  font-size:13px;
-}
-
-.empty-cell{
-  text-align:center;
-
-  color:#94A3B8;
-
-  padding:50px;
-}
-
-
-/* FOOTER */
 
 .footer-bar{
   display:flex;
@@ -616,234 +415,8 @@ td{
   color:var(--primary);
 }
 
-/* MODAL */
-
-.fade-enter-active,
-.fade-leave-active{
-  transition:.18s;
-}
-
-.fade-enter-from,
-.fade-leave-to{
-  opacity:0;
-}
-
-.modal-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(15,23,42,.55);
-  backdrop-filter:blur(6px);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:999;
-  padding:24px;
-  overflow-y:auto;
-}
-
-.modal-card{
-  max-width:700px;
-  width:100%;
-  border-radius:20px;
-  background:white;
-  padding:30px !important;
-
-  max-height:95vh;
-  overflow-y:auto;
-}
-
-.modal-card::-webkit-scrollbar{
-  width:8px;
-}
-
-.modal-card::-webkit-scrollbar-thumb{
-  background:#CBD5E1;
-  border-radius:999px;
-}
-
-.modal-card::-webkit-scrollbar-track{
-  background:transparent;
-}
-
-.modal-header{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:28px;
-}
-
-.modal-header h2{
-  font-size:28px;
-  font-weight:800;
-  color:var(--text);
-  margin:0;
-}
-
-.eyebrow{
-  color:var(--primary);
-  font-size:12px;
-  letter-spacing:.12em;
-  font-weight:700;
-}
-
-.form-area{
-  width:100%;
-}
-
-.textarea-field{
-  margin-top:18px;
-}
-
-.textarea-label{
-  display:block;
-  margin-bottom:10px;
-  font-weight:600;
-}
-
-textarea{
-  width:100%;
-  border:1px solid var(--border);
-  background:#F8FAFC;
-  border-radius:14px;
-  padding:14px;
-  resize:none;
-  box-sizing:border-box;
-}
-
-textarea:focus{
-  outline:none;
-  border-color:var(--primary);
-  background:white;
-}
-
-.modal-actions{
-  display:flex;
-  justify-content:flex-end;
-  align-items:center;
-  gap:12px;
-  margin-top:32px;
-  padding-top:20px;
-  border-top:1px solid #F1F5F9;
-  flex-wrap:wrap;
-}
-
-/* APPBUTTON STYLING */
-
-/* DELETE BUTTON */
-
-/* DELETE MODAL */
-
-.delete-modal{
-  background:white;
-  border-radius:20px;
-  padding:28px;
-  width:100%;
-  max-width:480px;
-  border:1px solid var(--border);
-}
-
-.delete-modal h3{
-  text-align:center;
-  font-size:24px;
-  font-weight:900;
-  color:#111827;
-  margin-bottom:8px;
-  width:100%;
-}
-
-.delete-icon{
-  width:64px;
-  height:64px;
-  margin:auto;
-  border-radius:999px;
-  background:#FEF2F2;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.delete-desc{
-  text-align:center;
-  color:#64748B;
-  margin-bottom:22px;
-}
-
-.confirm-box label{
-  display:block;
-  margin-bottom:10px;
-  font-size:14px;
-  font-weight:600;
-  color:#334155;
-}
-
-.org-delete-name{
-  background:#F8FAFC;
-  border:1px solid var(--border);
-  padding:14px;
-  border-radius:12px;
-  margin-bottom:12px;
-  font-weight:700;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-.danger-word{
-  text-align:center;
-  color:#DC2626;
-  font-size:20px;
-  font-weight:800;
-}
-
-.delete-input{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:14px;
-}
-
-.delete-input:focus{
-  outline:none;
-  border-color:#EF4444;
-}
-
-.delete-actions{
-  display:flex;
-  justify-content:flex-end;
-  gap:12px;
-  margin-top:24px;
-}
-
-/* TOAST */
-
-.toast-success{
-  position:fixed;
-  right:24px;
-  bottom:24px;
-  background:white;
-  border:1px solid #DCFCE7;
-  border-radius:14px;
-  padding:14px 18px;
-  box-shadow:0 10px 24px rgba(15,23,42,.08);
-  z-index:9999;
-}
-
-/* RESPONSIVE */
-
 @media(max-width:768px){
 
-  .toolbar{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .search-box{
-    max-width:none;
-    width:100%;
-  }
-
-  .modal-actions,
-  .delete-actions,
   .footer-bar{
     flex-direction:column;
     align-items:stretch;
@@ -866,7 +439,7 @@ textarea:focus{
 
 .task-code {
   font-size: 12px;
-  color: #94a3b8; /* 🔥 softer than current */
+  color: #94a3b8;
   font-weight: 500;
   font-family: inherit;
   margin-top: 2px;
@@ -924,27 +497,9 @@ textarea:focus{
   color: #9ca3af;
 }
 
-.table-card {
-  background: rgba(255, 255, 255, 0.98);
-  border: 1px solid #dbe3ff;
-  border-radius: 30px;
-  overflow: hidden;
-  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
-  width: 100%;
-}
-
-.table-scroll {
-  overflow-x: auto;
-  width: 100%;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
 tbody tr {
   background: #ffffff;
 }
 
 </style>
+

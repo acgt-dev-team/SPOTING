@@ -4,7 +4,8 @@ from app.database.session import get_db
 
 from app.services.dashboard_service import (
     get_dashboard_stats,
-    get_organization_performance
+    get_organization_performance,
+    get_profile_health
 )
 from app.i18n import t
 
@@ -26,5 +27,6 @@ def dashboard(db: Session = Depends(get_db)):
 def dashboard_full(db: Session = Depends(get_db)):
     return {
         "stats": get_dashboard_stats(db),
-        "organizations": get_organization_performance(db)
+        "organizations": get_organization_performance(db),
+        "profile_health": get_profile_health(db)
     }

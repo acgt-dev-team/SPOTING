@@ -18,17 +18,29 @@ const emit = defineEmits(["update:modelValue"])
 const open = ref(false)
 const root = ref(null)
 
+function optionValue(option) {
+  return typeof option === "object" && option !== null && "value" in option
+    ? option.value
+    : option
+}
+
+function optionLabel(option) {
+  return typeof option === "object" && option !== null && "label" in option
+    ? option.label
+    : option
+}
+
 /* Get selected label */
 const selectedLabel = computed(() => {
   const found = props.options.find(
-    (o) => (o.value || o) === props.modelValue
+    (o) => optionValue(o) === props.modelValue
   )
-  return found ? (found.label || found) : (props.placeholder || t("common.select"))
+  return found ? optionLabel(found) : (props.placeholder || t("common.select"))
 })
 
 /* Select option */
 function select(opt) {
-  emit("update:modelValue", opt.value || opt)
+  emit("update:modelValue", optionValue(opt))
   open.value = false
 }
 
@@ -64,11 +76,11 @@ onBeforeUnmount(() => {
       <div v-if="open" class="ui-select__menu">
         <div
           v-for="opt in options"
-          :key="opt.value || opt"
+          :key="optionValue(opt)"
           class="ui-select__option"
           @click.stop="select(opt)"
         >
-          {{ opt.label || opt }}
+          {{ optionLabel(opt) }}
         </div>
       </div>
     </div>

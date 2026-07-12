@@ -1,0 +1,276 @@
+{
+  "$schema": "https://cyclonedx.org/schema/bom-1.5.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:d9c67ad0-2936-465a-a2bf-924bb884df35",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-07-12T08:14:26.181186Z",
+    "component": {
+      "type": "application",
+      "name": "New Server",
+      "properties": [
+        {
+          "name": "spoting:profile-code",
+          "value": "PRF036"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "bom-ref": "spoting-component-74b82b65a108e38a",
+      "type": "application",
+      "name": "OneDrive.Sync.Service.exe",
+      "properties": [
+        {
+          "name": "spoting:executable-path",
+          "value": "C:\\Program Files\\Microsoft OneDrive\\26.106.0603.0003\\OneDrive.Sync.Service.exe"
+        },
+        {
+          "name": "spoting:process-id",
+          "value": "25300"
+        },
+        {
+          "name": "spoting:agent-ip",
+          "value": "169.254.32.153"
+        },
+        {
+          "name": "spoting:task-name",
+          "value": "Network Application Scan"
+        },
+        {
+          "name": "spoting:task-code",
+          "value": "NETWORK_APP"
+        },
+        {
+          "name": "spoting:connection",
+          "value": "TLS://104.208.16.92:443"
+        },
+        {
+          "name": "spoting:role",
+          "value": "CLIENT"
+        },
+        {
+          "name": "spoting:scan-time",
+          "value": "2026-07-03T03:35:56.440078"
+        },
+        {
+          "name": "spoting:connection",
+          "value": "TLS://20.184.175.1:443"
+        }
+      ]
+    },
+    {
+      "bom-ref": "spoting-component-005c3e22b536b813",
+      "type": "application",
+      "name": "msedge.exe",
+      "properties": [
+        {
+          "name": "spoting:executable-path",
+          "value": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+        },
+        {
+          "name": "spoting:process-id",
+          "value": "14924"
+        },
+        {
+          "name": "spoting:agent-ip",
+          "value": "169.254.32.153"
+        },
+        {
+          "name": "spoting:task-name",
+          "value": "Network Application Scan"
+        },
+        {
+          "name": "spoting:task-code",
+          "value": "NETWORK_APP"
+        },
+        {
+          "name": "spoting:connection",
+          "value": "TLS://2606:4700:440b::6812:2715:443"
+        },
+        {
+          "name": "spoting:role",
+          "value": "CLIENT"
+        },
+        {
+          "name": "spoting:scan-time",
+          "value": "2026-07-03T03:35:56.440078"
+        },
+        {
+          "name": "spoting:connection",
+          "value": "TLS://2406:da18:30d:8117:5ae5:bf5d:54b7:1a2a:443"
+        },
+        {
+          "name": "spoting:connection",
+          "value": "TLS://2406:da18:30d:8117:f28a:18d2:e50d:a36e:443"
+        },
+        {
+          "name": "spoting:connection",
+          "value": "TLS://172.188.155.25:443"
+        },
+        {
+          "name": "spoting:connection",
+          "value": "TLS://2606:4700:4408::ac40:9bd1:443"
+        }
+      ]
+    },
+    {
+      "bom-ref": "spoting-component-6d50fba71b64a671",
+      "type": "application",
+      "name": "AnyDesk.exe",
+      "properties": [
+        {
+          "name": "spoting:executable-path",
+          "value": "C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe"
+        },
+        {
+          "name": "spoting:process-id",
+          "value": "8408"
+        },
+        {
+          "name": "spoting:agent-ip",
+          "value": "169.254.32.153"
+        },
+        {
+          "name": "spoting:task-name",
+          "value": "Network Application Scan"
+        },
+        {
+          "name": "spoting:task-code",
+          "value": "NETWORK_APP"
+        },
+        {
+          "name": "spoting:connection",
+          "value": "TLS://15.235.229.125:443"
+        },
+        {
+          "name": "spoting:role",
+          "value": "CLIENT"
+        },
+        {
+          "name": "spoting:scan-time",
+          "value": "2026-07-03T03:35:56.440078"
+        },
+        {
+          "name": "spoting:connection",
+          "value": "TLS://15.235.229.121:443"
+        }
+      ]
+    },
+    {
+      "bom-ref": "spoting-component-41ee32bb80ac412c",
+      "type": "application",
+      "name": "GitHubDesktop.exe",
+      "properties": [
+        {
+          "name": "spoting:executable-path",
+          "value": "C:\\Users\\Admin\\AppData\\Local\\GitHubDesktop\\app-3.6.2\\GitHubDesktop.exe"
+        },
+        {
+          "name": "spoting:process-id",
+          "value": "33964"
+        },
+        {
+          "name": "spoting:agent-ip",
+          "value": "169.254.32.153"
+        },
+        {
+          "name": "spoting:task-name",
+          "value": "Network Application Scan"
+        },
+        {
+          "name": "spoting:task-code",
+          "value": "NETWORK_APP"
+        },
+        {
+          "name": "spoting:connection",
+          "value": "TLS://140.82.114.25:443"
+        },
+        {
+          "name": "spoting:role",
+          "value": "CLIENT"
+        },
+        {
+          "name": "spoting:scan-time",
+          "value": "2026-07-03T03:35:56.440078"
+        }
+      ]
+    },
+    {
+      "bom-ref": "spoting-component-33cfffcb929f5c51",
+      "type": "application",
+      "name": "Code.exe",
+      "properties": [
+        {
+          "name": "spoting:executable-path",
+          "value": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+        },
+        {
+          "name": "spoting:process-id",
+          "value": "14844"
+        },
+        {
+          "name": "spoting:agent-ip",
+          "value": "169.254.32.153"
+        },
+        {
+          "name": "spoting:task-name",
+          "value": "Network Application Scan"
+        },
+        {
+          "name": "spoting:task-code",
+          "value": "NETWORK_APP"
+        },
+        {
+          "name": "spoting:connection",
+          "value": "TLS://2603:1061:14:160::1:443"
+        },
+        {
+          "name": "spoting:role",
+          "value": "CLIENT"
+        },
+        {
+          "name": "spoting:scan-time",
+          "value": "2026-07-03T03:35:56.440078"
+        }
+      ]
+    },
+    {
+      "bom-ref": "spoting-component-b593221e3bcf0ec6",
+      "type": "application",
+      "name": "Network Application Scan",
+      "properties": [
+        {
+          "name": "spoting:process-id",
+          "value": "8648"
+        },
+        {
+          "name": "spoting:agent-ip",
+          "value": "169.254.32.153"
+        },
+        {
+          "name": "spoting:task-name",
+          "value": "Network Application Scan"
+        },
+        {
+          "name": "spoting:task-code",
+          "value": "NETWORK_APP"
+        },
+        {
+          "name": "spoting:connection",
+          "value": "TLS://2603:1040:a06:6::2:443"
+        },
+        {
+          "name": "spoting:role",
+          "value": "CLIENT"
+        },
+        {
+          "name": "spoting:scan-time",
+          "value": "2026-07-03T03:35:56.440078"
+        }
+      ]
+    }
+  ]
+}

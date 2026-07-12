@@ -1,8 +1,10 @@
 <script setup>
+import AppToast from "./ui/AppToast.vue"
 </script>
 
 <template>
   <router-view />
+  <AppToast />
 </template>
 
 <style>

@@ -1,69 +1,161 @@
 <script setup>
-import { ref, onMounted } from "vue"
+import { computed, onMounted, ref } from "vue"
 import api from "../../services/api"
 import { t } from "../../i18n"
+import { useToast } from "../../ui/AppToast.vue"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
 import AppCard from "../../ui/AppCard.vue"
+import PageHeader from "../../ui/PageHeader.vue"
+
+const toast = useToast()
 
 const nama = ref("")
 const username = ref("")
 const email = ref("")
 const phone = ref("")
 const password = ref("")
+const confirmPassword = ref("")
 
-const successMessage = ref("")
-const errorMessage = ref("")
+const loading = ref(true)
+const saving = ref(false)
+const submitAttempted = ref(false)
+const loadError = ref("")
+
+const passwordRuleChecks = computed(() => [
+  {
+    label: t("profileUser.passwordRules.length"),
+    passed: password.value.length >= 8
+  },
+  {
+    label: t("profileUser.passwordRules.upper"),
+    passed: /[A-Z]/.test(password.value)
+  },
+  {
+    label: t("profileUser.passwordRules.lower"),
+    passed: /[a-z]/.test(password.value)
+  },
+  {
+    label: t("profileUser.passwordRules.number"),
+    passed: /\d/.test(password.value)
+  }
+])
+
+const isPasswordStrong = computed(() =>
+  !password.value || passwordRuleChecks.value.every((rule) => rule.passed)
+)
+
+const fieldErrors = computed(() => {
+  const errors = {}
+  const emailValue = email.value.trim()
+  const phoneValue = phone.value.trim()
+
+  if (!nama.value.trim()) {
+    errors.nama = t("validation.nameRequired")
+  }
+
+  if (emailValue && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+    errors.email = t("profileUser.emailInvalid")
+  }
+
+  if (phoneValue && !/^[0-9+\-()\s]{7,20}$/.test(phoneValue)) {
+    errors.phone = t("profileUser.phoneInvalid")
+  }
+
+  if (password.value && !isPasswordStrong.value) {
+    errors.password = t("profileUser.passwordWeak")
+  }
+
+  if (password.value && password.value !== confirmPassword.value) {
+    errors.confirmPassword = t("profileUser.passwordMismatch")
+  }
+
+  if (!password.value && confirmPassword.value) {
+    errors.confirmPassword = t("profileUser.passwordMismatch")
+  }
+
+  return errors
+})
+
+const nameError = computed(() =>
+  fieldErrors.value.nama || ""
+)
+
+const emailError = computed(() =>
+  email.value || submitAttempted.value ? fieldErrors.value.email || "" : ""
+)
+
+const phoneError = computed(() =>
+  phone.value || submitAttempted.value ? fieldErrors.value.phone || "" : ""
+)
+
+const passwordError = computed(() =>
+  password.value || submitAttempted.value ? fieldErrors.value.password || "" : ""
+)
+
+const confirmPasswordError = computed(() =>
+  password.value || confirmPassword.value || submitAttempted.value
+    ? fieldErrors.value.confirmPassword || ""
+    : ""
+)
+
+const canSave = computed(() =>
+  !loading.value &&
+  !saving.value &&
+  Object.keys(fieldErrors.value).length === 0
+)
 
 async function loadProfile() {
+  loading.value = true
+  loadError.value = ""
+
   try {
-    const currentUsername =
-      sessionStorage.getItem("username")
+    const currentUsername = sessionStorage.getItem("username")
 
-    const res = await api.get(
-      `/auth/profile/${currentUsername}`
-    )
+    const res = await api.get(`/auth/profile/${currentUsername}`)
 
-    nama.value = res.data.nama
-    username.value = res.data.username
+    nama.value = res.data.nama || ""
+    username.value = res.data.username || ""
     email.value = res.data.email || ""
     phone.value = res.data.phone || ""
-
   } catch (err) {
     console.error(err)
-
-    errorMessage.value = t("profileUser.errorLoad")
+    loadError.value = t("profileUser.errorLoad")
+    toast.error(t("profileUser.errorLoad"))
+  } finally {
+    loading.value = false
   }
 }
 
 async function saveProfile() {
+  submitAttempted.value = true
 
-  successMessage.value = ""
-  errorMessage.value = ""
+  if (!canSave.value) {
+    toast.warning(t("validation.completeBeforeSave"))
+    return
+  }
+
+  saving.value = true
 
   try {
-
-    await api.put(
-      `/auth/profile/${username.value}`,
-      {
-        nama: nama.value,
-        email: email.value,
-        phone: phone.value,
-        password: password.value || null
-      }
-    )
+    await api.put(`/auth/profile/${username.value}`, {
+      nama: nama.value.trim(),
+      email: email.value.trim() || null,
+      phone: phone.value.trim() || null,
+      password: password.value || null
+    })
 
     password.value = ""
+    confirmPassword.value = ""
+    submitAttempted.value = false
 
-    successMessage.value = t("profileUser.successSave")
-
+    toast.success(t("profileUser.successSave"))
   } catch (err) {
-
     console.error(err)
-
-    errorMessage.value = t("profileUser.errorSave")
-
+    toast.error(t("profileUser.errorSave"))
+  } finally {
+    saving.value = false
   }
 }
 
@@ -72,234 +164,246 @@ onMounted(loadProfile)
 
 <template>
   <div>
+    <PageHeader
+      :title="t('profileUser.title')"
+      :description="t('profileUser.description')"
+    />
 
-    <!-- HEADER -->
-    <div class="hierarchy-card">
-      <div class="hierarchy-left">
-        <h2>{{ t("profileUser.title") }}</h2>
-
-        <p class="section-desc">
-          {{ t("profileUser.description") }}
-        </p>
-      </div>
+    <div v-if="loadError" class="profile-alert">
+      <strong>{{ loadError }}</strong>
+      <button
+        class="ui-button ui-button--outline"
+        type="button"
+        :disabled="loading"
+        @click="loadProfile"
+      >
+        {{ t("dashboard.refresh") }}
+      </button>
     </div>
 
-    <!-- FORM CARD -->
-    <AppCard class="profile-card">
+    <AppCard v-if="loading" class="profile-card profile-loading">
+      {{ t("profileUser.loading") }}
+    </AppCard>
 
-      <div class="card-header">
-        <p class="eyebrow">{{ t("profileUser.eyebrow") }}</p>
-        <h3>{{ t("profileUser.accountInfo") }}</h3>
-      </div>
+    <div v-else class="profile-layout">
+      <AppCard class="profile-card">
+        <div class="card-header">
+          <p class="eyebrow">{{ t("profileUser.eyebrow") }}</p>
+          <h3>{{ t("profileUser.accountInfo") }}</h3>
+          <p>{{ t("profileUser.accountInfoDescription") }}</p>
+        </div>
 
-      <div class="form-grid">
+        <div class="form-grid">
+          <AppInput
+            v-model="nama"
+            :label="t('common.name')"
+            :placeholder="t('profileUser.namePlaceholder')"
+            :disabled="saving"
+            :error="nameError"
+            autocomplete="name"
+          />
 
-        <AppInput
-          v-model="nama"
-          :label="t('common.name')"
-          :placeholder="t('profileUser.namePlaceholder')"
-        />
+          <AppInput
+            v-model="username"
+            :label="t('auth.username')"
+            disabled
+            autocomplete="username"
+          />
 
-        <AppInput
-          v-model="username"
-          :label="t('auth.username')"
-          disabled
-        />
+          <AppInput
+            v-model="email"
+            :label="t('profileUser.email')"
+            :placeholder="t('profileUser.emailPlaceholder')"
+            :disabled="saving"
+            :error="emailError"
+            autocomplete="email"
+          />
 
-        <AppInput
-          v-model="email"
-          :label="t('profileUser.email')"
-          :placeholder="t('profileUser.emailPlaceholder')"
-        />
+          <AppInput
+            v-model="phone"
+            :label="t('profileUser.phone')"
+            :placeholder="t('profileUser.phonePlaceholder')"
+            :disabled="saving"
+            :error="phoneError"
+            autocomplete="tel"
+          />
+        </div>
+      </AppCard>
 
-        <AppInput
-          v-model="phone"
-          :label="t('profileUser.phone')"
-          :placeholder="t('profileUser.phonePlaceholder')"
-        />
+      <AppCard class="profile-card">
+        <div class="card-header">
+          <p class="eyebrow">{{ t("profileUser.security") }}</p>
+          <h3>{{ t("profileUser.newPassword") }}</h3>
+          <p>{{ t("profileUser.securityDescription") }}</p>
+        </div>
 
-        <AppInput
-          v-model="password"
-          :label="t('profileUser.newPassword')"
-          type="password"
-          :placeholder="t('profileUser.passwordPlaceholder')"
-        />
+        <div class="form-grid">
+          <AppInput
+            v-model="password"
+            :label="t('profileUser.newPassword')"
+            type="password"
+            :placeholder="t('profileUser.passwordPlaceholder')"
+            :disabled="saving"
+            :error="passwordError"
+            :hint="t('profileUser.passwordHint')"
+            autocomplete="new-password"
+          />
 
-      </div>
+          <AppInput
+            v-model="confirmPassword"
+            :label="t('profileUser.confirmPassword')"
+            type="password"
+            :placeholder="t('profileUser.confirmPasswordPlaceholder')"
+            :disabled="saving"
+            :error="confirmPasswordError"
+            autocomplete="new-password"
+          />
+        </div>
 
-      <div
-        v-if="successMessage"
-        class="success-message"
-      >
-        {{ successMessage }}
-      </div>
-
-      <div
-        v-if="errorMessage"
-        class="error-message"
-      >
-        {{ errorMessage }}
-      </div>
+        <div
+          v-if="password"
+          class="password-rules"
+          aria-live="polite"
+        >
+          <span
+            v-for="rule in passwordRuleChecks"
+            :key="rule.label"
+            class="password-rule"
+            :class="{ passed: rule.passed }"
+          >
+            {{ rule.label }}
+          </span>
+        </div>
+      </AppCard>
 
       <div class="action-bar">
         <AppButton
-          :text="t('common.saveChanges')"
+          :text="saving ? t('common.saving') : t('common.saveChanges')"
+          :disabled="!canSave"
           @click="saveProfile"
         />
       </div>
-
-    </AppCard>
-
+    </div>
   </div>
 </template>
 
 <style scoped>
+.profile-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-/* PAGE HEADER */
-.hierarchy-card {
+.profile-card {
+  padding: 32px !important;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-loading {
+  min-height: 180px;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+}
+
+.profile-alert {
   margin-bottom: 20px;
+  padding: 16px;
+  border: 1px solid rgba(220, 38, 38, 0.22);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
 }
 
-.hierarchy-left h2 {
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.card-header {
+  margin-bottom: 24px;
+}
+
+.card-header h3 {
   margin: 0;
-  font-size: 28px;
-  font-weight: 700;
+  color: var(--color-text);
+  font-size: 22px;
+  font-weight: var(--font-weight-extrabold);
 }
 
-.section-desc {
-  margin-top: 8px;
-  color: #6b7280;
-  max-width: 700px;
+.card-header p:last-child {
+  max-width: 760px;
+  margin: 8px 0 0;
+  color: var(--color-text-muted);
   line-height: 1.6;
 }
 
-.eyebrow{
-  color:#4F46E5;
-  font-size:12px;
-  letter-spacing:.12em;
-  font-weight:700;
-  margin-bottom:8px;
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
 }
 
-/* CARD */
-:root{
-  --primary:#4F46E5;
-  --primary-soft:#EEF2FF;
-  --text:#0F172A;
-  --muted:#64748B;
-  --border:#E2E8F0;
-  --bg:#F8FAFC;
+.password-rules {
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-/* HEADER */
-
-.hierarchy-card{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:32px;
-  margin-bottom:32px;
-  box-shadow:0 1px 2px rgba(15,23,42,.04);
+.password-rule {
+  min-height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-muted);
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
 }
 
-.hierarchy-left h2{
-  margin:0;
-  font-size:32px;
-  font-weight:800;
-  color:var(--text);
+.password-rule.passed {
+  border-color: transparent;
+  background: var(--color-success-soft);
+  color: var(--color-success);
 }
 
-.section-desc{
-  margin-top:8px;
-  color:var(--muted);
-  font-size:15px;
-  line-height:1.6;
-  max-width:720px;
+.action-bar {
+  padding-top: 4px;
+  display: flex;
+  justify-content: flex-end;
 }
 
-/* CARD */
-
-.profile-card{
-  padding:32px !important;
-  border-radius:20px;
-  border:1px solid var(--border);
-  box-shadow:0 1px 2px rgba(15,23,42,.04);
-}
-
-.card-header{
-  margin-bottom:28px;
-}
-
-.card-header h3{
-  margin:0;
-  font-size:22px;
-  font-weight:800;
-  color:var(--text);
-}
-
-/* FORM */
-
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
-/* SUCCESS */
-
-.success-message{
-  margin-top:24px;
-  padding:14px 16px;
-  border-radius:14px;
-  background:#ECFDF5;
-  border:1px solid #BBF7D0;
-  color:#166534;
-  font-size:14px;
-  font-weight:600;
-}
-
-/* ERROR */
-
-.error-message{
-  margin-top:24px;
-  padding:14px 16px;
-  border-radius:14px;
-  background:#FEF2F2;
-  border:1px solid #FECACA;
-  color:#B91C1C;
-  font-size:14px;
-  font-weight:600;
-}
-
-/* ACTIONS */
-
-.action-bar{
-  margin-top:32px;
-  padding-top:24px;
-  border-top:1px solid #F1F5F9;
-  display:flex;
-  justify-content:flex-end;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-  .form-grid{
-    grid-template-columns:1fr;
+@media(max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
   }
 
-  .profile-card{
-    padding:24px !important;
+  .profile-card {
+    padding: 24px !important;
   }
 
-  .hierarchy-card{
-    padding:24px;
+  .profile-alert {
+    align-items: stretch;
+    flex-direction: column;
   }
 
-  .hierarchy-left h2{
-    font-size:28px;
+  .profile-alert .ui-button,
+  .action-bar .ui-button {
+    width: 100%;
   }
-
 }
 </style>

@@ -12,6 +12,10 @@ const props = defineProps({
   full: {
     type: Boolean,
     default: false
+  },
+  disabled: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -25,9 +29,11 @@ const classes = computed(() => [
 <template>
   <button
     :class="classes"
+    :disabled="disabled"
     @click="$emit('click')"
     type="button"
   >
+    <slot name="icon" />
     {{ text }}
   </button>
 </template>

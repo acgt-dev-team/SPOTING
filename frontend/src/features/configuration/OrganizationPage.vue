@@ -1,16 +1,22 @@
 <script setup>
 import { ref, computed, onMounted, watch } from "vue"
 import { useRouter } from "vue-router"
-import { CircleCheck, Pencil, Plus, Search, Trash2, X } from "lucide-vue-next"
+import { Pencil, Plus } from "lucide-vue-next"
 import api from "../../services/api"
 import { t } from "../../i18n"
+import { useToast } from "../../ui/AppToast.vue"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
-import AppCard from "../../ui/AppCard.vue"
 import AppPagination from "../../ui/AppPagination.vue"
+import ConfigTable from "../../ui/ConfigTable.vue"
+import ConfirmActionModal from "../../ui/ConfirmActionModal.vue"
+import FormModal from "../../ui/FormModal.vue"
+import PageHeader from "../../ui/PageHeader.vue"
+import PageToolbar from "../../ui/PageToolbar.vue"
 
 const router = useRouter()
+const toast = useToast()
 
 const search = ref("")
 const showModal = ref(false)
@@ -25,31 +31,42 @@ const pegawai_tadbir = ref("")
 const jawatan = ref("")
 
 const organizations = ref([])
+const loading = ref(true)
 
 /* DELETE UX */
 const showDeleteModal = ref(false)
-const showToast = ref(false)
 const deleteConfirmText = ref("")
 
-// ✅ PAGINATION (ADDED)
 const currentPage = ref(1)
 const pageSize = 10
+
+const tableColumns = [
+  { key: "code", label: t("common.code"), width: "80px" },
+  { key: "name", label: t("configuration.organization.name") },
+  { key: "officer", label: t("common.officer"), width: "220px" },
+  { key: "subOrganizations", label: t("dashboard.statLabels.subOrganization"), width: "180px", nowrap: true },
+  { key: "sites", label: t("dashboard.statLabels.site"), width: "140px" },
+  { key: "tasks", label: t("dashboard.statLabels.task"), width: "180px" },
+  { key: "actions", label: t("common.actions"), width: "140px" }
+]
 
 // =========================
 // LOAD DATA
 // =========================
 async function loadOrganisasi() {
+  loading.value = true
+
   try {
     const res = await api.get("/organisasi/pelanggan/1")
     organizations.value = res.data || []
   } catch (err) {
     console.error("Failed to load organisasi:", err)
+    toast.error(t("common.loadFailed", { entity: t("configuration.organization.countEntity") }))
+  } finally {
+    loading.value = false
   }
 }
 
-// =========================
-// FILTER (UNCHANGED)
-// =========================
 const filteredOrganizations = computed(() => {
   return organizations.value
     .filter((org) =>
@@ -66,23 +83,19 @@ const filteredOrganizations = computed(() => {
     })
 })
 
-// ✅ PAGINATION SLICE (ADDED)
 const paginatedOrganizations = computed(() => {
   const start = (currentPage.value - 1) * pageSize
   return filteredOrganizations.value.slice(start, start + pageSize)
 })
 
-// ✅ TOTAL PAGES (ADDED)
 const totalPages = computed(() => {
   return Math.ceil(filteredOrganizations.value.length / pageSize)
 })
 
-// ✅ RESET PAGE WHEN SEARCH (ADDED)
 watch(search, () => {
   currentPage.value = 1
 })
 
-// ✅ PREVENT EMPTY PAGE (ADDED)
 watch(filteredOrganizations, () => {
   if (currentPage.value > totalPages.value) {
     currentPage.value = totalPages.value || 1
@@ -99,9 +112,6 @@ const canDelete = computed(() => {
   return deleteConfirmText.value.trim().toLowerCase() === t("common.deleteKeyword").toLowerCase()
 })
 
-// =========================
-// MODAL (UNCHANGED)
-// =========================
 function openModal() {
   editingId.value = null
   nama.value = ""
@@ -124,14 +134,11 @@ function editOrganization(org) {
   showModal.value = true
 }
 
-// =========================
-// ADD / UPDATE (UNCHANGED)
-// =========================
 async function saveOrganization() {
   if (saving.value) return
 
   if (!nama.value.trim()) {
-    alert(t("validation.organizationNameRequired"))
+    toast.warning(t("validation.organizationNameRequired"))
     return
   }
 
@@ -155,17 +162,16 @@ async function saveOrganization() {
 
     await loadOrganisasi()
     closeModal()
+    toast.success(t("common.saveSuccess", { entity: t("configuration.organization.countEntity") }))
 
   } catch (err) {
     console.error("Save failed:", err)
+    toast.error(t("common.saveFailed", { entity: t("configuration.organization.countEntity") }))
   } finally {
     saving.value = false
   }
 }
 
-// =========================
-// DELETE (UNCHANGED)
-// =========================
 function handleDelete() {
   deleteConfirmText.value = ""
   showDeleteModal.value = true
@@ -186,20 +192,14 @@ async function confirmDelete() {
     showDeleteModal.value = false
     closeModal()
 
-    showToast.value = true
-
-    setTimeout(() => {
-      showToast.value = false
-    }, 1600)
+    toast.success(t("configuration.organization.deleteSuccess"))
 
   } catch (err) {
     console.error("Delete failed:", err)
+    toast.error(t("common.deleteFailed", { entity: t("configuration.organization.countEntity") }))
   }
 }
 
-// =========================
-// NAVIGATION (UNCHANGED)
-// =========================
 function goToSubOrganisasi(org) {
   router.push(`/admin/configuration/sub-organisasi/${org.id}`)
 }
@@ -212,60 +212,36 @@ onMounted(() => {
 <template>
   <div>
 
-    <div class="hierarchy-card">
-      <div class="hierarchy-left">
-        <h2>{{ t("configuration.organization.title") }}</h2>
-        <p class="section-desc">
-          {{ t("configuration.organization.description") }}
-        </p>
-      </div>
-    </div>
+    <PageHeader
+      :title="t('configuration.organization.title')"
+      :description="t('configuration.organization.description')"
+    />
 
-    <div class="toolbar">
-      <div class="search-box">
-        <Search class="search-icon" :size="18" aria-hidden="true" />
-        <input
-          v-model="search"
-          type="text"
-          :placeholder="t('configuration.shared.search', { entity: t('configuration.organization.searchEntity') })"
-        />
-      </div>
-
-      <button class="ui-button ui-button--primary" @click="openModal">
+    <PageToolbar
+      v-model="search"
+      :placeholder="t('configuration.shared.search', { entity: t('configuration.organization.searchEntity') })"
+      :action-text="t('configuration.organization.add')"
+      @action="openModal"
+    >
+      <template #action-icon>
         <Plus :size="18" aria-hidden="true" />
-        {{ t("configuration.organization.add") }}
-      </button>
-    </div>
+      </template>
+    </PageToolbar>
 
     <div class="page-heading-block">
       <h1 class="main-page-title">{{ t("configuration.organization.pageTitle") }}</h1>
     </div>
 
-    <div class="table-card">
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr>
-              <th style="width:80px">{{ t("common.code") }}</th>
-              <th>{{ t("configuration.organization.name") }}</th>
-              <th style="width:220px">{{ t("common.officer") }}</th>
-              <th style="width:180px">{{ t("dashboard.statLabels.subOrganization") }}</th>
-              <th style="width:140px">{{ t("dashboard.statLabels.site") }}</th>
-              <th style="width:180px">{{ t("dashboard.statLabels.task") }}</th>
-              <th style="width:140px">{{ t("common.actions") }}</th>
-            </tr>
-          </thead>
+    <ConfigTable
+      :columns="tableColumns"
+      :loading="loading"
+      :empty="paginatedOrganizations.length === 0"
+      :empty-message="t('configuration.organization.empty')"
+      :empty-action-text="search.trim() ? '' : t('configuration.organization.add')"
+      min-width="1080px"
+      @empty-action="openModal"
+    >
 
-          <tbody>
-
-            <!-- ✅ FIXED -->
-            <tr v-if="paginatedOrganizations.length === 0">
-              <td colspan="7" class="empty-cell">
-                {{ t("configuration.organization.empty") }}
-              </td>
-            </tr>
-
-            <!-- ✅ PAGINATION LOOP -->
             <tr
               v-for="(org,index) in paginatedOrganizations"
               :key="org.id"
@@ -303,7 +279,7 @@ onMounted(() => {
               <td>{{ org.tugasan_count }}</td>
 
               <td>
-                <div style="display:flex; gap:8px;">
+                <div class="config-row-actions">
                   <button
                     class="ui-icon-button"
                     :title="t('configuration.organization.edit')"
@@ -316,12 +292,8 @@ onMounted(() => {
               </td>
 
             </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    </ConfigTable>
 
-    <!-- ✅ PAGINATION ADDED -->
     <AppPagination
       :currentPage="currentPage"
       :totalPages="totalPages"
@@ -337,29 +309,12 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- MAIN MODAL -->
-    <transition name="fade">
-      <div v-if="showModal" class="modal-overlay">
-
-        <AppCard class="modal-card">
-
-          <div class="modal-header">
-            <div>
-              <p class="eyebrow">{{ t("configuration.shared.addData") }}</p>
-              <h2>
-                {{ editingId ? t("configuration.organization.edit") : t("configuration.organization.add") }}
-              </h2>
-            </div>
-
-            <button
-              class="ui-icon-button"
-              :title="t('common.close')"
-              :aria-label="t('common.close')"
-              @click="closeModal"
-            >
-              <X :size="18" aria-hidden="true" />
-            </button>
-          </div>
+    <FormModal
+      :show="showModal"
+      :eyebrow="t('configuration.shared.addData')"
+      :title="editingId ? t('configuration.organization.edit') : t('configuration.organization.add')"
+      @close="closeModal"
+    >
 
           <div class="form-area">
 
@@ -393,7 +348,7 @@ onMounted(() => {
 
           </div>
 
-          <div class="modal-actions">
+          <template #actions>
 
             <button
               v-if="editingId"
@@ -419,82 +374,19 @@ onMounted(() => {
   @click="saveOrganization"
 />
 
-          </div>
+          </template>
 
-        </AppCard>
+    </FormModal>
 
-      </div>
-    </transition>
-
-    <!-- DELETE MODAL -->
-    <transition name="fade">
-      <div v-if="showDeleteModal" class="modal-overlay">
-
-        <div class="delete-modal">
-
-          <div class="delete-icon">
-            <Trash2 :size="28" aria-hidden="true" />
-          </div>
-
-          <h3>
-            {{ t("common.deleteTitle", { name: selectedOrganization?.nama || t("common.emptyValue") }) }}
-          </h3>
-
-          <p class="delete-desc">
-            {{ t("common.deleteWarning") }}
-          </p>
-
-          <div class="confirm-box">
-
-            <label>
-              {{ t("common.typeToConfirm", { keyword: t("common.deleteKeyword") }) }}
-            </label>
-
-            <div class="org-delete-name danger-word">
-              {{ t("common.deleteKeyword") }}
-            </div>
-
-            <input
-              v-model="deleteConfirmText"
-              class="delete-input"
-              type="text"
-              :placeholder="t('common.typeKeyword', { keyword: t('common.deleteKeyword') })"
-            />
-
-          </div>
-
-          <div class="delete-actions">
-
-            <button
-              class="ui-button ui-button--outline"
-              @click="closeDeleteModal"
-            >
-              {{ t("common.cancel") }}
-            </button>
-
-            <button
-              type="button"
-              class="ui-button ui-button--danger"
-              :disabled="!canDelete"
-              @click="confirmDelete"
-            >
-              {{ t("common.deleteNow") }}
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-    </transition>
-
-    <!-- TOAST -->
-    <transition name="fade">
-      <div v-if="showToast" class="toast-success">
-        <CircleCheck :size="18" aria-hidden="true" />
-        {{ t("configuration.organization.deleteSuccess") }}
-      </div>
-    </transition>
+    <ConfirmActionModal
+      v-model="deleteConfirmText"
+      :show="showDeleteModal"
+      :title="t('common.deleteTitle', { name: selectedOrganization?.nama || t('common.emptyValue') })"
+      :keyword="t('common.deleteKeyword')"
+      :disabled="!canDelete"
+      @close="closeDeleteModal"
+      @confirm="confirmDelete"
+    />
 
   </div>
 </template>
@@ -510,166 +402,6 @@ onMounted(() => {
   --bg:#F8FAFC;
 }
 
-.page-heading-block{
-  margin-bottom:28px;
-}
-
-.main-page-title{
-  font-size:30px;
-  font-weight:800;
-  color:var(--text);
-  margin:0;
-  letter-spacing:-0.03em;
-}
-
-.toolbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:16px;
-  margin-bottom:28px;
-  flex-wrap:wrap;
-}
-
-/* SEARCH */
-
-.search-box{
-  width:100%;
-  max-width:360px;
-
-  display:flex;
-  align-items:center;
-  gap:12px;
-
-  background:white;
-
-  border:1px solid var(--border);
-
-  border-radius:14px;
-
-  height:48px;
-
-  padding:0 16px;
-
-  transition:.2s;
-}
-
-.search-box:focus-within{
-  border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(79,70,229,.08);
-}
-
-.search-icon{
-  color:#94A3B8;
-}
-
-.search-box input{
-  border:none;
-  background:none;
-  width:100%;
-  outline:none;
-  color:var(--text);
-}
-
-/* HERO */
-
-.hierarchy-card{
-  background:white;
-
-  border:1px solid var(--border);
-
-  border-radius:20px;
-
-  padding:32px;
-
-  margin-bottom:32px;
-
-  box-shadow:0 1px 2px rgba(15,23,42,.04);
-}
-
-.hierarchy-left h2{
-  margin:0;
-
-  font-size:32px;
-
-  font-weight:800;
-
-  color:var(--text);
-}
-
-.section-desc{
-  margin-top:8px;
-
-  color:var(--muted);
-}
-
-/* BUTTON */
-
-.btn-plus{
-  font-size:18px;
-
-  font-weight:500;
-
-  line-height:1;
-
-  margin-top:-1px;
-}
-
-/* TABLE */
-
-.table-card{
-  background:white;
-
-  border:1px solid var(--border);
-
-  border-radius:20px;
-
-  overflow:hidden;
-
-  box-shadow:0 1px 2px rgba(15,23,42,.04);
-}
-
-.table-scroll{
-  overflow:auto;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-thead{
-  background:#F8FAFC;
-}
-
-th{
-  text-align:left;
-
-  padding:18px 24px;
-
-  font-size:12px;
-
-  color:#64748B;
-
-  text-transform:uppercase;
-
-  letter-spacing:.04em;
-
-  font-weight:700;
-
-  border-bottom:1px solid var(--border);
-}
-
-td{
-  text-align:left;
-
-  padding:18px 24px;
-
-  border-bottom:1px solid #F1F5F9;
-
-  color:#334155;
-}
-
 .clickable-row{
   transition:.15s;
 }
@@ -677,8 +409,6 @@ td{
 .clickable-row:hover{
   background:#F8FAFC;
 }
-
-/* ORG */
 
 .org-cell{
   display:flex;
@@ -740,16 +470,6 @@ td{
   font-size:13px;
 }
 
-.empty-cell{
-  text-align:center;
-
-  color:#94A3B8;
-
-  padding:50px;
-}
-
-/* FOOTER */
-
 .footer-bar{
   display:flex;
 
@@ -772,64 +492,6 @@ td{
 
 .count-pill strong{
   color:var(--primary);
-}
-
-/* MODAL */
-
-.modal-overlay{
-  position:fixed;
-
-  inset:0;
-
-  background:rgba(15,23,42,.55);
-
-  backdrop-filter:blur(6px);
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  z-index:999;
-}
-
-.modal-card{
-  max-width:700px;
-
-  width:100%;
-
-  border-radius:20px;
-
-  background:white;
-
-  padding:30px !important;
-}
-
-.modal-header{
-  display:flex;
-
-  justify-content:space-between;
-
-  margin-bottom:28px;
-}
-
-.modal-header h2{
-  font-size:28px;
-
-  font-weight:800;
-
-  color:var(--text);
-}
-
-.eyebrow{
-  color:var(--primary);
-
-  font-size:12px;
-
-  letter-spacing:.12em;
-
-  font-weight:700;
 }
 
 .textarea-field{
@@ -861,201 +523,21 @@ textarea{
 textarea:focus{
   outline:none;
 
-  border-color:var(--primary);
+  border-color:var(--color-focus-border);
 
   background:white;
-}
 
-.modal-actions{
-  display:flex;
-
-  justify-content:flex-end;
-
-  align-items:center;
-
-  gap:12px;
-
-  margin-top:32px;
-
-  padding-top:20px;
-
-  border-top:1px solid #F1F5F9;
-}
-
-/* Normal AppButton only */
-
-/* Save / Update */
-
-/* Batal */
-
-/* KEEP PADAM RED */
-
-/* DELETE BUTTON INSIDE EDIT MODAL */
-
-/* DELETE MODAL */
-
-.delete-desc{
-  text-align:center;
-
-  color:#64748B;
-
-  margin-bottom:22px;
-}
-
-.confirm-box label{
-  display:block;
-
-  margin-bottom:10px;
-
-  font-size:14px;
-
-  font-weight:600;
-
-  color:#334155;
-}
-
-.org-delete-name{
-  background:#F8FAFC;
-
-  border:1px solid var(--border);
-
-  padding:14px;
-
-  border-radius:12px;
-
-  margin-bottom:12px;
-
-  font-weight:700;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  text-align:center;
-}
-
-.danger-word{
-  text-align:center;
-
-  color:#DC2626;
-
-  font-size:20px;
-
-  font-weight:800;
-}
-
-.delete-actions{
-  display:flex;
-
-  justify-content:flex-end;
-
-  gap:12px;
-
-  margin-top:24px;
-}
-
-/* DELETE */
-
-.delete-modal{
-  background:white;
-
-  border-radius:20px;
-
-  padding:28px;
-
-  width:100%;
-
-  max-width:480px;
-
-  border:1px solid var(--border);
-}
-
-.delete-modal h3{
-  text-align:center;
-
-  font-size:24px;
-
-  font-weight:900;
-
-  color:#111827;
-
-  margin-bottom:8px;
-
-  width:100%;
-}
-
-.delete-icon{
-  width:64px;
-
-  height:64px;
-
-  margin:auto;
-
-  border-radius:999px;
-
-  background:#FEF2F2;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-}
-
-.delete-input{
-  width:100%;
-
-  border:1px solid var(--border);
-
-  border-radius:12px;
-
-  padding:14px;
-}
-
-.delete-input:focus{
-  outline:none;
-
-  border-color:#EF4444;
-}
-
-/* TOAST */
-
-.toast-success{
-  position:fixed;
-
-  right:24px;
-
-  bottom:24px;
-
-  background:white;
-
-  border:1px solid #DCFCE7;
-
-  border-radius:14px;
-
-  padding:14px 18px;
-
-  box-shadow:0 10px 24px rgba(15,23,42,.08);
-
-  z-index:9999;
+  box-shadow:var(--focus-ring);
 }
 
 @media(max-width:768px){
 
-.toolbar{
-flex-direction:column;
-align-items:stretch;
-}
-
-.search-box{
-max-width:none;
-}
-
-.modal-actions,
-.delete-actions{
-flex-direction:column;
+.footer-bar{
+  flex-direction:column;
+  align-items:stretch;
 }
 
 }
 
 </style>
+

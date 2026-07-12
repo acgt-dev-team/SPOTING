@@ -5,11 +5,13 @@ import { Pencil, Plus, Search, X } from "lucide-vue-next"
 import AddTugasanModal from "./AddTugasanModal.vue"
 import api from "../../../services/api"
 import { t } from "../../../i18n"
+import { useToast } from "../../../ui/AppToast.vue"
 
 const emit = defineEmits(["close", "assigned"])
 
 const route = useRoute()
 const profileId = route.params.profileId
+const toast = useToast()
 
 const tugasanList = ref([])
 const showAdd = ref(false)
@@ -29,6 +31,7 @@ async function loadTugasan() {
     tugasanList.value = res.data || []
   } catch (err) {
     console.error("Failed to load tugasan:", err)
+    toast.error(t("common.loadFailed", { entity: t("configuration.taskList.countEntity") }))
   } finally {
     loading.value = false
   }
@@ -41,6 +44,7 @@ async function loadAssigned() {
     originalIds.value = [...selectedIds.value]
   } catch (err) {
     console.error("Failed to load assigned:", err)
+    toast.error(t("common.loadFailed", { entity: t("configuration.taskList.countEntity") }))
   }
 }
 
@@ -94,6 +98,7 @@ function closeSideModal() {
 function onSaved() {
   closeSideModal()
   loadTugasan()
+  toast.success(t("common.saveSuccess", { entity: t("configuration.taskList.countEntity") }))
 }
 
 async function handleSubmit() {
@@ -124,6 +129,7 @@ async function handleSubmit() {
 
   } catch (err) {
     console.error("Update failed:", err)
+    toast.error(t("common.saveFailed", { entity: t("configuration.taskList.countEntity") }))
   } finally {
     saving.value = false
   }
@@ -441,8 +447,8 @@ onMounted(() => {
 }
 
 .search-box:focus-within{
-  border-color:#4F46E5;
-  box-shadow:0 0 0 3px rgba(79,70,229,.08);
+  border-color:var(--color-focus-border);
+  box-shadow:var(--focus-ring);
 }
 
 .search-box input {

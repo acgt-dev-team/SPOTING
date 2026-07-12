@@ -3,10 +3,12 @@ import { reactive, ref, onMounted, computed, watch } from "vue"
 import { X } from "lucide-vue-next"
 import api from "../../../services/api"
 import { t } from "../../../i18n"
+import { useToast } from "../../../ui/AppToast.vue"
 
 import AppSelect from "../../../ui/AppSelect.vue"
 
 const emit = defineEmits(["close", "saved"])
+const toast = useToast()
 
 const saving = ref(false)
 
@@ -83,12 +85,17 @@ async function fetchJenis() {
     jenisList.value = res.data || []
   } catch (err) {
     console.error("Failed to fetch jenis:", err)
+    toast.error(t("common.loadFailed", { entity: t("configuration.taskList.countEntity") }))
   }
 }
 
 async function handleSave() {
   if (saving.value) return
-  if (!form.nama || !form.jenis_id) return
+
+  if (!form.nama || !form.jenis_id) {
+    toast.warning(t("validation.completeBeforeSave"))
+    return
+  }
 
   try {
     saving.value = true
@@ -115,6 +122,7 @@ async function handleSave() {
 
   } catch (err) {
     console.error("Failed to save tugasan:", err)
+    toast.error(t("common.saveFailed", { entity: t("configuration.taskList.countEntity") }))
   } finally {
     saving.value = false
   }
@@ -420,9 +428,9 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: #4F46E5;
+  border-color: var(--color-focus-border);
   background: white;
-  box-shadow: 0 0 0 3px rgba(79,70,229,.08);
+  box-shadow: var(--focus-ring);
 }
 
 textarea {
