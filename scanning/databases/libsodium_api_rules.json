@@ -1,0 +1,4832 @@
+{
+    "sodium_init": {
+        "library": "Libsodium",
+        "header": "core.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_misuse": {
+        "library": "Libsodium",
+        "header": "core.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_set_misuse_handler": {
+        "library": "Libsodium",
+        "header": "core.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis128l_abytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis128l.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis128l_decrypt": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis128l.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis128l_decrypt_detached": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis128l.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis128l_encrypt": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis128l.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis128l_encrypt_detached": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis128l.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis128l_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis128l.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis128l_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis128l.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis128l_npubbytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis128l.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis128l_nsecbytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis128l.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis256_abytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis256_decrypt": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis256_decrypt_detached": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis256_encrypt": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis256_encrypt_detached": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis256_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis256_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis256_npubbytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aegis256_nsecbytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aegis256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_abytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_beforenm": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_decrypt": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_decrypt_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_decrypt_detached": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_decrypt_detached_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_encrypt": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_encrypt_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_encrypt_detached": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_encrypt_detached_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_is_available": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_npubbytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_nsecbytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_aes256gcm_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_aes256gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_MESSAGEBYTES_MAX": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_abytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_decrypt": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_decrypt_detached": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_encrypt": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_encrypt_detached": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_ietf_abytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_ietf_decrypt": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_ietf_decrypt_detached": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_ietf_encrypt": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_ietf_encrypt_detached": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_ietf_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_ietf_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_ietf_npubbytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_ietf_nsecbytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_npubbytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_chacha20poly1305_nsecbytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_chacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_xchacha20poly1305_ietf_MESSAGEBYTES_MAX": {
+        "library": "Libsodium",
+        "header": "crypto_aead_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_xchacha20poly1305_ietf_abytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_xchacha20poly1305_ietf_decrypt": {
+        "library": "Libsodium",
+        "header": "crypto_aead_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_xchacha20poly1305_ietf_decrypt_detached": {
+        "library": "Libsodium",
+        "header": "crypto_aead_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_xchacha20poly1305_ietf_encrypt": {
+        "library": "Libsodium",
+        "header": "crypto_aead_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_xchacha20poly1305_ietf_encrypt_detached": {
+        "library": "Libsodium",
+        "header": "crypto_aead_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_xchacha20poly1305_ietf_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_xchacha20poly1305_ietf_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_aead_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_xchacha20poly1305_ietf_npubbytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_aead_xchacha20poly1305_ietf_nsecbytes": {
+        "library": "Libsodium",
+        "header": "crypto_aead_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth": {
+        "library": "Libsodium",
+        "header": "crypto_auth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_auth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_auth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_auth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_primitive": {
+        "library": "Libsodium",
+        "header": "crypto_auth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_verify": {
+        "library": "Libsodium",
+        "header": "crypto_auth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha256": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha256_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha256_final": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha256_init": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha256_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha256_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha256_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha256_update": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha256_verify": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512_final": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512_init": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512_update": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512_verify": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512256": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512256_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512256_final": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512256_init": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512256_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512256_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512256_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512256_update": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_auth_hmacsha512256_verify": {
+        "library": "Libsodium",
+        "header": "crypto_auth_hmacsha512256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_SEALBYTES": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_beforenm": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_beforenmbytes": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_boxzerobytes": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_detached": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_detached_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_easy": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_easy_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_keypair": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_macbytes": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_messagebytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_open": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_open_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_open_detached": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_open_detached_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_open_easy": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_open_easy_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_primitive": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_publickeybytes": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_seal": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_seal_open": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_secretkeybytes": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_seed_keypair": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_seedbytes": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_zerobytes": {
+        "library": "Libsodium",
+        "header": "crypto_box.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_MESSAGEBYTES_MAX": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_SEALBYTES": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_beforenm": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_beforenmbytes": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_detached": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_detached_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_easy": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_easy_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_keypair": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_macbytes": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_open_detached": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_open_detached_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_open_easy": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_open_easy_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_publickeybytes": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_seal": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_seal_open": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_secretkeybytes": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_seed_keypair": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xchacha20poly1305_seedbytes": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_MESSAGEBYTES_MAX": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_ZEROBYTES": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_beforenm": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_beforenmbytes": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_boxzerobytes": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_keypair": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_macbytes": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_open": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_open_afternm": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_publickeybytes": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_secretkeybytes": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_seed_keypair": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_box_curve25519xsalsa20poly1305_seedbytes": {
+        "library": "Libsodium",
+        "header": "crypto_box_curve25519xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_add": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_from_hash": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_from_uniform": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_hashbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_is_valid_point": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_nonreducedscalarbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_random": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_scalar_add": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_scalar_complement": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_scalar_invert": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_scalar_mul": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_scalar_negate": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_scalar_random": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_scalar_reduce": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_scalar_sub": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_scalarbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_sub": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ed25519_uniformbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_hchacha20": {
+        "library": "Libsodium",
+        "header": "crypto_core_hchacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_hchacha20_constbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_hchacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_hchacha20_inputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_hchacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_hchacha20_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_hchacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_hchacha20_outputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_hchacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_hsalsa20": {
+        "library": "Libsodium",
+        "header": "crypto_core_hsalsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_hsalsa20_constbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_hsalsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_hsalsa20_inputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_hsalsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_hsalsa20_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_hsalsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_hsalsa20_outputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_hsalsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_keccak1600_extract_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_keccak1600.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_keccak1600_init": {
+        "library": "Libsodium",
+        "header": "crypto_core_keccak1600.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_keccak1600_permute_12": {
+        "library": "Libsodium",
+        "header": "crypto_core_keccak1600.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_keccak1600_permute_24": {
+        "library": "Libsodium",
+        "header": "crypto_core_keccak1600.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_keccak1600_xor_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_keccak1600.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_add": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_from_hash": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_hashbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_is_valid_point": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_nonreducedscalarbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_random": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_scalar_add": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_scalar_complement": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_scalar_invert": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_scalar_mul": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_scalar_negate": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_scalar_random": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_scalar_reduce": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_scalar_sub": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_scalarbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_ristretto255_sub": {
+        "library": "Libsodium",
+        "header": "crypto_core_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa20": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa20_constbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa20_inputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa20_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa20_outputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa2012": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa2012.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa2012_constbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa2012.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa2012_inputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa2012.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa2012_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa2012.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa2012_outputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa2012.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa208": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa208.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa208_constbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa208.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa208_inputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa208.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa208_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa208.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_core_salsa208_outputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_core_salsa208.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash": {
+        "library": "Libsodium",
+        "header": "crypto_generichash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_generichash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_bytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_generichash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_bytes_min": {
+        "library": "Libsodium",
+        "header": "crypto_generichash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_final": {
+        "library": "Libsodium",
+        "header": "crypto_generichash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_init": {
+        "library": "Libsodium",
+        "header": "crypto_generichash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_generichash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_keybytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_generichash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_keybytes_min": {
+        "library": "Libsodium",
+        "header": "crypto_generichash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_generichash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_primitive": {
+        "library": "Libsodium",
+        "header": "crypto_generichash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_generichash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_update": {
+        "library": "Libsodium",
+        "header": "crypto_generichash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_bytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_final": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_init": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_init_salt_personal": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_keybytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_keybytes_min": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_personalbytes": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_salt_personal": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_saltbytes": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_generichash_blake2b_update": {
+        "library": "Libsodium",
+        "header": "crypto_generichash_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash": {
+        "library": "Libsodium",
+        "header": "crypto_hash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_hash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_primitive": {
+        "library": "Libsodium",
+        "header": "crypto_hash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_sha256": {
+        "library": "Libsodium",
+        "header": "crypto_hash_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_sha256_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_hash_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_sha256_final": {
+        "library": "Libsodium",
+        "header": "crypto_hash_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_sha256_init": {
+        "library": "Libsodium",
+        "header": "crypto_hash_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_sha256_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_hash_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_sha256_update": {
+        "library": "Libsodium",
+        "header": "crypto_hash_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_sha512": {
+        "library": "Libsodium",
+        "header": "crypto_hash_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_sha512_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_hash_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_sha512_final": {
+        "library": "Libsodium",
+        "header": "crypto_hash_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_sha512_init": {
+        "library": "Libsodium",
+        "header": "crypto_hash_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_sha512_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_hash_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_hash_sha512_update": {
+        "library": "Libsodium",
+        "header": "crypto_hash_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_decrypt": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_encrypt": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_nd_decrypt": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_nd_encrypt": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_nd_inputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_nd_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_nd_outputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_nd_tweakbytes": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_ndx_decrypt": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_ndx_encrypt": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_ndx_inputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_ndx_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_ndx_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_ndx_outputbytes": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_ndx_tweakbytes": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_pfx_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_pfx_decrypt": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_pfx_encrypt": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_pfx_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_ipcrypt_pfx_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_ipcrypt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_bytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_kdf.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_bytes_min": {
+        "library": "Libsodium",
+        "header": "crypto_kdf.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_contextbytes": {
+        "library": "Libsodium",
+        "header": "crypto_kdf.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_derive_from_key": {
+        "library": "Libsodium",
+        "header": "crypto_kdf.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_kdf.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_kdf.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_primitive": {
+        "library": "Libsodium",
+        "header": "crypto_kdf.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_blake2b_bytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_blake2b_bytes_min": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_blake2b_contextbytes": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_blake2b_derive_from_key": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_blake2b_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_blake2b.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha256_BYTES_MAX": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha256_bytes_min": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha256_expand": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha256_extract": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha256_extract_final": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha256_extract_init": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha256_extract_update": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha256_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha256_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha256_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha512_BYTES_MAX": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha512_bytes_min": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha512_expand": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha512_extract": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha512_extract_final": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha512_extract_init": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha512_extract_update": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha512_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha512_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kdf_hkdf_sha512_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_kdf_hkdf_sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kx_client_session_keys": {
+        "library": "Libsodium",
+        "header": "crypto_kx.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kx_keypair": {
+        "library": "Libsodium",
+        "header": "crypto_kx.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kx_primitive": {
+        "library": "Libsodium",
+        "header": "crypto_kx.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kx_publickeybytes": {
+        "library": "Libsodium",
+        "header": "crypto_kx.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kx_secretkeybytes": {
+        "library": "Libsodium",
+        "header": "crypto_kx.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kx_seed_keypair": {
+        "library": "Libsodium",
+        "header": "crypto_kx.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kx_seedbytes": {
+        "library": "Libsodium",
+        "header": "crypto_kx.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kx_server_session_keys": {
+        "library": "Libsodium",
+        "header": "crypto_kx.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_kx_sessionkeybytes": {
+        "library": "Libsodium",
+        "header": "crypto_kx.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_final": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_init": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_primitive": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_update": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_verify": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_poly1305": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth_poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_poly1305_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth_poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_poly1305_final": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth_poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_poly1305_init": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth_poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_poly1305_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth_poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_poly1305_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth_poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_poly1305_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth_poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_poly1305_update": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth_poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_onetimeauth_poly1305_verify": {
+        "library": "Libsodium",
+        "header": "crypto_onetimeauth_poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_alg_argon2i13": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_alg_argon2id13": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_alg_default": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_bytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_bytes_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_memlimit_interactive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_memlimit_max": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_memlimit_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_memlimit_moderate": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_memlimit_sensitive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_opslimit_interactive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_opslimit_max": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_opslimit_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_opslimit_moderate": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_opslimit_sensitive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_passwd_max": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_passwd_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_primitive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_saltbytes": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_str": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_str_alg": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_str_needs_rehash": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_str_verify": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_strbytes": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_strprefix": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_MEMLIMIT_MAX": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_alg_argon2i13": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_bytes_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_memlimit_interactive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_memlimit_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_memlimit_moderate": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_memlimit_sensitive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_opslimit_interactive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_opslimit_max": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_opslimit_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_opslimit_moderate": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_opslimit_sensitive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_passwd_max": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_passwd_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_saltbytes": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_str": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_str_needs_rehash": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_str_verify": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_strbytes": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2i_strprefix": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2i.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_MEMLIMIT_MAX": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_alg_argon2id13": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_bytes_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_memlimit_interactive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_memlimit_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_memlimit_moderate": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_memlimit_sensitive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_opslimit_interactive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_opslimit_max": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_opslimit_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_opslimit_moderate": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_opslimit_sensitive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_passwd_max": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_passwd_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_saltbytes": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_str": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_str_needs_rehash": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_str_verify": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_strbytes": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_argon2id_strprefix": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_argon2id.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_bytes_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_ll": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_memlimit_interactive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_memlimit_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_memlimit_sensitive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_opslimit_interactive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_opslimit_max": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_opslimit_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_opslimit_sensitive": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_passwd_max": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_passwd_min": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_saltbytes": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_str": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_str_needs_rehash": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_str_verify": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_strbytes": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_pwhash_scryptsalsa208sha256_strprefix": {
+        "library": "Libsodium",
+        "header": "crypto_pwhash_scryptsalsa208sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_base": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_primitive": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_scalarbytes": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_curve25519_base": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult_curve25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_curve25519_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult_curve25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_curve25519_scalarbytes": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult_curve25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_ed25519_base": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_ed25519_base_noclamp": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_ed25519_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_ed25519_noclamp": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_ed25519_scalarbytes": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_ristretto255_base": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_ristretto255_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_scalarmult_ristretto255_scalarbytes": {
+        "library": "Libsodium",
+        "header": "crypto_scalarmult_ristretto255.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_boxzerobytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_detached": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_easy": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_macbytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_messagebytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_open": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_open_detached": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_open_easy": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_primitive": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_zerobytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xchacha20poly1305_MESSAGEBYTES_MAX": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xchacha20poly1305_detached": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xchacha20poly1305_easy": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xchacha20poly1305_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xchacha20poly1305_macbytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xchacha20poly1305_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xchacha20poly1305_open_detached": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xchacha20poly1305_open_easy": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xsalsa20poly1305": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xsalsa20poly1305_MESSAGEBYTES_MAX": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xsalsa20poly1305_ZEROBYTES": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xsalsa20poly1305_boxzerobytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xsalsa20poly1305_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xsalsa20poly1305_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xsalsa20poly1305_macbytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xsalsa20poly1305_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretbox_xsalsa20poly1305_open": {
+        "library": "Libsodium",
+        "header": "crypto_secretbox_xsalsa20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_ABYTES": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_TAG_FINAL": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_headerbytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_init_pull": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_init_push": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_pull": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_push": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_rekey": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_tag_message": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_tag_push": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_secretstream_xchacha20poly1305_tag_rekey": {
+        "library": "Libsodium",
+        "header": "crypto_secretstream_xchacha20poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_shorthash": {
+        "library": "Libsodium",
+        "header": "crypto_shorthash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_shorthash_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_shorthash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_shorthash_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_shorthash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_shorthash_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_shorthash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_shorthash_primitive": {
+        "library": "Libsodium",
+        "header": "crypto_shorthash.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_shorthash_siphash24": {
+        "library": "Libsodium",
+        "header": "crypto_shorthash_siphash24.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_shorthash_siphash24_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_shorthash_siphash24.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_shorthash_siphash24_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_shorthash_siphash24.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_shorthash_siphashx24": {
+        "library": "Libsodium",
+        "header": "crypto_shorthash_siphash24.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_shorthash_siphashx24_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_shorthash_siphash24.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_shorthash_siphashx24_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_shorthash_siphash24.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_detached": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_final_create": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_final_verify": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_init": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_keypair": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_messagebytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_open": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_primitive": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_publickeybytes": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_secretkeybytes": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_seed_keypair": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_seedbytes": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_update": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_verify_detached": {
+        "library": "Libsodium",
+        "header": "crypto_sign.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_MESSAGEBYTES_MAX": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_SECRETKEYBYTES": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_detached": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_keypair": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_open": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_pk_to_curve25519": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_publickeybytes": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_seed_keypair": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_seedbytes": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_sk_to_curve25519": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_sk_to_pk": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_sk_to_seed": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519_verify_detached": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519ph_final_create": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519ph_final_verify": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519ph_init": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519ph_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_ed25519ph_update": {
+        "library": "Libsodium",
+        "header": "crypto_sign_ed25519.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_edwards25519sha512batch_SECRETKEYBYTES": {
+        "library": "Libsodium",
+        "header": "crypto_sign_edwards25519sha512batch.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_edwards25519sha512batch_keypair": {
+        "library": "Libsodium",
+        "header": "crypto_sign_edwards25519sha512batch.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_sign_edwards25519sha512batch_open": {
+        "library": "Libsodium",
+        "header": "crypto_sign_edwards25519sha512batch.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream": {
+        "library": "Libsodium",
+        "header": "crypto_stream.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_stream.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_messagebytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_stream.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_primitive": {
+        "library": "Libsodium",
+        "header": "crypto_stream.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xor": {
+        "library": "Libsodium",
+        "header": "crypto_stream.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_chacha20": {
+        "library": "Libsodium",
+        "header": "crypto_stream_chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_chacha20_ietf": {
+        "library": "Libsodium",
+        "header": "crypto_stream_chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_chacha20_ietf_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_stream_chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_chacha20_ietf_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream_chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_chacha20_ietf_xor": {
+        "library": "Libsodium",
+        "header": "crypto_stream_chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_chacha20_ietf_xor_ic": {
+        "library": "Libsodium",
+        "header": "crypto_stream_chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_chacha20_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream_chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_chacha20_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_stream_chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_chacha20_messagebytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_stream_chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_chacha20_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream_chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_chacha20_xor": {
+        "library": "Libsodium",
+        "header": "crypto_stream_chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_chacha20_xor_ic": {
+        "library": "Libsodium",
+        "header": "crypto_stream_chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa20": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa20_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa20_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa20_messagebytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa20_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa20_xor": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa20_xor_ic": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa2012": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa2012.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa2012_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa2012.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa2012_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa2012.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa2012_messagebytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa2012.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa2012_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa2012.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa2012_xor": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa2012.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa208": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa208.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa208_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa208.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa208_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa208.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa208_messagebytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa208.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa208_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa208.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_salsa208_xor": {
+        "library": "Libsodium",
+        "header": "crypto_stream_salsa208.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xchacha20": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xchacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xchacha20_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xchacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xchacha20_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xchacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xchacha20_messagebytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xchacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xchacha20_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xchacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xchacha20_xor": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xchacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xchacha20_xor_ic": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xchacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xsalsa20": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xsalsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xsalsa20_keybytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xsalsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xsalsa20_keygen": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xsalsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xsalsa20_messagebytes_max": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xsalsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xsalsa20_noncebytes": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xsalsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xsalsa20_xor": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xsalsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_stream_xsalsa20_xor_ic": {
+        "library": "Libsodium",
+        "header": "crypto_stream_xsalsa20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_verify_16": {
+        "library": "Libsodium",
+        "header": "crypto_verify_16.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_verify_16_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_verify_16.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_verify_32": {
+        "library": "Libsodium",
+        "header": "crypto_verify_32.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_verify_32_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_verify_32.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_verify_64": {
+        "library": "Libsodium",
+        "header": "crypto_verify_64.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_verify_64_bytes": {
+        "library": "Libsodium",
+        "header": "crypto_verify_64.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake128": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake128_blockbytes": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake128_domain_standard": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake128_init": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake128_init_with_domain": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake128_squeeze": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake128_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake128_update": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake256": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake256_blockbytes": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake256_domain_standard": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake256_init": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake256_init_with_domain": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake256_squeeze": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake256_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_shake256_update": {
+        "library": "Libsodium",
+        "header": "crypto_xof_shake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake128": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake128_blockbytes": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake128_domain_standard": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake128_init": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake128_init_with_domain": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake128_squeeze": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake128_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake128_update": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake128.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake256": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake256_blockbytes": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake256_domain_standard": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake256_init": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake256_init_with_domain": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake256_squeeze": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake256_statebytes": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "crypto_xof_turboshake256_update": {
+        "library": "Libsodium",
+        "header": "crypto_xof_turboshake256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "randombytes_buf": {
+        "library": "Libsodium",
+        "header": "randombytes.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "randombytes_buf_deterministic": {
+        "library": "Libsodium",
+        "header": "randombytes.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "randombytes_close": {
+        "library": "Libsodium",
+        "header": "randombytes.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "randombytes_implementation_name": {
+        "library": "Libsodium",
+        "header": "randombytes.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "randombytes_random": {
+        "library": "Libsodium",
+        "header": "randombytes.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "randombytes_set_implementation": {
+        "library": "Libsodium",
+        "header": "randombytes.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "randombytes_stir": {
+        "library": "Libsodium",
+        "header": "randombytes.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "randombytes_uniform": {
+        "library": "Libsodium",
+        "header": "randombytes.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_runtime_has_aesni": {
+        "library": "Libsodium",
+        "header": "runtime.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_runtime_has_armcrypto": {
+        "library": "Libsodium",
+        "header": "runtime.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_runtime_has_avx": {
+        "library": "Libsodium",
+        "header": "runtime.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_runtime_has_avx2": {
+        "library": "Libsodium",
+        "header": "runtime.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_runtime_has_avx512f": {
+        "library": "Libsodium",
+        "header": "runtime.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_runtime_has_neon": {
+        "library": "Libsodium",
+        "header": "runtime.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_runtime_has_pclmul": {
+        "library": "Libsodium",
+        "header": "runtime.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_runtime_has_rdrand": {
+        "library": "Libsodium",
+        "header": "runtime.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_runtime_has_sse2": {
+        "library": "Libsodium",
+        "header": "runtime.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_runtime_has_sse3": {
+        "library": "Libsodium",
+        "header": "runtime.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_runtime_has_sse41": {
+        "library": "Libsodium",
+        "header": "runtime.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_runtime_has_ssse3": {
+        "library": "Libsodium",
+        "header": "runtime.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_add": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_allocarray": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_base642bin": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_base64_ENCODED_LEN": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_bin2base64": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_bin2hex": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_bin2ip": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_compare": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_hex2bin": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_increment": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_ip2bin": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_is_zero": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_malloc": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_memcmp": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_mlock": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_mprotect_noaccess": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_mprotect_readonly": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_mprotect_readwrite": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_munlock": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_pad": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_stackzero": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_sub": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_unpad": {
+        "library": "Libsodium",
+        "header": "utils.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_library_minimal": {
+        "library": "Libsodium",
+        "header": "version.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_library_version_major": {
+        "library": "Libsodium",
+        "header": "version.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_library_version_minor": {
+        "library": "Libsodium",
+        "header": "version.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "sodium_version_string": {
+        "library": "Libsodium",
+        "header": "version.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    }
+}

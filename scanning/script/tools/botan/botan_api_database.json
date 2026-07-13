@@ -1,0 +1,36 @@
+{
+    "ffi.h": [
+        "BOTAN_CIPHER_UPDATE_FLAG_FINAL",
+        "BOTAN_FFI_DEPRECATED",
+        "BOTAN_FFI_EXPORT",
+        "Return",
+        "TODO",
+        "botan_cipher_update",
+        "defined",
+        "range"
+    ],
+    "ffi_cert.h": [
+        "BOTAN_FFI_DECLARE_STRUCT",
+        "defined"
+    ],
+    "ffi_ec.h": [
+        "BOTAN_FFI_DECLARE_STRUCT"
+    ],
+    "ffi_mp.h": [
+        "BOTAN_FFI_DECLARE_STRUCT"
+    ],
+    "ffi_oid.h": [
+        "BOTAN_FFI_DECLARE_STRUCT"
+    ],
+    "ffi_pkey.h": [
+        "BOTAN_FFI_DECLARE_STRUCT"
+    ],
+    "ffi_rng.h": [
+        "BOTAN_FFI_DECLARE_STRUCT"
+    ],
+    "ffi_util.h": [
+        "ffi_clear_last_exception",
+        "ffi_error_exception_thrown",
+        "thunk"
+    ]
+}

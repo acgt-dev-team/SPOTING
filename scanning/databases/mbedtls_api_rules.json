@@ -1,0 +1,2172 @@
+{
+    "mbedtls_aes_init": {
+        "library": "mbedtls",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_aes_setkey_enc": {
+        "library": "mbedtls",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_aria_init": {
+        "library": "mbedtls",
+        "header": "aria.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_aria_setkey_enc": {
+        "library": "mbedtls",
+        "header": "aria.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_asn1_find_named_data": {
+        "library": "mbedtls",
+        "header": "asn1.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_asn1_traverse_sequence_of": {
+        "library": "mbedtls",
+        "header": "asn1.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_calloc": {
+        "library": "mbedtls",
+        "header": "asn1.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_asn1_write_algorithm_identifier": {
+        "library": "mbedtls",
+        "header": "asn1write.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_asn1_write_algorithm_identifier_ext": {
+        "library": "mbedtls",
+        "header": "asn1write.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_asn1_write_named_bitstring": {
+        "library": "mbedtls",
+        "header": "asn1write.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_asn1_write_tag": {
+        "library": "mbedtls",
+        "header": "asn1write.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_add_abs": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_add_int": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_add_mpi": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_bitlen": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_cmp_abs": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_cmp_int": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_cmp_mpi": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_div_int": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_div_mpi": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_fill_random": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_gen_prime": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_grow": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_init": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_inv_mod": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_lsb": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_lset": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_lt_mpi_ct": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_mod_int": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_mod_mpi": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_mul_int": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_mul_mpi": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_random": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_read_binary": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_read_binary_le": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_read_string": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_shift_l": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_shift_r": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_shrink": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_size": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_sub_abs": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_sub_int": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_sub_mpi": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_swap": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_write_binary": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_write_binary_le": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_write_file": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_write_string": {
+        "library": "mbedtls",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_camellia_crypt_ecb": {
+        "library": "mbedtls",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "Camellia",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_camellia_init": {
+        "library": "mbedtls",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "Camellia",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_camellia_setkey_enc": {
+        "library": "mbedtls",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "Camellia",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_ccm_setkey": {
+        "library": "mbedtls",
+        "header": "ccm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ccm_starts": {
+        "library": "mbedtls",
+        "header": "ccm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_chacha20_setkey": {
+        "library": "mbedtls",
+        "header": "chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_chacha20_starts": {
+        "library": "mbedtls",
+        "header": "chacha20.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_chachapoly_setkey": {
+        "library": "mbedtls",
+        "header": "chachapoly.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_cipher_auth_encrypt_ext": {
+        "library": "mbedtls",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_cipher_check_tag": {
+        "library": "mbedtls",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_cipher_crypt": {
+        "library": "mbedtls",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_cipher_finish": {
+        "library": "mbedtls",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_cipher_info_from_string": {
+        "library": "mbedtls",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_cipher_info_from_type": {
+        "library": "mbedtls",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_cipher_info_from_values": {
+        "library": "mbedtls",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_cipher_init": {
+        "library": "mbedtls",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_cipher_setkey": {
+        "library": "mbedtls",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_cipher_update_ad": {
+        "library": "mbedtls",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_cipher_cmac_finish": {
+        "library": "mbedtls",
+        "header": "cmac.h",
+        "category": "API",
+        "algorithm": "CMAC",
+        "primitive": "mac"
+    },
+    "mbedtls_cipher_cmac_starts": {
+        "library": "mbedtls",
+        "header": "cmac.h",
+        "category": "API",
+        "algorithm": "CMAC",
+        "primitive": "mac"
+    },
+    "mbedtls_cipher_cmac_update": {
+        "library": "mbedtls",
+        "header": "cmac.h",
+        "category": "API",
+        "algorithm": "CMAC",
+        "primitive": "mac"
+    },
+    "mbedtls_ct_memcmp": {
+        "library": "mbedtls",
+        "header": "constant_time.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ctr_drbg_init": {
+        "library": "mbedtls",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ctr_drbg_random": {
+        "library": "mbedtls",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ctr_drbg_random_with_add": {
+        "library": "mbedtls",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ctr_drbg_reseed": {
+        "library": "mbedtls",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ctr_drbg_seed": {
+        "library": "mbedtls",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ctr_drbg_update": {
+        "library": "mbedtls",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ctr_drbg_update_seed_file": {
+        "library": "mbedtls",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_entropy_func": {
+        "library": "mbedtls",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_des3_crypt_ecb": {
+        "library": "mbedtls",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_des3_init": {
+        "library": "mbedtls",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_des_crypt_ecb": {
+        "library": "mbedtls",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_des_init": {
+        "library": "mbedtls",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_des_key_check_key_parity": {
+        "library": "mbedtls",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_des_key_check_weak": {
+        "library": "mbedtls",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_des_setkey": {
+        "library": "mbedtls",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_dhm_init": {
+        "library": "mbedtls",
+        "header": "dhm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_dhm_make_params": {
+        "library": "mbedtls",
+        "header": "dhm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_dhm_make_public": {
+        "library": "mbedtls",
+        "header": "dhm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_dhm_read_params": {
+        "library": "mbedtls",
+        "header": "dhm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecdh_can_do": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecdh_compute_shared": {
+        "library": "mbedtls",
+        "header": "ecdh.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecdh_gen_public": {
+        "library": "mbedtls",
+        "header": "ecdh.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecdh_init": {
+        "library": "mbedtls",
+        "header": "ecdh.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecdh_read_params": {
+        "library": "mbedtls",
+        "header": "ecdh.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecdh_setup": {
+        "library": "mbedtls",
+        "header": "ecdh.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_mul": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecdsa_can_do": {
+        "library": "mbedtls",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecdsa_from_keypair": {
+        "library": "mbedtls",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecdsa_genkey": {
+        "library": "mbedtls",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecdsa_init": {
+        "library": "mbedtls",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecdsa_read_signature": {
+        "library": "mbedtls",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecdsa_sign_det_ext": {
+        "library": "mbedtls",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecdsa_write_signature": {
+        "library": "mbedtls",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_group_load": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecjpake_check": {
+        "library": "mbedtls",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecjpake_derive_secret": {
+        "library": "mbedtls",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecjpake_init": {
+        "library": "mbedtls",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecjpake_read_round_one": {
+        "library": "mbedtls",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecjpake_read_round_two": {
+        "library": "mbedtls",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecjpake_write_round_one": {
+        "library": "mbedtls",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecjpake_write_round_two": {
+        "library": "mbedtls",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecjpake_write_shared_key": {
+        "library": "mbedtls",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_check_budget": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_check_pub_priv": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_check_pubkey": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_curve_info": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_curve_info_from_grp_id": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_curve_info_from_name": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_curve_info_from_tls_id": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_export": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_gen_key": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_group_init": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_is_zero": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_keypair_calc_public": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_keypair_init": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_muladd": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_point_cmp": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_point_init": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_point_read_string": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_tls_read_group": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_tls_read_group_id": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecp_write_public_key": {
+        "library": "mbedtls",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_entropy_gather": {
+        "library": "mbedtls",
+        "header": "entropy.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_entropy_init": {
+        "library": "mbedtls",
+        "header": "entropy.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_entropy_self_test": {
+        "library": "mbedtls",
+        "header": "entropy.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_entropy_update_manual": {
+        "library": "mbedtls",
+        "header": "entropy.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_entropy_update_seed_file": {
+        "library": "mbedtls",
+        "header": "entropy.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_error_add": {
+        "library": "mbedtls",
+        "header": "error.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_high_level_strerr": {
+        "library": "mbedtls",
+        "header": "error.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_low_level_strerr": {
+        "library": "mbedtls",
+        "header": "error.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_strerror": {
+        "library": "mbedtls",
+        "header": "error.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_gcm_auth_decrypt": {
+        "library": "mbedtls",
+        "header": "gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_gcm_setkey": {
+        "library": "mbedtls",
+        "header": "gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_gcm_starts": {
+        "library": "mbedtls",
+        "header": "gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_gcm_update": {
+        "library": "mbedtls",
+        "header": "gcm.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_hkdf": {
+        "library": "mbedtls",
+        "header": "hkdf.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_hkdf_expand": {
+        "library": "mbedtls",
+        "header": "hkdf.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_hkdf_extract": {
+        "library": "mbedtls",
+        "header": "hkdf.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "HMAC_DRBG": {
+        "library": "mbedtls",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_hmac_drbg_init": {
+        "library": "mbedtls",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_hmac_drbg_random": {
+        "library": "mbedtls",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_hmac_drbg_random_with_add": {
+        "library": "mbedtls",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_hmac_drbg_seed": {
+        "library": "mbedtls",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_hmac_drbg_update": {
+        "library": "mbedtls",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_hmac_drbg_update_seed_file": {
+        "library": "mbedtls",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_lms_calculate_public_key": {
+        "library": "mbedtls",
+        "header": "lms.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_lms_export_public_key": {
+        "library": "mbedtls",
+        "header": "lms.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_lms_generate_private_key": {
+        "library": "mbedtls",
+        "header": "lms.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_lms_import_public_key": {
+        "library": "mbedtls",
+        "header": "lms.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_lms_sign": {
+        "library": "mbedtls",
+        "header": "lms.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_lms_verify": {
+        "library": "mbedtls",
+        "header": "lms.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_md_hmac_finish": {
+        "library": "mbedtls",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_md_hmac_starts": {
+        "library": "mbedtls",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_md_info_from_string": {
+        "library": "mbedtls",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_md_info_from_type": {
+        "library": "mbedtls",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_md_init": {
+        "library": "mbedtls",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_md_list": {
+        "library": "mbedtls",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_md_setup": {
+        "library": "mbedtls",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_md_starts": {
+        "library": "mbedtls",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_md5_finish": {
+        "library": "mbedtls",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md5_init": {
+        "library": "mbedtls",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md5_starts": {
+        "library": "mbedtls",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md5_update": {
+        "library": "mbedtls",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "mbedtls_memory_buffer_alloc_count_get": {
+        "library": "mbedtls",
+        "header": "memory_buffer_alloc.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_memory_buffer_alloc_cur_get": {
+        "library": "mbedtls",
+        "header": "memory_buffer_alloc.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_memory_buffer_alloc_max_get": {
+        "library": "mbedtls",
+        "header": "memory_buffer_alloc.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_memory_buffer_alloc_verify": {
+        "library": "mbedtls",
+        "header": "memory_buffer_alloc.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_net_bind": {
+        "library": "mbedtls",
+        "header": "net_sockets.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_net_close": {
+        "library": "mbedtls",
+        "header": "net_sockets.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_net_connect": {
+        "library": "mbedtls",
+        "header": "net_sockets.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_net_init": {
+        "library": "mbedtls",
+        "header": "net_sockets.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_nist_kw_setkey": {
+        "library": "mbedtls",
+        "header": "nist_kw.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pem_init": {
+        "library": "mbedtls",
+        "header": "pem.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pk_check_pair": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pk_context": {
+        "library": "mbedtls",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pk_debug": {
+        "library": "mbedtls",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pk_import_into_psa": {
+        "library": "mbedtls",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pk_info_from_type": {
+        "library": "mbedtls",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pk_init": {
+        "library": "mbedtls",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pk_setup_opaque": {
+        "library": "mbedtls",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pk_setup_rsa_alt": {
+        "library": "mbedtls",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pk_sign": {
+        "library": "mbedtls",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pk_verify": {
+        "library": "mbedtls",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pk_write_key_pem": {
+        "library": "mbedtls",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pk_write_pubkey_der": {
+        "library": "mbedtls",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pkcs5_pbkdf2_hmac_ext": {
+        "library": "mbedtls",
+        "header": "pkcs5.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pkcs7_init": {
+        "library": "mbedtls",
+        "header": "pkcs7.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pkcs7_parse_der": {
+        "library": "mbedtls",
+        "header": "pkcs7.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pkcs7_signed_data_verify": {
+        "library": "mbedtls",
+        "header": "pkcs7.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_exit": {
+        "library": "mbedtls",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_fprintf": {
+        "library": "mbedtls",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_platform_setup": {
+        "library": "mbedtls",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_platform_std_nv_seed_write": {
+        "library": "mbedtls",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_platform_teardown": {
+        "library": "mbedtls",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_setbuf": {
+        "library": "mbedtls",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_snprintf": {
+        "library": "mbedtls",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ms_time": {
+        "library": "mbedtls",
+        "header": "platform_time.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_cipher_poly1305_starts": {
+        "library": "mbedtls",
+        "header": "poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_poly1305_starts": {
+        "library": "mbedtls",
+        "header": "poly1305.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ecc_group_to_psa": {
+        "library": "mbedtls",
+        "header": "psa_util.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ripemd160": {
+        "library": "mbedtls",
+        "header": "ripemd160.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ripemd160_finish": {
+        "library": "mbedtls",
+        "header": "ripemd160.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ripemd160_init": {
+        "library": "mbedtls",
+        "header": "ripemd160.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ripemd160_starts": {
+        "library": "mbedtls",
+        "header": "ripemd160.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ripemd160_update": {
+        "library": "mbedtls",
+        "header": "ripemd160.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_rsa_check_privkey": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_check_pub_priv": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_complete": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_deduce_opt": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_export": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_export_raw": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_import_raw": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_init": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_pkcs1_encrypt": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_private": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_public": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_rsaes_pkcs1_v15_encrypt": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_rsassa_pss_sign": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_rsassa_pss_verify": {
+        "library": "mbedtls",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_sha1": {
+        "library": "mbedtls",
+        "header": "sha1.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha1_clone": {
+        "library": "mbedtls",
+        "header": "sha1.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha1_finish": {
+        "library": "mbedtls",
+        "header": "sha1.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha1_init": {
+        "library": "mbedtls",
+        "header": "sha1.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha1_starts": {
+        "library": "mbedtls",
+        "header": "sha1.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha1_update": {
+        "library": "mbedtls",
+        "header": "sha1.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_internal_sha256_process": {
+        "library": "mbedtls",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha256": {
+        "library": "mbedtls",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha256_clone": {
+        "library": "mbedtls",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha256_finish": {
+        "library": "mbedtls",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha256_init": {
+        "library": "mbedtls",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha256_starts": {
+        "library": "mbedtls",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha256_update": {
+        "library": "mbedtls",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha3_clone": {
+        "library": "mbedtls",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha3_init": {
+        "library": "mbedtls",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha3_starts": {
+        "library": "mbedtls",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha3_update": {
+        "library": "mbedtls",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_internal_sha512_process": {
+        "library": "mbedtls",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha512": {
+        "library": "mbedtls",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha512_clone": {
+        "library": "mbedtls",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha512_finish": {
+        "library": "mbedtls",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha512_init": {
+        "library": "mbedtls",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha512_starts": {
+        "library": "mbedtls",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_sha512_update": {
+        "library": "mbedtls",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_check_pending": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_check_record": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_close_notify": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_async_private_cb": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_authmode": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_ca_chain": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_cid": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_curves": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_dbg": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_dtls_badmac_limit": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_dtls_srtp_protection_profiles": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_endpoint": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_groups": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_own_cert": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_preference_order": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_psk": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_psk_opaque": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_conf_sig_algs": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_config_defaults": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_config_init": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_context_save": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_export_keys_t": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_handshake": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_handshake_step": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_read": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_renegotiate": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_send_alert_message": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_session_init": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_session_load": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_setup": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_ticket_parse_t": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_ticket_write_t": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_tls_prf": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_write": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_write_early_data": {
+        "library": "mbedtls",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_x509_crt_verify": {
+        "library": "mbedtls",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_cache_get": {
+        "library": "mbedtls",
+        "header": "ssl_cache.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_cache_init": {
+        "library": "mbedtls",
+        "header": "ssl_cache.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_cache_remove": {
+        "library": "mbedtls",
+        "header": "ssl_cache.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_cache_set": {
+        "library": "mbedtls",
+        "header": "ssl_cache.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_ciphersuite_from_id": {
+        "library": "mbedtls",
+        "header": "ssl_ciphersuites.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_ciphersuite_from_string": {
+        "library": "mbedtls",
+        "header": "ssl_ciphersuites.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_list_ciphersuites": {
+        "library": "mbedtls",
+        "header": "ssl_ciphersuites.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_cookie_init": {
+        "library": "mbedtls",
+        "header": "ssl_cookie.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_ticket_setup": {
+        "library": "mbedtls",
+        "header": "ssl_ticket.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_x509_crt_parse_cn_inet_pton": {
+        "library": "mbedtls",
+        "header": "x509.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_x509_name": {
+        "library": "mbedtls",
+        "header": "x509.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_x509_parse_subject_alt_name": {
+        "library": "mbedtls",
+        "header": "x509.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_x509_time_cmp": {
+        "library": "mbedtls",
+        "header": "x509.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_crt_verify_with_profile": {
+        "library": "mbedtls",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_x509_crt_parse_der": {
+        "library": "mbedtls",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_x509_crt_parse_der_with_ext_cb": {
+        "library": "mbedtls",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_x509_crt_parse_path": {
+        "library": "mbedtls",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_x509_crt_verify_with_ca_cb": {
+        "library": "mbedtls",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_x509write_crt_der": {
+        "library": "mbedtls",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_x509_csr_init": {
+        "library": "mbedtls",
+        "header": "x509_csr.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_x509_csr_parse_der_with_ext_cb": {
+        "library": "mbedtls",
+        "header": "x509_csr.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    }
+}
