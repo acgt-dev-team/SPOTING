@@ -1,0 +1,1 @@
+LIBSODIUM_API_RULES = {}

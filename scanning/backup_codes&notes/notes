@@ -1,0 +1,21 @@
+Pipeline for the api rules extractor-
+
+wolfSSL headers
+        │
+        ▼
+extract_crypto_api.py
+        │
+        ▼
+wolfssl_api_database.json
+        │
+        ▼
+clean_api_database.py
+        │
+        ▼
+wolfssl_clean.json
+        │
+        ▼
+generate_api_rules.py
+        │
+        ▼
+wolfssl.py

@@ -1,0 +1,1 @@
+LIBGCRYPT_API_RULES = {}
