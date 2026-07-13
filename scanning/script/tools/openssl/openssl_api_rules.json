@@ -248,36 +248,36 @@
         "library": "OpenSSL",
         "header": "cmac.h",
         "category": "API",
-        "algorithm": "CMAC",
-        "primitive": "mac"
+        "algorithm": "Unknown",
+        "primitive": "unknown"
     },
     "CMAC_Final": {
         "library": "OpenSSL",
         "header": "cmac.h",
         "category": "API",
-        "algorithm": "CMAC",
-        "primitive": "mac"
+        "algorithm": "Unknown",
+        "primitive": "unknown"
     },
     "CMAC_Init": {
         "library": "OpenSSL",
         "header": "cmac.h",
         "category": "API",
-        "algorithm": "CMAC",
-        "primitive": "mac"
+        "algorithm": "Unknown",
+        "primitive": "unknown"
     },
     "CMAC_Update": {
         "library": "OpenSSL",
         "header": "cmac.h",
         "category": "API",
-        "algorithm": "CMAC",
-        "primitive": "mac"
+        "algorithm": "Unknown",
+        "primitive": "unknown"
     },
     "CMAC_resume": {
         "library": "OpenSSL",
         "header": "cmac.h",
         "category": "API",
-        "algorithm": "CMAC",
-        "primitive": "mac"
+        "algorithm": "Unknown",
+        "primitive": "unknown"
     },
     "DES_KEY_SZ": {
         "library": "OpenSSL",
@@ -479,260 +479,260 @@
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_bits": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_check": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_check_ex": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_check_params": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_check_params_ex": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_check_pub_key": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_check_pub_key_ex": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_clear_flags": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_compute_key": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_compute_key_padded": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_generate_key": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_generate_parameters": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_generate_parameters_ex": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_new": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_new_by_nid": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_new_method": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_security_bits": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_size": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DH_test_flags": {
         "library": "OpenSSL",
         "header": "dh.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
     },
     "DSA_OpenSSL": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_SIG_new": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_SIG_set0": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_bits": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_clear_flags": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_do_verify": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_generate_key": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_generate_parameters_ex": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_is_prime": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_new": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_new_method": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_security_bits": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_sign": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_sign_setup": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_size": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_test_flags": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "DSA_verify": {
         "library": "OpenSSL",
         "header": "dsa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
     },
     "ECDH_KDF_X9_62": {
         "library": "OpenSSL",
@@ -4378,183 +4378,183 @@
         "library": "OpenSSL",
         "header": "hmac.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "HMAC",
+        "primitive": "mac"
     },
     "HMAC_Final": {
         "library": "OpenSSL",
         "header": "hmac.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "HMAC",
+        "primitive": "mac"
     },
     "HMAC_Init": {
         "library": "OpenSSL",
         "header": "hmac.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "HMAC",
+        "primitive": "mac"
     },
     "HMAC_Init_ex": {
         "library": "OpenSSL",
         "header": "hmac.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "HMAC",
+        "primitive": "mac"
     },
     "HMAC_Update": {
         "library": "OpenSSL",
         "header": "hmac.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "HMAC",
+        "primitive": "mac"
     },
     "HMAC_size": {
         "library": "OpenSSL",
         "header": "hmac.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "HMAC",
+        "primitive": "mac"
     },
     "EVP_KDF_CTX_dup": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_KDF_CTX_gettable_params": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_KDF_CTX_kdf": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_KDF_CTX_new": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_KDF_CTX_settable_params": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_KDF_derive": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_KDF_derive_SKEY": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_KDF_do_all_provided": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_KDF_fetch": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_KDF_gettable_ctx_params": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_KDF_gettable_params": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_KDF_names_do_all": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_KDF_settable_ctx_params": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_PKEY_CTRL_TLS_MD": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_PKEY_CTX_add1_hkdf_info": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "EVP_PKEY_CTX_add1_tls1_prf_seed": {
         "library": "OpenSSL",
         "header": "kdf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
     },
     "MD4_Final": {
         "library": "OpenSSL",
         "header": "md4.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "MD4",
+        "primitive": "hash-function"
     },
     "MD4_Init": {
         "library": "OpenSSL",
         "header": "md4.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "MD4",
+        "primitive": "hash-function"
     },
     "MD4_Transform": {
         "library": "OpenSSL",
         "header": "md4.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "MD4",
+        "primitive": "hash-function"
     },
     "MD4_Update": {
         "library": "OpenSSL",
         "header": "md4.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "MD4",
+        "primitive": "hash-function"
     },
     "MD5_Final": {
         "library": "OpenSSL",
@@ -4693,36 +4693,36 @@
         "library": "OpenSSL",
         "header": "ripemd.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "RIPEMD",
+        "primitive": "hash-function"
     },
     "RIPEMD160_Final": {
         "library": "OpenSSL",
         "header": "ripemd.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "RIPEMD",
+        "primitive": "hash-function"
     },
     "RIPEMD160_Init": {
         "library": "OpenSSL",
         "header": "ripemd.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "RIPEMD",
+        "primitive": "hash-function"
     },
     "RIPEMD160_Transform": {
         "library": "OpenSSL",
         "header": "ripemd.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "RIPEMD",
+        "primitive": "hash-function"
     },
     "RIPEMD160_Update": {
         "library": "OpenSSL",
         "header": "ripemd.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "RIPEMD",
+        "primitive": "hash-function"
     },
     "EVP_PKEY_CTRL_RSA_PADDING": {
         "library": "OpenSSL",
@@ -5043,161 +5043,161 @@
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA1_Final": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA1_Init": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA1_Transform": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA1_Update": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA224": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA224_Final": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA224_Init": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA224_Update": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA256": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA256_Final": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA256_Init": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA256_Transform": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA256_Update": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA384": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA384_Final": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA384_Init": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA384_Update": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA512": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA512_Final": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA512_Init": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA512_Transform": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     },
     "SHA512_Update": {
         "library": "OpenSSL",
         "header": "sha.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
     }
 }

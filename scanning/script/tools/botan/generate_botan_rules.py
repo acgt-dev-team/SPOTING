@@ -1,9 +1,9 @@
 import json
 from pathlib import Path
-from algorithm_mapping import HEADER_MAPPING
+from scanning.script.tools.botan.botan_algorithm_mapping import HEADER_MAPPING
 
 DATABASE = Path(
-    r"C:\AGCT\SPOTING\scanning\databases\openssl_clean.json"
+    r"C:\AGCT\SPOTING\scanning\databases\botan_clean.json"
 )
 
 with open(DATABASE, "r") as f:

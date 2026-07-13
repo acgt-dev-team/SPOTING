@@ -1,9 +1,9 @@
 import json
 from pathlib import Path
-from algorithm_mapping import HEADER_MAPPING
+from libsodium_algorithm_mapping import HEADER_MAPPING
 
 DATABASE = Path(
-    r"C:\AGCT\SPOTING\scanning\databases\wolfssl_clean.json"
+    r"C:\AGCT\SPOTING\scanning\databases\libsodium_clean.json"
 )
 
 with open(DATABASE, "r") as f:
@@ -23,7 +23,7 @@ for header, apis in api_database.items():
         )
 
         rules[api] = {
-            "library": "wolfSSL",
+            "library": "Libsodium",
             "header": header,
             "category": "API",
             "algorithm": algorithm,
@@ -32,7 +32,7 @@ for header, apis in api_database.items():
         }
 
 OUTPUT = Path(
-    r"C:\AGCT\SPOTING\scanning\databases\wolfssl_api_rules.json"
+    r"C:\AGCT\SPOTING\scanning\databases\libsodium_api_rules.json"
 )
 
 with open(OUTPUT, "w") as f:
