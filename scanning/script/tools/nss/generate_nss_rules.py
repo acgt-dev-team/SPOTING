@@ -1,9 +1,9 @@
 import json
 from pathlib import Path
-from scanning.script.tools.botan.botan_algorithm_mapping import HEADER_MAPPING
+from nss_algorithm_mapping import HEADER_MAPPING
 
 DATABASE = Path(
-    r"C:\AGCT\SPOTING\scanning\databases\botan_clean.json"
+    r"C:\AGCT\SPOTING\scanning\databases\nss_clean.json"
 )
 
 with open(DATABASE, "r") as f:
@@ -23,7 +23,7 @@ for header, apis in api_database.items():
         )
 
         rules[api] = {
-            "library": "OpenSSL",
+            "library": "NSS",
             "header": header,
             "category": "API",
             "algorithm": algorithm,
@@ -32,7 +32,7 @@ for header, apis in api_database.items():
         }
 
 OUTPUT = Path(
-    r"C:\AGCT\SPOTING\scanning\databases\openssl_api_rules.json"
+    r"C:\AGCT\SPOTING\scanning\databases\nss_api_rules.json"
 )
 
 with open(OUTPUT, "w") as f:

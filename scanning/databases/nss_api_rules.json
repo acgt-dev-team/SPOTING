@@ -1,0 +1,5770 @@
+{
+    "CERT_AddAVA": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_AddCertToListHeadWithData": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_AddCertToListSorted": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_AddCertToListTailWithData": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_AddExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_AddExtensionByOID": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_AddNameConstraint": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_AddNewCerts": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_AddPermNickname": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_AddRDN": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_AllocCERTRevocationFlags": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CertChainFromCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CertListFromCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CertTimesValid": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_ChangeCertTrust": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_ChangeCertTrustByUsage": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CheckCRL": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CheckCertUsage": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CheckCertValidTimes": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CheckForEvilCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CheckKeyUsage": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CheckNameSpace": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CompareAVA": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CompareCerts": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CompareCertsForRedirection": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CompareName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CompareRDN": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CompleteCRLDecodeEntries": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_ConvertAndDecodeCertificate": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CopyAVA": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CopyRDN": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CreateCertificate": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CreateName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CreateSubjectCertList": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_CreateValidity": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeAVAValue": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeAltNameExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeAuthInfoAccessExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeAuthKeyID": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeBasicConstraintValue": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeCRLDistributionPoints": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeCertFromPackage": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeCertPackage": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeCertificatePoliciesExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeDERCertificate": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeDERCrl": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeDERCrlWithFlags": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeGeneralName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeInhibitAnyExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeNameConstraintsExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeOidSequence": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodePolicyConstraintsExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodePolicyMappingsExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodePrivKeyUsagePeriodExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeTrustString": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DecodeUserNotice": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DerNameToAscii": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DestroyCERTRevocationFlags": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DestroyCertArray": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DestroyCertList": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DestroyCertificate": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DestroyCertificateList": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DestroyCertificatePoliciesExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DestroyCertificateRequest": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DestroyCrl": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DestroyName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DestroyOidSequence": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DestroyPolicyMappingsExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DestroyUserNotice": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DestroyValidity": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DistNamesFromCertList": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DistNamesFromNicknames": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DupCertList": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DupCertificate": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_DupDistNames": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeAltNameExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeAndAddBitStrExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeAndAddExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeAuthKeyID": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeBasicConstraintValue": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeCRLDistributionPoints": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeCertPoliciesExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeDisplayText": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeGeneralName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeInfoAccessExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeInhibitAnyExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeNoticeReference": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodePolicyConstraintsExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodePolicyMappingExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeTrustString": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_EncodeUserNotice": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_ExtractNicknameString": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_ExtractPublicKey": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FilterCertListByCertList": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FilterCertListByNickname": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FilterCertListByUsage": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FilterCertListForUserCerts": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindAuthKeyIDExten": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindBasicConstraintExten": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCRLDistributionPoints": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCRLEntryReasonExten": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCRLExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCRLExtensionByOID": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCRLNumberExten": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertByDERCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertByEmailAddr": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertByIssuerAndSN": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertByIssuerAndSNCX": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertByKey": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertByKeyID": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertByName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertByNickname": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertByNicknameOrEmailAddr": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertByNicknameOrEmailAddrCX": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertByNicknameOrEmailAddrForUsage": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertByNicknameOrEmailAddrForUsageCX": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertBySPKDigest": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertBySubjectKeyID": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertExtensionByOID": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindCertIssuer": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindInvalidDateExten": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindKeyUsageExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindMatchingCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindNSCertTypeExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindNSStringExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindNameConstraintsExten": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindSMimeProfile": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindSubjectKeyIDExtension": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindUserCertByUsage": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FindUserCertsByUsage": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FinishCertificateRequestAttributes": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FinishExtensions": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FixupEmailAddr": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FormatName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FreeDistNames": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_FreeNicknames": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetAVATag": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertChainFromCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertCommentString": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertEmailAddress": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertIsPerm": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertIsTemp": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertIssuerAndSN": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertKeyType": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertNicknameWithValidity": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertNicknames": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertTimes": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertTrust": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertUid": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertificateEmailAddress": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertificateNames": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCertificateRequestExtensions": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetClassicOCSPDisabledPolicy": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetClassicOCSPEnabledHardFailurePolicy": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetClassicOCSPEnabledSoftFailurePolicy": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCommonName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetConstrainedCertificateNames": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetCountryName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetDBContentVersion": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetDefaultCertDB": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetDomainComponentName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetExtenCriticality": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetFirstEmailAddress": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetGeneralNameByType": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetGeneralNameTypeFromString": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetImposedNameConstraints": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetLocalityName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetNextEmailAddress": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetNextGeneralName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetNextNameConstraint": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetOrgName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetOrgUnitName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetPKIXVerifyNistRevocationPolicy": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetPrevGeneralName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetPrevNameConstraint": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetSSLCACerts": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetSlopTime": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetStateName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetStatusConfig": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetSubjectNameDigest": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetUsePKIXForValidation": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GetValidDNSPatternsFromCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_GovtApprovedBitSet": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_Hexify": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_ImportCAChain": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_ImportCAChainTrusted": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_ImportCerts": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_InitCertDB": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_IsCACert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_IsCADERCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_IsCertRevoked": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_IsInList": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_IsNewer": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_IsRootDERCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_IsUserCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_IssuerNameFromDERCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_KeyFromDERCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_KeyFromDERCrl": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_KeyFromIssuerAndSN": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_KeyUsageAndTypeForCertUsage": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_LockCertRefCount": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_MakeCANickname": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_MatchUserCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_NameFromDERCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_NewCertList": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_NewTempCertificate": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_NextSubjectCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_NicknameStringsFromCertList": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_OpenCertDB": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_OpenCertDBFilename": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_OpenVolatileCertDB": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_PKIXVerifyCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_PrevSubjectCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_RemoveCertListNode": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_SaveSMimeProfile": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_SerialNumberFromDERCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_SetCAPolicyStringCallback": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_SetDefaultCertDB": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_SetSlopTime": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_SetStatusConfig": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_SortCBValidity": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_StartCertExtensions": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_StartCertificateRequestAttributes": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_TrustFlagsForCACertUsage": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_UncacheCRL": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_UnlockCertRefCount": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_UnlockDB": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_VerifyCert": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_VerifyCertChain": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_VerifyCertName": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_VerifyCertNow": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_VerifyCertificate": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_VerifyCertificateNow": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_VerifySignedData": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_VerifySignedDataWithPublicKey": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_VerifySignedDataWithPublicKeyInfo": {
+        "library": "NSS",
+        "header": "cert.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "CERT_AddTempCertToPerm": {
+        "library": "NSS",
+        "header": "certdb.h",
+        "category": "API",
+        "algorithm": "Certificate Store",
+        "primitive": "certificate"
+    },
+    "SEC_CertNicknameConflict": {
+        "library": "NSS",
+        "header": "certdb.h",
+        "category": "API",
+        "algorithm": "Certificate Store",
+        "primitive": "certificate"
+    },
+    "SEC_CheckCrlTimes": {
+        "library": "NSS",
+        "header": "certdb.h",
+        "category": "API",
+        "algorithm": "Certificate Store",
+        "primitive": "certificate"
+    },
+    "SEC_CrlIsNewer": {
+        "library": "NSS",
+        "header": "certdb.h",
+        "category": "API",
+        "algorithm": "Certificate Store",
+        "primitive": "certificate"
+    },
+    "SEC_DeletePermCRL": {
+        "library": "NSS",
+        "header": "certdb.h",
+        "category": "API",
+        "algorithm": "Certificate Store",
+        "primitive": "certificate"
+    },
+    "SEC_DeletePermCertificate": {
+        "library": "NSS",
+        "header": "certdb.h",
+        "category": "API",
+        "algorithm": "Certificate Store",
+        "primitive": "certificate"
+    },
+    "SEC_DestroyCrl": {
+        "library": "NSS",
+        "header": "certdb.h",
+        "category": "API",
+        "algorithm": "Certificate Store",
+        "primitive": "certificate"
+    },
+    "SEC_DupCrl": {
+        "library": "NSS",
+        "header": "certdb.h",
+        "category": "API",
+        "algorithm": "Certificate Store",
+        "primitive": "certificate"
+    },
+    "SEC_FindCrlByDERCert": {
+        "library": "NSS",
+        "header": "certdb.h",
+        "category": "API",
+        "algorithm": "Certificate Store",
+        "primitive": "certificate"
+    },
+    "SEC_FindCrlByName": {
+        "library": "NSS",
+        "header": "certdb.h",
+        "category": "API",
+        "algorithm": "Certificate Store",
+        "primitive": "certificate"
+    },
+    "SEC_LookupCrls": {
+        "library": "NSS",
+        "header": "certdb.h",
+        "category": "API",
+        "algorithm": "Certificate Store",
+        "primitive": "certificate"
+    },
+    "SEC_NewCrl": {
+        "library": "NSS",
+        "header": "certdb.h",
+        "category": "API",
+        "algorithm": "Certificate Store",
+        "primitive": "certificate"
+    },
+    "DSAU_DecodeDerSig": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "DSAU_DecodeDerSigToLen": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "SEC_CreateSignatureAlgorithmID": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "SEC_DestroySignedData": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "SEC_GetSignatureAlgorithmOidTag": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "SEC_GetSignatureAlgorithmOidTagByKey": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "SGN_Begin": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "SGN_DestroyContext": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "SGN_NewContextWithAlgorithmID": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "SGN_Update": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "VFY_Begin": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "VFY_CreateContextWithAlgorithmID": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "VFY_DestroyContext": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "VFY_End": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "VFY_EndWithSignature": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "VFY_VerifyData": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "VFY_VerifyDataWithAlgorithmID": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "VFY_VerifyDigest": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "VFY_VerifyDigestWithAlgorithmID": {
+        "library": "NSS",
+        "header": "cryptohi.h",
+        "category": "API",
+        "algorithm": "Digital Signature",
+        "primitive": "digital-signature"
+    },
+    "SECKEY_AddPrivateKeyToListTail": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_AddPublicKeyToListTail": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_BigIntegerBitLength": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_CacheStaticFlags": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_ConvertAndDecodePublicKeyAndChallenge": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_ConvertAndDecodeSubjectPublicKeyInfo": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_ConvertToPublicKey": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_CopyEncryptedPrivateKeyInfo": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_CopyPrivateKey": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_CopyPrivateKeyInfo": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_CopyPublicKey": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_CreateDHPrivateKey": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_CreateECPrivateKey": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_CreateRSAPrivateKey": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_CreateSubjectPublicKeyInfo": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_DecodeDERSubjectPublicKeyInfo": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_DestroyEncryptedPrivateKeyInfo": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_DestroyPrivateKey": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_DestroyPrivateKeyInfo": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_DestroyPrivateKeyList": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_DestroyPublicKey": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_DestroyPublicKeyList": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_DestroySubjectPublicKeyInfo": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_EncodeDERSubjectPublicKeyInfo": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_EnforceKeySize": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_ExtractPublicKey": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_GetKeyTypeString": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_GetMLDSAOidTagByPkcs11ParamSet": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_GetMLDSAPkcs11ParamSetByOidTag": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_GetPrivateKeyType": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_GetPublicKeyType": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_ImportDERPublicKey": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_MLDSAOidParamsToLen": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_NewPrivateKeyList": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_PrivateKeyStrengthInBits": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_PublicKeyStrength": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_PublicKeyStrengthInBits": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_RemovePrivateKeyListNode": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_RemovePublicKeyListNode": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_SignatureLen": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "SECKEY_UpdateCertPQG": {
+        "library": "NSS",
+        "header": "keyhi.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "NSS_GetVersion": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "NSS_Init": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "NSS_InitContext": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "NSS_InitReadWrite": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "NSS_InitWithMerge": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "NSS_Initialize": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "NSS_IsInitialized": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "NSS_NoDB_Init": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "NSS_OptionGet": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "NSS_OptionSet": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "NSS_RegisterShutdown": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "NSS_Shutdown": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "NSS_ShutdownContext": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "NSS_VersionCheck": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "PK11_ConfigurePKCS11": {
+        "library": "NSS",
+        "header": "nss.h",
+        "category": "API",
+        "algorithm": "NSS",
+        "primitive": "library"
+    },
+    "CERT_ClearOCSPCache": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_CreateEncodedOCSPSuccessResponse": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_CreateOCSPCertID": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_CreateOCSPSingleResponseGood": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_CreateOCSPSingleResponseRevoked": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_CreateOCSPSingleResponseUnknown": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_DestroyOCSPCertID": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_DestroyOCSPRequest": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_DestroyOCSPResponse": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_DisableOCSPChecking": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_EnableOCSPChecking": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_EncodeOCSPRequest": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_ForcePostMethodForOCSP": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_GetOCSPResponseStatus": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_GetOCSPStatusForCertID": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_OCSPCacheSettings": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_PostOCSPRequest": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_SetOCSPFailureMode": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "CERT_SetOCSPTimeout": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "SEC_GetRegisteredHttpClient": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "SEC_RegisterDefaultHttpClient": {
+        "library": "NSS",
+        "header": "ocsp.h",
+        "category": "API",
+        "algorithm": "OCSP",
+        "primitive": "certificate-validation"
+    },
+    "PK11_PQG_DestroyParams": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_PQG_DestroyVerify": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_PQG_GetBaseFromParams": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_PQG_GetCounterFromVerify": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_PQG_GetHFromVerify": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_PQG_GetPrimeFromParams": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_PQG_GetSeedFromVerify": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_PQG_GetSubPrimeFromParams": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_PQG_NewParams": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_PQG_NewVerify": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_PQG_ParamGen": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_PQG_ParamGenSeedLen": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_PQG_ParamGenV2": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_PQG_VerifyParams": {
+        "library": "NSS",
+        "header": "pk11pqg.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "parameter-generation"
+    },
+    "PK11_AEADOp": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_AEADRawOp": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_AlgtagToMechanism": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_Authenticate": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_BlockData": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ChangePW": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CheckPKCS11Version": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CheckSSOPassword": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CheckUserPassword": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CipherOp": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CloneContext": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ConcatSymKeys": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ContextGetFIPSStatus": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ConvertSessionPrivKeyToTokenPrivKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ConvertSessionSymKeyToTokenSymKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CopySymKeyForSigning": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CopyTokenPrivKeyToSessionPrivKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CreateContextByPrivKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CreateContextByPubKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CreateContextBySymKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CreateDigestContext": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CreateGenericObject": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CreateManagedGenericObject": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CreateMergeLog": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CreatePBEAlgorithmID": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CreatePBEParams": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CreatePBEV2AlgorithmID": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_CreateSignatureContextByPubKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_Decrypt": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DeleteTokenCertAndKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DeleteTokenPrivateKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DeleteTokenPublicKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DeleteTokenSymKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DeriveWithFlags": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DeriveWithFlagsPerm": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DeriveWithTemplate": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DestroyContext": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DestroyGenericObject": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DestroyGenericObjects": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DestroyMergeLog": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DestroyObject": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DestroyTokenObject": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DigestBegin": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DigestFinal": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DigestKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DigestOp": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_DoesMechanism": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_Encrypt": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ExportDERPrivateKeyInfo": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ExportEncryptedPrivKeyInfo": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ExportEncryptedPrivKeyInfoV2": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ExportEncryptedPrivateKeyInfo": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ExportEncryptedPrivateKeyInfoV2": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ExportPrivKeyInfo": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ExportPrivateKeyInfo": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ExtractKeyValue": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_Finalize": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindBestKEAMatch": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindCertAndKeyByRecipientList": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindCertAndKeyByRecipientListNew": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindCertByIssuerAndSN": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindCertFromDERCert": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindCertFromDERCertItem": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindCertFromNickname": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindCertFromURI": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindCertInSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindCertsFromEmailAddress": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindCertsFromNickname": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindCertsFromURI": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindEncodedCertInSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindFixedKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindGenericObjects": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindKeyByAnyCert": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindKeyByDERCert": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindKeyByKeyID": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindObjectForCert": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindPrivateKeyFromCert": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindRawCertsWithSubject": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindSlotByName": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FindSlotsByNames": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FortezzaHasKEA": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FortezzaMapSig": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FreeSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FreeSlotList": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FreeSlotListElement": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_FreeSymKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GenerateFortezzaIV": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GenerateKeyPair": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GenerateKeyPairWithFlags": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GenerateKeyPairWithOpFlags": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GenerateNewParam": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GenerateRandom": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GenerateRandomOnSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetAllSlotsForCert": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetAllTokens": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetBestKeyLength": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetBestSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetBestSlotMultiple": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetBestSlotMultipleWithAttributes": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetBestSlotWithAttributes": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetBestWrapMechanism": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetBlockSize": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetCertFromPrivateKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetCertsMatchingPrivateKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetCurrentWrapIndex": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetDefaultArray": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetDefaultFlags": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetDisabledReason": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetFirstSafe": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetIVLength": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetInternalKeySlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetInternalSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetKeyData": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetKeyGen": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetKeyGenWithSize": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetKeyLength": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetKeyStrength": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetKeyType": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetLowLevelKeyIDForCert": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetLowLevelKeyIDForPrivateKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetMaxKeyLength": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetMechanism": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetMinimumPwdLength": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetModInfo": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetModule": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetModuleID": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetModuleURI": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetNextGenericObject": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetNextSafe": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetNextSymKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetObjectHandle": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetPBEIV": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetPQGParamsFromPrivateKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetPadMechanism": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetPrevGenericObject": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetPrivateKeyNickname": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetPrivateModulusLen": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetPublicKeyNickname": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetPublicValueFromPublicKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetSlotFromKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetSlotFromPrivateKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetSlotID": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetSlotInfo": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetSlotName": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetSlotPWValues": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetSlotSeries": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetSymKeyHandle": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetSymKeyNickname": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetSymKeyType": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetSymKeyUserData": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetTokenInfo": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetTokenName": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetTokenURI": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetWindow": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_GetWrapKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HPKE_Deserialize": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HPKE_DestroyContext": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HPKE_ExportSecret": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HPKE_GetEncapPubKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HPKE_GetSharedSecret": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HPKE_ImportContext": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HPKE_NewContext": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HPKE_Open": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HPKE_Seal": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HPKE_Serialize": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HPKE_SetupR": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HPKE_SetupS": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HPKE_ValidateParameters": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HasAttributeSet": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HasRootCerts": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_HashBuf": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_IVFromParam": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportCRL": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportCert": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportCertForKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportCertForKeyToSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportDERCert": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportDERCertForKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportDERPrivateKeyInfo": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportDERPrivateKeyInfoAndReturnKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportDataKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportEncryptedPrivateKeyInfo": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportEncryptedPrivateKeyInfoAndReturnKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportPrivateKeyInfo": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportPrivateKeyInfoAndReturnKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportPublicKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportSymKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ImportSymKeyWithFlags": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_InitPin": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_IsDisabled": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_IsFIPS": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_IsFriendly": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_IsHW": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_IsInternal": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_IsInternalKeySlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_IsLoggedIn": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_IsPresent": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_IsReadOnly": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_IsRemovable": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_KeyForCertExists": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_KeyForDERCertExists": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_KeyGen": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_LinkGenericObject": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ListCerts": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ListCertsInSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ListFixedKeysInSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ListPrivKeysInSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ListPrivateKeysInSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ListPublicKeysInSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_LoadPrivKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_Logout": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_LogoutAll": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_MakeIDFromPubKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_MakeKEAPubKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_MapPBEMechanismToCryptoMechanism": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_MapSignKeyType": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_MechanismToAlgtag": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_MergeTokens": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_MoveSymKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_NeedLogin": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_NeedPWInit": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_NeedUserInit": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ObjectGetFIPSStatus": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_PBEKeyGen": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ParamFromAlgid": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ParamFromIV": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ParamToAlgid": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_PrivDecrypt": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_PrivDecryptPKCS1": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ProtectedAuthenticationPath": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_PubDecryptRaw": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_PubDerive": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_PubDeriveWithKDF": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_PubEncrypt": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_PubEncryptPKCS1": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_PubEncryptRaw": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_PubUnwrapSymKeyWithFlagsPerm": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_PubUnwrapSymKeyWithMechanism": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_PubWrapSymKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_PubWrapSymKeyWithMechanism": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_RandomUpdate": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_RawPBEKeyGen": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ReadRawAttributes": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ReferenceSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ReferenceSymKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_ResetToken": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_RestoreContext": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SaveContext": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SeedRandom": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SetFortezzaHack": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SetPasswordFunc": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SetPrivateKeyNickname": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SetPublicKeyNickname": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SetSlotPWValues": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SetSymKeyNickname": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SetWrapKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_Sign": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SignWithMechanism": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SignWithSymKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SignatureLen": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SlotGetLastFIPSStatus": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_SymKeyFromHandle": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_TokenExists": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_TokenKeyGen": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_TokenKeyGenWithFlags": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_TokenRefresh": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_TraverseCertsForNicknameInSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_TraverseCertsForSubjectInSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_TraverseSlotCerts": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_UnlinkGenericObject": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_UnwrapPrivKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_UnwrapPrivKeyByKeyType": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_UnwrapSymKeyWithFlags": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_UnwrapSymKeyWithFlagsPerm": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_UpdateSlotAttribute": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_UserDisableSlot": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_Verify": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_VerifyKeyOK": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_VerifyRecover": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_VerifyWithMechanism": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_WrapPrivKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_WrapSymKey": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11_WriteRawAttribute": {
+        "library": "NSS",
+        "header": "pk11pub.h",
+        "category": "API",
+        "algorithm": "PKCS#11",
+        "primitive": "cryptographic-api"
+    },
+    "PK11SDR_Decrypt": {
+        "library": "NSS",
+        "header": "pk11sdr.h",
+        "category": "API",
+        "algorithm": "Password Encryption",
+        "primitive": "secure-storage"
+    },
+    "PK11SDR_Encrypt": {
+        "library": "NSS",
+        "header": "pk11sdr.h",
+        "category": "API",
+        "algorithm": "Password Encryption",
+        "primitive": "secure-storage"
+    },
+    "SEC_PKCS12PutPFX": {
+        "library": "NSS",
+        "header": "pkcs12.h",
+        "category": "API",
+        "algorithm": "PKCS#12",
+        "primitive": "keystore"
+    },
+    "SEC_PKCS12ValidData": {
+        "library": "NSS",
+        "header": "pkcs12.h",
+        "category": "API",
+        "algorithm": "PKCS#12",
+        "primitive": "keystore"
+    },
+    "SEC_ASN1Decode": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1DecodeInteger": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1DecoderAbort": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1DecoderClearFilterProc": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1DecoderClearNotifyProc": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1DecoderFinish": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1DecoderSetFilterProc": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1DecoderSetMaximumElementSize": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1DecoderSetNotifyProc": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1DecoderUpdate": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1Encode": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1EncodeInteger": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1EncodeLength": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1EncodeUnsignedInteger": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1EncoderAbort": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1EncoderClearNotifyProc": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1EncoderClearStreaming": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1EncoderClearTakeFromBuf": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1EncoderFinish": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1EncoderSetNotifyProc": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1EncoderSetStreaming": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1EncoderSetTakeFromBuf": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1EncoderStart": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1EncoderUpdate": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1IsTemplateSimple": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_ASN1LengthLength": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "SEC_QuickDERDecodeItem": {
+        "library": "NSS",
+        "header": "secasn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "CERT_GenTime2FormattedAscii": {
+        "library": "NSS",
+        "header": "secder.h",
+        "category": "API",
+        "algorithm": "DER",
+        "primitive": "encoding"
+    },
+    "CERT_UTCTime2FormattedAscii": {
+        "library": "NSS",
+        "header": "secder.h",
+        "category": "API",
+        "algorithm": "DER",
+        "primitive": "encoding"
+    },
+    "HASH_Begin": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "HASH_Clone": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "HASH_Create": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "HASH_Destroy": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "HASH_End": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "HASH_GetHashObject": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "HASH_GetHashObjectByOidTag": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "HASH_GetType": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "HASH_HashBuf": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "HASH_ResultLen": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "HASH_ResultLenByOidTag": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "HASH_ResultLenContext": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "HASH_Update": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "SEC_GetMgfTypeByOidTag": {
+        "library": "NSS",
+        "header": "sechash.h",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "NSS_GetAlgorithmPolicy": {
+        "library": "NSS",
+        "header": "secoid.h",
+        "category": "API",
+        "algorithm": "OID",
+        "primitive": "algorithm-identification"
+    },
+    "NSS_IsPolicyLocked": {
+        "library": "NSS",
+        "header": "secoid.h",
+        "category": "API",
+        "algorithm": "OID",
+        "primitive": "algorithm-identification"
+    },
+    "NSS_SetAlgorithmPolicy": {
+        "library": "NSS",
+        "header": "secoid.h",
+        "category": "API",
+        "algorithm": "OID",
+        "primitive": "algorithm-identification"
+    },
+    "SEC_ASN1_CHOOSER_DECLARE": {
+        "library": "NSS",
+        "header": "secoid.h",
+        "category": "API",
+        "algorithm": "OID",
+        "primitive": "algorithm-identification"
+    },
+    "SEC_PKCS5GetCryptoAlgorithm": {
+        "library": "NSS",
+        "header": "secpkcs5.h",
+        "category": "API",
+        "algorithm": "PBKDF",
+        "primitive": "key-derivation"
+    },
+    "SEC_PKCS5GetHashAlgorithm": {
+        "library": "NSS",
+        "header": "secpkcs5.h",
+        "category": "API",
+        "algorithm": "PBKDF",
+        "primitive": "key-derivation"
+    },
+    "SEC_PKCS5GetHashFromAlgTag": {
+        "library": "NSS",
+        "header": "secpkcs5.h",
+        "category": "API",
+        "algorithm": "PBKDF",
+        "primitive": "key-derivation"
+    },
+    "SEC_PKCS5GetIV": {
+        "library": "NSS",
+        "header": "secpkcs5.h",
+        "category": "API",
+        "algorithm": "PBKDF",
+        "primitive": "key-derivation"
+    },
+    "SEC_PKCS5GetKeyLength": {
+        "library": "NSS",
+        "header": "secpkcs5.h",
+        "category": "API",
+        "algorithm": "PBKDF",
+        "primitive": "key-derivation"
+    },
+    "SEC_PKCS5GetPBEAlgorithm": {
+        "library": "NSS",
+        "header": "secpkcs5.h",
+        "category": "API",
+        "algorithm": "PBKDF",
+        "primitive": "key-derivation"
+    },
+    "SEC_PKCS5IsAlgorithmPBEAlg": {
+        "library": "NSS",
+        "header": "secpkcs5.h",
+        "category": "API",
+        "algorithm": "PBKDF",
+        "primitive": "key-derivation"
+    },
+    "SEC_PKCS5IsAlgorithmPBEAlgTag": {
+        "library": "NSS",
+        "header": "secpkcs5.h",
+        "category": "API",
+        "algorithm": "PBKDF",
+        "primitive": "key-derivation"
+    },
+    "SEC_PKCS7AddCertChain": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7AddCertificate": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7AddSignedAttribute": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7AddSigningTime": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7AddSymmetricCapabilities": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7ContainsCertsOrCrls": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7ContentIsEncrypted": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7ContentIsSigned": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7ContentType": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7CopyContentInfo": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7CreateEncryptedData": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7DecodeItem": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7DecoderAbort": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7DecoderFinish": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7DecoderStart": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7DecoderUpdate": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7DecryptContents": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7DestroyContentInfo": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7EncoderAbort": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7EncoderFinish": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7EncoderUpdate": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7EncryptContents": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7GetCertificateList": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7GetContent": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7GetEncryptionAlgorithm": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7GetSignerCommonName": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7GetSignerEmailAddress": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7GetSigningTime": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7IncludeCertChain": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7IsContentEmpty": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7PrepareForEncode": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7SetContent": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "SEC_PKCS7VerifySignature": {
+        "library": "NSS",
+        "header": "secpkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS#7",
+        "primitive": "cms"
+    },
+    "NSS_SMIMEUtil_CreateMSSMIMEEncKeyPrefs": {
+        "library": "NSS",
+        "header": "smime.h",
+        "category": "API",
+        "algorithm": "S/MIME",
+        "primitive": "email-security"
+    },
+    "NSS_SMIMEUtil_CreateSMIMECapabilities": {
+        "library": "NSS",
+        "header": "smime.h",
+        "category": "API",
+        "algorithm": "S/MIME",
+        "primitive": "email-security"
+    },
+    "NSS_SMIMEUtil_CreateSMIMEEncKeyPrefs": {
+        "library": "NSS",
+        "header": "smime.h",
+        "category": "API",
+        "algorithm": "S/MIME",
+        "primitive": "email-security"
+    },
+    "NSS_SMIMEUtil_DecryptionAllowed": {
+        "library": "NSS",
+        "header": "smime.h",
+        "category": "API",
+        "algorithm": "S/MIME",
+        "primitive": "email-security"
+    },
+    "NSS_SMIMEUtil_EncryptionAllowed": {
+        "library": "NSS",
+        "header": "smime.h",
+        "category": "API",
+        "algorithm": "S/MIME",
+        "primitive": "email-security"
+    },
+    "NSS_SMIMEUtil_EncryptionEnabled": {
+        "library": "NSS",
+        "header": "smime.h",
+        "category": "API",
+        "algorithm": "S/MIME",
+        "primitive": "email-security"
+    },
+    "NSS_SMIMEUtil_FindBulkAlgForRecipients": {
+        "library": "NSS",
+        "header": "smime.h",
+        "category": "API",
+        "algorithm": "S/MIME",
+        "primitive": "email-security"
+    },
+    "NSS_SMIMEUtil_GetCertFromEncryptionKeyPreference": {
+        "library": "NSS",
+        "header": "smime.h",
+        "category": "API",
+        "algorithm": "S/MIME",
+        "primitive": "email-security"
+    },
+    "NSS_SMIMEUtil_SigningAllowed": {
+        "library": "NSS",
+        "header": "smime.h",
+        "category": "API",
+        "algorithm": "S/MIME",
+        "primitive": "email-security"
+    },
+    "NSS_CmpCertChainWCANames": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "NSS_FindCertKEAType": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "NSS_SetExportPolicy": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "NSS_SetFrancePolicy": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_AlertReceivedCallback": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_AlertSentCallback": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_AuthCertificate": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_AuthCertificateComplete": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_AuthCertificateHook": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_BadCertHook": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_CanBypass": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_CertDBHandleSet": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_CertIsUsable": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_CipherPolicyGet": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_CipherPolicySet": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_CipherPrefGet": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_CipherPrefGetDefault": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_CipherPrefSet": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_CipherPrefSetDefault": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_ClearSessionCache": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_ClientCertCallbackComplete": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_ConfigSecureServerWithCertChain": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_ConfigServerSessionIDCacheWithOpt": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_DataPending": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_EnableDefault": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_EnableWeakDHEPrimeGroup": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_ExportEarlyKeyingMaterial": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_ExportKeyingMaterial": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_FilterClientCertListBySocket": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_ForceHandshake": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_ForceHandshakeWithTimeout": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_GetClientAuthDataHook": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_GetExperimentalAPI": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_GetImplementedCiphers": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_GetMaxServerCacheLocks": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_GetNegotiatedHostInfo": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_GetNextProto": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_GetNumImplementedCiphers": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_GetSessionID": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_GetStatistics": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_HandshakeCallback": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_HandshakeNegotiatedExtension": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_IS_SSL2_CIPHER": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_InheritMPServerSIDCache": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_InvalidateSession": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_LocalCertificate": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_NamedGroupConfig": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_OptionGet": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_OptionGetDefault": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_OptionSetDefault": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_PeerCertificate": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_PeerCertificateChain": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_PeerStapledOCSPResponses": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_REQUIRE_NEVER": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_ReHandshake": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_ReHandshakeWithTimeout": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_RecommendedCanFalseStart": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_ReconfigFD": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_RevealCert": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_RevealPinArg": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_RevealURL": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SNISocketConfigHook": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SendAdditionalKeyShares": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SetCanFalseStartCallback": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SetMaxServerCacheLocks": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SetNextProtoCallback": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SetPKCS11PinArg": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SetPolicy": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SetSessionTicketKeyPair": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SetSockPeerID": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SetStapledOCSPResponses": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SetTrustAnchors": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SetURL": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_ShutdownServerSessionIDCache": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SignatureMaxCount": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SignatureSchemePrefGet": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_SignatureSchemePrefSet": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_VersionRangeGet": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_VersionRangeGetDefault": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_VersionRangeSet": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "SSL_VersionRangeSetDefault": {
+        "library": "NSS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    }
+}

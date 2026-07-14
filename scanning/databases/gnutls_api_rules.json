@@ -1,0 +1,2718 @@
+{
+    "gnutls_alert_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_alert_get_name": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_alert_get_strname": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_alert_send": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_alert_send_appropriate": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_alert_set_read_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_alpn_get_selected_protocol": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_alpn_set_protocols": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anon_allocate_client_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anon_allocate_server_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anon_free_client_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anon_free_server_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anon_set_params_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anon_set_server_dh_params": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anon_set_server_known_dh_params": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anon_set_server_params_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anti_replay_deinit": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anti_replay_enable": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anti_replay_init": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anti_replay_set_add_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anti_replay_set_ptr": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_anti_replay_set_window": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_audit_current_context": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_audit_pop_context": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_audit_push_context": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_auth_client_get_type": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_auth_get_type": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_auth_server_get_type": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_base64_decode2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_base64_encode2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_buffer_append_data": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_activation_time_peers": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_allocate_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_client_get_request_status": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_expiration_time_peers": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_free_ca_names": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_free_cas": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_free_crls": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_free_keys": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_get_crt_raw": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_get_issuer": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_get_ocsp_expiration": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_get_ours": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_get_peers": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_get_peers_subkey_id": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_get_verify_flags": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_get_x509_crt": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_get_x509_key": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_send_x509_rdn_sequence": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_server_set_request": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_dh_params": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_flags": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_known_dh_params": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_ocsp_status_request_file": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_ocsp_status_request_file2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_ocsp_status_request_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_ocsp_status_request_function2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_ocsp_status_request_mem": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_params_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_pin_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_rawpk_key_file": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_retrieve_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_retrieve_function2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_verify_flags": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_verify_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_verify_limits": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_crl": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_crl_file": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_crl_mem": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_key": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_key_file": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_key_file2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_key_mem": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_key_mem2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_simple_pkcs12_file": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_simple_pkcs12_mem": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_system_trust": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_trust": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_trust_dir": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_trust_file": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_set_x509_trust_mem": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_type_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_type_get2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_verification_status_print": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_verify_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_verify_peers": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_verify_peers2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_certificate_verify_peers3": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_check_version_numeric": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_cipher_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_cipher_suite_info": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_compress_certificate_get_selected_method": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_compress_certificate_set_methods": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_credentials_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_credentials_set": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_datum_t": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_db_check_entry": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_db_check_entry_expire_time": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_db_check_entry_time": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_db_get_default_cache_expiration": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_db_get_ptr": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_db_remove_session": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_db_set_cache_expiration": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_db_set_ptr": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_db_set_remove_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_db_set_retrieve_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_db_set_store_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_deinit": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_get_group": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_get_peers_public_bits": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_get_prime_bits": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_get_pubkey": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_get_secret_bits": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_params_cpy": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_params_deinit": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_params_export2_pkcs3": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_params_export_pkcs3": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_params_export_raw": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_params_generate2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_params_import_dsa": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_params_import_pkcs3": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_params_import_raw": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_params_import_raw2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_params_import_raw3": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_params_init": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_dh_set_prime_bits": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_digest_set_secure": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_early_cipher_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_early_prf_hash_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_ecc_curve_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_ecc_curve_set_enabled": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_error_to_alert": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_ext_get_current_msg": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_ext_get_data": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_ext_get_name": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_ext_get_name2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_ext_raw_parse": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_ext_register": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_ext_set_data": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_fingerprint": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_fips140_context_deinit": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_fips140_context_init": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_fips140_get_operation_state": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_fips140_mode_enabled": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_fips140_pop_context": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_fips140_push_context": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_fips140_run_self_tests": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_fips140_set_mode": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_free": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_get_library_config": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_get_system_config_file": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_global_deinit": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_global_init": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_global_set_audit_log_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_global_set_log_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_global_set_log_level": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_global_set_mutex": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_global_set_time_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_group_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_group_get_id": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_handshake": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_handshake_get_last_in": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_handshake_get_last_out": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_handshake_set_hook_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_handshake_set_max_packet_length": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_handshake_set_post_client_hello_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_handshake_set_private_extensions": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_handshake_set_random": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_handshake_set_read_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_handshake_set_secret_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_handshake_update_receiving_key": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_handshake_write": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_heartbeat_get_timeout": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_heartbeat_ping": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_heartbeat_pong": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_heartbeat_set_timeouts": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_hex2bin": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_hex_decode": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_hex_decode2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_hex_encode": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_hex_encode2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_idna_reverse_map": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_init": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_key_generate": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_kx_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_load_file": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_mac_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_memcmp": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_memset": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_ocsp_status_request_enable_client": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_ocsp_status_request_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_ocsp_status_request_get2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_ocsp_status_request_is_checked": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_openpgp_send_cert": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_packet_deinit": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_packet_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_params_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_pem_base64_decode": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_pem_base64_decode2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_pem_base64_encode": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_pem_base64_encode2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_perror": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_pk_algorithm_get_name": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_pk_bits_to_sec_param": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_prf": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_prf_early": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_prf_hash_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_prf_raw": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_prf_rfc5705": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_certificate_type_list": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_certificate_type_list2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_cipher_list": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_deinit": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_ecc_curve_list": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_get_cipher_suite_index": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_group_list": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_init": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_init2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_kx_list": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_mac_list": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_protocol_list": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_set": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_set_direct": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_sign_list": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_priority_string_list": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_protocol_get_version": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_protocol_set_enabled": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_allocate_client_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_allocate_client_credentials2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_allocate_server_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_allocate_server_credentials2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_client_credentials_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_client_credentials_function2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_client_credentials_function3": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_client_get_hint": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_format_imported_identity": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_free_client_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_free_server_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_server_credentials_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_server_credentials_function2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_server_credentials_function3": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_server_get_username": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_server_get_username2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_client_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_client_credentials2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_client_credentials_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_client_credentials_function2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_client_credentials_function3": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_params_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_server_credentials_file": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_server_credentials_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_server_credentials_function2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_server_credentials_function3": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_server_credentials_hint": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_server_dh_params": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_server_known_dh_params": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_psk_set_server_params_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_random_art": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_range_split": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_reauth": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_check_corked": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_check_pending": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_cork": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_disable_padding": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_discard_queued": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_get_direction": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_get_max_early_data_size": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_get_max_send_size": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_get_max_size": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_get_state": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_overhead_size": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_recv": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_recv_early_data": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_recv_packet": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_recv_seq": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_send": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_send2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_send_early_data": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_send_file": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_send_range": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_set_max_early_data_size": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_set_max_empty_records": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_set_max_recv_size": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_set_max_size": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_set_state": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_set_timeout": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_record_uncork": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_rehandshake": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_safe_renegotiation_status": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_sec_param_get_name": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_sec_param_to_pk_bits": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_server_name_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_server_name_set": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_channel_binding": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_enable_compatibility_mode": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_etm_status": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_ext_master_secret_status": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_ext_register": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_force_valid": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_get_data": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_get_data2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_get_desc": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_get_flags": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_get_id": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_get_id2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_get_keylog_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_get_master_secret": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_get_ptr": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_get_random": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_get_verify_cert_status": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_is_resumed": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_key_update": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_resumption_requested": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_set_data": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_set_id": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_set_keylog_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_set_premaster": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_set_ptr": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_set_verify_cert": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_set_verify_cert2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_set_verify_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_supplemental_register": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_ticket_enable_client": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_ticket_enable_server": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_ticket_key_generate": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_session_ticket_send": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_set_default_priority": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_set_default_priority_append": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_sign_algorithm_get": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_sign_algorithm_get_client": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_sign_algorithm_get_requested": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_sign_set_secure": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_sign_set_secure_for_certs": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_allocate_client_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_allocate_server_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_base64_decode": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_base64_decode2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_base64_encode": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_base64_encode2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_client_credentials_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_free_client_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_free_server_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_server_credentials_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_server_get_username": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_set_client_credentials": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_set_client_credentials_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_set_prime_bits": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_set_server_credentials_file": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_set_server_credentials_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_set_server_fake_salt_seed": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srp_verifier": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srtp_get_keys": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srtp_get_mki": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srtp_get_profile_id": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srtp_get_profile_name": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srtp_get_selected_profile": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srtp_set_mki": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srtp_set_profile": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_srtp_set_profile_direct": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_store_commitment": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_store_pubkey": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_supplemental_get_name": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_supplemental_recv": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_supplemental_register": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_supplemental_send": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_system_recv_timeout": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_tdb_deinit": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_tdb_init": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_tdb_set_store_commitment_func": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_tdb_set_store_func": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_tdb_set_verify_func": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_get_int": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_get_ptr": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_get_ptr2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_is_ktls_enabled": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_set_errno": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_set_errno_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_set_int": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_set_int2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_set_ptr": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_set_ptr2": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_set_pull_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_set_pull_timeout_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_set_push_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_transport_set_vec_push_function": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_url_is_supported": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_utf8_password_normalize": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    },
+    "gnutls_verify_stored_pubkey": {
+        "library": "GnuTLS",
+        "header": "gnutls.h.in",
+        "category": "API",
+        "algorithm": "TLS",
+        "primitive": "tls"
+    }
+}

@@ -1,9 +1,9 @@
 import json
 from pathlib import Path
-from botan_algorithm_mapping import PREFIX_MAPPING
+from libgcrypt_api_mapping import API_PREFIX_MAPPING
 
 DATABASE = Path(
-    r"C:\AGCT\SPOTING\scanning\databases\botan_clean.json"
+    r"C:\AGCT\SPOTING\scanning\databases\libgcrypt_clean.json"
 )
 
 with open(DATABASE, "r") as f:
@@ -20,14 +20,13 @@ for header, apis in api_database.items():
         algorithm = "Unknown"
         primitive = "unknown"
 
-        for prefix, (alg, prim) in PREFIX_MAPPING.items():
+        for prefix, values in API_PREFIX_MAPPING.items():
             if api.startswith(prefix):
-                algorithm = alg
-                primitive = prim
+                algorithm, primitive = values
                 break
 
         rules[api] = {
-            "library": "Botan",
+            "library": "libgcrypt",
             "header": header,
             "category": "API",
             "algorithm": algorithm,
@@ -36,7 +35,7 @@ for header, apis in api_database.items():
         }
 
 OUTPUT = Path(
-    r"C:\AGCT\SPOTING\scanning\databases\botan_api_rules.json"
+    r"C:\AGCT\SPOTING\scanning\databases\libgcrypt_api_rules.json"
 )
 
 with open(OUTPUT, "w") as f:

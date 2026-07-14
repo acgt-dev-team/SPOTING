@@ -1,9 +1,9 @@
 import json
 from pathlib import Path
-from botan_algorithm_mapping import PREFIX_MAPPING
+from gnutls_api_mapping import HEADER_MAPPING
 
 DATABASE = Path(
-    r"C:\AGCT\SPOTING\scanning\databases\botan_clean.json"
+    r"C:\AGCT\SPOTING\scanning\databases\gnutls_clean.json"
 )
 
 with open(DATABASE, "r") as f:
@@ -17,17 +17,13 @@ for header, apis in api_database.items():
 
     for api in apis:
         
-        algorithm = "Unknown"
-        primitive = "unknown"
-
-        for prefix, (alg, prim) in PREFIX_MAPPING.items():
-            if api.startswith(prefix):
-                algorithm = alg
-                primitive = prim
-                break
+        algorithm, primitive = HEADER_MAPPING.get(
+            header,
+            ("Unknown", "unknown")
+        )
 
         rules[api] = {
-            "library": "Botan",
+            "library": "GnuTLS",
             "header": header,
             "category": "API",
             "algorithm": algorithm,
@@ -36,7 +32,7 @@ for header, apis in api_database.items():
         }
 
 OUTPUT = Path(
-    r"C:\AGCT\SPOTING\scanning\databases\botan_api_rules.json"
+    r"C:\AGCT\SPOTING\scanning\databases\gnutls_api_rules.json"
 )
 
 with open(OUTPUT, "w") as f:
