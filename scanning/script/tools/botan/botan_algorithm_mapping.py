@@ -1,26 +1,60 @@
-HEADER_MAPPING = {
+PREFIX_MAPPING = {
 
-    "aes.h": ("AES", "block-cipher"),
-    "aria.h": ("ARIA", "block-cipher"),
-    "camellia.h": ("CAMELLIA", "block-cipher"),
-    "chacha20.h": ("ChaCha20", "stream-cipher"),
-    "chachapoly.h": ("ChaCha20-Poly1305", "aead"),
+    # ===== Symmetric Encryption =====
+    "botan_block_cipher_": ("Block Cipher", "block-cipher"),
+    "botan_cipher_": ("Cipher", "cipher"),
+    "botan_key_wrap": ("AES Key Wrap", "key-wrap"),
+    "botan_key_unwrap": ("AES Key Wrap", "key-wrap"),
+    "botan_nist_kw_": ("AES Key Wrap", "key-wrap"),
+    "botan_fpe_": ("FPE", "format-preserving-encryption"),
 
-    "sha1.h": ("SHA-1", "hash-function"),
-    "sha256.h": ("SHA-256", "hash-function"),
-    "sha512.h": ("SHA-512", "hash-function"),
-    "md5.h": ("MD5", "hash-function"),
+    # ===== Hash =====
+    "botan_hash_": ("Hash", "hash-function"),
+    "botan_xof_": ("XOF", "hash-function"),
 
-    "hmac_drbg.h": ("HMAC", "mac"),
-    "cmac.h": ("CMAC", "mac"),
+    # ===== MAC =====
+    "botan_mac_": ("MAC", "mac"),
 
-    "rsa.h": ("RSA", "public-key"),
-    "ecdh.h": ("Diffie-Hellman", "key-agreement"),
-    "ecdsa.h": ("ECDSA", "digital-signature"),
-    "ecp.h": ("ECC", "public-key"),
+    # ===== Password Hash / KDF =====
+    "botan_pbkdf": ("PBKDF2", "key-derivation"),
+    "botan_pwdhash": ("Password Hash", "password-hashing"),
+    "botan_scrypt": ("scrypt", "password-hashing"),
+    "botan_kdf": ("KDF", "key-derivation"),
 
-    "ctr_drbg.h": ("RNG", "random-generator"),
-    "entropy.h": ("RNG", "random-generator"),
+    # ===== Random =====
+    "botan_rng_": ("RNG", "random-generator"),
+    "botan_system_rng": ("RNG", "random-generator"),
 
-    "pkcs5.h": ("PBKDF", "key-derivation"),
+    # ===== Public Key =====
+    "botan_privkey_": ("Public Key", "public-key"),
+    "botan_pubkey_": ("Public Key", "public-key"),
+    "botan_pk_op_": ("Public Key", "public-key"),
+
+    # ===== Elliptic Curve =====
+    "botan_ec_": ("ECC", "public-key"),
+
+    # ===== Big Integer =====
+    "botan_mp_": ("Big Integer", "big-integer"),
+
+    # ===== OTP =====
+    "botan_hotp_": ("HOTP", "otp"),
+    "botan_totp_": ("TOTP", "otp"),
+
+    # ===== SRP =====
+    "botan_srp6_": ("SRP", "password-authentication"),
+
+    # ===== X509 =====
+    "botan_x509_": ("X.509", "certificate"),
+
+    # ===== OID =====
+    "botan_oid_": ("OID", "object-identifier"),
+
+    # ===== Encoding =====
+    "botan_base64_": ("Base64", "encoding"),
+    "botan_hex_": ("Hex", "encoding"),
+
+    # ===== Misc =====
+    "botan_constant_time_": ("Constant Time", "utility"),
+    "botan_same_mem": ("Constant Time", "utility"),
+    "botan_scrub_mem": ("Memory", "utility"),
 }
