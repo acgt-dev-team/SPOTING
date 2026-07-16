@@ -7,7 +7,6 @@ RULE_FILE = (
     / "openssl_api_rules.json"
 )
 
-print(RULE_FILE)
 
 with open(RULE_FILE, "r", encoding="utf-8") as f:
     OPENSSL_API_RULES = json.load(f)

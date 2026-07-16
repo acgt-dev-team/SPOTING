@@ -122,21 +122,21 @@
         "library": "wolfSSL",
         "header": "arc4.h",
         "category": "API",
-        "algorithm": "ARC4",
+        "algorithm": "RC4",
         "primitive": "stream-cipher"
     },
     "wc_Arc4Init": {
         "library": "wolfSSL",
         "header": "arc4.h",
         "category": "API",
-        "algorithm": "ARC4",
+        "algorithm": "RC4",
         "primitive": "stream-cipher"
     },
     "wc_Arc4SetKey": {
         "library": "wolfSSL",
         "header": "arc4.h",
         "category": "API",
-        "algorithm": "ARC4",
+        "algorithm": "RC4",
         "primitive": "stream-cipher"
     },
     "wc_AriaFreeCrypt": {
@@ -255,211 +255,211 @@
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_Curve25519PrivateKeyDecode": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_Curve25519PrivateKeyToDer": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_Curve25519PublicKeyDecode": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_Curve25519PublicKeyToDer": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_DhParamsToDer": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_DhPrivKeyToDer": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_DhPubKeyToDer": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_EccKeyDerSize": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_EccKeyToDer": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_EccPublicKeyDerSize": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_Ed448KeyToDer": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_Ed448PrivateKeyDecode": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_Ed448PrivateKeyToDer": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_Ed448PublicKeyDecode": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_Ed448PublicKeyToDer": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_FreeDecodedAcert": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_FreeDecodedCert": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_FreeDer": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_GetCTC_HashOID": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_GetSubjectRaw": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_GetTime": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_InitCert": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_InitCert_ex": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_InitDecodedCert": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_PemCertToDer_ex": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_PemPubKeyToDer_ex": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_PkcsPad": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_RsaKeyToPublicDer": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_RsaPublicKeyDerSize": {
         "library": "wolfSSL",
         "header": "asn_public.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
     },
     "wc_Blake2bFinal": {
         "library": "wolfSSL",
@@ -507,14 +507,14 @@
         "library": "wolfSSL",
         "header": "camellia.h",
         "category": "API",
-        "algorithm": "CAMELLIA",
+        "algorithm": "Camellia",
         "primitive": "block-cipher"
     },
     "wc_CamelliaSetIV": {
         "library": "wolfSSL",
         "header": "camellia.h",
         "category": "API",
-        "algorithm": "CAMELLIA",
+        "algorithm": "Camellia",
         "primitive": "block-cipher"
     },
     "wc_Chacha_SetIV": {
@@ -794,176 +794,176 @@
         "library": "wolfSSL",
         "header": "eccsi.h",
         "category": "API",
-        "algorithm": "ECC",
-        "primitive": "public-key"
+        "algorithm": "ECCSI",
+        "primitive": "digital-signature"
     },
     "wc_ExportEccsiPrivateKey": {
         "library": "wolfSSL",
         "header": "eccsi.h",
         "category": "API",
-        "algorithm": "ECC",
-        "primitive": "public-key"
+        "algorithm": "ECCSI",
+        "primitive": "digital-signature"
     },
     "wc_FreeEccsiKey": {
         "library": "wolfSSL",
         "header": "eccsi.h",
         "category": "API",
-        "algorithm": "ECC",
-        "primitive": "public-key"
+        "algorithm": "ECCSI",
+        "primitive": "digital-signature"
     },
     "wc_ImportEccsiKey": {
         "library": "wolfSSL",
         "header": "eccsi.h",
         "category": "API",
-        "algorithm": "ECC",
-        "primitive": "public-key"
+        "algorithm": "ECCSI",
+        "primitive": "digital-signature"
     },
     "wc_InitEccsiKey": {
         "library": "wolfSSL",
         "header": "eccsi.h",
         "category": "API",
-        "algorithm": "ECC",
-        "primitive": "public-key"
+        "algorithm": "ECCSI",
+        "primitive": "digital-signature"
     },
     "wc_MakeEccsiKey": {
         "library": "wolfSSL",
         "header": "eccsi.h",
         "category": "API",
-        "algorithm": "ECC",
-        "primitive": "public-key"
+        "algorithm": "ECCSI",
+        "primitive": "digital-signature"
     },
     "wc_HashDelete": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_HashFree": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_HashGetBlockSize": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_HashGetDigestSize": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_HashGetOID": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_HashInit": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_Md5Hash": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_Sha224Hash": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_Sha256Hash": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_Sha384Hash": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_Sha3_224Hash": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_Sha3_256Hash": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_Sha3_384Hash": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_Sha3_512Hash": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_Sha512Hash": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_Sha512_224Hash": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_Sha512_256Hash": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_ShaHash": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_Sm3Hash": {
         "library": "wolfSSL",
         "header": "hash.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
     },
     "wc_HmacCopy": {
         "library": "wolfSSL",
@@ -1026,14 +1026,14 @@
         "header": "hpke.h",
         "category": "API",
         "algorithm": "HPKE",
-        "primitive": "key-agreement"
+        "primitive": "key-encapsulation"
     },
     "wc_HpkeInit": {
         "library": "wolfSSL",
         "header": "hpke.h",
         "category": "API",
         "algorithm": "HPKE",
-        "primitive": "key-agreement"
+        "primitive": "key-encapsulation"
     },
     "wc_InitMd2": {
         "library": "wolfSSL",
@@ -1186,57 +1186,57 @@
         "library": "wolfSSL",
         "header": "psa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "PSA Crypto",
+        "primitive": "crypto-api"
     },
     "wc_AesEncrypt": {
         "library": "wolfSSL",
         "header": "psa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "PSA Crypto",
+        "primitive": "crypto-api"
     },
     "wc_psa_get_random": {
         "library": "wolfSSL",
         "header": "psa.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "PSA Crypto",
+        "primitive": "crypto-api"
     },
     "wc_PufEnroll": {
         "library": "wolfSSL",
         "header": "puf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "PUF",
+        "primitive": "device-security"
     },
     "wc_PufGetIdentity": {
         "library": "wolfSSL",
         "header": "puf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "PUF",
+        "primitive": "device-security"
     },
     "wc_PufInit": {
         "library": "wolfSSL",
         "header": "puf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "PUF",
+        "primitive": "device-security"
     },
     "wc_PufSetTestData": {
         "library": "wolfSSL",
         "header": "puf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "PUF",
+        "primitive": "device-security"
     },
     "wc_PufZeroize": {
         "library": "wolfSSL",
         "header": "puf.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "PUF",
+        "primitive": "device-security"
     },
     "wc_PBKDF_max_iterations_get": {
         "library": "wolfSSL",
@@ -1403,21 +1403,21 @@
         "library": "wolfSSL",
         "header": "ripemd.h",
         "category": "API",
-        "algorithm": "RIPEMD",
+        "algorithm": "RIPEMD-160",
         "primitive": "hash-function"
     },
     "wc_RipeMdFinal": {
         "library": "wolfSSL",
         "header": "ripemd.h",
         "category": "API",
-        "algorithm": "RIPEMD",
+        "algorithm": "RIPEMD-160",
         "primitive": "hash-function"
     },
     "wc_RipeMdUpdate": {
         "library": "wolfSSL",
         "header": "ripemd.h",
         "category": "API",
-        "algorithm": "RIPEMD",
+        "algorithm": "RIPEMD-160",
         "primitive": "hash-function"
     },
     "wc_CheckRsaKey": {
@@ -1515,85 +1515,85 @@
         "library": "wolfSSL",
         "header": "sakke.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
     },
     "wc_ExportSakkeKey": {
         "library": "wolfSSL",
         "header": "sakke.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
     },
     "wc_ExportSakkePrivateKey": {
         "library": "wolfSSL",
         "header": "sakke.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
     },
     "wc_FreeSakkeKey": {
         "library": "wolfSSL",
         "header": "sakke.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
     },
     "wc_GetSakkeAuthSize": {
         "library": "wolfSSL",
         "header": "sakke.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
     },
     "wc_GetSakkePointI": {
         "library": "wolfSSL",
         "header": "sakke.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
     },
     "wc_ImportSakkeKey": {
         "library": "wolfSSL",
         "header": "sakke.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
     },
     "wc_ImportSakkeRsk": {
         "library": "wolfSSL",
         "header": "sakke.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
     },
     "wc_InitSakkeKey": {
         "library": "wolfSSL",
         "header": "sakke.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
     },
     "wc_MakeSakkeKey": {
         "library": "wolfSSL",
         "header": "sakke.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
     },
     "wc_MakeSakkePointI": {
         "library": "wolfSSL",
         "header": "sakke.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
     },
     "wc_MakeSakkePublicKey": {
         "library": "wolfSSL",
         "header": "sakke.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
     },
     "wc_InitSha": {
         "library": "wolfSSL",
@@ -2439,147 +2439,147 @@
         "library": "wolfSSL",
         "header": "srp.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
     },
     "wc_SrpGetPublic": {
         "library": "wolfSSL",
         "header": "srp.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
     },
     "wc_SrpGetVerifier": {
         "library": "wolfSSL",
         "header": "srp.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
     },
     "wc_SrpInit": {
         "library": "wolfSSL",
         "header": "srp.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
     },
     "wc_SrpSetPassword": {
         "library": "wolfSSL",
         "header": "srp.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
     },
     "wc_SrpSetPrivate": {
         "library": "wolfSSL",
         "header": "srp.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
     },
     "wc_SrpSetUsername": {
         "library": "wolfSSL",
         "header": "srp.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
     },
     "wc_SrpSetVerifier": {
         "library": "wolfSSL",
         "header": "srp.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
     },
     "wc_SrpTerm": {
         "library": "wolfSSL",
         "header": "srp.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
     },
     "wc_SrpVerifyPeersProof": {
         "library": "wolfSSL",
         "header": "srp.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
     },
     "wc_SHE_Free": {
         "library": "wolfSSL",
         "header": "wc_she.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHE",
+        "primitive": "key-management"
     },
     "wc_SHE_Init": {
         "library": "wolfSSL",
         "header": "wc_she.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHE",
+        "primitive": "key-management"
     },
     "wc_SHE_LoadKey": {
         "library": "wolfSSL",
         "header": "wc_she.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHE",
+        "primitive": "key-management"
     },
     "wc_SHE_LoadKey_Id": {
         "library": "wolfSSL",
         "header": "wc_she.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHE",
+        "primitive": "key-management"
     },
     "wc_SHE_LoadKey_Label": {
         "library": "wolfSSL",
         "header": "wc_she.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHE",
+        "primitive": "key-management"
     },
     "wc_SHE_LoadKey_Verify": {
         "library": "wolfSSL",
         "header": "wc_she.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHE",
+        "primitive": "key-management"
     },
     "wc_SHE_LoadKey_Verify_Id": {
         "library": "wolfSSL",
         "header": "wc_she.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHE",
+        "primitive": "key-management"
     },
     "wc_SHE_LoadKey_Verify_Label": {
         "library": "wolfSSL",
         "header": "wc_she.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "SHE",
+        "primitive": "key-management"
     },
     "wc_Entropy_Get": {
         "library": "wolfSSL",
         "header": "wolfentropy.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Entropy",
+        "primitive": "random-generator"
     },
     "wc_Entropy_GetRawEntropy": {
         "library": "wolfSSL",
         "header": "wolfentropy.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Entropy",
+        "primitive": "random-generator"
     },
     "wc_Entropy_OnDemandTest": {
         "library": "wolfSSL",
         "header": "wolfentropy.h",
         "category": "API",
-        "algorithm": "Unknown",
-        "primitive": "unknown"
+        "algorithm": "Entropy",
+        "primitive": "random-generator"
     }
 }
