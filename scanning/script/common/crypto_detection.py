@@ -38,48 +38,38 @@ def detect_crypto(binary):
         symbols_out = get_pe_symbols(binary).lower()
         deps_out = get_pe_imports(binary).lower()
 
-
     # --------------------------------------------------
-    # High confidence API detection (Grouped)
+    # Group detected APIs   
     # --------------------------------------------------
 
     grouped = {}
 
-    api_source = deps_out if OS_TYPE == "windows" else symbols_out
+    for hit in results:
 
-    for api, meta in CRYPTO_API_RULES.items():
-
-        if api.lower() not in api_source:
-            continue
-
-        algorithm = meta["algorithm"]
-        primitive = meta["primitive"]
-
-        key = (primitive, algorithm)
+        key = (
+            hit["primitive"],
+            hit["algorithm"]
+        )
 
         if key not in grouped:
+
             grouped[key] = {
-                "algorithm": algorithm,
-                "primitive": primitive,
+                "algorithm": hit["algorithm"],
+                "primitive": hit["primitive"],
                 "apis": [],
-                "confidence": "high",
-                "detection_source": {
-            f'{meta["library"]} Import API'
-        },
+                "confidence": hit["confidence"],
+                "detection_source": set(hit["detection_source"]),
             }
 
-            if meta.get("deprecated"):
+            if hit.get("deprecated"):
                 grouped[key]["deprecated"] = True
 
-        grouped[key]["apis"].append(api)
+        grouped[key]["apis"].append(hit["api"])
 
     for entry in grouped.values():
 
         entry["apis"].sort()
 
-        # ------------------------------------------
-        # Confidence Scoring
-        # ------------------------------------------
         count = len(entry["apis"])
 
         if count >= 5:
@@ -89,7 +79,7 @@ def detect_crypto(binary):
         else:
             entry["confidence"] = "medium"
 
-        results.append(entry)
+    results = list(grouped.values())
 
     # --------------------------------------------------
     # Existing string/signature detection

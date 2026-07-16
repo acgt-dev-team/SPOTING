@@ -1,45 +1,38 @@
 import json
 from pathlib import Path
-from botan_algorithm_mapping import PREFIX_MAPPING
+
+from botan_algorithm_mapping import HEADER_MAPPING
 
 DATABASE = Path(
     r"C:\AGCT\SPOTING\scanning\databases\botan_clean.json"
 )
 
-with open(DATABASE, "r") as f:
+OUTPUT = Path(
+    r"C:\AGCT\SPOTING\scanning\databases\botan_api_rules.json"
+)
+
+with open(DATABASE, "r", encoding="utf-8") as f:
     api_database = json.load(f)
-
-
 
 rules = {}
 
 for header, apis in api_database.items():
 
+    algorithm, primitive = HEADER_MAPPING.get(
+        header,
+        ("Unknown", "unknown")
+    )
+
     for api in apis:
-        
-        algorithm = "Unknown"
-        primitive = "unknown"
-
-        for prefix, (alg, prim) in PREFIX_MAPPING.items():
-            if api.startswith(prefix):
-                algorithm = alg
-                primitive = prim
-                break
-
         rules[api] = {
             "library": "Botan",
             "header": header,
             "category": "API",
             "algorithm": algorithm,
             "primitive": primitive,
-
         }
 
-OUTPUT = Path(
-    r"C:\AGCT\SPOTING\scanning\databases\botan_api_rules.json"
-)
-
-with open(OUTPUT, "w") as f:
+with open(OUTPUT, "w", encoding="utf-8") as f:
     json.dump(rules, f, indent=4)
 
 print(f"Generated {len(rules)} rules.")

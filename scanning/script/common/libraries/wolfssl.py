@@ -8,7 +8,7 @@ RULE_FILE = (
 )
 
 
-print(RULE_FILE)
+
 
 with open(RULE_FILE, "r", encoding="utf-8") as f:
     WOLFSSL_API_RULES = json.load(f)
