@@ -24,6 +24,8 @@ SET row_security = off;
 SET default_tablespace = '';
 SET default_table_access_method = heap;
 
+SET pelanggan_json = '{"id": 1, "kod":"KKP01", "nama": "Kementerian Dalam Negeri", "keterangan": "Kementerian" }';
+
 -- ============================================================
 -- CREATE TABLES
 -- ============================================================
@@ -311,8 +313,14 @@ ALTER TABLE ONLY public.users ADD CONSTRAINT users_pelanggan_id_fkey FOREIGN KEY
 -- ============================================================
 
 -- Pelanggan
-INSERT INTO public.pelanggan (id, kod, nama, keterangan, aktif) 
-VALUES (1, 'KKP01', 'Kementerian Dalam Negeri', 'Kementerian', true);
+INSERT INTO public.pelanggan (id, kod, nama, keterangan, aktif)
+VALUES (
+    :'customer_json'::jsonb ->> 'id'
+    :'customer_json'::jsonb ->> 'kod',
+    :'customer_json'::jsonb ->> 'nama',
+    :'customer_json'::jsonb ->> 'keterangan',
+    true
+);
 
 -- Users
 INSERT INTO public.users (id, pelanggan_id, username, nama, role, force_password_change, email, password) VALUES
