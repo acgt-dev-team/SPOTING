@@ -240,10 +240,18 @@ def activate_user(
     db: Session = Depends(get_db),
 ):
     user = _get_available_user(db, user_id)
+    temporary_password = generate_password()
     user.aktif = True
+    user.password = hash_password(temporary_password)
+    user.force_password_change = True
+    revoke_user_sessions(db, user.id)
     db.commit()
 
-    return {"message": t("auth.userActivated")}
+    return {
+        "message": t("auth.userActivated"),
+        "temporary_password": temporary_password,
+        "force_password_change": True,
+    }
 
 
 @router.put("/users/{user_id}/reset-password")
