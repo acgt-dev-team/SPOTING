@@ -213,31 +213,14 @@ sudo -u postgres psql <<EOF
 ALTER USER postgres PASSWORD '${DB_PASSWORD}';
 EOF
 
-###############################################################################
-# Database
-###############################################################################
 
-echo
-echo "[6/10] Creating database..."
-
-sudo -u postgres psql <<EOF
-
-SELECT 'CREATE DATABASE ${DB_NAME}'
-WHERE NOT EXISTS
-(
-SELECT
-FROM pg_database
-WHERE datname='${DB_NAME}'
-)\gexec
-
-EOF
 
 ###############################################################################
 # Restore
 ###############################################################################
 
 echo
-echo "[7/10] Restoring database..."
+echo "[6/10] Restoring database..."
 
 BACKUP_FILE="$SCRIPT_DIR/backup.sql"
 
@@ -260,7 +243,7 @@ chmod 644 /tmp/spoting_backup.sql
 
 sudo -u postgres psql \
 -v ON_ERROR_STOP=1 \
--d "$DB_NAME" \
+-d postgres \
 -f /tmp/spoting_backup.sql
 
 rm -f /tmp/spoting_backup.sql
@@ -276,7 +259,7 @@ echo "Database restored successfully."
 ###############################################################################
 
 echo
-echo "[8/10] Setting up Backend..."
+echo "[7/10] Setting up Backend..."
 
 cd "$PROJECT_DIR/backend"
 
@@ -307,7 +290,7 @@ EOF
 ###############################################################################
 
 echo
-echo "[9/10] Setting up Frontend..."
+echo "[8/10] Setting up Frontend..."
 
 cd "$PROJECT_DIR/frontend"
 
@@ -393,7 +376,7 @@ sudo systemctl restart apache2
 ###############################################################################
 
 echo
-echo "[10/10] Creating Backend Service..."
+echo "[9/10] Creating Backend Service..."
 
 CURRENT_USER=$(whoami)
 

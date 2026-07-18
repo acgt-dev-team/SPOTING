@@ -160,6 +160,11 @@ def main():
                 continue
 
             for hit in hits:
+
+                # Skip generic wrapper APIs (e.g. OpenSSL EVP)
+                if hit["primitive"] == "multiple":
+                    continue
+
                 params = hit.get("parameters", {})
                 key_len = params.pop("keyLength", "unknown")
 
