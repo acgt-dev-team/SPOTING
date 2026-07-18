@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 
 import os
-import csv
 import psutil
 
 from common.binary_inventory import list_running_binaries
 from common.binary_metadata import guess_language
 from common.crypto_detection import detect_crypto
+from common.binary_profile import BinaryProfile
+from common.csv_exporter import export_csv
+from common.confidence import calculate_overall_confidence
 
 from common.platform_utils import (
     classify_libraries,
@@ -74,127 +76,80 @@ def check_binary_state(file_path):
 # ==========================================================
 
 def main():
-    with open("binaries_used.csv", "w", newline="") as f:
-        writer = csv.writer(f)
+    profiles = []
+    for binary in list_running_binaries():
+        print(f"\nProcessing: {binary}", flush=True)
+        print(binary)
 
-        writer.writerow([
-            "resource",
-            "resource_type",
-            "category",
-            "item",
-            "property",
-            "value",
-            "evidence",
-            "confidence",
-            "severity"
-        ])
+        profile = BinaryProfile(
+            path=binary,
+            filename=os.path.basename(binary),
+            extension=os.path.splitext(binary)[1].lstrip("."),
+        )
 
-        for binary in list_running_binaries():
-            print(f"\nProcessing: {binary}", flush=True)
-            print(binary)
+        language = guess_language(binary)
+        profile.language = language
+        print("[OK] Language", flush=True)
 
-            language = guess_language(binary)
-            print("[OK] Language", flush=True)
+        third_party, system = classify_libraries(binary)
+        profile.third_party_libraries = third_party
+        profile.system_libraries = system
+        print("[OK] Libraries", flush=True)
 
-            third_party, system = classify_libraries(binary)
-            print("[OK] Libraries", flush=True)
+        libs = get_crypto_deps(binary)
+        if libs != "none":
+            profile.crypto_dependencies = libs.split(",")
+        print("[OK] Crypto deps", flush=True)
 
-            libs = get_crypto_deps(binary)
-            print("[OK] Crypto deps", flush=True)
+        if libs == "none":
+            continue
 
-            if libs == "none":
-                continue
+        hits = detect_crypto(binary)
+        merged = {}
 
-            hits = detect_crypto(binary)
-            merged = {}
+        for hit in hits:
 
-            for hit in hits:
+            key = (
+                hit["algorithm"],
+                hit["primitive"]
+            )
 
-                key = (
-                    hit["algorithm"],
-                    hit["primitive"]
-                )
+            if key not in merged:
 
-                if key not in merged:
+                merged[key] = hit.copy()
 
-                    merged[key] = hit.copy()
+                merged[key]["apis"] = []
 
-                    merged[key]["apis"] = []
+            if "api" in hit:
+                merged[key]["apis"].append(hit["api"])
 
-                if "api" in hit:
-                    merged[key]["apis"].append(hit["api"])
+            merged[key]["detection_source"] = (
+                merged[key]["detection_source"]
+                |
+                hit["detection_source"]
+            )
 
-                merged[key]["detection_source"] = (
-                    merged[key]["detection_source"]
-                    |
-                    hit["detection_source"]
-                )
+            confidence_rank = {
+                "low": 1,
+                "medium": 2,
+                "high": 3,
+                "very_high": 4,
+            }
 
-                confidence_rank = {
-                    "low": 1,
-                    "medium": 2,
-                    "high": 3,
-                    "very_high": 4,
-                }
 
-                if confidence_rank.get(hit.get("confidence", "low"), 0) > confidence_rank.get(
-                    merged[key].get("confidence", "low"), 0
-                ):
-                    merged[key]["confidence"] = hit["confidence"]
+            if confidence_rank.get(hit.get("confidence", "low"), 0) > confidence_rank.get(
+                merged[key].get("confidence", "low"), 0
+            ):
+                merged[key]["confidence"] = hit["confidence"]
 
-            hits = list(merged.values())
-            print("[OK] Crypto detection", flush=True)
-
-            if not hits:
-                writer.writerow([
-                    binary,
-                    os.path.splitext(binary)[1].lstrip("."),
-                    "binary",
-                    "crypto-library",
-                    "dependency",
-                    libs,
-                    "import table",
-                    "",
-                    "info"
-                ])
-                continue
-
-            for hit in hits:
-
-                # Skip generic wrapper APIs (e.g. OpenSSL EVP)
-                if hit["primitive"] == "multiple":
-                    continue
-
-                params = hit.get("parameters", {})
-                key_len = params.pop("keyLength", "unknown")
-
-                if key_len != "unknown":
-                    property_name = "key_length"
-                    value = key_len
-                else:
-                    property_name = "detected"
-                    if hit.get("apis"):
-
-                        value = ",".join(sorted(hit["apis"]))
-
-                    else:
-
-                        value = "yes"
-
-                severity = "warning" if hit.get("deprecated") else "info"
-
-                writer.writerow([
-                    binary,
-                    os.path.splitext(binary)[1].lstrip("."),
-                    hit["primitive"],
-                    hit["algorithm"],
-                    property_name,
-                    value,
-                    ",".join(sorted(hit["detection_source"])),
-                    hit.get("confidence", ""),
-                    severity
-                ])
-
+        hits = list(merged.values())
+        profile.detections = hits
+        profile.overall_confidence = calculate_overall_confidence(profile)
+        print("[OK] Crypto detection", flush=True)
+        profiles.append(profile)
+        
+    export_csv(profiles)
+            
 
 def display():
     for binary in list_running_binaries():
