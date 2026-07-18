@@ -1,0 +1,2172 @@
+{
+    "mbedtls_aes_init": {
+        "library": "mbedTLS",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_aes_setkey_enc": {
+        "library": "mbedTLS",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_aria_init": {
+        "library": "mbedTLS",
+        "header": "aria.h",
+        "category": "API",
+        "algorithm": "ARIA",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_aria_setkey_enc": {
+        "library": "mbedTLS",
+        "header": "aria.h",
+        "category": "API",
+        "algorithm": "ARIA",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_asn1_find_named_data": {
+        "library": "mbedTLS",
+        "header": "asn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "mbedtls_asn1_traverse_sequence_of": {
+        "library": "mbedTLS",
+        "header": "asn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "mbedtls_calloc": {
+        "library": "mbedTLS",
+        "header": "asn1.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "mbedtls_asn1_write_algorithm_identifier": {
+        "library": "mbedTLS",
+        "header": "asn1write.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "mbedtls_asn1_write_algorithm_identifier_ext": {
+        "library": "mbedTLS",
+        "header": "asn1write.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "mbedtls_asn1_write_named_bitstring": {
+        "library": "mbedTLS",
+        "header": "asn1write.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "mbedtls_asn1_write_tag": {
+        "library": "mbedTLS",
+        "header": "asn1write.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "mbedtls_mpi_add_abs": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_add_int": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_add_mpi": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_bitlen": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_cmp_abs": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_cmp_int": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_cmp_mpi": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_div_int": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_div_mpi": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_fill_random": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_gen_prime": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_grow": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_init": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_inv_mod": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_lsb": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_lset": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_lt_mpi_ct": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_mod_int": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_mod_mpi": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_mul_int": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_mul_mpi": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_random": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_read_binary": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_read_binary_le": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_read_string": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_shift_l": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_shift_r": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_shrink": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_size": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_sub_abs": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_sub_int": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_sub_mpi": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_swap": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_write_binary": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_write_binary_le": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_write_file": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_mpi_write_string": {
+        "library": "mbedTLS",
+        "header": "bignum.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_camellia_crypt_ecb": {
+        "library": "mbedTLS",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "Camellia",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_camellia_init": {
+        "library": "mbedTLS",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "Camellia",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_camellia_setkey_enc": {
+        "library": "mbedTLS",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "Camellia",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_ccm_setkey": {
+        "library": "mbedTLS",
+        "header": "ccm.h",
+        "category": "API",
+        "algorithm": "AES-CCM",
+        "primitive": "aead"
+    },
+    "mbedtls_ccm_starts": {
+        "library": "mbedTLS",
+        "header": "ccm.h",
+        "category": "API",
+        "algorithm": "AES-CCM",
+        "primitive": "aead"
+    },
+    "mbedtls_chacha20_setkey": {
+        "library": "mbedTLS",
+        "header": "chacha20.h",
+        "category": "API",
+        "algorithm": "ChaCha20",
+        "primitive": "stream-cipher"
+    },
+    "mbedtls_chacha20_starts": {
+        "library": "mbedTLS",
+        "header": "chacha20.h",
+        "category": "API",
+        "algorithm": "ChaCha20",
+        "primitive": "stream-cipher"
+    },
+    "mbedtls_chachapoly_setkey": {
+        "library": "mbedTLS",
+        "header": "chachapoly.h",
+        "category": "API",
+        "algorithm": "ChaCha20-Poly1305",
+        "primitive": "aead"
+    },
+    "mbedtls_cipher_auth_encrypt_ext": {
+        "library": "mbedTLS",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "cipher"
+    },
+    "mbedtls_cipher_check_tag": {
+        "library": "mbedTLS",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "cipher"
+    },
+    "mbedtls_cipher_crypt": {
+        "library": "mbedTLS",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "cipher"
+    },
+    "mbedtls_cipher_finish": {
+        "library": "mbedTLS",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "cipher"
+    },
+    "mbedtls_cipher_info_from_string": {
+        "library": "mbedTLS",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "cipher"
+    },
+    "mbedtls_cipher_info_from_type": {
+        "library": "mbedTLS",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "cipher"
+    },
+    "mbedtls_cipher_info_from_values": {
+        "library": "mbedTLS",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "cipher"
+    },
+    "mbedtls_cipher_init": {
+        "library": "mbedTLS",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "cipher"
+    },
+    "mbedtls_cipher_setkey": {
+        "library": "mbedTLS",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "cipher"
+    },
+    "mbedtls_cipher_update_ad": {
+        "library": "mbedTLS",
+        "header": "cipher.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "cipher"
+    },
+    "mbedtls_cipher_cmac_finish": {
+        "library": "mbedTLS",
+        "header": "cmac.h",
+        "category": "API",
+        "algorithm": "CMAC",
+        "primitive": "mac"
+    },
+    "mbedtls_cipher_cmac_starts": {
+        "library": "mbedTLS",
+        "header": "cmac.h",
+        "category": "API",
+        "algorithm": "CMAC",
+        "primitive": "mac"
+    },
+    "mbedtls_cipher_cmac_update": {
+        "library": "mbedTLS",
+        "header": "cmac.h",
+        "category": "API",
+        "algorithm": "CMAC",
+        "primitive": "mac"
+    },
+    "mbedtls_ct_memcmp": {
+        "library": "mbedTLS",
+        "header": "constant_time.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ctr_drbg_init": {
+        "library": "mbedTLS",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "CTR-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_ctr_drbg_random": {
+        "library": "mbedTLS",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "CTR-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_ctr_drbg_random_with_add": {
+        "library": "mbedTLS",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "CTR-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_ctr_drbg_reseed": {
+        "library": "mbedTLS",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "CTR-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_ctr_drbg_seed": {
+        "library": "mbedTLS",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "CTR-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_ctr_drbg_update": {
+        "library": "mbedTLS",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "CTR-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_ctr_drbg_update_seed_file": {
+        "library": "mbedTLS",
+        "header": "ctr_drbg.h",
+        "category": "API",
+        "algorithm": "CTR-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_entropy_func": {
+        "library": "mbedTLS",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "HMAC-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_des3_crypt_ecb": {
+        "library": "mbedTLS",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "DES/3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_des3_init": {
+        "library": "mbedTLS",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "DES/3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_des_crypt_ecb": {
+        "library": "mbedTLS",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "DES/3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_des_init": {
+        "library": "mbedTLS",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "DES/3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_des_key_check_key_parity": {
+        "library": "mbedTLS",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "DES/3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_des_key_check_weak": {
+        "library": "mbedTLS",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "DES/3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_des_setkey": {
+        "library": "mbedTLS",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "DES/3DES",
+        "primitive": "block-cipher"
+    },
+    "mbedtls_dhm_init": {
+        "library": "mbedTLS",
+        "header": "dhm.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_dhm_make_params": {
+        "library": "mbedTLS",
+        "header": "dhm.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_dhm_make_public": {
+        "library": "mbedTLS",
+        "header": "dhm.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_dhm_read_params": {
+        "library": "mbedTLS",
+        "header": "dhm.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecdh_can_do": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecdh_compute_shared": {
+        "library": "mbedTLS",
+        "header": "ecdh.h",
+        "category": "API",
+        "algorithm": "ECDH",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecdh_gen_public": {
+        "library": "mbedTLS",
+        "header": "ecdh.h",
+        "category": "API",
+        "algorithm": "ECDH",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecdh_init": {
+        "library": "mbedTLS",
+        "header": "ecdh.h",
+        "category": "API",
+        "algorithm": "ECDH",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecdh_read_params": {
+        "library": "mbedTLS",
+        "header": "ecdh.h",
+        "category": "API",
+        "algorithm": "ECDH",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecdh_setup": {
+        "library": "mbedTLS",
+        "header": "ecdh.h",
+        "category": "API",
+        "algorithm": "ECDH",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecp_mul": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecdsa_can_do": {
+        "library": "mbedTLS",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "ECDSA",
+        "primitive": "digital-signature"
+    },
+    "mbedtls_ecdsa_from_keypair": {
+        "library": "mbedTLS",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "ECDSA",
+        "primitive": "digital-signature"
+    },
+    "mbedtls_ecdsa_genkey": {
+        "library": "mbedTLS",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "ECDSA",
+        "primitive": "digital-signature"
+    },
+    "mbedtls_ecdsa_init": {
+        "library": "mbedTLS",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "ECDSA",
+        "primitive": "digital-signature"
+    },
+    "mbedtls_ecdsa_read_signature": {
+        "library": "mbedTLS",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "ECDSA",
+        "primitive": "digital-signature"
+    },
+    "mbedtls_ecdsa_sign_det_ext": {
+        "library": "mbedTLS",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "ECDSA",
+        "primitive": "digital-signature"
+    },
+    "mbedtls_ecdsa_write_signature": {
+        "library": "mbedTLS",
+        "header": "ecdsa.h",
+        "category": "API",
+        "algorithm": "ECDSA",
+        "primitive": "digital-signature"
+    },
+    "mbedtls_ecp_group_load": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecjpake_check": {
+        "library": "mbedTLS",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "ECJPAKE",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecjpake_derive_secret": {
+        "library": "mbedTLS",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "ECJPAKE",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecjpake_init": {
+        "library": "mbedTLS",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "ECJPAKE",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecjpake_read_round_one": {
+        "library": "mbedTLS",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "ECJPAKE",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecjpake_read_round_two": {
+        "library": "mbedTLS",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "ECJPAKE",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecjpake_write_round_one": {
+        "library": "mbedTLS",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "ECJPAKE",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecjpake_write_round_two": {
+        "library": "mbedTLS",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "ECJPAKE",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecjpake_write_shared_key": {
+        "library": "mbedTLS",
+        "header": "ecjpake.h",
+        "category": "API",
+        "algorithm": "ECJPAKE",
+        "primitive": "key-agreement"
+    },
+    "mbedtls_ecp_check_budget": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_check_pub_priv": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_check_pubkey": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_curve_info": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_curve_info_from_grp_id": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_curve_info_from_name": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_curve_info_from_tls_id": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_export": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_gen_key": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_group_init": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_is_zero": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_keypair_calc_public": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_keypair_init": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_muladd": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_point_cmp": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_point_init": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_point_read_string": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_tls_read_group": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_tls_read_group_id": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_ecp_write_public_key": {
+        "library": "mbedTLS",
+        "header": "ecp.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "mbedtls_entropy_gather": {
+        "library": "mbedTLS",
+        "header": "entropy.h",
+        "category": "API",
+        "algorithm": "Entropy",
+        "primitive": "random-generator"
+    },
+    "mbedtls_entropy_init": {
+        "library": "mbedTLS",
+        "header": "entropy.h",
+        "category": "API",
+        "algorithm": "Entropy",
+        "primitive": "random-generator"
+    },
+    "mbedtls_entropy_self_test": {
+        "library": "mbedTLS",
+        "header": "entropy.h",
+        "category": "API",
+        "algorithm": "Entropy",
+        "primitive": "random-generator"
+    },
+    "mbedtls_entropy_update_manual": {
+        "library": "mbedTLS",
+        "header": "entropy.h",
+        "category": "API",
+        "algorithm": "Entropy",
+        "primitive": "random-generator"
+    },
+    "mbedtls_entropy_update_seed_file": {
+        "library": "mbedTLS",
+        "header": "entropy.h",
+        "category": "API",
+        "algorithm": "Entropy",
+        "primitive": "random-generator"
+    },
+    "mbedtls_error_add": {
+        "library": "mbedTLS",
+        "header": "error.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_high_level_strerr": {
+        "library": "mbedTLS",
+        "header": "error.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_low_level_strerr": {
+        "library": "mbedTLS",
+        "header": "error.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_strerror": {
+        "library": "mbedTLS",
+        "header": "error.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_gcm_auth_decrypt": {
+        "library": "mbedTLS",
+        "header": "gcm.h",
+        "category": "API",
+        "algorithm": "AES-GCM",
+        "primitive": "aead"
+    },
+    "mbedtls_gcm_setkey": {
+        "library": "mbedTLS",
+        "header": "gcm.h",
+        "category": "API",
+        "algorithm": "AES-GCM",
+        "primitive": "aead"
+    },
+    "mbedtls_gcm_starts": {
+        "library": "mbedTLS",
+        "header": "gcm.h",
+        "category": "API",
+        "algorithm": "AES-GCM",
+        "primitive": "aead"
+    },
+    "mbedtls_gcm_update": {
+        "library": "mbedTLS",
+        "header": "gcm.h",
+        "category": "API",
+        "algorithm": "AES-GCM",
+        "primitive": "aead"
+    },
+    "mbedtls_hkdf": {
+        "library": "mbedTLS",
+        "header": "hkdf.h",
+        "category": "API",
+        "algorithm": "HKDF",
+        "primitive": "key-derivation"
+    },
+    "mbedtls_hkdf_expand": {
+        "library": "mbedTLS",
+        "header": "hkdf.h",
+        "category": "API",
+        "algorithm": "HKDF",
+        "primitive": "key-derivation"
+    },
+    "mbedtls_hkdf_extract": {
+        "library": "mbedTLS",
+        "header": "hkdf.h",
+        "category": "API",
+        "algorithm": "HKDF",
+        "primitive": "key-derivation"
+    },
+    "HMAC_DRBG": {
+        "library": "mbedTLS",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "HMAC-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_hmac_drbg_init": {
+        "library": "mbedTLS",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "HMAC-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_hmac_drbg_random": {
+        "library": "mbedTLS",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "HMAC-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_hmac_drbg_random_with_add": {
+        "library": "mbedTLS",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "HMAC-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_hmac_drbg_seed": {
+        "library": "mbedTLS",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "HMAC-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_hmac_drbg_update": {
+        "library": "mbedTLS",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "HMAC-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_hmac_drbg_update_seed_file": {
+        "library": "mbedTLS",
+        "header": "hmac_drbg.h",
+        "category": "API",
+        "algorithm": "HMAC-DRBG",
+        "primitive": "random-generator"
+    },
+    "mbedtls_lms_calculate_public_key": {
+        "library": "mbedTLS",
+        "header": "lms.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_lms_export_public_key": {
+        "library": "mbedTLS",
+        "header": "lms.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_lms_generate_private_key": {
+        "library": "mbedTLS",
+        "header": "lms.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_lms_import_public_key": {
+        "library": "mbedTLS",
+        "header": "lms.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_lms_sign": {
+        "library": "mbedTLS",
+        "header": "lms.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_lms_verify": {
+        "library": "mbedTLS",
+        "header": "lms.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_md_hmac_finish": {
+        "library": "mbedTLS",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md_hmac_starts": {
+        "library": "mbedTLS",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md_info_from_string": {
+        "library": "mbedTLS",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md_info_from_type": {
+        "library": "mbedTLS",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md_init": {
+        "library": "mbedTLS",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md_list": {
+        "library": "mbedTLS",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md_setup": {
+        "library": "mbedTLS",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md_starts": {
+        "library": "mbedTLS",
+        "header": "md.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md5_finish": {
+        "library": "mbedTLS",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md5_init": {
+        "library": "mbedTLS",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md5_starts": {
+        "library": "mbedTLS",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "mbedtls_md5_update": {
+        "library": "mbedTLS",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "mbedtls_memory_buffer_alloc_count_get": {
+        "library": "mbedTLS",
+        "header": "memory_buffer_alloc.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_memory_buffer_alloc_cur_get": {
+        "library": "mbedTLS",
+        "header": "memory_buffer_alloc.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_memory_buffer_alloc_max_get": {
+        "library": "mbedTLS",
+        "header": "memory_buffer_alloc.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_memory_buffer_alloc_verify": {
+        "library": "mbedTLS",
+        "header": "memory_buffer_alloc.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_net_bind": {
+        "library": "mbedTLS",
+        "header": "net_sockets.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_net_close": {
+        "library": "mbedTLS",
+        "header": "net_sockets.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_net_connect": {
+        "library": "mbedTLS",
+        "header": "net_sockets.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_net_init": {
+        "library": "mbedTLS",
+        "header": "net_sockets.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_nist_kw_setkey": {
+        "library": "mbedTLS",
+        "header": "nist_kw.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_pem_init": {
+        "library": "mbedTLS",
+        "header": "pem.h",
+        "category": "API",
+        "algorithm": "PEM",
+        "primitive": "encoding"
+    },
+    "mbedtls_pk_check_pair": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_pk_context": {
+        "library": "mbedTLS",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "mbedtls_pk_debug": {
+        "library": "mbedTLS",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "mbedtls_pk_import_into_psa": {
+        "library": "mbedTLS",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "mbedtls_pk_info_from_type": {
+        "library": "mbedTLS",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "mbedtls_pk_init": {
+        "library": "mbedTLS",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "mbedtls_pk_setup_opaque": {
+        "library": "mbedTLS",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "mbedtls_pk_setup_rsa_alt": {
+        "library": "mbedTLS",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "mbedtls_pk_sign": {
+        "library": "mbedTLS",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "mbedtls_pk_verify": {
+        "library": "mbedTLS",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "mbedtls_pk_write_key_pem": {
+        "library": "mbedTLS",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "mbedtls_pk_write_pubkey_der": {
+        "library": "mbedTLS",
+        "header": "pk.h",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "mbedtls_pkcs5_pbkdf2_hmac_ext": {
+        "library": "mbedTLS",
+        "header": "pkcs5.h",
+        "category": "API",
+        "algorithm": "PBKDF2",
+        "primitive": "key-derivation"
+    },
+    "mbedtls_pkcs7_init": {
+        "library": "mbedTLS",
+        "header": "pkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS7",
+        "primitive": "encoding"
+    },
+    "mbedtls_pkcs7_parse_der": {
+        "library": "mbedTLS",
+        "header": "pkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS7",
+        "primitive": "encoding"
+    },
+    "mbedtls_pkcs7_signed_data_verify": {
+        "library": "mbedTLS",
+        "header": "pkcs7.h",
+        "category": "API",
+        "algorithm": "PKCS7",
+        "primitive": "encoding"
+    },
+    "mbedtls_exit": {
+        "library": "mbedTLS",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_fprintf": {
+        "library": "mbedTLS",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_platform_setup": {
+        "library": "mbedTLS",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_platform_std_nv_seed_write": {
+        "library": "mbedTLS",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_platform_teardown": {
+        "library": "mbedTLS",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_setbuf": {
+        "library": "mbedTLS",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_snprintf": {
+        "library": "mbedTLS",
+        "header": "platform.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ms_time": {
+        "library": "mbedTLS",
+        "header": "platform_time.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_cipher_poly1305_starts": {
+        "library": "mbedTLS",
+        "header": "poly1305.h",
+        "category": "API",
+        "algorithm": "Poly1305",
+        "primitive": "mac"
+    },
+    "mbedtls_poly1305_starts": {
+        "library": "mbedTLS",
+        "header": "poly1305.h",
+        "category": "API",
+        "algorithm": "Poly1305",
+        "primitive": "mac"
+    },
+    "mbedtls_ecc_group_to_psa": {
+        "library": "mbedTLS",
+        "header": "psa_util.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ripemd160": {
+        "library": "mbedTLS",
+        "header": "ripemd160.h",
+        "category": "API",
+        "algorithm": "RIPEMD-160",
+        "primitive": "hash-function"
+    },
+    "mbedtls_ripemd160_finish": {
+        "library": "mbedTLS",
+        "header": "ripemd160.h",
+        "category": "API",
+        "algorithm": "RIPEMD-160",
+        "primitive": "hash-function"
+    },
+    "mbedtls_ripemd160_init": {
+        "library": "mbedTLS",
+        "header": "ripemd160.h",
+        "category": "API",
+        "algorithm": "RIPEMD-160",
+        "primitive": "hash-function"
+    },
+    "mbedtls_ripemd160_starts": {
+        "library": "mbedTLS",
+        "header": "ripemd160.h",
+        "category": "API",
+        "algorithm": "RIPEMD-160",
+        "primitive": "hash-function"
+    },
+    "mbedtls_ripemd160_update": {
+        "library": "mbedTLS",
+        "header": "ripemd160.h",
+        "category": "API",
+        "algorithm": "RIPEMD-160",
+        "primitive": "hash-function"
+    },
+    "mbedtls_rsa_check_privkey": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_check_pub_priv": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_complete": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_deduce_opt": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_export": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_export_raw": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_import_raw": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_init": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_pkcs1_encrypt": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_private": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_public": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_rsaes_pkcs1_v15_encrypt": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_rsassa_pss_sign": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_rsa_rsassa_pss_verify": {
+        "library": "mbedTLS",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "mbedtls_sha1": {
+        "library": "mbedTLS",
+        "header": "sha1.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha1_clone": {
+        "library": "mbedTLS",
+        "header": "sha1.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha1_finish": {
+        "library": "mbedTLS",
+        "header": "sha1.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha1_init": {
+        "library": "mbedTLS",
+        "header": "sha1.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha1_starts": {
+        "library": "mbedTLS",
+        "header": "sha1.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha1_update": {
+        "library": "mbedTLS",
+        "header": "sha1.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "mbedtls_internal_sha256_process": {
+        "library": "mbedTLS",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha256": {
+        "library": "mbedTLS",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha256_clone": {
+        "library": "mbedTLS",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha256_finish": {
+        "library": "mbedTLS",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha256_init": {
+        "library": "mbedTLS",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha256_starts": {
+        "library": "mbedTLS",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha256_update": {
+        "library": "mbedTLS",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha3_clone": {
+        "library": "mbedTLS",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha3_init": {
+        "library": "mbedTLS",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha3_starts": {
+        "library": "mbedTLS",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha3_update": {
+        "library": "mbedTLS",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "mbedtls_internal_sha512_process": {
+        "library": "mbedTLS",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha512": {
+        "library": "mbedTLS",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha512_clone": {
+        "library": "mbedTLS",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha512_finish": {
+        "library": "mbedTLS",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha512_init": {
+        "library": "mbedTLS",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha512_starts": {
+        "library": "mbedTLS",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "mbedtls_sha512_update": {
+        "library": "mbedTLS",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "mbedtls_ssl_check_pending": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_check_record": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_close_notify": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_async_private_cb": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_authmode": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_ca_chain": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_cid": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_curves": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_dbg": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_dtls_badmac_limit": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_dtls_srtp_protection_profiles": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_endpoint": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_groups": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_own_cert": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_preference_order": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_psk": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_psk_opaque": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_conf_sig_algs": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_config_defaults": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_config_init": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_context_save": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_export_keys_t": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_handshake": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_handshake_step": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_read": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_renegotiate": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_send_alert_message": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_session_init": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_session_load": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_setup": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_ticket_parse_t": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_ticket_write_t": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_tls_prf": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_write": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_ssl_write_early_data": {
+        "library": "mbedTLS",
+        "header": "ssl.h",
+        "category": "API",
+        "algorithm": "TLS/SSL",
+        "primitive": "protocol"
+    },
+    "mbedtls_x509_crt_verify": {
+        "library": "mbedTLS",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "mbedtls_ssl_cache_get": {
+        "library": "mbedTLS",
+        "header": "ssl_cache.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_cache_init": {
+        "library": "mbedTLS",
+        "header": "ssl_cache.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_cache_remove": {
+        "library": "mbedTLS",
+        "header": "ssl_cache.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_cache_set": {
+        "library": "mbedTLS",
+        "header": "ssl_cache.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_ciphersuite_from_id": {
+        "library": "mbedTLS",
+        "header": "ssl_ciphersuites.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_ciphersuite_from_string": {
+        "library": "mbedTLS",
+        "header": "ssl_ciphersuites.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_list_ciphersuites": {
+        "library": "mbedTLS",
+        "header": "ssl_ciphersuites.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_cookie_init": {
+        "library": "mbedTLS",
+        "header": "ssl_cookie.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_ssl_ticket_setup": {
+        "library": "mbedTLS",
+        "header": "ssl_ticket.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "mbedtls_x509_crt_parse_cn_inet_pton": {
+        "library": "mbedTLS",
+        "header": "x509.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "mbedtls_x509_name": {
+        "library": "mbedTLS",
+        "header": "x509.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "mbedtls_x509_parse_subject_alt_name": {
+        "library": "mbedTLS",
+        "header": "x509.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "mbedtls_x509_time_cmp": {
+        "library": "mbedTLS",
+        "header": "x509.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "mbedtls_crt_verify_with_profile": {
+        "library": "mbedTLS",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "mbedtls_x509_crt_parse_der": {
+        "library": "mbedTLS",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "mbedtls_x509_crt_parse_der_with_ext_cb": {
+        "library": "mbedTLS",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "mbedtls_x509_crt_parse_path": {
+        "library": "mbedTLS",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "mbedtls_x509_crt_verify_with_ca_cb": {
+        "library": "mbedTLS",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "mbedtls_x509write_crt_der": {
+        "library": "mbedTLS",
+        "header": "x509_crt.h",
+        "category": "API",
+        "algorithm": "X.509",
+        "primitive": "certificate"
+    },
+    "mbedtls_x509_csr_init": {
+        "library": "mbedTLS",
+        "header": "x509_csr.h",
+        "category": "API",
+        "algorithm": "X.509 CSR",
+        "primitive": "certificate"
+    },
+    "mbedtls_x509_csr_parse_der_with_ext_cb": {
+        "library": "mbedTLS",
+        "header": "x509_csr.h",
+        "category": "API",
+        "algorithm": "X.509 CSR",
+        "primitive": "certificate"
+    }
+}

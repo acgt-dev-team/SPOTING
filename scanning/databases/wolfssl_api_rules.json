@@ -1,0 +1,2585 @@
+{
+    "wc_AesCcmSetKey": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesCtsDecryptFinal": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesCtsEncryptFinal": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesDecryptDirect": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesDelete": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesEaxFree": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesEncryptDirect": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesFree": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesGcmSetExtIV": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesGcmSetKey": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesGetKeySize": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesInit": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesNew": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesSetIV": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesXtsFree": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_AesXtsInit": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_GmacSetKey": {
+        "library": "wolfSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "wc_Arc4Free": {
+        "library": "wolfSSL",
+        "header": "arc4.h",
+        "category": "API",
+        "algorithm": "RC4",
+        "primitive": "stream-cipher"
+    },
+    "wc_Arc4Init": {
+        "library": "wolfSSL",
+        "header": "arc4.h",
+        "category": "API",
+        "algorithm": "RC4",
+        "primitive": "stream-cipher"
+    },
+    "wc_Arc4SetKey": {
+        "library": "wolfSSL",
+        "header": "arc4.h",
+        "category": "API",
+        "algorithm": "RC4",
+        "primitive": "stream-cipher"
+    },
+    "wc_AriaFreeCrypt": {
+        "library": "wolfSSL",
+        "header": "aria-crypt.h",
+        "category": "API",
+        "algorithm": "ARIA",
+        "primitive": "block-cipher"
+    },
+    "wc_AriaGcmSetExtIV": {
+        "library": "wolfSSL",
+        "header": "aria-crypt.h",
+        "category": "API",
+        "algorithm": "ARIA",
+        "primitive": "block-cipher"
+    },
+    "wc_AriaInitCrypt": {
+        "library": "wolfSSL",
+        "header": "aria-crypt.h",
+        "category": "API",
+        "algorithm": "ARIA",
+        "primitive": "block-cipher"
+    },
+    "wc_AriaSetKey": {
+        "library": "wolfSSL",
+        "header": "aria-crypt.h",
+        "category": "API",
+        "algorithm": "ARIA",
+        "primitive": "block-cipher"
+    },
+    "wc_AsconAEAD128_Clear": {
+        "library": "wolfSSL",
+        "header": "ascon.h",
+        "category": "API",
+        "algorithm": "ASCON",
+        "primitive": "aead"
+    },
+    "wc_AsconAEAD128_EncryptFinal": {
+        "library": "wolfSSL",
+        "header": "ascon.h",
+        "category": "API",
+        "algorithm": "ASCON",
+        "primitive": "aead"
+    },
+    "wc_AsconAEAD128_Free": {
+        "library": "wolfSSL",
+        "header": "ascon.h",
+        "category": "API",
+        "algorithm": "ASCON",
+        "primitive": "aead"
+    },
+    "wc_AsconAEAD128_Init": {
+        "library": "wolfSSL",
+        "header": "ascon.h",
+        "category": "API",
+        "algorithm": "ASCON",
+        "primitive": "aead"
+    },
+    "wc_AsconAEAD128_New": {
+        "library": "wolfSSL",
+        "header": "ascon.h",
+        "category": "API",
+        "algorithm": "ASCON",
+        "primitive": "aead"
+    },
+    "wc_AsconAEAD128_SetKey": {
+        "library": "wolfSSL",
+        "header": "ascon.h",
+        "category": "API",
+        "algorithm": "ASCON",
+        "primitive": "aead"
+    },
+    "wc_AsconAEAD128_SetNonce": {
+        "library": "wolfSSL",
+        "header": "ascon.h",
+        "category": "API",
+        "algorithm": "ASCON",
+        "primitive": "aead"
+    },
+    "wc_AsconHash256_Clear": {
+        "library": "wolfSSL",
+        "header": "ascon.h",
+        "category": "API",
+        "algorithm": "ASCON",
+        "primitive": "aead"
+    },
+    "wc_AsconHash256_Final": {
+        "library": "wolfSSL",
+        "header": "ascon.h",
+        "category": "API",
+        "algorithm": "ASCON",
+        "primitive": "aead"
+    },
+    "wc_AsconHash256_Free": {
+        "library": "wolfSSL",
+        "header": "ascon.h",
+        "category": "API",
+        "algorithm": "ASCON",
+        "primitive": "aead"
+    },
+    "wc_AsconHash256_Init": {
+        "library": "wolfSSL",
+        "header": "ascon.h",
+        "category": "API",
+        "algorithm": "ASCON",
+        "primitive": "aead"
+    },
+    "wc_AsconHash256_New": {
+        "library": "wolfSSL",
+        "header": "ascon.h",
+        "category": "API",
+        "algorithm": "ASCON",
+        "primitive": "aead"
+    },
+    "wc_AllocDer": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_Curve25519PrivateKeyDecode": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_Curve25519PrivateKeyToDer": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_Curve25519PublicKeyDecode": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_Curve25519PublicKeyToDer": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_DhParamsToDer": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_DhPrivKeyToDer": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_DhPubKeyToDer": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_EccKeyDerSize": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_EccKeyToDer": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_EccPublicKeyDerSize": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_Ed448KeyToDer": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_Ed448PrivateKeyDecode": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_Ed448PrivateKeyToDer": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_Ed448PublicKeyDecode": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_Ed448PublicKeyToDer": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_FreeDecodedAcert": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_FreeDecodedCert": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_FreeDer": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_GetCTC_HashOID": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_GetSubjectRaw": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_GetTime": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_InitCert": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_InitCert_ex": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_InitDecodedCert": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_PemCertToDer_ex": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_PemPubKeyToDer_ex": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_PkcsPad": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_RsaKeyToPublicDer": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_RsaPublicKeyDerSize": {
+        "library": "wolfSSL",
+        "header": "asn_public.h",
+        "category": "API",
+        "algorithm": "ASN.1",
+        "primitive": "encoding"
+    },
+    "wc_Blake2bFinal": {
+        "library": "wolfSSL",
+        "header": "blake2.h",
+        "category": "API",
+        "algorithm": "BLAKE2",
+        "primitive": "hash-function"
+    },
+    "wc_Blake2bUpdate": {
+        "library": "wolfSSL",
+        "header": "blake2.h",
+        "category": "API",
+        "algorithm": "BLAKE2",
+        "primitive": "hash-function"
+    },
+    "wc_Blake2sFinal": {
+        "library": "wolfSSL",
+        "header": "blake2.h",
+        "category": "API",
+        "algorithm": "BLAKE2",
+        "primitive": "hash-function"
+    },
+    "wc_Blake2sUpdate": {
+        "library": "wolfSSL",
+        "header": "blake2.h",
+        "category": "API",
+        "algorithm": "BLAKE2",
+        "primitive": "hash-function"
+    },
+    "wc_InitBlake2b": {
+        "library": "wolfSSL",
+        "header": "blake2.h",
+        "category": "API",
+        "algorithm": "BLAKE2",
+        "primitive": "hash-function"
+    },
+    "wc_InitBlake2s": {
+        "library": "wolfSSL",
+        "header": "blake2.h",
+        "category": "API",
+        "algorithm": "BLAKE2",
+        "primitive": "hash-function"
+    },
+    "wc_CamelliaFree": {
+        "library": "wolfSSL",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "Camellia",
+        "primitive": "block-cipher"
+    },
+    "wc_CamelliaSetIV": {
+        "library": "wolfSSL",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "Camellia",
+        "primitive": "block-cipher"
+    },
+    "wc_Chacha_SetIV": {
+        "library": "wolfSSL",
+        "header": "chacha.h",
+        "category": "API",
+        "algorithm": "ChaCha20",
+        "primitive": "stream-cipher"
+    },
+    "wc_Chacha_SetKey": {
+        "library": "wolfSSL",
+        "header": "chacha.h",
+        "category": "API",
+        "algorithm": "ChaCha20",
+        "primitive": "stream-cipher"
+    },
+    "wc_XChaCha20Poly1305_Decrypt": {
+        "library": "wolfSSL",
+        "header": "chacha20_poly1305.h",
+        "category": "API",
+        "algorithm": "ChaCha20-Poly1305",
+        "primitive": "aead"
+    },
+    "wc_XChaCha20Poly1305_Encrypt": {
+        "library": "wolfSSL",
+        "header": "chacha20_poly1305.h",
+        "category": "API",
+        "algorithm": "ChaCha20-Poly1305",
+        "primitive": "aead"
+    },
+    "wc_XChaCha20Poly1305_Init": {
+        "library": "wolfSSL",
+        "header": "chacha20_poly1305.h",
+        "category": "API",
+        "algorithm": "ChaCha20-Poly1305",
+        "primitive": "aead"
+    },
+    "wc_Des3Free": {
+        "library": "wolfSSL",
+        "header": "des3.h",
+        "category": "API",
+        "algorithm": "3DES",
+        "primitive": "block-cipher"
+    },
+    "wc_Des3Init": {
+        "library": "wolfSSL",
+        "header": "des3.h",
+        "category": "API",
+        "algorithm": "3DES",
+        "primitive": "block-cipher"
+    },
+    "wc_Des3_SetIV": {
+        "library": "wolfSSL",
+        "header": "des3.h",
+        "category": "API",
+        "algorithm": "3DES",
+        "primitive": "block-cipher"
+    },
+    "wc_Des_SetIV": {
+        "library": "wolfSSL",
+        "header": "des3.h",
+        "category": "API",
+        "algorithm": "3DES",
+        "primitive": "block-cipher"
+    },
+    "wc_DhCheckPrivKey": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_DhCheckPubKey": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_DhGenerateParams": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_DhGetNamedKeyMinSize": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_DhSetNamedKey": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_DhSetNonBlock": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_Dh_ffdhe2048_Get": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_Dh_ffdhe3072_Get": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_Dh_ffdhe4096_Get": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_Dh_ffdhe6144_Get": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_Dh_ffdhe8192_Get": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_FreeDhKey": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_InitDhKey": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_InitDhKey_ex": {
+        "library": "wolfSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "wc_DsaCheckPubKey": {
+        "library": "wolfSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "wc_DsaKeyToDer": {
+        "library": "wolfSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "wc_DsaKeyToPublicDer": {
+        "library": "wolfSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "wc_FreeDsaKey": {
+        "library": "wolfSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "wc_InitDsaKey": {
+        "library": "wolfSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "wc_InitDsaKey_h": {
+        "library": "wolfSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "wc_MakeDsaKey": {
+        "library": "wolfSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "wc_MakeDsaParameters": {
+        "library": "wolfSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "wc_ecc_curve_cache_free": {
+        "library": "wolfSSL",
+        "header": "ecc.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "wc_ecc_curve_cache_init": {
+        "library": "wolfSSL",
+        "header": "ecc.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "wc_ecc_get_curve_params": {
+        "library": "wolfSSL",
+        "header": "ecc.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "wc_ecc_get_sets_count": {
+        "library": "wolfSSL",
+        "header": "ecc.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "wc_ecc_key_free": {
+        "library": "wolfSSL",
+        "header": "ecc.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "wc_ecc_key_get_priv": {
+        "library": "wolfSSL",
+        "header": "ecc.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "wc_ecc_key_new": {
+        "library": "wolfSSL",
+        "header": "ecc.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "wc_ecc_set_nonblock": {
+        "library": "wolfSSL",
+        "header": "ecc.h",
+        "category": "API",
+        "algorithm": "ECC",
+        "primitive": "public-key"
+    },
+    "wc_ExportEccsiKey": {
+        "library": "wolfSSL",
+        "header": "eccsi.h",
+        "category": "API",
+        "algorithm": "ECCSI",
+        "primitive": "digital-signature"
+    },
+    "wc_ExportEccsiPrivateKey": {
+        "library": "wolfSSL",
+        "header": "eccsi.h",
+        "category": "API",
+        "algorithm": "ECCSI",
+        "primitive": "digital-signature"
+    },
+    "wc_FreeEccsiKey": {
+        "library": "wolfSSL",
+        "header": "eccsi.h",
+        "category": "API",
+        "algorithm": "ECCSI",
+        "primitive": "digital-signature"
+    },
+    "wc_ImportEccsiKey": {
+        "library": "wolfSSL",
+        "header": "eccsi.h",
+        "category": "API",
+        "algorithm": "ECCSI",
+        "primitive": "digital-signature"
+    },
+    "wc_InitEccsiKey": {
+        "library": "wolfSSL",
+        "header": "eccsi.h",
+        "category": "API",
+        "algorithm": "ECCSI",
+        "primitive": "digital-signature"
+    },
+    "wc_MakeEccsiKey": {
+        "library": "wolfSSL",
+        "header": "eccsi.h",
+        "category": "API",
+        "algorithm": "ECCSI",
+        "primitive": "digital-signature"
+    },
+    "wc_HashDelete": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_HashFree": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_HashGetBlockSize": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_HashGetDigestSize": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_HashGetOID": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_HashInit": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_Md5Hash": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_Sha224Hash": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_Sha256Hash": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_Sha384Hash": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_224Hash": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_256Hash": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_384Hash": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_512Hash": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512Hash": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_224Hash": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_256Hash": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_ShaHash": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_Sm3Hash": {
+        "library": "wolfSSL",
+        "header": "hash.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "hash-function"
+    },
+    "wc_HmacCopy": {
+        "library": "wolfSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "wc_HmacFinal": {
+        "library": "wolfSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "wc_HmacFinal_Software": {
+        "library": "wolfSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "wc_HmacFree": {
+        "library": "wolfSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "wc_HmacInit": {
+        "library": "wolfSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "wc_HmacSizeByType": {
+        "library": "wolfSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "wc_HmacUpdate": {
+        "library": "wolfSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "wc_HmacUpdate_Software": {
+        "library": "wolfSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "wc_HpkeGenerateKeyPair": {
+        "library": "wolfSSL",
+        "header": "hpke.h",
+        "category": "API",
+        "algorithm": "HPKE",
+        "primitive": "key-encapsulation"
+    },
+    "wc_HpkeInit": {
+        "library": "wolfSSL",
+        "header": "hpke.h",
+        "category": "API",
+        "algorithm": "HPKE",
+        "primitive": "key-encapsulation"
+    },
+    "wc_InitMd2": {
+        "library": "wolfSSL",
+        "header": "md2.h",
+        "category": "API",
+        "algorithm": "MD2",
+        "primitive": "hash-function"
+    },
+    "wc_Md2Final": {
+        "library": "wolfSSL",
+        "header": "md2.h",
+        "category": "API",
+        "algorithm": "MD2",
+        "primitive": "hash-function"
+    },
+    "wc_Md2Hash": {
+        "library": "wolfSSL",
+        "header": "md2.h",
+        "category": "API",
+        "algorithm": "MD2",
+        "primitive": "hash-function"
+    },
+    "wc_Md2Update": {
+        "library": "wolfSSL",
+        "header": "md2.h",
+        "category": "API",
+        "algorithm": "MD2",
+        "primitive": "hash-function"
+    },
+    "wc_InitMd4": {
+        "library": "wolfSSL",
+        "header": "md4.h",
+        "category": "API",
+        "algorithm": "MD4",
+        "primitive": "hash-function"
+    },
+    "wc_Md4Final": {
+        "library": "wolfSSL",
+        "header": "md4.h",
+        "category": "API",
+        "algorithm": "MD4",
+        "primitive": "hash-function"
+    },
+    "wc_Md4Update": {
+        "library": "wolfSSL",
+        "header": "md4.h",
+        "category": "API",
+        "algorithm": "MD4",
+        "primitive": "hash-function"
+    },
+    "wc_InitMd5": {
+        "library": "wolfSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "wc_InitMd5_ex": {
+        "library": "wolfSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "wc_Md5Copy": {
+        "library": "wolfSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "wc_Md5Final": {
+        "library": "wolfSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "wc_Md5Free": {
+        "library": "wolfSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "wc_Md5GetFlags": {
+        "library": "wolfSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "wc_Md5GetHash": {
+        "library": "wolfSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "wc_Md5SetFlags": {
+        "library": "wolfSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "wc_Md5SizeSet": {
+        "library": "wolfSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "wc_Md5Transform": {
+        "library": "wolfSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "wc_Md5Update": {
+        "library": "wolfSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "wc_Poly1305Final": {
+        "library": "wolfSSL",
+        "header": "poly1305.h",
+        "category": "API",
+        "algorithm": "Poly1305",
+        "primitive": "mac"
+    },
+    "wc_Poly1305Update": {
+        "library": "wolfSSL",
+        "header": "poly1305.h",
+        "category": "API",
+        "algorithm": "Poly1305",
+        "primitive": "mac"
+    },
+    "wc_Poly1305_Pad": {
+        "library": "wolfSSL",
+        "header": "poly1305.h",
+        "category": "API",
+        "algorithm": "Poly1305",
+        "primitive": "mac"
+    },
+    "wc_AesDecrypt": {
+        "library": "wolfSSL",
+        "header": "psa.h",
+        "category": "API",
+        "algorithm": "PSA Crypto",
+        "primitive": "crypto-api"
+    },
+    "wc_AesEncrypt": {
+        "library": "wolfSSL",
+        "header": "psa.h",
+        "category": "API",
+        "algorithm": "PSA Crypto",
+        "primitive": "crypto-api"
+    },
+    "wc_psa_get_random": {
+        "library": "wolfSSL",
+        "header": "psa.h",
+        "category": "API",
+        "algorithm": "PSA Crypto",
+        "primitive": "crypto-api"
+    },
+    "wc_PufEnroll": {
+        "library": "wolfSSL",
+        "header": "puf.h",
+        "category": "API",
+        "algorithm": "PUF",
+        "primitive": "device-security"
+    },
+    "wc_PufGetIdentity": {
+        "library": "wolfSSL",
+        "header": "puf.h",
+        "category": "API",
+        "algorithm": "PUF",
+        "primitive": "device-security"
+    },
+    "wc_PufInit": {
+        "library": "wolfSSL",
+        "header": "puf.h",
+        "category": "API",
+        "algorithm": "PUF",
+        "primitive": "device-security"
+    },
+    "wc_PufSetTestData": {
+        "library": "wolfSSL",
+        "header": "puf.h",
+        "category": "API",
+        "algorithm": "PUF",
+        "primitive": "device-security"
+    },
+    "wc_PufZeroize": {
+        "library": "wolfSSL",
+        "header": "puf.h",
+        "category": "API",
+        "algorithm": "PUF",
+        "primitive": "device-security"
+    },
+    "wc_PBKDF_max_iterations_get": {
+        "library": "wolfSSL",
+        "header": "pwdbased.h",
+        "category": "API",
+        "algorithm": "PBKDF",
+        "primitive": "key-derivation"
+    },
+    "wc_PBKDF_max_iterations_set": {
+        "library": "wolfSSL",
+        "header": "pwdbased.h",
+        "category": "API",
+        "algorithm": "PBKDF",
+        "primitive": "key-derivation"
+    },
+    "wc_FreeNetRandom": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_FreeRng": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_GenerateSeed": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_InitNetRandom": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_InitRng": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_InitRngNonce": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_InitRng_ex": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_RNG_GenerateBlock": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_RNG_GenerateByte": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_RNG_HealthTest_SHA256_ex": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_RNG_HealthTest_SHA512_ex2": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_RNG_TestSeed": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_Sha256Drbg_Disable": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_Sha256Drbg_Enable": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_Sha256Drbg_IsDisabled": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_Sha512Drbg_Disable": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_Sha512Drbg_Enable": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_Sha512Drbg_IsDisabled": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_rng_free": {
+        "library": "wolfSSL",
+        "header": "random.h",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "wc_Rc2Free": {
+        "library": "wolfSSL",
+        "header": "rc2.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "wc_Rc2SetIV": {
+        "library": "wolfSSL",
+        "header": "rc2.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "wc_InitRipeMd": {
+        "library": "wolfSSL",
+        "header": "ripemd.h",
+        "category": "API",
+        "algorithm": "RIPEMD-160",
+        "primitive": "hash-function"
+    },
+    "wc_RipeMdFinal": {
+        "library": "wolfSSL",
+        "header": "ripemd.h",
+        "category": "API",
+        "algorithm": "RIPEMD-160",
+        "primitive": "hash-function"
+    },
+    "wc_RipeMdUpdate": {
+        "library": "wolfSSL",
+        "header": "ripemd.h",
+        "category": "API",
+        "algorithm": "RIPEMD-160",
+        "primitive": "hash-function"
+    },
+    "wc_CheckRsaKey": {
+        "library": "wolfSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "wc_DeleteRsaKey": {
+        "library": "wolfSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "wc_FreeRsaKey": {
+        "library": "wolfSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "wc_InitRsaKey": {
+        "library": "wolfSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "wc_InitRsaKey_ex": {
+        "library": "wolfSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "wc_MakeRsaKey": {
+        "library": "wolfSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "wc_NewRsaKey": {
+        "library": "wolfSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "wc_RsaEncryptSize": {
+        "library": "wolfSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "wc_RsaGetKeyId": {
+        "library": "wolfSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "wc_RsaKeyToDer": {
+        "library": "wolfSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "wc_RsaSetNonBlock": {
+        "library": "wolfSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "wc_RsaSetRNG": {
+        "library": "wolfSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "wc_RsaUseKeyId": {
+        "library": "wolfSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "wc_ClearSakkePointITable": {
+        "library": "wolfSSL",
+        "header": "sakke.h",
+        "category": "API",
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
+    },
+    "wc_ExportSakkeKey": {
+        "library": "wolfSSL",
+        "header": "sakke.h",
+        "category": "API",
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
+    },
+    "wc_ExportSakkePrivateKey": {
+        "library": "wolfSSL",
+        "header": "sakke.h",
+        "category": "API",
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
+    },
+    "wc_FreeSakkeKey": {
+        "library": "wolfSSL",
+        "header": "sakke.h",
+        "category": "API",
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
+    },
+    "wc_GetSakkeAuthSize": {
+        "library": "wolfSSL",
+        "header": "sakke.h",
+        "category": "API",
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
+    },
+    "wc_GetSakkePointI": {
+        "library": "wolfSSL",
+        "header": "sakke.h",
+        "category": "API",
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
+    },
+    "wc_ImportSakkeKey": {
+        "library": "wolfSSL",
+        "header": "sakke.h",
+        "category": "API",
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
+    },
+    "wc_ImportSakkeRsk": {
+        "library": "wolfSSL",
+        "header": "sakke.h",
+        "category": "API",
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
+    },
+    "wc_InitSakkeKey": {
+        "library": "wolfSSL",
+        "header": "sakke.h",
+        "category": "API",
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
+    },
+    "wc_MakeSakkeKey": {
+        "library": "wolfSSL",
+        "header": "sakke.h",
+        "category": "API",
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
+    },
+    "wc_MakeSakkePointI": {
+        "library": "wolfSSL",
+        "header": "sakke.h",
+        "category": "API",
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
+    },
+    "wc_MakeSakkePublicKey": {
+        "library": "wolfSSL",
+        "header": "sakke.h",
+        "category": "API",
+        "algorithm": "SAKKE",
+        "primitive": "key-management"
+    },
+    "wc_InitSha": {
+        "library": "wolfSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha_ex": {
+        "library": "wolfSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "wc_ShaCopy": {
+        "library": "wolfSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "wc_ShaFinal": {
+        "library": "wolfSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "wc_ShaFinalRaw": {
+        "library": "wolfSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "wc_ShaFree": {
+        "library": "wolfSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "wc_ShaGetFlags": {
+        "library": "wolfSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "wc_ShaGetHash": {
+        "library": "wolfSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "wc_ShaSetFlags": {
+        "library": "wolfSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "wc_ShaSizeSet": {
+        "library": "wolfSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "wc_ShaTransform": {
+        "library": "wolfSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "wc_ShaUpdate": {
+        "library": "wolfSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha224": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha224_ex": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha256": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha256_ex": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha224Copy": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha224Final": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha224Free": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha224GetFlags": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha224GetHash": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha224SetFlags": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha224Update": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha224_Grow": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha256Copy": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha256Final": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha256FinalRaw": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha256Free": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha256GetFlags": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha256GetHash": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha256SetFlags": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha256SizeSet": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha256Transform": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha256Update": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_Sha256_Grow": {
+        "library": "wolfSSL",
+        "header": "sha256.h",
+        "category": "API",
+        "algorithm": "SHA-256",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha3_224": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha3_256": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha3_384": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha3_512": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_InitShake128": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_InitShake256": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_224_Copy": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_224_Final": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_224_Free": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_224_GetHash": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_224_Update": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_256_Copy": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_256_Final": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_256_Free": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_256_GetHash": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_256_Update": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_384_Copy": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_384_Final": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_384_Free": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_384_GetHash": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_384_Update": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_512_Copy": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_512_Final": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_512_Free": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_512_GetHash": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_512_Update": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_GetFlags": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Sha3_SetFlags": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Shake128_Copy": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Shake128_Final": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Shake128_Free": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Shake128_Update": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Shake256_Copy": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Shake256_Final": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Shake256_Free": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_Shake256_Update": {
+        "library": "wolfSSL",
+        "header": "sha3.h",
+        "category": "API",
+        "algorithm": "SHA-3",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha384": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha384_ex": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha512": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha512_224": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha512_224_ex": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha512_256": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha512_256_ex": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_InitSha512_ex": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha384Copy": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha384Final": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha384FinalRaw": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha384Free": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha384GetFlags": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha384GetHash": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha384SetFlags": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha384Update": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha384_Grow": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512Copy": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512Final": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512FinalRaw": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512Free": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512GetFlags": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512GetHash": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512SetFlags": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512Transform": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512Update": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_224Copy": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_224Final": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_224FinalRaw": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_224Free": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_224GetFlags": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_224GetHash": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_224SetFlags": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_224Update": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_256Copy": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_256Final": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_256FinalRaw": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_256Free": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_256GetFlags": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_256GetHash": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_256SetFlags": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_256Update": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_Sha512_Grow": {
+        "library": "wolfSSL",
+        "header": "sha512.h",
+        "category": "API",
+        "algorithm": "SHA-512",
+        "primitive": "hash-function"
+    },
+    "wc_SignatureGenerate": {
+        "library": "wolfSSL",
+        "header": "signature.h",
+        "category": "API",
+        "algorithm": "Signature",
+        "primitive": "digital-signature"
+    },
+    "wc_SignatureGenerateHash": {
+        "library": "wolfSSL",
+        "header": "signature.h",
+        "category": "API",
+        "algorithm": "Signature",
+        "primitive": "digital-signature"
+    },
+    "wc_SignatureGenerateHash_ex": {
+        "library": "wolfSSL",
+        "header": "signature.h",
+        "category": "API",
+        "algorithm": "Signature",
+        "primitive": "digital-signature"
+    },
+    "wc_SignatureGenerate_ex": {
+        "library": "wolfSSL",
+        "header": "signature.h",
+        "category": "API",
+        "algorithm": "Signature",
+        "primitive": "digital-signature"
+    },
+    "wc_SignatureVerify": {
+        "library": "wolfSSL",
+        "header": "signature.h",
+        "category": "API",
+        "algorithm": "Signature",
+        "primitive": "digital-signature"
+    },
+    "wc_SignatureVerifyHash": {
+        "library": "wolfSSL",
+        "header": "signature.h",
+        "category": "API",
+        "algorithm": "Signature",
+        "primitive": "digital-signature"
+    },
+    "wc_SrpGetProof": {
+        "library": "wolfSSL",
+        "header": "srp.h",
+        "category": "API",
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
+    },
+    "wc_SrpGetPublic": {
+        "library": "wolfSSL",
+        "header": "srp.h",
+        "category": "API",
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
+    },
+    "wc_SrpGetVerifier": {
+        "library": "wolfSSL",
+        "header": "srp.h",
+        "category": "API",
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
+    },
+    "wc_SrpInit": {
+        "library": "wolfSSL",
+        "header": "srp.h",
+        "category": "API",
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
+    },
+    "wc_SrpSetPassword": {
+        "library": "wolfSSL",
+        "header": "srp.h",
+        "category": "API",
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
+    },
+    "wc_SrpSetPrivate": {
+        "library": "wolfSSL",
+        "header": "srp.h",
+        "category": "API",
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
+    },
+    "wc_SrpSetUsername": {
+        "library": "wolfSSL",
+        "header": "srp.h",
+        "category": "API",
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
+    },
+    "wc_SrpSetVerifier": {
+        "library": "wolfSSL",
+        "header": "srp.h",
+        "category": "API",
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
+    },
+    "wc_SrpTerm": {
+        "library": "wolfSSL",
+        "header": "srp.h",
+        "category": "API",
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
+    },
+    "wc_SrpVerifyPeersProof": {
+        "library": "wolfSSL",
+        "header": "srp.h",
+        "category": "API",
+        "algorithm": "SRP",
+        "primitive": "key-agreement"
+    },
+    "wc_SHE_Free": {
+        "library": "wolfSSL",
+        "header": "wc_she.h",
+        "category": "API",
+        "algorithm": "SHE",
+        "primitive": "key-management"
+    },
+    "wc_SHE_Init": {
+        "library": "wolfSSL",
+        "header": "wc_she.h",
+        "category": "API",
+        "algorithm": "SHE",
+        "primitive": "key-management"
+    },
+    "wc_SHE_LoadKey": {
+        "library": "wolfSSL",
+        "header": "wc_she.h",
+        "category": "API",
+        "algorithm": "SHE",
+        "primitive": "key-management"
+    },
+    "wc_SHE_LoadKey_Id": {
+        "library": "wolfSSL",
+        "header": "wc_she.h",
+        "category": "API",
+        "algorithm": "SHE",
+        "primitive": "key-management"
+    },
+    "wc_SHE_LoadKey_Label": {
+        "library": "wolfSSL",
+        "header": "wc_she.h",
+        "category": "API",
+        "algorithm": "SHE",
+        "primitive": "key-management"
+    },
+    "wc_SHE_LoadKey_Verify": {
+        "library": "wolfSSL",
+        "header": "wc_she.h",
+        "category": "API",
+        "algorithm": "SHE",
+        "primitive": "key-management"
+    },
+    "wc_SHE_LoadKey_Verify_Id": {
+        "library": "wolfSSL",
+        "header": "wc_she.h",
+        "category": "API",
+        "algorithm": "SHE",
+        "primitive": "key-management"
+    },
+    "wc_SHE_LoadKey_Verify_Label": {
+        "library": "wolfSSL",
+        "header": "wc_she.h",
+        "category": "API",
+        "algorithm": "SHE",
+        "primitive": "key-management"
+    },
+    "wc_Entropy_Get": {
+        "library": "wolfSSL",
+        "header": "wolfentropy.h",
+        "category": "API",
+        "algorithm": "Entropy",
+        "primitive": "random-generator"
+    },
+    "wc_Entropy_GetRawEntropy": {
+        "library": "wolfSSL",
+        "header": "wolfentropy.h",
+        "category": "API",
+        "algorithm": "Entropy",
+        "primitive": "random-generator"
+    },
+    "wc_Entropy_OnDemandTest": {
+        "library": "wolfSSL",
+        "header": "wolfentropy.h",
+        "category": "API",
+        "algorithm": "Entropy",
+        "primitive": "random-generator"
+    }
+}

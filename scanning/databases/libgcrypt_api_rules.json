@@ -1,0 +1,1143 @@
+{
+    "gcry_cipher_algo_info": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_authenticate": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_checktag": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_close": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_ctl": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_decrypt": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_encrypt": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_final": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_geniv": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_get_algo_blklen": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_get_algo_keylen": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_gettag": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_info": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_reset": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_setiv": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_setkey": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_cipher_setup_geniv": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Cipher",
+        "primitive": "block-cipher"
+    },
+    "gcry_create_nonce": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "gcry_ctx_release": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Context",
+        "primitive": "context"
+    },
+    "gcry_kdf_close": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "gcry_kdf_compute": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "gcry_kdf_derive": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "gcry_kdf_final": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "gcry_kdf_open": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "gcry_kem_decap": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "KEM",
+        "primitive": "key-encapsulation"
+    },
+    "gcry_kem_encap": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "KEM",
+        "primitive": "key-encapsulation"
+    },
+    "gcry_kem_keypair": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "KEM",
+        "primitive": "key-encapsulation"
+    },
+    "gcry_mac_algo_info": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MAC",
+        "primitive": "mac"
+    },
+    "gcry_mac_close": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MAC",
+        "primitive": "mac"
+    },
+    "gcry_mac_ctl": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MAC",
+        "primitive": "mac"
+    },
+    "gcry_mac_get_algo": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MAC",
+        "primitive": "mac"
+    },
+    "gcry_mac_get_algo_keylen": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MAC",
+        "primitive": "mac"
+    },
+    "gcry_mac_get_algo_maclen": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MAC",
+        "primitive": "mac"
+    },
+    "gcry_mac_open": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MAC",
+        "primitive": "mac"
+    },
+    "gcry_mac_read": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MAC",
+        "primitive": "mac"
+    },
+    "gcry_mac_setiv": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MAC",
+        "primitive": "mac"
+    },
+    "gcry_mac_setkey": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MAC",
+        "primitive": "mac"
+    },
+    "gcry_mac_verify": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MAC",
+        "primitive": "mac"
+    },
+    "gcry_mac_write": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MAC",
+        "primitive": "mac"
+    },
+    "gcry_md_algo_info": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_close": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_copy": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_ctl": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_enable": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_extract": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_get_algo": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_get_algo_dlen": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_hash_buffer": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_hash_buffers": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_hash_buffers_ext": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_is_enabled": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_is_secure": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_open": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_read": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_reset": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_setkey": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_md_write": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Hash",
+        "primitive": "hash-function"
+    },
+    "gcry_mpi_abs": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_add": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_add_ui": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_addm": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_aprint": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_clear_bit": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_clear_flag": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_clear_highbit": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_cmp": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_cmp_ui": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_copy": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_div": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_ec_add": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_ec_curve_point": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_ec_decode_point": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_ec_dup": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_ec_get_affine": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_ec_get_mpi": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_ec_get_point": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_ec_mul": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_ec_new": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_ec_set_mpi": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_ec_set_point": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_ec_sub": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_gcd": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_get_flag": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_get_nbits": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_get_opaque": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_get_ui": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_invm": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_is_neg": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_lshift": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_mod": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_mul": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_mul_2exp": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_mul_ui": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_mulm": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_neg": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_new": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_point_copy": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_point_get": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_point_new": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_point_release": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_point_set": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_point_snatch_get": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_point_snatch_set": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_powm": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_print": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_randomize": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_release": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_rshift": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_scan": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_set": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_set_bit": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_set_flag": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_set_highbit": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_set_opaque": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_set_opaque_copy": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_set_ui": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_snatch": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_sub": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_sub_ui": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_subm": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_mpi_swap": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "MPI",
+        "primitive": "big-integer"
+    },
+    "gcry_pk_algo_info": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_pk_ctl": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_pk_decrypt": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_pk_encrypt": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_pk_genkey": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_pk_get_curve": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_pk_get_keygrip": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_pk_get_param": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_pk_hash_sign": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_pk_hash_verify": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_pk_sign": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_pk_test_algo": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_pk_testkey": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_pk_verify": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Public Key",
+        "primitive": "public-key"
+    },
+    "gcry_prime_check": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Prime",
+        "primitive": "prime-generation"
+    },
+    "gcry_prime_generate": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Prime",
+        "primitive": "prime-generation"
+    },
+    "gcry_prime_release_factors": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "Prime",
+        "primitive": "prime-generation"
+    },
+    "gcry_random_add_bytes": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "gcry_randomize": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "RNG",
+        "primitive": "random-generator"
+    },
+    "gcry_sexp_alist": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_append": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_build": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_build_array": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_cadr": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_canon_len": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_car": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_cdr": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_cons": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_create": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_extract_param": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_length": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_new": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_nth": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_nth_buffer": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_nth_data": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_nth_mpi": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_nth_string": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_prepend": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_release": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_sprint": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_sscan": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    },
+    "gcry_sexp_vlist": {
+        "library": "libgcrypt",
+        "header": "gcrypt.h.in",
+        "category": "API",
+        "algorithm": "S-Expression",
+        "primitive": "key-encoding"
+    }
+}

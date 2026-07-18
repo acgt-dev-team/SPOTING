@@ -1,0 +1,2942 @@
+{
+    "botan_base64_decode": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_base64_encode": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_bcrypt_generate": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_bcrypt_is_valid": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_block_cipher_block_size": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_block_cipher_clear": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_block_cipher_decrypt_blocks": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_block_cipher_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_block_cipher_encrypt_blocks": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_block_cipher_get_keyspec": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_block_cipher_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_block_cipher_name": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_block_cipher_set_key": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_clear": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_get_default_nonce_length": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_get_ideal_update_granularity": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_get_keyspec": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_get_tag_length": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_get_update_granularity": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_is_authenticated": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_name": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_output_length": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_query_keylen": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_requires_entire_message": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_reset": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_set_associated_data": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_set_key": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_start": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_update": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_cipher_valid_nonce_length": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_constant_time_compare": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_equal": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_from_ber": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_from_name": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_from_oid": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_from_params": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_from_pem": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_get_a": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_get_b": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_get_curve_oid": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_get_g_x": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_get_g_y": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_get_order": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_get_p": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_supports_application_specific_group": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_supports_named_group": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_unregister": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_view_der": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_group_view_pem": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_add": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_equal": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_from_bytes": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_from_xy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_generator": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_identity": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_is_identity": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_mul": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_negate": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_view_compressed": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_view_uncompressed": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_view_x_bytes": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_view_xy_bytes": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_point_view_y_bytes": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_privkey_create": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_privkey_get_group": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_privkey_get_private_key": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_pubkey_get_group": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_scalar_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_scalar_from_mp": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_scalar_random": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_ec_scalar_to_mp": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_fpe_decrypt": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_fpe_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_fpe_encrypt": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_fpe_fe1_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hash_block_size": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hash_clear": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hash_copy_state": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hash_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hash_final": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hash_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hash_name": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hash_output_length": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hash_update": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hex_decode": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hex_encode": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hotp_check": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hotp_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hotp_generate": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_hotp_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_kdf": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_key_unwrap3394": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_key_wrap3394": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mac_clear": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mac_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mac_final": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mac_get_keyspec": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mac_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mac_name": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mac_output_length": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mac_set_key": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mac_set_nonce": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mac_update": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mceies_decrypt": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mceies_encrypt": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_add": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_add_u32": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_clear": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_clear_bit": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_cmp": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_div": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_equal": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_flip_sign": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_from_bin": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_gcd": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_get_bit": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_is_even": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_is_negative": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_is_odd": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_is_positive": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_is_prime": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_is_zero": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_lshift": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_mod_inverse": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_mod_mul": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_mul": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_num_bits": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_num_bytes": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_powmod": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_rand_bits": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_rand_range": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_rshift": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_set_bit": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_set_from_int": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_set_from_mp": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_set_from_radix_str": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_set_from_str": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_sub": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_sub_u32": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_swap": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_to_bin": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_to_hex": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_to_str": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_to_uint32": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_view_bin": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_view_hex": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_mp_view_str": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_nist_kw_dec": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_nist_kw_enc": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_oid_cmp": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_oid_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_oid_equal": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_oid_from_string": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_oid_register": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_oid_view_name": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_oid_view_string": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pbkdf": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pbkdf_timed": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_decrypt": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_decrypt_create": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_decrypt_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_decrypt_output_length": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_encrypt": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_encrypt_create": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_encrypt_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_encrypt_output_length": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_kem_decrypt_create": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_kem_decrypt_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_kem_decrypt_shared_key": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_kem_decrypt_shared_key_length": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_kem_encrypt_create": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_kem_encrypt_create_shared_key": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_kem_encrypt_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_kem_encrypt_encapsulated_key_length": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_kem_encrypt_shared_key_length": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_key_agreement": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_key_agreement_create": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_key_agreement_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_key_agreement_export_public": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_key_agreement_size": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_key_agreement_view_public": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_sign_create": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_sign_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_sign_finish": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_sign_output_length": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_sign_update": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_verify_create": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_verify_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_verify_finish": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pk_op_verify_update": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pkcs_hash_id": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_algo_name": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_check_key": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_create": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_create_dh": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_create_dsa": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_create_ecdh": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_create_ecdsa": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_create_elgamal": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_create_mceliece": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_create_rsa": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_dsa_get_x": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_ed25519_get_privkey": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_ed448_get_privkey": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_export": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_export_encrypted": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_export_encrypted_pbkdf_iter": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_export_encrypted_pbkdf_msec": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_export_pubkey": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_get_field": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_classic_mceliece": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_dh": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_dsa": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_ecdh": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_ecdsa": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_ed25519": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_ed448": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_elgamal": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_frodokem": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_kyber": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_ml_dsa": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_ml_kem": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_rsa": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_rsa_pkcs1": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_slh_dsa": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_sm2": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_sm2_enc": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_x25519": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_load_x448": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_oid": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_remaining_operations": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_rsa_get_d": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_rsa_get_e": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_rsa_get_n": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_rsa_get_p": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_rsa_get_privkey": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_rsa_get_q": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_stateful_operation": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_view_der": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_view_encrypted_der": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_view_encrypted_der_timed": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_view_encrypted_pem": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_view_encrypted_pem_timed": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_view_kyber_raw_key": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_view_pem": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_view_raw": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_x25519_get_privkey": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_privkey_x448_get_privkey": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_algo_name": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_check_key": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_dsa_get_g": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_dsa_get_p": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_dsa_get_q": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_dsa_get_y": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_ecc_key_used_explicit_encoding": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_ed25519_get_pubkey": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_ed448_get_pubkey": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_estimated_strength": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_export": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_fingerprint": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_get_field": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_classic_mceliece": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_dh": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_dsa": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_ecdh": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_ecdh_sec1": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_ecdsa": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_ecdsa_sec1": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_ed25519": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_ed448": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_elgamal": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_frodokem": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_kyber": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_ml_dsa": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_ml_kem": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_rsa": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_rsa_pkcs1": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_slh_dsa": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_sm2": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_sm2_enc": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_sm2_sec1": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_x25519": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_load_x448": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_oid": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_rsa_get_e": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_rsa_get_n": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_sm2_compute_za": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_view_der": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_view_ec_public_point": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_view_kyber_raw_key": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_view_pem": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_view_raw": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_x25519_get_pubkey": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pubkey_x448_get_pubkey": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pwdhash": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_pwdhash_timed": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_rng_add_entropy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_rng_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_rng_generate_with_input": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_rng_get": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_rng_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_rng_init_custom": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_rng_init_drbg": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_rng_reseed": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_rng_reseed_from_rng": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_same_mem": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_scrub_mem": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_scrypt": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_srp6_client_agree": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_srp6_generate_verifier": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_srp6_group_size": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_srp6_server_session_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_srp6_server_session_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_srp6_server_session_step1": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_srp6_server_session_step2": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_system_rng_get": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_totp_check": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_totp_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_totp_generate": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_totp_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_tpm2_crypto_backend_state_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_tpm2_ctx_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_tpm2_ctx_enable_crypto_backend": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_tpm2_ctx_from_esys": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_tpm2_ctx_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_tpm2_ctx_init_ex": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_tpm2_enable_crypto_backend": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_tpm2_rng_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_tpm2_session_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_tpm2_supports_crypto_backend": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_tpm2_unauthenticated_session_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_allowed_extended_usage_oid": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_allowed_extended_usage_str": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_allowed_usage": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_dup": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_excluded_name_constraints": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_excluded_name_constraints_count": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_get_authority_key_id": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_get_fingerprint": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_get_issuer_dn": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_get_issuer_dn_count": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_get_path_length_constraint": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_get_public_key": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_get_public_key_bits": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_get_serial_number": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_get_subject_dn": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_get_subject_dn_count": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_get_subject_key_id": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_get_time_expires": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_get_time_starts": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_hostname_match": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_is_ca": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_issuer_alternative_names": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_issuer_alternative_names_count": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_load": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_load_file": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_not_after": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_not_before": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_permitted_name_constraints": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_permitted_name_constraints_count": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_serial_number": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_subject_alternative_names": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_subject_alternative_names_count": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_to_string": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_validation_status": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_verify": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_verify_with_crl": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_view_as_string": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_view_binary_values": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_view_binary_values_count": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_view_public_key_bits": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_view_string_values": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_cert_view_string_values_count": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_create": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_entries": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_entries_count": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_entry_create": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_entry_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_entry_reason": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_entry_revocation_date": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_entry_serial_number": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_entry_view_serial_number": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_load": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_load_file": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_next_update": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_this_update": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_update": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_verify_signature": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_view_binary_values": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_view_binary_values_count": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_view_string_values": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_crl_view_string_values_count": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_general_name_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_general_name_get_type": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_general_name_view_binary_value": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_general_name_view_string_value": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_x509_is_revoked": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_xof_accepts_input": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_xof_block_size": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_xof_clear": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_xof_copy_state": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_xof_destroy": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_xof_init": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_xof_name": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_xof_output": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_xof_update": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_zfec_decode": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    },
+    "botan_zfec_encode": {
+        "library": "Botan",
+        "header": "ffi.h",
+        "category": "API",
+        "algorithm": "Multiple",
+        "primitive": "multiple"
+    }
+}

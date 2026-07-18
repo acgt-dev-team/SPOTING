@@ -1,0 +1,5203 @@
+{
+    "AES_bi_ige_encrypt": {
+        "library": "OpenSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "AES_cbc_encrypt": {
+        "library": "OpenSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "AES_cfb128_encrypt": {
+        "library": "OpenSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "AES_cfb1_encrypt": {
+        "library": "OpenSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "AES_cfb8_encrypt": {
+        "library": "OpenSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "AES_decrypt": {
+        "library": "OpenSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "AES_ecb_encrypt": {
+        "library": "OpenSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "AES_encrypt": {
+        "library": "OpenSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "AES_ige_encrypt": {
+        "library": "OpenSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "AES_ofb128_encrypt": {
+        "library": "OpenSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "AES_options": {
+        "library": "OpenSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "AES_unwrap_key": {
+        "library": "OpenSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "AES_wrap_key": {
+        "library": "OpenSSL",
+        "header": "aes.h",
+        "category": "API",
+        "algorithm": "AES",
+        "primitive": "block-cipher"
+    },
+    "BF_cbc_encrypt": {
+        "library": "OpenSSL",
+        "header": "blowfish.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "BF_cfb64_encrypt": {
+        "library": "OpenSSL",
+        "header": "blowfish.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "BF_decrypt": {
+        "library": "OpenSSL",
+        "header": "blowfish.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "BF_ecb_encrypt": {
+        "library": "OpenSSL",
+        "header": "blowfish.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "BF_encrypt": {
+        "library": "OpenSSL",
+        "header": "blowfish.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "BF_ofb64_encrypt": {
+        "library": "OpenSSL",
+        "header": "blowfish.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "BF_options": {
+        "library": "OpenSSL",
+        "header": "blowfish.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "Camellia_cbc_encrypt": {
+        "library": "OpenSSL",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "CAMELLIA",
+        "primitive": "block-cipher"
+    },
+    "Camellia_cfb128_encrypt": {
+        "library": "OpenSSL",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "CAMELLIA",
+        "primitive": "block-cipher"
+    },
+    "Camellia_cfb1_encrypt": {
+        "library": "OpenSSL",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "CAMELLIA",
+        "primitive": "block-cipher"
+    },
+    "Camellia_cfb8_encrypt": {
+        "library": "OpenSSL",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "CAMELLIA",
+        "primitive": "block-cipher"
+    },
+    "Camellia_ctr128_encrypt": {
+        "library": "OpenSSL",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "CAMELLIA",
+        "primitive": "block-cipher"
+    },
+    "Camellia_decrypt": {
+        "library": "OpenSSL",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "CAMELLIA",
+        "primitive": "block-cipher"
+    },
+    "Camellia_ecb_encrypt": {
+        "library": "OpenSSL",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "CAMELLIA",
+        "primitive": "block-cipher"
+    },
+    "Camellia_encrypt": {
+        "library": "OpenSSL",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "CAMELLIA",
+        "primitive": "block-cipher"
+    },
+    "Camellia_ofb128_encrypt": {
+        "library": "OpenSSL",
+        "header": "camellia.h",
+        "category": "API",
+        "algorithm": "CAMELLIA",
+        "primitive": "block-cipher"
+    },
+    "CAST_cbc_encrypt": {
+        "library": "OpenSSL",
+        "header": "cast.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "CAST_cfb64_encrypt": {
+        "library": "OpenSSL",
+        "header": "cast.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "CAST_decrypt": {
+        "library": "OpenSSL",
+        "header": "cast.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "CAST_ecb_encrypt": {
+        "library": "OpenSSL",
+        "header": "cast.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "CAST_encrypt": {
+        "library": "OpenSSL",
+        "header": "cast.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "CAST_ofb64_encrypt": {
+        "library": "OpenSSL",
+        "header": "cast.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "CMAC_CTX_new": {
+        "library": "OpenSSL",
+        "header": "cmac.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "CMAC_Final": {
+        "library": "OpenSSL",
+        "header": "cmac.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "CMAC_Init": {
+        "library": "OpenSSL",
+        "header": "cmac.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "CMAC_Update": {
+        "library": "OpenSSL",
+        "header": "cmac.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "CMAC_resume": {
+        "library": "OpenSSL",
+        "header": "cmac.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_KEY_SZ": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_cbc_cksum": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_cbc_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_cfb64_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_cfb_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_check_key_parity": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_crypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_decrypt3": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_ecb3_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_ecb_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_ede3_cbc_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_ede3_cfb64_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_ede3_cfb_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_ede3_ofb64_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_encrypt1": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_encrypt3": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_fcrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_is_weak_key": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_key_sched": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_ncbc_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_ofb64_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_ofb_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_pcbc_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_quad_cksum": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_random_key": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_string_to_2keys": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_string_to_key": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DES_xcbc_encrypt": {
+        "library": "OpenSSL",
+        "header": "des.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "DH_KDF_X9_42": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_bits": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_check": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_check_ex": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_check_params": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_check_params_ex": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_check_pub_key": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_check_pub_key_ex": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_clear_flags": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_compute_key": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_compute_key_padded": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_generate_key": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_generate_parameters": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_generate_parameters_ex": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_new": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_new_by_nid": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_new_method": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_security_bits": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_size": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DH_test_flags": {
+        "library": "OpenSSL",
+        "header": "dh.h",
+        "category": "API",
+        "algorithm": "Diffie-Hellman",
+        "primitive": "key-agreement"
+    },
+    "DSA_OpenSSL": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_SIG_new": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_SIG_set0": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_bits": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_clear_flags": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_do_verify": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_generate_key": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_generate_parameters_ex": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_is_prime": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_new": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_new_method": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_security_bits": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_sign": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_sign_setup": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_size": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_test_flags": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "DSA_verify": {
+        "library": "OpenSSL",
+        "header": "dsa.h",
+        "category": "API",
+        "algorithm": "DSA",
+        "primitive": "digital-signature"
+    },
+    "ECDH_KDF_X9_62": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "ECDH_compute_key": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "ECDSA_SIG": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "ECDSA_SIG_new": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "ECDSA_SIG_set0": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "ECDSA_do_sign": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "ECDSA_do_verify": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "ECDSA_size": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "ECDSA_verify": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_FLAG_CHECK_NAMED_GROUP_MASK": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GFp_mont_method": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GFp_nist_method": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GFp_nistp224_method": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GFp_nistp256_method": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GFp_nistp521_method": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GROUP_check_named_curve": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GROUP_dup": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GROUP_have_precompute_mult": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GROUP_method_of": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GROUP_new": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GROUP_new_by_curve_name": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GROUP_new_by_curve_name_ex": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GROUP_new_from_ecparameters": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GROUP_new_from_ecpkparameters": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GROUP_new_from_params": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_GROUP_order_bits": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_METHOD_new": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_OpenSSL": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_can_sign": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_check_key": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_clear_flags": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_decoded_from_explicit_params": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_dup": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_new": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_new_by_curve_name": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_new_by_curve_name_ex": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_new_method": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_oct2priv": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_priv2buf": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_KEY_priv2oct": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_POINT_bn2point": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_POINT_dup": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_POINT_hex2point": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_POINT_make_affine": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_POINT_method_of": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_POINT_new": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_POINT_point2bn": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_POINT_point2hex": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_POINTs_make_affine": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_builtin_curves": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_curve_nid2nist": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EC_curve_nist2nid": {
+        "library": "OpenSSL",
+        "header": "ec.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_ASYM_CIPHER_do_all_provided": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_ASYM_CIPHER_fetch": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_ASYM_CIPHER_gettable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_ASYM_CIPHER_names_do_all": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_ASYM_CIPHER_settable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_BytesToKey": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_buf_noconst": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_cipher": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_clear_flags": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_ctrl": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_dup": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_gettable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_is_encrypting": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_iv": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_iv_noconst": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_original_iv": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_rand_key": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_settable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_CTX_test_flags": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_asn1_to_param": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_can_pipeline": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_do_all": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_do_all_provided": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_do_all_sorted": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_fetch": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_gettable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_gettable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_impl_ctx_size": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_names_do_all": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_param_to_asn1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CIPHER_settable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CipherFinal": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CipherFinal_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CipherInit": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CipherInit_SKEY": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CipherInit_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CipherInit_ex2": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CipherPipelineDecryptInit": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CipherPipelineEncryptInit": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CipherPipelineFinal": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CipherPipelineUpdate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_CipherUpdate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DecodeBlock": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DecodeFinal": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DecodeInit": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DecodeUpdate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DecryptFinal": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DecryptFinal_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DecryptInit": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DecryptInit_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DecryptInit_ex2": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DecryptUpdate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_Digest": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestFinal": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestFinalXOF": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestFinal_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestInit": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestInit_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestInit_ex2": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestSign": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestSignFinal": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestSignInit": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestSignInit_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestSignUpdate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestSqueeze": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestUpdate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestVerify": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestVerifyFinal": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestVerifyInit": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestVerifyInit_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_DigestVerifyUpdate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_ENCODE_CTX_new": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_ENCODE_CTX_num": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_EncodeBlock": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_EncodeFinal": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_EncodeInit": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_EncodeUpdate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_EncryptFinal": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_EncryptFinal_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_EncryptInit": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_EncryptInit_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_EncryptInit_ex2": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_EncryptUpdate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEM_do_all_provided": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEM_fetch": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEM_gettable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEM_names_do_all": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEM_settable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEYEXCH_do_all_provided": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEYEXCH_fetch": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEYEXCH_gettable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEYEXCH_names_do_all": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEYEXCH_settable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEYMGMT_do_all_provided": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEYMGMT_fetch": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEYMGMT_gen_gettable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEYMGMT_gen_settable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEYMGMT_gettable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEYMGMT_names_do_all": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_KEYMGMT_settable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_CTX_dup": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_CTX_gettable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_CTX_new": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_CTX_settable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_do_all_provided": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_fetch": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_final": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_finalXOF": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_gettable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_gettable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_init_SKEY": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_names_do_all": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_settable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MAC_update": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_CTX_clear_flags": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_CTX_create": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_CTX_ctrl": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_CTX_gettable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_CTX_md": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_CTX_new": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_CTX_settable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_CTX_test_flags": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_do_all": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_do_all_provided": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_do_all_sorted": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_fetch": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_gettable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_gettable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_names_do_all": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_settable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_MD_xof": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_OpenFinal": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_OpenInit": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PBE_CipherInit": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PBE_CipherInit_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PBE_alg_add": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PBE_alg_add_type": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PBE_find": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PBE_find_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PBE_get": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PBE_scrypt": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PBE_scrypt_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_CTX_ctrl": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_CTX_ctrl_str": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_CTX_ctrl_uint64": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_CTX_dup": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_CTX_gettable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_CTX_hex2ctrl": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_CTX_md": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_CTX_new": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_CTX_new_from_name": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_CTX_new_from_pkey": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_CTX_new_id": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_CTX_settable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_CTX_str2ctrl": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_OP_PARAMGEN": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_Q_keygen": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_asn1_add0": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_asn1_add_alias": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_asn1_find": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_asn1_find_str": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_asn1_get0": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_asn1_new": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_assign": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_assign_RSA": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_auth_decapsulate_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_auth_encapsulate_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_can_sign": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_check": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_cmp": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_cmp_parameters": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_decapsulate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_decapsulate_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_decrypt": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_decrypt_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_decrypt_init_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_decrypt_old": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_derive": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_derive_SKEY": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_derive_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_derive_init_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_digestsign_supports_digest": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_dup": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_encapsulate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_encapsulate_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_encrypt": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_encrypt_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_encrypt_init_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_encrypt_old": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_eq": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_export": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_fromdata": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_fromdata_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_fromdata_settable": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_gen_cb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_generate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_get0": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_gettable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_keygen": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_keygen_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_missing_parameters": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_new": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_new_CMAC_key": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_new_mac_key": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_new_raw_private_key": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_new_raw_private_key_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_new_raw_public_key": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_new_raw_public_key_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_pairwise_check": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_param_check": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_param_check_quick": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_parameters_eq": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_paramgen": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_paramgen_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_private_check": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_public_check": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_public_check_quick": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_save_parameters": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_settable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_sign": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_sign_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_sign_init_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_sign_init_ex2": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_sign_message_final": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_sign_message_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_sign_message_update": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_todata": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_type": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_type_names_do_all": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_verify": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_verify_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_verify_init_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_verify_init_ex2": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_verify_message_final": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_verify_message_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_verify_message_update": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_verify_recover": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_verify_recover_init": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_verify_recover_init_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_PKEY_verify_recover_init_ex2": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_Q_digest": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_Q_mac": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_CTX_gettable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_CTX_new": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_CTX_settable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_do_all_provided": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_enable_locking": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_fetch": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_generate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_gettable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_gettable_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_instantiate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_names_do_all": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_nonce": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_reseed": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_settable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_uninstantiate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_RAND_verify_zeroization": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SIGNATURE_do_all_provided": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SIGNATURE_fetch": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SIGNATURE_gettable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SIGNATURE_names_do_all": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SIGNATURE_settable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SKEYMGMT_do_all_provided": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SKEYMGMT_fetch": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SKEYMGMT_names_do_all": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SKEY_export": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SKEY_generate": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SKEY_import": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SKEY_import_SKEYMGMT": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SKEY_import_raw_key": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SKEY_to_provider": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SealFinal": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SealInit": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SignFinal": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_SignFinal_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_VerifyFinal": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_VerifyFinal_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_add_alg_module": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_add_cipher_alias": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_add_digest": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_cbc_hmac_sha1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_cbc_hmac_sha256": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_ccm": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_cfb1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_cfb128": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_cfb8": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_ctr": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_gcm": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_ocb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_wrap": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_wrap_pad": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_128_xts": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_192_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_192_ccm": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_192_cfb1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_192_cfb128": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_192_cfb8": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_192_ctr": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_192_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_192_gcm": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_192_ocb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_192_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_192_wrap": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_192_wrap_pad": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_cbc_hmac_sha1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_cbc_hmac_sha256": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_ccm": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_cfb1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_cfb128": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_cfb8": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_ctr": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_gcm": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_ocb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_wrap": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_wrap_pad": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aes_256_xts": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_128_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_128_ccm": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_128_cfb1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_128_cfb128": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_128_cfb8": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_128_ctr": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_128_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_128_gcm": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_128_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_192_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_192_ccm": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_192_cfb1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_192_cfb128": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_192_cfb8": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_192_ctr": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_192_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_192_gcm": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_192_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_256_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_256_ccm": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_256_cfb1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_256_cfb128": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_256_cfb8": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_256_ctr": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_256_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_256_gcm": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_aria_256_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_bf_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_bf_cfb64": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_bf_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_bf_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_blake2b512": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_blake2s256": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_128_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_128_cfb1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_128_cfb128": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_128_cfb8": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_128_ctr": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_128_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_128_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_192_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_192_cfb1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_192_cfb128": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_192_cfb8": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_192_ctr": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_192_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_192_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_256_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_256_cfb1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_256_cfb128": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_256_cfb8": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_256_ctr": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_256_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_camellia_256_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_cast5_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_cast5_cfb64": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_cast5_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_cast5_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_chacha20": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_chacha20_poly1305": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_default_properties_enable_fips": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_default_properties_is_fips_enabled": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_delete_digest_alias": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_cfb1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_cfb64": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_cfb8": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ede": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ede3": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ede3_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ede3_cfb1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ede3_cfb64": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ede3_cfb8": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ede3_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ede3_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ede3_wrap": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ede_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ede_cfb64": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ede_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ede_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_des_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_desx_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_enc_null": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_idea_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_idea_cfb64": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_idea_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_idea_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_md2": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_md4": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_md5": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_md5_sha1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_md_null": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_mdc2": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_rc2_40_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_rc2_64_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_rc2_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_rc2_cfb64": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_rc2_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_rc2_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_rc4": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_rc4_40": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_rc4_hmac_md5": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_rc5_32_12_16_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_rc5_32_12_16_cfb64": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_rc5_32_12_16_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_rc5_32_12_16_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_read_pw_string": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_read_pw_string_min": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_ripemd160": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_seed_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_seed_cfb128": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_seed_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_seed_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sha1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sha224": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sha256": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sha384": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sha3_224": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sha3_256": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sha3_384": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sha3_512": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sha512": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sha512_224": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sha512_256": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_shake128": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_shake256": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sm3": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sm4_cbc": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sm4_cfb128": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sm4_ctr": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sm4_ecb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_sm4_ofb": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "EVP_whirlpool": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "PKCS5_PBE_add": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "PKCS5_PBE_keyivgen": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "PKCS5_PBE_keyivgen_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "PKCS5_PBKDF2_HMAC": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "PKCS5_PBKDF2_HMAC_SHA1": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "PKCS5_v2_PBE_keyivgen": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "PKCS5_v2_PBE_keyivgen_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "PKCS5_v2_scrypt_keyivgen": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "PKCS5_v2_scrypt_keyivgen_ex": {
+        "library": "OpenSSL",
+        "header": "evp.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "HMAC_CTX_new": {
+        "library": "OpenSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "HMAC_Final": {
+        "library": "OpenSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "HMAC_Init": {
+        "library": "OpenSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "HMAC_Init_ex": {
+        "library": "OpenSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "HMAC_Update": {
+        "library": "OpenSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "HMAC_size": {
+        "library": "OpenSSL",
+        "header": "hmac.h",
+        "category": "API",
+        "algorithm": "HMAC",
+        "primitive": "mac"
+    },
+    "EVP_KDF_CTX_dup": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_KDF_CTX_gettable_params": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_KDF_CTX_kdf": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_KDF_CTX_new": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_KDF_CTX_settable_params": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_KDF_derive": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_KDF_derive_SKEY": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_KDF_do_all_provided": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_KDF_fetch": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_KDF_gettable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_KDF_gettable_params": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_KDF_names_do_all": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_KDF_settable_ctx_params": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_PKEY_CTRL_TLS_MD": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_PKEY_CTX_add1_hkdf_info": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "EVP_PKEY_CTX_add1_tls1_prf_seed": {
+        "library": "OpenSSL",
+        "header": "kdf.h",
+        "category": "API",
+        "algorithm": "KDF",
+        "primitive": "key-derivation"
+    },
+    "MD4_Final": {
+        "library": "OpenSSL",
+        "header": "md4.h",
+        "category": "API",
+        "algorithm": "MD4",
+        "primitive": "hash-function"
+    },
+    "MD4_Init": {
+        "library": "OpenSSL",
+        "header": "md4.h",
+        "category": "API",
+        "algorithm": "MD4",
+        "primitive": "hash-function"
+    },
+    "MD4_Transform": {
+        "library": "OpenSSL",
+        "header": "md4.h",
+        "category": "API",
+        "algorithm": "MD4",
+        "primitive": "hash-function"
+    },
+    "MD4_Update": {
+        "library": "OpenSSL",
+        "header": "md4.h",
+        "category": "API",
+        "algorithm": "MD4",
+        "primitive": "hash-function"
+    },
+    "MD5_Final": {
+        "library": "OpenSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "MD5_Init": {
+        "library": "OpenSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "MD5_Transform": {
+        "library": "OpenSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "MD5_Update": {
+        "library": "OpenSSL",
+        "header": "md5.h",
+        "category": "API",
+        "algorithm": "MD5",
+        "primitive": "hash-function"
+    },
+    "RAND_OpenSSL": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_bytes": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_egd": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_egd_bytes": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_event": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_file_name": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_keep_random_devices_open": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_load_file": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_poll": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_priv_bytes": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_pseudo_bytes": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_query_egd_bytes": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_seed": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_status": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RAND_write_file": {
+        "library": "OpenSSL",
+        "header": "rand.h",
+        "category": "API",
+        "algorithm": "Unknown",
+        "primitive": "unknown"
+    },
+    "RIPEMD160": {
+        "library": "OpenSSL",
+        "header": "ripemd.h",
+        "category": "API",
+        "algorithm": "RIPEMD",
+        "primitive": "hash-function"
+    },
+    "RIPEMD160_Final": {
+        "library": "OpenSSL",
+        "header": "ripemd.h",
+        "category": "API",
+        "algorithm": "RIPEMD",
+        "primitive": "hash-function"
+    },
+    "RIPEMD160_Init": {
+        "library": "OpenSSL",
+        "header": "ripemd.h",
+        "category": "API",
+        "algorithm": "RIPEMD",
+        "primitive": "hash-function"
+    },
+    "RIPEMD160_Transform": {
+        "library": "OpenSSL",
+        "header": "ripemd.h",
+        "category": "API",
+        "algorithm": "RIPEMD",
+        "primitive": "hash-function"
+    },
+    "RIPEMD160_Update": {
+        "library": "OpenSSL",
+        "header": "ripemd.h",
+        "category": "API",
+        "algorithm": "RIPEMD",
+        "primitive": "hash-function"
+    },
+    "EVP_PKEY_CTRL_RSA_PADDING": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "EVP_RSA_gen": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_PKCS1_OpenSSL": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_X931_derive_ex": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_X931_generate_key_ex": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_X931_hash_id": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_bits": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_blinding_off": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_blinding_on": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_check_key": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_check_key_ex": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_clear_flags": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_flags": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_generate_key_ex": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_generate_multi_prime_key": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_new_method": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_null_method": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_add_PKCS1_OAEP": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_add_PKCS1_OAEP_mgf1": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_add_PKCS1_PSS": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_add_PKCS1_PSS_mgf1": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_add_PKCS1_type_1": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_add_PKCS1_type_2": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_add_X931": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_add_none": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_check_PKCS1_OAEP": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_check_PKCS1_OAEP_mgf1": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_check_PKCS1_type_1": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_check_PKCS1_type_2": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_check_X931": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_padding_check_none": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_private_decrypt": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_private_encrypt": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_public_decrypt": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_public_encrypt": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_security_bits": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_setup_blinding": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_sign": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_sign_ASN1_OCTET_STRING": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_size": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_test_flags": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_verify": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_verify_ASN1_OCTET_STRING": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_verify_PKCS1_PSS": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "RSA_verify_PKCS1_PSS_mgf1": {
+        "library": "OpenSSL",
+        "header": "rsa.h",
+        "category": "API",
+        "algorithm": "RSA",
+        "primitive": "public-key"
+    },
+    "SHA1": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA1_Final": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA1_Init": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA1_Transform": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA1_Update": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA224": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA224_Final": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA224_Init": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA224_Update": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA256": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA256_Final": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA256_Init": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA256_Transform": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA256_Update": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA384": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA384_Final": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA384_Init": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA384_Update": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA512": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA512_Final": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA512_Init": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA512_Transform": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    },
+    "SHA512_Update": {
+        "library": "OpenSSL",
+        "header": "sha.h",
+        "category": "API",
+        "algorithm": "SHA-1",
+        "primitive": "hash-function"
+    }
+}
