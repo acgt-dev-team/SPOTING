@@ -8,6 +8,7 @@ from common.binary_metadata import guess_language
 from common.crypto_detection import detect_crypto
 from common.binary_profile import BinaryProfile
 from common.csv_exporter import export_csv
+from common.json_exporter import export_json
 from common.confidence import calculate_overall_confidence
 
 from common.platform_utils import (
@@ -149,7 +150,10 @@ def main():
         profiles.append(profile)
         
     export_csv(profiles)
-            
+
+    json_result = export_json(profiles)
+
+    return json_result
 
 def display():
     for binary in list_running_binaries():
@@ -203,6 +207,12 @@ def display():
         for hit in hits:
             print(hit)
 
+def run_scan():
+    """
+    Entry point used by the AGCT agent.
+    Returns the scan result as a Python dictionary.
+    """
+    return main()
 
 if __name__ == "__main__":
     main()
