@@ -1,8 +1,12 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Optional
 
 class LoginRequest(BaseModel):
     username: str
+    password: str
+
+
+class ChangePasswordRequest(BaseModel):
     password: str
 
 
@@ -22,7 +26,20 @@ class ProfileUpdateRequest(BaseModel):
 
 
 class ProfileResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     nama: str
     username: str
     email: Optional[str] = None
     phone: Optional[str] = None
+
+
+class UserResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    nama: str
+    username: str
+    role: str
+    pelanggan_id: Optional[int] = None
+    aktif: bool

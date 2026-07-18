@@ -3,6 +3,7 @@ import { computed, onMounted, ref } from "vue"
 import api from "../../services/api"
 import { t } from "../../i18n"
 import { useToast } from "../../ui/AppToast.vue"
+import { getPasswordRuleChecks, isValidPassword } from "../../utils/validation"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
@@ -23,27 +24,16 @@ const saving = ref(false)
 const submitAttempted = ref(false)
 const loadError = ref("")
 
-const passwordRuleChecks = computed(() => [
-  {
-    label: t("profileUser.passwordRules.length"),
-    passed: password.value.length >= 8
-  },
-  {
-    label: t("profileUser.passwordRules.upper"),
-    passed: /[A-Z]/.test(password.value)
-  },
-  {
-    label: t("profileUser.passwordRules.lower"),
-    passed: /[a-z]/.test(password.value)
-  },
-  {
-    label: t("profileUser.passwordRules.number"),
-    passed: /\d/.test(password.value)
-  }
-])
+const passwordRuleChecks = computed(() => getPasswordRuleChecks(password.value, {
+  length: t("profileUser.passwordRules.length"),
+  upper: t("profileUser.passwordRules.upper"),
+  lower: t("profileUser.passwordRules.lower"),
+  number: t("profileUser.passwordRules.number"),
+  special: t("profileUser.passwordRules.special")
+}))
 
 const isPasswordStrong = computed(() =>
-  !password.value || passwordRuleChecks.value.every((rule) => rule.passed)
+  !password.value || isValidPassword(password.value)
 )
 
 const fieldErrors = computed(() => {
@@ -206,6 +196,7 @@ onMounted(loadProfile)
           <AppInput
             v-model="username"
             :label="t('auth.username')"
+            :hint="t('profileUser.userIdHint')"
             disabled
             autocomplete="username"
           />

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Boolean
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String
 from app.database.session import Base
 
 
@@ -12,6 +12,7 @@ class User(Base):
     role = Column(String, default="user")
     aktif = Column(Boolean, default=True)
     force_password_change = Column(Boolean, default=True)
+    deleted_at = Column(DateTime, nullable=True)
     email = Column(String, nullable=True)
     phone = Column(String, nullable=True)
 

@@ -1,7 +1,8 @@
 import axios from "axios"
+import { clearAuthStorage } from "./authSession"
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL
+  baseURL: "http://127.0.0.1:8000"
 })
 
 api.interceptors.request.use((config) => {
@@ -22,15 +23,15 @@ api.interceptors.response.use(
   (error) => {
     const status = error.response?.status
 
-    // 🔐 Auto logout on 401
     if (status === 401) {
       console.warn("Unauthorized - logging out")
+      clearAuthStorage()
+      window.location.hash = "#/login"
+    }
 
-      sessionStorage.removeItem("token")
-      sessionStorage.removeItem("role")
-
-      // redirect manually
-      window.location.href = "/login"
+    if (status === 428) {
+      sessionStorage.setItem("forcePasswordChange", "true")
+      window.location.hash = "#/change-password"
     }
 
     return Promise.reject(error)

@@ -6,3 +6,8 @@ from .sub_organisasi import SubOrganisasi
 from .organisasi import Organisasi
 from .pelanggan import Pelanggan
 from .status import Status
+from .user import User
+from .auth_session import AuthSession
+from .jenis_tugasan import JenisTugasan
+from .ejen import Ejen
+from .hasil_imbasan import HasilImbasan

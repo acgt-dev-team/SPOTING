@@ -75,11 +75,11 @@ describe("ChangePassword.vue", () => {
       wrapper.findAll("input")
 
     await inputs[0]
-      .setValue("abc123")
+      .setValue("Abc123!x")
 
     expect(
       inputs[0].element.value
-    ).toBe("abc123")
+    ).toBe("Abc123!x")
 
   })
 
@@ -95,11 +95,11 @@ describe("ChangePassword.vue", () => {
       wrapper.findAll("input")
 
     await inputs[1]
-      .setValue("abc123")
+      .setValue("Abc123!x")
 
     expect(
       inputs[1].element.value
-    ).toBe("abc123")
+    ).toBe("Abc123!x")
 
   })
 
@@ -135,10 +135,10 @@ describe("ChangePassword.vue", () => {
       wrapper.findAll("input")
 
     await inputs[0]
-      .setValue("abc123")
+      .setValue("Abc123!x")
 
     await inputs[1]
-      .setValue("xyz123")
+      .setValue("Xyz123!x")
 
     const button =
       wrapper.find("button")
@@ -155,6 +155,18 @@ describe("ChangePassword.vue", () => {
   // =========================
   // SUCCESS ADMIN
   // =========================
+  it("memaparkan ralat untuk password lemah", async () => {
+    const wrapper = mount(ChangePassword)
+    const inputs = wrapper.findAll("input")
+
+    await inputs[0].setValue("weakpass")
+    await inputs[1].setValue("weakpass")
+    await wrapper.find("button").trigger("click")
+
+    expect(wrapper.text()).toContain("aksara khas")
+    expect(api.post).not.toHaveBeenCalled()
+  })
+
   it("redirect admin selepas berjaya", async () => {
 
     api.post.mockResolvedValue({})
@@ -176,10 +188,10 @@ describe("ChangePassword.vue", () => {
       wrapper.findAll("input")
 
     await inputs[0]
-      .setValue("abc123")
+      .setValue("Abc123!x")
 
     await inputs[1]
-      .setValue("abc123")
+      .setValue("Abc123!x")
 
     const button =
       wrapper.find("button")
@@ -190,8 +202,7 @@ describe("ChangePassword.vue", () => {
       .toHaveBeenCalledWith(
         "/auth/change-password",
         {
-          username: "admin",
-          password: "abc123"
+          password: "Abc123!x"
         }
       )
 
@@ -227,10 +238,10 @@ describe("ChangePassword.vue", () => {
       wrapper.findAll("input")
 
     await inputs[0]
-      .setValue("abc123")
+      .setValue("Abc123!x")
 
     await inputs[1]
-      .setValue("abc123")
+      .setValue("Abc123!x")
 
     const button =
       wrapper.find("button")
@@ -264,10 +275,10 @@ describe("ChangePassword.vue", () => {
       wrapper.findAll("input")
 
     await inputs[0]
-      .setValue("abc123")
+      .setValue("Abc123!x")
 
     await inputs[1]
-      .setValue("abc123")
+      .setValue("Abc123!x")
 
     const button =
       wrapper.find("button")

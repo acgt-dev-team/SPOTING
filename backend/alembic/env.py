@@ -33,6 +33,11 @@ from app.models import sub_organisasi
 from app.models import tapak
 from app.models import profil
 from app.models import tugasan
+from app.models import user
+from app.models import auth_session
+from app.models import jenis_tugasan
+from app.models import ejen
+from app.models import hasil_imbasan
 
 # Metadata
 target_metadata = Base.metadata
