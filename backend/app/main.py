@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.database.session import engine, Base
@@ -16,6 +16,8 @@ from app.models.user import User
 from app.models.status import Status
 from app.models.ejen import Ejen
 from app.models.hasil_imbasan import HasilImbasan
+from app.models.auth_session import AuthSession
+from app.dependencies.auth import require_current_user
 
 from app.scheduler.profile_scheduler import scheduler, load_profile_jobs
 from app.api import report
@@ -48,17 +50,21 @@ app.add_middleware(
 )
 
 # ✅ ONLY API routers
-app.include_router(tugasan.router)
-app.include_router(profil.router)
-app.include_router(tapak.router)
-app.include_router(sub_organisasi.router)
-app.include_router(organisasi.router)
-app.include_router(jenis_tugasan.router)
+protected_dependencies = [Depends(require_current_user)]
+
+app.include_router(tugasan.router, dependencies=protected_dependencies)
+app.include_router(profil.router, dependencies=protected_dependencies)
+app.include_router(tapak.router, dependencies=protected_dependencies)
+app.include_router(sub_organisasi.router, dependencies=protected_dependencies)
+app.include_router(organisasi.router, dependencies=protected_dependencies)
+app.include_router(jenis_tugasan.router, dependencies=protected_dependencies)
 app.include_router(auth.router)
+# Agent endpoints remain independent because installed scanning agents do not
+# participate in browser user sessions.
 app.include_router(ejen.router)
 app.include_router(hasil_imbasan.router)
-app.include_router(report.router)
-app.include_router(dashboard.router)
+app.include_router(report.router, dependencies=protected_dependencies)
+app.include_router(dashboard.router, dependencies=protected_dependencies)
 
 
 

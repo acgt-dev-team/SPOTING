@@ -52,9 +52,10 @@
     "nameRequired": "Nama diperlukan",
     "organizationNameRequired": "Nama organisasi wajib diisi",
     "passwordMismatch": "Kata laluan tidak sama",
+    "passwordFormat": "Kata laluan mesti sekurang-kurangnya 8 aksara dan mengandungi huruf besar, huruf kecil, nombor dan aksara khas.",
     "selectDateTime": "Sila pilih tarikh dan masa",
     "usernameRequired": "Nama pengguna diperlukan",
-    "usernameFormat": "Nama pengguna mesti mengandungi 12 hingga 24 aksara dan hanya huruf kecil, nombor atau tanda titik (.)"
+    "usernameFormat": "ID Pengguna mesti mengandungi 10 hingga 24 aksara dan hanya huruf kecil, nombor atau tanda titik (.)"
   },
   "filters": {
     "allProtocols": "Semua Protokol",
@@ -72,7 +73,14 @@
       "newPassword": "Kata Laluan Baru",
       "confirmPassword": "Sahkan Kata Laluan",
       "submit": "Simpan Kata Laluan",
-      "title": "Tukar Kata Laluan"
+      "title": "Tukar Kata Laluan",
+      "rules": {
+        "length": "Minimum 8 aksara",
+        "lower": "Huruf kecil",
+        "number": "Nombor",
+        "special": "Aksara khas",
+        "upper": "Huruf besar"
+      }
     },
     "forgotPassword": "Lupa kata laluan",
     "login": "Log Masuk",
@@ -241,12 +249,13 @@
     "loading": "Memuatkan profil...",
     "namePlaceholder": "Masukkan nama",
     "newPassword": "Kata Laluan Baru",
-    "passwordHint": "Sekurang-kurangnya 8 aksara dengan huruf besar, huruf kecil dan nombor.",
+    "passwordHint": "Sekurang-kurangnya 8 aksara dengan huruf besar, huruf kecil, nombor dan aksara khas.",
     "passwordMismatch": "Kata laluan tidak sepadan.",
     "passwordRules": {
       "length": "Minimum 8 aksara",
       "lower": "Huruf kecil",
       "number": "Nombor",
+      "special": "Aksara khas",
       "upper": "Huruf besar"
     },
     "passwordWeak": "Kata laluan belum memenuhi syarat minimum.",
@@ -257,7 +266,8 @@
     "security": "Keselamatan",
     "securityDescription": "Tukar kata laluan hanya jika diperlukan. Biarkan kosong untuk mengekalkan kata laluan sedia ada.",
     "successSave": "Profil berjaya dikemaskini.",
-    "title": "Profil Saya"
+    "title": "Profil Saya",
+    "userIdHint": "ID Pengguna mestilah 10 hingga 24 aksara dan hanya boleh terdiri daripada huruf kecil (a-z), nombor (0-9) dan titik (.)."
   },
   "accounts": {
     "activate": "Aktifkan",

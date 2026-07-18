@@ -1,105 +1,161 @@
+from datetime import datetime, timedelta
 import secrets
 import string
-from fastapi import APIRouter, Depends, HTTPException
+
+from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.security import HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
-import re
 
 from app.database.session import get_db
+from app.dependencies.auth import (
+    bearer_scheme,
+    get_authenticated_user,
+    require_admin_user,
+    require_current_user,
+    revoke_user_sessions,
+)
 from app.i18n import t
+from app.models.auth_session import AuthSession
 from app.models.user import User
-from app.schemas.auth_schema import LoginRequest, CreateUserRequest, ProfileUpdateRequest, ProfileResponse
-from app.utils.security import hash_password, is_password_hashed, verify_password
+from app.schemas.auth_schema import (
+    ChangePasswordRequest,
+    CreateUserRequest,
+    LoginRequest,
+    ProfileResponse,
+    ProfileUpdateRequest,
+    UserResponse,
+)
+from app.utils.security import (
+    generate_session_token,
+    hash_password,
+    hash_session_token,
+    is_password_hashed,
+    is_valid_password,
+    is_valid_user_id,
+    SESSION_LIFETIME_MINUTES,
+    verify_password,
+)
+
 
 router = APIRouter(prefix="/auth", tags=[t("docs.tags.auth")])
 
-
 @router.post("/login")
-def login(
-    data: LoginRequest,
-    db: Session = Depends(get_db)
-):
-    user = db.query(User).filter(
-        User.username == data.username
-    ).first()
+def login(data: LoginRequest, db: Session = Depends(get_db)):
+    _validate_user_id(data.username)
 
-    if not user:
+    user = db.query(User).filter(User.username == data.username).first()
+
+    # Account state is deliberately checked before the password so deleted and
+    # deactivated accounts can never receive a session.
+    if user is None or user.deleted_at is not None:
         raise HTTPException(
-            status_code=404,
-            detail=t("auth.accountNotFound")
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=t("auth.accountNotFound"),
         )
 
     if not user.aktif:
         raise HTTPException(
-            status_code=403,
-            detail=t("auth.accountDeactivated")
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=t("auth.accountDeactivated"),
         )
 
     if not verify_password(data.password, user.password):
         raise HTTPException(
-            status_code=401,
-            detail=t("auth.invalidPassword")
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=t("auth.invalidPassword"),
         )
 
     if not is_password_hashed(user.password):
         user.password = hash_password(data.password)
-        db.commit()
 
-    return {
-        "access_token": "dummy-token",
-        "role": user.role,
-        "pelanggan_id": user.pelanggan_id,
-        "force_password_change": user.force_password_change
-    }
-
-@router.post("/change-password")
-def change_password(
-    data: LoginRequest,
-    db: Session = Depends(get_db)
-):
-    user = db.query(User).filter(
-        User.username == data.username
-    ).first()
-
-    if not user:
-        raise HTTPException(
-            status_code=404,
-            detail=t("auth.userNotFound")
+    access_token = generate_session_token()
+    expires_at = datetime.utcnow() + timedelta(minutes=SESSION_LIFETIME_MINUTES)
+    db.add(
+        AuthSession(
+            token_hash=hash_session_token(access_token),
+            user_id=user.id,
+            created_at=datetime.utcnow(),
+            expires_at=expires_at,
         )
-
-    user.password = hash_password(data.password)
-    user.force_password_change = False
-
+    )
     db.commit()
 
     return {
-        "message": t("auth.passwordUpdated")
+        "access_token": access_token,
+        "token_type": "bearer",
+        "expires_in": SESSION_LIFETIME_MINUTES * 60,
+        "role": user.role,
+        "pelanggan_id": user.pelanggan_id,
+        "force_password_change": user.force_password_change,
     }
+
+
+@router.post("/logout")
+def logout(
+    credentials: HTTPAuthorizationCredentials | None = Depends(bearer_scheme),
+    db: Session = Depends(get_db),
+):
+    if credentials is not None and credentials.scheme.lower() == "bearer":
+        session = (
+            db.query(AuthSession)
+            .filter(
+                AuthSession.token_hash
+                == hash_session_token(credentials.credentials),
+                AuthSession.revoked_at.is_(None),
+            )
+            .first()
+        )
+
+        if session is not None:
+            session.revoked_at = datetime.utcnow()
+            db.commit()
+
+    # Idempotent logout lets the frontend safely clear local state even when a
+    # session has already expired or been revoked elsewhere.
+    return {"message": t("auth.loggedOut")}
+
+
+@router.get("/session")
+def get_session(user: User = Depends(get_authenticated_user)):
+    return {
+        "username": user.username,
+        "role": user.role,
+        "pelanggan_id": user.pelanggan_id,
+        "force_password_change": user.force_password_change,
+    }
+
+
+@router.post("/change-password")
+def change_password(
+    data: ChangePasswordRequest,
+    user: User = Depends(get_authenticated_user),
+    db: Session = Depends(get_db),
+):
+    _validate_password(data.password)
+
+    user.password = hash_password(data.password)
+    user.force_password_change = False
+    db.commit()
+
+    return {"message": t("auth.passwordUpdated")}
+
 
 @router.post("/users")
 def create_user(
     data: CreateUserRequest,
-    db: Session = Depends(get_db)
+    _: User = Depends(require_admin_user),
+    db: Session = Depends(get_db),
 ):
-    if not re.fullmatch(
-        r"[a-z0-9.]{12,24}",
-        data.username
-    ):
-        raise HTTPException(
-            status_code=400,
-            detail=t("auth.usernameInvalid")
-        )
+    _validate_user_id(data.username)
 
-    existing = db.query(User).filter(
-        User.username == data.username
-    ).first()
-
+    existing = db.query(User).filter(User.username == data.username).first()
     if existing:
         raise HTTPException(
-            status_code=400,
-            detail=t("auth.usernameExists")
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=t("auth.usernameExists"),
         )
-    generated_password = generate_password()
 
+    generated_password = generate_password()
     new_user = User(
         nama=data.nama,
         username=data.username,
@@ -107,248 +163,201 @@ def create_user(
         role=data.role,
         aktif=data.aktif,
         pelanggan_id=data.pelanggan_id,
-        force_password_change=True
+        force_password_change=True,
     )
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
 
     return {
-    "message": t("auth.userCreated"),
-    "generated_password": generated_password
-}
+        "message": t("auth.userCreated"),
+        "generated_password": generated_password,
+    }
 
-@router.get("/users")
+
+@router.get("/users", response_model=list[UserResponse])
 def get_users(
     role: str,
-    db: Session = Depends(get_db)
+    current_user: User = Depends(require_admin_user),
+    db: Session = Depends(get_db),
 ):
+    query = db.query(User).filter(User.deleted_at.is_(None))
 
-    if role == "super admin":
+    if current_user.role == "super admin":
+        return query.filter(User.role != "super admin").all()
 
-        users = (
-            db.query(User)
-            .filter(User.role != "super admin")
-            .all()
-        )
+    return query.filter(User.role == "user").all()
 
-    else:
-
-        users = (
-            db.query(User)
-            .filter(User.role == "user")
-            .all()
-        )
-
-    return users
 
 @router.put("/users/{user_id}")
 def update_user(
     user_id: int,
     data: CreateUserRequest,
-    db: Session = Depends(get_db)
+    _: User = Depends(require_admin_user),
+    db: Session = Depends(get_db),
 ):
-    user = db.query(User).filter(
-        User.id == user_id
-    ).first()
+    user = _get_available_user(db, user_id)
+    _validate_user_id(data.username)
 
-    if not user:
+    existing = (
+        db.query(User)
+        .filter(User.username == data.username, User.id != user_id)
+        .first()
+    )
+    if existing:
         raise HTTPException(
-            status_code=404,
-            detail=t("auth.userNotFound")
-        )
-    
-    if not re.fullmatch(
-        r"[a-z0-9.]{12,24}",
-        data.username
-    ):
-        raise HTTPException(
-            status_code=400,
-            detail="Username mesti mengandungi 12 hingga 24 aksara dan hanya huruf kecil, nombor atau tanda titik (.)"
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=t("auth.usernameExists"),
         )
 
     user.nama = data.nama
     user.username = data.username
     user.role = data.role
     user.aktif = data.aktif
-
     db.commit()
 
-    return {
-        "message": t("auth.userUpdated")
-    }
+    return {"message": t("auth.userUpdated")}
+
 
 @router.put("/users/{user_id}/deactivate")
 def deactivate_user(
     user_id: int,
-    db: Session = Depends(get_db)
+    _: User = Depends(require_admin_user),
+    db: Session = Depends(get_db),
 ):
-
-    user = db.query(User).filter(
-        User.id == user_id
-    ).first()
-
-    if not user:
-        raise HTTPException(
-            status_code=404,
-            detail=t("auth.userNotFound")
-        )
-
+    user = _get_available_user(db, user_id)
     user.aktif = False
-
+    revoke_user_sessions(db, user.id)
     db.commit()
 
-    return {
-        "message": t("auth.userDeactivated")
-    }
+    return {"message": t("auth.userDeactivated")}
+
 
 @router.put("/users/{user_id}/activate")
 def activate_user(
     user_id: int,
-    db: Session = Depends(get_db)
+    _: User = Depends(require_admin_user),
+    db: Session = Depends(get_db),
 ):
-
-    user = db.query(User).filter(
-        User.id == user_id
-    ).first()
-
-    if not user:
-        raise HTTPException(
-            status_code=404,
-            detail=t("auth.userNotFound")
-        )
-
+    user = _get_available_user(db, user_id)
     user.aktif = True
-
     db.commit()
 
-    return {
-        "message": t("auth.userActivated")
-    }
+    return {"message": t("auth.userActivated")}
+
 
 @router.put("/users/{user_id}/reset-password")
 def reset_password(
     user_id: int,
-    db: Session = Depends(get_db)
+    _: User = Depends(require_admin_user),
+    db: Session = Depends(get_db),
 ):
-
-    user = db.query(User).filter(
-        User.id == user_id
-    ).first()
-
-    if not user:
-        raise HTTPException(
-            status_code=404,
-            detail=t("auth.userNotFound")
-        )
-
-    temp_password = generate_password()
-
-    user.password = hash_password(temp_password)
+    user = _get_available_user(db, user_id)
+    temporary_password = generate_password()
+    user.password = hash_password(temporary_password)
     user.force_password_change = True
-
+    revoke_user_sessions(db, user.id)
     db.commit()
 
-    return {
-        "temporary_password": temp_password
-    }
+    return {"temporary_password": temporary_password}
+
 
 @router.delete("/users/{user_id}")
 def delete_user(
     user_id: int,
-    db: Session = Depends(get_db)
+    _: User = Depends(require_admin_user),
+    db: Session = Depends(get_db),
 ):
-    user = db.query(User).filter(
-        User.id == user_id
-    ).first()
-
-    if not user:
-        raise HTTPException(
-            status_code=404,
-            detail=t("auth.userNotFound")
-        )
-
-    db.delete(user)
+    user = _get_available_user(db, user_id)
+    user.deleted_at = datetime.utcnow()
+    user.aktif = False
+    revoke_user_sessions(db, user.id)
     db.commit()
 
-    return {
-        "message": t("auth.userDeleted")
-    }
+    return {"message": t("auth.userDeleted")}
 
 
-def generate_password(length=12):
+@router.get("/profile/{username}", response_model=ProfileResponse)
+def get_profile(
+    username: str,
+    current_user: User = Depends(require_current_user),
+):
+    _ensure_own_profile(username, current_user)
+    return current_user
+
+
+@router.put("/profile/{username}")
+def update_profile(
+    username: str,
+    data: ProfileUpdateRequest,
+    current_user: User = Depends(require_current_user),
+    db: Session = Depends(get_db),
+):
+    _ensure_own_profile(username, current_user)
+
+    current_user.nama = data.nama
+    current_user.email = data.email
+    current_user.phone = data.phone
+
+    if data.password:
+        _validate_password(data.password)
+        current_user.password = hash_password(data.password)
+
+    db.commit()
+    return {"message": t("auth.profileUpdated")}
+
+
+def generate_password(length: int = 12) -> str:
     lowercase = string.ascii_lowercase
     uppercase = string.ascii_uppercase
     numbers = string.digits
     symbols = "!@#$%^&*"
-
     all_chars = lowercase + uppercase + numbers + symbols
 
     password = [
         secrets.choice(lowercase),
         secrets.choice(uppercase),
         secrets.choice(numbers),
-        secrets.choice(symbols)
+        secrets.choice(symbols),
     ]
-
-    password += [
-        secrets.choice(all_chars)
-        for _ in range(length - 4)
-    ]
-
+    password += [secrets.choice(all_chars) for _ in range(length - 4)]
     secrets.SystemRandom().shuffle(password)
+    return "".join(password)
 
-    return ''.join(password)
 
-@router.get("/profile/{username}")
-def get_profile(
-    username: str,
-    db: Session = Depends(get_db)
-):
-
-    user = db.query(User).filter(
-        User.username == username
-    ).first()
-
-    if not user:
+def _get_available_user(db: Session, user_id: int) -> User:
+    user = (
+        db.query(User)
+        .filter(User.id == user_id, User.deleted_at.is_(None))
+        .first()
+    )
+    if user is None:
         raise HTTPException(
-            status_code=404,
-            detail=t("auth.userNotFound")
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=t("auth.userNotFound"),
+        )
+    return user
+
+
+def _validate_user_id(user_id: str) -> None:
+    if not is_valid_user_id(user_id):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=t("auth.usernameInvalid"),
         )
 
-    return {
-        "nama": user.nama,
-        "username": user.username,
-        "email": user.email,
-        "phone": user.phone
-    }
 
-@router.put("/profile/{username}")
-def update_profile(
-    username: str,
-    data: ProfileUpdateRequest,
-    db: Session = Depends(get_db)
-):
-
-    user = db.query(User).filter(
-        User.username == username
-    ).first()
-
-    if not user:
+def _validate_password(password: str) -> None:
+    if not is_valid_password(password):
         raise HTTPException(
-            status_code=404,
-            detail=t("auth.userNotFound")
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=t("auth.passwordInvalid"),
         )
 
-    user.nama = data.nama
-    user.email = data.email
-    user.phone = data.phone
 
-    if data.password:
-        user.password = hash_password(data.password)
-
-    db.commit()
-
-    return {
-        "message": t("auth.profileUpdated")
-    }
+def _ensure_own_profile(username: str, current_user: User) -> None:
+    if username != current_user.username:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=t("auth.forbidden"),
+        )

@@ -3,6 +3,8 @@ import { computed, ref } from "vue"
 import { useRoute, useRouter } from "vue-router"
 import logo from "../assets/images/spoting-logo.png"
 import { t } from "../i18n"
+import api from "../services/api"
+import { clearAuthStorage } from "../services/authSession"
 
 import {
   LayoutDashboard,
@@ -13,6 +15,7 @@ import {
 
 const route = useRoute()
 const router = useRouter()
+const loggingOut = ref(false)
 
 const currentRole = sessionStorage.getItem("role")
 
@@ -192,15 +195,19 @@ function goTo(crumb, index) {
   router.push(crumb.to)
 }
 
-function logout() {
+async function logout() {
+  if (loggingOut.value) return
+  loggingOut.value = true
 
-  sessionStorage.removeItem("token")
-  sessionStorage.removeItem("role")
-  sessionStorage.removeItem("username")
-  sessionStorage.removeItem("forcePasswordChange")
-
-  router.push("/login")
-
+  try {
+    await api.post("/auth/logout")
+  } catch (err) {
+    console.error(err)
+  } finally {
+    clearAuthStorage()
+    await router.replace("/login")
+    loggingOut.value = false
+  }
 }
 
 function goProfile() {
@@ -266,6 +273,7 @@ function goProfile() {
 
         <button
           class="logout-btn"
+          :disabled="loggingOut"
           @click="logout"
         >
           <LogOut size="14" />
