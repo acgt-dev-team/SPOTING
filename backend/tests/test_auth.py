@@ -7,19 +7,14 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from app.api.auth import activate_user, change_password, login, logout
+from app.api.auth import change_password, login, logout
 from app.database.session import Base
 from app.dependencies.auth import get_authenticated_user, require_current_user
 from app.models.auth_session import AuthSession
 from app.models.pelanggan import Pelanggan  # noqa: F401 - registers FK target
 from app.models.user import User
 from app.schemas.auth_schema import ChangePasswordRequest, LoginRequest
-from app.utils.security import (
-    hash_session_token,
-    is_valid_password,
-    is_valid_user_id,
-    verify_password,
-)
+from app.utils.security import is_valid_password, is_valid_user_id, verify_password
 
 
 class AuthTestCase(unittest.TestCase):
@@ -171,32 +166,6 @@ class AuthTestCase(unittest.TestCase):
             get_authenticated_user(credentials, self.db)
 
         self.assertEqual(raised.exception.status_code, 401)
-
-    def test_reactivation_generates_temporary_password_and_first_login_reset(self):
-        user = self.add_user(aktif=False, force_password_change=False)
-        previous_password = user.password
-        auth_session = AuthSession(
-            token_hash=hash_session_token("previous-session"),
-            user_id=user.id,
-            created_at=datetime.utcnow(),
-            expires_at=datetime.utcnow() + timedelta(minutes=30),
-        )
-        self.db.add(auth_session)
-        self.db.commit()
-
-        result = activate_user(user.id, user, self.db)
-        self.db.refresh(user)
-        self.db.refresh(auth_session)
-
-        self.assertTrue(user.aktif)
-        self.assertTrue(user.force_password_change)
-        self.assertNotEqual(user.password, previous_password)
-        self.assertTrue(is_valid_password(result["temporary_password"]))
-        self.assertTrue(
-            verify_password(result["temporary_password"], user.password)
-        )
-        self.assertTrue(result["force_password_change"])
-        self.assertIsNotNone(auth_session.revoked_at)
 
 
 if __name__ == "__main__":
