@@ -2,7 +2,7 @@
     "scan": {
         "scanner": "AGCT Scanner",
         "version": "1.0",
-        "timestamp": "2026-07-18T09:45:56.321141+00:00",
+        "timestamp": "2026-07-19T07:58:45.248897+00:00",
         "hostname": "DESKTOP-7TVBO41",
         "platform": "Windows"
     },
@@ -257,28 +257,6 @@
             ]
         },
         {
-            "path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\is-9HIOS.tmp\\CodeSetup-stable-8a7abeba6e03ea3af87bfbce9a1b7e48fed567b8.tmp",
-            "filename": "CodeSetup-stable-8a7abeba6e03ea3af87bfbce9a1b7e48fed567b8.tmp",
-            "extension": "tmp",
-            "language": "C",
-            "overall_confidence": "medium",
-            "crypto_dependencies": [
-                "crypt32"
-            ],
-            "detections": [
-                {
-                    "algorithm": "TLS",
-                    "primitive": "tls",
-                    "parameters": {},
-                    "confidence": "medium",
-                    "detection_source": [
-                        "crypto-library"
-                    ],
-                    "apis": []
-                }
-            ]
-        },
-        {
             "path": "C:\\Windows\\System32\\DriverStore\\FileRepository\\lenovofnandfunctionkeys.inf_amd64_5e21bf389d23855a\\FnHotkeyCapsLKNumLK.exe",
             "filename": "FnHotkeyCapsLKNumLK.exe",
             "extension": "exe",
@@ -360,17 +338,6 @@
             "detections": []
         },
         {
-            "path": "C:\\Windows\\System32\\SecurityHealthService.exe",
-            "filename": "SecurityHealthService.exe",
-            "extension": "exe",
-            "language": "C",
-            "overall_confidence": "low",
-            "crypto_dependencies": [
-                "crypt32"
-            ],
-            "detections": []
-        },
-        {
             "path": "C:\\Windows\\System32\\services.exe",
             "filename": "services.exe",
             "extension": "exe",
@@ -378,6 +345,17 @@
             "overall_confidence": "low",
             "crypto_dependencies": [
                 "cryptbase"
+            ],
+            "detections": []
+        },
+        {
+            "path": "C:\\Windows\\System32\\smartscreen.exe",
+            "filename": "smartscreen.exe",
+            "extension": "exe",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "crypt32"
             ],
             "detections": []
         },
