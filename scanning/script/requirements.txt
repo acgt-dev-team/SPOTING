@@ -1,0 +1,24 @@
+# HTTP communication
+requests>=2.32.0
+
+# Process enumeration
+psutil>=7.0.0
+
+# PE parsing (Windows)
+pefile>=2024.8.26
+
+# Binary analysis
+lief>=0.16.0
+
+# ELF parsing (Linux)
+pyelftools>=0.32
+
+# Certificate parsing
+cryptography>=45.0.0
+
+
+# YAML configuration (if applicable)
+PyYAML>=6.0.2
+
+# Environment variables (optional, but recommended)
+python-dotenv>=1.1.0
