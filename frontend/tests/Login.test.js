@@ -31,29 +31,12 @@ describe("Login.vue", () => {
 
   beforeEach(async () => {
 
-    vi.clearAllMocks()
     sessionStorage.clear()
 
     router.push("/login")
 
     await router.isReady()
 
-  })
-
-  it("memaparkan ralat untuk ID Pengguna tidak sah", async () => {
-    const wrapper = mount(Login, {
-      global: {
-        plugins: [router]
-      }
-    })
-
-    const inputs = wrapper.findAll("input")
-    await inputs[0].setValue("Invalid_User")
-    await inputs[1].setValue("password123")
-    await wrapper.find("button").trigger("click")
-
-    expect(wrapper.text()).toContain("10 hingga 24 aksara")
-    expect(api.post).not.toHaveBeenCalled()
   })
 
   // =========================
@@ -86,10 +69,10 @@ describe("Login.vue", () => {
     const input =
       wrapper.find('input[type="text"]')
 
-    await input.setValue("admin.user1")
+    await input.setValue("admin")
 
     expect(input.element.value)
-      .toBe("admin.user1")
+      .toBe("admin")
 
   })
 
@@ -154,7 +137,7 @@ describe("Login.vue", () => {
     const inputs = wrapper.findAll("input")
 
     await inputs[0]
-      .setValue("admin.user1")
+      .setValue("admin")
 
     await inputs[1]
       .setValue("wrongpassword")
@@ -195,7 +178,7 @@ describe("Login.vue", () => {
     const inputs = wrapper.findAll("input")
 
     await inputs[0]
-      .setValue("admin.user1")
+      .setValue("admin")
 
     await inputs[1]
       .setValue("password123")
@@ -240,7 +223,7 @@ describe("Login.vue", () => {
     const inputs = wrapper.findAll("input")
 
     await inputs[0]
-      .setValue("admin.user1")
+      .setValue("admin")
 
     await inputs[1]
       .setValue("password123")

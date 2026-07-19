@@ -3,8 +3,6 @@ import { ref } from "vue"
 import { useRouter } from "vue-router"
 import api from "../../services/api"
 import { t } from "../../i18n"
-import { clearAuthStorage } from "../../services/authSession"
-import { isValidUserId } from "../../utils/validation"
 
 import logo from "../../assets/images/spoting-logo.png"
 
@@ -20,17 +18,11 @@ const loading = ref(false)
 
 async function login(e){
   if (e) e.preventDefault()
-  if (loading.value) return
 
   error.value = ""
 
   if(!username.value || !password.value){
     error.value = t("validation.allFieldsRequired")
-    return
-  }
-
-  if (!isValidUserId(username.value)) {
-    error.value = t("validation.usernameFormat")
     return
   }
 
@@ -51,25 +43,23 @@ async function login(e){
       throw new Error(t("auth.tokenMissing"))
     }
 
-    clearAuthStorage()
     sessionStorage.setItem("token", token)
     sessionStorage.setItem("role", role)
     sessionStorage.setItem("username", username.value)
     sessionStorage.setItem("forcePasswordChange", forcePasswordChange.toString())
-
     if (forcePasswordChange) {
-      router.push("/change-password")
-      return
-    }
+  router.push("/change-password")
+  return
+}
 
-    if (
-      role === "admin" ||
-      role === "super admin"
-    ) {
-      router.push("/admin/configuration")
-    } else if (role === "user") {
-      router.push("/admin/dashboard")
-    }
+if (
+  role === "admin" ||
+  role === "super admin"
+) {
+  router.push("/admin/configuration")
+} else if (role === "user") {
+  router.push("/admin/dashboard")
+}
 
   } catch (err) {
 
@@ -118,7 +108,6 @@ async function login(e){
             :text="t('auth.loginButton')"
             type="button"
             class="login-btn"
-            :disabled="loading"
             @click="login"
           />
 

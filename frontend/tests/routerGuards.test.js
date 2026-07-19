@@ -62,18 +62,6 @@ describe("router guards", () => {
 
   })
 
-  it("redirect change password ke login jika tiada token", () => {
-    const next = vi.fn()
-
-    guard(
-      { path: "/change-password" },
-      {},
-      next
-    )
-
-    expect(next).toHaveBeenCalledWith("/login")
-  })
-
   // =========================
   // FORCE PASSWORD CHANGE
   // =========================

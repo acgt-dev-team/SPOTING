@@ -23,15 +23,10 @@ export function setupGuards(router) {
       return next("/login")
     }
 
-    if (to.path === "/change-password" && !token) {
-      return next("/login")
-    }
-
     // =========================
     // FORCE CHANGE PASSWORD
     // =========================
     if (
-      token &&
       forcePasswordChange === "true" &&
       to.path !== "/change-password"
     ) {
