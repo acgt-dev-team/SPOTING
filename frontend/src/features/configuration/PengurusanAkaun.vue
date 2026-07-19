@@ -309,8 +309,7 @@ async function handleToggle(event, isEdit = false) {
 
   toggleTarget.value = {
     id: editingId.value,
-    aktif: aktif.value,
-    username: username.value
+    aktif: aktif.value
   }
 
   toggleConfirmText.value = ""
@@ -335,27 +334,18 @@ async function confirmToggle() {
 
     } else {
 
-      const res = await api.put(
+      await api.put(
         `/auth/users/${toggleTarget.value.id}/activate`
       )
 
       aktif.value = true
-      generatedUsername.value = toggleTarget.value.username
-      generatedPassword.value = res.data.temporary_password
-      passwordModalTitle.value = t("accounts.reactivatedTitle")
-      showModal.value = false
-      showPasswordModal.value = true
 
     }
 
     await fetchAccounts()
 
     showToggleModal.value = false
-    toast.success(
-      toggleTarget.value.aktif
-        ? t("accounts.toggleSuccess")
-        : t("accounts.reactivatedPasswordSuccess")
-    )
+    toast.success(t("accounts.toggleSuccess"))
 
   } catch (err) {
 
