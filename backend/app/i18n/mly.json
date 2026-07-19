@@ -4,14 +4,9 @@
     "title": "Backend SPOTING_MLY"
   },
   "auth": {
-    "accountDeactivated": "Akaun telah dinyahaktifkan. Sila hubungi pentadbir sistem untuk bantuan selanjutnya.",
-    "accountNotFound": "Tiada akaun wujud.",
-    "authenticationRequired": "Pengesahan diperlukan.",
-    "forbidden": "Anda tidak mempunyai kebenaran untuk melakukan tindakan ini.",
+    "accountDeactivated": "Akaun telah dinyahaktifkan. Hubungi pentadbir sistem untuk tindakan selanjutnya.",
+    "accountNotFound": "Tiada akaun ditemui.",
     "invalidPassword": "Kata laluan salah.",
-    "loggedOut": "Log keluar berjaya.",
-    "passwordChangeRequired": "Anda mesti menukar kata laluan sebelum mengakses aplikasi.",
-    "passwordInvalid": "Kata laluan mesti mengandungi sekurang-kurangnya 8 aksara, satu huruf besar, satu huruf kecil, satu nombor dan satu aksara khas.",
     "passwordUpdated": "Kata laluan berjaya dikemas kini",
     "profileUpdated": "Profil berjaya dikemas kini",
     "userActivated": "Pengguna berjaya diaktifkan",
@@ -21,8 +16,7 @@
     "userNotFound": "Pengguna tidak ditemui",
     "userUpdated": "Pengguna berjaya dikemas kini",
     "usernameExists": "ID pengguna telah wujud",
-    "usernameInvalid": "ID pengguna mestilah antara 10 hingga 24 aksara dan hanya boleh mengandungi huruf kecil, nombor atau tanda titik (.).",
-    "sessionInvalid": "Sesi anda tidak sah atau telah tamat tempoh. Sila log masuk semula."
+    "usernameInvalid": "Username mesti mengandungi 12 hingga 24 aksara dan hanya huruf kecil, nombor atau tanda titik (.)"
   },
   "common": {
     "deleted": "Berjaya dipadam",

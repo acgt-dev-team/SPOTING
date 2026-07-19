@@ -1,9 +1,8 @@
 <script setup>
-import { computed, ref } from "vue"
+import { ref } from "vue"
 import { useRouter } from "vue-router"
 import api from "../../services/api"
 import { t } from "../../i18n"
-import { getPasswordRuleChecks, isValidPassword } from "../../utils/validation"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
@@ -15,17 +14,8 @@ const confirmPassword = ref("")
 const error = ref("")
 const loading = ref(false)
 
-const passwordRuleChecks = computed(() => getPasswordRuleChecks(password.value, {
-  length: t("auth.changePassword.rules.length"),
-  upper: t("auth.changePassword.rules.upper"),
-  lower: t("auth.changePassword.rules.lower"),
-  number: t("auth.changePassword.rules.number"),
-  special: t("auth.changePassword.rules.special")
-}))
-
 async function submit(e) {
   if (e) e.preventDefault()
-  if (loading.value) return
 
   error.value = ""
 
@@ -39,16 +29,15 @@ async function submit(e) {
     return
   }
 
-  if (!isValidPassword(password.value)) {
-    error.value = t("validation.passwordFormat")
-    return
-  }
-
   loading.value = true
 
   try {
 
+    const username =
+      sessionStorage.getItem("username")
+
     await api.post("/auth/change-password", {
+      username,
       password: password.value
     })
 
@@ -71,7 +60,6 @@ async function submit(e) {
   } catch (err) {
     console.error(err)
     error.value =
-      err.response?.data?.detail ||
       t("auth.changePassword.error")
   } finally {
     loading.value = false
@@ -112,17 +100,6 @@ async function submit(e) {
             v-model="confirmPassword"
           />
 
-          <div class="password-rules" aria-live="polite">
-            <span
-              v-for="rule in passwordRuleChecks"
-              :key="rule.label"
-              class="password-rule"
-              :class="{ passed: rule.passed }"
-            >
-              {{ rule.label }}
-            </span>
-          </div>
-
           <p
             v-if="error"
             class="error"
@@ -134,7 +111,6 @@ async function submit(e) {
             :text="t('auth.changePassword.submit')"
             type="button"
             class="submit-btn"
-            :disabled="loading"
             @click="submit"
           />
 
@@ -215,27 +191,6 @@ form{
   padding:12px 14px;
   font-size:13px;
   font-weight:600;
-}
-
-.password-rules{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
-.password-rule{
-  padding:6px 10px;
-  border:1px solid var(--border);
-  border-radius:999px;
-  color:var(--muted);
-  font-size:12px;
-  font-weight:600;
-}
-
-.password-rule.passed{
-  border-color:#86EFAC;
-  background:#F0FDF4;
-  color:#15803D;
 }
 
 .eyebrow{

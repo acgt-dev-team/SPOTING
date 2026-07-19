@@ -14,8 +14,7 @@ import api from "../src/services/api"
 delete window.location
 
 window.location = {
-  href: "",
-  hash: ""
+  href: ""
 }
 
 describe("api interceptor", () => {
@@ -27,7 +26,6 @@ describe("api interceptor", () => {
     vi.clearAllMocks()
 
     window.location.href = ""
-    window.location.hash = ""
 
   })
 
@@ -117,9 +115,6 @@ describe("api interceptor", () => {
       "role",
       "admin"
     )
-    sessionStorage.setItem("username", "admin.user1")
-    sessionStorage.setItem("forcePasswordChange", "false")
-    localStorage.setItem("token", "legacy-token")
 
     const warnSpy =
       vi.spyOn(console, "warn")
@@ -150,29 +145,14 @@ describe("api interceptor", () => {
       sessionStorage.getItem("role")
     ).toBeNull()
 
-    expect(sessionStorage.getItem("username")).toBeNull()
-    expect(sessionStorage.getItem("forcePasswordChange")).toBeNull()
-    expect(localStorage.getItem("token")).toBeNull()
-
-    expect(window.location.hash)
-      .toBe("#/login")
+    expect(window.location.href)
+      .toBe("/login")
 
   })
 
   // =========================
   // NON 401 SHOULD NOT LOGOUT
   // =========================
-  it("redirect ke tukar kata laluan apabila backend memulangkan 428", async () => {
-    sessionStorage.setItem("token", "abc")
-
-    const interceptor = api.interceptors.response.handlers[0].rejected
-    const error = { response: { status: 428 } }
-
-    await expect(interceptor(error)).rejects.toEqual(error)
-    expect(sessionStorage.getItem("forcePasswordChange")).toBe("true")
-    expect(window.location.hash).toBe("#/change-password")
-  })
-
   it("tidak logout untuk error selain 401", async () => {
 
     sessionStorage.setItem(

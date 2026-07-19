@@ -477,7 +477,7 @@ ALTER SEQUENCE public.tugasan_id_seq OWNED BY public.tugasan.id;
 
 CREATE TABLE public.users (
     id integer NOT NULL,
-    username character varying(24) NOT NULL,
+    username character varying(50) NOT NULL,
     password character varying(255) NOT NULL,
     role character varying(20) DEFAULT 'user'::character varying NOT NULL,
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
@@ -485,7 +485,6 @@ CREATE TABLE public.users (
     nama character varying,
     aktif boolean DEFAULT true,
     force_password_change boolean DEFAULT true,
-    deleted_at timestamp without time zone,
     email character varying,
     phone character varying
 );
@@ -513,44 +512,6 @@ ALTER SEQUENCE public.users_id_seq OWNER TO postgres;
 --
 
 ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
-
-
---
--- Name: auth_sessions; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.auth_sessions (
-    id integer NOT NULL,
-    token_hash character varying(64) NOT NULL,
-    user_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    expires_at timestamp without time zone NOT NULL,
-    revoked_at timestamp without time zone
-);
-
-
-ALTER TABLE public.auth_sessions OWNER TO postgres;
-
---
--- Name: auth_sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.auth_sessions_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public.auth_sessions_id_seq OWNER TO postgres;
-
---
--- Name: auth_sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.auth_sessions_id_seq OWNED BY public.auth_sessions.id;
 
 
 --
@@ -585,10 +546,10 @@ CREATE SEQUENCE public.x_profil_tugasan_id_seq
 ALTER SEQUENCE public.x_profil_tugasan_id_seq OWNER TO postgres;
 
 
--- COPY public.users (id, username, password, role, created_at, pelanggan_id, nama, aktif, force_password_change, deleted_at, email, phone) FROM stdin;
--- 1	hangtuah01	pbkdf2_sha256$600000$SY/ljhCoZ7kF0J0qMxn4WA==$MA1Hl0OMA+7XvzCHVHsaIGBjOvnWsrD71/ME6ptxJyg=	super admin	2026-05-10 10:43:34.926637	1	Super Admin	t	f	\N	\N	\N
--- 2	hangjebat01	pbkdf2_sha256$600000$t3u19N4vkuclnlx8Im0VGw==$YPW2J2dMoYhvCmH3Z3Xj/q8kVVJYBE6exzG0cw1x8L0=	super admin	2026-05-10 10:43:34.926637	1	Super Admin	t	f	\N	\N	\N
--- 3	hanglekiu01	pbkdf2_sha256$600000$XbGr9OHccg1Nvy7TAWq4+w==$R0JPkwiVzLhLpaHM6FeGwZaJ/N/KN90Ln1t/Kh+SAyk=	super admin	2026-05-10 10:43:34.926637	1	Super Admin	t	f	\N	\N	\N
+-- COPY public.users (id, username, password, role, created_at, pelanggan_id, nama, aktif, force_password_change, email, phone) FROM stdin;
+-- 1	HangTuah	pbkdf2_sha256$600000$SY/ljhCoZ7kF0J0qMxn4WA==$MA1Hl0OMA+7XvzCHVHsaIGBjOvnWsrD71/ME6ptxJyg=	super admin	2026-05-10 10:43:34.926637	1	Super Admin	t	f	\N	\N
+-- 2	HangJebat	pbkdf2_sha256$600000$t3u19N4vkuclnlx8Im0VGw==$YPW2J2dMoYhvCmH3Z3Xj/q8kVVJYBE6exzG0cw1x8L0=	super admin	2026-05-10 10:43:34.926637	1	Super Admin	t	f	\N	\N
+-- 3	HangLekiu	pbkdf2_sha256$600000$XbGr9OHccg1Nvy7TAWq4+w==$R0JPkwiVzLhLpaHM6FeGwZaJ/N/KN90Ln1t/Kh+SAyk=	super admin	2026-05-10 10:43:34.926637	1	Super Admin	t	f	\N	\N
 -- \.
 
 --
@@ -672,13 +633,6 @@ ALTER TABLE ONLY public.tugasan ALTER COLUMN id SET DEFAULT nextval('public.tuga
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
-
-
---
--- Name: auth_sessions id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.auth_sessions ALTER COLUMN id SET DEFAULT nextval('public.auth_sessions_id_seq'::regclass);
 
 
 --
@@ -849,14 +803,6 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: auth_sessions auth_sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.auth_sessions
-    ADD CONSTRAINT auth_sessions_pkey PRIMARY KEY (id);
-
-
---
 -- Name: x_profil_tugasan x_profil_tugasan_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -904,12 +850,6 @@ CREATE INDEX ix_tapak_id ON public.tapak USING btree (id);
 --
 
 CREATE INDEX ix_tugasan_id ON public.tugasan USING btree (id);
-
-
-CREATE INDEX ix_auth_sessions_id ON public.auth_sessions USING btree (id);
-CREATE UNIQUE INDEX ix_auth_sessions_token_hash ON public.auth_sessions USING btree (token_hash);
-CREATE INDEX ix_auth_sessions_user_id ON public.auth_sessions USING btree (user_id);
-CREATE INDEX ix_auth_sessions_expires_at ON public.auth_sessions USING btree (expires_at);
 
 
 --
@@ -998,14 +938,6 @@ ALTER TABLE ONLY public.tapak
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pelanggan_id_fkey FOREIGN KEY (pelanggan_id) REFERENCES public.pelanggan(id);
-
-
---
--- Name: auth_sessions auth_sessions_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.auth_sessions
-    ADD CONSTRAINT auth_sessions_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
 
 
 --

@@ -1,45 +1,12 @@
 import base64
 import hashlib
 import hmac
-import os
-import re
 import secrets
 
 
 PASSWORD_HASH_PREFIX = "pbkdf2_sha256"
 PASSWORD_HASH_ITERATIONS = 600_000
 SALT_BYTES = 16
-USER_ID_PATTERN = re.compile(r"^[a-z0-9.]{10,24}$")
-
-try:
-    SESSION_LIFETIME_MINUTES = max(
-        1,
-        int(os.getenv("SESSION_LIFETIME_MINUTES", "30")),
-    )
-except ValueError:
-    SESSION_LIFETIME_MINUTES = 30
-
-
-def is_valid_user_id(user_id: str) -> bool:
-    return bool(USER_ID_PATTERN.fullmatch(user_id))
-
-
-def is_valid_password(password: str) -> bool:
-    return (
-        len(password) >= 8
-        and bool(re.search(r"[A-Z]", password))
-        and bool(re.search(r"[a-z]", password))
-        and bool(re.search(r"[0-9]", password))
-        and bool(re.search(r"[^A-Za-z0-9]", password))
-    )
-
-
-def generate_session_token() -> str:
-    return secrets.token_urlsafe(48)
-
-
-def hash_session_token(token: str) -> str:
-    return hashlib.sha256(token.encode("utf-8")).hexdigest()
 
 
 def hash_password(password: str) -> str:

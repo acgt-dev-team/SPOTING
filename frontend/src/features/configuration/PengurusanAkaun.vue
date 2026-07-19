@@ -4,7 +4,6 @@ import { KeyRound, LockKeyhole, Pencil, Plus } from "lucide-vue-next"
 import api from "../../services/api"
 import { t } from "../../i18n"
 import { useToast } from "../../ui/AppToast.vue"
-import { isValidUserId } from "../../utils/validation"
 
 import AppInput from "../../ui/AppInput.vue"
 import AppButton from "../../ui/AppButton.vue"
@@ -144,7 +143,6 @@ function resetForm() {
   username.value = ""
   role.value = "user"
   aktif.value = true
-  errors.value = {}
 }
 
 function openModal() {
@@ -155,7 +153,6 @@ function openModal() {
 
 function closeModal() {
   showModal.value = false
-  errors.value = {}
 }
 
 function clearAccountFilters() {
@@ -172,8 +169,6 @@ function validateForm() {
 
   if (!username.value.trim()) {
     e.username = t("validation.usernameRequired")
-  } else if (!isValidUserId(username.value)) {
-    e.username = t("validation.usernameFormat")
   }
 
   errors.value = e
@@ -182,7 +177,6 @@ function validateForm() {
 }
 
 function editAccount(item) {
-  errors.value = {}
   editingId.value = item.id
   nama.value = item.nama
   username.value = item.username
@@ -217,8 +211,19 @@ onMounted(() => {
 })
 
 async function saveAccount() {
-  if (!validateForm()) {
-    toast.warning(errors.value.username || t("validation.completeBeforeSave"))
+
+  if (
+    !nama.value.trim() ||
+    !username.value.trim()
+  ) {
+    toast.warning(t("validation.completeBeforeSave"))
+    return
+  }
+
+  const usernameRegex = /^[a-z0-9.]{12,24}$/
+
+  if (!usernameRegex.test(username.value)) {
+    toast.warning(t("validation.usernameFormat"))
     return
   }
 
@@ -531,14 +536,12 @@ async function resetPassword(item) {
               v-model="nama"
               :label="t('common.name')"
               :placeholder="t('profileUser.namePlaceholder')"
-              :error="errors.nama || ''"
             />
 
             <AppInput
               v-model="username"
               :label="t('auth.username')"
               :placeholder="t('accounts.usernamePlaceholder')"
-              :error="errors.username || ''"
             />
 
             <AppSelect
