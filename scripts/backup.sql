@@ -24,7 +24,10 @@ SET row_security = off;
 SET default_tablespace = '';
 SET default_table_access_method = heap;
 
-SET pelanggan_json = '{"id": 1, "kod":"KKP01", "nama": "Kementerian Dalam Negeri", "keterangan": "Kementerian" }';
+-- SET pelanggan_json = '{"id": 1, "kod":"KKP01", "nama": "Kementerian Dalam Negeri", "keterangan": "Kementerian" }';
+
+-- Set the variable in psql
+\set pelanggan_json '{"id": 1, "kod":"KKP01", "nama": "Kementerian Dalam Negeri", "keterangan": "Kementerian" }'
 
 -- ============================================================
 -- CREATE TABLES
@@ -306,19 +309,30 @@ ALTER TABLE ONLY public.organisasi ADD CONSTRAINT organisasi_pelanggan_id_fkey F
 ALTER TABLE ONLY public.profil ADD CONSTRAINT profil_tapak_id_fkey FOREIGN KEY (tapak_id) REFERENCES public.tapak(id) ON DELETE CASCADE;
 ALTER TABLE ONLY public.sub_organisasi ADD CONSTRAINT sub_organisasi_organisasi_id_fkey FOREIGN KEY (organisasi_id) REFERENCES public.organisasi(id) ON DELETE CASCADE;
 ALTER TABLE ONLY public.tapak ADD CONSTRAINT tapak_sub_organisasi_id_fkey FOREIGN KEY (sub_organisasi_id) REFERENCES public.sub_organisasi(id) ON DELETE CASCADE;
-ALTER TABLE ONLY public.users ADD CONSTRAINT users_pelanggan_id_fkey FOREIGN KEY (pelanggan_id) REFERENCES public.pelanggan(id);
+-- ALTER TABLE ONLY public.users ADD CONSTRAINT users_pelanggan_id_fkey FOREIGN KEY (pelanggan_id) REFERENCES public.pelanggan(id);
 
 -- ============================================================
 -- INSERT SEED DATA
 -- ============================================================
 
--- Pelanggan
+-- -- Pelanggan
+-- INSERT INTO public.pelanggan (id, kod, nama, keterangan, aktif)
+-- VALUES (
+--     :'pelanggan_json'::jsonb ->> 'id'
+--     :'pelanggan_json'::jsonb ->> 'kod',
+--     :'pelanggan_json'::jsonb ->> 'nama',
+--     :'pelanggan_json'::jsonb ->> 'keterangan',
+--     true
+-- );
+
+
+-- Pelanggan INSERT
 INSERT INTO public.pelanggan (id, kod, nama, keterangan, aktif)
 VALUES (
-    :'customer_json'::jsonb ->> 'id'
-    :'customer_json'::jsonb ->> 'kod',
-    :'customer_json'::jsonb ->> 'nama',
-    :'customer_json'::jsonb ->> 'keterangan',
+    (:'pelanggan_json'::jsonb ->> 'id')::INTEGER,
+    :'pelanggan_json'::jsonb ->> 'kod',
+    :'pelanggan_json'::jsonb ->> 'nama',
+    :'pelanggan_json'::jsonb ->> 'keterangan',
     true
 );
 
