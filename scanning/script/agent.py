@@ -1,56 +1,110 @@
 import time
+import socket
+import traceback
 
 from common.api_client import APIClient
 from common.scanner_dispatcher import execute_task
 
 
-BASE_URL = "http://127.0.0.1:8000"
+# Backend URL
+BASE_URL = "http://192.168.0.2:8000"
+
+
+def get_local_ip():
+    """
+    Returns the local IP address of this machine.
+    Falls back to 127.0.0.1 if detection fails.
+    """
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return "127.0.0.1"
 
 
 def main():
 
     client = APIClient(BASE_URL)
 
-    # Register / update agent
-    agent = client.register_agent(
-        ip_address="127.0.0.1",
-        tapak_id=10
-    )
+    # -----------------------------
+    # Register agent
+    # -----------------------------
+    while True:
+        try:
+            print("Registering agent...")
 
-    agent_id = agent["id"]
+            agent = client.register_agent(
+                ip_address=get_local_ip(),
+                tapak_id=1          # Change this if deploying to another tapak
+            )
 
-    print(f"Registered Agent ID: {agent_id}")
+            agent_id = agent["id"]
 
+            print(f"Registered Agent ID: {agent_id}")
+            break
+
+        except Exception:
+            print("\nFailed to register agent.")
+            traceback.print_exc()
+            print("Retrying in 10 seconds...\n")
+            time.sleep(10)
+
+    # -----------------------------
+    # Main polling loop
+    # -----------------------------
     while True:
 
-        tasks = client.get_tasks(agent_id)
+        try:
 
-        if not tasks:
-            print("No pending tasks.")
+            print("\n----------------------------------------")
+            print("Polling for pending tasks...")
+
+            tasks = client.get_tasks(agent_id)
+
+            print(f"Tasks received: {len(tasks)}")
+
+            if not tasks:
+                print("No pending tasks.")
+                time.sleep(10)
+                continue
+
+            for task in tasks:
+
+                try:
+
+                    print("----------------------------------------")
+                    print(f"Running task: {task['kod']}")
+                    print("----------------------------------------")
+
+                    print("Executing scanner...")
+                    result = execute_task(task)
+
+                    print("Scanner completed.")
+                    print("Uploading results...")
+
+                    client.submit_scan_result(
+                        profil_tugasan_id=task["profil_tugasan_id"],
+                        agent_id=agent_id,
+                        hasil=result
+                    )
+
+                    print("Upload complete.")
+
+                except Exception:
+                    print("\nTask failed:")
+                    traceback.print_exc()
+
+            print("Waiting for next polling cycle...")
             time.sleep(10)
-            continue
 
-        for task in tasks:
-
-            print(f"\nRunning: {task['kod']}")
-
-            try:
-
-                result = execute_task(task)
-
-                client.submit_scan_result(
-                    profil_tugasan_id=task["profil_tugasan_id"],
-                    agent_id=agent_id,
-                    hasil=result
-                )
-
-                print("Upload complete.")
-
-            except Exception as e:
-
-                print(e)
-
-        time.sleep(10)
+        except Exception:
+            print("\nPolling loop failed:")
+            traceback.print_exc()
+            print("Retrying in 10 seconds...")
+            time.sleep(10)
 
 
 if __name__ == "__main__":
