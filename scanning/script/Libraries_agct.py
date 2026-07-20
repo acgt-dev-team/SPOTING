@@ -75,9 +75,17 @@ def check_binary_state(file_path):
 
 def main():
     profiles = []
-    for binary in list_libraries():
-        print(f"\nProcessing: {binary}", flush=True)
-        print(binary)
+
+    libraries = list_libraries()
+
+    total = len(libraries)
+
+    for index, binary in enumerate(libraries, start=1):
+
+        print(
+            f"\n[{index}/{total}] Processing: {binary}",
+            flush=True
+        )
 
         profile = BinaryProfile(
             path=binary,
@@ -149,12 +157,12 @@ def main():
         
     export_csv(
         profiles,
-        filename="libraries.csv"
+        output_file="libraries.csv"
     )
 
     json_result = export_json(
         profiles,
-        filename="libraries.json"
+        output_file="libraries.json"
     )
 
     return json_result

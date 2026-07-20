@@ -151,10 +151,13 @@ def main():
         
     export_csv(
         profiles,
-        filename="binaries_disk.csv"
-    )
+    output_file="binaries_disk.csv"
+)
 
-    json_result = export_json(profiles)
+    json_result = export_json(
+        profiles,
+        output_file="binaries_disk.json"
+    )
 
     return json_result
 
