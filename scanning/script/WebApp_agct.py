@@ -8,7 +8,6 @@ from common.script_utils import scan_file
 from common.binary_profile import BinaryProfile
 from common.confidence import calculate_overall_confidence
 
-from common.csv_exporter import export_csv
 from common.json_exporter import export_json
 
 
@@ -48,15 +47,8 @@ def main():
         except Exception as e:
             print(f"Failed to scan {path}: {e}")
 
-    export_csv(
-        profiles,
-        output_file="web_app.csv",
-    )
 
-    json_result = export_json(
-        profiles,
-        output_file="web_app.json",
-    )
+    json_result = export_json(profiles)
 
     return json_result
 

@@ -7,71 +7,10 @@ from common.binary_inventory import list_libraries
 from common.binary_metadata import guess_language
 from common.crypto_detection import detect_crypto
 from common.binary_profile import BinaryProfile
-from common.csv_exporter import export_csv
 from common.json_exporter import export_json
 from common.confidence import calculate_overall_confidence
 
 from common.platform_utils import get_crypto_deps
-
-# ==========================================================
-# BINARY STATE
-# ==========================================================
-
-def check_binary_state(file_path):
-    """
-    Differentiates the state of a binary:
-    In Use, In Transit, or At Rest.
-    """
-    if not os.path.exists(file_path):
-        return "File does not exist on disk."
-
-    abs_path = os.path.abspath(file_path)
-
-    # ------------------------------------------------------
-    # IN USE
-    # ------------------------------------------------------
-    for proc in psutil.process_iter(["exe", "name"]):
-        try:
-            if proc.info["exe"] and os.path.abspath(proc.info["exe"]) == abs_path:
-                return f"STATE: IN USE (Running as PID {proc.pid})"
-        except (psutil.NoSuchProcess, psutil.AccessDenied):
-            continue
-
-    # ------------------------------------------------------
-    # IN TRANSIT
-    # ------------------------------------------------------
-    transit_tools = [
-        "wget",
-        "scp",
-        "rsync",
-        "curl",
-        "sftp-server",
-        "transmission",
-    ]
-
-    for proc in psutil.process_iter(["name", "open_files"]):
-        try:
-            if proc.info["name"] in transit_tools:
-                files = proc.open_files()
-                if files:
-                    for f in files:
-                        if os.path.abspath(f.path) == abs_path:
-                            return (
-                                f"STATE: IN TRANSIT "
-                                f"(Being moved by {proc.info['name']})"
-                            )
-        except (psutil.NoSuchProcess, psutil.AccessDenied):
-            continue
-
-    # ------------------------------------------------------
-    # AT REST
-    # ------------------------------------------------------
-    return "STATE: AT REST (Static on disk)"
-
-
-# ==========================================================
-# MAIN
-# ==========================================================
 
 def main():
     profiles = []
@@ -154,61 +93,12 @@ def main():
         profile.overall_confidence = calculate_overall_confidence(profile)
         print("[OK] Crypto detection", flush=True)
         profiles.append(profile)
-        
-    export_csv(
-        profiles,
-        output_file="libraries.csv"
-    )
 
-    json_result = export_json(
-        profiles,
-        output_file="libraries.json"
-    )
+    json_result = export_json( profiles)
 
     return json_result
 
-def display():
-    for binary in list_libraries():
-        language = guess_language(binary)
-        libs = get_crypto_deps(binary)
-        state = check_binary_state(binary)
 
-        if libs == "none":
-            continue
-
-        print("Library :", binary)
-        print("Language :", language)
-        print("State :", state)
-        print("Crypto Dependency :", libs)
-
-        hits = detect_crypto(binary)
-        merged = {}
-
-        for hit in hits:
-
-            key = (
-                hit["algorithm"],
-                hit["primitive"]
-            )
-
-            if key not in merged:
-
-                merged[key] = hit.copy()
-
-                merged[key]["apis"] = []
-
-            if "api" in hit:
-                merged[key]["apis"].append(hit["api"])
-
-            merged[key]["detection_source"] = (
-                merged[key]["detection_source"]
-                |
-                hit["detection_source"]
-            )
-
-        hits = list(merged.values())
-        for hit in hits:
-            print(hit)
 
 def run_scan():
     """

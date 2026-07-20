@@ -12,8 +12,6 @@ from common.crypto_detection import detect_crypto
 
 from common.confidence import calculate_overall_confidence
 
-from common.csv_exporter import export_csv
-
 from common.json_exporter import export_json
 
 from common.platform_utils import get_crypto_deps 
@@ -59,15 +57,9 @@ def main():
 
         profiles.append(profile)
 
-    export_csv(
-        profiles,
-        output_file="kernel_modules.csv",
-    )
 
-    json_result = export_json(
-        profiles,
-        output_file="kernel_modules.json",
-    )
+
+    json_result = export_json(profiles)
 
     return json_result
 

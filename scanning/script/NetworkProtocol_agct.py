@@ -14,8 +14,6 @@ from common.sslscan_utils import (
 
 from common.binary_profile import BinaryProfile
 
-from common.csv_exporter import export_csv
-
 from common.json_exporter import export_json
 
 def main():
@@ -63,15 +61,8 @@ def main():
 
         profiles.append(profile)
 
-    export_csv(
-        profiles,
-        output_file="network_protocol.csv",
-    )
 
-    json_result = export_json(
-        profiles,
-        output_file="network_protocol.json",
-    )
+    json_result = export_json(profiles)
 
     return json_result
 
