@@ -2,6 +2,45 @@ import os
 import psutil
 
 from common.os_utils import OS_TYPE
+import subprocess
+from pathlib import Path
+
+
+
+
+CERT_EXTENSIONS = {
+    ".crt",
+    ".cer",
+    ".pem",
+    ".der",
+    ".key",
+    ".pk8",
+    ".p12",
+    ".pfx",
+}
+
+SCRIPT_EXTENSIONS = {
+    ".py",
+    ".sh",
+    ".pl",
+    ".rb",
+    ".ps1",
+    ".bat",
+    ".cmd",
+}
+
+WEB_EXTENSIONS = {
+    ".php",
+    ".py",
+    ".js",
+    ".ts",
+    ".java",
+    ".go",
+    ".rb",
+    ".jsp",
+    ".cs",
+    ".scala",
+}
 
 
 def list_running_binaries():
@@ -90,9 +129,6 @@ def list_disk_binaries():
 
 
 
-import os
-
-from common.os_utils import OS_TYPE
 
 
 if OS_TYPE == "unix":
@@ -153,3 +189,239 @@ def list_libraries():
     print(len(libraries), "libraries detected")
 
     return sorted(libraries)
+
+
+
+
+
+def list_certificate_files(scan_root=None):
+
+    if scan_root is None:
+
+        if OS_TYPE == "windows":
+            scan_root = "C:\\"
+
+        else:
+            scan_root = "/"
+
+    files = []
+
+    for root, _, filenames in os.walk(scan_root):
+
+        for filename in filenames:
+
+            if os.path.splitext(filename)[1].lower() in CERT_EXTENSIONS:
+
+                files.append(
+                    os.path.join(root, filename)
+                )
+
+    print(len(files), "certificate/key files detected")
+
+    return sorted(files)
+
+
+def list_script_files():
+    """
+    Returns script files from common script locations.
+    """
+
+    files = set()
+
+    if OS_TYPE == "windows":
+
+        search_dirs = []
+
+        # PATH directories
+        search_dirs.extend(
+            d for d in os.environ.get("PATH", "").split(os.pathsep)
+            if os.path.isdir(d)
+        )
+
+        # User profile
+        user_profile = os.environ.get("USERPROFILE")
+        if user_profile:
+            search_dirs.append(user_profile)
+
+    else:
+
+        search_dirs = [
+            "/usr/bin",
+            "/usr/local/bin",
+            "/opt",
+            os.path.expanduser("~"),
+        ]
+
+    for directory in search_dirs:
+
+        try:
+            for root, _, filenames in os.walk(directory):
+
+                for filename in filenames:
+
+                    ext = os.path.splitext(filename)[1].lower()
+
+                    if ext in SCRIPT_EXTENSIONS:
+
+                        files.add(
+                            os.path.join(root, filename)
+                        )
+
+        except Exception:
+            continue
+
+    print(f"{len(files)} script files detected")
+
+    return sorted(files)
+
+
+def list_kernel_modules():
+    """
+    Return kernel modules.
+    Linux:
+        *.ko
+    Windows:
+        *.sys
+    """
+
+    if OS_TYPE == "linux":
+
+        try:
+
+            kernel_ver = (
+                Path("/proc/sys/kernel/osrelease")
+                .read_text()
+                .strip()
+            )
+
+            base = f"/lib/modules/{kernel_ver}"
+
+            modules = subprocess.check_output(
+                [
+                    "find",
+                    base,
+                    "-type",
+                    "f",
+                    "-name",
+                    "*.ko*",
+                ],
+                text=True,
+            ).splitlines()
+
+            print(f"{len(modules)} kernel modules detected")
+
+            return sorted(modules)
+
+        except Exception:
+
+            return []
+
+    # Windows
+    modules = []
+
+    windows_driver_dir = os.path.join(
+        os.environ.get("SystemRoot", "C:\\Windows"),
+        "System32",
+        "drivers",
+    )
+
+    if os.path.isdir(windows_driver_dir):
+
+        for root, _, files in os.walk(windows_driver_dir):
+
+            for filename in files:
+
+                if filename.lower().endswith(".sys"):
+
+                    modules.append(
+                        os.path.join(root, filename)
+                    )
+
+    print(f"{len(modules)} kernel drivers detected")
+
+    return sorted(modules)
+
+
+def list_tls_targets():
+    """
+    Returns listening TLS targets.
+    """
+
+    targets = []
+
+    TLS_PORTS = {
+        443,
+        465,
+        563,
+        636,
+        853,
+        989,
+        990,
+        992,
+        993,
+        995,
+        8443,
+    }
+
+    for conn in psutil.net_connections(kind="inet"):
+
+        if conn.status != psutil.CONN_LISTEN:
+            continue
+
+        port = conn.laddr.port
+
+        if port not in TLS_PORTS:
+            continue
+
+        ip = conn.laddr.ip
+
+        targets.append(f"{ip}:{port}")
+
+    print(f"{len(targets)} TLS targets detected")
+
+    return sorted(set(targets))
+
+def list_web_files():
+    """
+    Returns web application source files from common web roots.
+    """
+
+    files = set()
+
+    if OS_TYPE == "windows":
+
+        search_dirs = [
+            r"C:\inetpub\wwwroot",
+            r"C:\xampp\htdocs",
+            r"C:\wamp64\www",
+        ]
+
+    else:
+
+        search_dirs = [
+            "/var/www",
+            "/usr/share/nginx",
+            "/srv/www",
+        ]
+
+    for directory in search_dirs:
+
+        if not os.path.isdir(directory):
+            continue
+
+        try:
+            for root, dirs, filenames in os.walk(directory):
+
+                for filename in filenames:
+
+                    ext = os.path.splitext(filename)[1].lower()
+
+                    if ext in WEB_EXTENSIONS:
+                        files.add(os.path.join(root, filename))
+
+        except Exception:
+            continue
+
+    print(f"{len(files)} web files detected")
+
+    return sorted(files)

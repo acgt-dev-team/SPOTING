@@ -6,7 +6,7 @@ def export_csv(profiles, output_file="binaries_used.csv"):
     Export BinaryProfile objects into the current CSV format.
     """
 
-    with open(output_file, "w", newline="") as f:
+    with open(output_file, "w", newline="", encoding="utf-8") as f:
 
         writer = csv.writer(f)
 
@@ -24,7 +24,9 @@ def export_csv(profiles, output_file="binaries_used.csv"):
 
         for profile in profiles:
 
-            # No crypto detections, only dependency
+            # --------------------------------------------------
+            # No detections
+            # --------------------------------------------------
             if not profile.detections:
 
                 writer.writerow([
@@ -41,10 +43,72 @@ def export_csv(profiles, output_file="binaries_used.csv"):
 
                 continue
 
-            # Crypto detections
+            # --------------------------------------------------
+            # Process detections
+            # --------------------------------------------------
             for hit in profile.detections:
 
-                if hit["primitive"] == "multiple":
+                # ==================================================
+                # Certificate / Private Key
+                # ==================================================
+                if hit.get("type") in ("certificate", "private_key"):
+
+                    writer.writerow([
+                        profile.path,
+                        profile.extension,
+                        hit["type"],
+                        hit["algorithm"],
+                        "key_size",
+                        hit["key_size"],
+                        hit.get("fingerprint_sha256", ""),
+                        "",
+                        "info",
+                    ])
+
+                    continue
+
+                # ==================================================
+                # Network Application
+                # ==================================================
+                if hit.get("type") == "network_application":
+
+                    writer.writerow([
+                        profile.path,
+                        profile.extension,
+                        "network",
+                        hit["protocol"],
+                        "connection",
+                        f'{hit["remote_ip"]}:{hit["remote_port"]}',
+                        hit["process"],
+                        "",
+                        "info",
+                    ])
+
+                    continue
+
+                # ==================================================
+                # IPsec Service
+                # ==================================================
+                if hit.get("type") == "ipsec_service":
+
+                    writer.writerow([
+                        profile.path,
+                        profile.extension,
+                        "network",
+                        "IPsec",
+                        "service",
+                        hit["crypto"],
+                        "",
+                        "",
+                        "info",
+                    ])
+
+                    continue
+
+                # ==================================================
+                # Crypto detections
+                # ==================================================
+                if hit.get("primitive") == "multiple":
                     continue
 
                 params = hit.get("parameters", {})

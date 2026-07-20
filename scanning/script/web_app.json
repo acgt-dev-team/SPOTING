@@ -1,0 +1,10 @@
+{
+    "scan": {
+        "scanner": "AGCT Scanner",
+        "version": "1.0",
+        "timestamp": "2026-07-20T09:21:46.095472+00:00",
+        "hostname": "DESKTOP-7TVBO41",
+        "platform": "Windows"
+    },
+    "binaries": []
+}
