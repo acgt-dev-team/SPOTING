@@ -11,7 +11,6 @@ from common.network_utils import (
 )
 
 from common.binary_profile import BinaryProfile
-from common.csv_exporter import export_csv
 from common.json_exporter import export_json
 
 
@@ -109,18 +108,8 @@ def main():
         except Exception:
             continue
 
-    # ======================================================
-    # Export results
-    # ======================================================
-    export_csv(
-        profiles,
-        output_file="network_app.csv",
-    )
 
-    json_result = export_json(
-        profiles,
-        output_file="network_app.json",
-    )
+    json_result = export_json(profiles)
 
     return json_result
 

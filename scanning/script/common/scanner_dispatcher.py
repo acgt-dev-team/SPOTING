@@ -6,6 +6,7 @@ from ExeCodes_agct import run_scan as run_execodes
 from Kernel_mod_agct import run_scan as run_kernel_modules
 from NetworkProtocol_agct import run_scan as run_network_protocol
 from NetworkApp_agct import run_scan as run_network_app
+from WebApp_agct import run_scan as run_web_app
 
 SCANNERS = {
     "BIN_USED": run_binaries_used,
@@ -16,6 +17,7 @@ SCANNERS = {
     "KERNEL_MODULES": run_kernel_modules,
     "NETWORK_PROTOCOL": run_network_protocol,
     "NETWORK_APP": run_network_app,
+    "WEB_APP": run_web_app,
 }
 
 

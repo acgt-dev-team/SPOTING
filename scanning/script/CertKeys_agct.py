@@ -40,15 +40,8 @@ def main():
 
         profiles.append(profile)
 
-    export_csv(
-        profiles,
-        output_file="cert_keys.csv",
-    )
 
-    json_result = export_json(
-        profiles,
-        output_file="cert_keys.json",
-    )
+    json_result = export_json(profiles)
 
     return json_result
 
@@ -59,4 +52,3 @@ def run_scan():
 if __name__ == "__main__":
     main()
 
-    

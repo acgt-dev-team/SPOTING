@@ -4,7 +4,6 @@ from common.binary_inventory import list_script_files
 from common.script_utils import scan_file
 
 from common.binary_profile import BinaryProfile
-from common.csv_exporter import export_csv
 from common.json_exporter import export_json
 from common.confidence import calculate_overall_confidence
 
@@ -38,15 +37,7 @@ def main():
 
         profiles.append(profile)
 
-    export_csv(
-        profiles,
-        output_file="execodes.csv",
-    )
-
-    json_result = export_json(
-        profiles,
-        output_file="execodes.json",
-    )
+    json_result = export_json(profiles)
 
     return json_result
 
