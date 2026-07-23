@@ -14,6 +14,7 @@ def create_hasil_imbasan(
     hasil = HasilImbasan(
         profil_tugasan_id=request.profil_tugasan_id,
         ejen_id=request.ejen_id,
+        machine_id=request.machine_id,
         hasil=request.hasil
     )
 

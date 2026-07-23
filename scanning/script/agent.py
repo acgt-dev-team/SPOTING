@@ -4,6 +4,7 @@ import traceback
 
 from common.api_client import APIClient
 from common.scanner_dispatcher import execute_task
+from machine_id import get_machine_id
 
 import json
 
@@ -48,6 +49,10 @@ def main():
             agent_id = agent["id"]
 
             print(f"Registered Agent ID: {agent_id}")
+
+            machine_id = get_machine_id()
+
+            print(f"Machine ID: {machine_id}")
             break
 
         except Exception:
@@ -92,6 +97,7 @@ def main():
                     client.submit_scan_result(
                         profil_tugasan_id=task["profil_tugasan_id"],
                         agent_id=agent_id,
+                        machine_id=machine_id,
                         hasil=result
                     )
 
