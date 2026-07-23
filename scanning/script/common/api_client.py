@@ -38,12 +38,14 @@ class APIClient:
         self,
         profil_tugasan_id,
         agent_id,
+        machine_id,
         hasil
     ):
 
         payload = {
             "profil_tugasan_id": profil_tugasan_id,
             "ejen_id": agent_id,
+            "machine_id": machine_id,
             "hasil": hasil
         }
 
