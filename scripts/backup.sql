@@ -232,6 +232,7 @@ CREATE TABLE public.hasil_imbasan (
     id bigint NOT NULL,
     profil_tugasan_id bigint NOT NULL,
     ejen_id bigint NOT NULL,
+    machine_id uuid NOT NULL,
     hasil json NOT NULL,
     created_at timestamp without time zone DEFAULT now(),
     prev_hash TEXT,
@@ -393,8 +394,8 @@ VALUES (1, 1, 1);
 
 -- Now insert the genesis record for hasil_imbasan with explicit NULL prev_hash and row_hash
 -- The trigger will automatically compute the hash
-INSERT INTO public.hasil_imbasan (id, profil_tugasan_id, ejen_id, hasil, prev_hash, row_hash) 
-VALUES (1, 1, 1, '{"key": "value", "status": "success"}', NULL, NULL);
+INSERT INTO public.hasil_imbasan (id, profil_tugasan_id, ejen_id,machine_id, hasil, prev_hash, row_hash) 
+VALUES (1, 1, 1, '00000000-0000-0000-0000-000000000000', '{"key": "value", "status": "success"}', NULL, NULL);
 
 -- ============================================================
 -- FINALIZE FOREIGN KEY CONSTRAINTS (ensure they are enabled)
