@@ -5,9 +5,13 @@ import traceback
 from common.api_client import APIClient
 from common.scanner_dispatcher import execute_task
 
+import json
 
-# Backend URL
-BASE_URL = "http://192.168.0.2:8000"
+with open("config.json", "r") as f:
+    config = json.load(f)
+
+BASE_URL = config["backend_url"]
+TAPAK_ID = config["tapak_id"]
 
 
 def get_local_ip():
@@ -38,7 +42,7 @@ def main():
 
             agent = client.register_agent(
                 ip_address=get_local_ip(),
-                tapak_id=1          # Change this if deploying to another tapak
+                tapak_id=TAPAK_ID          # Change this if deploying to another tapak
             )
 
             agent_id = agent["id"]
