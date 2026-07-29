@@ -1,0 +1,696 @@
+{
+    "scan": {
+        "scanner": "AGCT Scanner",
+        "version": "1.0",
+        "timestamp": "2026-07-29T13:36:39.842863+00:00",
+        "hostname": "integrationServer",
+        "platform": "Linux"
+    },
+    "binaries": [
+        {
+            "path": "/usr/bin/dbus-daemon",
+            "filename": "dbus-daemon",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/bin/gnome-keyring-daemon",
+            "filename": "gnome-keyring-daemon",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "medium",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": [
+                {
+                    "algorithm": "AES",
+                    "primitive": "block-cipher",
+                    "parameters": {
+                        "keyLength": 128,
+                        "mode": "ECB"
+                    },
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library",
+                        "string"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "DES",
+                    "primitive": "block-cipher",
+                    "parameters": {
+                        "keyLength": 56
+                    },
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library",
+                        "string"
+                    ],
+                    "deprecated": true,
+                    "apis": []
+                },
+                {
+                    "algorithm": "CAST5",
+                    "primitive": "block-cipher",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "RC2",
+                    "primitive": "block-cipher",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "MD2",
+                    "primitive": "hash-function",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "MD5",
+                    "primitive": "hash-function",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "deprecated": true,
+                    "apis": []
+                },
+                {
+                    "algorithm": "DSA",
+                    "primitive": "digital-signature",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "ECDSA",
+                    "primitive": "digital-signature",
+                    "parameters": {
+                        "curve": "P-256"
+                    },
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library",
+                        "string"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "PBKDF2",
+                    "primitive": "key-derivation",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "PBES2",
+                    "primitive": "key-derivation",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "SSH",
+                    "primitive": "ssh",
+                    "parameters": {
+                        "version": "2.0"
+                    },
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library",
+                        "string"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "IDEA",
+                    "primitive": "block-cipher",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "SEED",
+                    "primitive": "block-cipher",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "apis": []
+                }
+            ]
+        },
+        {
+            "path": "/usr/bin/gnome-shell",
+            "filename": "gnome-shell",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "gnutls",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/bin/gnome-text-editor",
+            "filename": "gnome-text-editor",
+            "extension": "",
+            "language": "Python",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "bcrypt",
+                "gnutls",
+                "libcrypto",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/bin/nautilus",
+            "filename": "nautilus",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "medium",
+            "crypto_dependencies": [
+                "bcrypt",
+                "gnutls",
+                "libcrypto",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": [
+                {
+                    "algorithm": "SSH",
+                    "primitive": "ssh",
+                    "parameters": {
+                        "version": "1.0"
+                    },
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library",
+                        "string"
+                    ],
+                    "apis": []
+                }
+            ]
+        },
+        {
+            "path": "/usr/bin/update-notifier",
+            "filename": "update-notifier",
+            "extension": "",
+            "language": "Python",
+            "overall_confidence": "medium",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": [
+                {
+                    "algorithm": "MD5",
+                    "primitive": "hash-function",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "deprecated": true,
+                    "apis": []
+                }
+            ]
+        },
+        {
+            "path": "/usr/libexec/at-spi-bus-launcher",
+            "filename": "at-spi-bus-launcher",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/at-spi2-registryd",
+            "filename": "at-spi2-registryd",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/evolution-addressbook-factory",
+            "filename": "evolution-addressbook-factory",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt",
+                "libnspr4",
+                "libnss3",
+                "libssl"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/evolution-calendar-factory",
+            "filename": "evolution-calendar-factory",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt",
+                "libnspr4",
+                "libnss3",
+                "libssl"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/evolution-data-server/evolution-alarm-notify",
+            "filename": "evolution-alarm-notify",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt",
+                "libnspr4",
+                "libnss3",
+                "libssl"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/evolution-source-registry",
+            "filename": "evolution-source-registry",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "medium",
+            "crypto_dependencies": [
+                "libgcrypt",
+                "libnspr4",
+                "libnss3",
+                "libssl"
+            ],
+            "detections": [
+                {
+                    "algorithm": "DES",
+                    "primitive": "block-cipher",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "deprecated": true,
+                    "apis": []
+                }
+            ]
+        },
+        {
+            "path": "/usr/libexec/gcr-ssh-agent",
+            "filename": "gcr-ssh-agent",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "medium",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": [
+                {
+                    "algorithm": "SSH",
+                    "primitive": "ssh",
+                    "parameters": {
+                        "version": "2.0"
+                    },
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library",
+                        "string"
+                    ],
+                    "apis": []
+                }
+            ]
+        },
+        {
+            "path": "/usr/libexec/gnome-session-binary",
+            "filename": "gnome-session-binary",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gnome-session-ctl",
+            "filename": "gnome-session-ctl",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gnome-shell-calendar-server",
+            "filename": "gnome-shell-calendar-server",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt",
+                "libnspr4",
+                "libnss3",
+                "libssl"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gnome-terminal-server",
+            "filename": "gnome-terminal-server",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "gnutls",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/goa-daemon",
+            "filename": "goa-daemon",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "bcrypt",
+                "gnutls",
+                "libcrypto",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/goa-identity-service",
+            "filename": "goa-identity-service",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-color",
+            "filename": "gsd-color",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-datetime",
+            "filename": "gsd-datetime",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-keyboard",
+            "filename": "gsd-keyboard",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-media-keys",
+            "filename": "gsd-media-keys",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-power",
+            "filename": "gsd-power",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-print-notifications",
+            "filename": "gsd-print-notifications",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "gnutls",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-printer",
+            "filename": "gsd-printer",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "medium",
+            "crypto_dependencies": [
+                "gnutls",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": [
+                {
+                    "algorithm": "DES",
+                    "primitive": "block-cipher",
+                    "parameters": {
+                        "keyLength": 56
+                    },
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library",
+                        "string"
+                    ],
+                    "deprecated": true,
+                    "apis": []
+                }
+            ]
+        },
+        {
+            "path": "/usr/libexec/gsd-sharing",
+            "filename": "gsd-sharing",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "gnutls",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-sound",
+            "filename": "gsd-sound",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-wacom",
+            "filename": "gsd-wacom",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gvfs-afc-volume-monitor",
+            "filename": "gvfs-afc-volume-monitor",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "bcrypt",
+                "libcrypto",
+                "libssl"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gvfs-udisks2-volume-monitor",
+            "filename": "gvfs-udisks2-volume-monitor",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gvfsd",
+            "filename": "gvfsd",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gvfsd-recent",
+            "filename": "gvfsd-recent",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gvfsd-trash",
+            "filename": "gvfsd-trash",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/ibus-extension-gtk3",
+            "filename": "ibus-extension-gtk3",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/xdg-desktop-portal",
+            "filename": "xdg-desktop-portal",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/xdg-desktop-portal-gnome",
+            "filename": "xdg-desktop-portal-gnome",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "bcrypt",
+                "gnutls",
+                "libcrypto",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/xdg-desktop-portal-gtk",
+            "filename": "xdg-desktop-portal-gtk",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/xdg-document-portal",
+            "filename": "xdg-document-portal",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        }
+    ]
+}

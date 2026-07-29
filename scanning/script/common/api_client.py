@@ -22,7 +22,7 @@ class APIClient:
         response.raise_for_status()
 
         return response.json()
-    
+
     def get_tasks(self, agent_id):
 
         response = requests.get(
@@ -33,7 +33,7 @@ class APIClient:
         response.raise_for_status()
 
         return response.json()
-    
+
     def submit_scan_result(
         self,
         profil_tugasan_id,
@@ -49,14 +49,19 @@ class APIClient:
             "hasil": hasil
         }
 
+        print("\n========== PAYLOAD ==========")
+        print(payload)
+
         response = requests.post(
             f"{self.base_url}/ejen/hasil",
             json=payload,
             timeout=60
         )
 
+        print("\n========== RESPONSE ==========")
+        print("Status:", response.status_code)
+        print("Body:", response.text)
+
         response.raise_for_status()
 
         return response.json()
-    
-    
