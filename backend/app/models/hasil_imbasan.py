@@ -23,6 +23,11 @@ class HasilImbasan(Base):
         ForeignKey("ejen.id", ondelete="CASCADE"),
         nullable=False
     )
+    
+    machine_id = Column(
+        UUID(as_uuid=True),
+        nullable=False
+    )
 
     hasil = Column(
         JSON,
