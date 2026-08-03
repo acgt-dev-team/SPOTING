@@ -9,8 +9,15 @@ class Pelanggan(Base):
 
     id = Column(Integer, primary_key=True)
 
-    kod = Column(String(50))
-    nama = Column(String(255))
+    kod = Column(
+        String(50),
+        unique=True,
+        nullable=False
+    )
+    nama = Column(
+        String(255),
+        nullable=False
+    )
     keterangan = Column(Text)
     aktif = Column(Boolean, default=True)
 

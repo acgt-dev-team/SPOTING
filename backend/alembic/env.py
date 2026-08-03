@@ -28,11 +28,17 @@ if config.config_file_name is not None:
 from app.database.session import Base
 
 from app.models import pelanggan
+from app.models import user
 from app.models import organisasi
 from app.models import sub_organisasi
 from app.models import tapak
 from app.models import profil
+from app.models import jenis_tugasan
 from app.models import tugasan
+from app.models import status
+from app.models import x_profil_tugasan
+from app.models import ejen
+from app.models import hasil_imbasan
 
 # Metadata
 target_metadata = Base.metadata

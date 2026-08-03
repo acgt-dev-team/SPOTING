@@ -11,11 +11,18 @@ class SubOrganisasi(Base):
 
     organisasi_id = Column(
         Integer,
-        ForeignKey("organisasi.id", ondelete="CASCADE")  # ✅ IMPORTANT
+        ForeignKey("organisasi.id", ondelete="CASCADE"),
+        nullable=False
     )
-
-    kod = Column(String(50))
-    nama = Column(String(255))
+    kod = Column(
+        String(50),
+        unique=True,
+        nullable=False
+    )
+    nama = Column(
+        String(255),
+        nullable=False
+    )
     keterangan = Column(Text)
     pegawai_tadbir = Column(String(64))
     jawatan = Column(String(64))

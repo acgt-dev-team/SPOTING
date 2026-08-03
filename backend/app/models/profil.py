@@ -8,7 +8,7 @@ from app.database.session import Base
 class Profil(Base):
     __tablename__ = "profil"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True)
     tapak_id = Column(Integer, ForeignKey("tapak.id", ondelete="CASCADE"), nullable=False)
 
     kod = Column(String(50), unique=True, nullable=False)
@@ -29,7 +29,7 @@ class Profil(Base):
     )
 
     cron_expression = Column(
-        String(100),
+        String(255),
         nullable=True
     )
 
@@ -44,5 +44,11 @@ class Profil(Base):
     profil_tugasan = relationship(
         "XProfilTugasan",
         back_populates="profil",
+        cascade="all, delete"
+    )
+    
+    agents = relationship(
+        "Ejen",
+        back_populates="profile",
         cascade="all, delete"
     )
