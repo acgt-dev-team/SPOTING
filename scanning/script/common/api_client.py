@@ -6,11 +6,21 @@ class APIClient:
     def __init__(self, base_url):
         self.base_url = base_url.rstrip("/")
 
-    def register_agent(self, ip_address, tapak_id):
+    def register_agent(
+        self,
+        ip_address,
+        machine_id,
+        hostname,
+        tapak_id,
+        profile_id
+    ):
 
         payload = {
             "ip_address": ip_address,
-            "tapak_id": tapak_id
+            "machine_id": machine_id,
+            "hostname": hostname,
+            "tapak_id": tapak_id,
+            "profile_id": profile_id
         }
 
         response = requests.post(

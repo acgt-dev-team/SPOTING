@@ -1,18 +1,23 @@
-import time
+import json
+import platform
 import socket
+import time
 import traceback
 
 from common.api_client import APIClient
 from common.scanner_dispatcher import execute_task
 from machine_id import get_machine_id
 
-import json
 
+# ---------------------------------------
+# Load configuration
+# ---------------------------------------
 with open("config.json", "r") as f:
     config = json.load(f)
 
 BASE_URL = config["backend_url"]
 TAPAK_ID = config["tapak_id"]
+PROFILE_ID = config["profile_id"]
 
 
 def get_local_ip():
@@ -34,25 +39,39 @@ def main():
 
     client = APIClient(BASE_URL)
 
-    # -----------------------------
-    # Register agent
-    # -----------------------------
+    hostname = platform.node()
+    machine_id = get_machine_id()
+
+    # ---------------------------------------
+    # Register Agent
+    # ---------------------------------------
     while True:
         try:
-            print("Registering agent...")
+
+            print("========================================")
+            print("Registering Agent")
+            print("========================================")
+            print(f"Hostname   : {hostname}")
+            print(f"Machine ID : {machine_id}")
+            print(f"IP Address : {get_local_ip()}")
+            print(f"Tapak ID   : {TAPAK_ID}")
+            print(f"Profile ID : {PROFILE_ID}")
+            print()
 
             agent = client.register_agent(
                 ip_address=get_local_ip(),
-                tapak_id=TAPAK_ID          # Change this if deploying to another tapak
+                tapak_id=TAPAK_ID,
+                profile_id=PROFILE_ID,
+                machine_id=machine_id,
+                hostname=hostname
             )
 
             agent_id = agent["id"]
 
-            print(f"Registered Agent ID: {agent_id}")
+            print(f"Agent registered successfully.")
+            print(f"Agent ID : {agent_id}")
+            print()
 
-            machine_id = get_machine_id()
-
-            print(f"Machine ID: {machine_id}")
             break
 
         except Exception:
@@ -61,15 +80,16 @@ def main():
             print("Retrying in 10 seconds...\n")
             time.sleep(10)
 
-    # -----------------------------
+    # ---------------------------------------
     # Main polling loop
-    # -----------------------------
+    # ---------------------------------------
     while True:
 
         try:
 
-            print("\n----------------------------------------")
+            print("----------------------------------------")
             print("Polling for pending tasks...")
+            print("----------------------------------------")
 
             tasks = client.get_tasks(agent_id)
 

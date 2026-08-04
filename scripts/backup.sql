@@ -220,9 +220,13 @@ ALTER SEQUENCE public.x_profil_tugasan_id_seq OWNED BY public.x_profil_tugasan.i
 CREATE TABLE public.ejen (
     id bigint NOT NULL,
     ip_address inet NOT NULL,
-    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    machine_id uuid NOT NULL,
+    hostname character varying(255) NOT NULL,
     tapak_id bigint NOT NULL,
-    tugasan_id bigint
+    profile_id bigint NOT NULL,
+    status character varying(20) NOT NULL DEFAULT 'Running',
+    last_seen timestamp without time zone NOT NULL DEFAULT now(),
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 ALTER TABLE public.ejen OWNER TO postgres;
 
@@ -267,6 +271,7 @@ ALTER TABLE ONLY public.x_profil_tugasan ALTER COLUMN id SET DEFAULT nextval('pu
 -- ============================================================
 ALTER TABLE ONLY public.ejen ADD CONSTRAINT ejen_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY public.ejen ADD CONSTRAINT ejen_unique UNIQUE (ip_address);
+ALTER TABLE ONLY public.ejen ADD CONSTRAINT ejen_machine_id_key UNIQUE (machine_id);
 ALTER TABLE ONLY public.hasil_imbasan ADD CONSTRAINT hasil_imbasan_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY public.jenis_tugasan ADD CONSTRAINT jenis_tugasan_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY public.organisasi ADD CONSTRAINT organisasi_kod_key UNIQUE (kod);
@@ -287,21 +292,19 @@ ALTER TABLE ONLY public.users ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY public.users ADD CONSTRAINT users_username_key UNIQUE (username);
 ALTER TABLE ONLY public.x_profil_tugasan ADD CONSTRAINT x_profil_tugasan_pkey PRIMARY KEY (id);
 
--- ============================================================
--- INDEXES
--- ============================================================
-CREATE INDEX ix_organisasi_id ON public.organisasi USING btree (id);
-CREATE INDEX ix_pelanggan_id ON public.pelanggan USING btree (id);
-CREATE INDEX ix_profil_id ON public.profil USING btree (id);
-CREATE INDEX ix_sub_organisasi_id ON public.sub_organisasi USING btree (id);
-CREATE INDEX ix_tapak_id ON public.tapak USING btree (id);
-CREATE INDEX ix_tugasan_id ON public.tugasan USING btree (id);
 
 -- ============================================================
 -- FOREIGN KEY CONSTRAINTS
 -- ============================================================
--- ALTER TABLE ONLY public.ejen ADD CONSTRAINT ejen_tapak_fk FOREIGN KEY (tapak_id) REFERENCES public.tapak(id);
--- ALTER TABLE ONLY public.ejen ADD CONSTRAINT ejen_tugasan_id_fkey FOREIGN KEY (tugasan_id) REFERENCES public.tugasan(id);
+ALTER TABLE ONLY public.ejen
+ADD CONSTRAINT ejen_tapak_fk
+FOREIGN KEY (tapak_id)
+REFERENCES public.tapak(id);
+
+ALTER TABLE ONLY public.ejen
+ADD CONSTRAINT ejen_profile_fk
+FOREIGN KEY (profile_id)
+REFERENCES public.profil(id);
 ALTER TABLE ONLY public.hasil_imbasan ADD CONSTRAINT fk_hasil_ejen FOREIGN KEY (ejen_id) REFERENCES public.ejen(id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY public.tugasan ADD CONSTRAINT fk_jenis FOREIGN KEY (jenis_id) REFERENCES public.jenis_tugasan(id);
@@ -310,7 +313,10 @@ ALTER TABLE ONLY public.organisasi ADD CONSTRAINT organisasi_pelanggan_id_fkey F
 ALTER TABLE ONLY public.profil ADD CONSTRAINT profil_tapak_id_fkey FOREIGN KEY (tapak_id) REFERENCES public.tapak(id) ON DELETE CASCADE;
 ALTER TABLE ONLY public.sub_organisasi ADD CONSTRAINT sub_organisasi_organisasi_id_fkey FOREIGN KEY (organisasi_id) REFERENCES public.organisasi(id) ON DELETE CASCADE;
 ALTER TABLE ONLY public.tapak ADD CONSTRAINT tapak_sub_organisasi_id_fkey FOREIGN KEY (sub_organisasi_id) REFERENCES public.sub_organisasi(id) ON DELETE CASCADE;
--- ALTER TABLE ONLY public.users ADD CONSTRAINT users_pelanggan_id_fkey FOREIGN KEY (pelanggan_id) REFERENCES public.pelanggan(id);
+ALTER TABLE ONLY public.users
+ADD CONSTRAINT users_pelanggan_id_fkey
+FOREIGN KEY (pelanggan_id)
+REFERENCES public.pelanggan(id);
 
 -- ============================================================
 -- INSERT SEED DATA
@@ -348,6 +354,48 @@ INSERT INTO public.users (id, pelanggan_id, username, nama, role, force_password
 -- COPY public.users (id, username, password, role, created_at, pelanggan_id, nama, aktif, force_password_change, email, phone) FROM stdin;
 -- 4   superadmin  pbkdf2_sha256$600000$Dzqc9LWxdElFmncYx6tW9A==$YEhBxFEcCgWA9WGYtUEAxFTJz/zHm71cvzM3h6Jx/2o=  super admin 2026-05-10 10:43:34.926637  1   Super Admin t   f   \N  \N
 -- \.
+
+INSERT INTO public.jenis_tugasan (id, nama)
+VALUES
+(1,'BIN_USED'),
+(2,'BIN_DISK'),
+(3,'LIBRARIES'),
+(4,'CERT_KEYS'),
+(5,'EXEC_SCRIPT'),
+(6,'KERNEL_MODULES'),
+(7,'NETWORK_PROTOCOL'),
+(8,'NETWORK_APP'),
+(9,'WEB_APP');
+
+INSERT INTO public.tugasan
+(
+    id,
+    nama,
+    kod,
+    protocol,
+    ip_start,
+    ip_end,
+    keterangan,
+    aktif,
+    jenis_id
+)
+VALUES
+(1,'Binaries Used','BIN_USED',NULL,NULL,NULL,'Detect binaries used',true,1),
+(2,'Binaries on Disk','BIN_DISK',NULL,NULL,NULL,'Detect binaries on disk',true,2),
+(3,'Libraries','LIBRARIES',NULL,NULL,NULL,'Detect libraries',true,3),
+(4,'Certificates','CERT_KEYS',NULL,NULL,NULL,'Detect certificates',true,4),
+(5,'Executable Scripts','EXEC_SCRIPT',NULL,NULL,NULL,'Detect executable scripts',true,5),
+(6,'Kernel Modules','KERNEL_MODULES',NULL,NULL,NULL,'Detect kernel modules',true,6),
+(7,'Network Protocols','NETWORK_PROTOCOL',NULL,NULL,NULL,'Detect network protocols',true,7),
+(8,'Network Applications','NETWORK_APP',NULL,NULL,NULL,'Detect network applications',true,8),
+(9,'Web Applications','WEB_APP',NULL,NULL,NULL,'Detect web applications',true,9); 
+
+INSERT INTO public.status (id, kod_status)
+VALUES
+(1,'in process'),
+(2,'telah dijadualkan'),
+(3,'selesai'),
+(4,'gagal');
 
 -- ============================================================
 -- BLOCKCHAIN HASH FUNCTION FOR hasil_imbasan
@@ -398,18 +446,8 @@ EXECUTE FUNCTION set_hasil_imbasan_hash();
 -- We need to first insert the parent records (ejen and x_profil_tugasan)
 -- since they have foreign key constraints
 
--- Insert sample ejen (needed for foreign key)
-INSERT INTO public.ejen (id, ip_address, tapak_id, tugasan_id) 
-VALUES (1, '127.0.0.1', 1, 1);
 
--- Insert sample x_profil_tugasan (needed for foreign key)
-INSERT INTO public.x_profil_tugasan (id, profil_id, tugasan_id) 
-VALUES (1, 1, 1);
 
--- Now insert the genesis record for hasil_imbasan with explicit NULL prev_hash and row_hash
--- The trigger will automatically compute the hash
-INSERT INTO public.hasil_imbasan (id, profil_tugasan_id, ejen_id,machine_id, hasil, prev_hash, row_hash) 
-VALUES (1, 1, 1, '00000000-0000-0000-0000-000000000000', '{"key": "value", "status": "success"}', NULL, NULL);
 
 -- ============================================================
 -- FINALIZE FOREIGN KEY CONSTRAINTS (ensure they are enabled)
@@ -417,8 +455,18 @@ VALUES (1, 1, 1, '00000000-0000-0000-0000-000000000000', '{"key": "value", "stat
 -- Note: Foreign keys were added earlier, but we need to verify the genesis record inserted properly
 
 ALTER TABLE ONLY public.hasil_imbasan ADD CONSTRAINT fk_hasil_profil_tugasan FOREIGN KEY (profil_tugasan_id) REFERENCES public.x_profil_tugasan(id) ON DELETE CASCADE;
--- ALTER TABLE ONLY public.x_profil_tugasan ADD CONSTRAINT x_profil_tugasan_profil_id_fkey FOREIGN KEY (profil_id) REFERENCES public.profil(id) ON DELETE CASCADE;
--- ALTER TABLE ONLY public.x_profil_tugasan ADD CONSTRAINT x_profil_tugasan_tugasan_id_fkey FOREIGN KEY (tugasan_id) REFERENCES public.tugasan(id) ON DELETE CASCADE;
+
+ALTER TABLE ONLY public.x_profil_tugasan
+ADD CONSTRAINT x_profil_tugasan_profil_id_fkey
+FOREIGN KEY (profil_id)
+REFERENCES public.profil(id)
+ON DELETE CASCADE;
+
+ALTER TABLE ONLY public.x_profil_tugasan
+ADD CONSTRAINT x_profil_tugasan_tugasan_id_fkey
+FOREIGN KEY (tugasan_id)
+REFERENCES public.tugasan(id)
+ON DELETE CASCADE;
 
 -- ============================================================
 -- VERIFICATION QUERY (optional - comment out if not needed)

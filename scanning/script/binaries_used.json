@@ -2,8 +2,8 @@
     "scan": {
         "scanner": "AGCT Scanner",
         "version": "1.0",
-        "timestamp": "2026-07-29T13:36:39.842863+00:00",
-        "hostname": "integrationServer",
+        "timestamp": "2026-08-04T00:14:02.426226+00:00",
+        "hostname": "back-end-VirtualBox",
         "platform": "Linux"
     },
     "binaries": [
