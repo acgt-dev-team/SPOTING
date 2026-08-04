@@ -6,7 +6,7 @@ from app.database.session import SessionLocal
 from app.models.profil import Profil
 from app.models.x_profil_tugasan import XProfilTugasan
 from app.services.tugasan_service import execute_scan
-
+from app.services.agent_status_service import update_agent_status
 
 scheduler = BackgroundScheduler()
 
@@ -57,13 +57,32 @@ def run_single_profile(profile_id: int):
     finally:
         db.close()
 
+def monitor_agents():
+    db = SessionLocal()
 
+    try:
+        update_agent_status(db)
+
+    except Exception as e:
+        print(f"Agent monitor error: {e}")
+
+    finally:
+        db.close()
+        
 # ==========================================
 # Load scheduled jobs
 # ==========================================
 def load_profile_jobs():
     db: Session = SessionLocal()
+    scheduler.add_job(
+        monitor_agents,
+        trigger="interval",
+        seconds=30,
+        id="agent_monitor",
+        replace_existing=True,
+    )
 
+    print("Agent monitor started.")
     try:
         profiles = db.query(Profil).filter(
             Profil.execution_type == "SCHEDULED",

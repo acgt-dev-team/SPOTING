@@ -13,6 +13,9 @@ from app.services.agent_service import get_tasks_for_agent
 from app.schemas.agent_task import AgentTask
 
 from app.services.ejen_service import register_ejen
+
+from app.services.heartbeat_service import heartbeat
+
 from app.i18n import t
 
 router = APIRouter(
@@ -30,9 +33,12 @@ def register(
     db: Session = Depends(get_db)
 ):
     return register_ejen(
-        db,
-        request.ip_address,
-        request.tapak_id
+        db=db,
+        ip_address=request.ip_address,
+        tapak_id=request.tapak_id,
+        machine_id=request.machine_id,
+        hostname=request.hostname,
+        profile_id=request.profile_id
     )
 
 @router.get(
@@ -43,6 +49,11 @@ def get_tasks(
     ejen_id: int,
     db: Session = Depends(get_db)
 ):
+    heartbeat(
+        db=db,
+        ejen_id=ejen_id
+    )
+
     return get_tasks_for_agent(
         db,
         ejen_id

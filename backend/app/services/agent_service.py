@@ -4,7 +4,7 @@ from app.models.ejen import Ejen
 from app.models.profil import Profil
 from app.models.x_profil_tugasan import XProfilTugasan
 from app.models.tugasan import Tugasan
-
+from datetime import datetime
 
 def get_tasks_for_agent(
     db: Session,
@@ -17,10 +17,15 @@ def get_tasks_for_agent(
     if not ejen:
         return []
 
+    # Heartbeat
+    ejen.last_seen = datetime.now()
+    ejen.status = "Running"
+    db.commit()
+
     profiles = db.query(Profil).filter(
-    Profil.tapak_id == ejen.tapak_id,
-    Profil.execution_status == "in process"
-).all()
+        Profil.tapak_id == ejen.tapak_id,
+        Profil.execution_status == "in process"
+    ).all()
 
     results = []
 
