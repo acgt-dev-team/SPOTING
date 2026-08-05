@@ -1,57 +1,106 @@
+from datetime import datetime
+
 from sqlalchemy.orm import Session
 
 from app.models.ejen import Ejen
-from app.models.profil import Profil
-from app.models.x_profil_tugasan import XProfilTugasan
-from app.models.tugasan import Tugasan
-from datetime import datetime
+from app.models.x_profil_ejen import XProfilEjen
+from app.models.x_profil_tugasan_ejen import XProfilTugasanEjen
+
 
 def get_tasks_for_agent(
     db: Session,
     ejen_id: int
 ):
-    ejen = db.query(Ejen).filter(
-        Ejen.id == ejen_id
-    ).first()
+    ejen = (
+        db.query(Ejen)
+        .filter(Ejen.id == ejen_id)
+        .first()
+    )
 
     if not ejen:
         return []
 
+    # ------------------------------------------
     # Heartbeat
+    # ------------------------------------------
     ejen.last_seen = datetime.now()
     ejen.status = "Running"
     db.commit()
 
-    profiles = db.query(Profil).filter(
-        Profil.tapak_id == ejen.tapak_id,
-        Profil.execution_status == "in process"
-    ).all()
+    # ------------------------------------------
+    # Profiles assigned to this agent
+    # ------------------------------------------
+    assignments = (
+        db.query(XProfilEjen)
+        .filter(
+            XProfilEjen.ejen_id == ejen.id,
+            XProfilEjen.status.in_(["Pending", "Running"])
+        )
+        .all()
+    )
 
     results = []
 
-    for profile in profiles:
+    for assignment in assignments:
 
-        assignments = (
-            db.query(XProfilTugasan)
+        profile = assignment.profile
+
+        # ------------------------------------------
+        # Agent starts this profile
+        # ------------------------------------------
+        if assignment.status == "Pending":
+
+            assignment.status = "Running"
+
+            if assignment.started_at is None:
+                assignment.started_at = datetime.now()
+
+            db.commit()
+
+        # ------------------------------------------
+        # Ignore inactive profiles
+        # ------------------------------------------
+        if profile.execution_status != "in process":
+            continue
+
+        # ------------------------------------------
+        # Pending tasks for THIS profile and THIS agent
+        # ------------------------------------------
+        agent_tasks = (
+            db.query(XProfilTugasanEjen)
+            .join(XProfilTugasanEjen.task_assignment)
             .filter(
-                XProfilTugasan.profil_id == profile.id,
-                XProfilTugasan.status_id == 1
+                XProfilTugasanEjen.ejen_id == ejen.id,
+                XProfilTugasanEjen.status == "Pending",
+                XProfilTugasanEjen.task_assignment.has(
+                    profil_id=profile.id
+                )
             )
             .all()
         )
 
-        for assignment in assignments:
+        for task_assignment in agent_tasks:
 
-            task = db.query(Tugasan).filter(
-                Tugasan.id == assignment.tugasan_id
-            ).first()
+            # ------------------------------------------
+            # Mark task as Running
+            # ------------------------------------------
+            task_assignment.status = "Running"
+
+            if task_assignment.started_at is None:
+                task_assignment.started_at = datetime.now()
+
+            db.commit()
+
+            profil_task = task_assignment.task_assignment
+            task = profil_task.tugasan
 
             if not task:
                 continue
 
             results.append({
 
-                "profil_tugasan_id": assignment.id,
+                # keep this for Phase 4.5
+                "profil_tugasan_ejen_id": task_assignment.id,
 
                 "profil_id": profile.id,
                 "profil_nama": profile.nama,

@@ -46,14 +46,14 @@ class APIClient:
 
     def submit_scan_result(
         self,
-        profil_tugasan_id,
+        profil_tugasan_ejen_id,
         agent_id,
         machine_id,
         hasil
     ):
 
         payload = {
-            "profil_tugasan_id": profil_tugasan_id,
+            "profil_tugasan_ejen_id": profil_tugasan_ejen_id,
             "ejen_id": agent_id,
             "machine_id": machine_id,
             "hasil": hasil

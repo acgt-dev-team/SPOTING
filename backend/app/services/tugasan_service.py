@@ -9,6 +9,15 @@ import json
 
 from sqlalchemy import text
 from fastapi import HTTPException
+from app.services.profile_task_agent_service import (
+    create_task_agent_assignments
+)
+from app.models.x_profil_ejen import XProfilEjen
+
+from app.services.profile_agent_service import (
+    assign_agents_to_profile
+)
+
 
 
 # ==========================================
@@ -38,10 +47,6 @@ def get_tugasan_by_profil(db: Session, profil_id: int):
 
     return response
 
-
-# ==========================================
-# ASSIGN TASK TO PROFILE
-# ==========================================
 # ==========================================
 # ASSIGN TASK TO PROFILE
 # ==========================================
@@ -50,39 +55,48 @@ def assign_tugasan_to_profil(
     profil_id: int,
     tugasan_id: int
 ):
-    existing = db.query(XProfilTugasan).filter_by(
-        profil_id=profil_id,
-        tugasan_id=tugasan_id
-    ).first()
+    existing = (
+        db.query(XProfilTugasan)
+        .filter_by(
+            profil_id=profil_id,
+            tugasan_id=tugasan_id
+        )
+        .first()
+    )
 
     if existing:
         return {
             "message": t("task.alreadyAssigned")
         }
 
-    # Default status = PENDING
-    pending_status_id = 1
-
+    # ------------------------------------------
+    # Create profile task
+    # ------------------------------------------
     new_item = XProfilTugasan(
         profil_id=profil_id,
         tugasan_id=tugasan_id,
-        status_id=pending_status_id
+        status_id=1
     )
 
     db.add(new_item)
-
-    # Save the new assignment first
     db.commit()
     db.refresh(new_item)
+
 
     print("\n========== ASSIGN TASK ==========")
     print(f"Profile ID : {profil_id}")
     print(f"Task ID    : {tugasan_id}")
 
-    # Get the profile
-    profile = db.query(Profil).filter(
-        Profil.id == profil_id
-    ).first()
+    # ------------------------------------------
+    # Load profile
+    # ------------------------------------------
+    profile = (
+        db.query(Profil)
+        .filter(
+            Profil.id == profil_id
+        )
+        .first()
+    )
 
     if not profile:
         print("Profile not found!")
@@ -93,15 +107,68 @@ def assign_tugasan_to_profil(
     print("Execution Type :", profile.execution_type)
     print("Status BEFORE  :", profile.execution_status)
 
-    # Update profile status
-    if profile.execution_type == "IMMEDIATE":
+    # ------------------------------------------
+    # Re-open completed profile
+    # ------------------------------------------
+    if profile.execution_status == "execution completed":
+
         profile.execution_status = "in process"
 
+        profile_agents = (
+            db.query(XProfilEjen)
+            .filter(
+                XProfilEjen.profil_id == profile.id
+            )
+            .all()
+        )
+
+        for agent in profile_agents:
+
+            agent.status = "Pending"
+            agent.started_at = None
+            agent.completed_at = None
+
+        db.commit()
+        db.refresh(profile)
+
+    # ------------------------------------------
+    # Immediate profile
+    # ------------------------------------------
+    elif profile.execution_type == "IMMEDIATE":
+
+        first_start = (
+            profile.execution_status == "belum dimulakan"
+        )
+
+        profile.execution_status = "in process"
+
+        db.commit()
+        db.refresh(profile)
+
+        if first_start:
+
+            assign_agents_to_profile(
+                db=db,
+                profile_id=profile.id
+            )
+
+    # ------------------------------------------
+    # Scheduled profile
+    # ------------------------------------------
     elif profile.execution_type == "SCHEDULED":
+
         profile.execution_status = "telah dijadualkan"
 
     db.commit()
     db.refresh(profile)
+    
+    # ------------------------------------------
+    # Ensure Task-Agent rows exist
+    # ------------------------------------------
+    create_task_agent_assignments(
+        db=db,
+        profil_tugasan_id=new_item.id
+    )
 
     print("Status AFTER   :", profile.execution_status)
     print("=================================\n")
@@ -110,7 +177,6 @@ def assign_tugasan_to_profil(
         "message": t("task.assigned"),
         "profil_tugasan_id": new_item.id
     }
-
 
 
 # ==========================================

@@ -7,6 +7,8 @@ from app.models.profil import Profil
 from app.models.x_profil_tugasan import XProfilTugasan
 from app.services.tugasan_service import execute_scan
 from app.services.agent_status_service import update_agent_status
+from app.services.profile_agent_service import assign_agents_to_profile
+
 
 scheduler = BackgroundScheduler()
 
@@ -32,6 +34,11 @@ def run_single_profile(profile_id: int):
         profile.execution_status = "in process"
         db.commit()
 
+        assign_agents_to_profile(
+            db=db,
+            profile_id=profile.id
+        )
+
         tasks = db.query(
             XProfilTugasan
         ).filter(
@@ -42,8 +49,6 @@ def run_single_profile(profile_id: int):
             print("No tasks found")
             return
 
-        profile.execution_status = "in process"
-        db.commit()
 
         print("Released profile to agent.")
 

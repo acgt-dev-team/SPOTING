@@ -52,3 +52,9 @@ class Profil(Base):
         back_populates="profile",
         cascade="all, delete"
     )
+    
+    profile_agents = relationship(
+        "XProfilEjen",
+        back_populates="profile",
+        cascade="all, delete-orphan"
+    )

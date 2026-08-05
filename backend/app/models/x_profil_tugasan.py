@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, ForeignKey, TIMESTAMP, UniqueConstraint
 from sqlalchemy.orm import relationship
 from app.database.session import Base
-
+from app.models.x_profil_tugasan_ejen import XProfilTugasanEjen
 
 class XProfilTugasan(Base):
     __tablename__ = "x_profil_tugasan"
@@ -55,4 +55,10 @@ class XProfilTugasan(Base):
             "tugasan_id",
             name="unique_profil_tugasan"
         ),
+    )
+    
+    agent_tasks = relationship(
+        "XProfilTugasanEjen",
+        back_populates="task_assignment",
+        cascade="all, delete-orphan"
     )

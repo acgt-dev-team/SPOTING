@@ -1,16 +1,18 @@
 from enum import Enum
+from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy.orm import Session
 from fastapi.responses import FileResponse
+from sqlalchemy.orm import Session
 
 from app.database.session import get_db
-from app.services.report_service import generate_report
 from app.i18n import t
+from app.services.report_service import generate_report
+
 
 router = APIRouter(
     prefix="/report",
-    tags=[t("docs.tags.report")]
+    tags=[t("docs.tags.report")],
 )
 
 
@@ -26,16 +28,51 @@ def generate(
         default=ReportFormat.default,
         alias="format",
     ),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
+    """
+    Generate and download a report for a profile.
+    """
 
-    result = generate_report(db, profil_id, report_format.value)
+    try:
+        result = generate_report(
+            db=db,
+            profil_id=profil_id,
+            report_format=report_format.value,
+        )
 
+    except Exception as exc:
+        # Optional: log the exception here
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to generate report: {str(exc)}",
+        )
+
+    #
+    # Report service returned an error
+    #
     if "file" not in result:
-        raise HTTPException(status_code=404, detail=result["message"])
+        raise HTTPException(
+            status_code=404,
+            detail=result.get(
+                "message",
+                t("report.noResults"),
+            ),
+        )
+
+    report_path = Path(result["file"])
+
+    #
+    # Safety check
+    #
+    if not report_path.exists():
+        raise HTTPException(
+            status_code=500,
+            detail="Generated report file not found.",
+        )
 
     return FileResponse(
-        path=result["file"],
-        filename=result["file"].split("/")[-1],
-        media_type=result["media_type"]
+        path=str(report_path),
+        filename=report_path.name,
+        media_type=result["media_type"],
     )

@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 class AgentTask(BaseModel):
-    profil_tugasan_id: int
+    profil_tugasan_ejen_id: int
 
     profil_id: int
     profil_nama: str

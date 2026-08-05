@@ -115,7 +115,7 @@ def main():
                     print("Uploading results...")
 
                     client.submit_scan_result(
-                        profil_tugasan_id=task["profil_tugasan_id"],
+                        profil_tugasan_ejen_id=task["profil_tugasan_ejen_id"],
                         agent_id=agent_id,
                         machine_id=machine_id,
                         hasil=result

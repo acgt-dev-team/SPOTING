@@ -5,7 +5,7 @@ from typing import Any
 
 
 class HasilImbasanCreate(BaseModel):
-    profil_tugasan_id: int
+    profil_tugasan_ejen_id: int
     ejen_id: int
     machine_id: UUID
     hasil: Any

@@ -32,14 +32,14 @@ def save_scan_result(
         request
     )
 
-@router.post("/hasil/gagal/{profil_tugasan_id}")
+@router.post("/hasil/gagal/{profil_tugasan_ejen_id}")
 def mark_failed(
-    profil_tugasan_id: int,
+    profil_tugasan_ejen_id: int,
     db: Session = Depends(get_db)
 ):
     from app.services.hasil_imbasan_service import mark_task_failed
 
     return mark_task_failed(
         db,
-        profil_tugasan_id
+        profil_tugasan_ejen_id
     )

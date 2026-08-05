@@ -75,3 +75,16 @@ class Ejen(Base):
         back_populates="ejen",
         cascade="all, delete"
     )
+    
+    
+    profile_assignments = relationship(
+        "XProfilEjen",
+        back_populates="agent",
+        cascade="all, delete-orphan"
+    )
+    
+    task_assignments = relationship(
+        "XProfilTugasanEjen",
+        back_populates="agent",
+        cascade="all, delete-orphan"
+    )

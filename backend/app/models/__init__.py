@@ -10,3 +10,4 @@ from .status import Status
 from .x_profil_tugasan import XProfilTugasan
 from .ejen import Ejen
 from .hasil_imbasan import HasilImbasan
+from app.models.x_profil_ejen import XProfilEjen
