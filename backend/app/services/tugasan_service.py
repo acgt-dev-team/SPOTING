@@ -108,33 +108,35 @@ def assign_tugasan_to_profil(
     print("Status BEFORE  :", profile.execution_status)
 
     # ------------------------------------------
-    # Re-open completed profile
+    # New task means all assigned agents
+    # should check this profile again
     # ------------------------------------------
-    if profile.execution_status == "execution completed":
+    profile.execution_status = "in process"
 
-        profile.execution_status = "in process"
-
-        profile_agents = (
-            db.query(XProfilEjen)
-            .filter(
-                XProfilEjen.profil_id == profile.id
-            )
-            .all()
+    profile_agents = (
+        db.query(XProfilEjen)
+        .filter(
+            XProfilEjen.profil_id == profile.id
         )
+        .all()
+    )
 
-        for agent in profile_agents:
+    for agent in profile_agents:
+
+        # Only reopen completed agents
+        if agent.status == "Completed":
 
             agent.status = "Pending"
             agent.started_at = None
             agent.completed_at = None
 
-        db.commit()
-        db.refresh(profile)
+    db.commit()
+    db.refresh(profile)
 
     # ------------------------------------------
     # Immediate profile
     # ------------------------------------------
-    elif profile.execution_type == "IMMEDIATE":
+    if profile.execution_type == "IMMEDIATE":
 
         first_start = (
             profile.execution_status == "belum dimulakan"

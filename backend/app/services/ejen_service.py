@@ -5,7 +5,9 @@ from sqlalchemy.orm import Session
 
 from app.models.ejen import Ejen
 from app.models.profil import Profil
-
+from app.services.profile_agent_service import (
+    assign_agents_to_profile
+)
 
 def register_ejen(
     db: Session,
@@ -86,5 +88,23 @@ def register_ejen(
     db.add(ejen)
     db.commit()
     db.refresh(ejen)
+
+    # ----------------------------------------------------
+    # Join every profile currently in process
+    # ----------------------------------------------------
+    running_profiles = (
+        db.query(Profil)
+        .filter(
+            Profil.execution_status == "in process"
+        )
+        .all()
+    )
+
+    for profile in running_profiles:
+
+        assign_agents_to_profile(
+            db=db,
+            profile_id=profile.id
+        )
 
     return ejen
