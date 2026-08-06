@@ -132,27 +132,24 @@ def assign_tugasan_to_profil(
 
     db.commit()
     db.refresh(profile)
-
+    
     # ------------------------------------------
     # Immediate profile
     # ------------------------------------------
     if profile.execution_type == "IMMEDIATE":
-
-        first_start = (
-            profile.execution_status == "belum dimulakan"
-        )
 
         profile.execution_status = "in process"
 
         db.commit()
         db.refresh(profile)
 
-        if first_start:
+        # Always ensure profile-agent assignments exist.
+        # Safe because assign_agents_to_profile() is idempotent.
+        assign_agents_to_profile(
+            db=db,
+            profile_id=profile.id
+        )
 
-            assign_agents_to_profile(
-                db=db,
-                profile_id=profile.id
-            )
 
     # ------------------------------------------
     # Scheduled profile
@@ -169,7 +166,7 @@ def assign_tugasan_to_profil(
     # ------------------------------------------
     create_task_agent_assignments(
         db=db,
-        profil_tugasan_id=new_item.id
+        profil_id=profil_id
     )
 
     print("Status AFTER   :", profile.execution_status)

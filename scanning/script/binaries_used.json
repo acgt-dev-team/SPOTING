@@ -2,4134 +2,695 @@
     "scan": {
         "scanner": "AGCT Scanner",
         "version": "1.0",
-        "timestamp": "2026-08-05T11:23:20.663427+00:00",
+        "timestamp": "2026-08-06T07:54:12.426357+00:00",
         "hostname": "back-end-VirtualBox",
         "platform": "Linux"
     },
     "binaries": [
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/botocore/auth.py",
-            "filename": "auth.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
+            "path": "/usr/bin/dbus-daemon",
+            "filename": "dbus-daemon",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/bin/gnome-keyring-daemon",
+            "filename": "gnome-keyring-daemon",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "medium",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
             "detections": [
                 {
-                    "algorithm": "HMAC",
-                    "primitive": "MAC",
+                    "algorithm": "AES",
+                    "primitive": "block-cipher",
                     "parameters": {
-                        "keyLength": "unknown"
+                        "keyLength": 128,
+                        "mode": "ECB"
                     },
-                    "function_pattern": "hmac\\.new",
+                    "confidence": "medium",
                     "detection_source": [
-                        "script-pattern"
+                        "crypto-library",
+                        "string"
                     ],
-                    "confidence": "high"
+                    "apis": []
                 },
                 {
-                    "algorithm": "HMAC",
-                    "primitive": "MAC",
+                    "algorithm": "DES",
+                    "primitive": "block-cipher",
                     "parameters": {
-                        "keyLength": "unknown"
+                        "keyLength": 56
                     },
-                    "function_pattern": "hmac\\.new",
+                    "confidence": "medium",
                     "detection_source": [
-                        "script-pattern"
+                        "crypto-library",
+                        "string"
                     ],
-                    "confidence": "high"
+                    "deprecated": true,
+                    "apis": []
                 },
                 {
-                    "algorithm": "HMAC",
-                    "primitive": "MAC",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "hmac\\.new",
+                    "algorithm": "CAST5",
+                    "primitive": "block-cipher",
+                    "parameters": {},
+                    "confidence": "medium",
                     "detection_source": [
-                        "script-pattern"
+                        "crypto-library"
                     ],
-                    "confidence": "high"
+                    "apis": []
                 },
                 {
-                    "algorithm": "HMAC",
-                    "primitive": "MAC",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "hmac\\.new",
+                    "algorithm": "RC2",
+                    "primitive": "block-cipher",
+                    "parameters": {},
+                    "confidence": "medium",
                     "detection_source": [
-                        "script-pattern"
+                        "crypto-library"
                     ],
-                    "confidence": "high"
+                    "apis": []
                 },
                 {
-                    "algorithm": "HMAC",
-                    "primitive": "MAC",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "hmac\\.new",
+                    "algorithm": "MD2",
+                    "primitive": "hash-function",
+                    "parameters": {},
+                    "confidence": "medium",
                     "detection_source": [
-                        "script-pattern"
+                        "crypto-library"
                     ],
-                    "confidence": "high"
+                    "apis": []
+                },
+                {
+                    "algorithm": "MD5",
+                    "primitive": "hash-function",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "deprecated": true,
+                    "apis": []
+                },
+                {
+                    "algorithm": "DSA",
+                    "primitive": "digital-signature",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "ECDSA",
+                    "primitive": "digital-signature",
+                    "parameters": {
+                        "curve": "P-256"
+                    },
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library",
+                        "string"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "PBKDF2",
+                    "primitive": "key-derivation",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "PBES2",
+                    "primitive": "key-derivation",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "SSH",
+                    "primitive": "ssh",
+                    "parameters": {
+                        "version": "2.0"
+                    },
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library",
+                        "string"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "IDEA",
+                    "primitive": "block-cipher",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "apis": []
+                },
+                {
+                    "algorithm": "SEED",
+                    "primitive": "block-cipher",
+                    "parameters": {},
+                    "confidence": "medium",
+                    "detection_source": [
+                        "crypto-library"
+                    ],
+                    "apis": []
                 }
             ]
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/botocore/utils.py",
-            "filename": "utils.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
+            "path": "/usr/bin/gnome-shell",
+            "filename": "gnome-shell",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "gnutls",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/bin/gnome-text-editor",
+            "filename": "gnome-text-editor",
+            "extension": "",
+            "language": "Python",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "bcrypt",
+                "gnutls",
+                "libcrypto",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/bin/nautilus",
+            "filename": "nautilus",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "medium",
+            "crypto_dependencies": [
+                "bcrypt",
+                "gnutls",
+                "libcrypto",
+                "libgcrypt",
+                "nettle"
+            ],
             "detections": [
                 {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
+                    "algorithm": "SSH",
+                    "primitive": "ssh",
                     "parameters": {
-                        "keyLength": "256"
+                        "version": "1.0"
                     },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
+                    "confidence": "medium",
                     "detection_source": [
-                        "script-pattern"
+                        "crypto-library",
+                        "string"
                     ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "1"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
+                    "apis": []
                 }
             ]
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/numpy/random/tests/test_generator_mt19937.py",
-            "filename": "test_generator_mt19937.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
+            "path": "/usr/bin/update-notifier",
+            "filename": "update-notifier",
+            "extension": "",
+            "language": "Python",
+            "overall_confidence": "medium",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
             "detections": [
                 {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
+                    "algorithm": "MD5",
+                    "primitive": "hash-function",
+                    "parameters": {},
+                    "confidence": "medium",
                     "detection_source": [
-                        "script-pattern"
+                        "crypto-library"
                     ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
+                    "deprecated": true,
+                    "apis": []
                 }
             ]
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/numpy/random/tests/test_random.py",
-            "filename": "test_random.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
+            "path": "/usr/libexec/at-spi-bus-launcher",
+            "filename": "at-spi-bus-launcher",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/at-spi2-registryd",
+            "filename": "at-spi2-registryd",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/evolution-addressbook-factory",
+            "filename": "evolution-addressbook-factory",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt",
+                "libnspr4",
+                "libnss3",
+                "libssl"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/evolution-calendar-factory",
+            "filename": "evolution-calendar-factory",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt",
+                "libnspr4",
+                "libnss3",
+                "libssl"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/evolution-data-server/evolution-alarm-notify",
+            "filename": "evolution-alarm-notify",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt",
+                "libnspr4",
+                "libnss3",
+                "libssl"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/evolution-source-registry",
+            "filename": "evolution-source-registry",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "medium",
+            "crypto_dependencies": [
+                "libgcrypt",
+                "libnspr4",
+                "libnss3",
+                "libssl"
+            ],
             "detections": [
                 {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
+                    "algorithm": "DES",
+                    "primitive": "block-cipher",
+                    "parameters": {},
+                    "confidence": "medium",
                     "detection_source": [
-                        "script-pattern"
+                        "crypto-library"
                     ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
+                    "deprecated": true,
+                    "apis": []
                 }
             ]
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/numpy/random/tests/test_randomstate.py",
-            "filename": "test_randomstate.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
+            "path": "/usr/libexec/gcr-ssh-agent",
+            "filename": "gcr-ssh-agent",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "medium",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
             "detections": [
                 {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
+                    "algorithm": "SSH",
+                    "primitive": "ssh",
                     "parameters": {
-                        "keyLength": "256"
+                        "version": "2.0"
                     },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
+                    "confidence": "medium",
                     "detection_source": [
-                        "script-pattern"
+                        "crypto-library",
+                        "string"
                     ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
+                    "apis": []
                 }
             ]
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/pip/_internal/cache.py",
-            "filename": "cache.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
+            "path": "/usr/libexec/gnome-session-binary",
+            "filename": "gnome-session-binary",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gnome-session-ctl",
+            "filename": "gnome-session-ctl",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gnome-shell-calendar-server",
+            "filename": "gnome-shell-calendar-server",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt",
+                "libnspr4",
+                "libnss3",
+                "libssl"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gnome-terminal-server",
+            "filename": "gnome-terminal-server",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "gnutls",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/goa-daemon",
+            "filename": "goa-daemon",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "bcrypt",
+                "gnutls",
+                "libcrypto",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/goa-identity-service",
+            "filename": "goa-identity-service",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-color",
+            "filename": "gsd-color",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-datetime",
+            "filename": "gsd-datetime",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-keyboard",
+            "filename": "gsd-keyboard",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-media-keys",
+            "filename": "gsd-media-keys",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-power",
+            "filename": "gsd-power",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-print-notifications",
+            "filename": "gsd-print-notifications",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "gnutls",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
+        },
+        {
+            "path": "/usr/libexec/gsd-printer",
+            "filename": "gsd-printer",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "medium",
+            "crypto_dependencies": [
+                "gnutls",
+                "libgcrypt",
+                "nettle"
+            ],
             "detections": [
                 {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
+                    "algorithm": "DES",
+                    "primitive": "block-cipher",
                     "parameters": {
-                        "keyLength": "224"
+                        "keyLength": 56
                     },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
+                    "confidence": "medium",
                     "detection_source": [
-                        "script-pattern"
+                        "crypto-library",
+                        "string"
                     ],
-                    "confidence": "high"
+                    "deprecated": true,
+                    "apis": []
                 }
             ]
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/pip/_internal/operations/build/build_tracker.py",
-            "filename": "build_tracker.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "224"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
+            "path": "/usr/libexec/gsd-sharing",
+            "filename": "gsd-sharing",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "gnutls",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/pip/_internal/operations/install/wheel.py",
-            "filename": "wheel.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
+            "path": "/usr/libexec/gsd-sound",
+            "filename": "gsd-sound",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/pip/_internal/self_outdated_check.py",
-            "filename": "self_outdated_check.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "224"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
+            "path": "/usr/libexec/gsd-wacom",
+            "filename": "gsd-wacom",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/pip/_internal/utils/misc.py",
-            "filename": "misc.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
+            "path": "/usr/libexec/gvfs-afc-volume-monitor",
+            "filename": "gvfs-afc-volume-monitor",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "bcrypt",
+                "libcrypto",
+                "libssl"
+            ],
+            "detections": []
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/caches/file_cache.py",
-            "filename": "file_cache.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "224"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
+            "path": "/usr/libexec/gvfs-udisks2-volume-monitor",
+            "filename": "gvfs-udisks2-volume-monitor",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/pip/_vendor/pygments/lexers/_mapping.py",
-            "filename": "_mapping.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
+            "path": "/usr/libexec/gvfsd",
+            "filename": "gvfsd",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/pip/_vendor/requests/auth.py",
-            "filename": "auth.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "1"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "512"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "1"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
+            "path": "/usr/libexec/gvfsd-recent",
+            "filename": "gvfsd-recent",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/pymysql/_auth.py",
-            "filename": "_auth.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "512"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "512"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "512"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
+            "path": "/usr/libexec/gvfsd-trash",
+            "filename": "gvfsd-trash",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/pymysql/connections.py",
-            "filename": "connections.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
+            "path": "/usr/libexec/ibus-extension-gtk3",
+            "filename": "ibus-extension-gtk3",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
         },
         {
-            "path": "/home/back-end/SPOTING/backend/venv/lib/python3.12/site-packages/requests/auth.py",
-            "filename": "auth.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "1"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "512"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "1"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
+            "path": "/usr/libexec/xdg-desktop-portal",
+            "filename": "xdg-desktop-portal",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
         },
         {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/cryptography/hazmat/_oid.py",
-            "filename": "_oid.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
+            "path": "/usr/libexec/xdg-desktop-portal-gnome",
+            "filename": "xdg-desktop-portal-gnome",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "bcrypt",
+                "gnutls",
+                "libcrypto",
+                "libgcrypt",
+                "nettle"
+            ],
+            "detections": []
         },
         {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/cryptography/hazmat/backends/openssl/backend.py",
-            "filename": "backend.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
+            "path": "/usr/libexec/xdg-desktop-portal-gtk",
+            "filename": "xdg-desktop-portal-gtk",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
         },
         {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/cryptography/hazmat/primitives/asymmetric/ec.py",
-            "filename": "ec.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/cryptography/hazmat/primitives/asymmetric/ed25519.py",
-            "filename": "ed25519.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/cryptography/hazmat/primitives/asymmetric/types.py",
-            "filename": "types.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/cryptography/hazmat/primitives/serialization/pkcs12.py",
-            "filename": "pkcs12.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/cryptography/hazmat/primitives/serialization/pkcs7.py",
-            "filename": "pkcs7.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/cryptography/hazmat/primitives/serialization/ssh.py",
-            "filename": "ssh.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/cryptography/x509/base.py",
-            "filename": "base.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/cryptography/x509/extensions.py",
-            "filename": "extensions.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "1"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/pip/_internal/cache.py",
-            "filename": "cache.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "224"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/pip/_internal/operations/build/build_tracker.py",
-            "filename": "build_tracker.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "224"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/pip/_internal/operations/install/wheel.py",
-            "filename": "wheel.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/pip/_internal/self_outdated_check.py",
-            "filename": "self_outdated_check.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "224"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/pip/_internal/utils/misc.py",
-            "filename": "misc.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/caches/file_cache.py",
-            "filename": "file_cache.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "224"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/pip/_vendor/pygments/lexers/_mapping.py",
-            "filename": "_mapping.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/pip/_vendor/requests/auth.py",
-            "filename": "auth.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "1"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "512"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "1"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/.venv/lib/python3.12/site-packages/requests/auth.py",
-            "filename": "auth.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "1"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "512"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "1"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/common/certificate_utils.py",
-            "filename": "certificate_utils.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "SHA",
-                    "primitive": "hash",
-                    "parameters": {
-                        "keyLength": "256"
-                    },
-                    "function_pattern": "hashlib\\.sha(1|224|256|384|512)",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/common/script_utils.py",
-            "filename": "script_utils.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "EllipticCurve",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "secp256r1",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
-        },
-        {
-            "path": "/home/back-end/SPOTING/scanning/script/tools/libsodium/libsodium_algorithm_mapping.py",
-            "filename": "libsodium_algorithm_mapping.py",
-            "extension": "py",
-            "language": "Unknown",
-            "overall_confidence": "none",
-            "crypto_dependencies": [],
-            "detections": [
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                },
-                {
-                    "algorithm": "ECC",
-                    "primitive": "public-key",
-                    "parameters": {
-                        "keyLength": "unknown"
-                    },
-                    "function_pattern": "ed25519",
-                    "detection_source": [
-                        "script-pattern"
-                    ],
-                    "confidence": "high"
-                }
-            ]
+            "path": "/usr/libexec/xdg-document-portal",
+            "filename": "xdg-document-portal",
+            "extension": "",
+            "language": "C",
+            "overall_confidence": "low",
+            "crypto_dependencies": [
+                "libgcrypt"
+            ],
+            "detections": []
         }
     ]
 }

@@ -23,12 +23,18 @@ def assign_agents_to_profile(
     Task-Agent assignments.
     """
 
-    agents = db.query(Ejen).all()
+    agents = (
+        db.query(Ejen)
+        .filter(
+            Ejen.profile_id == profile_id
+        )
+        .all()
+    )
 
     created = 0
-
+    
     for agent in agents:
-
+        
         exists = (
             db.query(XProfilEjen)
             .filter(

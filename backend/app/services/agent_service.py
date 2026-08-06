@@ -89,6 +89,19 @@ def get_tasks_for_agent(
             if task_assignment.started_at is None:
                 task_assignment.started_at = datetime.now()
 
+            # ------------------------------------------
+            # Mark Profile-Task as Running
+            # (only the first time)
+            # ------------------------------------------
+            profil_task = task_assignment.task_assignment
+
+            if profil_task.jadualkan_pada is None:
+                profil_task.jadualkan_pada = datetime.now()
+
+            # Status 2 = Running / In Process
+            if profil_task.status_id == 1:
+                profil_task.status_id = 2
+
             db.commit()
 
             profil_task = task_assignment.task_assignment

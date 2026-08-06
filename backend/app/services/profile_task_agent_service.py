@@ -7,61 +7,62 @@ from app.models.x_profil_tugasan_ejen import XProfilTugasanEjen
 
 def create_task_agent_assignments(
     db: Session,
-    profil_tugasan_id: int
+    profil_id: int
 ):
     """
-    Create Task-Agent assignments for one profile task.
+    Create Task-Agent assignments for every task
+    belonging to a profile.
 
-    Every assigned agent will receive this task.
+    Safe to call multiple times.
     """
 
-    profil_task = (
+    tasks = (
         db.query(XProfilTugasan)
         .filter(
-            XProfilTugasan.id == profil_tugasan_id
+            XProfilTugasan.profil_id == profil_id
         )
-        .first()
+        .all()
     )
 
-    if not profil_task:
+    if not tasks:
         return
 
     agents = (
         db.query(XProfilEjen)
         .filter(
-            XProfilEjen.profil_id == profil_task.profil_id
+            XProfilEjen.profil_id == profil_id
         )
         .all()
     )
 
     created = 0
 
-    for agent in agents:
+    for task in tasks:
 
-        exists = (
-            db.query(XProfilTugasanEjen)
-            .filter(
-                XProfilTugasanEjen.profil_tugasan_id == profil_task.id,
-                XProfilTugasanEjen.ejen_id == agent.ejen_id
+        for agent in agents:
+
+            exists = (
+                db.query(XProfilTugasanEjen)
+                .filter(
+                    XProfilTugasanEjen.profil_tugasan_id == task.id,
+                    XProfilTugasanEjen.ejen_id == agent.ejen_id
+                )
+                .first()
             )
-            .first()
-        )
 
-        if exists:
-            continue
+            if exists:
+                continue
 
-        db.add(
-            XProfilTugasanEjen(
-                profil_tugasan_id=profil_task.id,
-                ejen_id=agent.ejen_id,
-                status="Pending"
+            db.add(
+                XProfilTugasanEjen(
+                    profil_tugasan_id=task.id,
+                    ejen_id=agent.ejen_id,
+                    status="Pending"
+                )
             )
-        )
 
-        created += 1
+            created += 1
 
     db.commit()
 
-    print(
-        f"[Task-Agent] Created {created} task assignments."
-    )
+    print(f"[Task-Agent] Created {created} task assignments.")

@@ -53,6 +53,28 @@ def create_hasil_imbasan(
 
     db.commit()
     db.refresh(hasil)
+    
+    # ------------------------------------------
+    # Has EVERY agent completed THIS task?
+    # ------------------------------------------
+    remaining_task_agents = (
+        db.query(XProfilTugasanEjen)
+        .filter(
+            XProfilTugasanEjen.profil_tugasan_id == profil_task.id,
+            XProfilTugasanEjen.status != "Completed"
+        )
+        .count()
+    )
+
+    if remaining_task_agents == 0:
+
+        # Status 3 = Completed
+        profil_task.status_id = 3
+
+        profil_task.selesai_pada = datetime.now()
+
+    db.commit()
+    db.refresh(hasil)
 
     # ------------------------------------------
     # Has this agent completed every task
@@ -132,6 +154,7 @@ def create_hasil_imbasan(
             profile.execution_status = (
                 "execution completed"
             )
+            profile.kemaskini_pada = datetime.now()
 
     db.commit()
 
