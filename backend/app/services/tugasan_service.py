@@ -13,7 +13,7 @@ from app.services.profile_task_agent_service import (
     create_task_agent_assignments
 )
 from app.models.x_profil_ejen import XProfilEjen
-
+from app.models.x_profil_tugasan_ejen import XProfilTugasanEjen
 from app.services.profile_agent_service import (
     assign_agents_to_profile
 )
@@ -33,6 +33,24 @@ def get_tugasan_by_profil(db: Session, profil_id: int):
     response = []
 
     for item in results:
+    
+        agent_count = (
+            db.query(XProfilTugasanEjen)
+            .filter(
+                XProfilTugasanEjen.profil_tugasan_id == item.id
+            )
+            .count()
+        )
+
+        completed_agent_count = (
+            db.query(XProfilTugasanEjen)
+            .filter(
+                XProfilTugasanEjen.profil_tugasan_id == item.id,
+                XProfilTugasanEjen.status == "Completed"
+            )
+            .count()
+        )
+        
         response.append({
             "profil_tugasan_id": item.id,
             "id": item.tugasan.id,
@@ -42,7 +60,10 @@ def get_tugasan_by_profil(db: Session, profil_id: int):
             "protocol": item.tugasan.protocol,
             "ip_start": item.tugasan.ip_start,
             "ip_end": item.tugasan.ip_end,
-            "status": item.status_id
+            "status": item.status_id,
+
+            "agent_count": agent_count,
+            "completed_agent_count": completed_agent_count
         })
 
     return response

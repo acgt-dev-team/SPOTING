@@ -96,6 +96,12 @@ const tableColumns = [
   { key: "code", label: t("common.code"), width: "100px" },
   { key: "name", label: t("configuration.profile.name") },
   { key: "tasks", label: t("configuration.site.tasksTotal"), width: "140px", nowrap: true },
+  {
+    key: "agents",
+    label: "Bilangan Ejen",
+    width: "150px",
+    nowrap: true
+  },
   { key: "status", label: t("common.status"), width: "140px" },
   { key: "schedule", label: t("schedule.scheduleExecution"), width: "180px", nowrap: true },
   { key: "scheduledTime", label: t("schedule.scheduledTime"), width: "180px", nowrap: true },
@@ -766,7 +772,13 @@ onBeforeUnmount(() => {
                 </div>
               </td>
 
-              <td>{{ profile.tugasan_count }}</td>
+              <td>
+                {{ profile.completed_tugasan_count }}/{{ profile.tugasan_count }}
+              </td>
+              
+              <td>
+                {{ profile.completed_agent_count }}/{{ profile.agent_count }}
+              </td>
 
               <td>
                 <StatusPill :status="profile.execution_status" />

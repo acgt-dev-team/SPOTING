@@ -34,6 +34,13 @@ const tableColumns = [
   { key: "codeName", label: t("configuration.taskList.codeName") },
   { key: "protocol", label: t("configuration.taskList.protocol"), width: "100px" },
   { key: "ipRange", label: t("configuration.taskList.ipRange"), width: "180px" },
+
+  {
+    key: "agents",
+    label: "Bilangan Ejen",
+    width: "120px"
+  },
+
   { key: "status", label: t("common.status"), width: "160px" }
 ]
 
@@ -334,6 +341,10 @@ onMounted(() => {
                   <span class="ip-sep">→</span>
                   <span>{{ task.ip_end || t("common.emptyValue") }}</span>
                 </div>
+              </td>
+              
+              <td>
+                {{ task.completed_agent_count }}/{{ task.agent_count }}
               </td>
 
               <td>

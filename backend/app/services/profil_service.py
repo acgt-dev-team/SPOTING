@@ -3,6 +3,7 @@ from app.models.profil import Profil
 import re
 from sqlalchemy import func
 from app.models.x_profil_tugasan import XProfilTugasan
+from app.models.x_profil_ejen import XProfilEjen
 
 # =========================
 # GET
@@ -29,22 +30,57 @@ def get_profil_by_tapak(db: Session, tapak_id: int):
     response = []
 
     for profil, tugasan_count in profils:
+    
+        agent_count = (
+            db.query(XProfilEjen)
+            .filter(
+                XProfilEjen.profil_id == profil.id
+            )
+            .count()
+        )
+        
+        completed_agent_count = (
+            db.query(XProfilEjen)
+            .filter(
+                XProfilEjen.profil_id == profil.id,
+                XProfilEjen.status == "Completed"
+            )
+            .count()
+        )
+        
+        completed_tugasan_count = (
+            db.query(XProfilTugasan)
+            .filter(
+                XProfilTugasan.profil_id == profil.id,
+                XProfilTugasan.status_id == 3
+            )
+            .count()
+        )
 
         response.append({
+
             "id": profil.id,
             "tapak_id": profil.tapak_id,
             "nama": profil.nama,
             "keterangan": profil.keterangan,
             "kod": profil.kod,
             "aktif": bool(profil.aktif) if profil.aktif is not None else False,
+
             "execution_type": profil.execution_type,
             "scheduled_at": profil.scheduled_at,
             "is_scheduled": profil.is_scheduled,
+
             "cron_enabled": profil.cron_enabled,
             "frequency": profil.frequency,
             "cron_expression": profil.cron_expression,
+
             "tugasan_count": tugasan_count,
-            "execution_status": profil.execution_status   # ✅ source of truth
+            "completed_tugasan_count": completed_tugasan_count,
+
+            "agent_count": agent_count,
+            "completed_agent_count": completed_agent_count,
+
+            "execution_status": profil.execution_status
         })
 
     return response

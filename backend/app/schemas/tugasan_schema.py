@@ -30,12 +30,17 @@ class TugasanResponse(BaseModel):
     keterangan: Optional[str]
     jenis_id: int
 
-    # ✅ ADD THESE (important for frontend display)
     protocol: Optional[str]
     ip_start: Optional[str]
     ip_end: Optional[str]
 
     aktif: bool
+
+    # New fields
+    status: int
+
+    agent_count: int = 0
+    completed_agent_count: int = 0
 
     class Config:
         from_attributes = True

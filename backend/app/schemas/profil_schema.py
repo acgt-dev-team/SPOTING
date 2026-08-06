@@ -40,6 +40,10 @@ class ProfilResponse(BaseModel):
     report_format: str | None = "EXCEL"
 
     tugasan_count: int = 0
+    completed_tugasan_count: int = 0
+
+    agent_count: int = 0
+    completed_agent_count: int = 0
 
     class Config:
         from_attributes = True
