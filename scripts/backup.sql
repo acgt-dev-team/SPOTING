@@ -33,6 +33,17 @@ SET default_table_access_method = heap;
 -- CREATE TABLES
 -- ============================================================
 
+-- Alembic Version
+CREATE TABLE public.alembic_version (
+    version_num character varying(32) NOT NULL
+);
+
+ALTER TABLE public.alembic_version OWNER TO postgres;
+
+ALTER TABLE ONLY public.alembic_version
+    ADD CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num);
+    
+    
 -- Pelanggan
 CREATE TABLE public.pelanggan (
     id integer NOT NULL,
@@ -216,6 +227,32 @@ CREATE SEQUENCE public.x_profil_tugasan_id_seq AS integer START WITH 1 INCREMENT
 ALTER SEQUENCE public.x_profil_tugasan_id_seq OWNER TO postgres;
 ALTER SEQUENCE public.x_profil_tugasan_id_seq OWNED BY public.x_profil_tugasan.id;
 
+-- X Profil Ejen
+CREATE TABLE public.x_profil_ejen (
+    id bigint NOT NULL,
+    profil_id bigint NOT NULL,
+    ejen_id bigint NOT NULL,
+    status character varying(20) DEFAULT 'Pending'::character varying NOT NULL,
+    started_at timestamp without time zone,
+    completed_at timestamp without time zone,
+    created_at timestamp without time zone DEFAULT now() NOT NULL
+);
+
+ALTER TABLE public.x_profil_ejen OWNER TO postgres;
+
+CREATE SEQUENCE public.x_profil_ejen_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.x_profil_ejen_id_seq OWNER TO postgres;
+
+ALTER SEQUENCE public.x_profil_ejen_id_seq
+OWNED BY public.x_profil_ejen.id;
+
+
 -- Ejen
 CREATE TABLE public.ejen (
     id bigint NOT NULL,
@@ -251,6 +288,30 @@ CREATE SEQUENCE public.hasil_imbasan_id_seq START WITH 1 INCREMENT BY 1 NO MINVA
 ALTER SEQUENCE public.hasil_imbasan_id_seq OWNER TO postgres;
 ALTER SEQUENCE public.hasil_imbasan_id_seq OWNED BY public.hasil_imbasan.id;
 
+-- X Profil Tugasan Ejen
+CREATE TABLE public.x_profil_tugasan_ejen (
+    id bigint NOT NULL,
+    profil_tugasan_id bigint NOT NULL,
+    ejen_id bigint NOT NULL,
+    status character varying(20) DEFAULT 'Pending'::character varying NOT NULL,
+    started_at timestamp without time zone,
+    completed_at timestamp without time zone,
+    created_at timestamp without time zone DEFAULT now() NOT NULL
+);
+
+ALTER TABLE public.x_profil_tugasan_ejen OWNER TO postgres;
+
+CREATE SEQUENCE public.x_profil_tugasan_ejen_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.x_profil_tugasan_ejen_id_seq OWNER TO postgres;
+
+ALTER SEQUENCE public.x_profil_tugasan_ejen_id_seq
+OWNED BY public.x_profil_tugasan_ejen.id;
 -- ============================================================
 -- SET DEFAULTS FOR IDENTITY COLUMNS
 -- ============================================================
@@ -265,7 +326,11 @@ ALTER TABLE ONLY public.tapak ALTER COLUMN id SET DEFAULT nextval('public.tapak_
 ALTER TABLE ONLY public.tugasan ALTER COLUMN id SET DEFAULT nextval('public.tugasan_id_seq'::regclass);
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 ALTER TABLE ONLY public.x_profil_tugasan ALTER COLUMN id SET DEFAULT nextval('public.x_profil_tugasan_id_seq'::regclass);
+ALTER TABLE ONLY public.x_profil_ejen
+ALTER COLUMN id SET DEFAULT nextval('public.x_profil_ejen_id_seq'::regclass);
 
+ALTER TABLE ONLY public.x_profil_tugasan_ejen
+ALTER COLUMN id SET DEFAULT nextval('public.x_profil_tugasan_ejen_id_seq'::regclass);
 -- ============================================================
 -- PRIMARY KEY CONSTRAINTS
 -- ============================================================
@@ -292,7 +357,17 @@ ALTER TABLE ONLY public.users ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY public.users ADD CONSTRAINT users_username_key UNIQUE (username);
 ALTER TABLE ONLY public.x_profil_tugasan ADD CONSTRAINT x_profil_tugasan_pkey PRIMARY KEY (id);
 
+ALTER TABLE ONLY public.x_profil_ejen
+ADD CONSTRAINT x_profil_ejen_pkey PRIMARY KEY (id);
 
+ALTER TABLE ONLY public.x_profil_ejen
+ADD CONSTRAINT uq_x_profil_ejen UNIQUE (profil_id, ejen_id);
+
+ALTER TABLE ONLY public.x_profil_tugasan_ejen
+ADD CONSTRAINT x_profil_tugasan_ejen_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY public.x_profil_tugasan_ejen
+ADD CONSTRAINT uq_task_agent UNIQUE (profil_tugasan_id, ejen_id);
 -- ============================================================
 -- FOREIGN KEY CONSTRAINTS
 -- ============================================================
@@ -305,10 +380,27 @@ ALTER TABLE ONLY public.ejen
 ADD CONSTRAINT ejen_profile_fk
 FOREIGN KEY (profile_id)
 REFERENCES public.profil(id);
+
 ALTER TABLE ONLY public.hasil_imbasan ADD CONSTRAINT fk_hasil_ejen FOREIGN KEY (ejen_id) REFERENCES public.ejen(id) ON DELETE CASCADE;
+ALTER TABLE ONLY public.hasil_imbasan
+ADD CONSTRAINT fk_hasil_profil_tugasan
+FOREIGN KEY (profil_tugasan_id)
+REFERENCES public.x_profil_tugasan(id)
+ON DELETE CASCADE;
 
 ALTER TABLE ONLY public.tugasan ADD CONSTRAINT fk_jenis FOREIGN KEY (jenis_id) REFERENCES public.jenis_tugasan(id);
 ALTER TABLE ONLY public.x_profil_tugasan ADD CONSTRAINT fk_xprofil_status FOREIGN KEY (status_id) REFERENCES public.status(id);
+ALTER TABLE ONLY public.x_profil_tugasan
+ADD CONSTRAINT x_profil_tugasan_profil_id_fkey
+FOREIGN KEY (profil_id)
+REFERENCES public.profil(id)
+ON DELETE CASCADE;
+
+ALTER TABLE ONLY public.x_profil_tugasan
+ADD CONSTRAINT x_profil_tugasan_tugasan_id_fkey
+FOREIGN KEY (tugasan_id)
+REFERENCES public.tugasan(id)
+ON DELETE CASCADE;
 ALTER TABLE ONLY public.organisasi ADD CONSTRAINT organisasi_pelanggan_id_fkey FOREIGN KEY (pelanggan_id) REFERENCES public.pelanggan(id) ON DELETE CASCADE;
 ALTER TABLE ONLY public.profil ADD CONSTRAINT profil_tapak_id_fkey FOREIGN KEY (tapak_id) REFERENCES public.tapak(id) ON DELETE CASCADE;
 ALTER TABLE ONLY public.sub_organisasi ADD CONSTRAINT sub_organisasi_organisasi_id_fkey FOREIGN KEY (organisasi_id) REFERENCES public.organisasi(id) ON DELETE CASCADE;
@@ -317,7 +409,31 @@ ALTER TABLE ONLY public.users
 ADD CONSTRAINT users_pelanggan_id_fkey
 FOREIGN KEY (pelanggan_id)
 REFERENCES public.pelanggan(id);
+-- Profile-Agent relationship
+ALTER TABLE ONLY public.x_profil_ejen
+ADD CONSTRAINT x_profil_ejen_ejen_id_fkey
+FOREIGN KEY (ejen_id)
+REFERENCES public.ejen(id)
+ON DELETE CASCADE;
 
+ALTER TABLE ONLY public.x_profil_ejen
+ADD CONSTRAINT x_profil_ejen_profil_id_fkey
+FOREIGN KEY (profil_id)
+REFERENCES public.profil(id)
+ON DELETE CASCADE;
+
+-- Profile-Task-Agent relationship
+ALTER TABLE ONLY public.x_profil_tugasan_ejen
+ADD CONSTRAINT x_profil_tugasan_ejen_ejen_id_fkey
+FOREIGN KEY (ejen_id)
+REFERENCES public.ejen(id)
+ON DELETE CASCADE;
+
+ALTER TABLE ONLY public.x_profil_tugasan_ejen
+ADD CONSTRAINT x_profil_tugasan_ejen_profil_tugasan_id_fkey
+FOREIGN KEY (profil_tugasan_id)
+REFERENCES public.x_profil_tugasan(id)
+ON DELETE CASCADE;
 -- ============================================================
 -- INSERT SEED DATA
 -- ============================================================
@@ -398,34 +514,52 @@ VALUES
 (4,'gagal');
 
 -- ============================================================
+-- INITIALIZE SEQUENCES AFTER SEED DATA
+-- ============================================================
+
+SELECT pg_catalog.setval('public.pelanggan_id_seq', 1, true);
+SELECT pg_catalog.setval('public.users_id_seq', 3, true);
+SELECT pg_catalog.setval('public.jenis_tugasan_id_seq', 9, true);
+SELECT pg_catalog.setval('public.tugasan_id_seq', 9, true);
+SELECT pg_catalog.setval('public.status_id_seq', 4, true);
+
+-- ============================================================
 -- BLOCKCHAIN HASH FUNCTION FOR hasil_imbasan
 -- ============================================================
-\c spoting;
+
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
-CREATE OR REPLACE FUNCTION set_hasil_imbasan_hash()
+CREATE OR REPLACE FUNCTION public.set_hasil_imbasan_hash()
 RETURNS TRIGGER AS $$
 DECLARE
     prev_hash_val TEXT;
     row_data JSONB;
     computed_hash TEXT;
 BEGIN
-    -- 1. Get the hash of the last inserted row (ordered by id)
-    SELECT row_hash INTO prev_hash_val
-    FROM hasil_imbasan
+    -- 1. Get the hash of the previous row
+    SELECT row_hash
+    INTO prev_hash_val
+    FROM public.hasil_imbasan
     ORDER BY id DESC
     LIMIT 1;
 
-    -- 2. Build a JSONB representation of the new row, excluding row_hash
+    -- 2. Build a JSONB representation of the new row
+    --    excluding row_hash
     row_data := to_jsonb(NEW) - 'row_hash';
 
-    -- 3. Add the previous hash as an extra field (this creates the chain)
-    row_data := row_data || jsonb_build_object('prev_hash', prev_hash_val);
+    -- 3. Add the previous hash to the chain
+    row_data := row_data || jsonb_build_object(
+        'prev_hash',
+        prev_hash_val
+    );
 
-    -- 4. Compute SHA-256 hash of the JSONB text and convert to hex
-    computed_hash := encode(digest(row_data::text, 'sha256'), 'hex');
+    -- 4. Compute SHA-256 hash
+    computed_hash := encode(
+        public.digest(row_data::text, 'sha256'),
+        'hex'
+    );
 
-    -- 5. Assign the computed values to the NEW row
+    -- 5. Assign the computed values
     NEW.prev_hash := prev_hash_val;
     NEW.row_hash := computed_hash;
 
@@ -434,39 +568,16 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trg_hasil_imbasan_hash
-BEFORE INSERT ON hasil_imbasan
+BEFORE INSERT ON public.hasil_imbasan
 FOR EACH ROW
-EXECUTE FUNCTION set_hasil_imbasan_hash();
-
+EXECUTE FUNCTION public.set_hasil_imbasan_hash();
 -- ============================================================
--- INSERT GENESIS RECORD FOR hasil_imbasan
+-- BLOCKCHAIN INITIAL STATE
 -- ============================================================
+-- No genesis record is inserted.
+-- The first hasil_imbasan record starts the hash chain
+-- with prev_hash = NULL.
 
--- Temporarily disable the trigger to insert genesis record
--- We need to first insert the parent records (ejen and x_profil_tugasan)
--- since they have foreign key constraints
-
-
-
-
--- ============================================================
--- FINALIZE FOREIGN KEY CONSTRAINTS (ensure they are enabled)
--- ============================================================
--- Note: Foreign keys were added earlier, but we need to verify the genesis record inserted properly
-
-ALTER TABLE ONLY public.hasil_imbasan ADD CONSTRAINT fk_hasil_profil_tugasan FOREIGN KEY (profil_tugasan_id) REFERENCES public.x_profil_tugasan(id) ON DELETE CASCADE;
-
-ALTER TABLE ONLY public.x_profil_tugasan
-ADD CONSTRAINT x_profil_tugasan_profil_id_fkey
-FOREIGN KEY (profil_id)
-REFERENCES public.profil(id)
-ON DELETE CASCADE;
-
-ALTER TABLE ONLY public.x_profil_tugasan
-ADD CONSTRAINT x_profil_tugasan_tugasan_id_fkey
-FOREIGN KEY (tugasan_id)
-REFERENCES public.tugasan(id)
-ON DELETE CASCADE;
 
 -- ============================================================
 -- VERIFICATION QUERY (optional - comment out if not needed)
