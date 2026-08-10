@@ -93,6 +93,7 @@ const currentPage = ref(1)
 const pageSize = 10
 
 const tableColumns = [
+  { key: "id", label: "Profile ID", width: "50px" },
   { key: "code", label: t("common.code"), width: "100px" },
   { key: "name", label: t("configuration.profile.name") },
   { key: "tasks", label: t("configuration.site.tasksTotal"), width: "140px", nowrap: true },
@@ -757,6 +758,7 @@ onBeforeUnmount(() => {
               class="clickable-row"
               @click="goToTugasan(profile)"
             >
+              <td>{{ profile.id }}</td>
               <td>{{ profile.kod }}</td>
 
               <td>
