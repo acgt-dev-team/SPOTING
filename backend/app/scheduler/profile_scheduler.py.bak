@@ -5,6 +5,7 @@ from datetime import datetime
 from app.database.session import SessionLocal
 from app.models.profil import Profil
 from app.models.x_profil_tugasan import XProfilTugasan
+from app.services.tugasan_service import execute_scan
 from app.services.agent_status_service import update_agent_status
 from app.services.profile_agent_service import assign_agents_to_profile
 
@@ -69,7 +70,8 @@ def run_single_profile(profile_id: int):
         print("========================================")
 
         # ------------------------------------------
-        # Change scheduled profile to in process
+        # Change scheduled profile into immediate
+        # execution
         # ------------------------------------------
 
         profile.execution_type = "IMMEDIATE"
@@ -79,7 +81,7 @@ def run_single_profile(profile_id: int):
         db.refresh(profile)
 
         print(
-            "[SCHEDULER] Profile changed to IN PROCESS"
+            "[SCHEDULER] Execution type changed to IMMEDIATE"
         )
 
         # ------------------------------------------
@@ -118,17 +120,58 @@ def run_single_profile(profile_id: int):
         )
 
         # ------------------------------------------
-        # Tasks are now available for agents
+        # Execute every task
         # ------------------------------------------
+
+        all_success = True
+
+        for task in tasks:
+
+            print(
+                f"[SCHEDULER] Executing task "
+                f"{task.id}"
+            )
+
+            try:
+                result = execute_scan(
+                    db=db,
+                    profil_tugasan_id=task.id,
+                    penjadualan=False
+                )
+
+                print(
+                    f"[SCHEDULER] Task {task.id} completed"
+                )
+
+                print(
+                    f"[SCHEDULER] Result: {result}"
+                )
+
+            except Exception as task_error:
+
+                all_success = False
+
+                print(
+                    f"[SCHEDULER] Task {task.id} failed: "
+                    f"{task_error}"
+                )
+
+        # ------------------------------------------
+        # Final profile status
+        # ------------------------------------------
+
+        if all_success:
+            profile.execution_status = "execution completed"
+        else:
+            profile.execution_status = "gagal"
+
+        db.commit()
+        db.refresh(profile)
 
         print(
             f"[SCHEDULER] Profile {profile.id} "
-            f"is ready for agent execution"
-        )
-
-        print(
-            "[SCHEDULER] Waiting for agents "
-            "to execute pending tasks..."
+            f"finished with status: "
+            f"{profile.execution_status}"
         )
 
     except Exception as e:

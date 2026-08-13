@@ -64,9 +64,11 @@ let fpInstance = null
 const timeSlots = ref([])
 
 for (let h = 0; h < 24; h++) {
-  for (let m of ["00", "30"]) {
+  for (let m = 0; m < 60; m += 15) {
     const hour = String(h).padStart(2, "0")
-    timeSlots.value.push(`${hour}:${m}`)
+    const minute = String(m).padStart(2, "0")
+
+    timeSlots.value.push(`${hour}:${minute}`)
   }
 }
 
@@ -243,42 +245,56 @@ watch(cronEnabled, (enabled) => {
 })
 
 function initFlatpickr() {
-  if (dateInput.value) {
+  if (!dateInput.value) return
 
-    if (fpInstance) {
-      fpInstance.destroy()
-    }
+  if (fpInstance) {
+    fpInstance.destroy()
+  }
 
-        fpInstance = flatpickr(
-  dateInput.value,
-  {
+  fpInstance = flatpickr(dateInput.value, {
     dateFormat: "Y-m-d",
 
     minDate: "today",
 
-    defaultDate:
-      selectedDate.value || new Date(),
-      onChange: (dates) => {
+    defaultDate: selectedDate.value || new Date(),
 
-  if (!dates[0]) {
-    selectedDate.value = ""
-    return
-  }
+    onReady: (selectedDates) => {
+      if (!selectedDates[0]) return
 
-  const year = dates[0].getFullYear()
-  const month = String(
-    dates[0].getMonth() + 1
-  ).padStart(2, "0")
+      const year = selectedDates[0].getFullYear()
 
-  const day = String(
-    dates[0].getDate()
-  ).padStart(2, "0")
+      const month = String(
+        selectedDates[0].getMonth() + 1
+      ).padStart(2, "0")
 
-  selectedDate.value =
-    `${year}-${month}-${day}`
-}
-    })
-  }
+      const day = String(
+        selectedDates[0].getDate()
+      ).padStart(2, "0")
+
+      selectedDate.value =
+        `${year}-${month}-${day}`
+    },
+
+    onChange: (dates) => {
+      if (!dates[0]) {
+        selectedDate.value = ""
+        return
+      }
+
+      const year = dates[0].getFullYear()
+
+      const month = String(
+        dates[0].getMonth() + 1
+      ).padStart(2, "0")
+
+      const day = String(
+        dates[0].getDate()
+      ).padStart(2, "0")
+
+      selectedDate.value =
+        `${year}-${month}-${day}`
+    }
+  })
 }
 
 function selectTime(time) {
@@ -371,16 +387,66 @@ async function saveProfile() {
 
   try {
     saving.value = true
+
     let scheduledAt = null
 
+    // ==========================================
+    // SCHEDULED VALIDATION
+    // ==========================================
+
     if (executionType.value === "SCHEDULED") {
-      if (!selectedDate.value || !selectedTime.value) {
-        toast.warning(t("validation.selectDateTime"))
+
+      if (!selectedDate.value) {
+        toast.warning("Sila pilih tarikh")
         return
       }
 
-      scheduledAt = `${selectedDate.value}T${selectedTime.value}:00`
+      if (!selectedTime.value) {
+        toast.warning("Sila pilih masa")
+        return
+      }
+
+      scheduledAt =
+        `${selectedDate.value}T${selectedTime.value}:00`
+
+      // Check that scheduled time is in the future
+      const scheduledDateTime =
+        new Date(scheduledAt)
+
+      const now = new Date()
+
+      if (scheduledDateTime <= now) {
+        toast.warning(
+          "Sila pilih masa yang akan datang"
+        )
+        return
+      }
+
+      // Make sure selected minute is a 15-minute interval
+      const selectedMinute =
+        scheduledDateTime.getMinutes()
+
+      if (selectedMinute % 15 !== 0) {
+        toast.warning(
+          "Masa mesti dalam sela 15 minit"
+        )
+        return
+      }
+
+      console.log(
+        "[PROFILE SCHEDULE]",
+        {
+          selectedDate: selectedDate.value,
+          selectedTime: selectedTime.value,
+          scheduledAt: scheduledAt,
+          now: now.toISOString()
+        }
+      )
     }
+
+    // ==========================================
+    // PAYLOAD
+    // ==========================================
 
     const payload = {
       tapak_id: siteId,
@@ -396,8 +462,7 @@ async function saveProfile() {
         scheduledAt,
 
       is_scheduled:
-        executionType.value ===
-        "SCHEDULED",
+        executionType.value === "SCHEDULED",
 
       cron_enabled:
         cronEnabled.value,
@@ -409,24 +474,72 @@ async function saveProfile() {
         cronExpression.value
     }
 
+    console.log(
+      "[PROFILE PAYLOAD]",
+      payload
+    )
+
+    // ==========================================
+    // SAVE
+    // ==========================================
+
     if (editingId.value) {
-      await api.put(`/profil/${editingId.value}`, payload)
+
+      await api.put(
+        `/profil/${editingId.value}`,
+        payload
+      )
+
     } else {
-      await api.post("/profil/", payload)
+
+      await api.post(
+        "/profil/",
+        payload
+      )
     }
 
     await loadProfiles()
+
     closeModal()
-    toast.success(t("common.saveSuccess", { entity: t("configuration.profile.countEntity") }))
+
+    toast.success(
+      t(
+        "common.saveSuccess",
+        {
+          entity:
+            t(
+              "configuration.profile.countEntity"
+            )
+        }
+      )
+    )
 
   } catch (err) {
-    console.error("Error saving profile:", err)
-    toast.error(t("common.saveFailed", { entity: t("configuration.profile.countEntity") }))
+
+    console.error(
+      "Error saving profile:",
+      err
+    )
+
+    toast.error(
+      t(
+        "common.saveFailed",
+        {
+          entity:
+            t(
+              "configuration.profile.countEntity"
+            )
+        }
+      )
+    )
+
+  } finally {
+
+    saving.value = false
+
   }
-    finally {
-      saving.value = false
-    }
 }
+
 
 // =========================
 // DELETE

@@ -4,6 +4,11 @@ import re
 from sqlalchemy import func
 from app.models.x_profil_tugasan import XProfilTugasan
 from app.models.x_profil_ejen import XProfilEjen
+from app.scheduler.profile_scheduler import (
+    schedule_profile_job,
+    remove_profile_job
+)
+from datetime import datetime
 
 # =========================
 # GET
@@ -116,11 +121,24 @@ def generate_next_profil_kod(db: Session):
 def create_profil(db: Session, data: dict):
 
     execution_type = data.get("execution_type", "IMMEDIATE")
+    scheduled_at = data.get("scheduled_at")
 
-    # ✅ status logic
-    execution_type = data.get("execution_type", "IMMEDIATE")
+    if execution_type == "SCHEDULED":
 
-    status = "belum dimulakan"
+        if scheduled_at is None:
+            raise ValueError(
+                "scheduled_at is required for scheduled execution"
+            )
+
+        if scheduled_at <= datetime.now():
+            raise ValueError(
+                "scheduled_at must be in the future"
+            )
+
+    if execution_type == "SCHEDULED":
+        status = "telah dijadualkan"
+    else:
+        status = "belum dimulakan"
 
     new_profil = Profil(
         tapak_id=data["tapak_id"],
@@ -151,7 +169,14 @@ def create_profil(db: Session, data: dict):
     db.commit()
     db.refresh(new_profil)
 
-
+    if (
+        new_profil.execution_type == "SCHEDULED"
+        and new_profil.scheduled_at is not None
+    ):
+        schedule_profile_job(
+            profile_id=new_profil.id,
+            scheduled_at=new_profil.scheduled_at
+        )
 
     return {
         "id": new_profil.id,
@@ -183,12 +208,15 @@ def update_profil(db: Session, id: int, data: dict):
 
     profil.nama = data["nama"]
     profil.keterangan = data.get("keterangan", "")
+    
     profil.execution_type = data.get("execution_type", "IMMEDIATE")
     profil.scheduled_at = data.get("scheduled_at")
     profil.is_scheduled = (profil.execution_type == "SCHEDULED")
 
-    # ✅ update status
-    profil.execution_status = "belum dimulakan"
+    if profil.execution_type == "SCHEDULED":
+        profil.execution_status = "telah dijadualkan"
+    else:
+        profil.execution_status = "belum dimulakan"
     
     profil.cron_enabled = data.get(
         "cron_enabled",
@@ -208,6 +236,14 @@ def update_profil(db: Session, id: int, data: dict):
 
     db.commit()
     db.refresh(profil)
+
+    if profil.execution_type == "SCHEDULED" and profil.scheduled_at:
+        schedule_profile_job(
+            profile_id=profil.id,
+            scheduled_at=profil.scheduled_at
+        )
+    else:
+        remove_profile_job(profil.id)
 
     return {
         "id": profil.id,
